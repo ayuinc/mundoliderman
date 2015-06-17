@@ -5,30 +5,30 @@
 // .thin {@include thin;}
 // @mixin extra-light { font-family: $font-family-base; font-weight: 200; font-style: normal;}
 // .extra-light {@include extra-light;}
-// @mixin light { font-family: $font-family-base; font-weight: 300; font-style: normal;}
-// .light {@include light;}
+@mixin light { font-family: $font-family-base; font-weight: 300; font-style: normal;}
+ .light {@include light;}
 // @mixin light-italic { font-family: $font-family-base; font-weight: 300; font-style: italic;}
 // .light-italic {@include light-italic;}
-// @mixin book { font-family: $font-family-base; font-weight: 400; font-style: normal;}
-// .book {@include book;}
+@mixin book { font-family: $font-family-base; font-weight: 400; font-style: normal;}
+ .book {@include book;}
 // @mixin book-italic { font-family: $font-family-base; font-weight: 400; font-style: italic;}
 // .book-italic {@include book-italic;}
 // @mixin medium { font-family: $font-family-base; font-weight: 500; font-style: normal;}
 // .medium {@include medium;}
 // @mixin medium-italic { font-family: $font-family-base; font-weight: 500; font-style: italic;}
 // .medium-italic {@include medium-italic;}
-// @mixin bold { font-family: $font-family-base; font-weight: 700; font-style: normal;}
-// .bold {@include bold;}
+@mixin bold { font-family: $font-family-base; font-weight: 700; font-style: normal;}
+ .bold {@include bold;}
 // @mixin bold-italic { font-family: $font-family-base; font-weight: 700; font-style: italic;}
 // .bold-italic {@include bold-italic;}
 
 // SERIFS
-// @mixin serif-light { font-family: $font-family-serif; font-weight: 300; font-style: normal;}
-// .serif-light {@include serif-light;}
-// @mixin serif-light-italic { font-family: $font-family-serif; font-weight: 300; font-style: italic;}
-// .serif-light-italic {@include serif-light-italic;}
-// @mixin serif-book { font-family: $font-family-serif; font-weight: 400; font-style: normal;}
-// .serif-book {@include serif-book;}
+@mixin serif-light { font-family: $font-family-serif; font-weight: 300; font-style: normal;}
+ .serif-light {@include serif-light;}
+@mixin serif-light-italic { font-family: $font-family-serif; font-weight: 300; font-style: italic;}
+ .serif-light-italic {@include serif-light-italic;}
+@mixin serif-book { font-family: $font-family-serif; font-weight: 400; font-style: normal;}
+ .serif-book {@include serif-book;}
 // @mixin serif-book-italic { font-family: $font-family-serif; font-weight: 400; font-style: italic;}
 // .serif-book-italic {@include serif-book-italic;}
 // @mixin serif-medium { font-family: $font-family-serif; font-weight: 500; font-style: normal;}

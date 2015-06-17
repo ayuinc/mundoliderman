@@ -343,9 +343,9 @@ module.exports = function (grunt) {
     'sass:ebm',
     'sass:dev',
     // 'bower:dev',
-    // 'connect:livereload',
-    // 'uglify',
-    // 'open',
+     'connect:livereload',
+     'uglify',
+     'open',
     'watch'
   ]);
 

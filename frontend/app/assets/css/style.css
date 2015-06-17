@@ -14,6 +14,42 @@
   Used in text-control partials
 */
 /* PROJECT ESPECIFIC FONTS */
+.light {
+  font-family: "Oswald", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.book {
+  font-family: "Oswald", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.bold {
+  font-family: "Oswald", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.serif-light {
+  font-family: "Merriweather", Georgia, "Times New Roman", Times, serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.serif-light-italic {
+  font-family: "Merriweather", Georgia, "Times New Roman", Times, serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.serif-book {
+  font-family: "Merriweather", Georgia, "Times New Roman", Times, serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
 /* Background image blocks */
 .bg-img-block {
   background-repeat: no-repeat;
@@ -981,8 +1017,11 @@ html::-webkit-scrollbar {
   display: none;
 }
 
-body {
-  background-color: #fff;
+body h1, body h2, body h3, body span {
+  font-family: "Oswald", Helvetica, Arial, sans-serif;
+}
+body p {
+  font-family: "Merriweather", Georgia, "Times New Roman", Times, serif;
 }
 
 .site-wrapper,
@@ -993,5 +1032,18 @@ body {
 /*
 	Media queries
 */
+header h1 {
+  font-size: 30px;
+  font-size: 1.875rem;
+}
+header .alerta span {
+  font-size: 14px;
+  font-size: 0.875rem;
+}
+
+#publish input {
+  border-radius: 0;
+  height: 80px;
+}
 
 /*# sourceMappingURL=style.css.map */
