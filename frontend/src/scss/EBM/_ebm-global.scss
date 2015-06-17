@@ -8,11 +8,35 @@ html {
 }
 
 body {
-	h1, h2, h3, span {
+	h1, h2, h3, h4, h5, span {
 	font-family: $font-family-sans-serif;
 	}
 	p {
 		font-family: $font-family-serif ;
+		color: rgb(74, 74, 74);
+	}
+	a:hover {
+		text-decoration: none;
+	}
+	/*UTILITIES*/
+	.fecha {
+		font-size: 10px;
+		font-size: rem(10px);
+	}
+	.categoria {
+		font-size: 12px;
+		font-size: rem(12px);
+	}
+	.parrafo {
+		line-height: 1.5;
+		font-size: 14px;
+		font-size: rem(14px);
+	}
+	.br-none {
+		border-radius: none!important;
+	}
+	.d-inline-block {
+		display: inline-block;
 	}
 }
 
@@ -39,6 +63,8 @@ $xxl-desktop: 1980px;
 @media only screen and (min-width: $xl-desktop) {}
 @media only screen and (min-width: $xxl-desktop) {}
 
+
+/*MENÚ*/
 header {
 	h1 {
 		font-size: 30px;
@@ -51,9 +77,111 @@ header {
 		}
 	}
 }
+/*CONTENIDO*/
+.site-content {
+	background-color: rgba(240, 240, 240, 0.45);
+}
+.tool-bar-search-form {
+	.input-group input {
+		height: 40px;
+		border-radius: 20px;
+	}
+}
 #publish {
 	input {
 		border-radius: 0;
 		height: 80px;
+	}
+	.buttons-group {
+		background-color: rgba(240, 240, 240, 0.45);
+		border: 1px solid rgb(191, 191, 191);
+		border-top: 0;
+		.dropdown {
+			.dropdown-toggle {
+				border-radius: 0;
+			}
+			ul {
+				border-radius: 0;
+			  border-top: 0;
+			  li > a {
+					font-size: 12px;
+					font-size: rem(12px);
+				}
+			}
+		}
+		.publicar {
+			span {
+				letter-spacing: 2px;
+			}
+		}
+	}
+}
+#post{
+	ul {
+		list-style: none;
+		li {
+			float: left;
+			font-size: 12px;
+			font-size: rem(12px);
+			&:last-child::before {
+				content: "|";
+			}
+		}
+	}
+	.prestamo {
+		p {
+			line-height: normal;
+		}
+	}
+}
+#box-right {
+	.noticia {
+		position: relative;
+		img {
+			max-width: 353px;
+			width: 100%;
+		}
+		.nota {
+			position: absolute;
+		  width: 85%;
+		  bottom: 0;
+		  left: 50%;
+		  height: 45%;
+		  @include transform(translateX(-50%));
+		  border-top-left-radius: 4%;
+		  border-top-right-radius: 4%;
+		  h5 {
+		  	font-size: 17px;
+		  	font-size: rem(17px);
+		  	line-height: 1.5;
+		  }
+		  p:first-child {
+				font-size: 15px;
+				font-size: rem(15px);
+		  }
+		}
+	}
+}
+footer {
+	background-color: black;
+	position: relative;
+	.container {
+		@include flex-column-center;
+		height: 100px;
+	}
+	#up {
+		height: 30px;
+	  width: 40px;
+	  position: absolute;
+	  top: -30px;
+	  left: 50%;
+	  background-color: black;
+	  @include transform(translateX(-50%));
+	}
+	.row {
+		.col-md-8 p {
+			font-size: 12px;
+			font-size: rem(12px);
+		}
 	}
 }

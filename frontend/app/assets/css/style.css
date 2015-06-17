@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*
   Easy Box Model Imports
   Last update: 01.06.15
@@ -14,6 +15,12 @@
   Used in text-control partials
 */
 /* PROJECT ESPECIFIC FONTS */
+.thin {
+  font-family: "Oswald", Helvetica, Arial, sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
 .light {
   font-family: "Oswald", Helvetica, Arial, sans-serif;
   font-weight: 300;
@@ -1017,11 +1024,37 @@ html::-webkit-scrollbar {
   display: none;
 }
 
-body h1, body h2, body h3, body span {
+body {
+  /*UTILITIES*/
+}
+body h1, body h2, body h3, body h4, body h5, body span {
   font-family: "Oswald", Helvetica, Arial, sans-serif;
 }
 body p {
   font-family: "Merriweather", Georgia, "Times New Roman", Times, serif;
+  color: #4a4a4a;
+}
+body a:hover {
+  text-decoration: none;
+}
+body .fecha {
+  font-size: 10px;
+  font-size: 0.625rem;
+}
+body .categoria {
+  font-size: 12px;
+  font-size: 0.75rem;
+}
+body .parrafo {
+  line-height: 1.5;
+  font-size: 14px;
+  font-size: 0.875rem;
+}
+body .br-none {
+  border-radius: none !important;
+}
+body .d-inline-block {
+  display: inline-block;
 }
 
 .site-wrapper,
@@ -1032,6 +1065,7 @@ body p {
 /*
 	Media queries
 */
+/*MEN├Ü*/
 header h1 {
   font-size: 30px;
   font-size: 1.875rem;
@@ -1041,9 +1075,135 @@ header .alerta span {
   font-size: 0.875rem;
 }
 
+/*CONTENIDO*/
+.site-content {
+  background-color: rgba(240, 240, 240, 0.45);
+}
+
+.tool-bar-search-form .input-group input {
+  height: 40px;
+  border-radius: 20px;
+}
+
 #publish input {
   border-radius: 0;
   height: 80px;
+}
+#publish .buttons-group {
+  background-color: rgba(240, 240, 240, 0.45);
+  border: 1px solid #bfbfbf;
+  border-top: 0;
+}
+#publish .buttons-group .dropdown .dropdown-toggle {
+  border-radius: 0;
+}
+#publish .buttons-group .dropdown ul {
+  border-radius: 0;
+  border-top: 0;
+}
+#publish .buttons-group .dropdown ul li > a {
+  font-size: 12px;
+  font-size: 0.75rem;
+}
+#publish .buttons-group .publicar span {
+  letter-spacing: 2px;
+}
+
+#post ul {
+  list-style: none;
+}
+#post ul li {
+  float: left;
+  font-size: 12px;
+  font-size: 0.75rem;
+}
+#post ul li:last-child::before {
+  content: "|";
+}
+#post .prestamo p {
+  line-height: normal;
+}
+
+#box-right .noticia {
+  position: relative;
+}
+#box-right .noticia img {
+  max-width: 353px;
+  width: 100%;
+}
+#box-right .noticia .nota {
+  position: absolute;
+  width: 85%;
+  bottom: 0;
+  left: 50%;
+  height: 45%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  border-top-left-radius: 4%;
+  border-top-right-radius: 4%;
+}
+#box-right .noticia .nota h5 {
+  font-size: 17px;
+  font-size: 1.0625rem;
+  line-height: 1.5;
+}
+#box-right .noticia .nota p:first-child {
+  font-size: 15px;
+  font-size: 0.9375rem;
+}
+
+footer {
+  background-color: black;
+  position: relative;
+}
+footer .container {
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  box-orient: vertical;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  box-direction: normal;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-direction: column;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  box-pack: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  -o-justify-content: center;
+  justify-content: center;
+  -ms-flex-pack: center;
+  height: 100px;
+}
+footer #up {
+  height: 30px;
+  width: 40px;
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  background-color: black;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+footer .row .col-md-8 p {
+  font-size: 12px;
+  font-size: 0.75rem;
 }
 
 /*# sourceMappingURL=style.css.map */
