@@ -160,4 +160,48 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 		return $this->EE->TMPL->parse_variables($this->EE->TMPL->tagdata, $new_data);
 	}
 
+	public function semaforotareo()
+	{
+		$dni = trim(ee()->TMPL->fetch_param('dni'));
+		$url = "http://190.187.13.164/WSIntranet/Autenticacion.svc/AutenticacionUsuario/$dni/$dni";
+		$ch = curl_init($url);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_URL,$url);
+		$content=curl_exec($ch);
+		$json = json_decode($content, true);
+		$data = $json["Resultado"];
+		$tag_vars = array($data);
+		$codigoLiderman = $data["CodigoLiderman"];//trim($this->EE->TMPL->fetch_param('codigo'));
+		$mes = trim($this->EE->TMPL->fetch_param('mes'));
+		$currentMonth = date('n');
+		$mes = $currentMonth - $mes;
+		$token = $data["TokenSeguridad"];//trim($this->EE->TMPL->fetch_param('token'));
+		$url = "http://190.187.13.164/WSIntranet/Tareo.svc/TraerSemaforoTareo/$codigoLiderman/$mes/$token";
+		$ch = curl_init($url);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_URL,$url);
+		$content=curl_exec($ch);
+		$json = json_decode($content, true);
+		$data = $json["Resultado"];
+		return $data;
+	}
+
+	public function getdatafromdb()
+	{
+		$channels = ee()->db->select('*')
+		  ->from('members')
+		  ->get();
+		$data = '';
+		if ($channels->num_rows() > 0)
+		{
+		    foreach($channels->result_array() as $row)
+		    {
+		        $data .= $row['username']."<br />\n";
+		    }
+		}
+		return $data;
+	}
+
 }
