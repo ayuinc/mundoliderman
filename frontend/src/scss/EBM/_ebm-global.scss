@@ -1,0 +1,59 @@
+/*
+	EBM Global styles
+*/
+html {
+	&::-webkit-scrollbar { 
+    display: none; 
+	}
+}
+
+body {
+	h1, h2, h3, span {
+	font-family: $font-family-sans-serif;
+	}
+	p {
+		font-family: $font-family-serif ;
+	}
+}
+
+.site-wrapper,
+.site-content {
+	position: relative;
+}
+
+/*
+	Media queries
+*/
+$xl-desktop: 1500px;
+$xxl-desktop: 1980px;
+@media #{$xs-only} {}
+@media #{$sm-only} {}
+@media #{$md-only} {}
+@media #{$lg-only} {}
+@media #{$sm-down} {}
+@media #{$md-down} {}
+@media #{$lg-down} {}
+@media #{$sm-up} {}
+@media #{$md-up} {}
+@media #{$lg-up} {}
+@media only screen and (min-width: $xl-desktop) {}
+@media only screen and (min-width: $xxl-desktop) {}
+
+header {
+	h1 {
+		font-size: 30px;
+		font-size: rem(30px);
+	}
+	.alerta {
+		span {
+			font-size: 14px;
+			font-size: rem(14px);
+		}
+	}
+}
+#publish {
+	input {
+		border-radius: 0;
+		height: 80px;
+	}
+}
