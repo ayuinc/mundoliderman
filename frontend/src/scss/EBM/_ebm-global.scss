@@ -134,7 +134,6 @@ header {
 	border-radius: 5px;
 	border: 1px solid rgb(185, 163, 128);
 	border-top: 2px solid rgb(197, 180, 151);
- 	overflow: hidden;
 	input { 
 		border: 0;
 		height: 80px;
@@ -153,9 +152,27 @@ header {
 	  	font-size: 21px;
 	  	font-size: rem(21px);
 	  }
-	}
-	.buttons-group {
-		border-top: 0;
+	  .dropdown-menu {
+	  	width: 180px;
+	  	top: 200%;
+  		left: 50%;
+	  	li > a {
+	  		@extend .fz-12;;
+	  		color: rgb(196, 189, 194);
+	  		font-weight: 	100;
+	  	}
+	  	.triangulo {
+				border-width: 12px 8px 0;
+				border-color: white transparent;
+				border-style: solid;
+				width: 0;
+				height: 0;
+				@include transform(rotate(180deg));
+				position: absolute;
+		  	top: -12px;
+		  	left: 45%;
+	  	}
+	  }
 	}
 }
 #post{

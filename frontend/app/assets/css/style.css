@@ -1049,7 +1049,7 @@ body .fz-18 {
   font-size: 18px;
   font-size: 1.125rem;
 }
-body .fz-12 {
+body .fz-12, body #comment .comentario .dropdown-menu li > a, #comment .comentario .dropdown-menu body li > a {
   font-size: 12px;
   font-size: 0.75rem;
 }
@@ -1147,7 +1147,6 @@ header .perfil {
   border-radius: 5px;
   border: 1px solid #b9a380;
   border-top: 2px solid #c5b497;
-  overflow: hidden;
 }
 #comment input {
   border: 0;
@@ -1177,8 +1176,29 @@ header .perfil {
   font-size: 21px;
   font-size: 1.3125rem;
 }
-#comment .buttons-group {
-  border-top: 0;
+#comment .comentario .dropdown-menu {
+  width: 180px;
+  top: 200%;
+  left: 50%;
+}
+#comment .comentario .dropdown-menu li > a {
+  color: #c4bdc2;
+  font-weight: 100;
+}
+#comment .comentario .dropdown-menu .triangulo {
+  border-width: 12px 8px 0;
+  border-color: white transparent;
+  border-style: solid;
+  width: 0;
+  height: 0;
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+  position: absolute;
+  top: -12px;
+  left: 45%;
 }
 
 #post ul {
