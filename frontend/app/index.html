@@ -13,211 +13,197 @@
   
   <div class="site-wrapper"> <!-- Body -->
     <header class="site-menu">
-      <div class="container-fluid minh-70 pl-28 pv-14">
-        <div class="col-md-3 text-right pr-0 pt-14 logo">
-          <h1 class="text-uppercase bold text-gray-darker pl-42 m-0">Mundo liderman</h1>
+      <div class="container-fluid minh-70 pr-0 pl-21 pt-28 pb-7">
+        <div class="logo col-md-4 pl-0">  
+          <div class="col-md-8 text-right pr-0 pt-14 ml-28">
+            <h1 class="text-uppercase bold text-gray-darker pl-42 m-0">Mundo liderman</h1>
+          </div>
+          <div class="col-md-2 pl-7">
+            <img src="assets/img/Liderboy.png" alt="">
+          </div>
+          <div class="col-md-2">  </div>
         </div>
-        <div class="col-md-1 pl-7">
-          <img src="assets/img/Liderboy.png" alt="">
-        </div>
-        <div class="col-md-4 ml-42 pl-42 pr-0">
-          <form class="tool-bar-search-form">
-            <div class="input-group">
-              <input type="text" id="search_bar" class="form-control input-sm pl-28" placeholder="Buscar personas, consultas o preguntas...">
+        <div class="col-md-4 pl-42 pr-21">
+          <form class="tool-bar-search-form mt-7">
+            <div class="input-group pr-14 ">
+              <input type="text" id="search_bar" class="form-control input-sm thin pl-28 borderless display-ib" placeholder="Buscar personas, consultas o preguntas...">
+              <img src="assets/img/Icono_Buscar.png" alt="" class="display-ib">
             </div>
           </form>
         </div>
-        <div class="col-md-3">
-          <div class="col-md-5"><h5><a href="">Ir al inicio</a></h5></div>
+        <div class="col-md-4 text-center pl-0">
+          <div class="col-md-5"><h5 class="mt-14 mb-0"><a href="" class="text-gray book fz-18 lh-0">Ir al inicio</a></h5></div>
           <div class="col-md-7">
-            <p>Hola, Herman</p>
+            <h5 class="text-gray-dark m-0 mt-14 light float-left pr-7">Hola, Herman</h5>
+            <div class="perfil float-left" style="background-image: url(assets/img/Carita.png)"></div>
           </div>
         </div>
       </div>
       <div class="alerta bg-warning p-7 ph-35 text-white">
         <div class="container pl-35">
           <img src="assets/img/Icono_Atencion.png" alt="">
-          <span class="m-0 pl-7">Esta sección es solo para alertas del sistema y de la administración</span>
+          <span class="m-0 pl-7 light">Esta sección es solo para alertas del sistema y de la administración</span>
         </div>
       </div>
     </header>
     <main class="site-content pb-70" role="main">
-      <div class="container pt-42 clearfix mb-70">
+      <div class="container pt-42 clearfix mb-70 ph-0">
         <div id="box-left" class="col-md-8">
-          <section id="publish">
-            <input type="text" class="form-control input-sm" placeholder="Qué estás pensando...">
-            <div class="buttons-group minh-70 pv-14 ph-7">
-              <div class="col-md-6">
-                <img src="assets/img/Icono_Foto.png" alt="">
+          <section id="comment" class="bg-white">
+            <div class="comentario clearfix pr-21">
+              <div class="col-sm-7">
+                <input type="text" class="input-sm outline-none serif fz-18" placeholder="Qué estás pensando...">
               </div>
-              <div class="col-md-6">
-                <div class="col-md-6">
-                  <div class="dropdown">
-                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                      Escoger categoría
-                      <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu mt-0" aria-labelledby="dropdownMenu1">
-                      <li><a href="#">Quiero divertirme</a></li>
-                      <li><a href="#">Quiero dar mi testimonio</a></li>
-                      <li><a href="#">Tengo una solicitud</a></li>
-                      <li><a href="#">Tengo una consulta</a></li>
-                      <li><a href="#">Necesito ayuda</a></li>
-                      <li><a href="#">Otro</a></li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="col-md-6 pr-0">
-                  <div class="publicar text-right">
-                    <a href="" class="btn bg-success"><p class="small m-0 ph-21 font-size-serif"><span class="text-white">PUBLICAR</span></p></a>
-                  </div>
+              <div class="col-md-4 ml-42">
+                <div class="dropdown">
+                  <button class="btn bg-white dropdown-toggle b-none outline-none text-gray-light book serif" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    Escoge una categoría
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu mt-0 b-none" aria-labelledby="dropdownMenu1">
+                    <li><a href="#">Quiero divertirme</a></li>
+                    <li><a href="#">Quiero dar mi testimonio</a></li>
+                    <li><a href="#">Tengo una solicitud</a></li>
+                    <li><a href="#">Tengo una consulta</a></li>
+                    <li><a href="#">Necesito ayuda</a></li>
+                    <li><a href="#">Otro</a></li>
+                  </ul>
                 </div>
               </div>
+              <div class="col-sm-1 border-left-success">
+                <a href=" "><img src="assets/img/Globito.png" alt=""></a>
+              </div>
+            </div>
+            <div class="buttons-group pv-14 lh-0 pl-35 bg-success">
+              <a href=" "><img src="assets/img/Icono_Foto.png" alt=""></a>
             </div>
           </section>
           <section id="post">
-            <div class="post-1 post bg-white ph-21 pt-28 pb-14 mt-42">
+            <div class="post-1 post bg-white ph-28 pt-28 pb-28 mt-42">
               <div class="row">
-                <div class="name col-md-6">
-                  <img src="assets/img/Wall/Cara-1.png" alt="" class="col-md-3 ph-7">
-                  <div class="texto col-md-6">
-                    <h4 class="text-primary m-0">Ivo Sanoa</h4>
-                    <p class="fecha m-0 pb-7">3 de enero a las 4:00 pm</p>
-                    <span class="categoria">Tengo una consulta</span>
+                <img src="assets/img/Wall/Cara-1.png" alt="" class="col-md-1 pr-0 pl-7">
+                <div class="name col-md-11">
+                  <div class="info-usuario pl-7 row">
+                    <div class="col-md-9">
+                      <span class="categoria text-uppercase fz-10 text-primary letter-spacing-1.5">Tengo una consulta</span>
+                      <h5 class="text-gray-darker m-0">Ivo Sanoa</h5>
+                      <p class="fz-10 m-0 text-gray"><a href="">Hace 3 horas</a></p>
+                    </div>
+                    <div class="col-md-3 text-center">
+                      <div class="aviso mh-21">
+                        <div class="circle-green bg-info display-ib"></div>
+                        <h5 class="text-info m-0 display-ib pl-7 pv-7 fz-14">Resuelto</h5>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="parrafo pt-14 ph-7 text-gray-darker">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam quidem corrupti optio sed facilis omnis perferendis dolores vero qui illo, beatae velit suscipit tempora iure molestias nisi earum sunt fugit.</p>
+                  <div class="clearfix ph-0 mh-7 thin text-gray pt-7 pb-7 border-bottom-gray-light fz-12">
+                    <ul class="col-md-6 ph-0 mv-0">
+                      <li class="pr-7 display-ib">
+                        <a href="">Comentar &nbsp</a>
+                        <img src="assets/img/Icono_Comentar.png" alt="">
+                      </li>
+                      <li class="display-ib pl-14">
+                        <a href="">Me gusta &nbsp</a>
+                        <img src="assets/img/me_gusta.png" alt="">
+                      </li>
+                    </ul>
+                    <ul class="col-md-6 ph-0 mv-0 text-right">
+                      <li class="display-ib">
+                        <a href="">2 &nbsp</a>
+                        <img src="assets/img/Icono_Corazon.png" alt="">
+                      </li>
+                      <li class="like display-ib pl-7">
+                        <a href="">&nbsp 24 comentarios &nbsp</a>
+                      </li>
+                    </ul>
                   </div>
                 </div>
-                <div class="prestamo col-md-6 text-right">
-                  <a href="" class="btn text-info btn-outline btn-info br-none"><p class="small m-0 ph-0 font-size-serif">
-                    <span class="glyphicon glyphicon-ok text-info"></span>
-                    <span class="text-info pl-7">préstamo resuelto</span>
-                  </p></a>
-                </div>
               </div>
-              <p class="parrafo pt-14 ph-7">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam quidem corrupti optio sed facilis omnis perferendis dolores vero qui illo, beatae velit suscipit tempora iure molestias nisi earum sunt fugit.</p>
-              <ul class="like clearfix ph-0 mh-7 thin text-gray pb-14 border-bottom-gray-light">
-                <li class="pr-7"><a href="">3 Me gusta</a></li>
-                <li><a href=""> &nbsp 4 Comentarios</a></li>
-              </ul>
             </div>
-            <div class="post-1 post bg-white ph-21 pt-28 pb-14 mt-42">
+            <div class="post-2 post bg-white ph-28 pt-28 pb-28 mt-42">
               <div class="row">
-                <div class="name col-md-6">
-                  <img src="assets/img/Wall/Cara-1.png" alt="" class="col-md-3 ph-7">
-                  <div class="texto col-md-6">
-                    <h4 class="text-primary m-0">Ivo Sanoa</h4>
-                    <p class="fecha m-0 pb-7">3 de enero a las 4:00 pm</p>
-                    <span class="categoria">Tengo una consulta</span>
+                <img src="assets/img/Wall/Cara-2.png" alt="" class="col-md-1 pr-0 pl-7">
+                <div class="name col-md-11">
+                  <div class="info-usuario pl-7 row">
+                    <div class="col-md-9">
+                      <span class="categoria text-uppercase fz-10 text-primary letter-spacing-1.5">Quiero divertirme</span>
+                      <h5 class="text-gray-darker m-0">Santiago López</h5>
+                      <p class="fz-10 m-0 text-gray"><a href="">Hace 3 horas</a></p>
+                    </div>
+                    <div class="col-md-3 text-center">
+                    
+                    </div>
+                  </div>
+                  <p class="parrafo pt-14 ph-7 text-gray-darker">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam quidem corrupti optio sed facilis omnis perferendis dolores vero qui illo, beatae velit suscipit tempo iure moles nisi earum sunt fugit.</p>
+                  <div class="grid-img pv-21">
+                    <ul class="clearfix pl-0">
+                      <li class="col-md-4 ph-7"><img src="assets/img/Wall/Foto1.png" alt="" class="w-100"></li>
+                      <li class="col-md-4 ph-7"><img src="assets/img/Wall/Foto2.png" alt="" class="w-100"></li>
+                      <li class="col-md-4 ph-7"><img src="assets/img/Wall/Foto3.png" alt="" class="w-100"></li>
+                    </ul>
+                  </div>
+                  <div class="clearfix ph-0 mh-7 thin text-gray pt-7 pb-7 border-bottom-gray-light fz-12">
+                    <ul class="col-md-6 ph-0 mv-0">
+                      <li class="pr-7 display-ib">
+                        <a href="">Comentar &nbsp</a>
+                        <img src="assets/img/Icono_Comentar.png" alt="">
+                      </li>
+                      <li class="display-ib pl-14">
+                        <a href="">Me gusta &nbsp</a>
+                        <img src="assets/img/me_gusta.png" alt="">
+                      </li>
+                    </ul>
+                    <ul class="col-md-6 ph-0 mv-0 text-right">
+                      <li class="display-ib">
+                        <a href="">3 &nbsp</a>
+                        <img src="assets/img/Icono_Corazon.png" alt="">
+                      </li>
+                      <li class="like display-ib pl-7">
+                        <a href="">&nbsp 24 comentarios &nbsp</a>
+                      </li>
+                    </ul>
                   </div>
                 </div>
-                <div class="prestamo col-md-6 text-right">
-                  <a href="" class="btn text-info btn-outline btn-info br-none"><p class="small m-0 ph-0 font-size-serif">
-                    <span class="glyphicon glyphicon-ok text-info"></span>
-                    <span class="text-info pl-7">préstamo resuelto</span>
-                  </p></a>
-                </div>
               </div>
-              <p class="parrafo pt-14 ph-7">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam quidem corrupti optio sed facilis omnis perferendis dolores vero qui illo, beatae velit suscipit tempora iure molestias nisi earum sunt fugit.</p>
-              <ul class="like clearfix ph-0 mh-7 thin text-gray pb-14 border-bottom-gray-light">
-                <li class="pr-7"><a href="">3 Me gusta</a></li>
-                <li><a href=""> &nbsp 4 Comentarios</a></li>
-              </ul>
             </div>
-            <div class="post-1 post bg-white ph-21 pt-28 pb-14 mt-42">
+            <div class="post-3 post bg-white ph-28 pt-28 pb-28 mt-42">
               <div class="row">
-                <div class="name col-md-6">
-                  <img src="assets/img/Wall/Cara-1.png" alt="" class="col-md-3 ph-7">
-                  <div class="texto col-md-6">
-                    <h4 class="text-primary m-0">Ivo Sanoa</h4>
-                    <p class="fecha m-0 pb-7">3 de enero a las 4:00 pm</p>
-                    <span class="categoria">Tengo una consulta</span>
+                <img src="assets/img/Wall/Cara-1.png" alt="" class="col-md-1 pr-0 pl-7">
+                <div class="name col-md-11">
+                  <div class="info-usuario pl-7 row">
+                    <div class="col-md-9">
+                      <span class="categoria text-uppercase fz-10 text-primary letter-spacing-1.5">Tengo una solicitud</span>
+                      <h5 class="text-gray-darker m-0">Javier Cadilla</h5>
+                      <p class="fz-10 m-0 text-gray"><a href="">Hace 3 horas</a></p>
+                    </div>
+                    <div class="col-md-3 text-center">
+                      <div class="aviso mh-21">
+                        <div class="circle-green bg-info display-ib"></div>
+                        <h5 class="text-info m-0 display-ib pl-7 pv-7 fz-14">Resuelto</h5>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="parrafo pt-14 ph-7 text-gray-darker">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam quidem corrupti optio sed facilis omnis perferendis dolores vero qui illo, beatae velit suscipit tempora iure molestias nisi earum sunt fugit.</p>
+                  <div class="clearfix ph-0 mh-7 thin text-gray pt-7 pb-7 border-bottom-gray-light fz-12">
+                    <ul class="col-md-6 ph-0 mv-0">
+                      <li class="pr-7 display-ib">
+                        <a href="">Comentar &nbsp</a>
+                        <img src="assets/img/Icono_Comentar.png" alt="">
+                      </li>
+                      <li class="display-ib pl-14">
+                        <a href="">Me gusta &nbsp</a>
+                        <img src="assets/img/me_gusta.png" alt="">
+                      </li>
+                    </ul>
                   </div>
                 </div>
-                <div class="prestamo col-md-6 text-right">
-                  <a href="" class="btn text-info btn-outline btn-info br-none"><p class="small m-0 ph-0 font-size-serif">
-                    <span class="glyphicon glyphicon-ok text-info"></span>
-                    <span class="text-info pl-7">préstamo resuelto</span>
-                  </p></a>
-                </div>
               </div>
-              <p class="parrafo pt-14 ph-7">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam quidem corrupti optio sed facilis omnis perferendis dolores vero qui illo, beatae velit suscipit tempora iure molestias nisi earum sunt fugit.</p>
-              <ul class="like clearfix ph-0 mh-7 thin text-gray pb-14 border-bottom-gray-light">
-                <li class="pr-7"><a href="">3 Me gusta</a></li>
-                <li><a href=""> &nbsp 4 Comentarios</a></li>
-              </ul>
-            </div>
-            <div class="post-1 post bg-white ph-21 pt-28 pb-14 mt-42">
-              <div class="row">
-                <div class="name col-md-6">
-                  <img src="assets/img/Wall/Cara-1.png" alt="" class="col-md-3 ph-7">
-                  <div class="texto col-md-6">
-                    <h4 class="text-primary m-0">Ivo Sanoa</h4>
-                    <p class="fecha m-0 pb-7">3 de enero a las 4:00 pm</p>
-                    <span class="categoria">Tengo una consulta</span>
-                  </div>
-                </div>
-                <div class="prestamo col-md-6 text-right">
-                  <a href="" class="btn text-info btn-outline btn-info br-none"><p class="small m-0 ph-0 font-size-serif">
-                    <span class="glyphicon glyphicon-ok text-info"></span>
-                    <span class="text-info pl-7">préstamo resuelto</span>
-                  </p></a>
-                </div>
-              </div>
-              <p class="parrafo pt-14 ph-7">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam quidem corrupti optio sed facilis omnis perferendis dolores vero qui illo, beatae velit suscipit tempora iure molestias nisi earum sunt fugit.</p>
-              <ul class="like clearfix ph-0 mh-7 thin text-gray pb-14 border-bottom-gray-light">
-                <li class="pr-7"><a href="">3 Me gusta</a></li>
-                <li><a href=""> &nbsp 4 Comentarios</a></li>
-              </ul>
-            </div>
-            <div class="post-1 post bg-white ph-21 pt-28 pb-14 mt-42">
-              <div class="row">
-                <div class="name col-md-6">
-                  <img src="assets/img/Wall/Cara-1.png" alt="" class="col-md-3 ph-7">
-                  <div class="texto col-md-6">
-                    <h4 class="text-primary m-0">Ivo Sanoa</h4>
-                    <p class="fecha m-0 pb-7">3 de enero a las 4:00 pm</p>
-                    <span class="categoria">Tengo una consulta</span>
-                  </div>
-                </div>
-                <div class="prestamo col-md-6 text-right">
-                  <a href="" class="btn text-info btn-outline btn-info br-none"><p class="small m-0 ph-0 font-size-serif">
-                    <span class="glyphicon glyphicon-ok text-info"></span>
-                    <span class="text-info pl-7">préstamo resuelto</span>
-                  </p></a>
-                </div>
-              </div>
-              <p class="parrafo pt-14 ph-7">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam quidem corrupti optio sed facilis omnis perferendis dolores vero qui illo, beatae velit suscipit tempora iure molestias nisi earum sunt fugit.</p>
-              <ul class="like clearfix ph-0 mh-7 thin text-gray pb-14 border-bottom-gray-light">
-                <li class="pr-7"><a href="">3 Me gusta</a></li>
-                <li><a href=""> &nbsp 4 Comentarios</a></li>
-              </ul>
-            </div>
-            <div class="post-1 post bg-white ph-21 pt-28 pb-14 mt-42">
-              <div class="row">
-                <div class="name col-md-6">
-                  <img src="assets/img/Wall/Cara-1.png" alt="" class="col-md-3 ph-7">
-                  <div class="texto col-md-6">
-                    <h4 class="text-primary m-0">Ivo Sanoa</h4>
-                    <p class="fecha m-0 pb-7">3 de enero a las 4:00 pm</p>
-                    <span class="categoria">Tengo una consulta</span>
-                  </div>
-                </div>
-                <div class="prestamo col-md-6 text-right">
-                  <a href="" class="btn text-info btn-outline btn-info br-none"><p class="small m-0 ph-0 font-size-serif">
-                    <span class="glyphicon glyphicon-ok text-info"></span>
-                    <span class="text-info pl-7">préstamo resuelto</span>
-                  </p></a>
-                </div>
-              </div>
-              <p class="parrafo pt-14 ph-7">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam quidem corrupti optio sed facilis omnis perferendis dolores vero qui illo, beatae velit suscipit tempora iure molestias nisi earum sunt fugit.</p>
-              <ul class="like clearfix ph-0 mh-7 thin text-gray pb-14 border-bottom-gray-light">
-                <li class="pr-7"><a href="">3 Me gusta</a></li>
-                <li><a href=""> &nbsp 4 Comentarios</a></li>
-              </ul>
             </div>
           </section>
         </div>
-        <div id="box-right" class="col-md-4">
-          <div class="noticia">
+        <div id="box-right" class="col-md-4 pl-42">
+          <div class="noticia ml-42">
             <img src="assets/img/Wall/Noticias1.png" alt="">
             <div class="nota bg-white minhp-30 p-21">
               <h5 class="text-uppercase mt-0">Nuevo programa de noticias inicia su transmisión en radiourbe</h5>
@@ -225,7 +211,7 @@
               <p class="text-right text-primary parrafo"><a href="">Leer más &#8594</a></p>
             </div>
           </div>
-          <div class="noticia mt-35">
+          <div class="noticia mt-35 ml-42">
             <img src="assets/img/Wall/Noticias2 .png" alt="">
             <div class="nota bg-white minhp-30 p-21">
               <h5 class="text-uppercase mt-0">Nuevo programa de noticias inicia su transmisión en radiourbe</h5>
@@ -233,7 +219,8 @@
               <p class="text-right text-primary parrafo"><a href="">Leer más &#8594</a></p>
             </div>
           </div>
-          <div class="noticia mt-35">
+          <div class="noticia mt-35 ml-42
+          ">
             <img src="assets/img/Wall/Noticias3.png" alt="">
             <div class="nota bg-white minhp-30 p-21">
               <h5 class="text-uppercase mt-0">Nuevo programa de noticias inicia su transmisión en radiourbe</h5>
@@ -255,7 +242,7 @@
             <div class="col-md-8 p-0">
               <h5 class="text-uppercase m-0">AHORA EN VIVO</h5>
               <h4 class="text-uppercase m-0 text-white">La hora del vigilante</h4>
-              <p class="text-white m-0">Con Giselle Collao. Lunes a Viernes de 9 a 11 pm</p>
+              <p class="text-white m-0 fz-12">Con Giselle Collao. Lunes a Viernes de 9 a 11 pm</p>
             </div>
           </div>
           <div class="col-md-3 pr-35 text-right">

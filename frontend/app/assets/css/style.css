@@ -7,6 +7,10 @@
 	Optional without Grunt:
   sass --watch src/scss/style.scss:app/assets/css/style.css
 */
+/*red*/
+/*brown*/
+/*green*/
+/*oranges*/
 /*
 	EBM Variables
 */
@@ -1037,13 +1041,24 @@ body p {
 body a:hover {
   text-decoration: none;
 }
-body .fecha {
+body .fz-10 {
   font-size: 10px;
   font-size: 0.625rem;
 }
-body .categoria {
+body .fz-18 {
+  font-size: 18px;
+  font-size: 1.125rem;
+}
+body .fz-12 {
   font-size: 12px;
   font-size: 0.75rem;
+}
+body .fz-14 {
+  font-size: 14px;
+  font-size: 0.875rem;
+}
+body .w-100 {
+  width: 100%;
 }
 body .parrafo {
   line-height: 1.5;
@@ -1053,8 +1068,26 @@ body .parrafo {
 body .br-none {
   border-radius: none !important;
 }
-body .d-inline-block {
+body .b-none {
+  border: none;
+}
+body .float-left {
+  float: left;
+}
+body .display-ib {
   display: inline-block;
+}
+body .outline-none {
+  outline: none !important;
+}
+body .lh-0 {
+  line-height: 0;
+}
+body .serif {
+  font-family: "Merriweather", Georgia, "Times New Roman", Times, serif;
+}
+body .letter-spacing-1-5 {
+  letter-spacing: 1.5;
 }
 
 .site-wrapper,
@@ -1071,8 +1104,13 @@ header h1 {
   font-size: 1.875rem;
 }
 header .alerta span {
-  font-size: 14px;
-  font-size: 0.875rem;
+  font-size: 13px;
+  font-size: 0.8125rem;
+}
+header .perfil {
+  width: 45px;
+  height: 45px;
+  background-size: cover;
 }
 
 /*CONTENIDO*/
@@ -1080,45 +1118,83 @@ header .alerta span {
   background-color: rgba(240, 240, 240, 0.45);
 }
 
-.tool-bar-search-form .input-group input {
-  height: 40px;
+.tool-bar-search-form {
   border-radius: 20px;
+  border: 1px solid #d2d2d2;
+  overflow: hidden;
+  height: 36px;
+}
+.tool-bar-search-form .input-group input {
+  width: 90%;
+  box-shadow: none;
+  font-size: 16px;
+  font-size: 1rem;
+}
+.tool-bar-search-form .input-group input::-webkit-input-placeholder {
+  color: #e2e2e2;
+}
+.tool-bar-search-form .input-group input::-moz-placeholder {
+  color: #e2e2e2;
+}
+.tool-bar-search-form .input-group input:-moz-placeholder {
+  color: #e2e2e2;
+}
+.tool-bar-search-form .input-group input:-ms-input-placeholder {
+  color: #e2e2e2;
 }
 
-#publish input {
-  border-radius: 0;
+#comment {
+  border-radius: 5px;
+  border: 1px solid #b9a380;
+  border-top: 2px solid #c5b497;
+  overflow: hidden;
+}
+#comment input {
+  border: 0;
   height: 80px;
+  width: 100%;
 }
-#publish .buttons-group {
-  background-color: rgba(240, 240, 240, 0.45);
-  border: 1px solid #bfbfbf;
+#comment input::-webkit-input-placeholder {
+  color: #9b9b9b;
+}
+#comment input::-moz-placeholder {
+  color: #9b9b9b;
+}
+#comment input:-moz-placeholder {
+  color: #9b9b9b;
+}
+#comment input:-ms-input-placeholder {
+  color: #9b9b9b;
+}
+#comment .comentario {
+  height: 90px;
+  display: flex;
+  justify-content: center;
+  align-content: flex-start;
+  align-items: center;
+}
+#comment .comentario input {
+  font-size: 21px;
+  font-size: 1.3125rem;
+}
+#comment .buttons-group {
   border-top: 0;
-}
-#publish .buttons-group .dropdown .dropdown-toggle {
-  border-radius: 0;
-}
-#publish .buttons-group .dropdown ul {
-  border-radius: 0;
-  border-top: 0;
-}
-#publish .buttons-group .dropdown ul li > a {
-  font-size: 12px;
-  font-size: 0.75rem;
-}
-#publish .buttons-group .publicar span {
-  letter-spacing: 2px;
 }
 
 #post ul {
   list-style: none;
 }
-#post ul li {
-  float: left;
-  font-size: 12px;
-  font-size: 0.75rem;
+#post .info-usuario .aviso {
+  border: 1px solid #E8E8E4;
+  border-radius: 20px;
 }
-#post ul li:last-child::before {
-  content: "|";
+#post .info-usuario .aviso .circle-green {
+  height: 12px;
+  width: 12px;
+  border-radius: 100%;
+}
+#post .info-usuario p {
+  line-height: 2;
 }
 #post .prestamo p {
   line-height: normal;
@@ -1200,10 +1276,6 @@ footer #up {
   -ms-transform: translateX(-50%);
   -o-transform: translateX(-50%);
   transform: translateX(-50%);
-}
-footer .row .col-md-8 p {
-  font-size: 12px;
-  font-size: 0.75rem;
 }
 
 /*# sourceMappingURL=style.css.map */
