@@ -40,7 +40,7 @@
 // @import "control/ebm-box-model-pseudo-breakpoints-control";
 
 // @import "control/ebm-box-shadow-control";
-// @import "control/ebm-border-control";
+@import "control/ebm-border-control";
 // @import "control/ebm-color-bg-hover-control";
 // @import "control/ebm-color-bg-rgba-control";
 // @import "control/ebm-color-grid-control";
@@ -51,13 +51,13 @@
 // @import "control/ebm-text-lead-children-control";
 // @import "control/ebm-text-responsive-headings-control";
 // @import "control/ebm-text-shadow-control";
-// @import "control/ebm-text-transforms-control";
+@import "control/ebm-text-transforms-control";
 // @import "control/ebm-position-control";
 
 // EXPERIMENTAL CONTROL FILES
 // @import "control/ebm-x-size-control";
 // @import "control/ebm-x-text-gradients-control";
-// @import "control/ebm-x-text-line-heights-control";
+@import "control/ebm-x-text-line-heights-control";
 // @import "control/ebm-x-z-index-control";
   
 // EBM Elements
@@ -65,7 +65,7 @@
 // @import "elements/ebm-buttons-border-bottom";
 // @import "elements/ebm-buttons-icons-outline";
 // @import "elements/ebm-buttons-icons";
-// @import "elements/ebm-buttons-outline";
+@import "elements/ebm-buttons-outline";
 // @import "elements/ebm-banners";
 // @import "elements/ebm-forms";
 @import "elements/ebm-grid-lists";
