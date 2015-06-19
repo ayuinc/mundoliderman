@@ -13,7 +13,7 @@
   
   <div class="site-wrapper"> <!-- Body -->
     <header class="site-menu">
-      <div class="container-fluid minh-70 pr-0 pl-21 pt-28 pb-7">
+      <div class="container-fluid minh-70 pr-0 pl-21 pt-28 pb-7 bg-white">
         <div class="logo col-md-4 pl-0">  
           <div class="col-md-8 text-right pr-0 pt-14 ml-28">
             <h1 class="text-uppercase bold text-gray-darker pl-42 m-0">Mundo liderman</h1>
@@ -64,55 +64,77 @@
             </ul>
           </div>
         </div> -->
-        <div class="contenedor-menu bg-white border-right-gray-light border-bottom-gray-light pl-42 ">
-          <div class="panel-group ml-42 pl-42" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="contenedor-menu bg-white border-right-gray-light border-bottom-gray-light pv-35">
+          <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
             <div class="panel panel-default">
               <div class="panel-heading" role="tab" id="headingOne">
                 <h4 class="panel-title m-0">
                   <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    <h3 class="active-slide fz-28 text-gray-dark2 m-0 pv-14">Servicios</h3>
+                    <h3 class="border-bottom-gray-lighter active-slide fz-28 text-gray-dark2 m-0 pv-14">Servicios</h3>
                   </a>
                 </h4>
               </div>
               <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                 <div class="panel-body">
                   <div class="">
-                    <ul>
-                      <li>Lidernet</li>
-                      <li>Lidermanía</li>
-                      <li>Préstamos</li>
-                      <li>Tareo</li>
-                      <li>LíderCard</li>
-                      <li>Capacitaciones</li>
-                      <li>Boletas de Pago</li>
-                      <li>SGI</li>
-                      <li>Tienda</li>
+                    <ul class="p-0">
+                      <li class="border-bottom-gray-lighter">Lidernet</li>
+                      <li class="border-bottom-gray-lighter">Lidermanía</li>
+                      <li class="border-bottom-gray-lighter">Préstamos</li>
+                      <li class="border-bottom-gray-lighter">Tareo</li>
+                      <li class="border-bottom-gray-lighter">LíderCard</li>
+                      <li class="border-bottom-gray-lighter">Capacitaciones</li>
+                      <li class="border-bottom-gray-lighter">Boletas de Pago</li>
+                      <li class="border-bottom-gray-lighter">SGI</li>
+                      <li class="border-bottom-gray-lighter">Tienda</li>
                     </ul>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="ml-42 pl-42">
-            <h3><a href="" class="fz-28 text-gray-dark2">Para administradores</a></h3>
+          <div class="">
+            <h3 class="border-bottom-gray-lighter"><a href="" class="fz-28 text-gray-dark2">Para administradores</a></h3>
+            <span>Estadísticas Lidernet</span>
           </div>
-          <div class="ml-42 pl-42">
-            <h3><a href="" class="fz-28 text-gray-dark2">Para zonales</a></h3>
+          <div class="">
+            <h3 class="border-bottom-gray-lighter"><a href="" class="fz-28 text-gray-dark2">Para zonales</a></h3>
+            <span>Reportes</span>
           </div>
         </div>
       </section>
-      <section class="tareo col-md-8">
+      <section id="tareo-contenido" class="col-md-8">
         <div class="container pt-42 w-100">
           <div class="perfil-servicios clearfix bg-white pv-21 pl-42">
-            <div class="col-md-3 pr-0">
+            <div class="col-md-4 pr-0">
               <div style="background-image:url(assets/img/Herman_Profile_Pic.png)" class="bg-img-block-center"></div>
             </div>
-            <div class="col-md-9 pl-42">
-              <h3 class="text-primary book m-0">Herman Marín</h2>
-              <h4 class="text-gray fz-16 m-0 pt-7 bold">Supervisor, Zona - Unidad</h4>
+            <div class="col-md-7 pl-28 pt-21">
+              <h3 class="text-warning book m-0">Herman Marín</h2>
+              <h4 class="text-gray fz-16 m-0 pt-7 book">Supervisor, Zona - Unidad</h4>
+              <img src="assets/img/Ubicacion.png" alt="" class="pb-4">
               <span class="light">Empresa Empleadora</span>
-              <p class="fz-12">Este puede ser texto de Introducción del Liderman para que la gente sepa quién es esa persona.</br>Periodo en la Planilla: DD/MM/AA</p>
+              <p class="fz-12 pt-21">Este puede ser texto de Introducción del Liderman para que la gente sepa quién es esa persona.</br>Periodo en la Planilla: DD/MM/AA</p>
             </div>
+            <div class="col-md-1 ph-0">
+              <a href="">
+                <span class="fz-12 text-gray light">Editar</span>
+                <img src="assets/img/Icono_Editar.png" alt="">
+              </a>
+            </div>
+          </div>
+          <div class="semaforo clearfix bg-info border-radius mt-35 pl-14 text-white">
+            <div class="col-md-1 text-center">
+              <img src="assets/img/Check.png" alt="">
+            </div>
+            <div class="col-md-11 pb-7">
+              <h3 class="fz-20 mb-7">Tu semáforo está en verde!</h3>
+              <p class="fz-14 text-white lh-1-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, praesentium. Blanditiis ab voluptatem molestiae odit natus saepe asperiores..</p>
+            </div>
+          </div>
+          <div class="tareo">
+            <h2 class="fz-30 border-bottom-gray pb-7">Tareo</h2>
+            <div class="datos bg-white minh-140"></div>
           </div>
         </div>
       </section>

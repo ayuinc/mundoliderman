@@ -45,6 +45,10 @@ body {
 	.fz-14 {
 		font-size: 14px;
 		font-size: rem(14px);
+	}
+	.fz-20 {
+		font-size: 20px;
+		font-size: rem(20px);
 	}	
 	.fz-22 {
 		font-size: 22px;
@@ -53,6 +57,10 @@ body {
 	.fz-28 {
 		font-size: 28px;
 		font-size: rem(28px);
+	}
+	.fz-30 {
+		font-size: 30px;
+		font-size: rem(30px);
 	}
 	.w-100 {
 		width: 100%;
@@ -83,6 +91,9 @@ body {
 	.lh-1 {
 		line-height: 1;
 	}
+	.lh-1-5 {
+		line-height: 1.5;
+	}
 	.serif {
 		font-family: $font-family-serif;
 	}
@@ -97,6 +108,9 @@ body {
 	}
 	.rotate-180 {
 		@include transform(rotate(180deg));
+	}
+	.pb-4 {
+		padding-bottom: 4px;
 	}
 }
 
@@ -126,6 +140,11 @@ $xxl-desktop: 1980px;
 
 /*MENÚ*/
 header {
+	position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
 	h1 {
 		font-size: 30px;
 		font-size: rem(30px);
@@ -295,13 +314,26 @@ footer {
 }
 
 /*TAREO*/
+.site-content {
+	top: 128px;
+}
 #menu-vertical {
+
 	h3 {
 		font-size: 26px;
 		font-size: rem(26px);
 	}
 	.contenedor-menu {
+		width: 415px;
 		border-bottom-right-radius: 15px;
+		position: fixed;
+  	top: 128px;
+  	h3, p{
+  		padding-left: 125px;
+  	}
+  	ul > li {
+  		padding-left: 150px;
+  	}
 	}
 	.list-slide {
 		overflow: hidden;
@@ -320,23 +352,35 @@ footer {
 		}
 	}
 }
+/*CONTENIDO TAREO*/
+#tareo-contenido {
+	.container {
+		padding-right: 10%;
+	}
+}
 .perfil-servicios {
 	border-radius: 15px;
-	.col-md-3 {
+	.col-md-4 {
 		div {
 			width: 200px;
 		  height: 200px;
 		  border-radius: 100%;
 		  margin: 0 auto;
 		}
+	}
+	.col-md-7 {
 		h4 , span {
 			color: rgb(155, 155, 155);
 		}
-	}
-	.col-md-9 {
 		h3 {
 			font-size: 30px;
 			font-size: rem(30px);
 		}
+	}
+}
+.semaforo {
+	.col-md-1 {
+		position: relative;
+		top: 45px;
 	}
 }
