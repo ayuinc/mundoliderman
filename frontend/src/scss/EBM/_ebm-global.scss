@@ -18,7 +18,14 @@ body {
 	a:hover {
 		text-decoration: none;
 	}
+	ul {
+		list-style: none;
+	}
 	/*UTILITIES*/
+	.fz-8 {
+		font-size: 8px;
+		font-size: rem(8px);
+	}
 	.fz-10 {
 		font-size: 10px;
 		font-size: rem(10px);
@@ -34,6 +41,10 @@ body {
 	.fz-14 {
 		font-size: 14px;
 		font-size: rem(14px);
+	}	
+	.fz-22 {
+		font-size: 22px;
+		font-size: rem(22px);
 	}
 	.w-100 {
 		width: 100%;
@@ -61,11 +72,20 @@ body {
 	.lh-0 {
 		line-height: 0;
 	}
+	.lh-1 {
+		line-height: 1;
+	}
 	.serif {
 		font-family: $font-family-serif;
 	}
 	.letter-spacing-1-5 {
 		letter-spacing: 1.5;
+	}
+	.w-6 {
+		width: 6px;
+	}
+	.rotate-180 {
+		@include transform(rotate(180deg));
 	}
 }
 
@@ -130,7 +150,7 @@ header {
 	  font-size: rem(16px);
 	}
 }
-#comment {
+#comentar {
 	border-radius: 5px;
 	border: 1px solid rgb(185, 163, 128);
 	border-top: 2px solid rgb(197, 180, 151);
@@ -142,7 +162,7 @@ header {
 	    color: rgb(155, 155, 155);
 	  }
 	}
-	.comentario { 
+	.publicacion { 
 		height: 90px;
 		display: flex;
 		justify-content: center;
@@ -176,9 +196,6 @@ header {
 	}
 }
 #post{
-	ul {
-		list-style: none;
-	}
 	.info-usuario {
 		.aviso {
 			border: 1px solid #E8E8E4;
@@ -197,6 +214,9 @@ header {
 		p {
 			line-height: normal;
 		}
+	}
+	.comentar {
+		@include transition(all .2s ease-in-out);
 	}
 }
 #box-right {
@@ -230,7 +250,6 @@ footer {
 	position: relative;
 	.container {
 		@include flex-column-center;
-		height: 100px;
 	}
 	#up {
 		height: 30px;
@@ -239,6 +258,27 @@ footer {
 	  top: -30px;
 	  left: 50%;
 	  background-color: black;
-	  @include transform(translateX(-50%));
 	}
+	.antena {
+		width: 40px;
+	}
+	.volumen {
+		width: 26px;
+	}
+	.lista {
+		h2 {
+			font-size: 22px;
+			font-size: rem(22px);
+			margin: 0;
+		}
+		p {
+			color: white;
+			font-size: 11px;
+			font-size: rem(11px);
+		}
+	}
+}
+/*footer active*/
+.footer-active {
+	@include transform(translateY(0));
 }

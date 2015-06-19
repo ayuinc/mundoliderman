@@ -49,8 +49,8 @@
     <main class="site-content pb-70" role="main">
       <div class="container pt-42 clearfix mb-70 ph-0">
         <div id="box-left" class="col-md-8 pl-0">
-          <section id="comment" class="bg-white">
-            <div class="comentario clearfix pr-21">
+          <section id="comentar" class="bg-white">
+            <div class="publicacion clearfix pr-21">
               <div class="col-sm-7">
                 <input type="text" class="input-sm outline-none serif fz-18" placeholder="Qué estás pensando...">
               </div>
@@ -114,14 +114,53 @@
                         <a href="">2 &nbsp</a>
                         <img src="assets/img/Icono_Corazon.png" alt="">
                       </li>
-                      <li class="like display-ib pl-7">
-                        <a href="">&nbsp 24 comentarios &nbsp</a>
+                      <li class="display-ib pl-7">
+                        <a href="" class="comment text-not-underline">&nbsp 24 comentarios &nbsp</a>
                       </li>
                     </ul>
+                  </div>
+                  <div class="comentar scroll-down clearfix pt-21 hidden">
+                    <div class="col-md-1">
+                      <img src="assets/img/Wall/Carita2.png" alt="">
+                    </div>
+                    <div class="col-md-11 lh-1">
+                      <div>
+                        <span class="fz-12 text-success pr-7">Cecilia Ramírez</span>
+                        <img src="assets/img/forward.png" alt="" class="display-ib">
+                        <span class="text-gray fz-10 light">Ivo Sadner</span>
+                        <span class="text-gray fz-10 light pl-7">hace 9 días</span>
+                        <p class="fz-10 pt-7 mb-0">Lorem ipsum door sit amet!</p>
+                        <span class="fz-8 text-gray-light">1</span>
+                        <img src="assets/img/Flecha_Abajo.png" alt="" class="w-6">
+                        <span class="fz-8 text-gray-light">|</span>
+                        <img src="assets/img/Flecha_Abajo.png" alt="" class="w-6 rotate-180">
+                        <span class="responder text-gray-dark book fz-8 light pl-7"><a href="">Responder</a></span>
+                        <span class="text-gray-dark book fz-8 light pl-7"><a href="">Compartir</a></span>
+                      </div>
+                      <div class="respuesta clearfix pt-21 hidden">
+                        <div class="col-md-1 pl-0">
+                          <img src="assets/img/Wall/Carita2.png" alt="">
+                        </div>
+                        <div class="col-md-11 pl-7">
+                          <span class="fz-12 text-success pr-7">Ivo Sadner</span>
+                          <img src="assets/img/forward.png" alt="" class="display-ib">
+                          <span class="text-gray fz-10 light">Cecilia Ramírez</span>
+                          <span class="text-gray fz-10 light pl-7">hace 9 días</span>
+                          <p class="fz-10 pt-7 mb-0">Lorem ipsum door sit amet!</p>
+                          <span class="fz-8 text-gray-light">1</span>
+                          <img src="assets/img/Flecha_Abajo.png" alt="" class="w-6">
+                          <span class="fz-8 text-gray-light">|</span>
+                          <img src="assets/img/Flecha_Abajo.png" alt="" class="w-6 rotate-180">
+                          <span class="text-gray-dark book fz-8 light pl-7"><a href="" class="responder">Responder</a></span>
+                          <span class="text-gray-dark book fz-8 light pl-7"><a href="">Compartir</a></span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
+
             <div class="post-2 post bg-white ph-28 pt-28 pb-28 mt-42">
               <div class="row">
                 <img src="assets/img/Wall/Cara-2.png" alt="" class="col-md-1 pr-0 pl-7">
@@ -236,21 +275,50 @@
       </div>
     </main>
     <footer>
-      <div id="up" class="">
-          <img src="" alt="">
-        </div>
-      <div class="container minh-100">
+      <div id="up" class="text-center">
+        <a href=""><img src="assets/img/Flecha-para-arriba.png" alt=""></a>
+      </div>
+      <div class="container pt-21 pb-42">
         <div class="row">
-          <div class="col-md-9">
-            <div class="col-md-1 pl-0 pv-7 text-right"><img src="assets/img/Wall/Icono_Senal.png" alt=""></div>
+          <div class="col-md-9 pl-0">
+            <div class="col-md-1 pl-0 text-right"><img src="assets/img/Wall/Icono_Senal.png" alt="" class="antena"></div>
             <div class="col-md-8 p-0">
               <h5 class="text-uppercase m-0">AHORA EN VIVO</h5>
-              <h4 class="text-uppercase m-0 text-white">La hora del vigilante</h4>
+              <h4 class="text-uppercase m-0 text-white fz-22">La hora del vigilante</h4>
               <p class="text-white m-0 fz-12">Con Giselle Collao. Lunes a Viernes de 9 a 11 pm</p>
             </div>
-          </div>
+          </div> 
           <div class="col-md-3 pr-35 text-right">
-            <a href=""><img class="pt-14" src="assets/img/Wall/Icono_Volumen.png" alt=""></a>
+            <a href=""><img class="pt-14 volumen" src="assets/img/Wall/Icono_Volumen.png" alt=""></a> 
+          </div>
+        </div>
+        <div class="descripcion row pt-14 pb-42">
+          <div class="col-md-6">
+            <img src="assets/img/Wall/RadioUrbe.png" alt="">
+          </div>
+          <div class="col-md-6 pl-42">
+            <ul class="lista text-white pt-7 ml-14">
+              <li class="text-white">
+                <h2 class="fz-1">URBE AL DÍA</h2>
+                <p>Con Mauricio Calvo Pérez. Lunes a Viernes de 10am a 11am</p>
+              </li>
+              <li>
+                <h2 class="fz-1">ESPACIO IMSOMNIO</h2>
+                <p>Escucha lo mejor del rock peruano. Lunes a Viernes de 10am a 11am</p>
+              </li>
+              <li>
+                <h2 class="fz-1">LA HORA DE LÍDERMAN PARA EL MUNDO</h2>
+                <p>Con Mauricio Calvo Pérez. Lunes a Viernes de 10am a 11am</p>
+              </li>
+              <li>
+                <h2 class="fz-1">LIDERMANÍA</h2>
+                <p>Con Mauricio Calvo Pérez. Lunes a Viernes de 10am a 11am</p>
+              </li>
+              <li>
+                <h2 class="fz-1">CAPACITACIONES</h2>
+                <p>Con Mauricio Calvo Pérez. Lunes a Viernes de 10am a 11am</p>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -259,4 +327,5 @@
   <script src="assets/js/jquery.min.js"></script> <!-- App scripts -->
   <script src="assets/js/scripts.min.js"></script>
   <script src="assets/js/b3/dropdown.js"></script>
+  <script src="assets/js/scroll-control.js"></script>
 </html>
