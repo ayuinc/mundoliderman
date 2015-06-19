@@ -1232,7 +1232,7 @@ header .perfil {
   width: 85%;
   bottom: 0;
   left: 50%;
-  height: 45%;
+  height: 50%;
   -webkit-transform: translateX(-50%);
   -moz-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
@@ -1242,13 +1242,11 @@ header .perfil {
   border-top-right-radius: 4%;
 }
 #box-right .noticia .nota h5 {
-  font-size: 17px;
-  font-size: 1.0625rem;
   line-height: 1.5;
 }
-#box-right .noticia .nota p:first-child {
-  font-size: 15px;
-  font-size: 0.9375rem;
+#box-right .noticia .nota .read {
+  position: relative;
+  bottom: 10px;
 }
 
 footer {

@@ -211,18 +211,16 @@ header {
 		  width: 85%;
 		  bottom: 0;
 		  left: 50%;
-		  height: 45%;
+		  height: 50%;
 		  @include transform(translateX(-50%));
 		  border-top-left-radius: 4%;
 		  border-top-right-radius: 4%;
 		  h5 {
-		  	font-size: 17px;
-		  	font-size: rem(17px);
 		  	line-height: 1.5;
 		  }
-		  p:first-child {
-				font-size: 15px;
-				font-size: rem(15px);
+		  .read {
+				position: relative;
+  			bottom: 10px;
 		  }
 		}
 	}
