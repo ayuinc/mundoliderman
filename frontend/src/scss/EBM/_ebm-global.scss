@@ -34,6 +34,10 @@ body {
 		font-size: 18px;
 		font-size: rem(18px);
 	}
+	.fz-16 {
+		font-size: 16px;
+		font-size: rem(16px);
+	}
 	.fz-12 {
 		font-size: 12px;
 		font-size: rem(12px);
@@ -45,6 +49,10 @@ body {
 	.fz-22 {
 		font-size: 22px;
 		font-size: rem(22px);
+	}
+	.fz-28 {
+		font-size: 28px;
+		font-size: rem(28px);
 	}
 	.w-100 {
 		width: 100%;
@@ -83,6 +91,9 @@ body {
 	}
 	.w-6 {
 		width: 6px;
+	}
+	.text-gray-dark2 {
+		color: rgb(80, 80, 80);
 	}
 	.rotate-180 {
 		@include transform(rotate(180deg));
@@ -281,4 +292,51 @@ footer {
 /*footer active*/
 .footer-active {
 	@include transform(translateY(0));
+}
+
+/*TAREO*/
+#menu-vertical {
+	h3 {
+		font-size: 26px;
+		font-size: rem(26px);
+	}
+	.contenedor-menu {
+		border-bottom-right-radius: 15px;
+	}
+	.list-slide {
+		overflow: hidden;
+		position: relative;
+		transition: all .2s ease;
+		ul {
+			-webkit-transform: translateY(-100%);
+  		transition: all .2s ease;
+  		position: absolute;
+		}
+	}
+	.list-slide.active {
+		ul {
+			position: relative;
+			-webkit-transform: translateY(0%);
+		}
+	}
+}
+.perfil-servicios {
+	border-radius: 15px;
+	.col-md-3 {
+		div {
+			width: 200px;
+		  height: 200px;
+		  border-radius: 100%;
+		  margin: 0 auto;
+		}
+		h4 , span {
+			color: rgb(155, 155, 155);
+		}
+	}
+	.col-md-9 {
+		h3 {
+			font-size: 30px;
+			font-size: rem(30px);
+		}
+	}
 }

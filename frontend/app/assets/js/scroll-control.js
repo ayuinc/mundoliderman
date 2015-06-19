@@ -7,4 +7,8 @@ $(document).ready(function(){
 		event.preventDefault();
 		$(".respuesta").toggleClass("hidden");
 	});
+	$(".active-slide").click(function(event){
+		event.preventDefault();
+		$(".list-slide").toggleClass("active");
+	});
 });
