@@ -1382,6 +1382,14 @@ footer .lista p {
   top: 114px;
 }
 
+#menu-vertical {
+  width: 415px;
+  border-bottom-right-radius: 15px;
+  position: fixed;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: visible;
+}
 #menu-vertical h3 {
   font-size: 26px;
   font-size: 1.625rem;
@@ -1390,10 +1398,9 @@ footer .lista p {
   color: gray;
 }
 #menu-vertical .contenedor-menu {
-  width: 415px;
-  border-bottom-right-radius: 15px;
-  position: fixed;
+  position: relative;
   top: 114px;
+  width: 398px;
 }
 #menu-vertical .contenedor-menu h3, #menu-vertical .contenedor-menu p, #menu-vertical .contenedor-menu span {
   padding-left: 125px;
@@ -1422,6 +1429,9 @@ footer .lista p {
 }
 
 /*CONTENIDO TAREO*/
+#tareo-contenido {
+  left: 415px;
+}
 #tareo-contenido .container {
   padding-right: 10%;
 }

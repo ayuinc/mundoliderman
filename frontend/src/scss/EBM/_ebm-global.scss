@@ -322,7 +322,12 @@ footer {
 	top: 114px;
 }
 #menu-vertical {
-
+	width: 415px;
+	border-bottom-right-radius: 15px;
+	position: fixed;
+	height: 100%;
+  overflow-y: auto;
+  overflow-x: visible;
 	h3 {
 		font-size: 26px;
 		font-size: rem(26px);
@@ -331,10 +336,9 @@ footer {
 		}
 	}
 	.contenedor-menu {
-		width: 415px;
-		border-bottom-right-radius: 15px;
-		position: fixed;
+		position: relative;
   	top: 114px;
+  	width: 398px;
   	h3, p , span {
   		padding-left: 125px;
   	}
@@ -366,6 +370,7 @@ footer {
 }
 /*CONTENIDO TAREO*/
 #tareo-contenido {
+	left: 415px;
 	.container {
 		padding-right: 10%;
 	}
