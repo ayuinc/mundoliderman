@@ -38,6 +38,10 @@ body {
 		font-size: 16px;
 		font-size: rem(16px);
 	}
+	.fz-17 {
+		font-size: 17px;
+		font-size: rem(17px);
+	}
 	.fz-12 {
 		font-size: 12px;
 		font-size: rem(12px);
@@ -406,5 +410,12 @@ footer {
 	h3 {
 		font-size: 24px;
 		font-size: rem(24px);
+	}
+}
+.boleta {
+	@extend .tareo;
+	.imprimir {
+		position: relative;
+		left: 160px;
 	}
 }

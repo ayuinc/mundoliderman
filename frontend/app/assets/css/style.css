@@ -1060,6 +1060,10 @@ body .fz-16 {
   font-size: 16px;
   font-size: 1rem;
 }
+body .fz-17 {
+  font-size: 17px;
+  font-size: 1.0625rem;
+}
 body .fz-12, body #comentar .publicacion .dropdown-menu li > a, #comentar .publicacion .dropdown-menu body li > a {
   font-size: 12px;
   font-size: 0.75rem;
@@ -1444,19 +1448,24 @@ footer .lista p {
   top: 45px;
 }
 
-.tareo .month .dropdown-toggle, .tareo .year .dropdown-toggle {
+.tareo .month .dropdown-toggle, .boleta .month .dropdown-toggle, .tareo .year .dropdown-toggle, .boleta .year .dropdown-toggle {
   border-radius: 20px;
 }
-.tareo .year ul {
+.tareo .year ul, .boleta .year ul {
   min-width: 80px;
 }
-.tareo .month ul {
+.tareo .month ul, .boleta .month ul {
   min-width: 110px;
   left: 10px;
 }
-.tareo h3 {
+.tareo h3, .boleta h3 {
   font-size: 24px;
   font-size: 1.5rem;
+}
+
+.boleta .imprimir {
+  position: relative;
+  left: 160px;
 }
 
 /*# sourceMappingURL=style.css.map */
