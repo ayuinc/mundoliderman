@@ -168,7 +168,12 @@ header {
 /*CONTENIDO*/
 .site-content {
 	background-color: rgba(240, 240, 240, 0.45);
+	.container-index {
+		top: 114px;
+		position: relative;
+	}
 }
+
 .tool-bar-search-form {
 	border-radius: 20px;
 	border: 1px solid rgb(210, 210, 210);
@@ -279,19 +284,28 @@ header {
 		}
 	}
 }
+/*Deslizador de la radio*/
+#up {
+	height: 30px;
+  width: 40px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  background-color: black;
+}
+.active-up {
+	height: auto;
+}
+
+/*FOOTER*/
 footer {
 	background-color: black;
 	position: relative;
+	height: 95px;
+  overflow: hidden;
+  @include transition(all .2s ease-in-out);
 	.container {
 		@include flex-column-center;
-	}
-	#up {
-		height: 30px;
-	  width: 40px;
-	  position: absolute;
-	  top: -30px;
-	  left: 50%;
-	  background-color: black;
 	}
 	.antena {
 		width: 40px;
@@ -318,9 +332,6 @@ footer {
 }
 
 /*TAREO*/
-.site-content {
-	top: 114px;
-}
 #menu-vertical {
 	width: 415px;
 	border-bottom-right-radius: 15px;
@@ -371,6 +382,7 @@ footer {
 /*CONTENIDO TAREO*/
 #tareo-contenido {
 	left: 415px;
+	top: 114px;
 	.container {
 		padding-right: 10%;
 	}
