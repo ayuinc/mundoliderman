@@ -7,6 +7,10 @@
 	Optional without Grunt:
   sass --watch src/scss/style.scss:app/assets/css/style.css
 */
+/*red*/
+/*brown*/
+/*green*/
+/*oranges*/
 /*
 	EBM Variables
 */
@@ -1037,13 +1041,51 @@ body p {
 body a:hover {
   text-decoration: none;
 }
-body .fecha {
+body ul {
+  list-style: none;
+}
+body .fz-8 {
+  font-size: 8px;
+  font-size: 0.5rem;
+}
+body .fz-10 {
   font-size: 10px;
   font-size: 0.625rem;
 }
-body .categoria {
+body .fz-18 {
+  font-size: 18px;
+  font-size: 1.125rem;
+}
+body .fz-16 {
+  font-size: 16px;
+  font-size: 1rem;
+}
+body .fz-12, body #comentar .publicacion .dropdown-menu li > a, #comentar .publicacion .dropdown-menu body li > a {
   font-size: 12px;
   font-size: 0.75rem;
+}
+body .fz-14 {
+  font-size: 14px;
+  font-size: 0.875rem;
+}
+body .fz-20 {
+  font-size: 20px;
+  font-size: 1.25rem;
+}
+body .fz-22 {
+  font-size: 22px;
+  font-size: 1.375rem;
+}
+body .fz-28 {
+  font-size: 28px;
+  font-size: 1.75rem;
+}
+body .fz-30 {
+  font-size: 30px;
+  font-size: 1.875rem;
+}
+body .w-100 {
+  width: 100%;
 }
 body .parrafo {
   line-height: 1.5;
@@ -1053,8 +1095,48 @@ body .parrafo {
 body .br-none {
   border-radius: none !important;
 }
-body .d-inline-block {
+body .b-none {
+  border: none;
+}
+body .float-left {
+  float: left;
+}
+body .display-ib {
   display: inline-block;
+}
+body .outline-none {
+  outline: none !important;
+}
+body .lh-0 {
+  line-height: 0;
+}
+body .lh-1 {
+  line-height: 1;
+}
+body .lh-1-5 {
+  line-height: 1.5;
+}
+body .serif {
+  font-family: "Merriweather", Georgia, "Times New Roman", Times, serif;
+}
+body .letter-spacing-1-5 {
+  letter-spacing: 1.5;
+}
+body .w-6 {
+  width: 6px;
+}
+body .text-gray-dark2 {
+  color: #505050;
+}
+body .rotate-180 {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+body .pb-4 {
+  padding-bottom: 4px;
 }
 
 .site-wrapper,
@@ -1066,13 +1148,25 @@ body .d-inline-block {
 	Media queries
 */
 /*MEN├Ü*/
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
 header h1 {
   font-size: 30px;
   font-size: 1.875rem;
 }
 header .alerta span {
-  font-size: 14px;
-  font-size: 0.875rem;
+  font-size: 13px;
+  font-size: 0.8125rem;
+}
+header .perfil {
+  width: 45px;
+  height: 45px;
+  background-size: cover;
 }
 
 /*CONTENIDO*/
@@ -1080,48 +1174,108 @@ header .alerta span {
   background-color: rgba(240, 240, 240, 0.45);
 }
 
+.tool-bar-search-form {
+  border-radius: 20px;
+  border: 1px solid #d2d2d2;
+  overflow: hidden;
+  height: 36px;
+}
 .tool-bar-search-form .input-group input {
-  height: 40px;
+  width: 90%;
+  box-shadow: none;
+  font-size: 16px;
+  font-size: 1rem;
+}
+.tool-bar-search-form .input-group input::-webkit-input-placeholder {
+  color: #e2e2e2;
+}
+.tool-bar-search-form .input-group input::-moz-placeholder {
+  color: #e2e2e2;
+}
+.tool-bar-search-form .input-group input:-moz-placeholder {
+  color: #e2e2e2;
+}
+.tool-bar-search-form .input-group input:-ms-input-placeholder {
+  color: #e2e2e2;
+}
+
+#comentar {
+  border-radius: 5px;
+  border: 1px solid #b9a380;
+  border-top: 2px solid #c5b497;
+}
+#comentar input {
+  border: 0;
+  height: 80px;
+  width: 100%;
+}
+#comentar input::-webkit-input-placeholder {
+  color: #9b9b9b;
+}
+#comentar input::-moz-placeholder {
+  color: #9b9b9b;
+}
+#comentar input:-moz-placeholder {
+  color: #9b9b9b;
+}
+#comentar input:-ms-input-placeholder {
+  color: #9b9b9b;
+}
+#comentar .publicacion {
+  height: 90px;
+  display: flex;
+  justify-content: center;
+  align-content: flex-start;
+  align-items: center;
+}
+#comentar .publicacion input {
+  font-size: 21px;
+  font-size: 1.3125rem;
+}
+#comentar .publicacion .dropdown-menu {
+  width: 180px;
+  top: 200%;
+  left: 50%;
+}
+#comentar .publicacion .dropdown-menu li > a {
+  color: #c4bdc2;
+  font-weight: 100;
+}
+#comentar .publicacion .dropdown-menu .triangulo {
+  border-width: 12px 8px 0;
+  border-color: white transparent;
+  border-style: solid;
+  width: 0;
+  height: 0;
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+  position: absolute;
+  top: -12px;
+  left: 45%;
+}
+
+#post .info-usuario .aviso {
+  border: 1px solid #E8E8E4;
   border-radius: 20px;
 }
-
-#publish input {
-  border-radius: 0;
-  height: 80px;
+#post .info-usuario .aviso .circle-green {
+  height: 12px;
+  width: 12px;
+  border-radius: 100%;
 }
-#publish .buttons-group {
-  background-color: rgba(240, 240, 240, 0.45);
-  border: 1px solid #bfbfbf;
-  border-top: 0;
-}
-#publish .buttons-group .dropdown .dropdown-toggle {
-  border-radius: 0;
-}
-#publish .buttons-group .dropdown ul {
-  border-radius: 0;
-  border-top: 0;
-}
-#publish .buttons-group .dropdown ul li > a {
-  font-size: 12px;
-  font-size: 0.75rem;
-}
-#publish .buttons-group .publicar span {
-  letter-spacing: 2px;
-}
-
-#post ul {
-  list-style: none;
-}
-#post ul li {
-  float: left;
-  font-size: 12px;
-  font-size: 0.75rem;
-}
-#post ul li:last-child::before {
-  content: "|";
+#post .info-usuario p {
+  line-height: 2;
 }
 #post .prestamo p {
   line-height: normal;
+}
+#post .comentar {
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 #box-right .noticia {
@@ -1136,7 +1290,7 @@ header .alerta span {
   width: 85%;
   bottom: 0;
   left: 50%;
-  height: 45%;
+  height: 50%;
   -webkit-transform: translateX(-50%);
   -moz-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
@@ -1146,13 +1300,11 @@ header .alerta span {
   border-top-right-radius: 4%;
 }
 #box-right .noticia .nota h5 {
-  font-size: 17px;
-  font-size: 1.0625rem;
   line-height: 1.5;
 }
-#box-right .noticia .nota p:first-child {
-  font-size: 15px;
-  font-size: 0.9375rem;
+#box-right .noticia .nota .read {
+  position: relative;
+  bottom: 10px;
 }
 
 footer {
@@ -1186,7 +1338,6 @@ footer .container {
   -o-justify-content: center;
   justify-content: center;
   -ms-flex-pack: center;
-  height: 100px;
 }
 footer #up {
   height: 30px;
@@ -1195,15 +1346,94 @@ footer #up {
   top: -30px;
   left: 50%;
   background-color: black;
-  -webkit-transform: translateX(-50%);
-  -moz-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  -o-transform: translateX(-50%);
-  transform: translateX(-50%);
 }
-footer .row .col-md-8 p {
-  font-size: 12px;
-  font-size: 0.75rem;
+footer .antena {
+  width: 40px;
+}
+footer .volumen {
+  width: 26px;
+}
+footer .lista h2 {
+  font-size: 22px;
+  font-size: 1.375rem;
+  margin: 0;
+}
+footer .lista p {
+  color: white;
+  font-size: 11px;
+  font-size: 0.6875rem;
+}
+
+/*footer active*/
+.footer-active {
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -ms-transform: translateY(0);
+  -o-transform: translateY(0);
+  transform: translateY(0);
+}
+
+/*TAREO*/
+.site-content {
+  top: 128px;
+}
+
+#menu-vertical h3 {
+  font-size: 26px;
+  font-size: 1.625rem;
+}
+#menu-vertical .contenedor-menu {
+  width: 415px;
+  border-bottom-right-radius: 15px;
+  position: fixed;
+  top: 128px;
+}
+#menu-vertical .contenedor-menu h3, #menu-vertical .contenedor-menu p {
+  padding-left: 125px;
+}
+#menu-vertical .contenedor-menu ul > li {
+  padding-left: 150px;
+}
+#menu-vertical .list-slide {
+  overflow: hidden;
+  position: relative;
+  transition: all .2s ease;
+}
+#menu-vertical .list-slide ul {
+  -webkit-transform: translateY(-100%);
+  transition: all .2s ease;
+  position: absolute;
+}
+#menu-vertical .list-slide.active ul {
+  position: relative;
+  -webkit-transform: translateY(0%);
+}
+
+/*CONTENIDO TAREO*/
+#tareo-contenido .container {
+  padding-right: 10%;
+}
+
+.perfil-servicios {
+  border-radius: 15px;
+}
+.perfil-servicios .col-md-4 div {
+  width: 200px;
+  height: 200px;
+  border-radius: 100%;
+  margin: 0 auto;
+}
+.perfil-servicios .col-md-7 h4, .perfil-servicios .col-md-7 span {
+  color: #9b9b9b;
+}
+.perfil-servicios .col-md-7 h3 {
+  font-size: 30px;
+  font-size: 1.875rem;
+}
+
+.semaforo .col-md-1 {
+  position: relative;
+  top: 45px;
 }
 
 /*# sourceMappingURL=style.css.map */

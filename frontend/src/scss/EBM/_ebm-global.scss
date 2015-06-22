@@ -18,14 +18,52 @@ body {
 	a:hover {
 		text-decoration: none;
 	}
+	ul {
+		list-style: none;
+	}
 	/*UTILITIES*/
-	.fecha {
+	.fz-8 {
+		font-size: 8px;
+		font-size: rem(8px);
+	}
+	.fz-10 {
 		font-size: 10px;
 		font-size: rem(10px);
 	}
-	.categoria {
+	.fz-18 {
+		font-size: 18px;
+		font-size: rem(18px);
+	}
+	.fz-16 {
+		font-size: 16px;
+		font-size: rem(16px);
+	}
+	.fz-12 {
 		font-size: 12px;
 		font-size: rem(12px);
+	}
+	.fz-14 {
+		font-size: 14px;
+		font-size: rem(14px);
+	}
+	.fz-20 {
+		font-size: 20px;
+		font-size: rem(20px);
+	}	
+	.fz-22 {
+		font-size: 22px;
+		font-size: rem(22px);
+	}
+	.fz-28 {
+		font-size: 28px;
+		font-size: rem(28px);
+	}
+	.fz-30 {
+		font-size: 30px;
+		font-size: rem(30px);
+	}
+	.w-100 {
+		width: 100%;
 	}
 	.parrafo {
 		line-height: 1.5;
@@ -35,8 +73,44 @@ body {
 	.br-none {
 		border-radius: none!important;
 	}
-	.d-inline-block {
+	.b-none {
+		border: none;
+	}
+	.float-left {
+		float: left;
+	}
+	.display-ib {
 		display: inline-block;
+	}
+	.outline-none {
+		outline: none!important;
+	}
+	.lh-0 {
+		line-height: 0;
+	}
+	.lh-1 {
+		line-height: 1;
+	}
+	.lh-1-5 {
+		line-height: 1.5;
+	}
+	.serif {
+		font-family: $font-family-serif;
+	}
+	.letter-spacing-1-5 {
+		letter-spacing: 1.5;
+	}
+	.w-6 {
+		width: 6px;
+	}
+	.text-gray-dark2 {
+		color: rgb(80, 80, 80);
+	}
+	.rotate-180 {
+		@include transform(rotate(180deg));
+	}
+	.pb-4 {
+		padding-bottom: 4px;
 	}
 }
 
@@ -66,15 +140,25 @@ $xxl-desktop: 1980px;
 
 /*MENÚ*/
 header {
+	position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
 	h1 {
 		font-size: 30px;
 		font-size: rem(30px);
 	}
 	.alerta {
 		span {
-			font-size: 14px;
-			font-size: rem(14px);
+			font-size: 13px;
+			font-size: rem(13px);
 		}
+	}
+	.perfil {
+		width: 45px;
+		height: 45px;
+		background-size: cover;
 	}
 }
 /*CONTENIDO*/
@@ -82,56 +166,87 @@ header {
 	background-color: rgba(240, 240, 240, 0.45);
 }
 .tool-bar-search-form {
+	border-radius: 20px;
+	border: 1px solid rgb(210, 210, 210);
+	overflow: hidden;
+	height: 36px;
 	.input-group input {
-		height: 40px;
-		border-radius: 20px;
+		@include placeholder {
+	    color: rgb(226, 226, 226);
+	  }
+	  width: 90%;
+	  box-shadow: none;
+	  font-size: 16px;
+	  font-size: rem(16px);
 	}
 }
-#publish {
-	input {
-		border-radius: 0;
+#comentar {
+	border-radius: 5px;
+	border: 1px solid rgb(185, 163, 128);
+	border-top: 2px solid rgb(197, 180, 151);
+	input { 
+		border: 0;
 		height: 80px;
+		width: 100%;
+		@include placeholder {
+	    color: rgb(155, 155, 155);
+	  }
 	}
-	.buttons-group {
-		background-color: rgba(240, 240, 240, 0.45);
-		border: 1px solid rgb(191, 191, 191);
-		border-top: 0;
-		.dropdown {
-			.dropdown-toggle {
-				border-radius: 0;
-			}
-			ul {
-				border-radius: 0;
-			  border-top: 0;
-			  li > a {
-					font-size: 12px;
-					font-size: rem(12px);
-				}
-			}
-		}
-		.publicar {
-			span {
-				letter-spacing: 2px;
-			}
-		}
+	.publicacion { 
+		height: 90px;
+		display: flex;
+		justify-content: center;
+	  align-content: flex-start;
+	  align-items: center;
+	  input {
+	  	font-size: 21px;
+	  	font-size: rem(21px);
+	  }
+	  .dropdown-menu {
+	  	width: 180px;
+	  	top: 200%;
+  		left: 50%;
+	  	li > a {
+	  		@extend .fz-12;;
+	  		color: rgb(196, 189, 194);
+	  		font-weight: 	100;
+	  	}
+	  	.triangulo {
+				border-width: 12px 8px 0;
+				border-color: white transparent;
+				border-style: solid;
+				width: 0;
+				height: 0;
+				@include transform(rotate(180deg));
+				position: absolute;
+		  	top: -12px;
+		  	left: 45%;
+	  	}
+	  }
 	}
 }
 #post{
-	ul {
-		list-style: none;
-		li {
-			float: left;
-			font-size: 12px;
-			font-size: rem(12px);
-			&:last-child::before {
-				content: "|";
+	.info-usuario {
+		.aviso {
+			border: 1px solid #E8E8E4;
+			border-radius: 20px;
+			.circle-green {
+				height: 12px;
+				width: 12px;
+				border-radius: 100%;
 			}
+		}
+		p {
+			line-height: 2;
 		}
 	}
 	.prestamo {
 		p {
 			line-height: normal;
 		}
+	}
+	.comentar {
+		@include transition(all .2s ease-in-out);
 	}
 }
 #box-right {
@@ -146,18 +261,16 @@ header {
 		  width: 85%;
 		  bottom: 0;
 		  left: 50%;
-		  height: 45%;
+		  height: 50%;
 		  @include transform(translateX(-50%));
 		  border-top-left-radius: 4%;
 		  border-top-right-radius: 4%;
 		  h5 {
-		  	font-size: 17px;
-		  	font-size: rem(17px);
 		  	line-height: 1.5;
 		  }
-		  p:first-child {
-				font-size: 15px;
-				font-size: rem(15px);
+		  .read {
+				position: relative;
+  			bottom: 10px;
 		  }
 		}
 	}
@@ -167,7 +280,6 @@ footer {
 	position: relative;
 	.container {
 		@include flex-column-center;
-		height: 100px;
 	}
 	#up {
 		height: 30px;
@@ -176,12 +288,99 @@ footer {
 	  top: -30px;
 	  left: 50%;
 	  background-color: black;
-	  @include transform(translateX(-50%));
 	}
-	.row {
-		.col-md-8 p {
-			font-size: 12px;
-			font-size: rem(12px);
+	.antena {
+		width: 40px;
+	}
+	.volumen {
+		width: 26px;
+	}
+	.lista {
+		h2 {
+			font-size: 22px;
+			font-size: rem(22px);
+			margin: 0;
 		}
+		p {
+			color: white;
+			font-size: 11px;
+			font-size: rem(11px);
+		}
+	}
+}
+/*footer active*/
+.footer-active {
+	@include transform(translateY(0));
+}
+
+/*TAREO*/
+.site-content {
+	top: 128px;
+}
+#menu-vertical {
+
+	h3 {
+		font-size: 26px;
+		font-size: rem(26px);
+	}
+	.contenedor-menu {
+		width: 415px;
+		border-bottom-right-radius: 15px;
+		position: fixed;
+  	top: 128px;
+  	h3, p{
+  		padding-left: 125px;
+  	}
+  	ul > li {
+  		padding-left: 150px;
+  	}
+	}
+	.list-slide {
+		overflow: hidden;
+		position: relative;
+		transition: all .2s ease;
+		ul {
+			-webkit-transform: translateY(-100%);
+  		transition: all .2s ease;
+  		position: absolute;
+		}
+	}
+	.list-slide.active {
+		ul {
+			position: relative;
+			-webkit-transform: translateY(0%);
+		}
+	}
+}
+/*CONTENIDO TAREO*/
+#tareo-contenido {
+	.container {
+		padding-right: 10%;
+	}
+}
+.perfil-servicios {
+	border-radius: 15px;
+	.col-md-4 {
+		div {
+			width: 200px;
+		  height: 200px;
+		  border-radius: 100%;
+		  margin: 0 auto;
+		}
+	}
+	.col-md-7 {
+		h4 , span {
+			color: rgb(155, 155, 155);
+		}
+		h3 {
+			font-size: 30px;
+			font-size: rem(30px);
+		}
+	}
+}
+.semaforo {
+	.col-md-1 {
+		position: relative;
+		top: 45px;
 	}
 }
