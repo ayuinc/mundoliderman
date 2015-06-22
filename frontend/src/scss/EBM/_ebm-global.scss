@@ -315,24 +315,32 @@ footer {
 
 /*TAREO*/
 .site-content {
-	top: 128px;
+	top: 114px;
 }
 #menu-vertical {
 
 	h3 {
 		font-size: 26px;
 		font-size: rem(26px);
+		&:hover {
+			color: gray;
+		}
 	}
 	.contenedor-menu {
 		width: 415px;
 		border-bottom-right-radius: 15px;
 		position: fixed;
-  	top: 128px;
-  	h3, p{
+  	top: 114px;
+  	h3, p , span {
   		padding-left: 125px;
   	}
   	ul > li {
   		padding-left: 150px;
+  		&:hover {
+  			background-color: rgb(247, 247, 247);
+  			border-right: 6px solid rgb(170, 49, 32);
+  			border-bottom: 1px solid #F0F0F0;
+  		}
   	}
 	}
 	.list-slide {
@@ -382,5 +390,21 @@ footer {
 	.col-md-1 {
 		position: relative;
 		top: 45px;
+	}
+}
+.tareo {
+	.month .dropdown-toggle, .year .dropdown-toggle{
+		border-radius: 20px;
+	}
+	.year ul {
+		min-width: 80px;
+	}
+	.month ul {
+		min-width: 110px;
+		left: 10px;
+	}
+	h3 {
+		font-size: 24px;
+		font-size: rem(24px);
 	}
 }

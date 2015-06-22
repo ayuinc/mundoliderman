@@ -1375,24 +1375,32 @@ footer .lista p {
 
 /*TAREO*/
 .site-content {
-  top: 128px;
+  top: 114px;
 }
 
 #menu-vertical h3 {
   font-size: 26px;
   font-size: 1.625rem;
 }
+#menu-vertical h3:hover {
+  color: gray;
+}
 #menu-vertical .contenedor-menu {
   width: 415px;
   border-bottom-right-radius: 15px;
   position: fixed;
-  top: 128px;
+  top: 114px;
 }
-#menu-vertical .contenedor-menu h3, #menu-vertical .contenedor-menu p {
+#menu-vertical .contenedor-menu h3, #menu-vertical .contenedor-menu p, #menu-vertical .contenedor-menu span {
   padding-left: 125px;
 }
 #menu-vertical .contenedor-menu ul > li {
   padding-left: 150px;
+}
+#menu-vertical .contenedor-menu ul > li:hover {
+  background-color: #f7f7f7;
+  border-right: 6px solid #aa3120;
+  border-bottom: 1px solid #F0F0F0;
 }
 #menu-vertical .list-slide {
   overflow: hidden;
@@ -1434,6 +1442,21 @@ footer .lista p {
 .semaforo .col-md-1 {
   position: relative;
   top: 45px;
+}
+
+.tareo .month .dropdown-toggle, .tareo .year .dropdown-toggle {
+  border-radius: 20px;
+}
+.tareo .year ul {
+  min-width: 80px;
+}
+.tareo .month ul {
+  min-width: 110px;
+  left: 10px;
+}
+.tareo h3 {
+  font-size: 24px;
+  font-size: 1.5rem;
 }
 
 /*# sourceMappingURL=style.css.map */
