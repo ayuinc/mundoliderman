@@ -75,7 +75,7 @@ body {
 		font-size: rem(14px);
 	}
 	.br-none {
-		border-radius: none!important;
+		border-radius: 0!important;
 	}
 	.b-none {
 		border: none;
@@ -450,9 +450,22 @@ footer {
 }
 .lidernet {
 	.texto {
+		position: relative;
 		h3 {
 			font-size: 24px;
 			font-size: rem(24px);
 		}
+	}
+}
+.btn-enviar {
+	border: 1px solid rgb(81, 186, 110)!important;
+	position: absolute;
+	right: 20px;
+}
+/*PRÉSTAMOS*/
+.prestamos {
+	h3 {
+		font-size: 26px;
+		font-size: rem(26px);
 	}
 }

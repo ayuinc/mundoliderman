@@ -10008,6 +10008,264 @@ h6.lead {
   border-left-width: 5px !important;
 }
 
+/* 
+  =================
+  TEXT HOVER COLOR
+  =================
+*/
+.text-hover-primary a:not(.btn):hover {
+  color: #762216;
+}
+.text-hover-primary:hover {
+  color: #762216;
+}
+
+a.text-hover-primary:not(.btn):hover {
+  color: #762216;
+}
+
+.text-hover-success a:not(.btn):hover {
+  color: #a28659;
+}
+.text-hover-success:hover {
+  color: #a28659;
+}
+
+a.text-hover-success:not(.btn):hover {
+  color: #a28659;
+}
+
+.text-hover-info a:not(.btn):hover {
+  color: #3a9353;
+}
+.text-hover-info:hover {
+  color: #3a9353;
+}
+
+a.text-hover-info:not(.btn):hover {
+  color: #3a9353;
+}
+
+.text-hover-warning a:not(.btn):hover {
+  color: #721422;
+}
+.text-hover-warning:hover {
+  color: #721422;
+}
+
+a.text-hover-warning:not(.btn):hover {
+  color: #721422;
+}
+
+.text-hover-danger a:not(.btn):hover {
+  color: #a5371e;
+}
+.text-hover-danger:hover {
+  color: #a5371e;
+}
+
+a.text-hover-danger:not(.btn):hover {
+  color: #a5371e;
+}
+
+.text-hover-gray-darker a:not(.btn):hover {
+  color: #121212;
+}
+.text-hover-gray-darker:hover {
+  color: #121212;
+}
+
+a.text-hover-gray-darker:not(.btn):hover {
+  color: #121212;
+}
+
+.text-hover-gray-dark a:not(.btn):hover {
+  color: #525355;
+}
+.text-hover-gray-dark:hover {
+  color: #525355;
+}
+
+a.text-hover-gray-dark:not(.btn):hover {
+  color: #525355;
+}
+
+.text-hover-gray a:not(.btn):hover {
+  color: #5f5f60;
+}
+.text-hover-gray:hover {
+  color: #5f5f60;
+}
+
+a.text-hover-gray:not(.btn):hover {
+  color: #5f5f60;
+}
+
+.text-hover-gray-light a:not(.btn):hover {
+  color: #969799;
+}
+.text-hover-gray-light:hover {
+  color: #969799;
+}
+
+a.text-hover-gray-light:not(.btn):hover {
+  color: #969799;
+}
+
+.text-hover-gray-lighter a:not(.btn):hover {
+  color: #d1d1d1;
+}
+.text-hover-gray-lighter:hover {
+  color: #d1d1d1;
+}
+
+a.text-hover-gray-lighter:not(.btn):hover {
+  color: #d1d1d1;
+}
+
+.text-hover-white a:not(.btn):hover {
+  color: #e0e0e0;
+}
+.text-hover-white:hover {
+  color: #e0e0e0;
+}
+
+a.text-hover-white:not(.btn):hover {
+  color: #e0e0e0;
+}
+
+.text-hover-blue-darker a:not(.btn):hover {
+  color: #222b34;
+}
+.text-hover-blue-darker:hover {
+  color: #222b34;
+}
+
+a.text-hover-blue-darker:not(.btn):hover {
+  color: #222b34;
+}
+
+.text-hover-blue-dark a:not(.btn):hover {
+  color: #4c6075;
+}
+.text-hover-blue-dark:hover {
+  color: #4c6075;
+}
+
+a.text-hover-blue-dark:not(.btn):hover {
+  color: #4c6075;
+}
+
+.text-hover-blue a:not(.btn):hover {
+  color: #6a839e;
+}
+.text-hover-blue:hover {
+  color: #6a839e;
+}
+
+a.text-hover-blue:not(.btn):hover {
+  color: #6a839e;
+}
+
+.text-hover-blue-light a:not(.btn):hover {
+  color: #c1cbd6;
+}
+.text-hover-blue-light:hover {
+  color: #c1cbd6;
+}
+
+a.text-hover-blue-light:not(.btn):hover {
+  color: #c1cbd6;
+}
+
+.text-hover-blue-lighter a:not(.btn):hover {
+  color: #d6dde4;
+}
+.text-hover-blue-lighter:hover {
+  color: #d6dde4;
+}
+
+a.text-hover-blue-lighter:not(.btn):hover {
+  color: #d6dde4;
+}
+
+.text-hover-facebook a:not(.btn):hover {
+  color: #2a3f6c;
+}
+.text-hover-facebook:hover {
+  color: #2a3f6c;
+}
+
+a.text-hover-facebook:not(.btn):hover {
+  color: #2a3f6c;
+}
+
+.text-hover-twitter a:not(.btn):hover {
+  color: #01b8f4;
+}
+.text-hover-twitter:hover {
+  color: #01b8f4;
+}
+
+a.text-hover-twitter:not(.btn):hover {
+  color: #01b8f4;
+}
+
+.text-hover-pinterest a:not(.btn):hover {
+  color: #9b1b18;
+}
+.text-hover-pinterest:hover {
+  color: #9b1b18;
+}
+
+a.text-hover-pinterest:not(.btn):hover {
+  color: #9b1b18;
+}
+
+.text-hover-google-plus a:not(.btn):hover {
+  color: #b52c1f;
+}
+.text-hover-google-plus:hover {
+  color: #b52c1f;
+}
+
+a.text-hover-google-plus:not(.btn):hover {
+  color: #b52c1f;
+}
+
+.text-hover-youtube a:not(.btn):hover {
+  color: #d70e0e;
+}
+.text-hover-youtube:hover {
+  color: #d70e0e;
+}
+
+a.text-hover-youtube:not(.btn):hover {
+  color: #d70e0e;
+}
+
+.text-hover-instagram a:not(.btn):hover {
+  color: #0561fa;
+}
+.text-hover-instagram:hover {
+  color: #0561fa;
+}
+
+a.text-hover-instagram:not(.btn):hover {
+  color: #0561fa;
+}
+
+.text-hover-linkedin a:not(.btn):hover {
+  color: #146188;
+}
+.text-hover-linkedin:hover {
+  color: #146188;
+}
+
+a.text-hover-linkedin:not(.btn):hover {
+  color: #146188;
+}
+
 .text-none {
   text-transform: none;
 }

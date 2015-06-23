@@ -1097,7 +1097,7 @@ body .parrafo {
   font-size: 0.875rem;
 }
 body .br-none {
-  border-radius: none !important;
+  border-radius: 0 !important;
 }
 body .b-none {
   border: none;
@@ -1504,9 +1504,24 @@ footer .lista p {
   height: 335px;
 }
 
+.lidernet .texto {
+  position: relative;
+}
 .lidernet .texto h3 {
   font-size: 24px;
   font-size: 1.5rem;
+}
+
+.btn-enviar {
+  border: 1px solid #51ba6e !important;
+  position: absolute;
+  right: 20px;
+}
+
+/*PR├ëSTAMOS*/
+.prestamos h3 {
+  font-size: 26px;
+  font-size: 1.625rem;
 }
 
 /*# sourceMappingURL=style.css.map */
