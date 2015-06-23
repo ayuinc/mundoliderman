@@ -1038,7 +1038,7 @@ body p {
   font-family: "Merriweather", Georgia, "Times New Roman", Times, serif;
   color: #4a4a4a;
 }
-body a:hover {
+body a, body a:hover {
   text-decoration: none;
 }
 body ul {
@@ -1522,6 +1522,23 @@ footer .lista p {
 .prestamos h3 {
   font-size: 26px;
   font-size: 1.625rem;
+}
+
+/*LIDERCARD*/
+.lidercard .bonificacion {
+  border-bottom: 5px solid #aa3120;
+}
+.lidercard .merito, .lidercard .bonificacion {
+  text-decoration: none !important;
+  color: #7D7E7F;
+}
+
+.active-bonificacion {
+  border-bottom: 0px !important;
+}
+
+.active-merito {
+  border-bottom: 5px solid #aa3120;
 }
 
 /*# sourceMappingURL=style.css.map */

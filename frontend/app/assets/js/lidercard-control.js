@@ -1,0 +1,16 @@
+$(document).ready(function(){
+	$(".merito").click(function(event){
+		event.preventDefault();
+		$(this).addClass("active-merito");
+		$(".bonificacion").addClass("active-bonificacion");
+		$(".dato-merito").removeClass("hidden");
+		$(".dato-bonificacion").addClass("hidden");
+	});
+	$(".bonificacion").click(function(event){
+		event.preventDefault();
+		$(this).removeClass("active-bonificacion");
+		$(".merito").removeClass("active-merito");
+		$(".dato-bonificacion").removeClass("hidden");
+		$(".dato-merito").addClass("hidden");
+	});
+});

@@ -15,7 +15,7 @@ body {
 		font-family: $font-family-serif ;
 		color: rgb(74, 74, 74);
 	}
-	a:hover {
+	a, a:hover {
 		text-decoration: none;
 	}
 	ul {
@@ -468,4 +468,21 @@ footer {
 		font-size: 26px;
 		font-size: rem(26px);
 	}
+}
+/*LIDERCARD*/
+.lidercard {
+	.bonificacion {
+		border-bottom: 5px solid rgb(170, 49, 32);
+	}
+	.merito, .bonificacion {
+		text-decoration: none!important;
+		color: #7D7E7F;
+	}
+}
+
+.active-bonificacion{
+	border-bottom: 0px!important;
+}
+.active-merito{
+	border-bottom: 5px solid rgb(170, 49, 32);
 }
