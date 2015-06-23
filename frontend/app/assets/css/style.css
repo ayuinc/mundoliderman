@@ -1478,7 +1478,7 @@ footer .lista p {
   top: 45px;
 }
 
-.tareo .month .dropdown-toggle, .boleta .month .dropdown-toggle, .tareo .year .dropdown-toggle, .boleta .year .dropdown-toggle {
+.tareo .btn-dropdown, .boleta .btn-dropdown {
   border-radius: 20px;
 }
 .tareo .year ul, .boleta .year ul {
@@ -1496,6 +1496,17 @@ footer .lista p {
 .boleta .imprimir {
   position: relative;
   left: 160px;
+}
+
+/*LIDERNET*/
+.img-articulo {
+  width: 100%;
+  height: 335px;
+}
+
+.lidernet .texto h3 {
+  font-size: 24px;
+  font-size: 1.5rem;
 }
 
 /*# sourceMappingURL=style.css.map */
