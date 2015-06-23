@@ -486,3 +486,29 @@ footer {
 .active-merito{
 	border-bottom: 5px solid rgb(170, 49, 32);
 }
+/*CAPACITACIONES*/
+.capacitacion {
+	.curso {
+		border-bottom: 5px solid rgb(170, 49, 32);
+	}
+	.curso, .otro, .nuevo {
+		text-decoration: none!important;
+	}
+	.lista-otros, .lista-nuevos {
+		div {
+			position: relative;
+			a {
+				position: absolute;
+				top: 40px;
+				right: 20px;
+			}
+		}
+	}
+}
+
+.border-out{
+	border-bottom: 0px!important;
+}
+.border-in{
+	border-bottom: 5px solid rgb(170, 49, 32);
+}

@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	/*LIDERCARD*/
 	$(".merito").click(function(event){
 		event.preventDefault();
 		$(this).addClass("active-merito");
@@ -12,5 +13,33 @@ $(document).ready(function(){
 		$(".merito").removeClass("active-merito");
 		$(".dato-bonificacion").removeClass("hidden");
 		$(".dato-merito").addClass("hidden");
+	});
+	/*CAPCITACIONES*/
+	$(".otro").click(function(event){
+		event.preventDefault();
+		$(this).addClass("border-in");
+		$(".curso").addClass("border-out");
+		$(".nuevo").removeClass("border-in");
+		$(".lista-otros").removeClass("hidden");
+		$(".lista-cursos").addClass("hidden");
+		$(".lista-nuevos").addClass("hidden");
+	});
+	$(".nuevo").click(function(event){
+		event.preventDefault();
+		$(this).addClass("border-in");
+		$(".curso").addClass("border-out");
+		$(".otro").removeClass("border-in");
+		$(".lista-nuevos").removeClass("hidden");
+		$(".lista-cursos").addClass("hidden");
+		$(".lista-otros").addClass("hidden");
+	});
+	$(".curso").click(function(event){
+		event.preventDefault();
+		$(this).removeClass("border-out");
+		$(".nuevo").removeClass("border-in");
+		$(".otro").removeClass("border-in");
+		$(".lista-cursos").removeClass("hidden");
+		$(".lista-otros").addClass("hidden");
+		$(".lista-nuevos").addClass("hidden");
 	});
 });

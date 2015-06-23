@@ -1541,4 +1541,28 @@ footer .lista p {
   border-bottom: 5px solid #aa3120;
 }
 
+/*CAPACITACIONES*/
+.capacitacion .curso {
+  border-bottom: 5px solid #aa3120;
+}
+.capacitacion .curso, .capacitacion .otro, .capacitacion .nuevo {
+  text-decoration: none !important;
+}
+.capacitacion .lista-otros div, .capacitacion .lista-nuevos div {
+  position: relative;
+}
+.capacitacion .lista-otros div a, .capacitacion .lista-nuevos div a {
+  position: absolute;
+  top: 40px;
+  right: 20px;
+}
+
+.border-out {
+  border-bottom: 0px !important;
+}
+
+.border-in {
+  border-bottom: 5px solid #aa3120;
+}
+
 /*# sourceMappingURL=style.css.map */
