@@ -1142,6 +1142,13 @@ body .rotate-180 {
 body .pb-4 {
   padding-bottom: 4px;
 }
+body .img-perfil {
+  width: 56px;
+  height: 56px;
+  border-radius: 100%;
+  background-size: cover;
+  background-position: center;
+}
 
 .site-wrapper,
 .site-content {
@@ -1442,7 +1449,7 @@ footer .lista p {
 
 /*CONTENIDO TAREO*/
 #tareo-contenido {
-  left: 415px;
+  left: 450px;
   top: 114px;
 }
 #tareo-contenido .container {
