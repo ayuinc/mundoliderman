@@ -1600,6 +1600,45 @@ footer .lista p {
   right: 0;
 }
 
+/*LISTA-PUBLICACI├ôN*/
+.lista .img-lista {
+  height: 445px;
+  position: relative;
+}
+.lista .img-lista .texto {
+  position: absolute;
+  bottom: 0;
+  width: 85%;
+  height: 60%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+.lista .img-lista .texto a {
+  position: relative;
+  left: 80%;
+}
+
+#box-right {
+  position: relative;
+}
+#box-right .contenedor-categoria {
+  position: fixed;
+}
+
+.link-categoria {
+  width: 170px;
+}
+.link-categoria li {
+  border-bottom: 1px solid #d7d7d7;
+}
+.link-categoria li:last-child {
+  border: 0px;
+}
+
 /*PUBLICACI├ôN*/
 .publicacion {
   position: relative;
