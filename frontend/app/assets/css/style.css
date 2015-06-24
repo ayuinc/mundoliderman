@@ -1450,10 +1450,11 @@ footer .lista p {
 /*CONTENIDO TAREO*/
 #tareo-contenido {
   left: 450px;
-  top: 114px;
 }
 #tareo-contenido .container {
   padding-right: 10%;
+  position: relative;
+  top: 114px;
 }
 
 .perfil-servicios {
@@ -1563,6 +1564,11 @@ footer .lista p {
 
 .border-in {
   border-bottom: 5px solid #aa3120;
+}
+
+/*SGI*/
+.sgi ul {
+  list-style: inherit;
 }
 
 /*# sourceMappingURL=style.css.map */
