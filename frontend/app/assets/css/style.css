@@ -1412,20 +1412,19 @@ footer .lista p {
   overflow-y: auto;
   overflow-x: visible;
 }
-#menu-vertical h3 {
+#menu-vertical h3, #menu-vertical h2 {
   font-size: 26px;
   font-size: 1.625rem;
 }
-#menu-vertical h3:hover {
+#menu-vertical h3:hover, #menu-vertical h2:hover {
   color: gray;
 }
 #menu-vertical .contenedor-menu {
   position: relative;
   top: 114px;
   width: 398px;
-}
-#menu-vertical .contenedor-menu h3, #menu-vertical .contenedor-menu p, #menu-vertical .contenedor-menu span {
-  padding-left: 125px;
+  border-bottom-right-radius: 10px;
+  overflow: hidden;
 }
 #menu-vertical .contenedor-menu ul > li {
   padding-left: 150px;
@@ -1434,6 +1433,9 @@ footer .lista p {
   background-color: #f7f7f7;
   border-right: 6px solid #aa3120;
   border-bottom: 1px solid #F0F0F0;
+}
+#menu-vertical .contenedor-menu h2, #menu-vertical .contenedor-menu .btn-especial {
+  padding-left: 125px;
 }
 #menu-vertical .list-slide {
   overflow: hidden;
@@ -1596,6 +1598,29 @@ footer .lista p {
 }
 .formulario .btn-enviar {
   right: 0;
+}
+
+/*PUBLICACI├ôN*/
+.publicacion {
+  position: relative;
+}
+.publicacion .img-publicacion {
+  height: 370px;
+}
+.publicacion .triangulo-llamada {
+  border-width: 17px 15px 0;
+  border-color: white transparent;
+  border-style: solid;
+  width: 0;
+  height: 0;
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+  position: absolute;
+  top: -17px;
+  left: 60px;
 }
 
 /*# sourceMappingURL=style.css.map */

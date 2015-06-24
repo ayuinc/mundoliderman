@@ -349,7 +349,7 @@ footer {
 	height: 100%;
   overflow-y: auto;
   overflow-x: visible;
-	h3 {
+	h3 , h2{
 		font-size: 26px;
 		font-size: rem(26px);
 		&:hover {
@@ -360,9 +360,8 @@ footer {
 		position: relative;
   	top: 114px;
   	width: 398px;
-  	h3, p , span {
-  		padding-left: 125px;
-  	}
+  	border-bottom-right-radius: 10px;
+  	overflow: hidden;
   	ul > li {
   		padding-left: 150px;
   		&:hover {
@@ -370,6 +369,9 @@ footer {
   			border-right: 6px solid rgb(170, 49, 32);
   			border-bottom: 1px solid #F0F0F0;
   		}
+  	}
+  	h2, .btn-especial {
+  		padding-left: 125px;
   	}
 	}
 	.list-slide {
@@ -549,5 +551,23 @@ footer {
 	position: relative;
 	.btn-enviar {
 		right: 0;
+	}
+}
+/*PUBLICACIÓN*/
+.publicacion {
+	position: relative;
+	.img-publicacion {
+		height: 370px;
+	}
+	.triangulo-llamada {
+		  border-width: 17px 15px 0;
+		  border-color: white transparent;
+		  border-style: solid;
+		  width: 0;
+		  height: 0;
+		  @include transform(rotate(180deg));
+		  position: absolute;
+		  top: -17px;
+		  left: 60px;
 	}
 }
