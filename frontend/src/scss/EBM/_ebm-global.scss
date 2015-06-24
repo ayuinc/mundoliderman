@@ -98,6 +98,9 @@ body {
 	.lh-1-5 {
 		line-height: 1.5;
 	}
+	.le-2 {
+		letter-spacing: 2px;
+	}
 	.serif {
 		font-family: $font-family-serif;
 	}
@@ -518,5 +521,33 @@ footer {
 .sgi {
 	ul {
 		list-style: inherit;
+	}
+}
+/*PERFIL-EDITABLE*/
+#perfil-contenido {
+	@extend #tareo-contenido;
+	.formulario {
+		input {
+			height: 80px;
+		}
+	}
+}
+.perfil-editable {
+	.img {
+		width: 380px;
+	  height: 240px;
+	}
+	.descripcion {
+		height: 105px;
+		border: 1px solid rgb(198, 198, 198);
+		p {
+			line-height: 1.5;
+		}
+	}
+}
+.formulario {
+	position: relative;
+	.btn-enviar {
+		right: 0;
 	}
 }

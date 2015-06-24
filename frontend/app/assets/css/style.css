@@ -1120,6 +1120,9 @@ body .lh-1 {
 body .lh-1-5 {
   line-height: 1.5;
 }
+body .le-2 {
+  letter-spacing: 2px;
+}
 body .serif {
   font-family: "Merriweather", Georgia, "Times New Roman", Times, serif;
 }
@@ -1448,10 +1451,10 @@ footer .lista p {
 }
 
 /*CONTENIDO TAREO*/
-#tareo-contenido {
+#tareo-contenido, #perfil-contenido {
   left: 450px;
 }
-#tareo-contenido .container {
+#tareo-contenido .container, #perfil-contenido .container {
   padding-right: 10%;
   position: relative;
   top: 114px;
@@ -1569,6 +1572,30 @@ footer .lista p {
 /*SGI*/
 .sgi ul {
   list-style: inherit;
+}
+
+/*PERFIL-EDITABLE*/
+#perfil-contenido .formulario input {
+  height: 80px;
+}
+
+.perfil-editable .img {
+  width: 380px;
+  height: 240px;
+}
+.perfil-editable .descripcion {
+  height: 105px;
+  border: 1px solid #c6c6c6;
+}
+.perfil-editable .descripcion p {
+  line-height: 1.5;
+}
+
+.formulario {
+  position: relative;
+}
+.formulario .btn-enviar {
+  right: 0;
 }
 
 /*# sourceMappingURL=style.css.map */
