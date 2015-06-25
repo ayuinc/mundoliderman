@@ -1667,4 +1667,16 @@ footer .lista p {
   list-style: inherit;
 }
 
+/**/
+.lidermania-menu {
+  top: 150px;
+  position: relative;
+}
+.lidermania-menu .contenedor {
+  padding-left: 30%;
+}
+.lidermania-menu ul {
+  list-style: inherit;
+}
+
 /*# sourceMappingURL=style.css.map */
