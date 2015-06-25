@@ -199,6 +199,28 @@ header {
 	  font-size: rem(16px);
 	}
 }
+.herman-dropdown {
+	ul {
+		top: 70px;
+		min-width: 135px;
+		left: 20px;
+		li a {
+			font-weight: 300;
+			line-height: 1.5;
+		}
+		.triangulo {
+			border-width: 12px 8px 0;
+			border-color: white transparent;
+			border-style: solid;
+			width: 0;
+			height: 0;
+			@include transform(rotate(90deg));
+		  position: absolute;
+		  top: -6px;
+		  right: -2px;
+		}
+	}
+}
 #comentar {
 	border-radius: 5px;
 	border: 1px solid rgb(185, 163, 128);

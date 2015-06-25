@@ -1217,6 +1217,31 @@ header .perfil {
   color: #e2e2e2;
 }
 
+.herman-dropdown ul {
+  top: 70px;
+  min-width: 135px;
+  left: 20px;
+}
+.herman-dropdown ul li a {
+  font-weight: 300;
+  line-height: 1.5;
+}
+.herman-dropdown ul .triangulo {
+  border-width: 12px 8px 0;
+  border-color: white transparent;
+  border-style: solid;
+  width: 0;
+  height: 0;
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
+  position: absolute;
+  top: -6px;
+  right: -2px;
+}
+
 #comentar {
   border-radius: 5px;
   border: 1px solid #b9a380;
