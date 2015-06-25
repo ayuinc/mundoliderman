@@ -1662,4 +1662,9 @@ footer .lista p {
   left: 60px;
 }
 
+/*LIDERMAN├ìA*/
+.lidermania ul {
+  list-style: inherit;
+}
+
 /*# sourceMappingURL=style.css.map */
