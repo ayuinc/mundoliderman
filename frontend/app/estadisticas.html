@@ -1,16 +1,23 @@
 <!doctype html>
 <html lang="en">
   <meta charset="utf-8">
-  <title>Mundo Liderman - Capacitación</title>
+  <title>Mundo Liderman - Estadística</title>
   <meta name="description" content="">
   <meta name="keywords" content=""> 
   <meta name="author" content="@MadeByGus">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <link rel="icon" type="image/png" href="assets/img/Favicon.png" />
-  <link rel="shortcut icon" href="assets/img/favicon.png">
+  <link rel="shortcut icon" href="assets/img/Favicon.png">
   <link href="assets/css/style.css" rel="stylesheet"> <!-- App styles -->
   <link href="assets/css/ebm.css" rel="stylesheet">
   <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,700|Oswald:400,300,700' rel='stylesheet' type='text/css'>
+  <Script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+  <Script src="https://ajax.googleapis.com/ajax/libs/mootools/1.4.5/mootools-yui-compressed.js"></script>
+  <Script src="http://code.highcharts.com/adapters/mootools-adapter.js"></script>
+  <Script src="http://code.highcharts.com/highcharts.js"></script>
+  <Script src="http://code.highcharts.com/highcharts.js"></script>
+  <Script src="http://code.highcharts.com/adapters/standalone-framework.js"></script>
+
   
   <div class="site-wrapper"> <!-- Body -->
     <header class="site-menu">
@@ -60,7 +67,7 @@
         </div>
       </div>
     </header>
-    <main class="site-content clearfix pb-42 minhp-100">
+    <main class="site-content clearfix pb-42">
       <section id="menu-vertical" class="col-md-4 pr-42 pl-0">
         <div class="contenedor-menu bg-white border-right-gray-light border-bottom-gray-light pt-35">
           <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
@@ -81,11 +88,11 @@
                       <li class="border-bottom-gray-lighter pv-7"><a href="prestamos.html" class="text-gray-dark2">Préstamos</a></li>
                       <li class="border-bottom-gray-lighter pv-7"><a href="tareo.html" class="text-gray-dark2">Tareo</a></li>
                       <li class="border-bottom-gray-lighter pv-7"><a href="lidercard#.html" class="text-gray-dark2">LíderCard</a></li>
-                      <li class="border-bottom-gray-lighter pv-7 hover-menu"><a href="capacitaciones.html" class="text-gray-dark2">Capacitaciones</a></li>
+                      <li class="border-bottom-gray-lighter pv-7"><a href="capacitaciones.html" class="text-gray-dark2">Capacitaciones</a></li>
                       <li class="border-bottom-gray-lighter pv-7"><a href="boleta.html" class="text-gray-dark2">Boletas de Pago</a></li>
                       <li class="border-bottom-gray-lighter pv-7"><a href="sgi.html" class="text-gray-dark2">SGI</a></li>
                       <li class="border-bottom-gray-lighter pv-7"><a href="#.html" class="text-gray-dark2">Tienda</a></li>
-                      <li class="border-bottom-gray-lighter pv-21 btn-especial">
+                      <li class="border-bottom-gray-lighter pv-21 btn-especial hover-menu">
                         <h3 class="m-0"><a href="estadisticas.html" class="fz-28 text-gray-dark2 text-hover-gray">Para administradores</a></h3>
                         <span>Estadísticas Lidernet</span>
                       </li>
@@ -130,102 +137,49 @@
               <p class="fz-14 text-white lh-1-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, praesentium. Blanditiis ab voluptatem molestiae odit natus saepe asperiores..</p>
             </div>
           </div>
-          <div><h2 class="fz-28 border-bottom-gray pb-14 text-gray pt-21">LíderCard</h2></div>
-          <div class="capacitacion mt-35">
-            <div class="datos bg-white pv-14 border-radius">
-              <div class="pl-42 pb-14 border-bottom-gray-lighter">
-                <span class="fz-20 pl-42 ml-21"><a href="" class="curso text-gray-darker pb-14">Cursos</a></span>
-                <span class="fz-20 ml-42 pl-35"><a href="" class="otro text-gray-darker pb-14">Otros Cursos</a></span>
-                <span class="fz-20 ml-42 pl-35"><a href="" class="nuevo text-gray-darker pb-14">Nuevos Cursos</a></span>
-              </div>
-              <div class="lista-cursos ph-42 mh-42 pt-42 mt-14">
-                <div class="ph-21 row">
-                  <span class="col-md-4 fz-18">Periodo</span>
-                  <p class="col-md-8 fz-18 text-gray-darker">Mayo 2015</p>
+          <div><h2 class="fz-28 border-bottom-gray-darker pb-14 text-gray-darker pt-21">Estadísitcas Lidernet</h2></div>
+          <div class="tareo">
+            <div class="datos bg-white pv-42 ph-42">
+              <span class="fz-16 text-gray-darker">Buscar el periodo</span>
+                <div class="btn-group month">
+                  <button type="button" class="btn btn-default btn-dropdown dropdown-toggle mh-21" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Mes <span class="pl-14"><img src="assets/img/Flecha_Abajo.png" alt=""></span>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Enero</a></li>
+                    <li><a href="#">Febrero</a></li>
+                    <li><a href="#">Marzo</a></li>
+                    <li><a href="#">Abril</a></li>
+                    <li><a href="#">Mayo</a></li>
+                    <li><a href="#">Junio</a></li>
+                    <li><a href="#">Julio</a></li>
+                    <li><a href="#">Agosto</a></li>
+                    <li><a href="#">Setiembre</a></li>
+                    <li><a href="#">Octubre</a></li>
+                    <li><a href="#">Noviembre</a></li>
+                    <li><a href="#">Diciembre</a></li>
+                  </ul>
                 </div>
-                <div class="ph-21 row">
-                  <span class="col-md-4 fz-18">Tema</span>
-                  <p class="col-md-8 fz-18 text-gray-darker">Métodos de Seguridad</p>
+                <div class="btn-group year">
+                  <button type="button" class="btn btn-default btn-dropdown dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Año <span class="pl-14"><img src="assets/img/Flecha_Abajo.png" alt=""></span>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a href="#"></a></li>
+                    <li><a href="#">2005</a></li>
+                    <li><a href="#">2006</a></li>
+                    <li><a href="#">2007</a></li>
+                    <li><a href="#">2008</a></li>
+                    <li><a href="#">2009</a></li>
+                    <li><a href="#">2010</a></li>
+                    <li><a href="#">2011</a></li>
+                    <li><a href="#">2012</a></li>
+                    <li><a href="#">2013</a></li>
+                    <li><a href="#">2014</a></li>
+                    <li><a href="#">2015</a></li>
+                  </ul>
                 </div>
-                <div class="ph-21 row border-bottom-gray-light">
-                  <span class="col-md-4 fz-18">Nota</span>
-                  <p class="col-md-8 fz-18 pb-21 text-gray-darker">10</p>
-                </div>
-              </div>
-              <div class="lista-cursos ph-42 mh-42 pt-35">
-                <div class="ph-21 row">
-                  <span class="col-md-4 fz-18">Periodo</span>
-                  <p class="col-md-8 fz-18 text-gray-darker">Mayo 2015</p>
-                </div>
-                <div class="ph-21 row">
-                  <span class="col-md-4 fz-18">Tema</span>
-                  <p class="col-md-8 fz-18 text-gray-darker">Métodos de Seguridad</p>
-                </div>
-                <div class="ph-21 row border-bottom-gray-light">
-                  <span class="col-md-4 fz-18">Nota</span>
-                  <p class="col-md-8 fz-18 pb-21 text-gray-darker">10</p>
-                </div>
-              </div>
-              <div class="lista-cursos ph-42 mh-42 pt-35">
-                <div class="ph-21 row">
-                  <span class="col-md-4 fz-18">Periodo</span>
-                  <p class="col-md-8 fz-18 text-gray-darker">Mayo 2015</p>
-                </div>
-                <div class="ph-21 row">
-                  <span class="col-md-4 fz-18">Tema</span>
-                  <p class="col-md-8 fz-18 text-gray-darker">Métodos de Seguridad</p>
-                </div>
-                <div class="ph-21 row">
-                  <span class="col-md-4 fz-18">Nota</span>
-                  <p class="col-md-8 fz-18 pb-21 text-gray-darker">10</p>
-                </div>
-              </div>
-
-              <div class="lista-otros hidden ph-42 mh-42 pt-42 mt-14">
-                <div class="ph-21 row">
-                  <span class="col-md-4 fz-18">Periodo</span>
-                  <p class="col-md-8 fz-18 text-gray-darker">Mayo 2015</p>
-                </div>
-                <div class="ph-21 pb-24 row border-bottom-gray-lighter">
-                  <span class="col-md-4 fz-18">Tema</span>
-                  <p class="col-md-8 fz-18 text-gray-darker pb-42">Métodos de Seguridad</p>
-                  <a href="" class="fz-18 light text-success text-underline">Inscríbete</a>
-                </div>
-              </div>
-              <div class="lista-otros hidden ph-42 mh-42 pt-35">
-                <div class="ph-21 row">
-                  <span class="col-md-4 fz-18">Periodo</span>
-                  <p class="col-md-8 fz-18 text-gray-darker">Abril 2015</p>
-                </div>
-                <div class="ph-21 pb-24 row border-bottom-gray-lighter">
-                  <span class="col-md-4 fz-18">Tema</span>
-                  <p class="col-md-8 fz-18 text-gray-darker pb-42">Métodos de Seguridad</p>
-                  <a href="" class="fz-18 light text-success text-underline">Inscríbete</a>
-                </div>
-              </div>
-
-              <div class="lista-nuevos hidden ph-42 mh-42 pt-42 mt-14">
-                <div class="ph-21 row">
-                  <span class="col-md-4 fz-18">Periodo</span>
-                  <p class="col-md-8 fz-18 text-gray-darker">Setiembre 2015</p>
-                </div>
-                <div class="ph-21 pb-24 row border-bottom-gray-lighter">
-                  <span class="col-md-4 fz-18">Tema</span>
-                  <p class="col-md-8 fz-18 text-gray-darker pb-42">Métodos de Seguridad</p>
-                  <a href="" class="fz-18 light text-success text-underline">Inscríbete</a>
-                </div>
-              </div>
-              <div class="lista-nuevos hidden ph-42 mh-42 pt-35">
-                <div class="ph-21 row">
-                  <span class="col-md-4 fz-18">Periodo</span>
-                  <p class="col-md-8 fz-18 text-gray-darker">Octubre 2015</p>
-                </div>
-                <div class="ph-21 pb-24 row border-bottom-gray-lighter">
-                  <span class="col-md-4 fz-18">Tema</span>
-                  <p class="col-md-8 fz-18 text-gray-darker pb-42">Métodos de Seguridad</p>
-                  <a href="" class="fz-18 light text-success text-underline">Inscríbete</a>
-                </div>
-              </div>
+                <div id="container" style="height: 400px; min-width: 310px"></div>
             </div>
           </div>
         </div>
@@ -237,5 +191,4 @@
   <script src="assets/js/b3/dropdown.js"></script>
   <script src="assets/js/b3/collapse.js"></script>
   <script src="assets/js/scroll-control.js"></script>
-  <script src="assets/js/lidercard-control.js"></script>
 </html>

@@ -189,7 +189,7 @@ header {
 .site-content {
 	background-color: rgba(240, 240, 240, 0.45);
 	.container-index {
-		top: 114px;
+		padding-top: 160px!important;  
 		position: relative;
 	}
 }
@@ -427,7 +427,7 @@ footer {
 	.container {
 		padding-right: 10%;
 		position: relative;
-		top: 114px;
+		padding-top: 160px!important;
 	}
 }
 .perfil-servicios {

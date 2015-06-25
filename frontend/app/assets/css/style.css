@@ -1198,7 +1198,7 @@ header .perfil {
   background-color: rgba(240, 240, 240, 0.45);
 }
 .site-content .container-index {
-  top: 114px;
+  padding-top: 160px !important;
   position: relative;
 }
 
@@ -1489,7 +1489,7 @@ footer .lista p {
 #tareo-contenido .container, #perfil-contenido .container {
   padding-right: 10%;
   position: relative;
-  top: 114px;
+  padding-top: 160px !important;
 }
 
 .perfil-servicios {
