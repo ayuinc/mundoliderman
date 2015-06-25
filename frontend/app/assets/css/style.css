@@ -1038,7 +1038,7 @@ body p {
   font-family: "Merriweather", Georgia, "Times New Roman", Times, serif;
   color: #4a4a4a;
 }
-body a, body a:hover {
+body a, body a:hover, body a:visited {
   text-decoration: none;
 }
 body ul {
@@ -1102,6 +1102,9 @@ body .br-none {
 body .b-none {
   border: none;
 }
+body .brp-100 {
+  border-radius: 100%;
+}
 body .float-left {
   float: left;
 }
@@ -1148,9 +1151,16 @@ body .pb-4 {
 body .img-perfil {
   width: 56px;
   height: 56px;
-  border-radius: 100%;
-  background-size: cover;
-  background-position: center;
+}
+body .img-respuesta {
+  width: 38px;
+  height: 38px;
+}
+body .hover-menu, body #menu-vertical .contenedor-menu ul > li:hover, #menu-vertical .contenedor-menu body ul > li:hover {
+  background-color: #f7f7f7;
+  border-right: 6px solid #aa3120;
+  outline: 1px solid #F0F0F0;
+  border-bottom: 0px;
 }
 
 .site-wrapper,
@@ -1454,11 +1464,6 @@ footer .lista p {
 #menu-vertical .contenedor-menu ul > li {
   padding-left: 150px;
 }
-#menu-vertical .contenedor-menu ul > li:hover {
-  background-color: #f7f7f7;
-  border-right: 6px solid #aa3120;
-  border-bottom: 1px solid #F0F0F0;
-}
 #menu-vertical .contenedor-menu h2, #menu-vertical .contenedor-menu .btn-especial {
   padding-left: 125px;
 }
@@ -1526,7 +1531,7 @@ footer .lista p {
 
 .boleta .imprimir {
   position: relative;
-  left: 160px;
+  left: 190px;
 }
 
 /*LIDERNET*/
@@ -1599,6 +1604,12 @@ footer .lista p {
 /*SGI*/
 .sgi ul {
   list-style: inherit;
+}
+
+/*PERFIL*/
+.name .img-publicacion {
+  height: 230px;
+  overflow: hidden;
 }
 
 /*PERFIL-EDITABLE*/
