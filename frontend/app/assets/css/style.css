@@ -1550,8 +1550,8 @@ footer .lista p {
 
 .btn-enviar {
   border: 1px solid #51ba6e !important;
-  position: absolute;
-  right: 20px;
+  position: relative;
+  margin-left: 83%;
 }
 
 /*PR├ëSTAMOS*/
@@ -1713,6 +1713,11 @@ footer .lista p {
 }
 .lidermania-menu ul {
   list-style: inherit;
+}
+
+/*CUADRO ESTAD├ìSTICO*/
+#cuadro-estadistico rect[Attributes Style] {
+  width: 660px;
 }
 
 /*# sourceMappingURL=style.css.map */

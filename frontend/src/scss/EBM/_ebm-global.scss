@@ -495,8 +495,9 @@ footer {
 }
 .btn-enviar {
 	border: 1px solid rgb(81, 186, 110)!important;
-	position: absolute;
-	right: 20px;
+	position: relative;
+	margin-left: 83%;
+
 }
 /*PRÉSTAMOS*/
 .prestamos {
@@ -656,4 +657,10 @@ footer {
   ul {
   	list-style: inherit;
   }
+}
+/*CUADRO ESTADÍSTICO*/
+#cuadro-estadistico {
+	rect[Attributes Style] {
+		width: 660px;
+	}
 }
