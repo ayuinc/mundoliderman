@@ -80,6 +80,9 @@ body {
 	.b-none {
 		border: none;
 	}
+	.br-5 {
+		border-radius: 5px;
+	}
 	.brp-100 {
 		border-radius: 100%;
 	}
@@ -123,8 +126,8 @@ body {
 		padding-bottom: 4px;
 	}
 	.img-perfil {
-		width: 56px;
-		height: 56px;
+		width: 65px;
+		height: 65px;
 	}
 	.img-respuesta {
 		width: 38px;
@@ -195,13 +198,12 @@ header {
 }
 
 .tool-bar-search-form {
-	border-radius: 20px;
 	border: 1px solid rgb(210, 210, 210);
 	overflow: hidden;
 	height: 36px;
 	.input-group input {
 		@include placeholder {
-	    color: rgb(226, 226, 226);
+	    color: #A5A5A5;
 	  }
 	  width: 90%;
 	  box-shadow: none;
@@ -211,9 +213,9 @@ header {
 }
 .herman-dropdown {
 	ul {
-		top: 70px;
+		top: 48px;
 		min-width: 135px;
-		left: 20px;
+		left: 60px;
 		li a {
 			font-weight: 300;
 			line-height: 1.5;
@@ -244,14 +246,8 @@ header {
 	  }
 	}
 	.publicacion { 
-		height: 90px;
-		display: flex;
-		justify-content: center;
-	  align-content: flex-start;
-	  align-items: center;
-	  input {
-	  	font-size: 21px;
-	  	font-size: rem(21px);
+	  textarea {
+	  	box-shadow: none;
 	  }
 	  .dropdown-menu {
 	  	width: 180px;
@@ -275,8 +271,23 @@ header {
 	  	}
 	  }
 	}
+	.buttons-group {
+		.col-md-6:first-child {
+			padding-top: 4px;
+		}
+		.col-md-6:last-child {
+			img {
+				width: 33px;
+			}
+		}
+	}
 }
 #post{
+	.post {
+		  border: 1px solid #e7e7e7;
+		  border-bottom: 2px solid #e7e7e7;
+		  border-radius: 5px;
+	}
 	.info-usuario {
 		.aviso {
 			border: 1px solid #E8E8E4;

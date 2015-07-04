@@ -13,12 +13,12 @@
   <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,700|Oswald:400,300,700' rel='stylesheet' type='text/css'>
   
   <div class="site-wrapper"> <!-- Body -->
-    <header class="site-menu">
-      <div class="container-fluid minh-70 pr-0 pl-21 pt-14 pb-7 bg-white">
+    <header class="site-menu bg-white">
+      <div class="container minh-70 ph-0 pt-14 pb-7 bg-white">
         <div class="logo col-md-4 pl-0">  
           <a href="index.html">
-            <div class="col-md-8 text-right pr-0 pt-14 ml-7">
-              <h1 class="text-uppercase bold text-gray-darker pl-42 m-0">Mundo liderman</h1>
+            <div class="col-md-8 text-left ph-0 pt-14">
+              <h1 class="text-uppercase bold text-gray-darker m-0">Mundo liderman</h1>
             </div>
             <div class="col-md-2 pl-7">
               <img src="assets/img/Liderboy.png" alt="Mundo Liderman">
@@ -27,16 +27,16 @@
           <div class="col-md-2">  </div>
         </div>
         <div class="col-md-4 pl-42 pr-21">
-          <form class="tool-bar-search-form mt-7">
-            <div class="input-group pr-14 ">
-              <input type="text" id="search_bar" class="form-control input-sm thin pl-28 borderless display-ib" placeholder="Buscar personas, consultas o preguntas...">
+          <form class="tool-bar-search-form mt-7 br-5">
+            <div class="input-group pr-0 ">
+              <input type="text" id="search_bar" class="form-control input-sm thin pl-14 borderless display-ib" placeholder="Buscar personas, consultas o preguntas...">
               <img src="assets/img/Icono_Buscar.png" alt="" class="display-ib">
             </div>
           </form>
         </div>
-        <div class="col-md-4 text-center pl-0">
-          <div class="col-md-5"><h5 class="mt-14 mb-0"><a href="" class="text-gray book fz-18 lh-0">Ir al inicio</a></h5></div>
-          <div class="col-md-7 text-left">
+        <div class="col-md-4 text-center ph-0">
+          <div class="col-md-6"><p class="mt-14 mb-0 border-right-gray-light pr-14 text-right"><a href="" class="text-gray book fz-18 lh-0">Ir al inicio</a></p></div>
+          <div class="col-md-6 text-right ph-0">
             <h5 class="text-gray-dark m-0 mt-14 light float-left pr-7 fz-18">Hola, Herman</h5>
             <div class="perfil float-left" style="background-image: url(assets/img/Carita.png)"></div>
             <div class="dropdown herman-dropdown">
@@ -64,11 +64,8 @@
       <div class="container container-index  pt-42 clearfix mb-70 ph-0">
         <div id="box-left" class="col-md-8 pl-0">
           <section id="comentar" class="bg-white">
-            <div class="publicacion clearfix pr-21">
-              <div class="col-sm-7">
-                <input type="text" class="input-sm outline-none serif fz-18" placeholder="Qué estás pensando...">
-              </div>
-              <div class="col-md-4 ml-42">
+            <div class="publicacion clearfix">
+              <div class="border-bottom-gray-lighter">
                 <div class="dropdown">
                   <button class="btn bg-white dropdown-toggle b-none outline-none text-gray-light book serif" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                     Escoge una categoría
@@ -85,21 +82,30 @@
                   </ul>
                 </div>
               </div>
-              <div class="col-sm-1 border-left-success">
-                <a href=" "><img src="assets/img/Globito.png" alt=""></a>
+              <div class="ph-21">
+                <textarea class="form-control outline-none serif fz-18 borderless" rows="3" placeholder="Qué estás pensando..."></textarea>
               </div>
             </div>
-            <div class="buttons-group pv-14 lh-0 pl-35 bg-success">
-              <a href=" "><img src="assets/img/Icono_Foto.png" alt=""></a>
+            <div class="buttons-group pv-14 lh-0 pl-35 bg-success clearfix">
+              <div class="col-md-6">
+                <a href=" "><img src="assets/img/Icono_Foto.png" alt=""></a>
+                <a href=""><span class="text-white thin fz-12">Subir imagen</span></a>
+              </div>
+              <div class="col-md-6 text-right pr-35">
+                <div class="btn bg-white text-success text-hover-success fz-12 ph-21">
+                 PUBLICAR
+                 <img src="assets/img/Globito.png" alt="" class="pl-14">
+                </div>
+              </div>
             </div>
           </section>
           <section id="post">
-            <div class="post-1 post bg-white ph-28 pt-28 pb-28 mt-42">
-              <div class="row">
-                <div class="col-md-1 pr-0 pl-7">
+            <div class="post-1 post bg-white ph-21 pt-28 pb-28 mt-42">
+              <div class="clearfix">
+                <div class="col-md-1 ph-0 pl-7">
                   <div class="img-perfil bg-img-block-center brp-100" style="background-image: url(assets/img/Wall/Cara-1.png)"></div>
                 </div>
-                <div class="name col-md-11">
+                <div class="name col-md-11 pl-21">
                   <div class="info-usuario pl-7 row">
                     <div class="col-md-9">
                       <span class="categoria text-uppercase fz-10 text-primary letter-spacing-1.5">Tengo una consulta</span>
@@ -114,7 +120,7 @@
                     </div>
                   </div>
                   <p class="parrafo pt-14 ph-7 text-gray-darker">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam quidem corrupti optio sed facilis omnis perferendis dolores vero qui illo, beatae velit suscipit tempora iure molestias nisi earum sunt fugit.</p>
-                  <div class="clearfix ph-0 mh-7 thin text-gray pt-7 pb-7 border-bottom-gray-light fz-12">
+                  <div class="clearfix ph-0 mh-7 thin text-gray pt-7 pb-7 border-bottom-gray-lighter fz-12">
                     <ul class="col-md-6 ph-0 mv-0">
                       <li class="pr-7 display-ib">
                         <a href="">Comentar &nbsp</a>
@@ -177,12 +183,12 @@
               </div>
             </div>
 
-            <div class="post-2 post bg-white ph-28 pt-28 pb-28 mt-42">
-              <div class="row">
-                <div class="col-md-1 pr-0 pl-7">
+            <div class="post-2 post bg-white ph-21 pt-28 pb-28 mt-42">
+              <div class="clearfix">
+                <div class="col-md-1 ph-0 pl-7">
                   <div class="img-perfil bg-img-block-center brp-100" style="background-image: url(assets/img/Wall/Cara-2.png)"></div>
                 </div>
-                <div class="name col-md-11">
+                <div class="name col-md-11 pl-21">
                   <div class="info-usuario pl-7 row">
                     <div class="col-md-9">
                       <span class="categoria text-uppercase fz-10 text-primary letter-spacing-1.5">Quiero divertirme</span>
@@ -201,7 +207,7 @@
                       <li class="col-md-4 ph-7"><img src="assets/img/Wall/Foto3.png" alt="" class="w-100"></li>
                     </ul>
                   </div>
-                  <div class="clearfix ph-0 mh-7 thin text-gray pt-7 pb-7 border-bottom-gray-light fz-12">
+                  <div class="clearfix ph-0 mh-7 thin text-gray pt-7 pb-7 border-bottom-gray-lighter fz-12">
                     <ul class="col-md-6 ph-0 mv-0">
                       <li class="pr-7 display-ib">
                         <a href="">Comentar &nbsp</a>
@@ -225,12 +231,12 @@
                 </div>
               </div>
             </div>
-            <div class="post-3 post bg-white ph-28 pt-28 pb-28 mt-42">
-              <div class="row">
-                <div class="col-md-1 pr-0 pl-7">
+            <div class="post-3 post bg-white ph-21 pt-28 pb-28 mt-42">
+              <div class="clearfix">
+                <div class="col-md-1 ph-0 pl-7">
                   <div class="img-perfil bg-img-block-center brp-100" style="background-image: url(assets/img/Wall/Cara-1.png)"></div>
                 </div>
-                <div class="name col-md-11">
+                <div class="name col-md-11 pl-21">
                   <div class="info-usuario pl-7 row">
                     <div class="col-md-9">
                       <span class="categoria text-uppercase fz-10 text-primary letter-spacing-1.5">Tengo una solicitud</span>
@@ -245,7 +251,7 @@
                     </div>
                   </div>
                   <p class="parrafo pt-14 ph-7 text-gray-darker">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam quidem corrupti optio sed facilis omnis perferendis dolores vero qui illo, beatae velit suscipit tempora iure molestias nisi earum sunt fugit.</p>
-                  <div class="clearfix ph-0 mh-7 thin text-gray pt-7 pb-7 border-bottom-gray-light fz-12">
+                  <div class="clearfix ph-0 mh-7 thin text-gray pt-7 pb-7 border-bottom-gray-lighter fz-12">
                     <ul class="col-md-6 ph-0 mv-0">
                       <li class="pr-7 display-ib">
                         <a href="">Comentar &nbsp</a>
@@ -297,7 +303,7 @@
         <a href=""><img src="assets/img/Flecha-para-arriba.png" alt=""></a>
       </div>
     </main>
-    <footer>
+    <footer class="w-100 fixed">
       <div class="container pt-21 pb-42"> 
         <div class="row">
           <div class="col-md-9 pl-0">
