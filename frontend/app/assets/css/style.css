@@ -1067,7 +1067,7 @@ body .fz-17 {
   font-size: 17px;
   font-size: 1.0625rem;
 }
-body .fz-12, body #comentar .publicacion .dropdown-menu li > a, #comentar .publicacion .dropdown-menu body li > a {
+body .fz-12 {
   font-size: 12px;
   font-size: 0.75rem;
 }
@@ -1162,7 +1162,7 @@ body .img-respuesta {
   width: 38px;
   height: 38px;
 }
-body .hover-menu, body #menu-vertical .contenedor-menu ul > li:hover, #menu-vertical .contenedor-menu body ul > li:hover {
+body .hover-menu {
   background-color: #f7f7f7;
   border-right: 6px solid #aa3120;
   outline: 1px solid #F0F0F0;
@@ -1175,6 +1175,10 @@ body .fixed {
 .site-wrapper,
 .site-content {
   position: relative;
+}
+
+main {
+  margin-bottom: 100px;
 }
 
 /*
@@ -1291,7 +1295,6 @@ header .perfil {
   left: 74%;
 }
 #comentar .publicacion .dropdown-menu li > a {
-  color: #c4bdc2;
   font-weight: 100;
 }
 #comentar .publicacion .dropdown-menu .triangulo {
@@ -1469,15 +1472,10 @@ footer .lista p {
 /*TAREO*/
 #menu-vertical {
   width: 415px;
-  border-bottom-right-radius: 15px;
-  position: fixed;
-  height: 100%;
-  overflow-y: auto;
-  overflow-x: visible;
 }
 #menu-vertical h3, #menu-vertical h2 {
-  font-size: 26px;
-  font-size: 1.625rem;
+  font-size: 24px;
+  font-size: 1.5rem;
 }
 #menu-vertical h3:hover, #menu-vertical h2:hover {
   color: gray;
@@ -1490,10 +1488,10 @@ footer .lista p {
   overflow: hidden;
 }
 #menu-vertical .contenedor-menu ul > li {
-  padding-left: 150px;
+  padding-left: 125px;
 }
 #menu-vertical .contenedor-menu h2, #menu-vertical .contenedor-menu .btn-especial {
-  padding-left: 125px;
+  padding-left: 100px;
 }
 #menu-vertical .list-slide {
   overflow: hidden;
@@ -1511,11 +1509,7 @@ footer .lista p {
 }
 
 /*CONTENIDO TAREO*/
-#tareo-contenido, #perfil-contenido {
-  left: 450px;
-}
 #tareo-contenido .container, #perfil-contenido .container {
-  padding-right: 10%;
   position: relative;
   padding-top: 160px !important;
 }
@@ -1559,7 +1553,7 @@ footer .lista p {
 
 .boleta .imprimir {
   position: relative;
-  left: 190px;
+  left: 265px;
 }
 
 /*LIDERNET*/
@@ -1577,7 +1571,7 @@ footer .lista p {
 }
 
 .btn-enviar {
-  border: 1px solid #51ba6e !important;
+  background-color: black;
   position: relative;
   margin-left: 83%;
 }
@@ -1744,6 +1738,9 @@ footer .lista p {
 }
 
 /*CUADRO ESTAD├ìSTICO*/
+#cuadro-estadistico {
+  margin: 0 auto;
+}
 #cuadro-estadistico rect[Attributes Style] {
   width: 660px;
 }

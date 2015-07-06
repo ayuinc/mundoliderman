@@ -151,6 +151,9 @@ body {
 .site-content {
 	position: relative;
 }
+main {
+	margin-bottom: 100px;
+} 
 
 /*
 	Media queries
@@ -260,8 +263,6 @@ header {
 		  top: 100%;
 		  left: 74%;
 	  	li > a {
-	  		@extend .fz-12;;
-	  		color: rgb(196, 189, 194);
 	  		font-weight: 	100;
 	  	}
 	  	.triangulo {
@@ -397,14 +398,9 @@ footer {
 /*TAREO*/
 #menu-vertical {
 	width: 415px;
-	border-bottom-right-radius: 15px;
-	position: fixed;
-	height: 100%;
-  overflow-y: auto;
-  overflow-x: visible;
 	h3 , h2{
-		font-size: 26px;
-		font-size: rem(26px);
+		font-size: 24px;
+		font-size: rem(24px);
 		&:hover {
 			color: gray;
 		}
@@ -416,13 +412,10 @@ footer {
   	border-bottom-right-radius: 10px;
   	overflow: hidden;
   	ul > li {
-  		padding-left: 150px;
-  		&:hover {
-  			@extend .hover-menu;
-  		}
+  		padding-left: 125px;
   	}
   	h2, .btn-especial {
-  		padding-left: 125px;
+  		padding-left: 100px;
   	}
 	}
 	.list-slide {
@@ -444,9 +437,7 @@ footer {
 }
 /*CONTENIDO TAREO*/
 #tareo-contenido {
-	left: 450px;
 	.container {
-		padding-right: 10%;
 		position: relative;
 		padding-top: 160px!important;
 	}
@@ -497,7 +488,7 @@ footer {
 	@extend .tareo;
 	.imprimir {
 		position: relative;
-		left: 190px;
+		left: 265px;
 	}
 }
 /*LIDERNET*/
@@ -515,7 +506,7 @@ footer {
 	}
 }
 .btn-enviar {
-	border: 1px solid rgb(81, 186, 110)!important;
+	background-color: black;
 	position: relative;
 	margin-left: 83%;
 
@@ -681,6 +672,7 @@ footer {
 }
 /*CUADRO ESTADÍSTICO*/
 #cuadro-estadistico {
+	margin: 0 auto;
 	rect[Attributes Style] {
 		width: 660px;
 	}
