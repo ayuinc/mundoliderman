@@ -1044,6 +1044,9 @@ body a, body a:hover, body a:visited {
 body ul {
   list-style: none;
 }
+body button {
+  box-shadow: none !important;
+}
 body .fz-8 {
   font-size: 8px;
   font-size: 0.5rem;
@@ -1069,8 +1072,8 @@ body .fz-12, body #comentar .publicacion .dropdown-menu li > a, #comentar .publi
   font-size: 0.75rem;
 }
 body .fz-14 {
-  font-size: 14px;
-  font-size: 0.875rem;
+  font-size: 14px !important;
+  font-size: 0.875rem !important;
 }
 body .fz-20 {
   font-size: 20px;
@@ -1164,6 +1167,9 @@ body .hover-menu, body #menu-vertical .contenedor-menu ul > li:hover, #menu-vert
   border-right: 6px solid #aa3120;
   outline: 1px solid #F0F0F0;
   border-bottom: 0px;
+}
+body .fixed {
+  position: fixed;
 }
 
 .site-wrapper,
@@ -1280,9 +1286,9 @@ header .perfil {
   box-shadow: none;
 }
 #comentar .publicacion .dropdown-menu {
-  width: 180px;
-  top: 200%;
-  left: 50%;
+  width: 186px;
+  top: 100%;
+  left: 74%;
 }
 #comentar .publicacion .dropdown-menu li > a {
   color: #c4bdc2;
@@ -1318,6 +1324,7 @@ header .perfil {
 #post .info-usuario .aviso {
   border: 1px solid #E8E8E4;
   border-radius: 20px;
+  cursor: pointer;
 }
 #post .info-usuario .aviso .circle-green {
   height: 12px;
@@ -1366,28 +1373,44 @@ header .perfil {
 }
 
 /*Deslizador de la radio*/
-#up {
-  height: 30px;
-  width: 40px;
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  background-color: black;
-}
-
 .active-up {
-  height: auto;
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -ms-transform: translateY(0);
+  -o-transform: translateY(0);
+  transform: translateY(0);
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
 }
 
 /*FOOTER*/
 footer {
   background-color: black;
   position: relative;
-  height: 95px;
-  overflow: hidden;
+  bottom: 0;
   -webkit-transition: all 0.2s ease-in-out;
   -moz-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
+  -webkit-transform: translateY(370px);
+  -moz-transform: translateY(370px);
+  -ms-transform: translateY(370px);
+  -o-transform: translateY(370px);
+  transform: translateY(370px);
+}
+footer #up {
+  height: 30px;
+  width: 40px;
+  position: absolute;
+  bottom: 0;
+  top: -30px;
+  background-color: black;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
 }
 footer .container {
   display: -webkit-box;

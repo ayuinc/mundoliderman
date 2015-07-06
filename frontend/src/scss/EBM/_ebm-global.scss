@@ -21,6 +21,9 @@ body {
 	ul {
 		list-style: none;
 	}
+	button {
+		box-shadow: none!important;
+	}
 	/*UTILITIES*/
 	.fz-8 {
 		font-size: 8px;
@@ -47,8 +50,8 @@ body {
 		font-size: rem(12px);
 	}
 	.fz-14 {
-		font-size: 14px;
-		font-size: rem(14px);
+		font-size: 14px !important;
+		font-size: rem(14px)!important;
 	}
 	.fz-20 {
 		font-size: 20px;
@@ -138,6 +141,9 @@ body {
 		border-right: 6px solid rgb(170, 49, 32);
 		outline: 1px solid #F0F0F0;
 		border-bottom: 0px;
+	}
+	.fixed {
+		position: fixed;
 	}
 }
 
@@ -250,9 +256,9 @@ header {
 	  	box-shadow: none;
 	  }
 	  .dropdown-menu {
-	  	width: 180px;
-	  	top: 200%;
-  		left: 50%;
+	  	width: 186px;
+		  top: 100%;
+		  left: 74%;
 	  	li > a {
 	  		@extend .fz-12;;
 	  		color: rgb(196, 189, 194);
@@ -292,6 +298,7 @@ header {
 		.aviso {
 			border: 1px solid #E8E8E4;
 			border-radius: 20px;
+			cursor: pointer;
 			.circle-green {
 				height: 12px;
 				width: 12px;
@@ -338,25 +345,28 @@ header {
 	}
 }
 /*Deslizador de la radio*/
-#up {
-	height: 30px;
-  width: 40px;
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  background-color: black;
-}
 .active-up {
-	height: auto;
+	@include transform(translateY(0));
+	@include transition(all .2s ease-out);
 }
 
 /*FOOTER*/
 footer {
 	background-color: black;
 	position: relative;
-	height: 95px;
-  overflow: hidden;
+  bottom: 0;
   @include transition(all .2s ease-in-out);
+  @include transform(translateY(370px));
+  #up {
+		height: 30px;
+	  width: 40px;
+	  position: absolute;
+	  bottom: 0;
+	  top: -30px;
+	  background-color: black;
+	  left: 50%;
+	  @include transform (translateX(-50%));
+	}
 	.container {
 		@include flex-column-center;
 	}
