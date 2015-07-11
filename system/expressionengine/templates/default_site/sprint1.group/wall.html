@@ -82,7 +82,7 @@
                     <li><a href="#">Necesito ayuda</a></li>
                     <li><a href="#">Otro</a></li>
                   </ul>-->
-                  <select name="" id="" class="btn bg-white dropdown-toggle b-none outline-none text-gray-light book serif">
+                  <select name="status_category" id="" class="btn bg-white dropdown-toggle b-none outline-none text-gray-light book serif">
                     <option value="" >Escoge una categoria</option>
                   	<option value="">Quiero divertirme</option>
                   	<option value="">Quiero dar mi testimonio</option>
@@ -100,7 +100,8 @@
             <div class="buttons-group pv-14 lh-0 pl-35 bg-success clearfix">
               <div class="col-md-6">
                 <a href=" "><img src="{site_url}frontend/app/assets/img/Icono_Foto.png" alt=""></a>
-                <a href=""><span class="text-white thin fz-12">Subir imagen</span></a>
+                <a id="uploadImage" href=""><span class="text-white thin fz-12">Subir imagen</span></a>
+                <input type="file" id="inputFile" name="status_image" class="hidden" accept="image">
               </div>
               <div class="col-md-6 text-right pr-35">
                 <button type="submit" name="submit" class="btn bg-white text-success text-hover-success fz-12 ph-21">
@@ -374,4 +375,12 @@
   <script src="{site_url}frontend/app/assets/js/b3/dropdown.js"></script>
   <script src="{site_url}frontend/app/assets/js/scroll-control.js"></script>
   <script src="{site_url}frontend/app/assets/js/aviso-control.js"></script>
+  <script>
+  	$(document).ready(function() {
+  		$("#uploadImage").on("click", function(e) {
+  			e.preventDefault();
+  			$("#inputFile").trigger("click");
+  		});
+  	});
+  </script>
 </html>
