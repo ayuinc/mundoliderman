@@ -109,8 +109,11 @@ class Friends_status extends Friends
 							fs.member_id 	AS friends_member_id,
 							fs.status 		AS friends_status,
 							fs.status_date 	AS friends_status_date,
-							private 		AS friends_private
+							private 		AS friends_private,
+							fse.category    AS friends_category,
+							fse.image 		AS friends_image
 				   FROM 	exp_friends_status fs
+				   LEFT OUTER JOIN exp_friends_status_extra fse ON fs.status_id = fse.status_id
 				   WHERE 	fs.site_id
 				   IN 		(".implode( ',', ee()->TMPL->site_ids ).")";
 
