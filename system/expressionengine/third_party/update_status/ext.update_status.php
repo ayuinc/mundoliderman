@@ -83,7 +83,10 @@ class Update_status_ext
 		ee()->db->delete('extensions');
 	}
 
-	
+	function update_cat_img_status($class, $data, $status_id) 
+	{
+		return var_dump($status_id);
+	}
 
 }
 // END CLASS
