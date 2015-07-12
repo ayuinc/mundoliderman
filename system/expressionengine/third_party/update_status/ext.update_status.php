@@ -70,5 +70,20 @@ class Update_status_ext
 		);
 	}
 
+	/**
+	 * Disable Extension
+	 *
+	 * This method removes information from the exp_extensions table
+	 *
+	 * @return void
+	 */
+	function disable_extension()
+	{
+		ee()->db->where('class', __CLASS__);
+		ee()->db->delete('extensions');
+	}
+
+	
+
 }
 // END CLASS
