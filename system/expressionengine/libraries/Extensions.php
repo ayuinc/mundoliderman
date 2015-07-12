@@ -334,7 +334,6 @@ class EE_Extensions {
 	{
 		// Hop out if extensions are disabled
 		if (ee()->config->item('allow_extensions') != 'y') return FALSE;
-
 		return (isset($this->extensions[$which])) ? TRUE : FALSE;
 	}
 
