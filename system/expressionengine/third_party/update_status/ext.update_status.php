@@ -19,6 +19,7 @@ class Update_status_ext
 	function __construct($settings='') 
 	{
 		$this->settings = $settings;
+		ee()->load->dbforge();
 	}
 	// END
 
@@ -31,8 +32,6 @@ class Update_status_ext
 	 */
 	function activate_extension()
 	{		
-		ee()->load->dbforge();
-		
 		$fields = array(
 			'status_id' => array('type' => 'int', 'unsigned' => TRUE),
 			'category' => array('type' => 'int', 'unsigned' => TRUE),
@@ -94,7 +93,6 @@ class Update_status_ext
 	 */
 	function disable_extension()
 	{
-		ee()->load->dbforge();
 		ee()->dbforge->drop_table('friends_status_extra');
 
 		ee()->db->where('class', __CLASS__);
@@ -103,8 +101,22 @@ class Update_status_ext
 
 	function update_cat_img_status($class, $data, $status_id) 
 	{
-		return var_dump($status_id);
-	}
+		if (ee()->db->table_exists('friends_status_extra')) 
+		{
+			$status_category = $data['status_category'];
 
+			$extra_data = array();
+			$extra_data['status_id'] = $status_id;
+			$extra_data['category'] = $status_category;
+
+			if (isset($data['status_image'])) {
+				$extra_data['image'] = $data['status_image'];
+			} else {
+				$extra_data['image'] = null;
+			}
+
+			ee()->db->query(ee()->db->insert_string('friends_status_extra', $extra_data));
+		}
+	}
 }
 // END CLASS

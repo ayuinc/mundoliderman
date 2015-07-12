@@ -488,13 +488,19 @@ class Friends_status extends Friends
 		ee()->db->query( ee()->db->insert_string( 'exp_friends_status', $data ) );
 		$status_id = ee()->db->insert_id();
 
+		$data['status_category'] = $_POST['status_category'];
+
+		if (isset($_POST['status_image'])) {
+			$data['status_image'] = $_POST['status_image'];
+		}
+
 		// ----------------------------------------
 		//	Extension
 		// ----------------------------------------
 		
 		if (ee()->extensions->active_hook('friends_status_update_status') === TRUE)
 		{
-			$data	= ee()->extensions->universal_call( 'friends_status_update_status', $this, $data, $status_id);
+			ee()->extensions->universal_call( 'friends_status_update_status', $this, $data, $status_id);
 			//return var_dump($data);
 			if ( ee()->extensions->end_script === TRUE ) exit();
 		}
