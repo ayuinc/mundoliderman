@@ -30,7 +30,22 @@ class Update_status_ext
 	 * @return void
 	 */
 	function activate_extension()
-	{
+	{		
+		ee()->load->dbforge();
+		
+		$fields = array(
+			'status_id' => array('type' => 'int', 'unsigned' => TRUE),
+			'category' => array('type' => 'int', 'unsigned' => TRUE),
+			'image' => array('type' => 'varchar', 'constraint' => '250', 'null' => TRUE)
+		);
+
+		ee()->dbforge->add_field($fields);
+		ee()->dbforge->add_key('status_id', TRUE);
+
+		ee()->dbforge->create_table('friends_status_extra');
+
+		unset($fields);
+
 		$data = array(
 			'class' => __CLASS__,
 			'method' => 'update_cat_img_status',
@@ -79,6 +94,9 @@ class Update_status_ext
 	 */
 	function disable_extension()
 	{
+		ee()->load->dbforge();
+		ee()->dbforge->drop_table('friends_status_extra');
+
 		ee()->db->where('class', __CLASS__);
 		ee()->db->delete('extensions');
 	}
