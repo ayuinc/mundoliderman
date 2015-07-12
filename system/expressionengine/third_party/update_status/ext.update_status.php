@@ -111,6 +111,7 @@ class Update_status_ext
 
 			if (isset($data['status_image'])) {
 				$extra_data['image'] = $data['status_image'];
+				$image_data = $_FILES['status_image'];
 			} else {
 				$extra_data['image'] = null;
 			}
