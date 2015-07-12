@@ -113,7 +113,7 @@ class Update_status_ext
 			if (isset($data['status_image'])) {
 				$image_data = $_FILES['status_image'];
 				
-				$target_dir = "C:\\xampp\\htdocs\\mundoliderman\\images\\status\\";
+				$target_dir = ee()->config->item('status_image_path');
 				$target_file = $target_dir . basename($image_data["name"]);
 				$uploadOk = 1;
 				$imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);

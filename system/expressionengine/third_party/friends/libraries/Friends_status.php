@@ -501,7 +501,6 @@ class Friends_status extends Friends
 		if (ee()->extensions->active_hook('friends_status_update_status') === TRUE)
 		{
 			ee()->extensions->universal_call( 'friends_status_update_status', $this, $data, $status_id);
-			//return var_dump($data);
 			if ( ee()->extensions->end_script === TRUE ) exit();
 		}
 
