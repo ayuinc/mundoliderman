@@ -490,8 +490,8 @@ class Friends_status extends Friends
 
 		$data['status_category'] = $_POST['status_category'];
 
-		if (isset($_POST['status_image'])) {
-			$data['status_image'] = $_POST['status_image'];
+		if (isset($_FILES['status_image'])) {
+			$data['status_image'] = $_FILES['status_image']['name'];
 		}
 
 		// ----------------------------------------

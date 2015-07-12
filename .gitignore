@@ -33,3 +33,5 @@ sized/
 thumbs/
 _thumbs/
 */expressionengine/cache/*
+
+images/status/

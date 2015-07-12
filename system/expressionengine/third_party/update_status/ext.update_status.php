@@ -109,9 +109,42 @@ class Update_status_ext
 			$extra_data['status_id'] = $status_id;
 			$extra_data['category'] = $status_category;
 
+			$msg = "";
 			if (isset($data['status_image'])) {
-				$extra_data['image'] = $data['status_image'];
 				$image_data = $_FILES['status_image'];
+				
+				$target_dir = "C:\\xampp\\htdocs\\mundoliderman\\images\\status\\";
+				$target_file = $target_dir . basename($image_data["name"]);
+				$uploadOk = 1;
+				$imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
+				// Check if file already exists
+				/*if (file_exists($target_file)) {
+					$msg = "Sorry, file already exists!";
+					$uploadOk = 0;
+				}
+				// Check file size
+				if ($image_data["size"] > 500000) {
+					$msg = "Sorry, your file is too long";
+					$uploadOk = 0;
+				}
+				// Allow certain file formats
+				if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
+					$msg = "Sorry, only JPG, JPEG, PNG & GIF files are allowed";
+					$uploadOk = 0;
+				}*/
+				// Check if $uploadOk is set to 0 by an error
+				if ($uploadOk == 0) {
+					$msg = "Sorry, your file was not uploaded";
+				}
+				// if everything is ok, try to upload file
+				else {
+					if (move_uploaded_file($image_data["tmp_name"], $target_file)) {
+						$msg = "The file " . basename($image_data["name"]) . " has been uploaded";
+					} else {
+						$msg = "Sorry, there was an error uploading your file";
+					}
+				}
+				$extra_data['image'] = $target_file;
 			} else {
 				$extra_data['image'] = null;
 			}
