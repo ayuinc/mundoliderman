@@ -112,8 +112,9 @@ class Update_status_ext
 			$msg = "";
 			if (isset($data['status_image'])) {
 				$image_data = $_FILES['status_image'];
-				
-				$target_dir = ee()->config->item('status_image_path');
+				$server_path = ee()->config->item('server_path');
+				$status_image_path = ee()->config->item('status_image_path');
+				$target_dir = $server_path . $status_image_path;
 				$target_file = $target_dir . basename($image_data["name"]);
 				$uploadOk = 1;
 				$imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
@@ -144,7 +145,7 @@ class Update_status_ext
 						$msg = "Sorry, there was an error uploading your file";
 					}
 				}
-				$extra_data['image'] = $target_file;
+				$extra_data['image'] = $status_image_path . basename($image_data["name"]);
 			} else {
 				$extra_data['image'] = null;
 			}
