@@ -113,8 +113,11 @@ body {
 	.serif {
 		font-family: $font-family-serif;
 	}
-	.letter-spacing-1-5 {
-		letter-spacing: 1.5;
+	.le-1-3 {
+		letter-spacing: 1.3px;
+	}
+	.le-1-5 {
+		letter-spacing: 1.5px;
 	}
 	.w-6 {
 		width: 6px;
@@ -145,6 +148,12 @@ body {
 	.fixed {
 		position: fixed;
 	}
+	textarea {
+  	box-shadow: none;
+  	overflow: hidden;
+  	resize: none;
+  	outline: none;
+  }
 }
 
 .site-wrapper,
@@ -173,7 +182,15 @@ $xxl-desktop: 1980px;
 @media only screen and (min-width: $xl-desktop) {}
 @media only screen and (min-width: $xxl-desktop) {}
 
-
+/*REGISTRO*/
+.hero-image-registro {
+	.registro {
+		margin-bottom: 0!important;
+		.caja {
+			height: 400px;
+		}
+	}
+}
 /*MENÚ*/
 header {
 	position: fixed;
@@ -244,8 +261,8 @@ header {
 }
 #comentar {
 	border-radius: 5px;
-	border: 1px solid rgb(185, 163, 128);
-	border-top: 2px solid rgb(197, 180, 151);
+	border: 1px solid #e7e7e7;
+	border-top: 2px solid #626262;
 	input { 
 		border: 0;
 		height: 80px;
@@ -255,9 +272,14 @@ header {
 	  }
 	}
 	.publicacion { 
-	  textarea {
-	  	box-shadow: none;
-	  }
+		textarea {
+			min-height: 100px;
+    	max-height: 100%;
+		}
+	  .flecha-dropdown {
+  		transform: rotate(180deg);
+			height: 10px;
+  	}
 	  .dropdown-menu {
 	  	width: 186px;
 		  top: 100%;
@@ -317,6 +339,10 @@ header {
 	}
 	.comentar {
 		@include transition(all .2s ease-in-out);
+		textarea {
+			height: 28px;
+			border: 1px solid #e7e7e7;
+		}
 	}
 }
 #box-right {
@@ -570,8 +596,12 @@ footer {
 }
 /*PERFIL*/
 .name .img-publicacion {
-	height: 230px;
-	overflow: hidden;
+	height: auto;
+	img {
+		width: auto;
+	  max-width: 100%;
+	  height: auto;
+	}
 }
 /*PERFIL-EDITABLE*/
 #perfil-contenido {
