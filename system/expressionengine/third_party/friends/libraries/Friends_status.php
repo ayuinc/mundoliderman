@@ -105,15 +105,17 @@ class Friends_status extends Friends
 		//	Get statuses
 		//	----------------------------------------
 
-		$sql	= "SELECT 	fs.status_id 	AS friends_status_id,
-							fs.member_id 	AS friends_member_id,
-							fs.status 		AS friends_status,
-							fs.status_date 	AS friends_status_date,
-							private 		AS friends_private,
-							fse.category    AS friends_category,
-							fse.image 		AS friends_image
+		$sql	= "SELECT 	fs.status_id 		AS friends_status_id,
+							fs.member_id 		AS friends_member_id,
+							fs.status 			AS friends_status,
+							fs.status_date 		AS friends_status_date,
+							private 			AS friends_private,
+							fse.category_id 	AS friends_category_id,
+							fse.image 			AS friends_image,
+							fsc.category_name 	AS friends_category_name
 				   FROM 	exp_friends_status fs
 				   LEFT OUTER JOIN exp_friends_status_extra fse ON fs.status_id = fse.status_id
+				   INNER JOIN exp_friends_status_category fsc ON fse.category_id = fsc.category_id
 				   WHERE 	fs.site_id
 				   IN 		(".implode( ',', ee()->TMPL->site_ids ).")";
 

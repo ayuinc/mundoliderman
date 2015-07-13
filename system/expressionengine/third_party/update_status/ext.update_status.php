@@ -34,7 +34,7 @@ class Update_status_ext
 	{		
 		$fields = array(
 			'status_id' => array('type' => 'int', 'unsigned' => TRUE),
-			'category' => array('type' => 'int', 'unsigned' => TRUE),
+			'category_id' => array('type' => 'int', 'unsigned' => TRUE),
 			'image' => array('type' => 'varchar', 'constraint' => '250', 'null' => TRUE)
 		);
 
@@ -155,7 +155,7 @@ class Update_status_ext
 
 			$extra_data = array();
 			$extra_data['status_id'] = $status_id;
-			$extra_data['category'] = $status_category;
+			$extra_data['category_id'] = $status_category;
 
 			$msg = "";
 			if (isset($data['status_image'])) {
