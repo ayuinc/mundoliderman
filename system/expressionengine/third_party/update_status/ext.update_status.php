@@ -58,6 +58,41 @@ class Update_status_ext
 		unset($fields);
 
 		$data = array(
+			array(
+				'category_id' => '0',
+				'category_name' => 'Escoge una categoría'
+			),
+			array(
+				'category_id' => '1',
+				'category_name' => 'Quiero divertirme'
+			),
+			array(
+				'category_id' => '2',
+				'category_name' => 'Quiero dar mi testimonio'
+			),
+			array(
+				'category_id' => '3',
+				'category_name' => 'Tengo una solicitud'
+			),
+			array(
+				'category_id' => '4',
+				'category_name' => 'Tengo una consulta'
+			),
+			array(
+				'category_id' => '5',
+				'category_name' => 'Necesito ayuda'
+			),
+			array(
+				'category_id' => '6',
+				'category_name' => 'Otro'
+			)
+		);
+
+		ee()->db->insert_batch('friends_status_category', $data);
+
+		unset($data);
+
+		$data = array(
 			'class' => __CLASS__,
 			'method' => 'update_cat_img_status',
 			'hook' => 'friends_status_update_status',
