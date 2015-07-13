@@ -45,6 +45,18 @@ class Update_status_ext
 
 		unset($fields);
 
+		$fields = array(
+			'category_id' => array('type' => 'int', 'unsigned' => TRUE),
+			'category_name' => array('type' => 'varchar', 'constraint' => '250', 'null' => FALSE)
+		);
+
+		ee()->dbforge->add_field($fields);
+		ee()->dbforge->add_key('category_id', TRUE);
+
+		ee()->dbforge->create_table('friends_status_category');
+
+		unset($fields);
+
 		$data = array(
 			'class' => __CLASS__,
 			'method' => 'update_cat_img_status',
@@ -94,6 +106,7 @@ class Update_status_ext
 	function disable_extension()
 	{
 		ee()->dbforge->drop_table('friends_status_extra');
+		ee()->dbforge->drop_table('friends_status_category');
 
 		ee()->db->where('class', __CLASS__);
 		ee()->db->delete('extensions');
