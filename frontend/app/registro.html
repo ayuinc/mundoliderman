@@ -15,13 +15,51 @@
   <div class="site-wrapper"> <!-- Body -->
     <header></header>
     <main class="registro">
-      <div style="background-image: url(assets/img/Registro.png)" class="hero-image-registro bg-image-block-center minhp-100">
-        <div class="container-md ph-42">
-          <div class="caja w-100 bg-white">
-            
+      <div style="background-image: url(assets/img/Registro.png)" class="hero-image-registro bg-img-block-center minhp-100">
+        <div class="container-sm ph-0">
+          <div class="caja w-100 bg-white minhp-90 text-center p-42">
+            <div class="row pt-42 ph-21">
+              <div class="col-md-6 col-xs-offset-2 pr-0">
+                <h1 class="title-login text-uppercase text-gray-darker bold float-left pl-14">Mundo Liderman</h1>
+              </div>
+              <div class="col-md-2 pl-0 text-left pt-7"> 
+                <img src="assets/img/Liderboy.png" alt="Mundo Liderman" class="liderboy">
+              </div>
+            </div>
+            <form action="" class="text-right ph-42 mh-42 mt-42 pt-42">
+              <input type="text" placeholder="Ingresa tu Nombre y Apellido" class="usuario serif fz-24 w-100 mb-35"></br>
+              <input type="password" placeholder="Ingresa tu Contraseña" class="serif fz-24 w-100 mb-42">
+              <div type="submit" class="submit btn btn-info ph-28 pv-7 mt-14 border-radius">
+                <p class="sans-serif light le-2 fz-14 text-white float-left pt-14 lh-0 pr-21">INGRESAR</p>
+                <img src="assets/img/Flecha-para-arriba.png" alt="">
+              </div>
+            </form>
           </div>
         </div>
       </div>
     </main>
     <footer></footer>
   </div>
+  <script src="assets/js/jquery.min.js"></script> <!-- App scripts -->
+  <script src="assets/js/scripts.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      function validar(e) {
+        var inputVal = String.fromCharCode(e.keyCode);
+        var mensaje = document.getElementById("mensaje");
+          var numericReg = /^[0-9\b]+$/;
+        if(numericReg.test(inputVal) && e.keyCode != 8) {
+          // mensaje.innerText = "No se puede ingresar numeros";
+            e.preventDefault();
+          }
+          else {
+            mensaje.innerText = "";;
+            return;
+          }
+      }
+      $('.usuario').keydown(function(e) {
+          validar(e);
+      });
+    });
+  </script>
+</html>

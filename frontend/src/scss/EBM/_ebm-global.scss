@@ -61,6 +61,10 @@ body {
 		font-size: 22px;
 		font-size: rem(22px);
 	}
+	.fz-24 {
+		font-size: 22px;
+		font-size: rem(22px);
+	}
 	.fz-28 {
 		font-size: 28px;
 		font-size: rem(28px);
@@ -183,11 +187,36 @@ $xxl-desktop: 1980px;
 @media only screen and (min-width: $xxl-desktop) {}
 
 /*REGISTRO*/
-.hero-image-registro {
-	.registro {
-		margin-bottom: 0!important;
+.registro {
+	margin-bottom: 0!important;
+	.hero-image-registro {
+		@include flex-column-center;
 		.caja {
-			height: 400px;
+			opacity: 0.9;
+			h1 {
+				font-size: 40px;
+			}
+			.liderboy {
+				width: 80px;
+			}
+			form {
+				input {
+					border-color: transparent;
+	  			border-bottom-color: gray;
+	  			border-width: 1px;
+	  			outline: none;
+	  			@include placeholder {
+				    color: rgb(104, 100, 98);
+				  }
+				  &:last-child {
+				  	border-bottom-color: transparent!important;
+				  }
+  			}
+  			.submit img {
+  			 @include transform(rotate(90deg));
+  			 width: 14px;
+  			}
+			}
 		}
 	}
 }
