@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="en">
   <meta charset="utf-8">
-  <title>Mundo Liderman</title>
+  <title>Mundo Liderman - Perfil</title>
   <meta name="description" content="">
   <meta name="keywords" content=""> 
-  <meta name="author" content="">
+  <meta name="author" content="@MadeByGus">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <link rel="icon" type="image/png" href="{site_url}frontend/app/assets/img/Favicon.png" />
   <link rel="shortcut icon" href="{site_url}frontend/app/assets/img/Favicon.png">
@@ -45,7 +45,7 @@
               </button>
               <ul class="dropdown-menu mt-0 b-none fz-14" aria-labelledby="dropdownMenu1">
                 <li class="triangulo"></li>
-                <li><a href="{path='sprint1/profile'}" class="lh-1">Mi Perfil</a></li>
+                <li><a href="#" class="lh-1">Mi Perfil</a></li>
                 <li><a href="#" class="lh-1">Estadísticas</a></li>
                 <li><a href="#" class="lh-1">Salir</a></li>
               </ul>
@@ -60,11 +60,68 @@
         </div>
       </div>
     </header>
-    <main class="site-content pb-70" role="main">
-      <div class="container container-index  pt-42 clearfix mb-70 ph-0">
-        <div id="box-left" class="col-md-8 pl-0">
-
-		  {exp:friends:status_form return="{path='sprint1/wall'}" form_id="comentar" form_class="bg-white"}
+    <main class="site-content clearfix pb-42">
+      <section id="menu-vertical" class="col-md-4 pr-42 pl-0">
+        <div class="contenedor-menu border-right-gray-light border-bottom-gray-light pt-35">
+          <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab" id="headingOne">
+                <h4 class="panel-title m-0">
+                  <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <h2 class="active-slide fz-28 text-gray-dark2 m-0 pt-14 pb-21">Servicios <img src="{site_url}frontend/app/assets/img/FlechaHerman.png" alt="" class="pl-21"></h2>
+                  </a>
+                </h4>
+              </div>
+              <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                <div class="panel-body">
+                  <div class="">
+                    <ul class="p-0">
+                      <li class="pv-7"><a href="{path='sprint1/lidernet'}" class="text-gray-dark2">Lidernet</a></li>
+                      <li class="pv-7"><a href="{path='sprint1/lidermania'}" class="text-gray-dark2">Lidermanía</a></li>
+                      <li class="pv-7"><a href="{path='sprint1/prestamo'}" class="text-gray-dark2">Préstamos</a></li>
+                      <li class="pv-7"><a href="{path='sprint1/tareo'}" class="text-gray-dark2">Tareo</a></li>
+                      <li class="pv-7"><a href="{path='sprint1/lidercard'}" class="text-gray-dark2">LíderCard</a></li>
+                      <li class="pv-7"><a href="{path='sprint1/capacitacion'}" class="text-gray-dark2">Capacitaciones</a></li>
+                      <li class="pv-7"><a href="{path='sprint1/boleta'}" class="text-gray-dark2">Boletas de Pago</a></li>
+                      <li class="pv-7"><a href="{path='sprint1/sgi'}" class="text-gray-dark2">SGI</a></li>
+                      <li class="pv-7"><a href="#.html" class="text-gray-dark2">Tienda</a></li>
+                      <li class="pv-21 btn-especial">
+                        <h3 class="m-0"><a href="" class="fz-24 text-gray-dark2 text-hover-gray">Para administradores</a></h3>
+                        <span>Estadísticas Lidernet</span>
+                      </li>
+                      <li class="pv-21 btn-especial">
+                        <h3 class="m-0"><a href="" class="fz-24 text-gray-dark2 text-hover-gray">Para zonales</a></h3>
+                        <span>Reportes</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="tareo-contenido" class="col-md-8 pb-42">
+        <div class="container pt-42 w-100 pr-42">
+          <div class="perfil-servicios clearfix bg-white pv-21 pl-42">
+            <div class="col-md-4 pr-0">
+              <div style="background-image:url({site_url}frontend/app/assets/img/Herman_Profile_Pic.png)" class="bg-img-block-center"></div>
+            </div>
+            <div class="col-md-7 pl-28 pt-21">
+              <h3 class="text-warning book m-0">Herman Marín</h2>
+              <h4 class="text-gray fz-16 m-0 pt-7 book">Supervisor, Zona - Unidad</h4>
+              <img src="{site_url}frontend/app/assets/img/Ubicacion.png" alt="" class="pb-4">
+              <span class="light">Empresa Empleadora</span>
+              <p class="fz-12 pt-21">Este puede ser texto de Introducción del Liderman para que la gente sepa quién es esa persona.</br>Periodo en la Planilla: DD/MM/AA</p>
+            </div>
+            <div class="col-md-1 ph-0">
+              <a href="{path='sprint1/edit_profile'}">
+                <span class="fz-12 text-gray light">Editar</span>
+                <img src="{site_url}frontend/app/assets/img/Icono_Editar.png" alt="">
+              </a>
+            </div>
+          </div>
+          {exp:friends:status_form return="{path='sprint1/wall'}" form_id="comentar" form_class="bg-white mt-42"}
           <!--<form id="comentar" class="bg-white" action="">-->
             <div class="publicacion clearfix">
               <div class="border-bottom-gray-lighter pr-21 pv-7">
@@ -84,15 +141,15 @@
                   </ul>-->
                   <select name="status_category" id="" class="btn bg-white dropdown-toggle b-none outline-none text-gray-light book serif">
                     <!--<option value="0" >Escoge una categoría</option>
-                  	<option value="1">Quiero divertirme</option>
-                  	<option value="2">Quiero dar mi testimonio</option>
-                  	<option value="3">Tengo una solicitud</option>
-                  	<option value="4">Tengo una consulta</option>
-                  	<option value="5">Necesito ayuda</option>
-                  	<option value="6">Otro</option>-->
-                  	{exp:status_category:all}
-	                  <option value="{category_id}">{category_name}</option>
-	                {/exp:status_category:all}
+                    <option value="1">Quiero divertirme</option>
+                    <option value="2">Quiero dar mi testimonio</option>
+                    <option value="3">Tengo una solicitud</option>
+                    <option value="4">Tengo una consulta</option>
+                    <option value="5">Necesito ayuda</option>
+                    <option value="6">Otro</option>-->
+                    {exp:status_category:all}
+                    <option value="{category_id}">{category_name}</option>
+                  {/exp:status_category:all}
                   </select>
                   
                 </div>
@@ -115,38 +172,30 @@
               </div>
             </div>
           <!--</form>-->
-		  {/exp:friends:status_form}
-
-		  {exp:friends:status member_id="CURRENT_USER"}
-		  <section id="post">
-            <div class="post-1 post bg-white ph-21 pt-28 pb-28 mt-42">
-              <div class="clearfix">
-                <div class="col-md-1 ph-0 pl-7">
-                  <div class="img-perfil bg-img-block-center brp-100" style="background-image: url(assets/img/Wall/Cara-1.png)"></div>
+      {/exp:friends:status_form}
+      {exp:friends:status member_id="CURRENT_USER"}
+          <div id="post">
+            <div class="post-1 post bg-white pl-28 pr-42 pt-28 pb-28 mt-42">
+              <div class="row">
+                <div class="col-md-1 pr-0 pl-7">
+                  <div class="img-perfil bg-img-block-center brp-100" style="background-image: url({site_url}frontend/app/assets/img/Herman_Profile_Pic.png)"></div>
                 </div>
-                <div class="name col-md-11 pl-21">
+                <div class="name col-md-11">
                   <div class="info-usuario pl-7 row">
                     <div class="col-md-9">
                       <span class="categoria text-uppercase fz-10 text-primary letter-spacing-1.5">{friends_category_name}</span>
+                      <span class="fz-10 text-gray-dark pl-7"><a href="">editar</a></span>
                       <h5 class="text-gray-darker m-0">{friends_screen_name}</h5>
-                      <p class="fz-10 m-0 text-gray"><a href="">Hace 3 horas. {friends_status_date format="%F %j, %Y"}</a></p>
+                      <p class="fz-10 m-0 text-gray"><a href="">Hace 3 horas</a></p>
                     </div>
                     <div class="col-md-3 text-center">
-                      <div class="aviso btn-aviso1 mh-21 bg-info">
-                        <div class="circle-green bg-white display-ib"></div>
-                        <h5 class="text-white thin m-0 display-ib pl-7 pv-7 fz-14">Resuelto</h5>
-                      </div>
-                      <div class="aviso btn-aviso2 mh-14 ph-7 bg-warning hidden">
-                        <div class="circle-green bg-white display-ib"></div>
-                        <h5 class="text-white thin m-0 display-ib pl-7 pv-7 fz-14">No resuelto</h5>
-                      </div>
                     </div>
                   </div>
                   <p class="parrafo pt-14 ph-7 text-gray-darker">{friends_status}</p>
-        				  {if friends_image}
-        				  <div class="pv-21 mh-7 bg-img-block-center w-100 minh-280" style="background-image:url({site_url}{friends_image})"></div>
-        				  {/if}
-                  <div class="clearfix ph-0 mh-7 thin text-gray pt-7 pb-7 border-bottom-gray-lighter fz-12">
+                  {if friends_image}
+                  <div class="img-publicacion w-100 pl-7"><img src="{site_url}{friends_image}" alt=""></div>
+                  {/if}
+                  <div class="clearfix ph-0 mh-7 thin text-gray pt-21 pb-7 border-bottom-gray-light fz-12">
                     <ul class="col-md-6 ph-0 mv-0">
                       <li class="pr-7 display-ib">
                         <a href="">Comentar &nbsp</a>
@@ -168,39 +217,39 @@
                     </ul>
                   </div>
                   <div class="comentar scroll-down clearfix pt-21 hidden">
-                    <div class="col-md-1 pr-0">
-                      <div class="img-respuesta bg-img-block-center brp-100" style="background-image: url(assets/img/Wall/Carita2.png)"></div>
+                    <div class="col-md-1">
+                      <img src="{site_url}frontend/app/assets/img/Wall/Carita2.png" alt="">
                     </div>
                     <div class="col-md-11 lh-1">
                       <div>
-                        <span class="fz-14 text-success pr-7">Cecilia Ramírez</span>
+                        <span class="fz-12 text-success pr-7">Cecilia Ramírez</span>
                         <img src="{site_url}frontend/app/assets/img/forward.png" alt="" class="display-ib">
                         <span class="text-gray fz-10 light">Ivo Sadner</span>
                         <span class="text-gray fz-10 light pl-7">hace 9 días</span>
-                        <p class="fz-10 pt-7 mb-0 pb-7 parrafo">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam quidem corrupti optio sed facilis omnis perferendis dolores vero qui illo, beatae velit suscipit tempora iure molestias nisi earum sunt fugit.</p>
+                        <p class="fz-10 pt-7 mb-0">Lorem ipsum door sit amet!</p>
                         <span class="fz-8 text-gray-light">1</span>
                         <img src="{site_url}frontend/app/assets/img/Flecha_Abajo.png" alt="" class="w-6">
                         <span class="fz-8 text-gray-light">|</span>
                         <img src="{site_url}frontend/app/assets/img/Flecha_Abajo.png" alt="" class="w-6 rotate-180">
-                        <span class="responder text-gray-dark book fz-10 light pl-7"><a href="">Responder</a></span>
-                        <span class="text-gray-dark book fz-10 light pl-7"><a href="">Compartir</a></span>
+                        <span class="responder text-gray-dark book fz-8 light pl-7"><a href="">Responder</a></span>
+                        <span class="text-gray-dark book fz-8 light pl-7"><a href="">Compartir</a></span>
                       </div>
                       <div class="respuesta clearfix pt-21 hidden">
                         <div class="col-md-1 pl-0">
-                          <div class="img-respuesta bg-img-block-center brp-100" style="background-image: url({site_url}frontend/app/assets/img/Wall/Carita2.png)"></div>
+                          <img src="{site_url}frontend/app/assets/img/Wall/Carita2.png" alt="">
                         </div>
                         <div class="col-md-11 pl-7">
-                          <span class="fz-14 text-success pr-7">Ivo Sadner</span>
+                          <span class="fz-12 text-success pr-7">Ivo Sadner</span>
                           <img src="{site_url}frontend/app/assets/img/forward.png" alt="" class="display-ib">
                           <span class="text-gray fz-10 light">Cecilia Ramírez</span>
                           <span class="text-gray fz-10 light pl-7">hace 9 días</span>
-                          <p class="fz-10 pt-7 mb-0 pb-7 parrafo">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam quidem corrupti optio sed facilis omnis perferendis dolores vero qui illo, beatae velit suscipit tempora iure molestias nisi earum sunt fugit.</p>
+                          <p class="fz-10 pt-7 mb-0">Lorem ipsum door sit amet!</p>
                           <span class="fz-8 text-gray-light">1</span>
                           <img src="{site_url}frontend/app/assets/img/Flecha_Abajo.png" alt="" class="w-6">
                           <span class="fz-8 text-gray-light">|</span>
                           <img src="{site_url}frontend/app/assets/img/Flecha_Abajo.png" alt="" class="w-6 rotate-180">
-                          <span class="text-gray-dark book fz-10 light pl-7"><a href="" class="responder">Responder</a></span>
-                          <span class="text-gray-dark book fz-10 light pl-7"><a href="">Compartir</a></span>
+                          <span class="text-gray-dark book fz-8 light pl-7"><a href="" class="responder">Responder</a></span>
+                          <span class="text-gray-dark book fz-8 light pl-7"><a href="">Compartir</a></span>
                         </div>
                       </div>
                     </div>
@@ -208,29 +257,25 @@
                 </div>
               </div>
             </div>
-          </section>
+          </div>
           {/exp:friends:status}
-
-			<!--
-            <div class="post-2 post bg-white ph-21 pt-28 pb-28 mt-42">
-              <div class="clearfix">
-                <div class="col-md-1 ph-0 pl-7">
-                  <div class="img-perfil bg-img-block-center brp-100" style="background-image: url({site_url}frontend/app/assets/img/Wall/Cara-2.png)"></div>
+            <!--<div class="post-2 post bg-white pl-28 pr-42 pt-28 pb-28 mt-42">
+              <div class="row">
+                <div class="col-md-1 pr-0 pl-7">
+                  <div class="img-perfil bg-img-block-center brp-100" style="background-image: url({site_url}frontend/app/assets/img/Herman_Profile_Pic.png)"></div>
                 </div>
-                <div class="name col-md-11 pl-21">
+                <div class="name col-md-11">
                   <div class="info-usuario pl-7 row">
                     <div class="col-md-9">
-                      <span class="categoria text-uppercase fz-10 text-primary letter-spacing-1.5">Quiero divertirme</span>
-                      <h5 class="text-gray-darker m-0">Santiago López</h5>
+                      <span class="categoria text-uppercase fz-10 text-primary letter-spacing-1.5">Tengo una solicitud</span>
+                      <h5 class="text-gray-darker m-0">Herman Marín</h5>
                       <p class="fz-10 m-0 text-gray"><a href="">Hace 3 horas</a></p>
                     </div>
                     <div class="col-md-3 text-center">
-                    
                     </div>
                   </div>
-                  <p class="parrafo pt-14 ph-7 text-gray-darker">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam quidem corrupti optio sed facilis omnis perferendis dolores vero qui illo, beatae velit suscipit tempo iure moles nisi earum sunt fugit.</p>
-                  <div class="pv-21 mh-7 bg-img-block-center w-100 minh-280" style="background-image:url({site_url}frontend/app/assets/img/Wall/Foto3.png)"></div>
-                  <div class="clearfix ph-0 mh-7 thin text-gray pt-28 pb-7 border-bottom-gray-lighter fz-12">
+                  <p class="parrafo pt-14 ph-7 text-gray-darker">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam quidem corrupti optio sed facilis omnis perferendis dolores vero qui illo, beatae velit suscipit tempora iure molestias nisi earum sunt fugit.</p>
+                  <div class="clearfix ph-0 mh-7 thin text-gray pt-7 pb-7 border-bottom-gray-light fz-12">
                     <ul class="col-md-6 ph-0 mv-0">
                       <li class="pr-7 display-ib">
                         <a href="">Comentar &nbsp</a>
@@ -243,89 +288,58 @@
                     </ul>
                     <ul class="col-md-6 ph-0 mv-0 text-right">
                       <li class="display-ib">
-                        <a href="">3 &nbsp</a>
+                        <a href="">2 &nbsp</a>
                         <img src="{site_url}frontend/app/assets/img/Icono_Corazon.png" alt="">
                       </li>
-                      <li class="like display-ib pl-7">
-                        <a href="">&nbsp 24 comentarios &nbsp</a>
+                      <li class="display-ib pl-7">
+                        <a href="" class="comment text-not-underline">&nbsp 24 comentarios &nbsp</a>
                       </li>
                     </ul>
+                  </div>
+                  <div class="comentar scroll-down clearfix pt-21 hidden">
+                    <div class="col-md-1">
+                      <img src="{site_url}frontend/app/assets/img/Wall/Carita2.png" alt="">
+                    </div>
+                    <div class="col-md-11 lh-1">
+                      <div>
+                        <span class="fz-12 text-success pr-7">Cecilia Ramírez</span>
+                        <img src="{site_url}frontend/app/assets/img/forward.png" alt="" class="display-ib">
+                        <span class="text-gray fz-10 light">Ivo Sadner</span>
+                        <span class="text-gray fz-10 light pl-7">hace 9 días</span>
+                        <p class="fz-10 pt-7 mb-0">Lorem ipsum door sit amet!</p>
+                        <span class="fz-8 text-gray-light">1</span>
+                        <img src="{site_url}frontend/app/assets/img/Flecha_Abajo.png" alt="" class="w-6">
+                        <span class="fz-8 text-gray-light">|</span>
+                        <img src="{site_url}frontend/app/assets/img/Flecha_Abajo.png" alt="" class="w-6 rotate-180">
+                        <span class="responder text-gray-dark book fz-8 light pl-7"><a href="">Responder</a></span>
+                        <span class="text-gray-dark book fz-8 light pl-7"><a href="">Compartir</a></span>
+                      </div>
+                      <div class="respuesta clearfix pt-21 hidden">
+                        <div class="col-md-1 pl-0">
+                          <img src="{site_url}frontend/app/assets/img/Wall/Carita2.png" alt="">
+                        </div>
+                        <div class="col-md-11 pl-7">
+                          <span class="fz-12 text-success pr-7">Ivo Sadner</span>
+                          <img src="{site_url}frontend/app/assets/img/forward.png" alt="" class="display-ib">
+                          <span class="text-gray fz-10 light">Cecilia Ramírez</span>
+                          <span class="text-gray fz-10 light pl-7">hace 9 días</span>
+                          <p class="fz-10 pt-7 mb-0">Lorem ipsum door sit amet!</p>
+                          <span class="fz-8 text-gray-light">1</span>
+                          <img src="{site_url}frontend/app/assets/img/Flecha_Abajo.png" alt="" class="w-6">
+                          <span class="fz-8 text-gray-light">|</span>
+                          <img src="{site_url}frontend/app/assets/img/Flecha_Abajo.png" alt="" class="w-6 rotate-180">
+                          <span class="text-gray-dark book fz-8 light pl-7"><a href="" class="responder">Responder</a></span>
+                          <span class="text-gray-dark book fz-8 light pl-7"><a href="">Compartir</a></span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="post-3 post bg-white ph-21 pt-28 pb-28 mt-42">
-              <div class="clearfix">
-                <div class="col-md-1 ph-0 pl-7">
-                  <div class="img-perfil bg-img-block-center brp-100" style="background-image: url({site_url}frontend/app/assets/img/Wall/Cara-1.png)"></div>
-                </div>
-                <div class="name col-md-11 pl-21">
-                  <div class="info-usuario pl-7 row">
-                    <div class="col-md-9">
-                      <span class="categoria text-uppercase fz-10 text-primary letter-spacing-1.5">Tengo una solicitud</span>
-                      <h5 class="text-gray-darker m-0">Javier Cadilla</h5>
-                      <p class="fz-10 m-0 text-gray"><a href="">Hace 3 horas</a></p>
-                    </div>
-                    <div class="col-md-3 text-center">
-                      <div class="aviso btn-aviso1 mh-21 bg-info hidden">
-                        <div class="circle-green bg-white display-ib"></div>
-                        <h5 class="text-white thin m-0 display-ib pl-7 pv-7 fz-14">Resuelto</h5>
-                      </div>
-                      <div class="aviso btn-aviso2 mh-14 ph-7 bg-warning">
-                        <div class="circle-green bg-white display-ib"></div>
-                        <h5 class="text-white thin m-0 display-ib pl-7 pv-7 fz-14">No resuelto</h5>
-                      </div>
-                    </div>
-                  </div>
-                  <p class="parrafo pt-14 ph-7 text-gray-darker">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam quidem corrupti optio sed facilis omnis perferendis dolores vero qui illo, beatae velit suscipit tempora iure molestias nisi earum sunt fugit.</p>
-                  <div class="clearfix ph-0 mh-7 thin text-gray pt-7 pb-7 border-bottom-gray-lighter fz-12">
-                    <ul class="col-md-6 ph-0 mv-0">
-                      <li class="pr-7 display-ib">
-                        <a href="">Comentar &nbsp</a>
-                        <img src="{site_url}frontend/app/assets/img/Icono_Comentar.png" alt="">
-                      </li>
-                      <li class="display-ib pl-14">
-                        <a href="">Me gusta &nbsp</a>
-                        <img src="{site_url}frontend/app/assets/img/me_gusta.png" alt="">
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>-->
-
+          </div>-->
         </div>
-        <div id="box-right" class="col-md-4 pl-42 pr-0">
-          <div class="noticia ml-42">
-            <img src="{site_url}frontend/app/assets/img/Wall/Noticias1.png" alt="">
-            <div class="nota bg-white minhp-30 ph-21 pv-14 border-bottom-gray-light">
-              <span class="text-uppercase text-primary fz-10">NOTICIA</span>
-              <h5 class="text-uppercase mt-0 fz-14 text-gray-dark2">Conoce a la unidad lotería matríz</h5>
-              <p class="fz-12 text-gray-darker">Lorem ipsum dolor sit amet, conse adipisicing elit. Illum eius sequi molestias.</p>
-              <p class="read text-right text-primary book fz-10"><a href="">Leer más &#8594</a></p>
-            </div>
-          </div>
-          <div class="noticia mt-35 ml-42">
-            <img src="{site_url}frontend/app/assets/img/Wall/Noticias2 .png" alt="">
-            <div class="nota bg-white minhp-30 ph-21 pv-14 border-bottom-gray-light">
-              <span class="text-uppercase text-primary fz-10">EVENTOS</span>
-              <h5 class="text-uppercase mt-0 fz-14 text-gray-dark2">Mira los saludos de líderman a las madres en su día</h5>
-              <p class="fz-12 text-gray-darker">Lorem ipsum dolor sit amet, conse adipisicing elit. Illum eius sequi molestias.</p>
-              <p class="read text-right text-primary book fz-10"><a href="">Leer más &#8594</a></p>
-            </div>
-          </div>
-          <div class="noticia mt-35 ml-42
-          ">
-            <img src="{site_url}frontend/app/assets/img/Wall/Noticias3.png" alt="">
-            <div class="nota bg-white minhp-30 ph-21 pv-14 border-bottom-gray-light">
-              <span class="text-uppercase text-primary fz-10">BLOG</span>
-              <h5 class="text-uppercase mt-0 fz-14 text-gray-dark2">Simulacro de sismo este 05 de junio, prepárate para el evento</h5>
-              <p class="fz-12 text-gray-darker">Lorem ipsum dolor sit amet, conse adipisicing elit. Illum eius sequi molestias.</p>
-              <p class="read text-right text-primary book fz-10"><a href="">Leer más &#8594</a></p>
-            </div>
-          </div>
-        </div>
-      </div>
+      </section>
     </main>
     <footer class="w-100 fixed">
       <div id="up" class="text-center">
@@ -380,16 +394,16 @@
   <script src="{site_url}frontend/app/assets/js/jquery.min.js"></script> <!-- App scripts -->
   <script src="{site_url}frontend/app/assets/js/scripts.min.js"></script>
   <script src="{site_url}frontend/app/assets/js/b3/dropdown.js"></script>
+  <script src="{site_url}frontend/app/assets/js/b3/collapse.js"></script>
   <script src="{site_url}frontend/app/assets/js/scroll-control.js"></script>
-  <script src="{site_url}frontend/app/assets/js/aviso-control.js"></script>
   <script>
-  	$(document).ready(function() {
-  		$("#uploadImage").on("click", function(e) {
-  			e.preventDefault();
-  			$("#inputFile").trigger("click");
-  		});
+    $(document).ready(function() {
+      $("#uploadImage").on("click", function(e) {
+        e.preventDefault();
+        $("#inputFile").trigger("click");
+      });
 
-  		$("#comentar").attr("enctype", "multipart/form-data");
-  	});
+      $("#comentar").attr("enctype", "multipart/form-data");
+    });
   </script>
 </html>

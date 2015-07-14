@@ -1,35 +1,13 @@
-<!--<h2>Resultados de tareo del mes de mayo del 2015</h2>-->
-{!--{exp:webservice:tareo dni="27415554" mes="5"}
-	<hr>
-	<table>
-		<tr>
-			<td>Fecha</td>
-			<td>{FechaTareo}</td>
-		</tr>
-		<tr>
-			<td>Evento</td>
-			<td>{Evento}</td>
-		</tr>
-		<tr>
-			<td>Cliente</td>
-			<td>{Cliente}</td>
-		</tr>
-		<tr>
-			<td>Cargo</td>
-			<td>{Cargo}</td>
-		</tr>
-	</table>
-	<hr>
-{/exp:webservice:tareo}--}
 <!doctype html>
 <html lang="en">
   <meta charset="utf-8">
-  <title>Mundo Liderman - Tareo</title>
+  <title>Mundo Liderman - Lidernet</title>
   <meta name="description" content="">
   <meta name="keywords" content=""> 
   <meta name="author" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <link rel="shortcut icon" href="{site_url}frontend/app/assets/img/favicon.png">
+  <link rel="icon" type="image/png" href="{site_url}frontend/app/assets/img/Favicon.png" />
+  <link rel="shortcut icon" href="{site_url}frontend/app/assets/img/Favicon.png">
   <link href="{site_url}frontend/app/assets/css/style.css" rel="stylesheet"> <!-- App styles -->
   <link href="{site_url}frontend/app/assets/css/ebm.css" rel="stylesheet">
   <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,700|Oswald:400,300,700' rel='stylesheet' type='text/css'>
@@ -143,7 +121,7 @@
               </a>
             </div>
           </div>
-          <h2 class="fz-30 border-bottom-gray pb-7 text-gray-darker pt-14">Tareo</h2>
+          <div><h2 class="fz-28 border-bottom-gray-darker pb-14 text-gray-darker pt-21">Lidernet</h2></div>
           <div class="semaforo clearfix bg-info border-radius mt-28 ph-42 text-white">
             <div class="col-md-1 text-center">
               <img src="{site_url}frontend/app/assets/img/Check.png" alt="">
@@ -153,12 +131,12 @@
               <p class="fz-14 text-white lh-1-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, praesentium. Blanditiis ab voluptatem molestiae odit natus saepe asperiores..</p>
             </div>
           </div>
-          <div class="tareo">
-            <div class="datos bg-white minh-140 pv-42 ph-42 mt-42">
-              <div class="ph-42 mh-14">
-                <span class="fz-16 text-gray-darker">Buscar el periodo</span>
+          <div class="lidernet tareo">
+            <div class="datos bg-white pv-42 ph-42">
+              <div class="pl-14 ml-14">
+                <span class="fz-18 text-gray-darker">Buscar el periodo</span>
                 <div class="btn-group month">
-                  <button type="button" class="btn btn-default btn-dropdown dropdown-toggle mh-21" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <button type="button" class="btn btn-default btn-dropdown dropdown-toggle mh-21 pt-7" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Mes <span class="pl-14"><img src="{site_url}frontend/app/assets/img/Flecha_Abajo.png" alt=""></span>
                   </button>
                   <ul class="dropdown-menu">
@@ -177,7 +155,7 @@
                   </ul>
                 </div>
                 <div class="btn-group year">
-                  <button type="button" class="btn btn-default btn-dropdown dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <button type="button" class="btn btn-default btn-dropdown dropdown-toggle pt-7" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Año <span class="pl-14"><img src="{site_url}frontend/app/assets/img/Flecha_Abajo.png" alt=""></span>
                   </button>
                   <ul class="dropdown-menu">
@@ -195,49 +173,41 @@
                     <li><a href="#">2015</a></li>
                   </ul>
                 </div>
-                <h3 class="text-gray-darker bold">Resultados del tareo del mes de mayo de 2015</h3>
-                <ul class="clearfix pl-7 pv-21 border-bottom-gray-lighter">
-                  <li>
-                    <span class="col-md-4 fz-18 text-gray-dark2">Fecha</span><p class="col-md-8 fz-18 text-gray-darker">1 de Mayo de 2015</p>
-                  </li>
-                  <li>
-                    <span class="col-md-4 fz-18 text-gray-dark2">Evento</span><p class="col-md-8 fz-18 text-gray-darker">Diruno</p>
-                  </li>
-                  <li>
-                    <span class="col-md-4 fz-18 text-gray-dark2">Cliente</span><p class="col-md-8 fz-18 text-gray-darker">Lan Perú S.A.</p>
-                  </li>
-                  <li>
-                    <span class="col-md-4 fz-18 text-gray-dark2">Cargo</span><p class="col-md-8 fz-18 text-gray-darker">Agente seguridad HRS</p>
-                  </li>
-                </ul>
-                <ul class="clearfix pl-7 pv-21 border-bottom-gray-lighter">
-                  <li>
-                    <span class="col-md-4 fz-18 text-gray-dark2">Fecha</span><p class="col-md-8 fz-18 text-gray-darker">1 de Mayo de 2015</p>
-                  </li>
-                  <li>
-                    <span class="col-md-4 fz-18 text-gray-dark2">Evento</span><p class="col-md-8 fz-18 text-gray-darker">Diruno</p>
-                  </li>
-                  <li>
-                    <span class="col-md-4 fz-18 text-gray-dark2">Cliente</span><p class="col-md-8 fz-18 text-gray-darker">Lan Perú S.A.</p>
-                  </li>
-                  <li>
-                    <span class="col-md-4 fz-18 text-gray-dark2">Cargo</span><p class="col-md-8 fz-18 text-gray-darker">Agente seguridad HRS</p>
-                  </li>
-                </ul>
-                <ul class="clearfix pl-7 pv-21 border-bottom-gray-lighter">
-                  <li>
-                    <span class="col-md-4 fz-18 text-gray-dark2">Fecha</span><p class="col-md-8 fz-18 text-gray-darker">1 de Mayo de 2015</p>
-                  </li>
-                  <li>
-                    <span class="col-md-4 fz-18 text-gray-dark2">Evento</span><p class="col-md-8 fz-18 text-gray-darker">Diruno</p>
-                  </li>
-                  <li>
-                    <span class="col-md-4 fz-18 text-gray-dark2">Cliente</span><p class="col-md-8 fz-18 text-gray-darker">Lan Perú S.A.</p>
-                  </li>
-                  <li>
-                    <span class="col-md-4 fz-18 text-gray-dark2">Cargo</span><p class="col-md-8 fz-18 text-gray-darker">Agente seguridad HRS</p>
-                  </li>
-                </ul>
+              </div>
+              <div class="articulo pt-28 ph-28">
+                <div class="img-articulo"><img src="{site_url}frontend/app/assets/img/Foto2.png" alt="" class="w-100"></div>
+                <div class="texto pt-28 pb-14 text-justify">
+                  <h3 class="bold text-gray">Mes de la Madre</h3>
+                  <div class="parrafos pt-14">
+                    <p class="text-gray-darker">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae possimus sint excepturi, iste esse optio libero amet porro perspiciatis quia voluptas voluptatum facere nostrum debitis quaerat omnis necessitatibus quibusdam consectetur:</p>
+                    <ul class="pl-0 serif text-gray-darker">
+                      <li>Saber</li>
+                      <li>Perdonar</li>
+                      <li>Orientar</li>
+                    </ul>
+                    <p class="text-gray-darker">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum, dolorum. Cumque numquam alias, ut dolorum accusamus officia reiciendis nesciunt provident dolorem, a quibusdam quo nam repellendus debitis beatae ratione nisi?</p>
+                    <p class="text-gray-darker">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae, cum. Dolorum sequi nihil optio similique sed, commodi quis tempore accusamus dolorem incidunt atque eveniet tempora, laborum eius! Eligendi quibusdam, nobis!</p>
+                    <p class="text-gray-darker">¡Lorem ipsum dolor sit amet, consectetu!</p>
+                  </div>
+                </div>
+                <div class="texto pt-7">
+                  <h3 class="bold text-gray">Preguntas al respecto de Lidernet</h3>
+                  <p class="pt-14">¿La palabra clave que aprendemos del día de las madres es saber, perdonar y orientar?</p>
+                  <p class="checkbox pl-14">
+                      <input id="male" type="radio" name="gender" value="male">
+                      <label for="male" class="text-gray-darker normal">Verdadero</label></br>
+                      <input id="female" type="radio" name="gender" value="female">
+                      <label for="female" class="text-gray-darker normal">Falso</label>
+                  </p>
+                  <p class="pt-14">¿Se brindará trato especial a los Liderman con buenas acciones?</p>
+                  <p class="checkbox pl-14">
+                      <input id="male" type="radio" name="gender" value="male">
+                      <label for="male" class="text-gray-darker normal">Verdadero</label></br>
+                      <input id="female" type="radio" name="gender" value="female">
+                      <label for="female" class="text-gray-darker normal">Falso</label>
+                  </p>
+                   <a href="" class="btn btn-enviar text-white text-hover-info br-none ph-21 thin ls-2 mt-42">ENVIAR <img src="{site_url}frontend/app/assets/img/Flecha_Publicar.png" alt="" class="pl-14"></a>
+                </div>
               </div>
             </div>
           </div>

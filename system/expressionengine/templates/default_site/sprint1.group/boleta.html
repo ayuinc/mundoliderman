@@ -1,35 +1,13 @@
-<!--<h2>Resultados de tareo del mes de mayo del 2015</h2>-->
-{!--{exp:webservice:tareo dni="27415554" mes="5"}
-	<hr>
-	<table>
-		<tr>
-			<td>Fecha</td>
-			<td>{FechaTareo}</td>
-		</tr>
-		<tr>
-			<td>Evento</td>
-			<td>{Evento}</td>
-		</tr>
-		<tr>
-			<td>Cliente</td>
-			<td>{Cliente}</td>
-		</tr>
-		<tr>
-			<td>Cargo</td>
-			<td>{Cargo}</td>
-		</tr>
-	</table>
-	<hr>
-{/exp:webservice:tareo}--}
 <!doctype html>
 <html lang="en">
   <meta charset="utf-8">
-  <title>Mundo Liderman - Tareo</title>
+  <title>Mundo Liderman - Boleta de Pago</title>
   <meta name="description" content="">
   <meta name="keywords" content=""> 
   <meta name="author" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <link rel="shortcut icon" href="{site_url}frontend/app/assets/img/favicon.png">
+  <link rel="icon" type="image/png" href="{site_url}frontend/app/assets/img/Favicon.png" />
+  <link rel="shortcut icon" href="{site_url}frontend/app/assets/img/Favicon.png">
   <link href="{site_url}frontend/app/assets/css/style.css" rel="stylesheet"> <!-- App styles -->
   <link href="{site_url}frontend/app/assets/css/ebm.css" rel="stylesheet">
   <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,700|Oswald:400,300,700' rel='stylesheet' type='text/css'>
@@ -60,7 +38,7 @@
           <div class="col-md-6"><p class="mt-14 mb-0 border-right-gray-light pr-14 text-right"><a href="" class="text-gray book fz-18 lh-0">Ir al inicio</a></p></div>
           <div class="col-md-6 text-right ph-0">
             <h5 class="text-gray-dark m-0 mt-14 light float-left pr-7 fz-18">Hola, Herman</h5>
-            <div class="perfil float-left" style="background-image: url({site_url}frontend/app/assets/img/Carita.png)"></div>
+            <div class="perfil float-left" style="background-image: url({site_url}frontend/app/5assets/img/Carita.png)"></div>
             <div class="dropdown herman-dropdown">
               <button class="bg-white dropdown-toggle b-none outline-none text-gray-light book serif" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                 <a href="" class="pl-7"><img src="{site_url}frontend/app/assets/img/FlechaHerman.png" alt="" class="mt-14"></a>
@@ -143,22 +121,13 @@
               </a>
             </div>
           </div>
-          <h2 class="fz-30 border-bottom-gray pb-7 text-gray-darker pt-14">Tareo</h2>
-          <div class="semaforo clearfix bg-info border-radius mt-28 ph-42 text-white">
-            <div class="col-md-1 text-center">
-              <img src="{site_url}frontend/app/assets/img/Check.png" alt="">
-            </div>
-            <div class="col-md-11 pb-7 pr-28">
-              <h3 class="fz-20 mb-7">Tu semáforo está en verde!</h3>
-              <p class="fz-14 text-white lh-1-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, praesentium. Blanditiis ab voluptatem molestiae odit natus saepe asperiores..</p>
-            </div>
-          </div>
-          <div class="tareo">
+          <div class="boleta">
+            <h2 class="fz-30 border-bottom-gray pb-7 pt-21 text-gray-darker">Boleta de pagos</h2>
             <div class="datos bg-white minh-140 pv-42 ph-42 mt-42">
-              <div class="ph-42 mh-14">
+              <div class="ph-14 ml-14 clearfix">
                 <span class="fz-16 text-gray-darker">Buscar el periodo</span>
                 <div class="btn-group month">
-                  <button type="button" class="btn btn-default btn-dropdown dropdown-toggle mh-21" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <button type="button" class="btn btn-default dropdown-toggle btn-dropdown mh-21" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Mes <span class="pl-14"><img src="{site_url}frontend/app/assets/img/Flecha_Abajo.png" alt=""></span>
                   </button>
                   <ul class="dropdown-menu">
@@ -177,7 +146,7 @@
                   </ul>
                 </div>
                 <div class="btn-group year">
-                  <button type="button" class="btn btn-default btn-dropdown dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <button type="button" class="btn btn-default dropdown-toggle btn-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Año <span class="pl-14"><img src="{site_url}frontend/app/assets/img/Flecha_Abajo.png" alt=""></span>
                   </button>
                   <ul class="dropdown-menu">
@@ -195,49 +164,143 @@
                     <li><a href="#">2015</a></li>
                   </ul>
                 </div>
+                <div class="imprimir btn btn-info">
+                  <img src="{site_url}frontend/app/assets/img/Imprimir_Icon.png" alt="">
+                  IMPRIMIR
+                </div>
                 <h3 class="text-gray-darker bold">Resultados del tareo del mes de mayo de 2015</h3>
-                <ul class="clearfix pl-7 pv-21 border-bottom-gray-lighter">
+                <ul class="col-md-5 clearfix ph-0 pt-21 mb-0">
                   <li>
-                    <span class="col-md-4 fz-18 text-gray-dark2">Fecha</span><p class="col-md-8 fz-18 text-gray-darker">1 de Mayo de 2015</p>
+                    <span class="col-md-7 fz-17 text-gray-dark ph-0">Código</span>
+                    <p class="col-md-5 fz-17 text-gray-darker ph-0">88839</p>
                   </li>
                   <li>
-                    <span class="col-md-4 fz-18 text-gray-dark2">Evento</span><p class="col-md-8 fz-18 text-gray-darker">Diruno</p>
+                    <span class="col-md-7 fz-17 text-gray-dark ph-0">Sueldo básico</span>
+                    <p class="col-md-5 fz-17 text-gray-darker ph-0">S/8.50</p>
                   </li>
                   <li>
-                    <span class="col-md-4 fz-18 text-gray-dark2">Cliente</span><p class="col-md-8 fz-18 text-gray-darker">Lan Perú S.A.</p>
+                    <span class="col-md-7 fz-17 text-gray-dark ph-0">Días Trabajados</span>
+                    <p class="col-md-5 fz-17 text-gray-darker ph-0">30</p>
                   </li>
                   <li>
-                    <span class="col-md-4 fz-18 text-gray-dark2">Cargo</span><p class="col-md-8 fz-18 text-gray-darker">Agente seguridad HRS</p>
-                  </li>
-                </ul>
-                <ul class="clearfix pl-7 pv-21 border-bottom-gray-lighter">
-                  <li>
-                    <span class="col-md-4 fz-18 text-gray-dark2">Fecha</span><p class="col-md-8 fz-18 text-gray-darker">1 de Mayo de 2015</p>
+                    <span class="col-md-7 fz-17 text-gray-dark ph-0">Horas extras 25%</span>
+                    <p class="col-md-5 fz-17 text-gray-darker ph-0">0.00</p>
                   </li>
                   <li>
-                    <span class="col-md-4 fz-18 text-gray-dark2">Evento</span><p class="col-md-8 fz-18 text-gray-darker">Diruno</p>
-                  </li>
-                  <li>
-                    <span class="col-md-4 fz-18 text-gray-dark2">Cliente</span><p class="col-md-8 fz-18 text-gray-darker">Lan Perú S.A.</p>
-                  </li>
-                  <li>
-                    <span class="col-md-4 fz-18 text-gray-dark2">Cargo</span><p class="col-md-8 fz-18 text-gray-darker">Agente seguridad HRS</p>
+                    <span class="col-md-7 fz-17 text-gray-dark ph-0">Horas extras 100%</span>
+                    <p class="col-md-5 fz-17 text-gray-darker ph-0">8.00</p>
                   </li>
                 </ul>
-                <ul class="clearfix pl-7 pv-21 border-bottom-gray-lighter">
+                <ul class="col-md-7 clearfix pl-7 pt-21 mb-0">
                   <li>
-                    <span class="col-md-4 fz-18 text-gray-dark2">Fecha</span><p class="col-md-8 fz-18 text-gray-darker">1 de Mayo de 2015</p>
+                    <span class="col-md-6 fz-17 text-gray-dark">Fecha de Ingreso</span>
+                    <p class="col-md-6 fz-17 text-gray-darker pr-0">1 de Junio del 2013</p>
                   </li>
                   <li>
-                    <span class="col-md-4 fz-18 text-gray-dark2">Evento</span><p class="col-md-8 fz-18 text-gray-darker">Diruno</p>
+                    <span class="col-md-6 fz-17 text-gray-dark">Costo por hora</span>
+                    <p class="col-md-6 fz-17 text-gray-darker">S/.5.15</p>
                   </li>
                   <li>
-                    <span class="col-md-4 fz-18 text-gray-dark2">Cliente</span><p class="col-md-8 fz-18 text-gray-darker">Lan Perú S.A.</p>
+                    <span class="col-md-6 fz-17 text-gray-dark">Horas trabajadas</span>
+                    <p class="col-md-6 fz-17 text-gray-darker">250</p>
                   </li>
                   <li>
-                    <span class="col-md-4 fz-18 text-gray-dark2">Cargo</span><p class="col-md-8 fz-18 text-gray-darker">Agente seguridad HRS</p>
+                    <span class="col-md-6 fz-17 text-gray-dark">Horas extras 35%</span>
+                    <p class="col-md-6 fz-17 text-gray-darker">0.00</p>
+                  </li>
+                  <li>
+                    <span class="col-md-6 fz-17 text-gray-dark">Inasistencias</span>
+                    <p class="col-md-6 fz-17 text-gray-darker">0.00</p>
                   </li>
                 </ul>
+                <ul class="haberes clearfix p-0 pt-21 mb-0">
+                  <li class="fz-17 text-gray-darker"><h4>Haberes</h4></li>
+                  <li class="fz-17 text-gray-dark row">
+                    <span class="col-md-5 ">Básico</span>
+                    <p class="col-md-3 m-0">30.00</p>
+                    <p class="col-md-3 m-0">750.00</p>
+                  </li>
+                  <li class="fz-17 text-gray-dark row">
+                    <span class="col-md-5 ">Asignación familiar</span>
+                    <p class="col-md-3 m-0">30.00</p>
+                    <p class="col-md-3 m-0">75.00</p>
+                  </li>
+                  <li class="fz-17 text-gray-dark row">
+                    <span class="col-md-5 ">Bonificación de la Unidad</span>
+                    <p class="col-md-3 m-0">30.00</p>
+                    <p class="col-md-3 m-0">170.00</p>
+                  </li>
+                  <li class="fz-17 text-gray-dark row">
+                    <span class="col-md-5 ">Feriado Laboral y/o Desc.</span>
+                    <p class="col-md-3 m-0">8.00</p>
+                    <p class="col-md-3 m-0">66.33</p>
+                  </li>
+                  <li class="fz-17 text-gray-dark row pt-14">
+                    <span class="col-md-5 ">Total haberes</span>
+                    <p class="col-md-3"></p>
+                    <p class="col-md-3">1,061.33</p>
+                  </li>
+                </ul>
+                <ul class="decuentos clearfix p-0 pt-21 mb-0">
+                  <li class="fz-17 text-gray-darker"><h4>Descuentos</h4></li>
+                  <li class="fz-17 text-gray-dark row">
+                    <span class="col-md-5 ">SNP</span>
+                    <p class="col-md-3 m-0"></p>
+                    <p class="col-md-3 m-0">750.00</p>
+                  </li>
+                  <li class="fz-17 text-gray-dark row">
+                    <span class="col-md-5 ">Abono de quincena</span>
+                    <p class="col-md-3 m-0"></p>
+                    <p class="col-md-3 m-0">75.00</p>
+                  </li>
+                  <li class="fz-17 text-gray-dark row">
+                    <span class="col-md-5 ">Prestamos</span>
+                    <p class="col-md-3 m-0"></p>
+                    <p class="col-md-3 m-0">170.00</p>
+                  </li>
+                  <li class="fz-17 text-gray-dark row">
+                    <span class="col-md-5 ">1er Abono de fin de mes</span>
+                    <p class="col-md-3 m-0"></p>
+                    <p class="col-md-3 m-0">66.33</p>
+                  </li>
+                  <li class="fz-17 text-gray-dark row">
+                    <span class="col-md-5 ">2do Abono de fin de mes</span>
+                    <p class="col-md-3 m-0"></p>
+                    <p class="col-md-3 m-0">66.33</p>
+                  </li>
+                  <li class="fz-17 text-gray-dark row pt-14">
+                    <span class="col-md-5 ">Total Descuentos</span>
+                    <p class="col-md-3"></p>
+                    <p class="col-md-3">1,061.33</p>
+                  </li>
+                </ul>
+                <ul class="aportaciones clearfix p-0 pt-21 pb-7 mb-0 border-bottom-gray-light">
+                  <li class="fz-17 text-gray-darker"><h4>Aportaciones</h4></li>
+                  <li class="fz-17 text-gray-dark row">
+                    <span class="col-md-5 ">ESSALUD</span>
+                    <p class="col-md-3 m-0"></p>
+                    <p class="col-md-3 m-0">95.52</p>
+                  </li>
+                  <li class="fz-17 text-gray-dark row">
+                    <span class="col-md-5 ">S.C.T.R - Salud(P)</span>
+                    <p class="col-md-3 m-0"></p>
+                    <p class="col-md-3 m-0">4.25</p>
+                  </li>
+                  <li class="fz-17 text-gray-dark row">
+                    <span class="col-md-5 ">S.C.T.R - Pensiones(P)</span>
+                    <p class="col-md-3 m-0"></p>
+                    <p class="col-md-3 m-0">3.710</p>
+                  </li>
+                  <li class="fz-17 text-gray-dark row pt-14">
+                    <span class="col-md-5 ">Total Aportaciones</span>
+                    <p class="col-md-3"></p>
+                    <p class="col-md-3">1,061.33</p>
+                  </li>
+                </ul>
+                <div class="total row">
+                  <h4 class="bold text-gray-light col-md-8 fz-22">Neto a Pagar</h4>
+                  <h4 class="bold text-gray-light col-md-3 fz-22">0.00</h4>
+                </div>
               </div>
             </div>
           </div>
