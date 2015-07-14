@@ -1047,53 +1047,92 @@ body ul {
 body button {
   box-shadow: none !important;
 }
+body select, body input, body textarea, body button {
+  outline: none;
+}
 body .fz-8 {
   font-size: 8px;
-  font-size: 0.5rem;
+}
+body .fz-9 {
+  font-size: 9px;
 }
 body .fz-10 {
   font-size: 10px;
-  font-size: 0.625rem;
 }
-body .fz-18 {
-  font-size: 18px;
-  font-size: 1.125rem;
-}
-body .fz-16 {
-  font-size: 16px;
-  font-size: 1rem;
-}
-body .fz-17 {
-  font-size: 17px;
-  font-size: 1.0625rem;
+body .fz-11 {
+  font-size: 11px;
 }
 body .fz-12 {
   font-size: 12px;
-  font-size: 0.75rem;
+}
+body .fz-13 {
+  font-size: 13px;
 }
 body .fz-14 {
-  font-size: 14px !important;
-  font-size: 0.875rem !important;
+  font-size: 14px;
+}
+body .fz-15 {
+  font-size: 15px;
+}
+body .fz-16 {
+  font-size: 16px;
+}
+body .fz-17 {
+  font-size: 17px;
+}
+body .fz-18 {
+  font-size: 18px;
+}
+body .fz-19 {
+  font-size: 19px;
 }
 body .fz-20 {
   font-size: 20px;
-  font-size: 1.25rem;
+}
+body .fz-21 {
+  font-size: 21px;
 }
 body .fz-22 {
   font-size: 22px;
-  font-size: 1.375rem;
+}
+body .fz-23 {
+  font-size: 23px;
 }
 body .fz-24 {
-  font-size: 22px;
-  font-size: 1.375rem;
+  font-size: 24px;
+}
+body .fz-25 {
+  font-size: 25px;
+}
+body .fz-26 {
+  font-size: 26px;
+}
+body .fz-27 {
+  font-size: 27px;
 }
 body .fz-28 {
   font-size: 28px;
-  font-size: 1.75rem;
+}
+body .fz-29 {
+  font-size: 29px;
 }
 body .fz-30 {
   font-size: 30px;
-  font-size: 1.875rem;
+}
+body .fz-31 {
+  font-size: 31px;
+}
+body .fz-32 {
+  font-size: 32px;
+}
+body .fz-33 {
+  font-size: 33px;
+}
+body .fz-34 {
+  font-size: 34px;
+}
+body .fz-35 {
+  font-size: 35px;
 }
 body .w-100 {
   width: 100%;
@@ -1352,10 +1391,10 @@ header .perfil {
   border-radius: 5px;
   border: 1px solid #e7e7e7;
   border-top: 2px solid #626262;
+  position: relative;
 }
 #comentar input {
   border: 0;
-  height: 80px;
   width: 100%;
 }
 #comentar input::-webkit-input-placeholder {
@@ -1370,41 +1409,68 @@ header .perfil {
 #comentar input:-ms-input-placeholder {
   color: #9b9b9b;
 }
-#comentar .publicacion textarea {
-  min-height: 100px;
-  max-height: 100%;
+#comentar .select-style {
+  position: relative;
+  overflow: hidden;
+  width: 200px;
 }
-#comentar .publicacion .flecha-dropdown {
-  transform: rotate(180deg);
-  height: 10px;
-}
-#comentar .publicacion .dropdown-menu {
-  width: 186px;
-  top: 100%;
-  left: 74%;
-}
-#comentar .publicacion .dropdown-menu li > a {
-  font-weight: 100;
-}
-#comentar .publicacion .dropdown-menu .triangulo {
-  border-width: 12px 8px 0;
-  border-color: white transparent;
-  border-style: solid;
-  width: 0;
-  height: 0;
+#comentar .select-style::before {
+  content: "";
+  position: absolute;
+  width: 17px;
+  height: 32px;
+  right: 0;
+  background: url(../img/Flecha-para-arriba.png) no-repeat right;
+  background-size: contain;
   -webkit-transform: rotate(180deg);
   -moz-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   -o-transform: rotate(180deg);
   transform: rotate(180deg);
+}
+#comentar .select-style select {
+  background-color: transparent;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+}
+#comentar .select-style select option {
+  width: 100%;
+}
+#comentar .publicacion textarea {
+  min-height: 100px;
+  max-height: 100%;
+  outline: none !important;
+}
+#comentar .fileUpload {
+  position: relative;
+  overflow: hidden;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+#comentar .fileUpload:hover {
+  background-color: transparent;
+  border-color: transparent;
+}
+#comentar .fileUpload input.upload {
   position: absolute;
-  top: -12px;
-  left: 45%;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  filter: alpha(opacity=0);
 }
-#comentar .buttons-group .col-md-6:first-child {
-  padding-top: 4px;
+#comentar button {
+  position: absolute;
+  right: 21px;
 }
-#comentar .buttons-group .col-md-6:last-child img {
+#comentar button img {
   width: 33px;
 }
 
@@ -1563,9 +1629,6 @@ footer .lista p {
 }
 
 /*TAREO*/
-#menu-vertical {
-  width: 415px;
-}
 #menu-vertical h3, #menu-vertical h2 {
   font-size: 24px;
   font-size: 1.5rem;
@@ -1576,15 +1639,9 @@ footer .lista p {
 #menu-vertical .contenedor-menu {
   position: relative;
   top: 114px;
-  width: 398px;
+  border: 1px solid #e7e7e7;
   border-bottom-right-radius: 10px;
   overflow: hidden;
-}
-#menu-vertical .contenedor-menu ul > li {
-  padding-left: 125px;
-}
-#menu-vertical .contenedor-menu h2, #menu-vertical .contenedor-menu .btn-especial {
-  padding-left: 100px;
 }
 #menu-vertical .list-slide {
   overflow: hidden;
@@ -1610,9 +1667,37 @@ footer .lista p {
 .perfil-servicios {
   border-radius: 15px;
 }
+.perfil-servicios .col-md-4 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  box-orient: vertical;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  box-direction: normal;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-direction: column;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  box-pack: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  -o-justify-content: center;
+  justify-content: center;
+  -ms-flex-pack: center;
+}
 .perfil-servicios .col-md-4 div {
-  width: 200px;
-  height: 200px;
+  width: 160px;
+  height: 160px;
   border-radius: 100%;
   margin: 0 auto;
 }
@@ -1652,7 +1737,6 @@ footer .lista p {
 /*LIDERNET*/
 .img-articulo {
   width: 100%;
-  height: 335px;
 }
 
 .lidernet .texto {

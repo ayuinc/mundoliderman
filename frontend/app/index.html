@@ -63,40 +63,31 @@
       <div class="container-md container-index  pt-42 clearfix mb-70 ph-21">
         <div id="box-left" class="col-md-8 pl-0">
           <section id="comentar" class="bg-white">
-            <div class="publicacion clearfix">
-              <div class="border-bottom-gray-lighter pr-21 bg-success">
-                <div class="dropdown text-right">
-                  <button class="btn bg-success dropdown-toggle b-none outline-none text-white text-hover-white book serif fz-12" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                    Escoge una categoría
-                    <img src="assets/img/Flecha-para-arriba.png" alt="" class="flecha-dropdown pr-7">
-                  </button>
-                  <ul class="dropdown-menu mt-0 b-none fz-14" aria-labelledby="dropdownMenu1">
-                    <li class="triangulo"></li>
-                    <li><a href="#">Quiero divertirme</a></li>
-                    <li><a href="#">Quiero dar mi testimonio</a></li>
-                    <li><a href="#">Tengo una solicitud</a></li>
-                    <li><a href="#">Tengo una consulta</a></li>
-                    <li><a href="#">Necesito ayuda</a></li>
-                    <li><a href="#">Otro</a></li>
-                  </ul>
+            <form action="" class="bg-success">
+              <div class="bg-success text-right ph-21">
+                <div class="select-style display-ib text-center">
+                  <select name="categoria" id="" class="fz-14 text-white borderless light serif w-100">
+                    <option value="" class="bg-success">Escoge una categoría</option>
+                    <option value="" class="bg-success">Quiero divertirme</option>
+                    <option value="" class="bg-success">Quiero dar mi testimonio</option>
+                    <option value="" class="bg-success">Tengo una solicitud</option>
+                    <option value="" class="bg-success">Tengo una consulta</option>
+                    <option value="" class="bg-success">Necesito ayuda</option>
+                    <option value="" class="bg-success">Otro</option>
+                  </select>
                 </div>
               </div>
-              <div class="ph-21">
-                <textarea class="form-control outline-none serif fz-18 borderless pv-14" onkeyup="auto_grow(this)" placeholder="Qué estás pensando..."></textarea>
+              <textarea class="form-control outline-none serif fz-18 borderless br-none pv-14 ph-14" onkeyup="auto_grow(this)" placeholder="Qué estás pensando..."></textarea> 
+              <div class="fileUpload btn btn-success p-0 ml-21">
+                <img src="assets/img/Icono_Foto.png" alt="">
+                <span class="thin fz-12 pl-14">Subir imagen</span>
+                <input type="file" class="upload" />
               </div>
-            </div>
-            <div class="buttons-group pv-14 lh-0 pl-35 bg-success clearfix">
-              <div class="col-md-6">
-                <a href=" "><img src="assets/img/Icono_Foto.png" alt=""></a>
-                <a href=""><span class="text-white thin fz-12 pl-14">Subir imagen</span></a>
-              </div>
-              <div class="col-md-6 text-right pr-35">
-                <div class="btn bg-warning text-white text-hover-white fz-12 ph-21">
-                 PUBLICAR
-                 <img src="assets/img/Globito.png" alt="" class="pl-14">
-                </div>
-              </div>
-            </div>
+              <button class="btn bg-warning text-white text-hover-white fz-12 ph-21 mv-7 absolute">
+               PUBLICAR
+               <img src="assets/img/Publicar_Dialogo.png" alt="" class="pl-14">
+              </button>
+            </form>
           </section>
           <section id="post">
             <div class="post-1 post bg-white ph-21 pt-28 pb-28 mt-42">
@@ -140,7 +131,7 @@
                         <img src="assets/img/Icono_Corazon.png" alt="">
                       </li>
                       <li class="display-ib pl-7">
-                        <a href="" class="comment text-not-underline">&nbsp 24 comentarios &nbsp</a>
+                        <a href="" class="comment text-not-underline">&nbsp 2 comentarios &nbsp</a>
                       </li>
                     </ul>
                   </div>
@@ -223,7 +214,7 @@
                     </div>
                   </div>
                   <p class="parrafo pt-14 ph-7 text-gray-darker">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam quidem corrupti optio sed facilis omnis perferendis dolores vero qui illo, beatae velit suscipit tempo iure moles nisi earum sunt fugit.</p>
-                  <div class="pv-21 mh-7 bg-img-block-center w-100 minh-280" style="background-image:url(assets/img/Wall/Foto3.png)"></div>
+                  <div class="img-publicacion w-100 ph-7 text-center"><img src="assets/img/Foto3.png" alt="" class="w-100"></div>
                   <div class="clearfix ph-0 mh-7 thin text-gray pt-28 pb-7 border-bottom-gray-lighter fz-12">
                     <ul class="col-md-6 ph-0 mv-0">
                       <li class="pr-7 display-ib">

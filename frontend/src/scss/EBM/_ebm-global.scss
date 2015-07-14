@@ -24,55 +24,18 @@ body {
 	button {
 		box-shadow: none!important;
 	}
+	select, input ,textarea, button {
+		outline: none;
+	}
 	/*UTILITIES*/
-	.fz-8 {
-		font-size: 8px;
-		font-size: rem(8px);
+	$prefijo: fz !default;
+
+	@for $i from 8 through 35 {
+	  .#{$prefijo}-#{$i} {
+	    font-size: 0px + $i;
+	  }
 	}
-	.fz-10 {
-		font-size: 10px;
-		font-size: rem(10px);
-	}
-	.fz-18 {
-		font-size: 18px;
-		font-size: rem(18px);
-	}
-	.fz-16 {
-		font-size: 16px;
-		font-size: rem(16px);
-	}
-	.fz-17 {
-		font-size: 17px;
-		font-size: rem(17px);
-	}
-	.fz-12 {
-		font-size: 12px;
-		font-size: rem(12px);
-	}
-	.fz-14 {
-		font-size: 14px !important;
-		font-size: rem(14px)!important;
-	}
-	.fz-20 {
-		font-size: 20px;
-		font-size: rem(20px);
-	}	
-	.fz-22 {
-		font-size: 22px;
-		font-size: rem(22px);
-	}
-	.fz-24 {
-		font-size: 22px;
-		font-size: rem(22px);
-	}
-	.fz-28 {
-		font-size: 28px;
-		font-size: rem(28px);
-	}
-	.fz-30 {
-		font-size: 30px;
-		font-size: rem(30px);
-	}
+
 	.w-100 {
 		width: 100%;
 	}
@@ -292,51 +255,70 @@ header {
 	border-radius: 5px;
 	border: 1px solid #e7e7e7;
 	border-top: 2px solid #626262;
+	position: relative;
 	input { 
 		border: 0;
-		height: 80px;
 		width: 100%;
 		@include placeholder {
 	    color: rgb(155, 155, 155);
 	  }
 	}
+	.select-style {
+		position: relative;
+		overflow: hidden;
+		width: 200px;
+		&::before {
+			content: "";
+			position: absolute;
+			width: 17px;
+			height: 32px;
+			right: 0;
+			background: url(../img/Flecha-para-arriba.png) no-repeat right;
+			background-size: contain;
+			@include transform(rotate(180deg));
+		}
+		select {
+			background-color: transparent;
+			cursor: pointer;
+		  @include appearance(none);
+		  option {
+		  	width: 100%;
+		  }
+		}
+	}
 	.publicacion { 
 		textarea {
 			min-height: 100px;
     	max-height: 100%;
+    	outline: none!important;
 		}
-	  .flecha-dropdown {
-  		transform: rotate(180deg);
-			height: 10px;
-  	}
-	  .dropdown-menu {
-	  	width: 186px;
-		  top: 100%;
-		  left: 74%;
-	  	li > a {
-	  		font-weight: 	100;
-	  	}
-	  	.triangulo {
-				border-width: 12px 8px 0;
-				border-color: white transparent;
-				border-style: solid;
-				width: 0;
-				height: 0;
-				@include transform(rotate(180deg));
-				position: absolute;
-		  	top: -12px;
-		  	left: 45%;
-	  	}
-	  }
 	}
-	.buttons-group {
-		.col-md-6:first-child {
-			padding-top: 4px;
+	.fileUpload {
+		position: relative;
+		overflow: hidden;
+		margin-top: 10px;
+  	margin-bottom: 10px;
+		&:hover {
+			background-color: transparent;
+  		border-color: transparent;
 		}
-		.col-md-6:last-child {
-			img {
-				width: 33px;
-			}
+	}
+	.fileUpload input.upload {
+		position: absolute;
+		top: 0;
+		right: 0;
+		margin: 0;
+		padding: 0;
+		font-size: 20px;
+		cursor: pointer;
+		opacity: 0;
+		filter: alpha(opacity=0);
+	}
+	button {
+		position: absolute;
+		right: 21px;
+		img {
+			width: 33px;
 		}
 	}
 }
@@ -452,7 +434,6 @@ footer {
 
 /*TAREO*/
 #menu-vertical {
-	width: 415px;
 	h3 , h2{
 		font-size: 24px;
 		font-size: rem(24px);
@@ -463,15 +444,9 @@ footer {
 	.contenedor-menu {
 		position: relative;
   	top: 114px;
-  	width: 398px;
+  	border: 1px solid #e7e7e7;
   	border-bottom-right-radius: 10px;
   	overflow: hidden;
-  	ul > li {
-  		padding-left: 125px;
-  	}
-  	h2, .btn-especial {
-  		padding-left: 100px;
-  	}
 	}
 	.list-slide {
 		overflow: hidden;
@@ -500,9 +475,10 @@ footer {
 .perfil-servicios {
 	border-radius: 15px;
 	.col-md-4 {
+		@include flex-column-center;
 		div {
-			width: 200px;
-		  height: 200px;
+			width: 160px;
+		  height: 160px;
 		  border-radius: 100%;
 		  margin: 0 auto;
 		}
@@ -549,7 +525,6 @@ footer {
 /*LIDERNET*/
 .img-articulo {
 	width: 100%;
-	height: 335px;
 }
 .lidernet {
 	.texto {
