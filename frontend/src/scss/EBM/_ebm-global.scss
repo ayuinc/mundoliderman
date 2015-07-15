@@ -29,7 +29,7 @@ body {
 	}
 	/*UTILITIES*/
 	$prefijo: fz !default;
-	@for $i from 8 through 35 {
+	@for $i from 8 through 40 {
 	  .#{$prefijo}-#{$i} {
 	    font-size: 0px + $i;
 	  }
@@ -139,7 +139,17 @@ $xxl-desktop: 1980px;
 @media #{$sm-only} {}
 @media #{$md-only} {}
 @media #{$lg-only} {}
-@media #{$sm-down} {}
+@media #{$sm-down} {
+	/*LOGIN*/
+	.container-login {
+		.liderboy {
+			width: 45px!important;
+		}
+		.submit img {
+			width: 20px!important;
+		}
+	}
+}
 @media #{$md-down} {}
 @media #{$lg-down} {}
 @media #{$sm-up} {}
@@ -155,9 +165,6 @@ $xxl-desktop: 1980px;
 		@include flex-column-center;
 		.caja {
 			opacity: 0.9;
-			h1 {
-				font-size: 40px;
-			}
 			.liderboy {
 				width: 80px;
 			}
@@ -686,4 +693,5 @@ footer {
 	rect[Attributes Style] {
 		width: 660px;
 	}
+
 }

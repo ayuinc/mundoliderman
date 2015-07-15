@@ -1134,6 +1134,21 @@ body .fz-34 {
 body .fz-35 {
   font-size: 35px;
 }
+body .fz-36 {
+  font-size: 36px;
+}
+body .fz-37 {
+  font-size: 37px;
+}
+body .fz-38 {
+  font-size: 38px;
+}
+body .fz-39 {
+  font-size: 39px;
+}
+body .fz-40 {
+  font-size: 40px;
+}
 body .w-100 {
   width: 100%;
 }
@@ -1236,6 +1251,15 @@ main {
 /*
 	Media queries
 */
+@media only screen and (max-width: 768px) {
+  /*LOGIN*/
+  .container-login .liderboy {
+    width: 45px !important;
+  }
+  .container-login .submit img {
+    width: 20px !important;
+  }
+}
 /*REGISTRO*/
 .registro {
   margin-bottom: 0 !important;
@@ -1270,9 +1294,6 @@ main {
 }
 .registro .hero-image-registro .caja {
   opacity: 0.9;
-}
-.registro .hero-image-registro .caja h1 {
-  font-size: 40px;
 }
 .registro .hero-image-registro .caja .liderboy {
   width: 80px;
