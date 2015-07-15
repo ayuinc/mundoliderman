@@ -1730,8 +1730,8 @@ footer .lista p {
 }
 
 .boleta .imprimir {
-  position: relative;
-  left: 265px;
+  position: absolute;
+  right: 10%;
 }
 
 /*LIDERNET*/
@@ -1741,10 +1741,6 @@ footer .lista p {
 
 .lidernet .texto {
   position: relative;
-}
-.lidernet .texto h3 {
-  font-size: 24px;
-  font-size: 1.5rem;
 }
 
 .btn-enviar {
@@ -1761,7 +1757,7 @@ footer .lista p {
 
 /*LIDERCARD*/
 .lidercard .bonificacion {
-  border-bottom: 5px solid #aa3120;
+  border-bottom: 3px solid #f94211;
 }
 .lidercard .merito, .lidercard .bonificacion {
   text-decoration: none !important;
@@ -1773,23 +1769,15 @@ footer .lista p {
 }
 
 .active-merito {
-  border-bottom: 5px solid #aa3120;
+  border-bottom: 3px solid #f94211;
 }
 
 /*CAPACITACIONES*/
 .capacitacion .curso {
-  border-bottom: 5px solid #aa3120;
+  border-bottom: 3px solid #f94211;
 }
 .capacitacion .curso, .capacitacion .otro, .capacitacion .nuevo {
   text-decoration: none !important;
-}
-.capacitacion .lista-otros div, .capacitacion .lista-nuevos div {
-  position: relative;
-}
-.capacitacion .lista-otros div a, .capacitacion .lista-nuevos div a {
-  position: absolute;
-  top: 40px;
-  right: 20px;
 }
 
 .border-out {
@@ -1797,7 +1785,7 @@ footer .lista p {
 }
 
 .border-in {
-  border-bottom: 5px solid #aa3120;
+  border-bottom: 3px solid #f94211;
 }
 
 /*SGI*/
@@ -1816,27 +1804,19 @@ footer .lista p {
 }
 
 /*PERFIL-EDITABLE*/
-#perfil-contenido .formulario input {
-  height: 80px;
-}
-
-.perfil-editable .img {
-  width: 380px;
-  height: 240px;
-}
-.perfil-editable .descripcion {
-  height: 105px;
-  border: 1px solid #c6c6c6;
-}
-.perfil-editable .descripcion p {
-  line-height: 1.5;
-}
-
-.formulario {
+#perfil-contenido .formulario {
   position: relative;
 }
-.formulario .btn-enviar {
+#perfil-contenido .formulario .col-md-5 div {
+  width: 220px;
+  height: 220px;
+}
+#perfil-contenido .formulario textarea {
+  border: 1px solid #e7e7e7;
+}
+#perfil-contenido .formulario .btn-enviar {
   right: 0;
+  position: absolute;
 }
 
 /*LISTA-PUBLICACI├ôN*/
@@ -1857,8 +1837,9 @@ footer .lista p {
   transform: translateX(-50%);
 }
 .lista .img-lista .texto a {
-  position: relative;
-  left: 80%;
+  position: absolute;
+  bottom: 9%;
+  right: 35px;
 }
 
 #box-right {
@@ -1883,7 +1864,7 @@ footer .lista p {
   position: relative;
 }
 .publicacion .img-publicacion {
-  height: 370px;
+  height: auto;
 }
 .publicacion .triangulo-llamada {
   border-width: 17px 15px 0;
@@ -1898,7 +1879,7 @@ footer .lista p {
   transform: rotate(180deg);
   position: absolute;
   top: -17px;
-  left: 60px;
+  left: 5%;
 }
 
 /*LIDERMAN├ìA*/

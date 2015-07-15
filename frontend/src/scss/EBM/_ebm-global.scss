@@ -29,7 +29,6 @@ body {
 	}
 	/*UTILITIES*/
 	$prefijo: fz !default;
-
 	@for $i from 8 through 35 {
 	  .#{$prefijo}-#{$i} {
 	    font-size: 0px + $i;
@@ -518,8 +517,8 @@ footer {
 .boleta {
 	@extend .tareo;
 	.imprimir {
-		position: relative;
-		left: 265px;
+		position: absolute;
+	  right: 10%;
 	}
 }
 /*LIDERNET*/
@@ -529,10 +528,6 @@ footer {
 .lidernet {
 	.texto {
 		position: relative;
-		h3 {
-			font-size: 24px;
-			font-size: rem(24px);
-		}
 	}
 }
 .btn-enviar {
@@ -551,7 +546,7 @@ footer {
 /*LIDERCARD*/
 .lidercard {
 	.bonificacion {
-		border-bottom: 5px solid rgb(170, 49, 32);
+		border-bottom: 3px solid #f94211;
 	}
 	.merito, .bonificacion {
 		text-decoration: none!important;
@@ -563,25 +558,15 @@ footer {
 	border-bottom: 0px!important;
 }
 .active-merito{
-	border-bottom: 5px solid rgb(170, 49, 32);
+	border-bottom: 3px solid #f94211;
 }
 /*CAPACITACIONES*/
 .capacitacion {
 	.curso {
-		border-bottom: 5px solid rgb(170, 49, 32);
+		border-bottom: 3px solid #f94211;
 	}
 	.curso, .otro, .nuevo {
 		text-decoration: none!important;
-	}
-	.lista-otros, .lista-nuevos {
-		div {
-			position: relative;
-			a {
-				position: absolute;
-				top: 40px;
-				right: 20px;
-			}
-		}
 	}
 }
 
@@ -589,7 +574,7 @@ footer {
 	border-bottom: 0px!important;
 }
 .border-in{
-	border-bottom: 5px solid rgb(170, 49, 32);
+	border-bottom: 3px solid #f94211;
 }
 
 /*SGI*/
@@ -611,28 +596,18 @@ footer {
 #perfil-contenido {
 	@extend #tareo-contenido;
 	.formulario {
-		input {
-			height: 80px;
+		position: relative;
+		.col-md-5 div {
+			width: 220px;
+			height: 220px;
 		}
-	}
-}
-.perfil-editable {
-	.img {
-		width: 380px;
-	  height: 240px;
-	}
-	.descripcion {
-		height: 105px;
-		border: 1px solid rgb(198, 198, 198);
-		p {
-			line-height: 1.5;
+		textarea {
+			border: 1px solid #e7e7e7;
 		}
-	}
-}
-.formulario {
-	position: relative;
-	.btn-enviar {
-		right: 0;
+		.btn-enviar {
+			right: 0;
+			position: absolute;
+		}
 	}
 }
 /*LISTA-PUBLICACIÓN*/
@@ -648,8 +623,9 @@ footer {
 			left: 50%;
 			@include transform(translateX(-50%));
 			a {
-				position: relative;
-				left: 80%;
+				position: absolute;
+			  bottom: 9%;
+			  right: 35px;
 			}
 		}
 	}
@@ -673,7 +649,7 @@ footer {
 .publicacion {
 	position: relative;
 	.img-publicacion {
-		height: 370px;
+		height: auto;
 	}
 	.triangulo-llamada {
 	  border-width: 17px 15px 0;
@@ -684,7 +660,7 @@ footer {
 	  @include transform(rotate(180deg));
 	  position: absolute;
 	  top: -17px;
-	  left: 60px;
+	  left: 5%;
 	}
 }
 /*LIDERMANÍA*/
