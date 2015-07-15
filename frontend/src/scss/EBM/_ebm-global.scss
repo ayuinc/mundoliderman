@@ -31,7 +31,7 @@ body {
 	$prefijo: fz !default;
 	@for $i from 8 through 40 {
 	  .#{$prefijo}-#{$i} {
-	    font-size: 0px + $i;
+	    font-size: 0px + $i !important;
 	  }
 	}
 
@@ -139,17 +139,6 @@ $xxl-desktop: 1980px;
 @media #{$sm-only} {}
 @media #{$md-only} {}
 @media #{$lg-only} {}
-@media #{$sm-down} {
-	/*LOGIN*/
-	.container-login {
-		.liderboy {
-			width: 45px!important;
-		}
-		.submit img {
-			width: 20px!important;
-		}
-	}
-}
 @media #{$md-down} {}
 @media #{$lg-down} {}
 @media #{$sm-up} {}
@@ -260,7 +249,6 @@ header {
 #comentar {
 	border-radius: 5px;
 	border: 1px solid #e7e7e7;
-	border-top: 2px solid #626262;
 	position: relative;
 	input { 
 		border: 0;
@@ -396,6 +384,7 @@ header {
 
 /*FOOTER*/
 footer {
+	position: fixed;
 	background-color: black;
 	position: relative;
   bottom: 0;
@@ -693,5 +682,37 @@ footer {
 	rect[Attributes Style] {
 		width: 660px;
 	}
-
+}
+@media #{$sm-down} {
+	/*LOGIN*/
+	.container-login {
+		.submit img {
+			width: 20px!important;
+		}
+	}
+	.liderboy {
+		width: 45px!important;
+	}
+	/*INDEX*/
+	.site-content .container-index {
+		padding-top: 30px!important;
+	}
+	header {
+		position: relative!important;
+		.logo {
+			.liderboy {
+				margin-top: -15px;
+			}
+		}
+	}
+	.alerta img {
+		width: 24px;
+	}
+	.footer {
+		position: relative;
+	}
+	.img-perfil {
+		width: 50px!important;
+		height: 50px!important;
+	}
 }

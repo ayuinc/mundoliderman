@@ -1051,103 +1051,103 @@ body select, body input, body textarea, body button {
   outline: none;
 }
 body .fz-8 {
-  font-size: 8px;
+  font-size: 8px !important;
 }
 body .fz-9 {
-  font-size: 9px;
+  font-size: 9px !important;
 }
 body .fz-10 {
-  font-size: 10px;
+  font-size: 10px !important;
 }
 body .fz-11 {
-  font-size: 11px;
+  font-size: 11px !important;
 }
 body .fz-12 {
-  font-size: 12px;
+  font-size: 12px !important;
 }
 body .fz-13 {
-  font-size: 13px;
+  font-size: 13px !important;
 }
 body .fz-14 {
-  font-size: 14px;
+  font-size: 14px !important;
 }
 body .fz-15 {
-  font-size: 15px;
+  font-size: 15px !important;
 }
 body .fz-16 {
-  font-size: 16px;
+  font-size: 16px !important;
 }
 body .fz-17 {
-  font-size: 17px;
+  font-size: 17px !important;
 }
 body .fz-18 {
-  font-size: 18px;
+  font-size: 18px !important;
 }
 body .fz-19 {
-  font-size: 19px;
+  font-size: 19px !important;
 }
 body .fz-20 {
-  font-size: 20px;
+  font-size: 20px !important;
 }
 body .fz-21 {
-  font-size: 21px;
+  font-size: 21px !important;
 }
 body .fz-22 {
-  font-size: 22px;
+  font-size: 22px !important;
 }
 body .fz-23 {
-  font-size: 23px;
+  font-size: 23px !important;
 }
 body .fz-24 {
-  font-size: 24px;
+  font-size: 24px !important;
 }
 body .fz-25 {
-  font-size: 25px;
+  font-size: 25px !important;
 }
 body .fz-26 {
-  font-size: 26px;
+  font-size: 26px !important;
 }
 body .fz-27 {
-  font-size: 27px;
+  font-size: 27px !important;
 }
 body .fz-28 {
-  font-size: 28px;
+  font-size: 28px !important;
 }
 body .fz-29 {
-  font-size: 29px;
+  font-size: 29px !important;
 }
 body .fz-30 {
-  font-size: 30px;
+  font-size: 30px !important;
 }
 body .fz-31 {
-  font-size: 31px;
+  font-size: 31px !important;
 }
 body .fz-32 {
-  font-size: 32px;
+  font-size: 32px !important;
 }
 body .fz-33 {
-  font-size: 33px;
+  font-size: 33px !important;
 }
 body .fz-34 {
-  font-size: 34px;
+  font-size: 34px !important;
 }
 body .fz-35 {
-  font-size: 35px;
+  font-size: 35px !important;
 }
 body .fz-36 {
-  font-size: 36px;
+  font-size: 36px !important;
 }
 body .fz-37 {
-  font-size: 37px;
+  font-size: 37px !important;
 }
 body .fz-38 {
-  font-size: 38px;
+  font-size: 38px !important;
 }
 body .fz-39 {
-  font-size: 39px;
+  font-size: 39px !important;
 }
 body .fz-40 {
-  font-size: 40px;
+  font-size: 40px !important;
 }
 body .w-100 {
   width: 100%;
@@ -1251,15 +1251,6 @@ main {
 /*
 	Media queries
 */
-@media only screen and (max-width: 768px) {
-  /*LOGIN*/
-  .container-login .liderboy {
-    width: 45px !important;
-  }
-  .container-login .submit img {
-    width: 20px !important;
-  }
-}
 /*REGISTRO*/
 .registro {
   margin-bottom: 0 !important;
@@ -1411,7 +1402,6 @@ header .perfil {
 #comentar {
   border-radius: 5px;
   border: 1px solid #e7e7e7;
-  border-top: 2px solid #626262;
   position: relative;
 }
 #comentar input {
@@ -1569,6 +1559,7 @@ header .perfil {
 
 /*FOOTER*/
 footer {
+  position: fixed;
   background-color: black;
   position: relative;
   bottom: 0;
@@ -1926,6 +1917,42 @@ footer .lista p {
 }
 #cuadro-estadistico rect[Attributes Style] {
   width: 660px;
+}
+
+@media only screen and (max-width: 768px) {
+  /*LOGIN*/
+  .container-login .submit img {
+    width: 20px !important;
+  }
+
+  .liderboy {
+    width: 45px !important;
+  }
+
+  /*INDEX*/
+  .site-content .container-index {
+    padding-top: 30px !important;
+  }
+
+  header {
+    position: relative !important;
+  }
+  header .logo .liderboy {
+    margin-top: -15px;
+  }
+
+  .alerta img {
+    width: 24px;
+  }
+
+  .footer {
+    position: relative;
+  }
+
+  .img-perfil {
+    width: 50px !important;
+    height: 50px !important;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
