@@ -22,7 +22,7 @@ $(document).ready(function(){
 	/*FOOTER*/
 	$("#up").click(function(event){
 		event.preventDefault();
-		$("footer").toggleClass("active-up");
+		$("footer > div").toggleClass("active-up");
 	});
 });
 

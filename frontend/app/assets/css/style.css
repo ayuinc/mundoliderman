@@ -1151,6 +1151,7 @@ body .fz-40 {
 }
 body .w-100 {
   width: 100%;
+  font-size: 16px rem;
 }
 body .parrafo {
   line-height: 1.5;
@@ -1193,6 +1194,9 @@ body .le-2 {
 body .serif {
   font-family: "Merriweather", Georgia, "Times New Roman", Times, serif;
 }
+body .sans-serif {
+  font-family: "Oswald", Helvetica, Arial, sans-serif;
+}
 body .le-1-3 {
   letter-spacing: 1.3px;
 }
@@ -1231,6 +1235,9 @@ body .hover-menu {
 }
 body .fixed {
   position: fixed;
+}
+body .relative {
+  position: relative;
 }
 body textarea {
   box-shadow: none;
@@ -1342,11 +1349,14 @@ header .perfil {
 }
 
 /*CONTENIDO*/
+main {
+  padding-top: 80px;
+}
+
 .site-content {
   background-color: rgba(240, 240, 240, 0.45);
 }
 .site-content .container-index {
-  padding-top: 160px !important;
   position: relative;
 }
 
@@ -1558,8 +1568,8 @@ header .perfil {
 }
 
 /*FOOTER*/
-footer {
-  position: fixed;
+footer > div {
+  position: fixed !important;
   background-color: black;
   position: relative;
   bottom: 0;
@@ -1572,7 +1582,7 @@ footer {
   -o-transform: translateY(370px);
   transform: translateY(370px);
 }
-footer #up {
+footer > div #up {
   height: 30px;
   width: 40px;
   position: absolute;
@@ -1586,7 +1596,7 @@ footer #up {
   -o-transform: translateX(-50%);
   transform: translateX(-50%);
 }
-footer .container {
+footer > div .container {
   display: -webkit-box;
   display: -moz-box;
   display: box;
@@ -1614,18 +1624,18 @@ footer .container {
   justify-content: center;
   -ms-flex-pack: center;
 }
-footer .antena {
+footer > div .antena {
   width: 40px;
 }
-footer .volumen {
+footer > div .volumen {
   width: 26px;
 }
-footer .lista h2 {
+footer > div .lista h2 {
   font-size: 22px;
   font-size: 1.375rem;
   margin: 0;
 }
-footer .lista p {
+footer > div .lista p {
   color: white;
   font-size: 11px;
   font-size: 0.6875rem;
@@ -1650,7 +1660,6 @@ footer .lista p {
 }
 #menu-vertical .contenedor-menu {
   position: relative;
-  top: 114px;
   border: 1px solid #e7e7e7;
   border-bottom-right-radius: 10px;
   overflow: hidden;
@@ -1673,7 +1682,6 @@ footer .lista p {
 /*CONTENIDO TAREO*/
 #tareo-contenido .container, #perfil-contenido .container {
   position: relative;
-  padding-top: 160px !important;
 }
 
 .perfil-servicios {
@@ -1935,23 +1943,179 @@ footer .lista p {
   }
 
   header {
-    position: relative !important;
+    /*MEN├Ü MOVIL*/
   }
   header .logo .liderboy {
     margin-top: -15px;
   }
-
-  .alerta img {
-    width: 24px;
+  header .btn-menu {
+    border: 1px solid;
+    width: 104px;
+  }
+  header .switch {
+    width: 25px;
+    height: 17px;
+    position: absolute;
+    right: 7px;
+    margin: -15px 0px 0px -15px;
+    cursor: pointer;
+    top: 66%;
+  }
+  header .switch.on:after {
+    -webkit-transform: rotate(-45deg) translate(5px, -5px);
+    -moz-transform: rotate(-45deg) translate(5px, -5px);
+    -ms-transform: rotate(-45deg) translate(5px, -5px);
+    -o-transform: rotate(-45deg) translate(5px, -5px);
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+  header .switch.on:before {
+    -webkit-transform: rotate(45deg) translate(5px, 5px);
+    -moz-transform: rotate(45deg) translate(5px, 5px);
+    -ms-transform: rotate(45deg) translate(5px, 5px);
+    -o-transform: rotate(45deg) translate(5px, 5px);
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  header .switch .menu-toggle {
+    width: 100%;
+    margin: 4px auto;
+  }
+  header .switch .menu-toggle,
+  header .switch:before, header .switch:after {
+    height: 3px;
+    background: black;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    backface-visibility: hidden;
+  }
+  header .switch.on .menu-toggle {
+    opacity: 0;
+  }
+  header .switch:before, header .switch:after {
+    content: "";
+    display: block;
   }
 
-  .footer {
-    position: relative;
+  main {
+    background-color: #E8E8E8 !important;
+    padding-top: 70px;
+    margin-bottom: 0px;
+  }
+  main .overlay-menu {
+    z-index: 200;
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    -o-transform: translateX(-100%);
+    transform: translateX(-100%);
+    -webkit-transition: -webkit-transform 0.5s ease;
+    -moz-transition: -moz-transform 0.5s ease;
+    transition: transform 0.5s ease;
+    margin-top: 65px;
+    bottom: 0;
+    top: 0;
+  }
+  main .overlay-menu input, main .overlay-menu select {
+    height: 50px;
+  }
+  main .open-menu {
+    -webkit-transform: translateX(0) !important;
+    -moz-transform: translateX(0) !important;
+    -ms-transform: translateX(0) !important;
+    -o-transform: translateX(0) !important;
+    transform: translateX(0) !important;
+  }
+  main .perfil-menu {
+    width: 75px;
+    height: 75px;
+  }
+
+  #box-right {
+    padding-right: 0;
+  }
+
+  .post div:nth-child(3) ul li {
+    font-size: 15px;
+  }
+
+  .alerta {
+    padding-top: 14px !important;
+    padding-bottom: 14px !important;
+  }
+  .alerta img {
+    width: 24px;
   }
 
   .img-perfil {
     width: 50px !important;
     height: 50px !important;
+  }
+
+  /*LIDERNET*/
+  .box-gray {
+    height: 100px;
+    background-color: #5d5d5d;
+  }
+
+  .perfil-servicios {
+    background-color: transparent !important;
+    text-align: center;
+    padding-top: 0rem !important;
+    padding-left: 0.85rem !important;
+    padding-right: 0.85rem !important;
+    margin-top: -118px;
+  }
+  .perfil-servicios .col-md-4 div {
+    width: 130px !important;
+    height: 130px !important;
+  }
+
+  footer > div {
+    position: relative !important;
+    padding: 40px 50px !important;
+    -webkit-transform: none;
+    -moz-transform: none;
+    -ms-transform: none;
+    -o-transform: none;
+    transform: none;
+  }
+  footer > div .col-md-6:last-child, footer > div .container {
+    padding: 0rem !important;
+  }
+  footer > div .antena {
+    width: 30px !important;
+  }
+  footer > div .col-md-8 h5 {
+    padding-bottom: 10px;
+  }
+  footer > div .col-md-8 h4 {
+    font-weight: 100;
+    font-size: 20px !important;
+  }
+  footer > div .col-md-8 p {
+    font-size: 11px;
+    line-height: 1.3;
+    padding-top: 7px;
+  }
+  footer > div .col-md-3 {
+    position: absolute;
+    right: 0%;
+  }
+  footer > div ul {
+    margin-left: 0rem !important;
+    padding-left: 0px;
+  }
+  footer > div ul li {
+    padding-top: 7px;
+  }
+  footer > div ul li h2 {
+    font-size: 24px !important;
+    font-weight: 100;
+  }
+  footer > div ul li p {
+    font-size: 13px !important;
+    line-height: 1.3;
+    padding-top: 10px;
   }
 }
 

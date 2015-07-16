@@ -32,11 +32,13 @@ body {
 	@for $i from 8 through 40 {
 	  .#{$prefijo}-#{$i} {
 	    font-size: 0px + $i !important;
+	    // font-size: rem(0px + $i)!important;
 	  }
 	}
 
 	.w-100 {
 		width: 100%;
+		font-size: (16px)rem;
 	}
 	.parrafo {
 		line-height: 1.5;
@@ -79,6 +81,9 @@ body {
 	.serif {
 		font-family: $font-family-serif;
 	}
+	.sans-serif {
+		font-family: $font-family-sans-serif;
+	}
 	.le-1-3 {
 		letter-spacing: 1.3px;
 	}
@@ -113,6 +118,9 @@ body {
 	}
 	.fixed {
 		position: fixed;
+	}
+	.relative {
+		position: relative;
 	}
 	textarea {
   	box-shadow: none;
@@ -202,10 +210,12 @@ header {
 	}
 }
 /*CONTENIDO*/
+main {
+	padding-top: 80px;
+}
 .site-content {
 	background-color: rgba(240, 240, 240, 0.45);
-	.container-index {
-		padding-top: 160px!important;  
+	.container-index { 
 		position: relative;
 	}
 }
@@ -383,8 +393,8 @@ header {
 }
 
 /*FOOTER*/
-footer {
-	position: fixed;
+footer > div {
+	position: fixed!important;
 	background-color: black;
 	position: relative;
   bottom: 0;
@@ -438,7 +448,6 @@ footer {
 	}
 	.contenedor-menu {
 		position: relative;
-  	top: 114px;
   	border: 1px solid #e7e7e7;
   	border-bottom-right-radius: 10px;
   	overflow: hidden;
@@ -464,7 +473,6 @@ footer {
 #tareo-contenido {
 	.container {
 		position: relative;
-		padding-top: 160px!important;
 	}
 }
 .perfil-servicios {
@@ -698,21 +706,152 @@ footer {
 		padding-top: 30px!important;
 	}
 	header {
-		position: relative!important;
 		.logo {
 			.liderboy {
 				margin-top: -15px;
 			}
 		}
+		/*MENÚ MOVIL*/
+		.btn-menu {
+			border: 1px solid;
+			width: 104px;
+		}
+		.switch {
+	  	width: 25px;
+	  	height: 17px;
+	  	position: absolute;
+	  	right: 7px;
+	  	margin: -15px 0px 0px -15px;
+		 	cursor: pointer;
+		 	top: 66%;
+		}
+		.switch.on:after {
+		  @include transform(rotate(-45deg) translate(5px, -5px));
+		}
+		.switch.on:before {
+		  @include transform(rotate(45deg) translate(5px, 5px));
+		}
+		.switch .menu-toggle {
+	  	width: 100%;
+	  	margin: 4px auto;
+		}
+		.switch .menu-toggle,
+		.switch:before, .switch:after {
+			height: 3px;
+	  	background: black;
+	  	@include transition (all 0.3s);
+	  	backface-visibility: hidden;
+		}
+		.switch.on .menu-toggle {
+		  opacity: 0;
+		}
+		.switch:before, .switch:after {
+	  	content: "";
+	  	display: block;
+		}
 	}
-	.alerta img {
-		width: 24px;
+	main {
+		background-color: #E8E8E8!important;
+		padding-top: 70px;
+		margin-bottom: 0px;
+		.overlay-menu {
+			z-index: 200;
+			@include transform(translateX(-100%));
+	  	@include transition(transform .5s ease);
+	  	margin-top: 65px;
+	  	bottom: 0;
+	  	top: 0;
+	  	input, select {
+	  		height: 50px;
+	  	}
+		}
+		.open-menu {
+			@include transform(translateX(0)!important);
+		}
+		.perfil-menu {
+			width: 75px;
+  		height: 75px;
+		}
 	}
-	.footer {
-		position: relative;
+	#box-right {
+		padding-right: 0;
+	}
+	.post {
+		div:nth-child(3) ul li{
+			font-size: 15px;
+		}
+	}
+	.alerta {
+		padding-top: 14px!important;
+  	padding-bottom: 14px!important;
+		img {
+			width: 24px;
+		}
 	}
 	.img-perfil {
 		width: 50px!important;
 		height: 50px!important;
+	}
+	/*LIDERNET*/
+	.box-gray {
+		height: 100px;
+		background-color: rgb(93, 93, 93);
+	}
+	.perfil-servicios {
+		background-color: transparent!important;
+		text-align: center;
+		padding-top: 0rem!important;
+		padding-left: 0.85rem!important;
+		padding-right: 0.85rem!important;
+  	margin-top: -118px;
+		.col-md-4 div {
+			width: 130px!important;
+			height: 130px!important;
+		}
+	}
+	footer > div {
+		position: relative!important;
+		padding: 40px 50px!important;
+		@include transform(none);
+		.col-md-6:last-child, .container {
+			padding: 0rem!important;
+		}
+		.antena {
+			width: 30px!important;
+		}
+		.col-md-8 {
+			h5 {
+				padding-bottom: 10px;
+			}
+			h4 {
+				font-weight: 100;
+	  		font-size: 20px!important;
+			}
+			p {
+				font-size: 11px;
+				line-height: 1.3;
+  			padding-top: 7px;
+			}
+		}
+		.col-md-3 {
+			position: absolute;
+  		right: 0%;
+		}
+		ul {
+			margin-left: 0rem!important;
+  		padding-left: 0px;
+  		li {
+  			padding-top: 7px;
+  			h2 {
+					font-size: 24px!important;
+					font-weight: 100;
+				}
+				p {
+					font-size: 13px!important;
+					line-height: 1.3;
+	 			  padding-top: 10px;
+				}
+  		}
+		}
 	}
 }
