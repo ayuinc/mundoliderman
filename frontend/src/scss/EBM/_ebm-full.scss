@@ -29,12 +29,12 @@
 @import "control/ebm-min-height-control";
 @import "control/ebm-flexbox-control";
 @import "control/ebm-bg-img-control";
-// @import "control/ebm-box-model-percentage-control";
+@import "control/ebm-box-model-percentage-control";
 // @import "control/ebm-box-model-pseudo-control";
 // @import "control/ebm-box-model-small-control"; // Deprecated
 
 // BOX MODEL BREAKPOINTS CONTROL
-// @import "control/ebm-box-model-breakpoints-control"; 
+@import "control/ebm-box-model-breakpoints-control"; 
 // @import "control/ebm-box-model-children-breakpoints-control";
 // @import "control/ebm-box-model-percentage-breakpoints-control";
 // @import "control/ebm-box-model-pseudo-breakpoints-control";
@@ -71,7 +71,7 @@
 @import "elements/ebm-grid-lists";
 // @import "elements/ebm-horizontal-rules";
 // @import "elements/ebm-icons";
-// @import "elements/ebm-overlay";
+@import "elements/ebm-overlay";
 // @import "elements/ebm-panels";
 // @import "elements/ebm-separators";
 // @import "elements/ebm-user-card";

@@ -477,6 +477,8 @@ footer > div {
 }
 .perfil-servicios {
 	border-radius: 15px;
+	padding-left: 42px;
+  padding-right: 42px;
 	.col-md-4 {
 		@include flex-column-center;
 		div {
@@ -752,25 +754,22 @@ footer > div {
 	}
 	main {
 		background-color: #E8E8E8!important;
-		padding-top: 70px;
-		margin-bottom: 0px;
+		padding-top: 68px;
 		.overlay-menu {
 			z-index: 200;
 			@include transform(translateX(-100%));
 	  	@include transition(transform .5s ease);
 	  	margin-top: 65px;
-	  	bottom: 0;
-	  	top: 0;
 	  	input, select {
-	  		height: 50px;
+	  		height: 45px;
 	  	}
 		}
 		.open-menu {
 			@include transform(translateX(0)!important);
 		}
 		.perfil-menu {
-			width: 75px;
-  		height: 75px;
+			width: 70px;
+  		height: 70px;
 		}
 	}
 	#box-right {
@@ -782,8 +781,6 @@ footer > div {
 		}
 	}
 	.alerta {
-		padding-top: 14px!important;
-  	padding-bottom: 14px!important;
 		img {
 			width: 24px;
 		}
@@ -801,9 +798,7 @@ footer > div {
 		background-color: transparent!important;
 		text-align: center;
 		padding-top: 0rem!important;
-		padding-left: 0.85rem!important;
-		padding-right: 0.85rem!important;
-  	margin-top: -118px;
+  	margin-top: -136px;
 		.col-md-4 div {
 			width: 130px!important;
 			height: 130px!important;
