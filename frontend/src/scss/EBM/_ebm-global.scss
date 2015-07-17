@@ -824,21 +824,27 @@ footer > div {
 		}
 		ul {
 			border: none;
-			li {
-				span {
-					font-size: 22px!important;
-					font-size: rem(22px)!important;
-				}
-				p {
-					font-size: 20px!important;
-					font-size: rem(20px)!important;
-				}
-			}
 		}
 	} 
-	.separador {
-		width: 50px;
+	.prestamos li, .dato-bonificacion, .dato-merito div {
+		span {
+			font-size: 22px!important;
+			font-size: rem(22px)!important;
+		}
+		p {
+			font-size: 20px!important;
+			font-size: rem(20px)!important;
+		}
+	}
+	.separador-div {
+		width: 27px;
 		border-bottom: 1px solid #BFBFBF;
+	}
+	/*LIDERCARD*/
+	.dato-bonificacion, .dato-merito {
+		div:last-child {
+			border: none!important;
+		}
 	}
 	footer > div {
 		position: relative!important;
