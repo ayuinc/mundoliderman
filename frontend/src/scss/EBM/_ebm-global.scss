@@ -188,10 +188,10 @@ $xxl-desktop: 1980px;
 }
 /*MENÚ*/
 header {
-	position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+	height: 80px;
+  // top: 0;
+  // left: 0;
+  // right: 0;
   z-index: 1;
 	h1 {
 		font-size: 30px;
@@ -210,9 +210,6 @@ header {
 	}
 }
 /*CONTENIDO*/
-main {
-	padding-top: 80px;
-}
 .site-content {
 	background-color: rgba(240, 240, 240, 0.45);
 	.container-index { 
@@ -701,7 +698,7 @@ footer > div {
 		}
 	}
 	.liderboy {
-		width: 40px!important;
+		width: 30px!important;
 	}
 	/*INDEX*/
 	.site-content .container-index {

@@ -1361,10 +1361,7 @@ main {
 
 /*MEN├Ü*/
 header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  height: 80px;
   z-index: 1;
 }
 header h1 {
@@ -1382,10 +1379,6 @@ header .perfil {
 }
 
 /*CONTENIDO*/
-main {
-  padding-top: 80px;
-}
-
 .site-content {
   background-color: rgba(240, 240, 240, 0.45);
 }
@@ -1969,7 +1962,7 @@ footer > div .lista p {
   }
 
   .liderboy {
-    width: 40px !important;
+    width: 30px !important;
   }
 
   /*INDEX*/
