@@ -192,7 +192,9 @@ header {
   // top: 0;
   // left: 0;
   // right: 0;
-  z-index: 1;
+  .fixed {
+		z-index: 100;
+  }
 	h1 {
 		font-size: 30px;
 		font-size: rem(30px);
@@ -705,6 +707,7 @@ footer > div {
 		padding-top: 30px!important;
 	}
 	header {
+		height: 67px!important;
 		.logo {
 			.liderboy {
 				margin-top: -15px;
@@ -751,7 +754,6 @@ footer > div {
 	}
 	main {
 		background-color: #E8E8E8!important;
-		padding-top: 68px;
 		.overlay-menu {
 			z-index: 200;
 			@include transform(translateX(-100%));

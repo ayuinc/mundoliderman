@@ -1362,7 +1362,9 @@ main {
 /*MEN├Ü*/
 header {
   height: 80px;
-  z-index: 1;
+}
+header .fixed {
+  z-index: 100;
 }
 header h1 {
   font-size: 30px;
@@ -1971,6 +1973,7 @@ footer > div .lista p {
   }
 
   header {
+    height: 67px !important;
     /*MEN├Ü MOVIL*/
   }
   header .logo .liderboy {
@@ -2026,7 +2029,6 @@ footer > div .lista p {
 
   main {
     background-color: #E8E8E8 !important;
-    padding-top: 68px;
   }
   main .overlay-menu {
     z-index: 200;
