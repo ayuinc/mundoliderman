@@ -1052,102 +1052,135 @@ body select, body input, body textarea, body button {
 }
 body .fz-8 {
   font-size: 8px !important;
+  font-size: 0.5rem !important;
 }
 body .fz-9 {
   font-size: 9px !important;
+  font-size: 0.5625rem !important;
 }
 body .fz-10 {
   font-size: 10px !important;
+  font-size: 0.625rem !important;
 }
 body .fz-11 {
   font-size: 11px !important;
+  font-size: 0.6875rem !important;
 }
 body .fz-12 {
   font-size: 12px !important;
+  font-size: 0.75rem !important;
 }
 body .fz-13 {
   font-size: 13px !important;
+  font-size: 0.8125rem !important;
 }
 body .fz-14 {
   font-size: 14px !important;
+  font-size: 0.875rem !important;
 }
 body .fz-15 {
   font-size: 15px !important;
+  font-size: 0.9375rem !important;
 }
 body .fz-16 {
   font-size: 16px !important;
+  font-size: 1rem !important;
 }
 body .fz-17 {
   font-size: 17px !important;
+  font-size: 1.0625rem !important;
 }
 body .fz-18 {
   font-size: 18px !important;
+  font-size: 1.125rem !important;
 }
 body .fz-19 {
   font-size: 19px !important;
+  font-size: 1.1875rem !important;
 }
 body .fz-20 {
   font-size: 20px !important;
+  font-size: 1.25rem !important;
 }
 body .fz-21 {
   font-size: 21px !important;
+  font-size: 1.3125rem !important;
 }
 body .fz-22 {
   font-size: 22px !important;
+  font-size: 1.375rem !important;
 }
 body .fz-23 {
   font-size: 23px !important;
+  font-size: 1.4375rem !important;
 }
 body .fz-24 {
   font-size: 24px !important;
+  font-size: 1.5rem !important;
 }
 body .fz-25 {
   font-size: 25px !important;
+  font-size: 1.5625rem !important;
 }
 body .fz-26 {
   font-size: 26px !important;
+  font-size: 1.625rem !important;
 }
 body .fz-27 {
   font-size: 27px !important;
+  font-size: 1.6875rem !important;
 }
 body .fz-28 {
   font-size: 28px !important;
+  font-size: 1.75rem !important;
 }
 body .fz-29 {
   font-size: 29px !important;
+  font-size: 1.8125rem !important;
 }
 body .fz-30 {
   font-size: 30px !important;
+  font-size: 1.875rem !important;
 }
 body .fz-31 {
   font-size: 31px !important;
+  font-size: 1.9375rem !important;
 }
 body .fz-32 {
   font-size: 32px !important;
+  font-size: 2rem !important;
 }
 body .fz-33 {
   font-size: 33px !important;
+  font-size: 2.0625rem !important;
 }
 body .fz-34 {
   font-size: 34px !important;
+  font-size: 2.125rem !important;
 }
 body .fz-35 {
   font-size: 35px !important;
+  font-size: 2.1875rem !important;
 }
 body .fz-36 {
   font-size: 36px !important;
+  font-size: 2.25rem !important;
 }
 body .fz-37 {
   font-size: 37px !important;
+  font-size: 2.3125rem !important;
 }
 body .fz-38 {
   font-size: 38px !important;
+  font-size: 2.375rem !important;
 }
 body .fz-39 {
   font-size: 39px !important;
+  font-size: 2.4375rem !important;
 }
 body .fz-40 {
   font-size: 40px !important;
+  font-size: 2.5rem !important;
 }
 body .w-100 {
   width: 100%;
@@ -1934,7 +1967,7 @@ footer > div .lista p {
   }
 
   .liderboy {
-    width: 45px !important;
+    width: 40px !important;
   }
 
   /*INDEX*/
@@ -1950,7 +1983,7 @@ footer > div .lista p {
   }
   header .btn-menu {
     border: 1px solid;
-    width: 104px;
+    max-width: 104px;
   }
   header .switch {
     width: 25px;

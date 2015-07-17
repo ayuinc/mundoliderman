@@ -32,7 +32,7 @@ body {
 	@for $i from 8 through 40 {
 	  .#{$prefijo}-#{$i} {
 	    font-size: 0px + $i !important;
-	    // font-size: rem(0px + $i)!important;
+	    font-size: rem(0px + $i)!important;
 	  }
 	}
 
@@ -699,7 +699,7 @@ footer > div {
 		}
 	}
 	.liderboy {
-		width: 45px!important;
+		width: 40px!important;
 	}
 	/*INDEX*/
 	.site-content .container-index {
@@ -714,7 +714,7 @@ footer > div {
 		/*MENÚ MOVIL*/
 		.btn-menu {
 			border: 1px solid;
-			width: 104px;
+			max-width: 104px;
 		}
 		.switch {
 	  	width: 25px;
