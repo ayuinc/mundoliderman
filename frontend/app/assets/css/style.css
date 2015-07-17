@@ -2090,6 +2090,46 @@ footer > div .lista p {
     height: 130px !important;
   }
 
+  .tareo .btn-dropdown, .boleta .btn-dropdown, .boleta .btn-dropdown {
+    border-radius: 4px !important;
+  }
+
+  .tareo .month ul, .boleta .month ul, .boleta .month ul {
+    left: 0 !important;
+  }
+
+  .articulo .texto h3 {
+    font-size: 30px;
+    font-size: 1.875rem;
+    line-height: 1.3;
+  }
+
+  .btn-enviar-movil {
+    background-color: black;
+  }
+
+  /*PR├ëSTAMOS*/
+  .prestamos h3 {
+    font-size: 24px !important;
+    font-size: 1.5rem !important;
+  }
+  .prestamos ul {
+    border: none;
+  }
+  .prestamos ul li span {
+    font-size: 22px !important;
+    font-size: 1.375rem !important;
+  }
+  .prestamos ul li p {
+    font-size: 20px !important;
+    font-size: 1.25rem !important;
+  }
+
+  .separador {
+    width: 50px;
+    border-bottom: 1px solid #BFBFBF;
+  }
+
   footer > div {
     position: relative !important;
     padding: 40px 50px !important;
