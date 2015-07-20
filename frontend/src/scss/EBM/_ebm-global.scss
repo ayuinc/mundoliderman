@@ -568,7 +568,7 @@ footer > div {
 /*CAPACITACIONES*/
 .capacitacion {
 	.curso {
-		border-bottom: 3px solid #f94211;
+		border-bottom: 3px solid rgb(255, 122, 41);
 	}
 	.curso, .otro, .nuevo {
 		text-decoration: none!important;
@@ -576,10 +576,10 @@ footer > div {
 }
 
 .border-out{
-	border-bottom: 0px!important;
+	border-bottom: 1px solid #e7e7e7!important;
 }
 .border-in{
-	border-bottom: 3px solid #f94211;
+	border-bottom: 3px solid rgb(255, 122, 41)!important;
 }
 
 /*SGI*/
@@ -826,7 +826,12 @@ footer > div {
 			border: none;
 		}
 	} 
-	.prestamos li, .dato-bonificacion, .dato-merito div {
+	.prestamos li, 
+	.dato-bonificacion, 
+	.dato-merito div, 
+	.lista-cursos, 
+	.lista-otros, 
+	.lista-nuevos {
 		span {
 			font-size: 22px!important;
 			font-size: rem(22px)!important;

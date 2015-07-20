@@ -15,11 +15,11 @@ $gray:                   #7D7E7F !default; // #555
 $gray-light:             lighten($gray-base, 46.7%) !default; // #777
 $gray-lighter:           #e7e7e7 !default; // #eee
 
-$brand-primary:         rgb(249, 66, 17) !default; /*red*/
+$brand-primary:         rgb(249, 66, 17) !default; /*oranges*/
 $brand-success:         rgb(98, 98, 98) !default; /*brown*/
 $brand-info:            rgb(81, 186, 110) !default; /*green*/
 $brand-warning:         rgb(84, 84, 84) !default;
-$brand-danger:          rgb(216, 73, 40) !default; /*oranges*/
+$brand-danger:          rgb(216, 73, 40) !default; /*red*/
 
 
 //== Scaffolding

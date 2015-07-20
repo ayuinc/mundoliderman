@@ -7,10 +7,10 @@
 	Optional without Grunt:
   sass --watch src/scss/style.scss:app/assets/css/style.css
 */
-/*red*/
+/*oranges*/
 /*brown*/
 /*green*/
-/*oranges*/
+/*red*/
 /*
 	EBM Variables
 */
@@ -1824,18 +1824,18 @@ footer > div .lista p {
 
 /*CAPACITACIONES*/
 .capacitacion .curso {
-  border-bottom: 3px solid #f94211;
+  border-bottom: 3px solid #ff7a29;
 }
 .capacitacion .curso, .capacitacion .otro, .capacitacion .nuevo {
   text-decoration: none !important;
 }
 
 .border-out {
-  border-bottom: 0px !important;
+  border-bottom: 1px solid #e7e7e7 !important;
 }
 
 .border-in {
-  border-bottom: 3px solid #f94211;
+  border-bottom: 3px solid #ff7a29 !important;
 }
 
 /*SGI*/
@@ -2117,11 +2117,21 @@ footer > div .lista p {
     border: none;
   }
 
-  .prestamos li span, .dato-bonificacion span, .dato-merito div span {
+  .prestamos li span,
+  .dato-bonificacion span,
+  .dato-merito div span,
+  .lista-cursos span,
+  .lista-otros span,
+  .lista-nuevos span {
     font-size: 22px !important;
     font-size: 1.375rem !important;
   }
-  .prestamos li p, .dato-bonificacion p, .dato-merito div p {
+  .prestamos li p,
+  .dato-bonificacion p,
+  .dato-merito div p,
+  .lista-cursos p,
+  .lista-otros p,
+  .lista-nuevos p {
     font-size: 20px !important;
     font-size: 1.25rem !important;
   }
