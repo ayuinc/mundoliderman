@@ -1,26 +1,4 @@
 <!--<h2>Resultados de tareo del mes de mayo del 2015</h2>-->
-{!--{exp:webservice:tareo dni="27415554" mes="5"}
-	<hr>
-	<table>
-		<tr>
-			<td>Fecha</td>
-			<td>{FechaTareo}</td>
-		</tr>
-		<tr>
-			<td>Evento</td>
-			<td>{Evento}</td>
-		</tr>
-		<tr>
-			<td>Cliente</td>
-			<td>{Cliente}</td>
-		</tr>
-		<tr>
-			<td>Cargo</td>
-			<td>{Cargo}</td>
-		</tr>
-	</table>
-	<hr>
-{/exp:webservice:tareo}--}
 <!doctype html>
 <html lang="en">
   <meta charset="utf-8">
@@ -196,7 +174,23 @@
                   </ul>
                 </div>
                 <h3 class="text-gray-darker bold">Resultados del tareo del mes de mayo de 2015</h3>
-                <ul class="clearfix pl-7 pv-21 border-bottom-gray-lighter">
+                {exp:webservice:tareo dni="27415554" mes="5"}
+                  <ul class="clearfix pl-7 pv-21 border-bottom-gray-lighter">
+                    <li>
+                      <span class="col-md-4 fz-18 text-gray-dark2">Fecha</span><p class="col-md-8 fz-18 text-gray-darker">{FechaTareo format="%d-%m-%Y"}</p>
+                    </li>
+                    <li>
+                      <span class="col-md-4 fz-18 text-gray-dark2">Evento</span><p class="col-md-8 fz-18 text-gray-darker">{Evento}</p>
+                    </li>
+                    <li>
+                      <span class="col-md-4 fz-18 text-gray-dark2">Cliente</span><p class="col-md-8 fz-18 text-gray-darker">{Cliente}</p>
+                    </li>
+                    <li>
+                      <span class="col-md-4 fz-18 text-gray-dark2">Cargo</span><p class="col-md-8 fz-18 text-gray-darker">{Cargo}</p>
+                    </li>
+                  </ul>
+                {/exp:webservice:tareo}
+                <!--<ul class="clearfix pl-7 pv-21 border-bottom-gray-lighter">
                   <li>
                     <span class="col-md-4 fz-18 text-gray-dark2">Fecha</span><p class="col-md-8 fz-18 text-gray-darker">1 de Mayo de 2015</p>
                   </li>
@@ -223,21 +217,7 @@
                   <li>
                     <span class="col-md-4 fz-18 text-gray-dark2">Cargo</span><p class="col-md-8 fz-18 text-gray-darker">Agente seguridad HRS</p>
                   </li>
-                </ul>
-                <ul class="clearfix pl-7 pv-21 border-bottom-gray-lighter">
-                  <li>
-                    <span class="col-md-4 fz-18 text-gray-dark2">Fecha</span><p class="col-md-8 fz-18 text-gray-darker">1 de Mayo de 2015</p>
-                  </li>
-                  <li>
-                    <span class="col-md-4 fz-18 text-gray-dark2">Evento</span><p class="col-md-8 fz-18 text-gray-darker">Diruno</p>
-                  </li>
-                  <li>
-                    <span class="col-md-4 fz-18 text-gray-dark2">Cliente</span><p class="col-md-8 fz-18 text-gray-darker">Lan Perú S.A.</p>
-                  </li>
-                  <li>
-                    <span class="col-md-4 fz-18 text-gray-dark2">Cargo</span><p class="col-md-8 fz-18 text-gray-darker">Agente seguridad HRS</p>
-                  </li>
-                </ul>
+                </ul>-->
               </div>
             </div>
           </div>
