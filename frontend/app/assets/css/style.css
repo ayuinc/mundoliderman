@@ -2148,6 +2148,30 @@ footer > div .lista p {
     border: none !important;
   }
 
+  /*perfil editable*/
+  #perfil-contenido .formulario textarea {
+    border: 1px solid #AFAFAF;
+  }
+  #perfil-contenido .formulario textarea::-webkit-input-placeholder {
+    color: #666460;
+  }
+  #perfil-contenido .formulario textarea::-moz-placeholder {
+    color: #666460;
+  }
+  #perfil-contenido .formulario textarea:-moz-placeholder {
+    color: #666460;
+  }
+  #perfil-contenido .formulario textarea:-ms-input-placeholder {
+    color: #666460;
+  }
+
+  .btn-perfil {
+    width: 100%;
+    position: relative !important;
+    margin-left: 0;
+  }
+
+  /*FOOTER*/
   footer > div {
     position: relative !important;
     padding: 40px 50px !important;

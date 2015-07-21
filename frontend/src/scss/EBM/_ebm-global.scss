@@ -852,6 +852,19 @@ footer > div {
 			border: none!important;
 		}
 	}
+	/*perfil editable*/
+	#perfil-contenido .formulario textarea {
+		border: 1px solid #AFAFAF;
+		@include placeholder {
+	    color: rgb(102, 100, 96);
+	  }
+	}
+	.btn-perfil {
+		width: 100%;
+		position: relative!important;
+		margin-left: 0;
+	}
+	/*FOOTER*/
 	footer > div {
 		position: relative!important;
 		padding: 40px 50px!important;
