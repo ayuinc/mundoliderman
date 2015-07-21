@@ -2216,6 +2216,14 @@ footer > div .lista p {
     background-color: #D8D8D8;
   }
 
+  /*LIDERMAN├ìA*/
+  .datos-lidermania h3 {
+    font-size: 26px !important;
+  }
+  .datos-lidermania ul {
+    font-size: 18px !important;
+  }
+
   /*FOOTER*/
   footer > div {
     position: relative !important;

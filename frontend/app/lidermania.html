@@ -14,54 +14,100 @@
   
   <div class="site-wrapper"> <!-- Body -->
     <header class="site-menu bg-white">
-      <div class="container-md minh-70 clearfix ph-0 pv-14 ph-21 bg-white">
-        <div class="logo col-md-4 pl-0">  
-          <a href="index.html">
-            <div class="col-md-9 text-left ph-0 pt-14">
-              <h1 class="text-uppercase bold text-gray-darker m-0">Mundo liderman</h1>
+      <div class="w-100 fixed bg-white">
+        <div class="container-md minh-70 clearfix ph-0 pv-14 ph-21">
+          <div class="logo col-md-4 pl-0 hidden-xs hidden-sm">  
+            <a href="index.html">
+              <div class="col-md-9 text-left ph-0 pt-14">
+                <h1 class="text-uppercase bold text-gray-darker m-0">Mundo liderman</h1>
+              </div>
+              <div class="col-md-2 ph-0">
+                <img src="assets/img/Liderboy.png" alt="Mundo Liderman" class="liderboy">
+              </div>
+            </a>
+          </div>
+          <div class="col-md-4 pr-0 hidden-xs hidden-sm">
+            <form class="tool-bar-search-form mt-7 br-5">
+              <div class="input-group pr-0 ">
+                <input type="text" id="search_bar" class="form-control input-sm thin pl-14 borderless display-ib" placeholder="Buscar personas, consultas o preguntas...">
+                <img src="assets/img/Icono_Buscar.png" alt="" class="display-ib">
+              </div>
+            </form>
+          </div>
+          <div class="col-md-4 text-center pr-0 pl-28 hidden-xs hidden-sm">
+            <div class="col-md-5"><p class="mt-14 mb-0 border-right-gray-light pr-14 text-right"><a href="" class="text-gray book fz-16">Ir al inicio</a></p></div>
+            <div class="col-md-7 text-right ph-0">
+              <p class="text-gray-dark m-0 mt-14 light float-left pr-7 fz-16">Hola, Herman</p>
+              <div class="perfil float-left" style="background-image: url(assets/img/Carita.png)"></div>
+              <div class="dropdown herman-dropdown">
+                <button class="bg-white dropdown-toggle b-none outline-none text-gray-light book serif" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                  <a href="" class="pl-7"><img src="assets/img/FlechaHerman.png" alt="" class="mt-14"></a>
+                </button>
+                <ul class="dropdown-menu mt-0 b-none fz-14" aria-labelledby="dropdownMenu1">
+                  <li class="triangulo"></li>
+                  <li><a href="perfil.html" class="lh-1">Mi Perfil</a></li>
+                  <li><a href="#" class="lh-1">Estadísticas</a></li>
+                  <li><a href="login.html" class="lh-1">Salir</a></li>
+                </ul>
+              </div>
             </div>
-            <div class="col-md-2 ph-0">
-              <img src="assets/img/Liderboy.png" alt="Mundo Liderman">
+          </div>
+          <div class="clearfix hidden-lg hidden-md"><!--movil-->
+            <div class="logo pt-14 pb-7 col-xs-8 ph-0">
+              <h1 class="text-uppercase bold text-gray-darker m-0 fz-22 display-ib">Mundo liderman</h1>
+              <img src="assets/img/Liderboy.png" alt="Mundo Liderman" class="liderboy">
             </div>
-          </a>
-        </div>
-        <div class="col-md-4 pr-0">
-          <form class="tool-bar-search-form mt-7 br-5">
-            <div class="input-group pr-0 ">
-              <input type="text" id="search_bar" class="form-control input-sm thin pl-14 borderless display-ib" placeholder="Buscar personas, consultas o preguntas...">
-              <img src="assets/img/Icono_Buscar.png" alt="" class="display-ib">
-            </div>
-          </form>
-        </div>
-        <div class="col-md-4 text-center pr-0 pl-28">
-          <div class="col-md-5"><p class="mt-14 mb-0 border-right-gray-light pr-14 text-right"><a href="" class="text-gray book fz-16">Ir al inicio</a></p></div>
-          <div class="col-md-7 text-right ph-0">
-            <p class="text-gray-dark m-0 mt-14 light float-left pr-7 fz-16">Hola, Herman</p>
-            <div class="perfil float-left" style="background-image: url(assets/img/Carita.png)"></div>
-            <div class="dropdown herman-dropdown">
-              <button class="bg-white dropdown-toggle b-none outline-none text-gray-light book serif" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                <a href="" class="pl-7"><img src="assets/img/FlechaHerman.png" alt="" class="mt-14"></a>
-              </button>
-              <ul class="dropdown-menu mt-0 b-none fz-14" aria-labelledby="dropdownMenu1">
-                <li class="triangulo"></li>
-                <li><a href="perfil.html" class="lh-1">Mi Perfil</a></li>
-                <li><a href="#" class="lh-1">Estadísticas</a></li>
-                <li><a href="login.html" class="lh-1">Salir</a></li>
-              </ul>
+            <div class="col-xs-4 ph-0 pl-7">
+              <div class="btn-menu relative pv-7 ph-14">
+                <p class="text-gray-darker fz-17 mb-0 sans-serif display-ib pr-42">MENÚ</p>
+                <p class="text-gray-darker fz-17 mb-0 sans-serif display-ib pr-42 hidden">CERRAR</p>
+                <div class="switch display-ib">
+                  <div class="menu-toggle"></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="alerta bg-primary p-7 text-white">
-        <div class="container-md ph-21">
-          <img src="assets/img/Icono_Atencion.png" alt="">
-          <span class="m-0 pl-7 light fz-14">Esta sección es solo para alertas del sistema y de la administración</span>
+    </header>
+    <main class="site-content clearfix pb-42 mb-0-xs">
+      <div class="overlay-menu ebm-overlay w-100 minhp-100 fixed bg-white hidden-lg hidden-md ph-35">
+        <div class="clearfix pt-42 pb-28">
+          <div style="background-image:url(assets/img/Herman_Profile_Pic.png)" class="perfil-menu bg-img-block-center brp-100 float-left"></div>
+          <div class="float-left pt-21 pl-21">
+            <p class="sans-serif fz-15 light lh-1 mb-0">Hola</p>
+            <p class="sans-serif fz-22">Herman Marín</p>
+          </div>
+        </div>
+        <p class="sans-serif fz-22 mb-14 text-gray-dark"><a href="index.html">Ir al Inicio</a></p>
+        <p class="sans-serif fz-22 mb-14 text-gray-dark"><a href="perfil-editable">Editar Perfil</a></p>
+        <p class="sans-serif fz-22 mb-14 text-gray-dark"><a href="estadisticas.html">Ver estadísticas</a></p>
+        <p class="sans-serif fz-22 mb-14 text-gray-dark"><a href="login.html">Salir</a></p>
+        <form action="" class="pt-28">
+          <select name="" id="" class="w-100 mb-14 ph-14">
+            <option value="" class="w-100">Lidernet</option>
+            <option value="" class="w-100">Lidermanía</option>
+            <option value="" class="w-100">Préstamos</option>
+            <option value="" class="w-100">Tareo</option>
+            <option value="" class="w-100">LiderCard</option>
+            <option value="" class="w-100">Capacitaciones</option>
+            <option value="" class="w-100">Boleta de Pago</option>
+            <option value="" class="w-100">SGI</option>
+          </select>
+          <input type="text" id="search_bar" class="form-control input-sm fz-18 light ph-14" placeholder="Buscar personas, consultas o preguntas...">
+        </form>
+      </div>
+      <div class="alerta bg-primary p-7 text-white pv-14-xs">
+        <div class="container-md ph-21 ph-14-xs clearfix">
+          <img src="assets/img/Icono_Atencion.png" alt="" class="hidden-xs hidden-sm">
+          <span class="m-0 pl-7 light fz-14 hidden-xs hidden-sm">Esta sección es solo para alertas del sistema y de la administración</span>
+          <div class="col-xs-1 ph-0 hidden-lg hidden-md"><img src="assets/img/Icono_Atencion.png" alt=""></div>
+          <span class="col-xs-10 m-0 pl-7 lh-1-5 light fz-17 hidden-lg hidden-md">Esta sección es solo para alertas del sistema y de la administración</span>
         </div>
       </div>
-    </header>
-    <main class="site-content clearfix pb-42">
+      <div class="box-gray bg-gray-darker w-100 hidden-lg hdden-md"></div>
       <div class="container-md">
-        <section id="menu-vertical" class="col-md-4 pr-42 pl-0">
+        <section id="menu-vertical" class="col-md-4 pr-42 pl-0 hidden-xs hdden-sm">
           <div class="contenedor-menu bg-white pt-35 ph-42">
             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
               <div class="panel panel-default">
@@ -103,11 +149,11 @@
         </section>
         <section id="tareo-contenido" class="col-md-8 pb-42">
           <div class="container pt-42 w-100 ph-0">
-            <div class="perfil-servicios clearfix bg-white pv-21 ph-42">
-              <div class="col-md-4 pr-0 pt-21">
+            <div class="perfil-servicios clearfix bg-white pv-21 ph-21 ph-7-xs">
+              <div class="col-md-4 pr-0 pt-21 pl-0-xs">
                 <div style="background-image:url(assets/img/Herman_Profile_Pic.png)" class="bg-img-block-center"></div>
               </div>
-              <div class="col-md-8 pl-28 pt-14">
+              <div class="col-md-8 pl-28 pt-14 hidden-xs hdden-sm">
                 <h3 class="text-primary book m-0 display-ib pr-14 fz-30">Herman Marín</h2> 
                 <a href="perfil-editable.html"> 
                   <span class="fz-12 text-gray light">Editar</span>
@@ -118,29 +164,55 @@
                 <span class="light">Empresa Empleadora</span>
                 <p class="fz-12 pt-21">Este puede ser texto de Introducción del Liderman para que la gente sepa quién es esa persona.</br>Periodo en la Planilla: DD/MM/AA</p>
               </div>
+              <div class="col-md-8 ph-0 pt-14 hidden-lg hdden-md">
+                <h3 class="text-primary book m-0 display-ib pr-14 fz-35 pr-0-xs">Herman Marín</h2> 
+                <h4 class="text-gray fz-21 m-0 pt-7 pb-14 book">Supervisor, Zona - Unidad</h4>
+                <img src="assets/img/Ubicacion.png" alt="" class="pb-4">
+                <span class="light fz-20">Empresa Empleadora</span>
+                <p class="fz-17 pt-21 lh-1-5">Este puede ser texto de Introducción del Liderman para que la gente sepa quién es esa persona.</p>
+                <p class="fz-17 lh-1-5">Periodo en la Planilla: DD/MM/AA</p>
+              </div>
+            </div>
+            <div class="semaforo-movil bg-info border-radius clearfix hidden-lg hdden-md w-100 ph-14 pv-21"><!--movil-->
+              <a href="" class="more clearfix">
+                <div class="col-xs-1 ph-0 text-center">
+                  <img src="assets/img/Check.png" alt="">
+                </div>
+                <div class="col-xs-10 pr-0">
+                  <h3 class="fz-26 thin m-0 text-white lh-1-5">Tu semáforo está en verde!</h3>
+                </div>
+              </a>
+              <div class="col-xs-11 col-xs-offset-1 serif pr-7 pt-21 texto-semaforo text-white light hidden">
+                Anim pariatur cliche repre henderit, enim eiusmod high life accusamus terry richardson ad.
+              </div>
             </div>
             <div><h2 class="fz-28 border-bottom-gray-darker pb-14 text-gray-darker pt-21">Lidermanía/ Ama el trato</h2></div>
-            <div class="lidermania">
-              <div class="datos bg-white pv-42 ph-42">
-                <a href="" class="text-primary text-hover-primary pl-7 fz-12">&larr; Regresar</a>
+            <div class="lidermania pt-14-xs">
+              <select name="" id="" class="w-100 select-lista pl-14 fz-24 hidden-lg hdden-md">
+                <option value="" class="fz-24">Ama el trato</option>
+                <option value="" class="fz-24">Ama el cremiento</option>
+                <option value="" class="fz-24">Ama el pago</option>
+              </select>
+              <div class="datos datos-lidermania bg-white pv-42 ph-42 ph-21-xs mt-28-xs pv-21-xs">
+                <a href="" class="text-primary text-hover-primary pl-7 fz-12 hidden-xs hidden-sm">&larr; Regresar</a>
                 <h3 class="fz-18 text-gray-darker pl-7 mt-14">Respeto</h3>
-                <ul class="pl-42 serif fz-18 clearfix">
+                <ul class="pl-42 serif fz-18 clearfix pl-28-xs pt-21-xs">
                   <li class="col-md-10 text-gray-darker">Conociéndonos mejor</li>
-                  <span class="col-md-2 fz-12  pr-0"><a href="" class="text-primary thin">Leer más &rarr;</a></span>
+                  <span class="col-md-2 fz-12  pr-0 hidden-xs hidden-sm"><a href="" class="text-primary thin ">Leer más &rarr;</a></span>
                   <li class="col-md-10 text-gray-darker">Reconocimiento por buenas acciones</li>
-                  <span class="col-md-2 fz-12  pr-0"><a href="" class="text-primary thin">Leer más &rarr;</a></span>
+                  <span class="col-md-2 fz-12  pr-0 hidden-xs hidden-sm"><a href="" class="text-primary thin ">Leer más &rarr;</a></span>
                   <li class="col-md-10 text-gray-darker">Visita a colaboradores delicados de salud</li>
-                  <span class="col-md-2 fz-12  pr-0"><a href="" class="text-primary thin">Leer más &rarr;</a></span>
+                  <span class="col-md-2 fz-12  pr-0 hidden-xs hidden-sm"><a href="" class="text-primary thin ">Leer más &rarr;</a></span>
                   <li class="col-md-10 text-gray-darker">Contigo en verano e invierno</li>
-                  <span class="col-md-2 fz-12  pr-0"><a href="" class="text-primary thin">Leer más &rarr;</a></span>
+                  <span class="col-md-2 fz-12  pr-0 hidden-xs hidden-sm"><a href="" class="text-primary thin ">Leer más &rarr;</a></span>
                   <li class="col-md-10 text-gray-darker">Intercambio cultutal entre países</li>
-                  <span class="col-md-2 fz-12  pr-0"><a href="" class="text-primary thin">Leer más &rarr;</a></span>
+                  <span class="col-md-2 fz-12  pr-0 hidden-xs hidden-sm"><a href="" class="text-primary thin ">Leer más &rarr;</a></span>
                   <li class="col-md-10 text-gray-darker">Bonos de alimentación</li>
-                  <span class="col-md-2 fz-12  pr-0"><a href="" class="text-primary thin">Leer más &rarr;</a></span>
+                  <span class="col-md-2 fz-12  pr-0 hidden-xs hidden-sm"><a href="" class="text-primary thin ">Leer más &rarr;</a></span>
                   <li class="col-md-10 text-gray-darker">Trabajo en casa</li>
-                  <span class="col-md-2 fz-12 pr-0"><a href="" class="text-primary thin">Leer más &rarr;</a></span>
+                  <span class="col-md-2 fz-12 pr-0 hidden-xs hidden-sm"><a href="" class="text-primary thin ">Leer más &rarr;</a></span>
                   <li class="col-md-10 text-gray-darker">Políticas de puertas abiertas</li>
-                  <span class="col-md-2 fz-12  pr-0"><a href="" class="text-primary thin">Leer más &rarr;</a></span>
+                  <span class="col-md-2 fz-12  pr-0 hidden-xs hidden-sm"><a href="" class="text-primary thin ">Leer más &rarr;</a></span>
                 </ul>
               </div>
             </div>
@@ -148,51 +220,53 @@
         </section>
       </div>
     </main>
-    <footer class="w-100 fixed">
-      <div id="up" class="text-center">
-        <a href=""><img src="assets/img/Flecha-para-arriba.png" alt=""></a>
-      </div>
-      <div class="container pt-21 pb-42"> 
-        <div class="row">
-          <div class="col-md-9 pl-0">
-            <div class="col-md-1 pl-0 text-right"><img src="assets/img/Wall/Icono_Senal.png" alt="" class="antena"></div>
-            <div class="col-md-8 p-0">
-              <h5 class="text-uppercase m-0">AHORA EN VIVO</h5>
-              <h4 class="text-uppercase m-0 text-white fz-22">La hora del vigilante</h4>
-              <p class="text-gray-lighter m-0 fz-12">Con Giselle Collao. Lunes a Viernes de 9 a 11 pm</p>
-            </div>
-          </div> 
-          <div class="col-md-3 pr-35 text-right">
-            <a href=""><img class="pt-14 volumen" src="assets/img/Wall/Icono_Volumen.png" alt=""></a> 
-          </div>
+    <footer>
+      <div class="w-100">
+        <div id="up" class="text-center">
+          <a href=""><img src="assets/img/Flecha-para-arriba.png" alt=""></a>
         </div>
-        <div class="descripcion row pt-14 pb-42">
-          <div class="col-md-6">
-            <img src="assets/img/Wall/RadioUrbe.png" alt="">
+        <div class="container pt-21 pb-42"> 
+          <div class="row">
+            <div class="col-md-9 col-xs-12 pl-0">
+              <div class="col-md-1 col-xs-2 pl-0 text-right"><img src="assets/img/Wall/Icono_Senal.png" alt="" class="antena"></div>
+              <div class="col-md-8 col-xs-9 p-0">
+                <h5 class="text-uppercase m-0">AHORA EN VIVO</h5>
+                <h4 class="text-uppercase m-0 text-white fz-22">La hora del vigilante</h4>
+                <p class="text-gray-lighter m-0 fz-12">Con Giselle Collao. Lunes a Viernes de 9 a 11 pm</p>
+              </div>
+            </div> 
+            <div class="col-md-3 pr-35 text-right">
+              <a href=""><img class="pt-14 volumen" src="assets/img/Wall/Icono_Volumen.png" alt=""></a> 
+            </div>
           </div>
-          <div class="col-md-6 pl-42">
-            <ul class="lista text-white pt-7 ml-14">
-              <li class="text-white">
-                <h2 class="fz-1">URBE AL DÍA</h2>
-                <p class="text-gray-lighter">Con Mauricio Calvo Pérez. Lunes a Viernes de 10am a 11am</p>
-              </li>
-              <li>
-                <h2 class="fz-1">ESPACIO IMSOMNIO</h2>
-                <p class="text-gray-lighter">Escucha lo mejor del rock peruano. Lunes a Viernes de 10am a 11am</p>
-              </li>
-              <li>
-                <h2 class="fz-1">LA HORA DE LÍDERMAN PARA EL MUNDO</h2>
-                <p class="text-gray-lighter">Con Mauricio Calvo Pérez. Lunes a Viernes de 10am a 11am</p>
-              </li>
-              <li>
-                <h2 class="fz-1">LIDERMANÍA</h2>
-                <p class="text-gray-lighter">Con Mauricio Calvo Pérez. Lunes a Viernes de 10am a 11am</p>
-              </li>
-              <li>
-                <h2 class="fz-1">CAPACITACIONES</h2>
-                <p class="text-gray-lighter">Con Mauricio Calvo Pérez. Lunes a Viernes de 10am a 11am</p>
-              </li>
-            </ul>
+          <div class="descripcion row pt-14 pb-42">
+            <div class="col-md-6 hidden-xs hidden-sm">
+              <img src="assets/img/Wall/RadioUrbe.png" alt="">
+            </div>
+            <div class="col-md-6 col-xs-12 pl-42">
+              <ul class="lista text-white pt-7 ml-14">
+                <li class="text-white">
+                  <h2 class="fz-1">URBE AL DÍA</h2>
+                  <p class="text-gray-lighter">Con Mauricio Calvo Pérez. Lunes a Viernes de 10am a 11am</p>
+                </li>
+                <li>
+                  <h2 class="fz-1">ESPACIO IMSOMNIO</h2>
+                  <p class="text-gray-lighter">Escucha lo mejor del rock peruano. Lunes a Viernes de 10am a 11am</p>
+                </li>
+                <li>
+                  <h2 class="fz-1">LA HORA DE LÍDERMAN PARA EL MUNDO</h2>
+                  <p class="text-gray-lighter">Con Mauricio Calvo Pérez. Lunes a Viernes de 10am a 11am</p>
+                </li>
+                <li>
+                  <h2 class="fz-1">LIDERMANÍA</h2>
+                  <p class="text-gray-lighter">Con Mauricio Calvo Pérez. Lunes a Viernes de 10am a 11am</p>
+                </li>
+                <li>
+                  <h2 class="fz-1">CAPACITACIONES</h2>
+                  <p class="text-gray-lighter">Con Mauricio Calvo Pérez. Lunes a Viernes de 10am a 11am</p>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -203,4 +277,6 @@
   <script src="assets/js/b3/dropdown.js"></script>
   <script src="assets/js/b3/collapse.js"></script>
   <script src="assets/js/scroll-control.js"></script>
+  <script src="assets/js/menu-movil-control.js"></script>
+  <script src="assets/js/collapse-control.js"></script>
 </html>
