@@ -32,7 +32,11 @@
                 <li class="triangulo"></li>
                 <li><a href="{path='sprint1/profile'}" class="lh-1">Mi Perfil</a></li>
                 <li><a href="#" class="lh-1">Estadísticas</a></li>
-                <li><a href="#" class="lh-1">Salir</a></li>
+                <li>
+                {exp:user:logout return="{site_url}"}
+								    <a href="{url}" class="lh-1">Salir</a>
+								{/exp:user:logout}
+								</li>
               </ul>
             </div>
           </div>
