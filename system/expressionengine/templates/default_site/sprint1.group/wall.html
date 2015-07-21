@@ -1,53 +1,7 @@
 {embed="includes/header"}
   
   <div class="site-wrapper"> <!-- Body -->
-    <header class="site-menu bg-white">
-      <div class="container minh-70 ph-0 pt-14 pb-7 bg-white">
-        <div class="logo col-md-4 pl-0">  
-          <a href="index.html">
-            <div class="col-md-8 text-left ph-0 pt-14">
-              <h1 class="text-uppercase bold text-gray-darker m-0">Mundo liderman</h1>
-            </div>
-            <div class="col-md-2 ph-0">
-              <img src="{site_url}frontend/app/assets/img/Liderboy.png" alt="Mundo Liderman">
-            </div>
-          </a>
-          <div class="col-md-2">  </div>
-        </div>
-        <div class="col-md-4 pl-42 pr-21">
-          <form class="tool-bar-search-form mt-7 br-5">
-            <div class="input-group pr-0 ">
-              <input type="text" id="search_bar" class="form-control input-sm thin pl-14 borderless display-ib" placeholder="Buscar personas, consultas o preguntas...">
-              <img src="{site_url}frontend/app/assets/img/Icono_Buscar.png" alt="" class="display-ib">
-            </div>
-          </form>
-        </div>
-        <div class="col-md-4 text-center ph-0">
-          <div class="col-md-6"><p class="mt-14 mb-0 border-right-gray-light pr-14 text-right"><a href="" class="text-gray book fz-18 lh-0">Ir al inicio</a></p></div>
-          <div class="col-md-6 text-right ph-0">
-            <h5 class="text-gray-dark m-0 mt-14 light float-left pr-7 fz-18">Hola, Herman</h5>
-            <div class="perfil float-left" style="background-image: url({site_url}frontend/app/assets/img/Carita.png)"></div>
-            <div class="dropdown herman-dropdown">
-              <button class="bg-white dropdown-toggle b-none outline-none text-gray-light book serif" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                <a href="" class="pl-7"><img src="{site_url}frontend/app/assets/img/FlechaHerman.png" alt="" class="mt-14"></a>
-              </button>
-              <ul class="dropdown-menu mt-0 b-none fz-14" aria-labelledby="dropdownMenu1">
-                <li class="triangulo"></li>
-                <li><a href="{path='sprint1/profile'}" class="lh-1">Mi Perfil</a></li>
-                <li><a href="#" class="lh-1">Estadísticas</a></li>
-                <li><a href="#" class="lh-1">Salir</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="alerta bg-warning p-7 ph-35 text-white">
-        <div class="container pl-0">
-          <img src="{site_url}frontend/app/assets/img/Icono_Atencion.png" alt="">
-          <span class="m-0 pl-7 light fz-14">Esta sección es solo para alertas del sistema y de la administración</span>
-        </div>
-      </div>
-    </header>
+    {embed="includes/nav-main"}
     <main class="site-content pb-70" role="main">
       <div class="container container-index  pt-42 clearfix mb-70 ph-0">
         <div id="box-left" class="col-md-8 pl-0">
