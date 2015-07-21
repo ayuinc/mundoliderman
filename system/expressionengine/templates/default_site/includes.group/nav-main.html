@@ -12,12 +12,16 @@
       <div class="col-md-2">  </div>
     </div>
     <div class="col-md-4 pl-42 pr-21">
-      <form class="tool-bar-search-form mt-7 br-5">
-        <div class="input-group pr-0 ">
-          <input type="text" id="search_bar" class="form-control input-sm thin pl-14 borderless display-ib" placeholder="Buscar personas, consultas o preguntas...">
-          <img src="{site_url}frontend/app/assets/img/Icono_Buscar.png" alt="" class="display-ib">
-        </div>
-      </form>
+	    <div class="tool-bar-search-form mt-7 br-5">
+		    {exp:user:search
+				    return="user/results"
+				}
+	        <div class="input-group pr-0 ">
+	          <input type="text" id="search_bar" class="form-control input-sm thin pl-14 borderless display-ib" name="keywords" placeholder="Buscar personas, consultas o preguntas...">
+	          <img src="{site_url}frontend/app/assets/img/Icono_Buscar.png" alt="" class="display-ib">
+	        </div>
+				{/exp:user:search}
+	    </div>
     </div>
     <div class="col-md-4 text-center ph-0">
       <div class="col-md-5"><p class="mt-14 mb-0 border-right-gray-light pr-14 text-right"><a href="" class="text-gray book fz-16 lh-0">Ir al inicio</a></p></div>
