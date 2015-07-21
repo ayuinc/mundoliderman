@@ -1,0 +1,29 @@
+{embed="includes/header"}
+  <div class="site-wrapper"> 
+    <main class="registro pt-0-xs">
+      <div style="background-image: url({site_url}frontend/app/assets/img/Registro.png)" class="hero-image-registro bg-img-block-center minhp-100">
+	      {exp:member:login_form return="{site_url}sprint1/wall"}
+        <div class="container-sm ph-0 hidden-sm hidden-xs">
+          <div class="caja w-100 bg-white minhp-90 text-center p-42">
+            <div class="row pt-42 ph-21">
+              <div class="col-md-6 col-xs-offset-2 pr-0">
+                <h1 class="title-login text-uppercase fz-40 text-gray-darker bold float-left pl-14">Mundo Liderman</h1>
+              </div>
+              <div class="col-md-2 pl-0 text-left pt-7"> 
+                <img src="{site_url}frontend/app/assets/img/Liderboy.png" alt="Mundo Liderman" class="liderboy">
+              </div>
+            </div>
+            <form action="" class="text-right ph-42 mh-42 mt-42 pt-42">
+              <input type="text" name="username" placeholder="Ingresa tu nombre de ususario" class="usuario serif fz-24 w-100 mb-35"></br>
+              <input type="password" name="password" placeholder="Ingresa tu Contraseña" class="serif fz-24 w-100 mb-42">
+              <input type="submit" class="submit btn btn-info ph-28 pv-7 mt-14 border-radius" name="submit" value="INGRESAR">
+            </form>
+          </div>
+        </div>
+        {/exp:member:login_form}
+      </div>
+    </main>
+    <footer></footer>
+  </div>
+  
+{embed="includes/footer"} 

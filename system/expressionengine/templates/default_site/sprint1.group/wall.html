@@ -1,120 +1,39 @@
-<!doctype html>
-<html lang="en">
-  <meta charset="utf-8">
-  <title>Mundo Liderman</title>
-  <meta name="description" content="">
-  <meta name="keywords" content=""> 
-  <meta name="author" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <link rel="icon" type="image/png" href="{site_url}frontend/app/assets/img/Favicon.png" />
-  <link rel="shortcut icon" href="{site_url}frontend/app/assets/img/Favicon.png">
-  <link href="{site_url}frontend/app/assets/css/style.css" rel="stylesheet"> <!-- App styles -->
-  <link href="{site_url}frontend/app/assets/css/ebm.css" rel="stylesheet">
-  <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,700|Oswald:400,300,700' rel='stylesheet' type='text/css'>
+{embed="includes/header"}
   
   <div class="site-wrapper"> <!-- Body -->
-    <header class="site-menu bg-white">
-      <div class="container minh-70 ph-0 pt-14 pb-7 bg-white">
-        <div class="logo col-md-4 pl-0">  
-          <a href="index.html">
-            <div class="col-md-8 text-left ph-0 pt-14">
-              <h1 class="text-uppercase bold text-gray-darker m-0">Mundo liderman</h1>
-            </div>
-            <div class="col-md-2 ph-0">
-              <img src="{site_url}frontend/app/assets/img/Liderboy.png" alt="Mundo Liderman">
-            </div>
-          </a>
-          <div class="col-md-2">  </div>
-        </div>
-        <div class="col-md-4 pl-42 pr-21">
-          <form class="tool-bar-search-form mt-7 br-5">
-            <div class="input-group pr-0 ">
-              <input type="text" id="search_bar" class="form-control input-sm thin pl-14 borderless display-ib" placeholder="Buscar personas, consultas o preguntas...">
-              <img src="{site_url}frontend/app/assets/img/Icono_Buscar.png" alt="" class="display-ib">
-            </div>
-          </form>
-        </div>
-        <div class="col-md-4 text-center ph-0">
-          <div class="col-md-6"><p class="mt-14 mb-0 border-right-gray-light pr-14 text-right"><a href="" class="text-gray book fz-18 lh-0">Ir al inicio</a></p></div>
-          <div class="col-md-6 text-right ph-0">
-            <h5 class="text-gray-dark m-0 mt-14 light float-left pr-7 fz-18">Hola, Herman</h5>
-            <div class="perfil float-left" style="background-image: url({site_url}frontend/app/assets/img/Carita.png)"></div>
-            <div class="dropdown herman-dropdown">
-              <button class="bg-white dropdown-toggle b-none outline-none text-gray-light book serif" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                <a href="" class="pl-7"><img src="{site_url}frontend/app/assets/img/FlechaHerman.png" alt="" class="mt-14"></a>
-              </button>
-              <ul class="dropdown-menu mt-0 b-none fz-14" aria-labelledby="dropdownMenu1">
-                <li class="triangulo"></li>
-                <li><a href="{path='sprint1/profile'}" class="lh-1">Mi Perfil</a></li>
-                <li><a href="#" class="lh-1">Estadísticas</a></li>
-                <li><a href="#" class="lh-1">Salir</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="alerta bg-warning p-7 ph-35 text-white">
-        <div class="container pl-0">
-          <img src="{site_url}frontend/app/assets/img/Icono_Atencion.png" alt="">
-          <span class="m-0 pl-7 light fz-14">Esta sección es solo para alertas del sistema y de la administración</span>
-        </div>
-      </div>
-    </header>
+    {embed="includes/nav-main"}
     <main class="site-content pb-70" role="main">
       <div class="container container-index  pt-42 clearfix mb-70 ph-0">
         <div id="box-left" class="col-md-8 pl-0">
 
 		  {exp:friends:status_form return="{path='sprint1/wall'}" form_id="comentar" form_class="bg-white"}
-          <!--<form id="comentar" class="bg-white" action="">-->
-            <div class="publicacion clearfix">
-              <div class="border-bottom-gray-lighter pr-21 pv-7">
-                <div class="dropdown text-right">
-                  <!--<button class="btn bg-white dropdown-toggle b-none outline-none text-gray-light book serif" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                    Escoge una categoría
-                    <span class="caret"></span>
-                  </button>
-                  <ul class="dropdown-menu mt-0 b-none fz-14" aria-labelledby="dropdownMenu1">
-                    <li class="triangulo"></li>
-                    <li><a href="#">Quiero divertirme</a></li>
-                    <li><a href="#">Quiero dar mi testimonio</a></li>
-                    <li><a href="#">Tengo una solicitud</a></li>
-                    <li><a href="#">Tengo una consulta</a></li>
-                    <li><a href="#">Necesito ayuda</a></li>
-                    <li><a href="#">Otro</a></li>
-                  </ul>-->
-                  <select name="status_category" id="" class="btn bg-white dropdown-toggle b-none outline-none text-gray-light book serif">
-                    <!--<option value="0" >Escoge una categoría</option>
-                  	<option value="1">Quiero divertirme</option>
-                  	<option value="2">Quiero dar mi testimonio</option>
-                  	<option value="3">Tengo una solicitud</option>
-                  	<option value="4">Tengo una consulta</option>
-                  	<option value="5">Necesito ayuda</option>
-                  	<option value="6">Otro</option>-->
-                  	{exp:status_category:all}
-	                  <option value="{category_id}">{category_name}</option>
-	                {/exp:status_category:all}
-                  </select>
-                  
-                </div>
-              </div>
-              <div class="ph-21">
-                <textarea name="friends_status" class="form-control outline-none serif fz-18 borderless" rows="3" placeholder="Qué estás pensando..."  maxlength="512"></textarea>
-              </div>
-            </div>
-            <div class="buttons-group pv-14 lh-0 pl-35 bg-success clearfix">
-              <div class="col-md-6">
-                <a href=" "><img src="{site_url}frontend/app/assets/img/Icono_Foto.png" alt=""></a>
-                <a id="uploadImage" href=""><span class="text-white thin fz-12">Subir imagen</span></a>
-                <input type="file" id="inputFile" name="status_image" class="hidden" accept="image">
-              </div>
-              <div class="col-md-6 text-right pr-35">
-                <button type="submit" name="submit" class="btn bg-white text-success text-hover-success fz-12 ph-21">
-                 PUBLICAR
-                 <img src="{site_url}frontend/app/assets/img/Globito.png" alt="" class="pl-14">
-                </button>
-              </div>
-            </div>
-          <!--</form>-->
+	      <div class="publicacion clearfix">
+	        <div class="border-bottom-gray-lighter pr-21 pv-7">
+	          <div class="dropdown text-right">
+	            <select name="status_category" id="" class="btn bg-white dropdown-toggle b-none outline-none text-gray-light book serif">
+	            	{exp:status_category:all}
+	              <option value="{category_id}">{category_name}</option>
+								{/exp:status_category:all}
+	            </select>
+	          </div>
+	        </div>
+	        <div class="ph-21">
+	          <textarea name="friends_status" class="form-control outline-none serif fz-18 borderless" rows="3" placeholder="Qué estás pensando..."  maxlength="512"></textarea>
+	        </div>
+	      </div>
+	      <div class="buttons-group pv-14 lh-0 pl-35 bg-success clearfix">
+	        <div class="col-md-6">
+	          <a href=" "><img src="{site_url}frontend/app/assets/img/Icono_Foto.png" alt=""></a>
+	          <a id="uploadImage" href=""><span class="text-white thin fz-12">Subir imagen</span></a>
+	          <input type="file" id="inputFile" name="status_image" class="hidden" accept="image">
+	        </div>
+	        <div class="col-md-6 text-right pr-35">
+	          <button type="submit" name="submit" class="btn bg-white text-success text-hover-success fz-12 ph-21">
+	           PUBLICAR
+	           <img src="{site_url}frontend/app/assets/img/Globito.png" alt="" class="pl-14">
+	          </button>
+	        </div>
+	      </div>
 		  {/exp:friends:status_form}
 
 		  {exp:friends:status member_id="CURRENT_USER"}
@@ -296,100 +215,10 @@
 
         </div>
         <div id="box-right" class="col-md-4 pl-42 pr-0">
-          <div class="noticia ml-42">
-            <img src="{site_url}frontend/app/assets/img/Wall/Noticias1.png" alt="">
-            <div class="nota bg-white minhp-30 ph-21 pv-14 border-bottom-gray-light">
-              <span class="text-uppercase text-primary fz-10">NOTICIA</span>
-              <h5 class="text-uppercase mt-0 fz-14 text-gray-dark2">Conoce a la unidad lotería matríz</h5>
-              <p class="fz-12 text-gray-darker">Lorem ipsum dolor sit amet, conse adipisicing elit. Illum eius sequi molestias.</p>
-              <p class="read text-right text-primary book fz-10"><a href="">Leer más &#8594</a></p>
-            </div>
-          </div>
-          <div class="noticia mt-35 ml-42">
-            <img src="{site_url}frontend/app/assets/img/Wall/Noticias2 .png" alt="">
-            <div class="nota bg-white minhp-30 ph-21 pv-14 border-bottom-gray-light">
-              <span class="text-uppercase text-primary fz-10">EVENTOS</span>
-              <h5 class="text-uppercase mt-0 fz-14 text-gray-dark2">Mira los saludos de líderman a las madres en su día</h5>
-              <p class="fz-12 text-gray-darker">Lorem ipsum dolor sit amet, conse adipisicing elit. Illum eius sequi molestias.</p>
-              <p class="read text-right text-primary book fz-10"><a href="">Leer más &#8594</a></p>
-            </div>
-          </div>
-          <div class="noticia mt-35 ml-42
-          ">
-            <img src="{site_url}frontend/app/assets/img/Wall/Noticias3.png" alt="">
-            <div class="nota bg-white minhp-30 ph-21 pv-14 border-bottom-gray-light">
-              <span class="text-uppercase text-primary fz-10">BLOG</span>
-              <h5 class="text-uppercase mt-0 fz-14 text-gray-dark2">Simulacro de sismo este 05 de junio, prepárate para el evento</h5>
-              <p class="fz-12 text-gray-darker">Lorem ipsum dolor sit amet, conse adipisicing elit. Illum eius sequi molestias.</p>
-              <p class="read text-right text-primary book fz-10"><a href="">Leer más &#8594</a></p>
-            </div>
-          </div>
+					{embed="includes/modulo-noticias"}
         </div>
       </div>
     </main>
-    <footer class="w-100 fixed">
-      <div id="up" class="text-center">
-        <a href=""><img src="{site_url}frontend/app/assets/img/Flecha-para-arriba.png" alt=""></a>
-      </div>
-      <div class="container pt-21 pb-42"> 
-        <div class="row">
-          <div class="col-md-9 pl-0">
-            <div class="col-md-1 pl-0 text-right"><img src="{site_url}frontend/app/assets/img/Wall/Icono_Senal.png" alt="" class="antena"></div>
-            <div class="col-md-8 p-0">
-              <h5 class="text-uppercase m-0">AHORA EN VIVO</h5>
-              <h4 class="text-uppercase m-0 text-white fz-22">La hora del vigilante</h4>
-              <p class="text-gray-lighter m-0 fz-12">Con Giselle Collao. Lunes a Viernes de 9 a 11 pm</p>
-            </div>
-          </div> 
-          <div class="col-md-3 pr-35 text-right">
-            <a href=""><img class="pt-14 volumen" src="{site_url}frontend/app/assets/img/Wall/Icono_Volumen.png" alt=""></a> 
-          </div>
-        </div>
-        <div class="descripcion row pt-14 pb-42">
-          <div class="col-md-6">
-            <img src="{site_url}frontend/app/assets/img/Wall/RadioUrbe.png" alt="">
-          </div>
-          <div class="col-md-6 pl-42">
-            <ul class="lista text-white pt-7 ml-14">
-              <li class="text-white">
-                <h2 class="fz-1">URBE AL DÍA</h2>
-                <p class="text-gray-lighter">Con Mauricio Calvo Pérez. Lunes a Viernes de 10am a 11am</p>
-              </li>
-              <li>
-                <h2 class="fz-1">ESPACIO IMSOMNIO</h2>
-                <p class="text-gray-lighter">Escucha lo mejor del rock peruano. Lunes a Viernes de 10am a 11am</p>
-              </li>
-              <li>
-                <h2 class="fz-1">LA HORA DE LÍDERMAN PARA EL MUNDO</h2>
-                <p class="text-gray-lighter">Con Mauricio Calvo Pérez. Lunes a Viernes de 10am a 11am</p>
-              </li>
-              <li>
-                <h2 class="fz-1">LIDERMANÍA</h2>
-                <p class="text-gray-lighter">Con Mauricio Calvo Pérez. Lunes a Viernes de 10am a 11am</p>
-              </li>
-              <li>
-                <h2 class="fz-1">CAPACITACIONES</h2>
-                <p class="text-gray-lighter">Con Mauricio Calvo Pérez. Lunes a Viernes de 10am a 11am</p>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </footer>
+    {embed="includes/radio-urbe"}
   </div>
-  <script src="{site_url}frontend/app/assets/js/jquery.min.js"></script> <!-- App scripts -->
-  <script src="{site_url}frontend/app/assets/js/scripts.min.js"></script>
-  <script src="{site_url}frontend/app/assets/js/b3/dropdown.js"></script>
-  <script src="{site_url}frontend/app/assets/js/scroll-control.js"></script>
-  <script src="{site_url}frontend/app/assets/js/aviso-control.js"></script>
-  <script>
-  	$(document).ready(function() {
-  		$("#uploadImage").on("click", function(e) {
-  			e.preventDefault();
-  			$("#inputFile").trigger("click");
-  		});
-
-  		$("#comentar").attr("enctype", "multipart/form-data");
-  	});
-  </script>
-</html>
+{embed="includes/footer"}
