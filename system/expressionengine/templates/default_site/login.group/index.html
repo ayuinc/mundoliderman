@@ -1,4 +1,7 @@
 {embed="includes/header"}
+	{if logged_in}
+		{redirect='sprint1/wall' status_code="301"}
+	{if:else}
   <div class="site-wrapper"> 
     <main class="registro pt-0-xs">
       <div style="background-image: url({site_url}frontend/app/assets/img/Registro.png)" class="hero-image-registro bg-img-block-center minhp-100">
@@ -25,5 +28,6 @@
     </main>
     <footer></footer>
   </div>
+  {/if}
   
 {embed="includes/footer"} 
