@@ -42,10 +42,14 @@
       </div>
     </div>
   </div>
-  <div class="alerta bg-warning p-7 ph-35 text-white">
-    <div class="container pl-0">
-      <img src="{site_url}frontend/app/assets/img/Icono_Atencion.png" alt="">
-      <span class="m-0 pl-7 light fz-14">Esta sección es solo para alertas del sistema y de la administración</span>
-    </div>
-  </div>
+  {exp:channel:entries channel="alertas" limit="1" dynamic="off"}
+	  {if alerta_descripcion!=''}
+	  <div class="alerta bg-warning p-7 ph-35 text-white">
+	    <div class="container pl-0">
+	      <img src="{site_url}frontend/app/assets/img/Icono_Atencion.png" alt="">
+	      <span class="m-0 pl-7 light fz-14">{alerta_descripcion}</span>
+	    </div>
+	  </div>
+	  {/if}
+  {/exp:channel:entries}
 </header>    
