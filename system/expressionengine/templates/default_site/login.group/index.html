@@ -2,7 +2,7 @@
   <div class="site-wrapper"> 
     <main class="registro pt-0-xs">
       <div style="background-image: url({site_url}frontend/app/assets/img/Registro.png)" class="hero-image-registro bg-img-block-center minhp-100">
-	      {exp:member:login_form return="sprint1/wall"}
+	      {exp:member:login_form return="{path='sprint1/wall'}"}
         <div class="container-sm ph-0 hidden-sm hidden-xs">
           <div class="caja w-100 bg-white minhp-90 text-center p-42">
             <div class="row pt-42 ph-21">
@@ -26,7 +26,7 @@
           </div>
         </div>
         {/exp:member:login_form}
-        {exp:member:login_form return="sprint1/wall"}
+        {exp:member:login_form return="{path='sprint1/wall'}"}
         <div class="container-sm container-login ph-42 hidden-lg hidden-md">
           <div class="caja w-100 bg-white minhp-70 text-center p-42">
             <div class="row pt-42 ph-21">
