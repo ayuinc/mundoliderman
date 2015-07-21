@@ -5,6 +5,10 @@
   <script src="{site_url}frontend/app/assets/js/aviso-control.js"></script>  
   <script src="{site_url}frontend/app/assets/js/textarea-control.js"></script>
   <script src="{site_url}frontend/app/assets/js/menu-movil-control.js"></script>  
+  <script src="{site_url}frontend/app/assets/js/b3/dropdown.js"></script>
+  <script src="{site_url}frontend/app/assets/js/b3/collapse.js"></script>
+  <script src="{site_url}frontend/app/assets/js/textarea-control.js"></script>
+  <script src="{site_url}frontend/app/assets/js/collapse-control.js"></script> 
   
   
   <script>
@@ -27,4 +31,17 @@
       });
     });
   </script>
+  {if segment_1=='perfil'}
+  <script>
+    $(document).ready(function() {
+      $("#uploadImage").on("click", function(e) {
+        e.preventDefault();
+        $("#inputFile").trigger("click");
+      });
+
+      $("#comentar").attr("enctype", "multipart/form-data");
+    });
+  </script>  
+  {/if}
+  
 </html>
