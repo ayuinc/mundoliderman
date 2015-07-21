@@ -27,4 +27,17 @@
       });
     });
   </script>
+  {if segment_1=='perfil'}
+  <script>
+    $(document).ready(function() {
+      $("#uploadImage").on("click", function(e) {
+        e.preventDefault();
+        $("#inputFile").trigger("click");
+      });
+
+      $("#comentar").attr("enctype", "multipart/form-data");
+    });
+  </script>  
+  {/if}
+  
 </html>
