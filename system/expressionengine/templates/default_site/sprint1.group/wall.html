@@ -1,7 +1,7 @@
 {embed="includes/header"}
   
   <div class="site-wrapper"> <!-- Body -->
-    {embed="includes/nav-main"}
+    {embed="incudes/nav-main"}
     <main class="site-content pb-70" role="main">
       <div class="container container-index  pt-42 clearfix mb-70 ph-0">
         <div id="box-left" class="col-md-8 pl-0">
@@ -34,7 +34,7 @@
                   	<option value="6">Otro</option>-->
                   	{exp:status_category:all}
 	                  <option value="{category_id}">{category_name}</option>
-	                {/exp:status_category:all}
+										{/exp:status_category:all}
                   </select>
                   
                 </div>
@@ -269,69 +269,6 @@
         </div>
       </div>
     </main>
-    <footer class="w-100 fixed">
-      <div id="up" class="text-center">
-        <a href=""><img src="{site_url}frontend/app/assets/img/Flecha-para-arriba.png" alt=""></a>
-      </div>
-      <div class="container pt-21 pb-42"> 
-        <div class="row">
-          <div class="col-md-9 pl-0">
-            <div class="col-md-1 pl-0 text-right"><img src="{site_url}frontend/app/assets/img/Wall/Icono_Senal.png" alt="" class="antena"></div>
-            <div class="col-md-8 p-0">
-              <h5 class="text-uppercase m-0">AHORA EN VIVO</h5>
-              <h4 class="text-uppercase m-0 text-white fz-22">La hora del vigilante</h4>
-              <p class="text-gray-lighter m-0 fz-12">Con Giselle Collao. Lunes a Viernes de 9 a 11 pm</p>
-            </div>
-          </div> 
-          <div class="col-md-3 pr-35 text-right">
-            <a href=""><img class="pt-14 volumen" src="{site_url}frontend/app/assets/img/Wall/Icono_Volumen.png" alt=""></a> 
-          </div>
-        </div>
-        <div class="descripcion row pt-14 pb-42">
-          <div class="col-md-6">
-            <img src="{site_url}frontend/app/assets/img/Wall/RadioUrbe.png" alt="">
-          </div>
-          <div class="col-md-6 pl-42">
-            <ul class="lista text-white pt-7 ml-14">
-              <li class="text-white">
-                <h2 class="fz-1">URBE AL DÍA</h2>
-                <p class="text-gray-lighter">Con Mauricio Calvo Pérez. Lunes a Viernes de 10am a 11am</p>
-              </li>
-              <li>
-                <h2 class="fz-1">ESPACIO IMSOMNIO</h2>
-                <p class="text-gray-lighter">Escucha lo mejor del rock peruano. Lunes a Viernes de 10am a 11am</p>
-              </li>
-              <li>
-                <h2 class="fz-1">LA HORA DE LÍDERMAN PARA EL MUNDO</h2>
-                <p class="text-gray-lighter">Con Mauricio Calvo Pérez. Lunes a Viernes de 10am a 11am</p>
-              </li>
-              <li>
-                <h2 class="fz-1">LIDERMANÍA</h2>
-                <p class="text-gray-lighter">Con Mauricio Calvo Pérez. Lunes a Viernes de 10am a 11am</p>
-              </li>
-              <li>
-                <h2 class="fz-1">CAPACITACIONES</h2>
-                <p class="text-gray-lighter">Con Mauricio Calvo Pérez. Lunes a Viernes de 10am a 11am</p>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </footer>
+    {embed="includes/radio-urbe"}
   </div>
-  <script src="{site_url}frontend/app/assets/js/jquery.min.js"></script> <!-- App scripts -->
-  <script src="{site_url}frontend/app/assets/js/scripts.min.js"></script>
-  <script src="{site_url}frontend/app/assets/js/b3/dropdown.js"></script>
-  <script src="{site_url}frontend/app/assets/js/scroll-control.js"></script>
-  <script src="{site_url}frontend/app/assets/js/aviso-control.js"></script>
-  <script>
-  	$(document).ready(function() {
-  		$("#uploadImage").on("click", function(e) {
-  			e.preventDefault();
-  			$("#inputFile").trigger("click");
-  		});
-
-  		$("#comentar").attr("enctype", "multipart/form-data");
-  	});
-  </script>
-</html>
+{embed="includes/footer"}
