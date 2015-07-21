@@ -1,0 +1,30 @@
+  <script src="{site_url}frontend/app/assets/js/jquery.min.js"></script> <!-- App scripts -->
+  <script src="{site_url}frontend/app/assets/js/scripts.min.js"></script>
+  <script src="{site_url}frontend/app/assets/js/b3/dropdown.js"></script>
+  <script src="{site_url}frontend/app/assets/js/scroll-control.js"></script>
+  <script src="{site_url}frontend/app/assets/js/aviso-control.js"></script>  
+  <script src="{site_url}frontend/app/assets/js/textarea-control.js"></script>
+  <script src="{site_url}frontend/app/assets/js/menu-movil-control.js"></script>  
+  
+  
+  <script>
+    $(document).ready(function() {
+      function validar(e) {
+        var inputVal = String.fromCharCode(e.keyCode);
+        var mensaje = document.getElementById("mensaje");
+          var numericReg = /^[0-9\b]+$/;
+        if(numericReg.test(inputVal) && e.keyCode != 8) {
+          // mensaje.innerText = "No se puede ingresar numeros";
+            e.preventDefault();
+          }
+          else {
+            mensaje.innerText = "";;
+            return;
+          }
+      }
+      $('.usuario').keydown(function(e) {
+          validar(e);
+      });
+    });
+  </script>
+</html>
