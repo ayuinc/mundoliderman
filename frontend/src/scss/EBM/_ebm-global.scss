@@ -831,7 +831,8 @@ footer > div {
 	.dato-merito div, 
 	.lista-cursos, 
 	.lista-otros, 
-	.lista-nuevos {
+	.lista-nuevos,
+	.boleta .datos > div div:nth-child(6) ul li{
 		span {
 			font-size: 22px!important;
 			font-size: rem(22px)!important;

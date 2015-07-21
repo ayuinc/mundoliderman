@@ -2122,7 +2122,8 @@ footer > div .lista p {
   .dato-merito div span,
   .lista-cursos span,
   .lista-otros span,
-  .lista-nuevos span {
+  .lista-nuevos span,
+  .boleta .datos > div div:nth-child(6) ul li span {
     font-size: 22px !important;
     font-size: 1.375rem !important;
   }
@@ -2131,7 +2132,8 @@ footer > div .lista p {
   .dato-merito div p,
   .lista-cursos p,
   .lista-otros p,
-  .lista-nuevos p {
+  .lista-nuevos p,
+  .boleta .datos > div div:nth-child(6) ul li p {
     font-size: 20px !important;
     font-size: 1.25rem !important;
   }
