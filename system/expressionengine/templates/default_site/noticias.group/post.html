@@ -10,9 +10,7 @@
             <h3 class="mt-14">{title}</h3>
             <div class="clearfix pt-14">
               <div class="col-md-2 pr-0 pl-7">
-	              {noticias_imagen}
-                <div class="img-perfil bg-img-block-center brp-100" style="background-image: url({image:url})"></div>
-                {/noticias_imagen}
+                <div class="img-perfil bg-img-block-center brp-100" style="background-image: url(assets/img/Wall/Cara-1.png)"></div>
               </div>
               <div class="name col-md-10 pl-0">
                 <span class="categoria text-uppercase fz-10 text-primary le-1-3">Tengo una consulta</span>
@@ -23,7 +21,11 @@
             <div class="publicacion bg-white p-42 mt-35 border-radius">
               <div class="triangulo-llamada"></div>
               <div class="pv-7">
-                <div class="img-publicacion w-100 ph-7 text-center"><img src="assets/img/Foto3.png" alt="" class="w-100"></div>
+                <div class="img-publicacion w-100 ph-7 text-center">
+	                {noticias_imagen}
+	                	<img src="{image:url}" alt="" class="w-100">
+	                {/noticias_imagen}
+	              </div>
               </div>
               <div class="texto fz-18 mt-42 pt-14 lh-1-5 mb-ch-28">
                 {noticias_contenido}
