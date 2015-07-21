@@ -7,56 +7,33 @@
         <div id="box-left" class="col-md-8 pl-0">
 
 		  {exp:friends:status_form return="{path='sprint1/wall'}" form_id="comentar" form_class="bg-white"}
-          <!--<form id="comentar" class="bg-white" action="">-->
-            <div class="publicacion clearfix">
-              <div class="border-bottom-gray-lighter pr-21 pv-7">
-                <div class="dropdown text-right">
-                  <!--<button class="btn bg-white dropdown-toggle b-none outline-none text-gray-light book serif" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                    Escoge una categoría
-                    <span class="caret"></span>
-                  </button>
-                  <ul class="dropdown-menu mt-0 b-none fz-14" aria-labelledby="dropdownMenu1">
-                    <li class="triangulo"></li>
-                    <li><a href="#">Quiero divertirme</a></li>
-                    <li><a href="#">Quiero dar mi testimonio</a></li>
-                    <li><a href="#">Tengo una solicitud</a></li>
-                    <li><a href="#">Tengo una consulta</a></li>
-                    <li><a href="#">Necesito ayuda</a></li>
-                    <li><a href="#">Otro</a></li>
-                  </ul>-->
-                  <select name="status_category" id="" class="btn bg-white dropdown-toggle b-none outline-none text-gray-light book serif">
-                    <!--<option value="0" >Escoge una categoría</option>
-                  	<option value="1">Quiero divertirme</option>
-                  	<option value="2">Quiero dar mi testimonio</option>
-                  	<option value="3">Tengo una solicitud</option>
-                  	<option value="4">Tengo una consulta</option>
-                  	<option value="5">Necesito ayuda</option>
-                  	<option value="6">Otro</option>-->
-                  	{exp:status_category:all}
-	                  <option value="{category_id}">{category_name}</option>
-										{/exp:status_category:all}
-                  </select>
-                  
-                </div>
-              </div>
-              <div class="ph-21">
-                <textarea name="friends_status" class="form-control outline-none serif fz-18 borderless" rows="3" placeholder="Qué estás pensando..."  maxlength="512"></textarea>
-              </div>
-            </div>
-            <div class="buttons-group pv-14 lh-0 pl-35 bg-success clearfix">
-              <div class="col-md-6">
-                <a href=" "><img src="{site_url}frontend/app/assets/img/Icono_Foto.png" alt=""></a>
-                <a id="uploadImage" href=""><span class="text-white thin fz-12">Subir imagen</span></a>
-                <input type="file" id="inputFile" name="status_image" class="hidden" accept="image">
-              </div>
-              <div class="col-md-6 text-right pr-35">
-                <button type="submit" name="submit" class="btn bg-white text-success text-hover-success fz-12 ph-21">
-                 PUBLICAR
-                 <img src="{site_url}frontend/app/assets/img/Globito.png" alt="" class="pl-14">
-                </button>
-              </div>
-            </div>
-          <!--</form>-->
+	      <div class="publicacion clearfix">
+	        <div class="border-bottom-gray-lighter pr-21 pv-7">
+	          <div class="dropdown text-right">
+	            <select name="status_category" id="" class="btn bg-white dropdown-toggle b-none outline-none text-gray-light book serif">
+	            	{exp:status_category:all}
+	              <option value="{category_id}">{category_name}</option>
+								{/exp:status_category:all}
+	            </select>
+	          </div>
+	        </div>
+	        <div class="ph-21">
+	          <textarea name="friends_status" class="form-control outline-none serif fz-18 borderless" rows="3" placeholder="Qué estás pensando..."  maxlength="512"></textarea>
+	        </div>
+	      </div>
+	      <div class="buttons-group pv-14 lh-0 pl-35 bg-success clearfix">
+	        <div class="col-md-6">
+	          <a href=" "><img src="{site_url}frontend/app/assets/img/Icono_Foto.png" alt=""></a>
+	          <a id="uploadImage" href=""><span class="text-white thin fz-12">Subir imagen</span></a>
+	          <input type="file" id="inputFile" name="status_image" class="hidden" accept="image">
+	        </div>
+	        <div class="col-md-6 text-right pr-35">
+	          <button type="submit" name="submit" class="btn bg-white text-success text-hover-success fz-12 ph-21">
+	           PUBLICAR
+	           <img src="{site_url}frontend/app/assets/img/Globito.png" alt="" class="pl-14">
+	          </button>
+	        </div>
+	      </div>
 		  {/exp:friends:status_form}
 
 		  {exp:friends:status member_id="CURRENT_USER"}
