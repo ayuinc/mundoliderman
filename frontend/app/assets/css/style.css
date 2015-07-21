@@ -2171,6 +2171,46 @@ footer > div .lista p {
     margin-left: 0;
   }
 
+  /*PUBLICACI├ôN*/
+  .publicacion .texto p {
+    font-size: 18px;
+  }
+  .publicacion .img-perfil {
+    width: 60px !important;
+    height: 60px !important;
+  }
+  .publicacion .name span, .publicacion .name p {
+    font-size: 11px !important;
+  }
+  .publicacion .name h5 {
+    font-size: 18px;
+  }
+
+  .flickity-viewport {
+    height: 490px !important;
+  }
+
+  .flickity-prev-next-button,
+  .flickity-prev-next-button {
+    background: transparent !important;
+  }
+
+  .flickity-prev-next-button.next {
+    right: -6% !important;
+  }
+
+  .flickity-prev-next-button.previous {
+    left: -6% !important;
+  }
+
+  .flickity-prev-next-button .arrow {
+    fill: #7A7A7A !important;
+  }
+
+  .nota-publicacion {
+    height: 60% !important;
+  }
+
   /*FOOTER*/
   footer > div {
     position: relative !important;

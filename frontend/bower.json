@@ -1,5 +1,7 @@
 {
   "name": "easyboxmodel",
   "version": "1.0.0",
-  "dependencies": {}
+  "dependencies": {
+    "flickity": "~1.1.0"
+  }
 }
