@@ -36,12 +36,14 @@
 	      </div>
 		  {/exp:friends:status_form}
 
-		  {exp:friends:status member_id="CURRENT_USER"}
+		  {exp:friends:status}
 		  <section id="post">
             <div class="post-1 post bg-white ph-21 pt-28 pb-28 mt-42">
               <div class="clearfix">
                 <div class="col-md-1 ph-0 pl-7">
-                  <div class="img-perfil bg-img-block-center brp-100" style="background-image: url(assets/img/Wall/Cara-1.png)"></div>
+	                {exp:user:stats member_id="CURRENT_USER"}
+                  <div class="img-perfil bg-img-block-center brp-100" style="background-image: url({photo_url}{photo_filename})"></div>
+                  {/exp:user:stats}
                 </div>
                 <div class="name col-md-11 pl-21">
                   <div class="info-usuario pl-7 row">
