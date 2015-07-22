@@ -44,16 +44,17 @@
       </section>
       <section id="tareo-contenido" class="col-md-8 pb-42">
         <div class="container pt-42 w-100 pr-42">
+          {exp:user:stats}
           <div class="perfil-servicios clearfix bg-white pv-21 pl-42">
             <div class="col-md-4 pr-0">
               <div style="background-image:url({site_url}frontend/app/assets/img/Herman_Profile_Pic.png)" class="bg-img-block-center"></div>
             </div>
             <div class="col-md-7 pl-28 pt-21">
-              <h3 class="text-warning book m-0">Herman Marín</h2>
-              <h4 class="text-gray fz-16 m-0 pt-7 book">Supervisor, Zona - Unidad</h4>
+              <h3 class="text-warning book m-0">{screen_name}</h2>
+              <h4 class="text-gray fz-16 m-0 pt-7 book">{cargo}, {zona} - {unidad}</h4>
               <img src="{site_url}frontend/app/assets/img/Ubicacion.png" alt="" class="pb-4">
-              <span class="light">Empresa Empleadora</span>
-              <p class="fz-12 pt-21">Este puede ser texto de Introducción del Liderman para que la gente sepa quién es esa persona.</br>Periodo en la Planilla: DD/MM/AA</p>
+              <span class="light">{empresa-empleadora}</span>
+              <p class="fz-12 pt-21">Este puede ser texto de Introducción del Liderman para que la gente sepa quién es esa persona.</br>Periodo en la Planilla: {fecha-inicio}</p>
             </div>
             <div class="col-md-1 ph-0">
               <a href="{path='perfil/editar'}">
@@ -62,6 +63,7 @@
               </a>
             </div>
           </div>
+          {/exp:user:stats}
 		    	{exp:friends:status_form return="{path='perfil'}" form_id="comentar" form_class="bg-white mt-42"}
 		      <div class="publicacion clearfix">
 		        <div class="border-bottom-gray-lighter pr-21 pv-7">
