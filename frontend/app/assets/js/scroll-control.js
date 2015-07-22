@@ -13,7 +13,8 @@ $(document).ready(function(){
 	});
 	$(".responder").click(function(event){
 		event.preventDefault();
-		$(".respuesta").toggleClass("hidden");
+		$(".respuesta").toggleClass("hidden visible-xs");
+		$(".cuadro-respuesta").toggleClass("hidden");
 	});
 	$(".active-slide").click(function(event){
 		event.preventDefault();
