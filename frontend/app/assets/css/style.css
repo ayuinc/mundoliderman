@@ -1278,6 +1278,9 @@ body textarea {
   resize: none;
   outline: none;
 }
+body .active-like {
+  color: #f94211 !important;
+}
 
 .site-wrapper,
 .site-content {
@@ -1469,6 +1472,7 @@ header .perfil {
   width: 17px;
   height: 32px;
   right: 0;
+  top: 4px;
   background: url(../img/Flecha-para-arriba.png) no-repeat right;
   background-size: contain;
   -webkit-transform: rotate(180deg);
@@ -1615,7 +1619,7 @@ footer > div #up {
   width: 40px;
   position: absolute;
   bottom: 0;
-  top: -30px;
+  top: -29px;
   background-color: black;
   left: 50%;
   -webkit-transform: translateX(-50%);
@@ -2106,6 +2110,27 @@ footer > div .lista p {
 
   .btn-enviar-movil {
     background-color: black;
+  }
+
+  /*MURO*/
+  #comentar textarea {
+    font-size: 20px !important;
+  }
+
+  .post .parrafo {
+    font-size: 15px !important;
+  }
+
+  .conteiner-answer .col-xs-10 > span:first-child {
+    font-size: 20px !important;
+    font-size: 1.25rem !important;
+  }
+  .conteiner-answer .col-xs-10 span:nth-child(3), .conteiner-answer .col-xs-10 span:nth-child(4) {
+    font-size: 16px !important;
+    font-size: 1rem !important;
+  }
+  .conteiner-answer .col-xs-10 img {
+    width: 9px;
   }
 
   /*PR├ëSTAMOS*/

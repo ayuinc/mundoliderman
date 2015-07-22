@@ -128,6 +128,9 @@ body {
   	resize: none;
   	outline: none;
   }
+  .active-like {
+  	color: #f94211!important;
+  }
 }
 
 .site-wrapper,
@@ -276,6 +279,7 @@ header {
 			width: 17px;
 			height: 32px;
 			right: 0;
+			top: 4px;
 			background: url(../img/Flecha-para-arriba.png) no-repeat right;
 			background-size: contain;
 			@include transform(rotate(180deg));
@@ -404,7 +408,7 @@ footer > div {
 	  width: 40px;
 	  position: absolute;
 	  bottom: 0;
-	  top: -30px;
+	  top: -29px;
 	  background-color: black;
 	  left: 50%;
 	  @include transform (translateX(-50%));
@@ -674,6 +678,8 @@ footer > div {
 		list-style: inherit;
 	}
 }
+
+
 /**/
 .lidermania-menu {
 	top: 150px;
@@ -685,6 +691,8 @@ footer > div {
   	list-style: inherit;
   }
 }
+
+
 /*CUADRO ESTADÍSTICO*/
 #cuadro-estadistico {
 	margin: 0 auto;
@@ -702,6 +710,9 @@ footer > div {
 	.liderboy {
 		width: 30px!important;
 	}
+
+
+
 	/*INDEX*/
 	.site-content .container-index {
 		padding-top: 30px!important;
@@ -787,6 +798,8 @@ footer > div {
 		width: 50px!important;
 		height: 50px!important;
 	}
+
+
 	/*LIDERNET*/
 	.box-gray {
 		height: 100px;
@@ -816,6 +829,35 @@ footer > div {
 	.btn-enviar-movil {
 		background-color: black;
 	}
+
+	/*MURO*/
+	#comentar {
+		textarea {
+			font-size: 20px!important;
+		}
+	}
+	.post {
+		.parrafo {
+			font-size: 15px!important;
+		}
+	}
+	.conteiner-answer {
+		.col-xs-10 > span:first-child {
+			font-size: 20px!important;
+			font-size: rem(20px)!important;
+		}
+		.col-xs-10 {
+			span:nth-child(3), span:nth-child(4) {
+				font-size: 16px!important;
+				font-size: rem(16px)!important;
+			}
+			img {
+				width: 9px;
+			}
+		}
+	}
+
+
 	/*PRÉSTAMOS*/
 	.prestamos {
 		h3 {
@@ -846,12 +888,16 @@ footer > div {
 		width: 27px;
 		border-bottom: 1px solid #BFBFBF;
 	}
+
+
 	/*LIDERCARD*/
 	.dato-bonificacion, .dato-merito {
 		div:last-child {
 			border: none!important;
 		}
 	}
+
+
 	/*perfil editable*/
 	#perfil-contenido .formulario textarea {
 		border: 1px solid #AFAFAF;
@@ -864,6 +910,8 @@ footer > div {
 		position: relative!important;
 		margin-left: 0;
 	}
+
+
 	/*PUBLICACIÓN*/
 	.publicacion {
 		.texto p {
@@ -905,6 +953,8 @@ footer > div {
 		height: 50px!important;
 		background-color: #D8D8D8;
 	}
+
+
 	/*LIDERMANÍA*/
 	.datos-lidermania {
 		h3 {
@@ -914,6 +964,8 @@ footer > div {
 			font-size: 18px!important;
 		}
 	}
+
+
 	/*FOOTER*/
 	footer > div {
 		position: relative!important;

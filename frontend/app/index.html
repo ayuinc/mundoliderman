@@ -1,19 +1,521 @@
 <!doctype html>
 <html lang="en">
   <meta charset="utf-8">
-  <title></title>
+  <title>Mundo Liderman</title>
   <meta name="description" content="">
   <meta name="keywords" content=""> 
   <meta name="author" content="@MadeByGus">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <link rel="shortcut icon" href="assets/img/favicon.png">
+  <link rel="icon" type="image/png" href="assets/img/Favicon.png" />
+  <link rel="shortcut icon" href="assets/img/Favicon.png">
   <link href="assets/css/style.css" rel="stylesheet"> <!-- App styles -->
   <link href="assets/css/ebm.css" rel="stylesheet">
+  <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,700|Oswald:400,300,700' rel='stylesheet' type='text/css'>
   
   <div class="site-wrapper"> <!-- Body -->
-    <div class="site-menu"></div>
-    <div class="site-content"></div>
+    <header class="site-menu bg-white">
+      <div class="w-100 fixed bg-white">
+        <div class="container-md minh-70 clearfix ph-0 pv-14 ph-21">
+          <div class="logo col-md-4 pl-0 hidden-xs hidden-sm">  
+            <a href="index.html">
+              <div class="col-md-9 text-left ph-0 pt-14">
+                <h1 class="text-uppercase bold text-gray-darker m-0">Mundo liderman</h1>
+              </div>
+              <div class="col-md-2 ph-0">
+                <img src="assets/img/Liderboy.png" alt="Mundo Liderman" class="liderboy">
+              </div>
+            </a>
+          </div>
+          <div class="col-md-4 pr-0 hidden-xs hidden-sm">
+            <form class="tool-bar-search-form mt-7 br-5">
+              <div class="input-group pr-0 ">
+                <input type="text" id="search_bar" class="form-control input-sm thin pl-14 borderless display-ib" placeholder="Buscar personas, consultas o preguntas...">
+                <img src="assets/img/Icono_Buscar.png" alt="" class="display-ib">
+              </div>
+            </form>
+          </div>
+          <div class="col-md-4 text-center pr-0 pl-28 hidden-xs hidden-sm">
+            <div class="col-md-5"><p class="mt-14 mb-0 border-right-gray-light pr-14 text-right"><a href="" class="text-gray book fz-16">Ir al inicio</a></p></div>
+            <div class="col-md-7 text-right ph-0">
+              <p class="text-gray-dark m-0 mt-14 light float-left pr-7 fz-16">Hola, Herman</p>
+              <div class="perfil float-left" style="background-image: url(assets/img/Carita.png)"></div>
+              <div class="dropdown herman-dropdown">
+                <button class="bg-white dropdown-toggle b-none outline-none text-gray-light book serif" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                  <a href="" class="pl-7"><img src="assets/img/FlechaHerman.png" alt="" class="mt-14"></a>
+                </button>
+                <ul class="dropdown-menu mt-0 b-none fz-14" aria-labelledby="dropdownMenu1">
+                  <li class="triangulo"></li>
+                  <li><a href="perfil.html" class="lh-1">Mi Perfil</a></li>
+                  <li><a href="#" class="lh-1">Estadísticas</a></li>
+                  <li><a href="login.html" class="lh-1">Salir</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="clearfix hidden-lg hidden-md"><!--movil-->
+            <div class="logo pt-14 pb-7 col-xs-8 ph-0">
+              <h1 class="text-uppercase bold text-gray-darker m-0 fz-22 display-ib">Mundo liderman</h1>
+              <img src="assets/img/Liderboy.png" alt="Mundo Liderman" class="liderboy">
+            </div>
+            <div class="col-xs-4 ph-0 pl-7">
+              <div class="btn-menu relative pv-7 ph-14">
+                <p class="text-gray-darker fz-17 mb-0 sans-serif display-ib pr-42">MENÚ</p>
+                <p class="text-gray-darker fz-17 mb-0 sans-serif display-ib pr-42 hidden">CERRAR</p>
+                <div class="switch display-ib">
+                  <div class="menu-toggle"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main class="site-content pb-70 mb-0-xs" role="main">
+      <div class="overlay-menu ebm-overlay w-100 minhp-100 fixed bg-white hidden-lg hidden-md ph-35">
+        <div class="clearfix pt-42 pb-28">
+          <div style="background-image:url(assets/img/Herman_Profile_Pic.png)" class="perfil-menu bg-img-block-center brp-100 float-left"></div>
+          <div class="float-left pt-21 pl-21">
+            <p class="sans-serif fz-15 light lh-1 mb-0">Hola</p>
+            <p class="sans-serif fz-22">Herman Marín</p>
+          </div>
+        </div>
+        <p class="sans-serif fz-22 mb-14 text-gray-dark"><a href="index.html">Ir al Inicio</a></p>
+        <p class="sans-serif fz-22 mb-14 text-gray-dark"><a href="perfil-editable">Editar Perfil</a></p>
+        <p class="sans-serif fz-22 mb-14 text-gray-dark"><a href="estadisticas.html">Ver estadísticas</a></p>
+        <p class="sans-serif fz-22 mb-14 text-gray-dark"><a href="login.html">Salir</a></p>
+        <form action="" class="pt-28">
+          <select name="" id="" class="w-100 mb-14 ph-14">
+            <option value="" class="w-100">Lidernet</option>
+            <option value="" class="w-100">Lidermanía</option>
+            <option value="" class="w-100">Préstamos</option>
+            <option value="" class="w-100">Tareo</option>
+            <option value="" class="w-100">LiderCard</option>
+            <option value="" class="w-100">Capacitaciones</option>
+            <option value="" class="w-100">Boleta de Pago</option>
+            <option value="" class="w-100">SGI</option>
+          </select>
+          <input type="text" id="search_bar" class="form-control input-sm fz-18 light ph-14" placeholder="Buscar personas, consultas o preguntas...">
+        </form>
+      </div>
+      <div class="alerta bg-primary p-7 text-white pv-14-xs">
+        <div class="container-md ph-21 ph-14-xs clearfix">
+          <img src="assets/img/Icono_Atencion.png" alt="" class="hidden-xs hidden-sm">
+          <span class="m-0 pl-7 light fz-14 hidden-xs hidden-sm">Esta sección es solo para alertas del sistema y de la administración</span>
+          <div class="col-xs-1 ph-0 hidden-lg hidden-md"><img src="assets/img/Icono_Atencion.png" alt=""></div>
+          <span class="col-xs-10 m-0 pl-7 lh-1-5 light fz-17 hidden-lg hidden-md">Esta sección es solo para alertas del sistema y de la administración</span>
+        </div>
+      </div>
+      <div class="container-md container-index  pt-42 clearfix mb-70 ph-21">
+        <div id="box-left" class="col-md-8 pl-0 ph-0-xs">
+          <section id="comentar" class="bg-white">
+            <form action="" class="bg-success">
+              <div class="bg-success text-right ph-21 hidden-xs hidden-sm">
+                <div class="select-style display-ib text-center">
+                  <select name="categoria" id="" class="fz-14 text-white borderless light serif w-100 pt-7">
+                    <option value="" class="bg-success">Escoge una categoría</option>
+                    <option value="" class="bg-success">Quiero divertirme</option>
+                    <option value="" class="bg-success">Quiero dar mi testimonio</option>
+                    <option value="" class="bg-success">Tengo una solicitud</option>
+                    <option value="" class="bg-success">Tengo una consulta</option>
+                    <option value="" class="bg-success">Necesito ayuda</option>
+                    <option value="" class="bg-success">Otro</option>
+                  </select>
+                </div>
+              </div>
+              <textarea class="form-control outline-none serif fz-18 borderless br-none pv-14 ph-14 hidden-xs hidden-sm" onkeyup="auto_grow(this)" placeholder="Qué estás pensando..."></textarea>
+              <textarea class="form-control outline-none serif fz-21 borderless br-none pv-14 ph-14 hidden-lg hidden-md" onkeyup="auto_grow(this)" placeholder="Qué estás pensando..."></textarea><!--movil-->
+              <div class="fileUpload btn btn-success p-0 ml-21">
+                <img src="assets/img/Icono_Foto.png" alt="">
+                <span class="thin fz-12 pl-14 serif">Subir imagen</span>
+                <input type="file" class="upload" />
+              </div>
+              <button class="btn bg-warning text-white text-hover-white fz-12 ph-21 mv-7 absolute hidden-xs hidden-sm">
+               PUBLICAR
+               <img src="assets/img/Publicar_Dialogo.png" alt="" class="pl-14">
+              </button>
+              <button class="btn bg-warning text-white text-hover-white fz-16 ph-21 mv-14 absolute thin pv-0 hidden-md hidden-lg">
+               Publicar
+              </button><!--movil-->              
+            </form>
+          </section>
+
+          <section id="post">
+            <div class="post-1 post bg-white ph-21 pt-28 pb-28 mt-42">
+              <div class="clearfix">
+                <div class="col-xs-2 pr-0 pl-7 pt-7-xs">
+                  <div class="img-perfil bg-img-block-center brp-100" style="background-image: url(assets/img/Wall/Cara-1.png)"></div>
+                </div>
+                <div class="name col-xs-10 pl-0">
+                  <div class="info-usuario pl-7 row">
+                    <div class="col-md-8 hidden-xs hidden-sm">
+                      <span class="categoria text-uppercase fz-10 text-primary le-1-3">Tengo una consulta</span>
+                      <h5 class="text-gray-darker m-0">Ivo Sanoa</h5>
+                      <p class="fz-10 m-0 text-gray"><a href="">Hace 3 horas</a></p>
+                    </div>
+                    <div class="col-xs-8 hidden-lg hidden-md pl-35"><!--movil-->
+                      <span class="categoria text-uppercase fz-13 text-primary le-1-3">Tengo una consulta</span>
+                      <h5 class="text-gray-darker m-0 fz-22">Ivo Sanoa</h5>
+                      <p class="fz-14 m-0 text-gray fz-10"><a href="">Hace 3 horas</a></p>
+                    </div>
+                    <div class="col-xs-4 text-center hidden-xs hidden-sm">
+                      <div class="aviso btn-aviso1 mh-21 bg-info hidden">
+                        <div class="circle-green bg-white display-ib"></div>
+                        <p class="text-white thin m-0 display-ib pl-7 fz-14">Resuelto</p>
+                      </div>
+                      <div class="aviso btn-aviso2 mh-14 ph-7 bg-primary">
+                        <div class="circle-green bg-white display-ib"></div>
+                        <p class="text-white thin m-0 display-ib pl-7 fz-14">No resuelto</p>
+                      </div>
+                    </div>
+                    <div class="col-xs-4 text-center ph-0 pt-7 hidden-lg hidden-md">
+                      <div class="aviso btn-aviso1 bg-info">
+                        <div class="circle-green bg-white display-ib"></div>
+                        <p class="text-white thin m-0 display-ib pl-7 fz-17">Resuelto</p>
+                      </div>
+                      <div class="aviso btn-aviso2 mh-0 ph-0 bg-primary hidden">
+                        <div class="circle-green bg-white display-ib"></div>
+                        <p class="text-white thin m-0 display-ib pl-0 fz-17">No resuelto</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-10 col-md-offset-2 col-xs-12 pl-0 ph-0-xs">
+                  <p class="parrafo pt-14 ph-7 text-gray-darker">Lorem ipsum dolor sit amet, consect adipisicing elit. Ullam quidem corrupti optio sed facilis omnis perferendis dolores vero qui illo, beatae velit suscipit tempora iure molestias nisi earum sunt fugit.</p>
+                  <div class="clearfix ph-0 mh-7 thin text-gray pt-7 pb-7 border-bottom-gray-lighter fz-12">
+                    <ul class="col-xs-7 ph-0 mv-0">
+                      <li class="pr-7 display-ib">
+                        <a href="" class="btn-comentar text-not-underline hidden-xs hidden-sm">Comentar &nbsp</a>
+                        <a href="" class="btn-comentar text-not-underline fz-18 hidden-lg hidden-md">Comentar &nbsp</a><!--movil-->
+                        <img src="assets/img/Icono_Comentar.png" alt="">
+                      </li>
+                      <li class="display-ib pl-14 like-container">
+                        <a href="" class="like text-not-underline hidden-xs hidden-sm">Me gusta &nbsp</a>
+                        <a href="" class="like text-not-underline fz-18 hidden-lg hidden-md">Me gusta &nbsp</a><!--movil-->
+                        <img src="assets/img/corazon_02.png" alt="" class="img-like">
+                        <img src="assets/img/corazon_01.png" alt="" class="img-like hidden">
+                      </li>
+                    </ul>
+                    <ul class="col-xs-5 ph-0 mv-0 text-right hidden-xs hidden-sm">
+                      <li class="display-ib">
+                        <a href="" class="contador-like">2 &nbsp</a>
+                        <img src="assets/img/Icono_Corazon.png" alt="">
+                      </li>
+                      <li class="display-ib pl-7">
+                        <a href="" class="comment text-not-underline">&nbsp 2 comentarios &nbsp</a>
+                      </li>
+                    </ul>
+                    <ul class="col-xs-5 ph-0 mv-0 text-right">
+                      <li class="display-ib">
+                        <a href="" class="text-not-underline hidden-xs hidden-sm">2 &nbsp</a>
+                        <a href="" class="text-not-underline fz-18 hidden-lg hidden-md">2 &nbsp</a><!--movil-->
+                        <img src="assets/img/Icono_Corazon.png" alt="">
+                      </li>
+                      <li class="display-ib pl-7">
+                        <a href="" class="comment text-not-underline hidden-xs hidden-sm">&nbsp 24 comentarios &nbsp</a>
+                        <a href="" class="comment text-not-underline fz-18 hidden-lg hidden-md">&nbsp 24 comentarios &nbsp</a><!--movil-->
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="comentar scroll-down pt-21 pt-35-xs hidden">
+                    <div class="area-respuesta pb-21 clearfix hidden">
+                      <div class="col-xs-2 pr-0">
+                        <div class="img-respuesta bg-img-block-center brp-100" style="background-image: url(assets/img/Wall/Cara-2.png)"></div>
+                      </div>
+                      <div class="col-xs-10 lh-1 pl-0 pl-21-xs hidden-xs hidden-sm">
+                        <span class="fz-14 text-success pr-7">Santiago López</span>
+                        <textarea name="text" id="" onkeyup="auto_grow(this)" placeholder="Escribe un comentario..." class="w-100 mt-7 fz-14 light p-7 serif text-gray-darker book"></textarea>
+                      </div>
+                      <div class="col-xs-10 lh-1 pl-0 pl-21-xs hidden-lg hidden-md">
+                        <span class="fz-20 text-success pr-7">Santiago López</span>
+                        <textarea name="text" id="" onkeyup="auto_grow(this)" placeholder="Escribe un comentario..." class="w-100 mt-7 fz-18 light p-7 serif text-gray-darker book"></textarea>
+                      </div>
+                    </div>
+                    <div class="clearfix conteiner-answer">
+                      <div class="col-xs-2 pr-0">
+                        <div class="img-respuesta bg-img-block-center brp-100" style="background-image: url(assets/img/Wall/Carita2.png)"></div>
+                      </div>
+                      <div class="col-xs-10 lh-1 pl-0 pl-21-xs">
+                        <span class="fz-14 text-success pr-7">Cecilia Ramírez</span>
+                        <img src="assets/img/forward.png" alt="" class="display-ib">
+                        <span class="text-gray fz-10 light">Ivo Sanoa</span>
+                        <span class="text-gray fz-10 light pl-7">hace 9 días</span>
+                        <p class="fz-14 pt-7 mb-0 pb-7 parrafo">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam quidem corrupti optio sed facilis.</p>
+                        <div class="hidden-xs hidden-sm">
+                          <span class="fz-8 text-gray-light">1</span>
+                          <img src="assets/img/Flecha_Abajo.png" alt="" class="w-6">
+                          <span class="fz-8 text-gray-light">|</span>
+                          <img src="assets/img/Flecha_Abajo.png" alt="" class="w-6 rotate-180">
+                          <span class="responder text-gray-dark book fz-10 light pl-7"><a href="">Responder</a></span>
+                          <span class="text-gray-dark book fz-10 light pl-7"><a href="">Compartir</a></span>
+                        </div>
+                        <div class="hidden-lg hidden-md"><!--movil-->
+                          <span></span>
+                          <span class="fz-14 text-gray-light">1</span>
+                          <img src="assets/img/Flecha_Abajo.png" alt="" class="w-6">
+                          <span class="fz-12 text-gray-light ph-7">|</span>
+                          <img src="assets/img/Flecha_Abajo.png" alt="" class="w-6 rotate-180">
+                        </div>
+                      </div>
+                      <div class="respuesta clearfix pt-21 ph-0 hidden col-md-10 col-md-offset-2 col-xs-12 hidden-xs hidden-sm">
+                        <div class="col-xs-2 pr-0">
+                          <div class="img-respuesta bg-img-block-center brp-100" style="background-image: url(assets/img/Wall/Carita2.png)"></div>
+                        </div>
+                        <div class="col-xs-10 pl-0 pl-21-xs">
+                          <span class="fz-14 text-success pr-7">Cecilia Ramírez</span>
+                          <textarea name="text" id="" onkeyup="auto_grow(this)" placeholder="Escribe una respuesta..." class="w-100 mt-7 fz-14 light ph-7 serif text-gray-darker book"></textarea>
+                        </div>
+                      </div>
+                      <div class="respuesta clearfix pt-21 ph-0 hidden col-md-10 col-md-offset-2 col-xs-12 visible-xs">
+                        <div class="col-xs-2 pr-0">
+                          <div class="img-respuesta bg-img-block-center brp-100" style="background-image: url(assets/img/Wall/Cara-1.png)"></div>
+                        </div>
+                        <div class="col-xs-10 pl-0 pl-21-xs">
+                          <span class="fz-14 text-success pr-7">Ivo Sadner</span>
+                          <img src="assets/img/forward.png" alt="" class="display-ib">
+                          <span class="text-gray fz-10 light">Cecilia Ramírez</span>
+                          <span class="text-gray fz-10 light pl-7">hace 9 días</span>
+                          <p class="fz-10 pt-7 mb-0 pb-7 parrafo">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam quidem corrupti optio sed facilis.</p>
+                          <div class="hidden-xs hidden-sm">
+                            <span class="fz-8 text-gray-light">1</span>
+                            <img src="assets/img/Flecha_Abajo.png" alt="" class="w-6">
+                            <span class="fz-8 text-gray-light">|</span>
+                            <img src="assets/img/Flecha_Abajo.png" alt="" class="w-6 rotate-180">
+                          </div>
+                          <div class="hidden-lg hidden-md">
+                            <span class="fz-14 text-gray-light">1</span>
+                            <img src="assets/img/Flecha_Abajo.png" alt="" class="w-6">
+                            <span class="fz-12 text-gray-light">|</span>
+                            <img src="assets/img/Flecha_Abajo.png" alt="" class="w-6 rotate-180">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="post-2 post bg-white ph-21 pt-28 pb-28 mt-42">
+              <div class="clearfix">
+                <div class="col-xs-2 col-xs-2 pr-0 pl-7 pt-7-xs">
+                  <div class="img-perfil bg-img-block-center brp-100" style="background-image: url(assets/img/Wall/Cara-2.png)"></div>
+                </div>
+                <div class="name col-xs-10 col-xs-10 pl-0">
+                  <div class="info-usuario pl-7 row">
+                    <div class="col-xs-8 hidden-xs hidden-sm">
+                      <span class="categoria text-uppercase fz-10 text-primary le-1-5">Quiero divertirme</span>
+                      <h5 class="text-gray-darker m-0">Santiago López</h5>
+                      <p class="fz-10 m-0 text-gray"><a href="">Hace 3 horas</a></p>
+                    </div>
+                    <div class="col-xs-8 hidden-lg hidden-md pl-35"><!--movil-->
+                      <span class="categoria text-uppercase fz-13 text-primary le-1-3">Quiero divertirme</span>
+                      <h5 class="text-gray-darker m-0 fz-22">Santiago López</h5>
+                      <p class="fz-10 m-0 text-gray fz-14"><a href="">Hace 3 horas</a></p>
+                    </div>
+                    <div class="col-xs-4 text-center pt-7 hidden-xs hidden-sm">
+                      <div class="aviso btn-aviso1 mh-21 bg-info hidden">
+                        <div class="circle-green bg-white display-ib"></div>
+                        <p class="text-white thin m-0 display-ib pl-7 fz-14">Resuelto</p>
+                      </div>
+                      <div class="aviso btn-aviso2 mh-14 ph-7 bg-primary">
+                        <div class="circle-green bg-white display-ib"></div>
+                        <p class="text-white thin m-0 display-ib pl-7 fz-14">No resuelto</p>
+                      </div>
+                    </div>
+                    <div class="col-xs-4 text-center ph-0 pt-7 hidden-lg hidden-md">
+                      <div class="aviso btn-aviso1 bg-info hidden">
+                        <div class="circle-green bg-white display-ib"></div>
+                        <p class="text-white thin m-0 display-ib pl-7 fz-17">Resuelto</p>
+                      </div>
+                      <div class="aviso btn-aviso2 mh-0 ph-0 bg-primary">
+                        <div class="circle-green bg-white display-ib"></div>
+                        <p class="text-white thin m-0 display-ib pl-0 fz-17">No resuelto</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-10 col-md-offset-2 col-xs-12 pl-0 ph-0-xs">
+                  <p class="parrafo pt-28 ph-7 text-gray-darker fz-15">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam quidem corrupti optio sed facilis omnis perferendis dolores vero qui illo, beatae velit suscipit tempo iure moles nisi earum sunt fugit.</p>
+                  <div class="img-publicacion w-100 ph-7 pt-14 text-center"><img src="assets/img/Foto3.png" alt="" class="w-100"></div>
+                  <div class="clearfix ph-0 mh-7 thin text-gray pt-7 pb-7 border-bottom-gray-lighter fz-12 pt-28">
+                    <ul class="col-xs-7 ph-0 mv-0">
+                      <li class="pr-7 display-ib">
+                        <a href="" class="btn-comentar text-not-underline hidden-xs hidden-sm">Comentar &nbsp</a>
+                        <a href="" class="btn-comentar text-not-underline fz-18 hidden-lg hidden-md">Comentar &nbsp</a><!--movil-->
+                        <img src="assets/img/Icono_Comentar.png" alt="">
+                      </li>
+                      <li class="display-ib pl-14 like-container">
+                        <a href="" class="like text-not-underline hidden-xs hidden-sm">Me gusta &nbsp</a>
+                        <a href="" class="like text-not-underline fz-18 hidden-lg hidden-md">Me gusta &nbsp</a><!--movil-->
+                        <img src="assets/img/corazon_02.png" alt="" class="img-like">
+                        <img src="assets/img/corazon_01.png" alt="" class="img-like hidden">
+                      </li>
+                    </ul>
+                    <ul class="col-xs-5 ph-0 mv-0 text-right">
+                      <li class="display-ib">
+                        <a href="" class="text-not-underline hidden-xs hidden-sm">2 &nbsp</a>
+                        <a href="" class="text-not-underline fz-18 hidden-lg hidden-md">2 &nbsp</a><!--movil-->
+                        <img src="assets/img/Icono_Corazon.png" alt="">
+                      </li>
+                      <li class="display-ib pl-7">
+                        <a href="" class="comment text-not-underline hidden-xs hidden-sm">&nbsp 0 comentarios &nbsp</a>
+                        <a href="" class="comment text-not-underline fz-18 hidden-lg hidden-md">&nbsp 0 comentarios &nbsp</a><!--movil-->
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="post-3 post bg-white ph-21 pt-28 pb-28 mt-42">
+              <div class="clearfix">
+                <div class="col-xs-2 ph-0 pl-7">
+                  <div class="img-perfil bg-img-block-center brp-100" style="background-image: url(assets/img/Wall/Cara-1.png)"></div>
+                </div>
+                <div class="name col-xs-10 pl-0">
+                  <div class="info-usuario pl-7 row">
+                    <div class="col-md-8 hidden-xs hidden-sm">
+                      <span class="categoria text-uppercase fz-10 text-primary le-1-5">Tengo una solicitud</span>
+                      <h5 class="text-gray-darker m-0">Javier Cadilla</h5>
+                      <p class="fz-10 m-0 text-gray"><a href="">Hace 3 horas</a></p>
+                    </div>
+                    <div class="col-xs-8 hidden-lg hidden-md pl-35"><!--movil-->
+                      <span class="categoria text-uppercase fz-13 text-primary le-1-3">Tengo una consulta</span>
+                      <h5 class="text-gray-darker m-0 fz-22">Javier Cadilla</h5>
+                      <p class="fz-10 m-0 text-gray fz-14"><a href="">Hace 3 horas</a></p>
+                    </div>
+                    <div class="col-xs-4 text-center pt-7 hidden-xs hidden-sm">
+                      <div class="aviso btn-aviso1 mh-21 bg-info hidden">
+                        <div class="circle-green bg-white display-ib"></div>
+                        <p class="text-white thin m-0 display-ib pl-7 fz-14">Resuelto</p>
+                      </div>
+                      <div class="aviso btn-aviso2 mh-14 ph-7 bg-primary">
+                        <div class="circle-green bg-white display-ib"></div>
+                        <p class="text-white thin m-0 display-ib pl-7 fz-14">No resuelto</p>
+                      </div>
+                    </div>
+                    <div class="col-xs-4 text-center ph-0 pt-7 hidden-lg hidden-md">
+                      <div class="aviso btn-aviso1 bg-info">
+                        <div class="circle-green bg-white display-ib"></div>
+                        <p class="text-white thin m-0 display-ib pl-7 fz-17">Resuelto</p>
+                      </div>
+                      <div class="aviso btn-aviso2 mh-0 ph-0 bg-primary hidden">
+                        <div class="circle-green bg-white display-ib"></div>
+                        <p class="text-white thin m-0 display-ib pl-0 fz-17">No resuelto</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-10 col-md-offset-2 col-xs-12 pl-0 ph-0-xs">
+                <p class="parrafo pt-14 ph-7 text-gray-darker fz-15 pt-28">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam quidem corrupti optio sed facilis omnis perferendis dolores vero qui illo, beatae velit suscipit tempora iure molestias nisi earum sunt fugit.</p>
+                <div class="clearfix ph-0 mh-7 thin text-gray pt-7 pb-7 border-bottom-gray-lighter fz-12">
+                  <ul class="col-xs-7 ph-0 mv-0">
+                    <li class="pr-7 display-ib">
+                      <a href="" class="text-not-underline hidden-xs hidden-sm">Comentar &nbsp</a>
+                      <a href="" class="text-not-underline fz-18 hidden-lg hidden-md">Comentar &nbsp</a><!--movil-->
+                      <img src="assets/img/Icono_Comentar.png" alt="">
+                    </li>
+                    <li class="display-ib pl-14 like-container">
+                      <a href="" class="like text-not-underline hidden-xs hidden-sm">Me gusta &nbsp</a>
+                      <a href="" class="like text-not-underline fz-18 hidden-lg hidden-md">Me gusta &nbsp</a><!--movil-->
+                      <img src="assets/img/corazon_02.png" alt="" class="img-like">
+                      <img src="assets/img/corazon_01.png" alt="" class="img-like hidden">
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <div id="box-right" class="col-md-4 pl-21 pr-0 hidden-xs hidden-sm">
+          <div class="noticia">
+            <img src="assets/img/Wall/Noticias1.png" alt="">
+            <div class="nota bg-white minhp-30 ph-21 pv-14 border-bottom-gray-light">
+              <span class="text-uppercase text-primary fz-10">NOTICIA</span>
+              <h5 class="text-uppercase mt-0 fz-14 text-gray-dark2">Conoce a la unidad lotería matríz</h5>
+              <p class="fz-12 text-gray-darker">Lorem ipsum dolor sit amet, conse adipisicing elit. Illum eius sequi molestias.</p>
+              <p class="read text-right text-primary book fz-10"><a href="">Leer más &#8594</a></p>
+            </div>
+          </div>
+          <div class="noticia mt-21">
+            <img src="assets/img/Wall/Noticias2 .png" alt="">
+            <div class="nota bg-white minhp-30 ph-21 pv-14 border-bottom-gray-light">
+              <span class="text-uppercase text-primary fz-10">EVENTOS</span>
+              <h5 class="text-uppercase mt-0 fz-14 text-gray-dark2">Mira los saludos de líderman a las madres en su día</h5>
+              <p class="fz-12 text-gray-darker">Lorem ipsum dolor sit amet, conse adipisicing elit. Illum eius sequi molestias.</p>
+              <p class="read text-right text-primary book fz-10"><a href="">Leer más &#8594</a></p>
+            </div>
+          </div>
+          <div class="noticia mt-21">
+            <img src="assets/img/Wall/Noticias3.png" alt="">
+            <div class="nota bg-white minhp-30 ph-21 pv-14 border-bottom-gray-light">
+              <span class="text-uppercase text-primary fz-10">BLOG</span>
+              <h5 class="text-uppercase mt-0 fz-14 text-gray-dark2">Simulacro de sismo este 05 de junio, prepárate para el evento</h5>
+              <p class="fz-12 text-gray-darker">Lorem ipsum dolor sit amet, conse adipisicing elit. Illum eius sequi molestias.</p>
+              <p class="read text-right text-primary book fz-10"><a href="">Leer más &#8594</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <div class="w-100">
+        <div id="up" class="text-center">
+          <a href=""><img src="assets/img/Flecha-para-arriba.png" alt=""></a>
+        </div>
+        <div class="container pt-21 pb-42"> 
+          <div class="row">
+            <div class="col-md-9 col-xs-12 pl-0">
+              <div class="col-md-1 col-xs-2 pl-0 text-right"><img src="assets/img/Wall/Icono_Senal.png" alt="" class="antena"></div>
+              <div class="col-md-8 col-xs-9 p-0">
+                <h5 class="text-uppercase m-0">AHORA EN VIVO</h5>
+                <h4 class="text-uppercase m-0 text-white fz-22">La hora del vigilante</h4>
+                <p class="text-gray-lighter m-0 fz-12">Con Giselle Collao. Lunes a Viernes de 9 a 11 pm</p>
+              </div>
+            </div> 
+            <div class="col-md-3 pr-35 text-right">
+              <a href=""><img class="pt-14 volumen" src="assets/img/Wall/Icono_Volumen.png" alt=""></a> 
+            </div>
+          </div>
+          <div class="descripcion row pt-14 pb-42">
+            <div class="col-md-6 hidden-xs hidden-sm">
+              <img src="assets/img/Wall/RadioUrbe.png" alt="">
+            </div>
+            <div class="col-md-6 col-xs-12 pl-42">
+              <ul class="lista text-white pt-7 ml-14">
+                <li class="text-white">
+                  <h2 class="fz-1">URBE AL DÍA</h2>
+                  <p class="text-gray-lighter">Con Mauricio Calvo Pérez. Lunes a Viernes de 10am a 11am</p>
+                </li>
+                <li>
+                  <h2 class="fz-1">ESPACIO IMSOMNIO</h2>
+                  <p class="text-gray-lighter">Escucha lo mejor del rock peruano. Lunes a Viernes de 10am a 11am</p>
+                </li>
+                <li>
+                  <h2 class="fz-1">LA HORA DE LÍDERMAN PARA EL MUNDO</h2>
+                  <p class="text-gray-lighter">Con Mauricio Calvo Pérez. Lunes a Viernes de 10am a 11am</p>
+                </li>
+                <li>
+                  <h2 class="fz-1">LIDERMANÍA</h2>
+                  <p class="text-gray-lighter">Con Mauricio Calvo Pérez. Lunes a Viernes de 10am a 11am</p>
+                </li>
+                <li>
+                  <h2 class="fz-1">CAPACITACIONES</h2>
+                  <p class="text-gray-lighter">Con Mauricio Calvo Pérez. Lunes a Viernes de 10am a 11am</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
   </div>
   <script src="assets/js/jquery.min.js"></script> <!-- App scripts -->
   <script src="assets/js/scripts.min.js"></script>
+  <script src="assets/js/b3/dropdown.js"></script>
+  <script src="assets/js/scroll-control.js"></script>
+  <script src="assets/js/aviso-control.js"></script>
+  <script src="assets/js/textarea-control.js"></script>
+  <script src="assets/js/menu-movil-control.js"></script>
 </html>
+
