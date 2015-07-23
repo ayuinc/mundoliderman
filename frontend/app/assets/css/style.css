@@ -2153,6 +2153,7 @@ footer > div .lista p {
   .lista-cursos span,
   .lista-otros span,
   .lista-nuevos span,
+  .detalle li span,
   .boleta .datos > div div:nth-child(6) ul li span {
     font-size: 22px !important;
     font-size: 1.375rem !important;
@@ -2163,6 +2164,7 @@ footer > div .lista p {
   .lista-cursos p,
   .lista-otros p,
   .lista-nuevos p,
+  .detalle li p,
   .boleta .datos > div div:nth-child(6) ul li p {
     font-size: 20px !important;
     font-size: 1.25rem !important;
@@ -2265,6 +2267,19 @@ footer > div .lista p {
   }
 
   .btn-group button {
+    font-size: 18px !important;
+    font-size: 1.125rem !important;
+  }
+
+  .fc-calendar-container h3 {
+    font-size: 26px !important;
+    font-size: 1.625rem !important;
+  }
+  .fc-calendar-container .fc-calendar .fc-head {
+    font-size: 15px;
+  }
+
+  .day-colors span {
     font-size: 18px !important;
     font-size: 1.125rem !important;
   }

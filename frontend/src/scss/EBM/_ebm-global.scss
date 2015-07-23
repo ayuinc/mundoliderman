@@ -878,6 +878,7 @@ footer > div {
 	.lista-cursos, 
 	.lista-otros, 
 	.lista-nuevos,
+	.detalle li,
 	.boleta .datos > div div:nth-child(6) ul li{
 		span {
 			font-size: 22px!important;
@@ -979,6 +980,21 @@ footer > div {
 	}
 	.btn-group {
 		button {
+			font-size: 18px!important;
+			font-size: rem(18px)!important;
+		}
+	}
+	.fc-calendar-container {
+		h3 {
+			font-size: 26px!important;
+			font-size: rem(26px)!important;
+		}
+		.fc-calendar .fc-head {
+			font-size: 15px;
+		}
+	}
+	.day-colors {
+		span {
 			font-size: 18px!important;
 			font-size: rem(18px)!important;
 		}
