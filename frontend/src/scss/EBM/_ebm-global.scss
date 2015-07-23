@@ -472,6 +472,10 @@ footer > div {
 		}
 	}
 }
+.box-color {
+	width: 13px;
+	height: 13px;
+}
 /*CONTENIDO TAREO*/
 #tareo-contenido {
 	.container {
@@ -964,7 +968,21 @@ footer > div {
 			font-size: 18px!important;
 		}
 	}
-
+	
+	/*TAREO*/
+	#calendar {
+		width: 100%;
+	}
+	.box-color {
+		width: 13px;
+		height: 13px;
+	}
+	.btn-group {
+		button {
+			font-size: 18px!important;
+			font-size: rem(18px)!important;
+		}
+	}
 
 	/*FOOTER*/
 	footer > div {

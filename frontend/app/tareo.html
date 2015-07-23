@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <meta charset="utf-8">
   <title>Mundo Liderman - Tareo</title>
@@ -9,6 +9,9 @@
   <link rel="shortcut icon" href="assets/img/favicon.png">
   <link href="assets/css/style.css" rel="stylesheet"> <!-- App styles -->
   <link href="assets/css/ebm.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="assets/css/calendar.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/custom_2.css">
+  <script src="assets/js/modernizr.custom.63321.js"></script>
   <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,700|Oswald:400,300,700' rel='stylesheet' type='text/css'>
   
   <div class="site-wrapper"> <!-- Body -->
@@ -105,7 +108,7 @@
         </div>
       </div>
       <div class="box-gray bg-gray-darker w-100 hidden-lg hdden-md"></div>
-      <div class="container-md clearfix">
+      <div class="container-md clearfix ph-0">
         <section id="menu-vertical" class="col-md-4 pr-42 pl-0 hidden-xs hiddden-md">
           <div class="contenedor-menu bg-white pt-35 ph-42">
             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
@@ -196,11 +199,12 @@
               </div>
             </div>
             <div class="tareo">
-              <div class="datos bg-white minh-140 pv-42 ph-42 mt-42">
+              <div class="datos bg-white pv-42 ph-42 mt-42 ph-0-xs">
                 <div class="ph-21">
-                  <span class="fz-16 text-gray-darker">Buscar el periodo</span>
+                  <span class="fz-16 text-gray-darker hidden-xs hidden-sm">Buscar el periodo</span>
+                  <span class="fz-18 text-gray-darker hidden-lg hidden-md">Buscar el periodo</span>
                   <div class="btn-group month">
-                    <button type="button" class="btn btn-default dropdown-toggle btn-dropdown mh-21 fz-14 lh-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button type="button" class="btn btn-default dropdown-toggle btn-dropdown mh-21 fz-14 lh-1 ml-7-xs mr-0-xs ph-7-xs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Mes <span class="pl-14"><img src="assets/img/Flecha_Abajo.png" alt=""></span>
                     </button>
                     <ul class="dropdown-menu">
@@ -219,7 +223,7 @@
                     </ul>
                   </div>
                   <div class="btn-group year">
-                    <button type="button" class="btn btn-default dropdown-toggle btn-dropdown fz-14 lh-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button type="button" class="btn btn-default dropdown-toggle btn-dropdown fz-14 lh-1 lh-1 ml-14 ph-7-xs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Año <span class="pl-14"><img src="assets/img/Flecha_Abajo.png" alt=""></span>
                     </button>
                     <ul class="dropdown-menu">
@@ -238,7 +242,44 @@
                     </ul>
                   </div>
                   <h3 class="text-gray-darker">Resultados del tareo del mes de mayo de 2015</h3>
-                  <div class="detalle hidden">
+                  <div class="custom-calendar-wrap mt-42">
+                    <div id="custom-inner" class="custom-inner pb-28">
+                      <!-- <div class="custom-header clearfix text-center">
+                        <nav>
+                          <span id="custom-prev" class="custom-prev"></span>
+                          <span id="custom-next" class="custom-next"></span>
+                        </nav>
+                      </div> -->
+                      <div id="calendar" class="fc-calendar-container pt-21">
+                        <div class="text-center">
+                          <h3 id="custom-month" class="custom-month display-ib fz-18 mt-0 text-gray-light"></h3>
+                          <h3 id="custom-year" class="custom-year display-ib fz-18 mt-0 text-gray-light pl-7"></h3>
+                        </div>
+                        <div class="fc-calendar fc-five-rows pt-7">
+                          <div class="fc-head"></div>
+                          <div class="fc-body">
+                            <div class="fc-row">
+                              <div>
+                                <span class="fc-date"></span>
+                                <span class="fc-weekday"></span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="day-colors clearfix">
+                    <div class="col-md-4 col-xs-6 col-md-offset-1 ml-42 pl-28 ml-0-xs pl-0-xs pr-0-xs">
+                      <div class="box-color display-ib mr-7 bg-danger"></div>
+                      <span class="serif fz-14 text-gray-dark book">Días faltados</span>
+                    </div>
+                    <div class="col-md-4 col-xs-6 pr-0-xs">
+                      <div class="box-color display-ib mr-7 bg-info"></div>
+                      <span class="serif fz-14 text-gray-dark book">Días asistidos</span>
+                    </div>
+                  </div>
+                  <div class="detalle hidden mt-35">
                     <ul class="clearfix pl-7 pv-21 border-bottom-gray-lighter">
                       <li>
                         <span class="col-md-4 fz-18 text-gray-dark2">Fecha</span><p class="col-md-8 fz-18 text-gray-darker">1 de Mayo de 2015</p>
@@ -282,7 +323,7 @@
                       </li>
                     </ul>
                   </div>
-                  <div class="text-center"><a href="" class="btn-close border-bottom-gray-dark text-gray-dark le-1-5 light text-not-underline">cerrar detalle</a></div>
+                  <div class="text-center mv-35"><a href="" class="btn-close border-bottom-gray-dark text-gray-dark le-1-5 light text-not-underline">cerrar detalle</a></div>
                 </div>
               </div>
             </div>
@@ -350,4 +391,77 @@
   <script src="assets/js/tareo-control.js"></script>
   <script src="assets/js/menu-movil-control.js"></script>
   <script src="assets/js/collapse-control.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <script src="assets/js/jquery.calendario.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script> 
+    $(function() {
+    
+      var transEndEventNames = {
+          'WebkitTransition' : 'webkitTransitionEnd',
+          'MozTransition' : 'transitionend',
+          'OTransition' : 'oTransitionEnd',
+          'msTransition' : 'MSTransitionEnd',
+          'transition' : 'transitionend'
+        },
+        transEndEventName = transEndEventNames[ Modernizr.prefixed( 'transition' ) ],
+        $wrapper = $( '#custom-inner' ),
+        $calendar = $( '#calendar' ),
+        cal = $calendar.calendario( {
+          onDayClick : function( $el, $contentEl, dateProperties ) {
+
+            if( $contentEl.length > 0 ) {
+              showEvents( $contentEl, dateProperties );
+            }
+
+          },
+          caldata : null,
+          weekabbrs : [ 'Dom', 'Lun', 'Mar', 'Mier', 'Jue', 'Vie', 'Sab' ],
+          months : [ 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Setiembre', 'Octubre', 'Noviembre', 'Diciembre' ],
+          monthabbrs : [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ],
+
+          displayWeekAbbr : true
+        } ),
+        $month = $( '#custom-month' ).html( cal.getMonthName() ),
+        $year = $( '#custom-year' ).html( cal.getYear() );
+
+      $( '#custom-next' ).on( 'click', function() {
+        cal.gotoNextMonth( updateMonthYear );
+      } );
+      $( '#custom-prev' ).on( 'click', function() {
+        cal.gotoPreviousMonth( updateMonthYear );
+      } );
+
+      function updateMonthYear() {        
+        $month.html( cal.getMonthName() );
+        $year.html( cal.getYear() );
+      }
+
+      // just an example..
+      function showEvents( $contentEl, dateProperties ) {
+
+        hideEvents();
+        
+        var $events = $( '<div id="custom-content-reveal" class="custom-content-reveal"><h4>Events for ' + dateProperties.monthname + ' ' + dateProperties.day + ', ' + dateProperties.year + '</h4></div>' ),
+          $close = $( '<span class="custom-content-close"></span>' ).on( 'click', hideEvents );
+
+        $events.append( $contentEl.html() , $close ).insertAfter( $wrapper );
+        
+        setTimeout( function() {
+          $events.css( 'top', '0%' );
+        }, 25 );
+
+      }
+      function hideEvents() {
+
+        var $events = $( '#custom-content-reveal' );
+        if( $events.length > 0 ) {
+          
+          $events.css( 'top', '100%' );
+          Modernizr.csstransitions ? $events.on( transEndEventName, function() { $( this ).remove(); } ) : $events.remove();
+
+        }
+      }
+    });
+  </script>
 </html>

@@ -1711,6 +1711,11 @@ footer > div .lista p {
   -webkit-transform: translateY(0%);
 }
 
+.box-color {
+  width: 13px;
+  height: 13px;
+}
+
 /*CONTENIDO TAREO*/
 #tareo-contenido .container, #perfil-contenido .container {
   position: relative;
@@ -2247,6 +2252,21 @@ footer > div .lista p {
   }
   .datos-lidermania ul {
     font-size: 18px !important;
+  }
+
+  /*TAREO*/
+  #calendar {
+    width: 100%;
+  }
+
+  .box-color {
+    width: 13px;
+    height: 13px;
+  }
+
+  .btn-group button {
+    font-size: 18px !important;
+    font-size: 1.125rem !important;
   }
 
   /*FOOTER*/
