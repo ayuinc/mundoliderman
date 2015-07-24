@@ -131,6 +131,29 @@ body {
   	resize: none;
   	outline: none;
   }
+  select {
+		background-color: transparent;
+		cursor: pointer;
+	  @include appearance(none);
+	  option {
+	  	width: 100%;
+	  }
+	}
+	.select-group {
+		div {
+			border: 1px solid #adadad;
+			border-radius: 20px;
+			select {
+				width: 55px;
+				z-index: 1;
+			}
+			img {
+				position: absolute;
+				top: 10px;
+				padding-left: 10px;
+			}
+		}
+	}
   .active-like {
   	color: #f94211!important;
   }
@@ -286,14 +309,6 @@ header {
 			background: url(../img/Flecha-para-arriba.png) no-repeat right;
 			background-size: contain;
 			@include transform(rotate(180deg));
-		}
-		select {
-			background-color: transparent;
-			cursor: pointer;
-		  @include appearance(none);
-		  option {
-		  	width: 100%;
-		  }
 		}
 	}
 	.publicacion { 
@@ -998,12 +1013,6 @@ footer > div {
 	.box-color {
 		width: 13px;
 		height: 13px;
-	}
-	.btn-group {
-		button {
-			font-size: 18px!important;
-			font-size: rem(18px)!important;
-		}
 	}
 	.fc-calendar-container {
 		h3 {

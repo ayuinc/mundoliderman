@@ -1281,6 +1281,31 @@ body textarea {
   resize: none;
   outline: none;
 }
+body select {
+  background-color: transparent;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+}
+body select option {
+  width: 100%;
+}
+body .select-group div {
+  border: 1px solid #adadad;
+  border-radius: 20px;
+}
+body .select-group div select {
+  width: 55px;
+  z-index: 1;
+}
+body .select-group div img {
+  position: absolute;
+  top: 10px;
+  padding-left: 10px;
+}
 body .active-like {
   color: #f94211 !important;
 }
@@ -1483,18 +1508,6 @@ header .perfil {
   -ms-transform: rotate(180deg);
   -o-transform: rotate(180deg);
   transform: rotate(180deg);
-}
-#comentar .select-style select {
-  background-color: transparent;
-  cursor: pointer;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  -ms-appearance: none;
-  -o-appearance: none;
-  appearance: none;
-}
-#comentar .select-style select option {
-  width: 100%;
 }
 #comentar .publicacion textarea {
   min-height: 100px;
@@ -2283,11 +2296,6 @@ footer > div .lista p {
   .box-color {
     width: 13px;
     height: 13px;
-  }
-
-  .btn-group button {
-    font-size: 18px !important;
-    font-size: 1.125rem !important;
   }
 
   .fc-calendar-container h3 {

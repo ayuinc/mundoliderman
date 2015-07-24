@@ -14,7 +14,6 @@
   <link href="assets/css/jquery-ui.css" rel="stylesheet">
   <link href="assets/css/ref.css" rel="stylesheet">
   <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,700|Oswald:400,300,700' rel='stylesheet' type='text/css'>
-  <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>-->
   <script src="assets/js/jquery-2.1.3.min.js"></script>
 
   <div class="site-wrapper"> <!-- Body -->
@@ -204,43 +203,42 @@
             <div class="tareo mt-42">
               <div class="datos bg-white pv-42 ph-42 ph-14-xs">
                 <span class="fz-18 text-gray-darker pr-7-xs">Buscar el periodo</span>
-                <div class="btn-group month ml-21-md">
-                  <button type="button" class="btn btn-default btn-dropdown dropdown-toggle fz-18 pv-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Mes <span class="pl-14 pl-7-xs"><img src="assets/img/Flecha_Abajo.png" alt=""></span>
-                  </button>
-                  <ul class="dropdown-menu">
-                    <li><a href="#">Enero</a></li>
-                    <li><a href="#">Febrero</a></li>
-                    <li><a href="#">Marzo</a></li>
-                    <li><a href="#">Abril</a></li>
-                    <li><a href="#">Mayo</a></li>
-                    <li><a href="#">Junio</a></li>
-                    <li><a href="#">Julio</a></li>
-                    <li><a href="#">Agosto</a></li>
-                    <li><a href="#">Setiembre</a></li>
-                    <li><a href="#">Octubre</a></li>
-                    <li><a href="#">Noviembre</a></li>
-                    <li><a href="#">Diciembre</a></li>
-                  </ul>
-                </div>
-                <div class="btn-group year ml-14-md">
-                  <button type="button" class="btn btn-default btn-dropdown dropdown-toggle fz-18 pv-0 border-radius" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Año <span class="pl-14 pl-7-xs"><img src="assets/img/Flecha_Abajo.png" alt=""></span>
-                  </button>
-                  <ul class="dropdown-menu">
-                    <li><a href="#"></a></li>
-                    <li><a href="#">2005</a></li>
-                    <li><a href="#">2006</a></li>
-                    <li><a href="#">2007</a></li>
-                    <li><a href="#">2008</a></li>
-                    <li><a href="#">2009</a></li>
-                    <li><a href="#">2010</a></li>
-                    <li><a href="#">2011</a></li>
-                    <li><a href="#">2012</a></li>
-                    <li><a href="#">2013</a></li>
-                    <li><a href="#">2014</a></li>
-                    <li><a href="#">2015</a></li>
-                  </ul>
+                <div class="select-group display-ib ml-21 ml-7-xs">
+                  <div class="display-ib text-center ph-7 relative">
+                    <select name="" id="" class="text-gray-darker borderless relative">
+                      <option value="" class="fz-14">Mes</option>
+                      <option value="" class="fz-14">En</option>
+                      <option value="" class="fz-14">Feb</option>
+                      <option value="" class="fz-14">Mar</option>
+                      <option value="" class="fz-14">Abr</option>
+                      <option value="" class="fz-14">May</option>
+                      <option value="" class="fz-14">Jun</option>
+                      <option value="" class="fz-14">Jul</option>
+                      <option value="" class="fz-14">Agos</option>
+                      <option value="" class="fz-14">Set</option>
+                      <option value="" class="fz-14">Oct</option>
+                      <option value="" class="fz-14">Nov</option>
+                      <option value="" class="fz-14">Dic</option>
+                    </select>
+                    <img src="assets/img/Flecha_Abajo.png" alt="">
+                  </div>
+                  <div class="display-ib text-center ph-7 relative ml-14">
+                    <select name="" id="" class="text-gray-darker borderless relative">
+                      <option class="fz-14">Año</option>
+                      <option class="fz-14">2005</option>
+                      <option class="fz-14">2006</option>
+                      <option class="fz-14">2007</option>
+                      <option class="fz-14">2008</option>
+                      <option class="fz-14">2009</option>
+                      <option class="fz-14">2010</option>
+                      <option class="fz-14">2011</option>
+                      <option class="fz-14">2012</option>
+                      <option class="fz-14">2013</option>
+                      <option class="fz-14">2014</option>
+                      <option class="fz-14">2015</option>
+                    </select>
+                    <img src="assets/img/Flecha_Abajo.png" alt="" class="absolute">
+                  </div>
                 </div>
                 <div id="cuadro-estadistico" class="pv-42 mv-42 pt-0-xs" style="height: 400px; width: 100%"></div>
               </div>
