@@ -72,6 +72,9 @@ body {
 	.lh-1 {
 		line-height: 1;
 	}
+	.lh-1-3 {
+		line-height: 1.3;
+	}
 	.lh-1-5 {
 		line-height: 1.5;
 	}
@@ -397,12 +400,11 @@ header {
 
 /*FOOTER*/
 footer > div {
-	position: fixed!important;
+	position: fixed;
 	background-color: black;
-	position: relative;
   bottom: 0;
   @include transition(all .2s ease-in-out);
-  @include transform(translateY(370px));
+  @include transform(translateY(374px));
   #up {
 		height: 30px;
 	  width: 40px;
@@ -680,11 +682,14 @@ footer > div {
 .lidermania {
 	ul {
 		list-style: inherit;
+		li {
+			padding-bottom: 3px;
+		}
 	}
 }
 
 
-/**/
+/*lidermania post*/
 .lidermania-menu {
 	top: 150px;
   position: relative;
@@ -694,6 +699,11 @@ footer > div {
   ul {
   	list-style: inherit;
   }
+}
+.contenedor-menu-2 {
+	ul {
+		list-style: inherit;
+	}
 }
 
 
@@ -970,6 +980,17 @@ footer > div {
 		}
 	}
 	
+	/*LIDERMANÍA POST*/
+	.datos-lidermania {
+		h4 {
+			font-size: 22px !important;
+			font-size: rem(22px) !important;
+		}
+		p, li {
+			font-size: 20px !important;
+			font-size: rem(20px) !important;
+		}
+	}
 	/*TAREO*/
 	#calendar {
 		width: 100%;
@@ -999,12 +1020,19 @@ footer > div {
 			font-size: rem(18px)!important;
 		}
 	}
+	.volumen {
+    right: -12%!important;
+	}
 
 	/*FOOTER*/
+	footer {
+		position: relative;
+	}
 	footer > div {
-		position: relative!important;
+		// position: relative!important;
 		padding: 40px 50px!important;
-		@include transform(none);
+    position: fixed;
+		@include transform(translateY(83%));
 		.col-md-6:last-child, .container {
 			padding: 0rem!important;
 		}
@@ -1045,5 +1073,9 @@ footer > div {
 				}
   		}
 		}
+	}
+	.active-up {
+		position: absolute!important;
+		@include transform(translateY(0%));
 	}
 }

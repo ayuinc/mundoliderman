@@ -1218,6 +1218,9 @@ body .lh-0 {
 body .lh-1 {
   line-height: 1;
 }
+body .lh-1-3 {
+  line-height: 1.3;
+}
 body .lh-1-5 {
   line-height: 1.5;
 }
@@ -1601,18 +1604,17 @@ header .perfil {
 
 /*FOOTER*/
 footer > div {
-  position: fixed !important;
+  position: fixed;
   background-color: black;
-  position: relative;
   bottom: 0;
   -webkit-transition: all 0.2s ease-in-out;
   -moz-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
-  -webkit-transform: translateY(370px);
-  -moz-transform: translateY(370px);
-  -ms-transform: translateY(370px);
-  -o-transform: translateY(370px);
-  transform: translateY(370px);
+  -webkit-transform: translateY(374px);
+  -moz-transform: translateY(374px);
+  -ms-transform: translateY(374px);
+  -o-transform: translateY(374px);
+  transform: translateY(374px);
 }
 footer > div #up {
   height: 30px;
@@ -1945,8 +1947,11 @@ footer > div .lista p {
 .lidermania ul {
   list-style: inherit;
 }
+.lidermania ul li {
+  padding-bottom: 3px;
+}
 
-/**/
+/*lidermania post*/
 .lidermania-menu {
   top: 150px;
   position: relative;
@@ -1955,6 +1960,10 @@ footer > div .lista p {
   padding-left: 30%;
 }
 .lidermania-menu ul {
+  list-style: inherit;
+}
+
+.contenedor-menu-2 ul {
   list-style: inherit;
 }
 
@@ -2256,6 +2265,16 @@ footer > div .lista p {
     font-size: 18px !important;
   }
 
+  /*LIDERMAN├ìA POST*/
+  .datos-lidermania h4 {
+    font-size: 22px !important;
+    font-size: 1.375rem !important;
+  }
+  .datos-lidermania p, .datos-lidermania li {
+    font-size: 20px !important;
+    font-size: 1.25rem !important;
+  }
+
   /*TAREO*/
   #calendar {
     width: 100%;
@@ -2284,15 +2303,23 @@ footer > div .lista p {
     font-size: 1.125rem !important;
   }
 
+  .volumen {
+    right: -12% !important;
+  }
+
   /*FOOTER*/
+  footer {
+    position: relative;
+  }
+
   footer > div {
-    position: relative !important;
     padding: 40px 50px !important;
-    -webkit-transform: none;
-    -moz-transform: none;
-    -ms-transform: none;
-    -o-transform: none;
-    transform: none;
+    position: fixed;
+    -webkit-transform: translateY(83%);
+    -moz-transform: translateY(83%);
+    -ms-transform: translateY(83%);
+    -o-transform: translateY(83%);
+    transform: translateY(83%);
   }
   footer > div .col-md-6:last-child, footer > div .container {
     padding: 0rem !important;
@@ -2331,6 +2358,15 @@ footer > div .lista p {
     font-size: 13px !important;
     line-height: 1.3;
     padding-top: 10px;
+  }
+
+  .active-up {
+    position: absolute !important;
+    -webkit-transform: translateY(0%);
+    -moz-transform: translateY(0%);
+    -ms-transform: translateY(0%);
+    -o-transform: translateY(0%);
+    transform: translateY(0%);
   }
 }
 
