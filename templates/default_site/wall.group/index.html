@@ -1,49 +1,230 @@
-<h2>Resultados de Boleta de Pago del mes de Marzo del 2015</h2>
-<table>
-{exp:webservice:boleta dni="27415554" periodo="201503"}
-	<tr>
-		<td>Código</td>
-		<td>{Codigo}</td>
-		<td>Fecha de Ingreso</td>
-		<td>{FechaIngreso}</td>
-	<tr>
-	<tr>
-		<td>Sueldo Básico</td>
-		<td>S/. {SueldoBasico}</td>
-		<td>Costo por hora</td>
-		<td>S/. {CostoHora}</td>
-	<tr>
-	<tr>
-		<td>Días Trabajados</td>
-		<td>{DiasTrabajados}</td>
-		<td>Horas Trabajadas</td>
-		<td>{HorasTrabajadas}</td>
-	<tr>
-	<tr>
-		<td>Horas Extras 25%</td>
-		<td>{HorasExtras25}</td>
-		<td>Horas Extras 35%</td>
-		<td>{HorasExtras35}</td>
-	<tr>
-	<tr>
-		<td>Horas Extras 100%</td>
-		<td>{HorasExtras100}</td>
-		<td>Inasistencia</td>
-		<td>{Inasistencias}</td>
-	<tr>
-{/exp:webservice:boleta}
-</table>
-<h3>Haberes, Descuentos y Aportaciones</h3>
-<table>
-{exp:webservice:detalle_boleta dni="27415554" periodo="201503"}
-		<tr>
-			<td>Haber: {MontoHaberes}</td>
-		</tr>
-		<tr>
-			<td>Descuento: {MontoDescuentos}</td>
-		</tr>
-		<tr>
-			<td>Aportacion: {MontoAportaciones}</td>
-		</tr>
-{/exp:webservice:detalle_boleta}
-</table>
+{if logged_out}
+  {redirect="login"}
+{/if}
+
+{embed="includes/header"}
+  
+  <div class="site-wrapper"> <!-- Body -->
+    {embed="includes/nav-main"}
+    <main class="site-content pb-70" role="main">
+      <div class="container container-index  pt-42 clearfix mb-70 ph-0">
+        <div id="box-left" class="col-md-8 pl-0">
+
+		  {exp:friends:status_form return="{path='sprint1/wall'}" form_id="comentar" form_class="bg-white"}
+	      <div class="publicacion clearfix">
+	        <div class="border-bottom-gray-lighter pr-21 pv-7">
+	          <div class="dropdown text-right">
+	            <select name="status_category" id="" class="btn bg-white dropdown-toggle b-none outline-none text-gray-light book serif">
+	            	{exp:status_category:all}
+	              <option value="{category_id}">{category_name}</option>
+								{/exp:status_category:all}
+	            </select>
+	          </div>
+	        </div>
+	        <div class="ph-21">
+	          <textarea name="friends_status" class="form-control outline-none serif fz-18 borderless" rows="3" placeholder="Qué estás pensando..."  maxlength="512"></textarea>
+	        </div>
+	      </div>
+	      <div class="buttons-group pv-14 lh-0 pl-35 bg-success clearfix">
+	        <div class="col-md-6">
+	          <a href=" "><img src="{site_url}frontend/app/assets/img/Icono_Foto.png" alt=""></a>
+	          <a id="uploadImage" href=""><span class="text-white thin fz-12">Subir imagen</span></a>
+	          <input type="file" id="inputFile" name="status_image" class="hidden" accept="image">
+	        </div>
+	        <div class="col-md-6 text-right pr-35">
+	          <button type="submit" name="submit" class="btn bg-white text-success text-hover-success fz-12 ph-21">
+	           PUBLICAR
+	           <img src="{site_url}frontend/app/assets/img/Globito.png" alt="" class="pl-14">
+	          </button>
+	        </div>
+	      </div>
+		  {/exp:friends:status_form}
+
+		  {exp:friends:status dynamic="off"}
+		  <section id="post">
+            <div class="post-1 post bg-white ph-21 pt-28 pb-28 mt-42">
+              <div class="clearfix">
+                <div class="col-md-1 ph-0 pl-7">
+	                {exp:user:stats member_id="CURRENT_USER"}
+                  <div class="img-perfil bg-img-block-center brp-100" style="background-image: url({photo_url}{photo_filename})"></div>
+                  {/exp:user:stats}
+                </div>
+                <div class="name col-md-11 pl-21">
+                  <div class="info-usuario pl-7 row">
+                    <div class="col-md-9">
+                      <span class="categoria text-uppercase fz-10 text-primary letter-spacing-1.5">{friends_category_name}</span>
+                      <h5 class="text-gray-darker m-0">{friends_screen_name}</h5>
+                      <p class="fz-10 m-0 text-gray"><a href="">Hace 3 horas. {friends_status_date format="%F %j, %Y"}</a></p>
+                    </div>
+                    <div class="col-md-3 text-center">
+                      <div class="aviso btn-aviso1 mh-21 bg-info">
+                        <div class="circle-green bg-white display-ib"></div>
+                        <h5 class="text-white thin m-0 display-ib pl-7 pv-7 fz-14">Resuelto</h5>
+                      </div>
+                      <div class="aviso btn-aviso2 mh-14 ph-7 bg-warning hidden">
+                        <div class="circle-green bg-white display-ib"></div>
+                        <h5 class="text-white thin m-0 display-ib pl-7 pv-7 fz-14">No resuelto</h5>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="parrafo pt-14 ph-7 text-gray-darker">{friends_status}</p>
+        				  {if friends_image}
+        				  <div class="pv-21 mh-7 bg-img-block-center w-100 minh-280" style="background-image:url({site_url}{friends_image})"></div>
+        				  {/if}
+                  <div class="clearfix ph-0 mh-7 thin text-gray pt-7 pb-7 border-bottom-gray-lighter fz-12">
+                    <ul class="col-md-6 ph-0 mv-0">
+                      <li class="pr-7 display-ib">
+                        <a href="">Comentar &nbsp</a>
+                        <img src="{site_url}frontend/app/assets/img/Icono_Comentar.png" alt="">
+                      </li>
+                      <li class="display-ib pl-14">
+                        <a href="">Me gusta &nbsp</a>
+                        <img src="{site_url}frontend/app/assets/img/me_gusta.png" alt="">
+                      </li>
+                    </ul>
+                    <ul class="col-md-6 ph-0 mv-0 text-right">
+                      <li class="display-ib">
+                        <a href="">2 &nbsp</a>
+                        <img src="{site_url}frontend/app/assets/img/Icono_Corazon.png" alt="">
+                      </li>
+                      <li class="display-ib pl-7">
+                        <a href="" class="comment text-not-underline">&nbsp 24 comentarios &nbsp</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="comentar scroll-down clearfix pt-21 hidden">
+                    <div class="col-md-1 pr-0">
+                      <div class="img-respuesta bg-img-block-center brp-100" style="background-image: url(assets/img/Wall/Carita2.png)"></div>
+                    </div>
+                    <div class="col-md-11 lh-1">
+                      <div>
+                        <span class="fz-14 text-success pr-7">Cecilia Ramírez</span>
+                        <img src="{site_url}frontend/app/assets/img/forward.png" alt="" class="display-ib">
+                        <span class="text-gray fz-10 light">Ivo Sadner</span>
+                        <span class="text-gray fz-10 light pl-7">hace 9 días</span>
+                        <p class="fz-10 pt-7 mb-0 pb-7 parrafo">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam quidem corrupti optio sed facilis omnis perferendis dolores vero qui illo, beatae velit suscipit tempora iure molestias nisi earum sunt fugit.</p>
+                        <span class="fz-8 text-gray-light">1</span>
+                        <img src="{site_url}frontend/app/assets/img/Flecha_Abajo.png" alt="" class="w-6">
+                        <span class="fz-8 text-gray-light">|</span>
+                        <img src="{site_url}frontend/app/assets/img/Flecha_Abajo.png" alt="" class="w-6 rotate-180">
+                        <span class="responder text-gray-dark book fz-10 light pl-7"><a href="">Responder</a></span>
+                        <span class="text-gray-dark book fz-10 light pl-7"><a href="">Compartir</a></span>
+                      </div>
+                      <div class="respuesta clearfix pt-21 hidden">
+                        <div class="col-md-1 pl-0">
+                          <div class="img-respuesta bg-img-block-center brp-100" style="background-image: url({site_url}frontend/app/assets/img/Wall/Carita2.png)"></div>
+                        </div>
+                        <div class="col-md-11 pl-7">
+                          <span class="fz-14 text-success pr-7">Ivo Sadner</span>
+                          <img src="{site_url}frontend/app/assets/img/forward.png" alt="" class="display-ib">
+                          <span class="text-gray fz-10 light">Cecilia Ramírez</span>
+                          <span class="text-gray fz-10 light pl-7">hace 9 días</span>
+                          <p class="fz-10 pt-7 mb-0 pb-7 parrafo">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam quidem corrupti optio sed facilis omnis perferendis dolores vero qui illo, beatae velit suscipit tempora iure molestias nisi earum sunt fugit.</p>
+                          <span class="fz-8 text-gray-light">1</span>
+                          <img src="{site_url}frontend/app/assets/img/Flecha_Abajo.png" alt="" class="w-6">
+                          <span class="fz-8 text-gray-light">|</span>
+                          <img src="{site_url}frontend/app/assets/img/Flecha_Abajo.png" alt="" class="w-6 rotate-180">
+                          <span class="text-gray-dark book fz-10 light pl-7"><a href="" class="responder">Responder</a></span>
+                          <span class="text-gray-dark book fz-10 light pl-7"><a href="">Compartir</a></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          {/exp:friends:status}
+
+			<!--
+            <div class="post-2 post bg-white ph-21 pt-28 pb-28 mt-42">
+              <div class="clearfix">
+                <div class="col-md-1 ph-0 pl-7">
+                  <div class="img-perfil bg-img-block-center brp-100" style="background-image: url({site_url}frontend/app/assets/img/Wall/Cara-2.png)"></div>
+                </div>
+                <div class="name col-md-11 pl-21">
+                  <div class="info-usuario pl-7 row">
+                    <div class="col-md-9">
+                      <span class="categoria text-uppercase fz-10 text-primary letter-spacing-1.5">Quiero divertirme</span>
+                      <h5 class="text-gray-darker m-0">Santiago López</h5>
+                      <p class="fz-10 m-0 text-gray"><a href="">Hace 3 horas</a></p>
+                    </div>
+                    <div class="col-md-3 text-center">
+                    
+                    </div>
+                  </div>
+                  <p class="parrafo pt-14 ph-7 text-gray-darker">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam quidem corrupti optio sed facilis omnis perferendis dolores vero qui illo, beatae velit suscipit tempo iure moles nisi earum sunt fugit.</p>
+                  <div class="pv-21 mh-7 bg-img-block-center w-100 minh-280" style="background-image:url({site_url}frontend/app/assets/img/Wall/Foto3.png)"></div>
+                  <div class="clearfix ph-0 mh-7 thin text-gray pt-28 pb-7 border-bottom-gray-lighter fz-12">
+                    <ul class="col-md-6 ph-0 mv-0">
+                      <li class="pr-7 display-ib">
+                        <a href="">Comentar &nbsp</a>
+                        <img src="{site_url}frontend/app/assets/img/Icono_Comentar.png" alt="">
+                      </li>
+                      <li class="display-ib pl-14">
+                        <a href="">Me gusta &nbsp</a>
+                        <img src="{site_url}frontend/app/assets/img/me_gusta.png" alt="">
+                      </li>
+                    </ul>
+                    <ul class="col-md-6 ph-0 mv-0 text-right">
+                      <li class="display-ib">
+                        <a href="">3 &nbsp</a>
+                        <img src="{site_url}frontend/app/assets/img/Icono_Corazon.png" alt="">
+                      </li>
+                      <li class="like display-ib pl-7">
+                        <a href="">&nbsp 24 comentarios &nbsp</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="post-3 post bg-white ph-21 pt-28 pb-28 mt-42">
+              <div class="clearfix">
+                <div class="col-md-1 ph-0 pl-7">
+                  <div class="img-perfil bg-img-block-center brp-100" style="background-image: url({site_url}frontend/app/assets/img/Wall/Cara-1.png)"></div>
+                </div>
+                <div class="name col-md-11 pl-21">
+                  <div class="info-usuario pl-7 row">
+                    <div class="col-md-9">
+                      <span class="categoria text-uppercase fz-10 text-primary letter-spacing-1.5">Tengo una solicitud</span>
+                      <h5 class="text-gray-darker m-0">Javier Cadilla</h5>
+                      <p class="fz-10 m-0 text-gray"><a href="">Hace 3 horas</a></p>
+                    </div>
+                    <div class="col-md-3 text-center">
+                      <div class="aviso btn-aviso1 mh-21 bg-info hidden">
+                        <div class="circle-green bg-white display-ib"></div>
+                        <h5 class="text-white thin m-0 display-ib pl-7 pv-7 fz-14">Resuelto</h5>
+                      </div>
+                      <div class="aviso btn-aviso2 mh-14 ph-7 bg-warning">
+                        <div class="circle-green bg-white display-ib"></div>
+                        <h5 class="text-white thin m-0 display-ib pl-7 pv-7 fz-14">No resuelto</h5>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="parrafo pt-14 ph-7 text-gray-darker">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam quidem corrupti optio sed facilis omnis perferendis dolores vero qui illo, beatae velit suscipit tempora iure molestias nisi earum sunt fugit.</p>
+                  <div class="clearfix ph-0 mh-7 thin text-gray pt-7 pb-7 border-bottom-gray-lighter fz-12">
+                    <ul class="col-md-6 ph-0 mv-0">
+                      <li class="pr-7 display-ib">
+                        <a href="">Comentar &nbsp</a>
+                        <img src="{site_url}frontend/app/assets/img/Icono_Comentar.png" alt="">
+                      </li>
+                      <li class="display-ib pl-14">
+                        <a href="">Me gusta &nbsp</a>
+                        <img src="{site_url}frontend/app/assets/img/me_gusta.png" alt="">
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>-->
+
+        </div>
+        <div id="box-right" class="col-md-4 pl-42 pr-0">
+					{embed="includes/modulo-noticias"}
+        </div>
+      </div>
+    </main>
+    {embed="includes/radio-urbe"}
+  </div>
+{embed="includes/footer"}

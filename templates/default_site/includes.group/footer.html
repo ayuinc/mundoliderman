@@ -9,36 +9,3 @@
   <script src="{site_url}frontend/app/assets/js/b3/collapse.js"></script>
   <script src="{site_url}frontend/app/assets/js/textarea-control.js"></script>
   <script src="{site_url}frontend/app/assets/js/collapse-control.js"></script> 
-  
-  
-  <script>
-    $(document).ready(function() {
-      function validar(e) {
-        var inputVal = String.fromCharCode(e.keyCode);
-        var mensaje = document.getElementById("mensaje");
-          var numericReg = /^[0-9\b]+$/;
-        if(numericReg.test(inputVal) && e.keyCode != 8) {
-          // mensaje.innerText = "No se puede ingresar numeros";
-            e.preventDefault();
-          }
-          else {
-            mensaje.innerText = "";;
-            return;
-          }
-      }
-      $('.usuario').keydown(function(e) {
-          validar(e);
-      });
-    });
-  </script>
-
-  <script>
-    $(document).ready(function() {
-      $("#uploadImage").on("click", function(e) {
-        e.preventDefault();
-        $("#inputFile").trigger("click");
-      });
-
-      $("#comentar").attr("enctype", "multipart/form-data");
-    });
-  </script>  
