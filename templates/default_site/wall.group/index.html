@@ -1,0 +1,49 @@
+<h2>Resultados de Boleta de Pago del mes de Marzo del 2015</h2>
+<table>
+{exp:webservice:boleta dni="27415554" periodo="201503"}
+	<tr>
+		<td>Código</td>
+		<td>{Codigo}</td>
+		<td>Fecha de Ingreso</td>
+		<td>{FechaIngreso}</td>
+	<tr>
+	<tr>
+		<td>Sueldo Básico</td>
+		<td>S/. {SueldoBasico}</td>
+		<td>Costo por hora</td>
+		<td>S/. {CostoHora}</td>
+	<tr>
+	<tr>
+		<td>Días Trabajados</td>
+		<td>{DiasTrabajados}</td>
+		<td>Horas Trabajadas</td>
+		<td>{HorasTrabajadas}</td>
+	<tr>
+	<tr>
+		<td>Horas Extras 25%</td>
+		<td>{HorasExtras25}</td>
+		<td>Horas Extras 35%</td>
+		<td>{HorasExtras35}</td>
+	<tr>
+	<tr>
+		<td>Horas Extras 100%</td>
+		<td>{HorasExtras100}</td>
+		<td>Inasistencia</td>
+		<td>{Inasistencias}</td>
+	<tr>
+{/exp:webservice:boleta}
+</table>
+<h3>Haberes, Descuentos y Aportaciones</h3>
+<table>
+{exp:webservice:detalle_boleta dni="27415554" periodo="201503"}
+		<tr>
+			<td>Haber: {MontoHaberes}</td>
+		</tr>
+		<tr>
+			<td>Descuento: {MontoDescuentos}</td>
+		</tr>
+		<tr>
+			<td>Aportacion: {MontoAportaciones}</td>
+		</tr>
+{/exp:webservice:detalle_boleta}
+</table>
