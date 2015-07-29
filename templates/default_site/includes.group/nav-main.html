@@ -23,7 +23,7 @@
         {/exp:user:search}
       </div>
       <div class="col-md-4 text-center pr-0 pl-28 hidden-xs hidden-sm">
-        <div class="col-md-5"><p class="mt-14 mb-0 border-right-gray-light pr-14 text-right"><a href="" class="text-gray book fz-16">Ir al inicio</a></p></div>
+        <div class="col-md-5"><p class="mt-14 mb-0 border-right-gray-light pr-14 text-right"><a href="{site_url}" class="text-gray book fz-16">Ir al inicio</a></p></div>
         <div class="col-md-7 text-right ph-0">
           <p class="text-gray-dark m-0 mt-14 light float-left pr-7 fz-16">Hola, {screen_name}</p>
           <div class="perfil float-left" style="background-image: url({site_url}frontend/app/assets/img/Carita.png)"></div>
@@ -34,7 +34,7 @@
             <ul class="dropdown-menu mt-0 b-none fz-14" aria-labelledby="dropdownMenu1">
               <li class="triangulo"></li>
               <li><a href="{site_url}perfil" class="lh-1">Mi Perfil</a></li>
-              <li><a href="#" class="lh-1">Estadísticas</a></li>
+              <li><a href="{site_url}" class="lh-1">Estadísticas</a></li>
               {exp:user:logout return="login"}
                 <li><a href="{url}" class="lh-1">Salir</a></li>
               {/exp:user:logout}
