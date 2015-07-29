@@ -2,107 +2,174 @@
   {redirect="login"}
 {/if}
 
-{embed="includes/header"}
-  
-  <div class="site-wrapper"> <!-- Body -->
-    {embed="includes/nav-main"}
-    <main class="site-content pb-70" role="main">
-      <div class="container container-index  pt-42 clearfix mb-70 ph-0">
-        <div id="box-left" class="col-md-8 pl-0">
+{embed="includes/head"}
 
-		  {exp:friends:status_form return="{path='sprint1/wall'}" form_id="comentar" form_class="bg-white"}
-	      <div class="publicacion clearfix">
-	        <div class="border-bottom-gray-lighter pr-21 pv-7">
-	          <div class="dropdown text-right">
-	            <select name="status_category" id="" class="btn bg-white dropdown-toggle b-none outline-none text-gray-light book serif">
-	            	{exp:status_category:all}
-	              <option value="{category_id}">{category_name}</option>
-								{/exp:status_category:all}
-	            </select>
-	          </div>
-	        </div>
-	        <div class="ph-21">
-	          <textarea name="friends_status" class="form-control outline-none serif fz-18 borderless" rows="3" placeholder="Qué estás pensando..."  maxlength="512"></textarea>
-	        </div>
-	      </div>
-	      <div class="buttons-group pv-14 lh-0 pl-35 bg-success clearfix">
-	        <div class="col-md-6">
-	          <a href=" "><img src="{site_url}frontend/app/assets/img/Icono_Foto.png" alt=""></a>
-	          <a id="uploadImage" href=""><span class="text-white thin fz-12">Subir imagen</span></a>
-	          <input type="file" id="inputFile" name="status_image" class="hidden" accept="image">
-	        </div>
-	        <div class="col-md-6 text-right pr-35">
-	          <button type="submit" name="submit" class="btn bg-white text-success text-hover-success fz-12 ph-21">
-	           PUBLICAR
-	           <img src="{site_url}frontend/app/assets/img/Globito.png" alt="" class="pl-14">
-	          </button>
-	        </div>
-	      </div>
-		  {/exp:friends:status_form}
-
-		  {exp:friends:status dynamic="off"}
-		  <section id="post">
-            <div class="post-1 post bg-white ph-21 pt-28 pb-28 mt-42">
-              <div class="clearfix">
-                <div class="col-md-1 ph-0 pl-7">
-	                {exp:user:stats member_id="CURRENT_USER"}
-                  <div class="img-perfil bg-img-block-center brp-100" style="background-image: url({photo_url}{photo_filename})"></div>
-                  {/exp:user:stats}
+<div class="site-wrapper"> <!-- Body -->
+  {embed="includes/nav-main"}
+  <main class="site-content pb-70 mb-0-xs" role="main">
+    <div class="overlay-menu ebm-overlay w-100 minhp-100 fixed bg-white hidden-lg hidden-md ph-35">
+      <div class="clearfix pt-42 pb-28">
+        <div style="background-image:url({site_url}frontend/app/assets/img/Herman_Profile_Pic.png)" class="perfil-menu bg-img-block-center brp-100 float-left"></div>
+        <div class="float-left pt-21 pl-21">
+          <p class="sans-serif fz-15 light lh-1 mb-0">Hola</p>
+          <p class="sans-serif fz-22">{screen_name}</p>
+        </div>
+      </div>
+      <p class="sans-serif fz-22 mb-14 text-gray-dark"><a href="index.html">Ir al Inicio</a></p>
+      <p class="sans-serif fz-22 mb-14 text-gray-dark"><a href="perfil-editable.html">Editar Perfil</a></p>
+      <p class="sans-serif fz-22 mb-14 text-gray-dark"><a href="estadisticas.html">Ver estadísticas</a></p>
+      <p class="sans-serif fz-22 mb-14 text-gray-dark"><a href="login.html">Salir</a></p>
+      <form action="" class="pt-28">
+        <select name="" id="" class="w-100 mb-14 ph-14">
+          <option value="" class="w-100">Lidernet</option>
+          <option value="" class="w-100">Lidermanía</option>
+          <option value="" class="w-100">Préstamos</option>
+          <option value="" class="w-100">Tareo</option>
+          <option value="" class="w-100">LiderCard</option>
+          <option value="" class="w-100">Capacitaciones</option>
+          <option value="" class="w-100">Boleta de Pago</option>
+          <option value="" class="w-100">SGI</option>
+        </select>
+        <input type="text" id="search_bar" class="form-control input-sm fz-18 light ph-14" placeholder="Buscar personas, consultas o preguntas...">
+      </form>
+    </div>
+    <div class="alerta bg-primary p-7 text-white pv-14-xs">
+      <div class="container-md ph-14 ph-14-xs clearfix">
+        <img src="{site_url}frontend/app/assets/img/Icono_Atencion.png" alt="" class="hidden-xs hidden-sm">
+        <span class="m-0 pl-7 light fz-14 hidden-xs hidden-sm">Esta sección es solo para alertas del sistema y de la administración</span>
+        <div class="col-xs-1 ph-0 hidden-lg hidden-md"><img src="{site_url}frontend/app/assets/img/Icono_Atencion.png" alt=""></div>
+        <span class="col-xs-10 m-0 pl-7 lh-1-5 light fz-17 hidden-lg hidden-md">Esta sección es solo para alertas del sistema y de la administración</span>
+      </div>
+    </div>
+    <div class="container-md container-index  pt-42 clearfix mb-70 ph-14 pb-70-xs">
+      <div id="box-left" class="col-md-8 pl-0 ph-0-xs">
+        <section id="comentar" class="bg-white">
+          {exp:friends:status_form return="wall" form_id="status_form" form_class="bg-success"}
+          <!--<form action="" class="bg-success">-->
+            <div class="bg-success text-right ph-21 hidden-xs hidden-sm">
+              <div class="select-style display-ib text-center">
+                <select name="status_category" id="" class="fz-14 text-white borderless light serif w-100 pt-7">
+                  {exp:status_category:all}
+                    <option value="{category_id}" class="bg-success">{category_name}</option>
+                  {/exp:status_category:all}
+                </select>
+              </div>
+            </div>
+            <textarea name="friends_status" class="form-control outline-none serif fz-18 borderless br-none pv-14 ph-14 hidden-xs hidden-sm" onkeyup="auto_grow(this)" placeholder="Qué estás pensando..."></textarea>
+            <div class="fileUpload btn btn-success p-0 ml-21">
+              <img src="{site_url}frontend/app/assets/img/Icono_Foto.png" alt="">
+              <span class="thin fz-12 pl-14 serif">Subir imagen</span>
+              <input type="file" id="inputFile" name="status_image" class="upload" accept="image" />
+            </div>
+            <button type="submit" name="submit" class="btn bg-warning text-white text-hover-white fz-12 ph-21 mv-7 absolute hidden-xs hidden-sm">
+             PUBLICAR
+             <img src="{site_url}frontend/app/assets/img/Publicar_Dialogo.png" alt="" class="pl-14">
+            </button>
+            <button type="submit" name="submit" class="btn bg-warning text-white text-hover-white fz-16 ph-21 mv-14 absolute thin pv-0 hidden-md hidden-lg">
+             Publicar
+            </button><!--movil-->              
+          {/exp:friends:status_form}
+        </section>
+        
+        {exp:friends:status dynamic="off"}
+        <section id="post">
+          <div class="post-1 post bg-white ph-14 pt-28 pb-28 mt-42">
+            <div class="clearfix">
+              <div class="col-xs-2 pr-0 pl-7 pt-7-xs">
+                {exp:user:stats member_id="CURRENT_USER"}
+                <div class="img-perfil bg-img-block-center brp-100" style="background-image: url({photo_url}{photo_filename})"></div>
+                {/exp:user:stats}
+              </div>
+              <div class="name col-xs-10 pl-0">
+                <div class="info-usuario pl-7 row">
+                  <div class="col-md-8 hidden-xs hidden-sm">
+                    <span class="categoria text-uppercase fz-10 text-primary le-1-3">{friends_category_name}</span>
+                    <h5 class="text-gray-darker m-0">{friends_screen_name}</h5>
+                    <p class="fz-10 m-0 text-gray"><a href="">Hace 3 horas. {friends_status_date format="%F %j, %Y"}</a></p>
+                  </div>
+                  <div class="col-xs-8 hidden-lg hidden-md pl-35"><!--movil-->
+                    <span class="categoria text-uppercase fz-11 text-primary le-1-3">{friends_category_name}</span>
+                    <h5 class="text-gray-darker m-0 fz-22">{friends_screen_name}</h5>
+                    <p class="fz-14 m-0 text-gray fz-10"><a href="">Hace 3 horas. {friends_status_date format="%F %j, %Y"}</a></p>
+                  </div>
+                  <div class="col-xs-4 text-center hidden-xs hidden-sm">
+                    <div class="aviso btn-aviso1 mh-21 bg-info hidden">
+                      <div class="circle-green bg-white display-ib"></div>
+                      <p class="text-white thin m-0 display-ib pl-7 fz-14">Resuelto</p>
+                    </div>
+                    <div class="aviso btn-aviso2 mh-14 ph-7 bg-primary">
+                      <div class="circle-green bg-white display-ib"></div>
+                      <p class="text-white thin m-0 display-ib pl-7 fz-14">No resuelto</p>
+                    </div>
+                  </div>
+                  <div class="col-xs-4 text-center ph-0 pt-7 hidden-lg hidden-md">
+                    <div class="aviso btn-aviso1 bg-info">
+                      <div class="circle-green bg-white display-ib"></div>
+                      <p class="text-white thin m-0 display-ib pl-7 fz-17">Resuelto</p>
+                    </div>
+                    <div class="aviso btn-aviso2 mh-0 ph-0 bg-primary hidden">
+                      <div class="circle-green bg-white display-ib"></div>
+                      <p class="text-white thin m-0 display-ib pl-0 fz-17">No resuelto</p>
+                    </div>
+                  </div>
                 </div>
-                <div class="name col-md-11 pl-21">
-                  <div class="info-usuario pl-7 row">
-                    <div class="col-md-9">
-                      <span class="categoria text-uppercase fz-10 text-primary letter-spacing-1.5">{friends_category_name}</span>
-                      <h5 class="text-gray-darker m-0">{friends_screen_name}</h5>
-                      <p class="fz-10 m-0 text-gray"><a href="">Hace 3 horas. {friends_status_date format="%F %j, %Y"}</a></p>
+              </div>
+              <div class="col-md-10 col-md-offset-2 col-xs-12 pl-0 ph-0-xs">
+                <p class="parrafo pt-14 ph-7 text-gray-darker">{friends_status}</p>
+                {if friends_image}
+                <div class="img-publicacion w-100 ph-7 pt-14 text-center"><img src="{site_url}{friends_image}" alt="" class="w-100"></div>
+                {/if}
+                <div class="clearfix ph-0 mh-7 thin text-gray pt-7 pb-7 border-bottom-gray-lighter fz-12">
+                  <ul class="col-xs-7 ph-0 mv-0">
+                    <li class="pr-7 display-ib">
+                      <a href="" class="btn-comentar text-not-underline hidden-xs hidden-sm">Comentar &nbsp</a>
+                      <a href="" class="btn-comentar text-not-underline fz-15 hidden-lg hidden-md">Comentar &nbsp</a><!--movil-->
+                      <img src="{site_url}frontend/app/assets/img/Icono_Comentar.png" alt="">
+                    </li>
+                    <li class="display-ib pl-7 like-container">
+                      <a href="" class="like text-not-underline hidden-xs hidden-sm">Me gusta &nbsp</a>
+                      <a href="" class="like text-not-underline fz-15 hidden-lg hidden-md">Me gusta &nbsp</a><!--movil-->
+                      <img src="{site_url}frontend/app/assets/img/corazon_02.png" alt="" class="img-like">
+                      <img src="{site_url}frontend/app/assets/img/corazon_01.png" alt="" class="img-like hidden">
+                    </li>
+                  </ul>
+                  <ul class="col-xs-5 ph-0 mv-0 text-right">
+                    <li class="display-ib">
+                      <a href="" class="contador-like text-not-underline hidden-xs hidden-sm">2 &nbsp</a>
+                      <a href="" class="contador-like text-not-underline fz-15 hidden-lg hidden-md">2 &nbsp</a><!--movil-->
+                      <img src="{site_url}frontend/app/assets/img/Icono_Corazon.png" alt="">
+                    </li>
+                    <li class="display-ib pl-7">
+                      <a href="" class="comment text-not-underline hidden-xs hidden-sm">&nbsp 24 comentarios &nbsp</a>
+                      <a href="" class="comment text-not-underline fz-15 hidden-lg hidden-md">&nbsp 24 comentarios &nbsp</a><!--movil-->
+                    </li>
+                  </ul>
+                </div>
+                <div class="comentar scroll-down pt-21 pt-35-xs hidden">
+                  <div class="area-respuesta pb-21 clearfix hidden">
+                    <div class="col-xs-2 pr-0">
+                      <div class="img-respuesta bg-img-block-center brp-100" style="background-image: url({site_url}frontend/app/assets/img/Wall/Cara-2.png)"></div>
                     </div>
-                    <div class="col-md-3 text-center">
-                      <div class="aviso btn-aviso1 mh-21 bg-info">
-                        <div class="circle-green bg-white display-ib"></div>
-                        <h5 class="text-white thin m-0 display-ib pl-7 pv-7 fz-14">Resuelto</h5>
-                      </div>
-                      <div class="aviso btn-aviso2 mh-14 ph-7 bg-warning hidden">
-                        <div class="circle-green bg-white display-ib"></div>
-                        <h5 class="text-white thin m-0 display-ib pl-7 pv-7 fz-14">No resuelto</h5>
-                      </div>
+                    <div class="col-xs-10 lh-1 pl-0 pl-21-xs hidden-xs hidden-sm">
+                      <span class="fz-14 text-success pr-7">Santiago López</span>
+                      <textarea name="text" id="" onkeyup="auto_grow(this)" placeholder="Escribe un comentario..." class="w-100 mt-7 fz-14 light p-7 serif text-gray-darker book"></textarea>
+                    </div>
+                    <div class="col-xs-10 lh-1 pl-0 pl-21-xs hidden-lg hidden-md">
+                      <span class="fz-20 text-success pr-7">Santiago López</span>
+                      <textarea name="text" id="" onkeyup="auto_grow(this)" placeholder="Escribe un comentario..." class="w-100 mt-7 fz-18 light p-7 serif text-gray-darker book"></textarea>
                     </div>
                   </div>
-                  <p class="parrafo pt-14 ph-7 text-gray-darker">{friends_status}</p>
-        				  {if friends_image}
-        				  <div class="pv-21 mh-7 bg-img-block-center w-100 minh-280" style="background-image:url({site_url}{friends_image})"></div>
-        				  {/if}
-                  <div class="clearfix ph-0 mh-7 thin text-gray pt-7 pb-7 border-bottom-gray-lighter fz-12">
-                    <ul class="col-md-6 ph-0 mv-0">
-                      <li class="pr-7 display-ib">
-                        <a href="">Comentar &nbsp</a>
-                        <img src="{site_url}frontend/app/assets/img/Icono_Comentar.png" alt="">
-                      </li>
-                      <li class="display-ib pl-14">
-                        <a href="">Me gusta &nbsp</a>
-                        <img src="{site_url}frontend/app/assets/img/me_gusta.png" alt="">
-                      </li>
-                    </ul>
-                    <ul class="col-md-6 ph-0 mv-0 text-right">
-                      <li class="display-ib">
-                        <a href="">2 &nbsp</a>
-                        <img src="{site_url}frontend/app/assets/img/Icono_Corazon.png" alt="">
-                      </li>
-                      <li class="display-ib pl-7">
-                        <a href="" class="comment text-not-underline">&nbsp 24 comentarios &nbsp</a>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="comentar scroll-down clearfix pt-21 hidden">
-                    <div class="col-md-1 pr-0">
-                      <div class="img-respuesta bg-img-block-center brp-100" style="background-image: url(assets/img/Wall/Carita2.png)"></div>
+                  <div class="clearfix conteiner-answer">
+                    <div class="col-xs-2 pr-0">
+                      <div class="img-respuesta bg-img-block-center brp-100" style="background-image: url({site_url}frontend/app/assets/img/Wall/Carita2.png)"></div>
                     </div>
-                    <div class="col-md-11 lh-1">
-                      <div>
-                        <span class="fz-14 text-success pr-7">Cecilia Ramírez</span>
-                        <img src="{site_url}frontend/app/assets/img/forward.png" alt="" class="display-ib">
-                        <span class="text-gray fz-10 light">Ivo Sadner</span>
-                        <span class="text-gray fz-10 light pl-7">hace 9 días</span>
-                        <p class="fz-10 pt-7 mb-0 pb-7 parrafo">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam quidem corrupti optio sed facilis omnis perferendis dolores vero qui illo, beatae velit suscipit tempora iure molestias nisi earum sunt fugit.</p>
+                    <div class="col-xs-10 lh-1 pl-0 pl-21-xs">
+                      <span class="fz-14 text-success pr-7">Cecilia Ramírez</span>
+                      <img src="{site_url}frontend/app/assets/img/forward.png" alt="" class="display-ib">
+                      <span class="text-gray fz-10 light">Ivo Sanoa</span>
+                      <span class="text-gray fz-10 light pl-7">hace 9 días</span>
+                      <p class="fz-14 pt-7 mb-0 pb-7 parrafo">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam quidem corrupti optio sed facilis.</p>
+                      <div class="hidden-xs hidden-sm">
                         <span class="fz-8 text-gray-light">1</span>
                         <img src="{site_url}frontend/app/assets/img/Flecha_Abajo.png" alt="" class="w-6">
                         <span class="fz-8 text-gray-light">|</span>
@@ -110,22 +177,44 @@
                         <span class="responder text-gray-dark book fz-10 light pl-7"><a href="">Responder</a></span>
                         <span class="text-gray-dark book fz-10 light pl-7"><a href="">Compartir</a></span>
                       </div>
-                      <div class="respuesta clearfix pt-21 hidden">
-                        <div class="col-md-1 pl-0">
-                          <div class="img-respuesta bg-img-block-center brp-100" style="background-image: url({site_url}frontend/app/assets/img/Wall/Carita2.png)"></div>
-                        </div>
-                        <div class="col-md-11 pl-7">
-                          <span class="fz-14 text-success pr-7">Ivo Sadner</span>
-                          <img src="{site_url}frontend/app/assets/img/forward.png" alt="" class="display-ib">
-                          <span class="text-gray fz-10 light">Cecilia Ramírez</span>
-                          <span class="text-gray fz-10 light pl-7">hace 9 días</span>
-                          <p class="fz-10 pt-7 mb-0 pb-7 parrafo">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam quidem corrupti optio sed facilis omnis perferendis dolores vero qui illo, beatae velit suscipit tempora iure molestias nisi earum sunt fugit.</p>
+                      <div class="hidden-lg hidden-md"><!--movil-->
+                        <span></span>
+                        <span class="fz-14 text-gray-light">1</span>
+                        <img src="{site_url}frontend/app/assets/img/Flecha_Abajo.png" alt="" class="w-6">
+                        <span class="fz-12 text-gray-light ph-7">|</span>
+                        <img src="{site_url}frontend/app/assets/img/Flecha_Abajo.png" alt="" class="w-6 rotate-180">
+                      </div>
+                    </div>
+                    <div class="cuadro-respuesta clearfix pt-21 ph-0 hidden col-md-10 col-md-offset-2 col-xs-12 hidden-xs hidden-sm">
+                      <div class="col-xs-2 pr-0">
+                        <div class="img-respuesta bg-img-block-center brp-100" style="background-image: url({site_url}frontend/app/assets/img/Wall/Carita2.png)"></div>
+                      </div>
+                      <div class="col-xs-10 pl-0 pl-21-xs">
+                        <span class="fz-14 text-success pr-7">Cecilia Ramírez</span>
+                        <textarea name="text" id="" onkeyup="auto_grow(this)" placeholder="Escribe una respuesta..." class="w-100 mt-7 fz-14 light ph-7 serif text-gray-darker book"></textarea>
+                      </div>
+                    </div>
+                    <div class="respuesta clearfix pt-21 ph-0 hidden col-md-10 col-md-offset-2 col-xs-12 visible-xs">
+                      <div class="col-xs-2 pr-0">
+                        <div class="img-respuesta bg-img-block-center brp-100" style="background-image: url({site_url}frontend/app/assets/img/Wall/Cara-1.png)"></div>
+                      </div>
+                      <div class="col-xs-10 pl-0 pl-21-xs">
+                        <span class="fz-14 text-success pr-7">Ivo Sadner</span>
+                        <img src="{site_url}frontend/app/assets/img/forward.png" alt="" class="display-ib">
+                        <span class="text-gray fz-10 light">Cecilia Ramírez</span>
+                        <span class="text-gray fz-10 light pl-7">hace 9 días</span>
+                        <p class="fz-14 pt-7 mb-0 pb-7 parrafo">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam quidem corrupti optio sed facilis.</p>
+                        <div class="hidden-xs hidden-sm">
                           <span class="fz-8 text-gray-light">1</span>
                           <img src="{site_url}frontend/app/assets/img/Flecha_Abajo.png" alt="" class="w-6">
                           <span class="fz-8 text-gray-light">|</span>
                           <img src="{site_url}frontend/app/assets/img/Flecha_Abajo.png" alt="" class="w-6 rotate-180">
-                          <span class="text-gray-dark book fz-10 light pl-7"><a href="" class="responder">Responder</a></span>
-                          <span class="text-gray-dark book fz-10 light pl-7"><a href="">Compartir</a></span>
+                        </div>
+                        <div class="hidden-lg hidden-md">
+                          <span class="fz-14 text-gray-light">1</span>
+                          <img src="{site_url}frontend/app/assets/img/Flecha_Abajo.png" alt="" class="w-6">
+                          <span class="fz-12 text-gray-light">|</span>
+                          <img src="{site_url}frontend/app/assets/img/Flecha_Abajo.png" alt="" class="w-6 rotate-180">
                         </div>
                       </div>
                     </div>
@@ -133,98 +222,22 @@
                 </div>
               </div>
             </div>
-          </section>
-          {/exp:friends:status}
-
-			<!--
-            <div class="post-2 post bg-white ph-21 pt-28 pb-28 mt-42">
-              <div class="clearfix">
-                <div class="col-md-1 ph-0 pl-7">
-                  <div class="img-perfil bg-img-block-center brp-100" style="background-image: url({site_url}frontend/app/assets/img/Wall/Cara-2.png)"></div>
-                </div>
-                <div class="name col-md-11 pl-21">
-                  <div class="info-usuario pl-7 row">
-                    <div class="col-md-9">
-                      <span class="categoria text-uppercase fz-10 text-primary letter-spacing-1.5">Quiero divertirme</span>
-                      <h5 class="text-gray-darker m-0">Santiago López</h5>
-                      <p class="fz-10 m-0 text-gray"><a href="">Hace 3 horas</a></p>
-                    </div>
-                    <div class="col-md-3 text-center">
-                    
-                    </div>
-                  </div>
-                  <p class="parrafo pt-14 ph-7 text-gray-darker">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam quidem corrupti optio sed facilis omnis perferendis dolores vero qui illo, beatae velit suscipit tempo iure moles nisi earum sunt fugit.</p>
-                  <div class="pv-21 mh-7 bg-img-block-center w-100 minh-280" style="background-image:url({site_url}frontend/app/assets/img/Wall/Foto3.png)"></div>
-                  <div class="clearfix ph-0 mh-7 thin text-gray pt-28 pb-7 border-bottom-gray-lighter fz-12">
-                    <ul class="col-md-6 ph-0 mv-0">
-                      <li class="pr-7 display-ib">
-                        <a href="">Comentar &nbsp</a>
-                        <img src="{site_url}frontend/app/assets/img/Icono_Comentar.png" alt="">
-                      </li>
-                      <li class="display-ib pl-14">
-                        <a href="">Me gusta &nbsp</a>
-                        <img src="{site_url}frontend/app/assets/img/me_gusta.png" alt="">
-                      </li>
-                    </ul>
-                    <ul class="col-md-6 ph-0 mv-0 text-right">
-                      <li class="display-ib">
-                        <a href="">3 &nbsp</a>
-                        <img src="{site_url}frontend/app/assets/img/Icono_Corazon.png" alt="">
-                      </li>
-                      <li class="like display-ib pl-7">
-                        <a href="">&nbsp 24 comentarios &nbsp</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="post-3 post bg-white ph-21 pt-28 pb-28 mt-42">
-              <div class="clearfix">
-                <div class="col-md-1 ph-0 pl-7">
-                  <div class="img-perfil bg-img-block-center brp-100" style="background-image: url({site_url}frontend/app/assets/img/Wall/Cara-1.png)"></div>
-                </div>
-                <div class="name col-md-11 pl-21">
-                  <div class="info-usuario pl-7 row">
-                    <div class="col-md-9">
-                      <span class="categoria text-uppercase fz-10 text-primary letter-spacing-1.5">Tengo una solicitud</span>
-                      <h5 class="text-gray-darker m-0">Javier Cadilla</h5>
-                      <p class="fz-10 m-0 text-gray"><a href="">Hace 3 horas</a></p>
-                    </div>
-                    <div class="col-md-3 text-center">
-                      <div class="aviso btn-aviso1 mh-21 bg-info hidden">
-                        <div class="circle-green bg-white display-ib"></div>
-                        <h5 class="text-white thin m-0 display-ib pl-7 pv-7 fz-14">Resuelto</h5>
-                      </div>
-                      <div class="aviso btn-aviso2 mh-14 ph-7 bg-warning">
-                        <div class="circle-green bg-white display-ib"></div>
-                        <h5 class="text-white thin m-0 display-ib pl-7 pv-7 fz-14">No resuelto</h5>
-                      </div>
-                    </div>
-                  </div>
-                  <p class="parrafo pt-14 ph-7 text-gray-darker">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam quidem corrupti optio sed facilis omnis perferendis dolores vero qui illo, beatae velit suscipit tempora iure molestias nisi earum sunt fugit.</p>
-                  <div class="clearfix ph-0 mh-7 thin text-gray pt-7 pb-7 border-bottom-gray-lighter fz-12">
-                    <ul class="col-md-6 ph-0 mv-0">
-                      <li class="pr-7 display-ib">
-                        <a href="">Comentar &nbsp</a>
-                        <img src="{site_url}frontend/app/assets/img/Icono_Comentar.png" alt="">
-                      </li>
-                      <li class="display-ib pl-14">
-                        <a href="">Me gusta &nbsp</a>
-                        <img src="{site_url}frontend/app/assets/img/me_gusta.png" alt="">
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>-->
-
-        </div>
-        <div id="box-right" class="col-md-4 pl-42 pr-0">
-					{embed="includes/modulo-noticias"}
-        </div>
+          </div>
+        </section>
+        {/exp:friends:status}
       </div>
-    </main>
-    {embed="includes/radio-urbe"}
-  </div>
+      <div id="box-right" class="col-md-4 pl-21 pr-0 hidden-xs hidden-sm">
+        {embed="includes/modulo-noticias"}
+      </div>
+    </div>
+  </main>
+  {embed="includes/radio-urbe"}
+</div>
+
 {embed="includes/footer"}
+
+<script type="text/javascript">
+  $("#status_form").attr("enctype", "multipart/form-data");
+</script>
+
+</html>

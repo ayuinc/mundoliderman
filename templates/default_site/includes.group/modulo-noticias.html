@@ -1,13 +1,13 @@
-	        {exp:channel:entries channel="noticias" limit="3" dynamic="off"}
-          <div class="noticia ml-42">
-	          {noticias_imagen}
-            <img src="{image:url:small}" alt="">
-            {/noticias_imagen}
-            <div class="nota bg-white minhp-30 ph-21 pv-14 border-bottom-gray-light">
-              <span class="text-uppercase text-primary fz-10">NOTICIA</span>
-              <h5 class="text-uppercase mt-0 fz-14 text-gray-dark2">{title}</h5>
-              <p class="fz-12 text-gray-darker">{noticias_descripcion}</p>
-              <p class="read text-right text-primary book fz-10"><a href="{permalink="noticias/post"}">Leer más &#8594</a></p>
-            </div>
-          </div>
-          {/exp:channel:entries}
+{exp:channel:entries channel="noticias" limit="3" dynamic="off"}
+<div class="noticia mt-21">
+  {noticias_imagen}
+    <img src="{image:url:small}" alt="">
+  {/noticias_imagen}
+  <div class="nota bg-white minhp-30 ph-21 pv-14 border-bottom-gray-light">
+    <span class="text-uppercase text-primary fz-10">NOTICIA</span>
+    <h5 class="text-uppercase mt-0 fz-14 text-gray-dark2">{title}</h5>
+    <p class="fz-12 text-gray-darker">{noticias_descripcion}</p>
+    <p class="read text-right text-primary book fz-10"><a href="{permalink="noticias/post"}">Leer más &#8594</a></p>
+  </div>
+</div>
+{/exp:channel:entries}
