@@ -1,0 +1,62 @@
+<header class="site-menu bg-white">
+  <div class="w-100 fixed bg-white">
+    <div class="container-md minh-70 clearfix ph-0 pv-14 ph-21">
+      <div class="logo col-md-4 pl-0 hidden-xs hidden-sm">  
+        <a href="index.html">
+          <div class="col-md-9 text-left ph-0 pt-14">
+            <h1 class="text-uppercase bold text-gray-darker m-0">Mundo liderman</h1>
+          </div>
+          <div class="col-md-2 ph-0">
+            <img src="{site_url}frontend/app/assets/img/Liderboy.png" alt="Mundo Liderman" class="liderboy">
+          </div>
+        </a>
+      </div>
+      <div class="col-md-4 pr-0 hidden-xs hidden-sm">
+        {exp:user:search
+          return="user/results"
+          form:class="tool-bar-search-form mt-7 br-5"
+        }
+          <div class="input-group pr-0 ">
+            <input type="text" id="search_bar" class="form-control input-sm thin pl-14 borderless display-ib" placeholder="Buscar personas, consultas o preguntas...">
+            <img src="{site_url}frontend/app/assets/img/Icono_Buscar.png" alt="" class="display-ib">
+          </div>
+        {/exp:user:search}
+      </div>
+      <div class="col-md-4 text-center pr-0 pl-28 hidden-xs hidden-sm">
+        <div class="col-md-5"><p class="mt-14 mb-0 border-right-gray-light pr-14 text-right"><a href="{site_url}" class="text-gray book fz-16">Ir al inicio</a></p></div>
+        <div class="col-md-7 text-right ph-0">
+          <p class="text-gray-dark m-0 mt-14 light float-left pr-7 fz-16">Hola, {screen_name}</p>
+          <div class="perfil float-left" style="background-image: url({site_url}frontend/app/assets/img/Carita.png)"></div>
+          <div class="dropdown herman-dropdown">
+            <button class="bg-white dropdown-toggle b-none outline-none text-gray-light book serif" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              <a href="" class="pl-7"><img src="{site_url}frontend/app/assets/img/FlechaHerman.png" alt="" class="mt-14"></a>
+            </button>
+            <ul class="dropdown-menu mt-0 b-none fz-14" aria-labelledby="dropdownMenu1">
+              <li class="triangulo"></li>
+              <li><a href="{site_url}perfil" class="lh-1">Mi Perfil</a></li>
+              <li><a href="{site_url}" class="lh-1">Estadísticas</a></li>
+              {exp:user:logout return="login"}
+                <li><a href="{url}" class="lh-1">Salir</a></li>
+              {/exp:user:logout}
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="clearfix hidden-lg hidden-md"><!--movil-->
+        <div class="logo pt-14 pb-7 col-xs-8 ph-0">
+          <h1 class="text-uppercase bold text-gray-darker m-0 fz-22 display-ib">Mundo liderman</h1>
+          <img src="{site_url}frontend/app/assets/img/Liderboy.png" alt="Mundo Liderman" class="liderboy">
+        </div>
+        <div class="col-xs-4 ph-0 pl-7">
+          <div class="btn-menu relative pv-7 ph-14">
+            <p class="text-gray-darker fz-17 mb-0 sans-serif display-ib pr-42">MENÚ</p>
+            <p class="text-gray-darker fz-17 mb-0 sans-serif display-ib pr-42 hidden">CERRAR</p>
+            <div class="switch display-ib">
+              <div class="menu-toggle"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
