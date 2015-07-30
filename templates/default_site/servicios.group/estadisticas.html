@@ -1,0 +1,135 @@
+{embed=includes/head titulo="Mundoliderman - Estadística"}
+<link href="{site_url}frontend/app/assets/css/font-awesome.css" rel="stylesheet">
+<link href="{site_url}frontend/app/assets/css/jquery-ui.css" rel="stylesheet">
+<link href="{site_url}frontend/app/assets/css/ref.css" rel="stylesheet">
+<script src="{site_url}frontend/app/assets/js/jquery-2.1.3.min.js"></script>
+
+  <div class="site-wrapper"> <!-- Body -->
+    {embed=includes/nav-main}
+    <main class="site-content pb-42 mb-42-xs">
+      {embed=includes/menu-movil}
+      {embed=includes/banner-alerta}
+      <div class="container-md clearfix ph-0-xs mb-42-xs pb-42-xs">
+        <section id="menu-vertical" class="col-md-4 pr-42 pl-0 hidden-xs hdden-sm">
+          {embed=includes/nav-secciones in="in"}
+        </section>
+        <section id="tareo-contenido" class="col-md-8 pb-42 ph-0-xs">
+          <div class="container pt-42 w-100 ph-0 ph-21-xs">
+            {embed=includes/perfil-servicios}
+            {embed=includes/semaforo-movil}
+            <div><h2 class="fz-28 border-bottom-gray-darker pb-14 text-gray-darker pt-21">Estadísticas Lidernet</h2></div>
+            {embed=includes/semaforo}
+            <div class="tareo mt-42">
+              <div class="datos bg-white pv-42 ph-42 ph-14-xs">
+                <span class="fz-18 text-gray-darker pr-7-xs">Buscar el periodo</span>
+                <div class="select-group display-ib ml-21 ml-0-xs">
+                  <div class="display-ib text-center ph-7 relative">
+                    <select name="" id="" class="text-gray-darker borderless relative">
+                      <option value="" class="fz-14">Mes</option>
+                      <option value="" class="fz-14">En</option>
+                      <option value="" class="fz-14">Feb</option>
+                      <option value="" class="fz-14">Mar</option>
+                      <option value="" class="fz-14">Abr</option>
+                      <option value="" class="fz-14">May</option>
+                      <option value="" class="fz-14">Jun</option>
+                      <option value="" class="fz-14">Jul</option>
+                      <option value="" class="fz-14">Agos</option>
+                      <option value="" class="fz-14">Set</option>
+                      <option value="" class="fz-14">Oct</option>
+                      <option value="" class="fz-14">Nov</option>
+                      <option value="" class="fz-14">Dic</option>
+                    </select>
+                    <img src="{site_url}frontend/app/assets/img/Flecha_Abajo.png" alt="">
+                  </div>
+                  <div class="display-ib text-center ph-7 relative ml-14">
+                    <select name="" id="" class="text-gray-darker borderless relative">
+                      <option class="fz-14">Año</option>
+                      <option class="fz-14">2005</option>
+                      <option class="fz-14">2006</option>
+                      <option class="fz-14">2007</option>
+                      <option class="fz-14">2008</option>
+                      <option class="fz-14">2009</option>
+                      <option class="fz-14">2010</option>
+                      <option class="fz-14">2011</option>
+                      <option class="fz-14">2012</option>
+                      <option class="fz-14">2013</option>
+                      <option class="fz-14">2014</option>
+                      <option class="fz-14">2015</option>
+                    </select>
+                    <img src="{site_url}frontend/app/assets/img/Flecha_Abajo.png" alt="" class="absolute">
+                  </div>
+                </div>
+                <div id="cuadro-estadistico" class="pv-42 mv-42 pt-0-xs" style="height: 400px; width: 100%"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+    {embed=includes/radio-urbe}
+  </div>
+  <script>
+    $(document).ready(function() {
+      $('#cuadro-estadistico').highcharts({
+          chart: {
+              type: 'area',
+              spacingBottom: 30
+          },
+          title: {
+              text: 'Enero 2015 - Noviembre 2015'
+          },
+          subtitle: {
+              text: 'Mundoliderman 2015',
+              floating: true,
+              align: 'right',
+              verticalAlign: 'bottom',
+              y: 15
+          },
+          legend: {
+              layout: 'vertical',
+              align: 'left',
+              verticalAlign: 'top',
+              x: 150,
+              y: 100,
+              floating: true,
+              borderWidth: 1,
+              backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
+          },
+          xAxis: {
+              categories: ['En', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Set', 'Oct', 'Nov']
+          },
+          yAxis: {
+              title: {
+                  text: ''
+              },
+              labels: {
+                  formatter: function () {
+                      return this.value;
+                  }
+              }
+          },
+          tooltip: {
+              formatter: function () {
+                  return '<b>' + this.series.name + '</b><br/>' +
+                      this.x + ': ' + this.y;
+              }
+          },
+          plotOptions: {
+              area: {
+                  fillOpacity: 0.5
+              }
+          },
+          credits: {
+              enabled: false
+          },
+          series: [{
+              name: 'Herman',
+              data: [0, 1, 4, 4, 5, 2, 3, 7, 3, 3, 8]
+          }]
+      });
+    });
+  </script>
+  {embed=includes/footer}
+  <script src="{site_url}frontend/app/assets/js/highcharts.js"></script>
+  <script src="{site_url}frontend/app/assets/js/collapse-control.js"></script>
+</html>
