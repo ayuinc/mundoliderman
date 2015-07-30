@@ -18,7 +18,7 @@ class Webservice {
 		$this->EE =& get_instance();
 	}
 
-	public function usage()
+	public static function usage()
 	{
 		ob_start();
 ?>	
