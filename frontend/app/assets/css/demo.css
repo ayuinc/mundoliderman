@@ -29,8 +29,6 @@ html { height: 100%; }
 }
 
 body {
-    background: #f9f9f9 url(../images/bg.jpg);
-    font-size: 15px;
     color: #333;
     height: 100%;
 }
@@ -41,8 +39,8 @@ a {
 }
 
 .container {
-	width: 100%;
-	height: 100%;
+	/*width: 100%;
+	height: 100%;*/
 	position: relative;
 }
 
