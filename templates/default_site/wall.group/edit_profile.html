@@ -6,7 +6,9 @@
       {embed=includes/menu-movil}
       {embed=includes/banner-alerta}
       <div class="container-md clearfix mb-42-xs pb-42-xs">
-        {embed=includes/nav-secciones}
+        <section id="menu-vertical" class="col-md-4 pr-42 pl-0 hidden-xs hdden-sm">
+          {embed=includes/nav-secciones in="in"}
+        </section>
         <section id="perfil-contenido" class="col-md-8 pb-42 pl-21 pr-28 ph-7-xs">
           <div class="container pt-42 w-100 pb-42 mb-42 ph-0">
             <div class="perfil-servicios clearfix bg-white pv-21 ph-21 ph-7-xs hidden-lg hdden-md">
@@ -16,7 +18,7 @@
               <div class="col-md-8 ph-0 pt-14 hidden-lg hdden-md">
                 <h3 class="text-primary book m-0 display-ib pr-14 fz-35 pr-0-xs">{screen_name}</h2> 
                 <h4 class="text-gray fz-21 m-0 pt-7 pb-14 book">Supervisor, Zona - Unidad</h4>
-                <img src="assets/img/Ubicacion.png" alt="" class="pb-4">
+                <img src="{site_url}frontend/app/assets/img/Ubicacion.png" alt="" class="pb-4">
                 <span class="light fz-20">Empresa Empleadora</span>
               </div>
             </div>
