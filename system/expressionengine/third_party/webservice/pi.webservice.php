@@ -3,7 +3,7 @@
 $plugin_info = array(
 	'pi_name' => 'Web Service Mundo Liderman',
 	'pi_version' => '1.0',
-	'pi_author' => 'Iván Medina',
+	'pi_author' => 'Laboratoria',
 	'pi_author_url' => 'http://laboratoria.la',
 	'pi_description' => 'Plugin for retreiving data from Mundo Liderman Web Service',
 	'pi_usage' => Webservice::usage()
