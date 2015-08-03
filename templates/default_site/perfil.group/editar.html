@@ -1,21 +1,27 @@
-{embed="includes/header"}
+{if logged_out}
+  {redirect="login"}
+{/if}
+
+{embed=includes/head}
+  
   <div class="site-wrapper"> <!-- Body -->
-    {embed="includes/nav-main"}
+    {embed=includes/nav-main}
     <main class="site-content pb-42 mb-0-xs">
-      <div class="box-gray bg-gray-darker w-100 hidden-lg hdden-md"></div>
-      <div class="container-md clearfix">
-	      {embed="includes/nav-secciones"}
-        {exp:user:edit}
+      {embed=includes/menu-movil}
+      {embed=includes/banner-alerta}
+      <div class="container-md clearfix mb-42-xs pb-42-xs">
+        <section id="menu-vertical" class="col-md-4 pr-42 pl-0 hidden-xs hdden-sm">
+          {embed=includes/nav-secciones in="in"}
+        </section>
         <section id="perfil-contenido" class="col-md-8 pb-42 pl-21 pr-28 ph-7-xs">
           <div class="container pt-42 w-100 pb-42 mb-42 ph-0">
             <div class="perfil-servicios clearfix bg-white pv-21 ph-21 ph-7-xs hidden-lg hdden-md">
               <div class="col-md-4 pr-0 pt-21 pl-0-xs">
-                <div style="background-image:url({photo_url}{photo_filename})" class="mv-21 bg-img-block-center"></div>
-						    <p class="fz-14"><input type="file" name="photo_filename" /></p>                
+                <div style="background-image:url({site_url}frontend/app/assets/img/Herman_Profile_Pic.png)" class="bg-img-block-center"></div>
               </div>
               <div class="col-md-8 ph-0 pt-14 hidden-lg hdden-md">
                 <h3 class="text-primary book m-0 display-ib pr-14 fz-35 pr-0-xs">{screen_name}</h2> 
-                <h4 class="text-gray fz-16 m-0 pt-7 book hidden-xs hdden-sm"><input type="text" name="cargo" value="{cargo}" placeholder="Cargo"/>, <input type="text" name="zona" value="{zona}"  placeholder="Zona" /> - <input type="text" name="unidad" value="{unidad}"  placeholder="Unidad"/></h4>
+                <h4 class="text-gray fz-21 m-0 pt-7 pb-14 book">Supervisor, Zona - Unidad</h4>
                 <img src="{site_url}frontend/app/assets/img/Ubicacion.png" alt="" class="pb-4">
                 <span class="light fz-20">Empresa Empleadora</span>
               </div>
@@ -24,31 +30,31 @@
               <form class="fz-18">
                 <div class="row mb-42">
                   <div class="col-md-5 pr-0 hidden-xs hdden-sm">
-                    <div style="background-image:url({photo_url}{photo_filename})" class="mv-21 bg-img-block-center brp-100"></div>
-								    <p class="fz-14"><input type="file" name="photo_filename" /></p>                     
+                    <div style="background-image:url({site_url}frontend/app/assets/img/Herman_Profile_Pic.png)" class="bg-img-block-center brp-100"></div>
                   </div>
                   <div class="col-md-7 pl-28 pt-14 ph-21-xs pt-0-xs">
-                    <h3 class="text-primary book m-0 display-ib pr-14 fz-30 hidden-xs hdden-sm">{screen_name}</h3> 
-										<h4 class="text-gray fz-16 m-0 pt-7 book hidden-xs hdden-sm"><input type="text" name="cargo" value="{cargo}" placeholder="Cargo"/>, <input type="text" name="zona" value="{zona}"  placeholder="Zona" /> - <input type="text" name="unidad" value="{unidad}"  placeholder="Unidad"/></h4>
-                    <textarea class="fz-16 p-14 w-100 mt-21 serif minhp-20 lh-1-5" onkeyup="auto_grow(this)" name="introduccion">{introduccion}</textarea>
+                    <h3 class="text-primary book m-0 display-ib pr-14 fz-30 hidden-xs hdden-sm">Herman Marín</h3> 
+                    <h4 class="text-gray fz-16 m-0 pt-7 book hidden-xs hdden-sm">Supervisor</h4>
+                    <textarea class="fz-16 p-14 w-100 mt-21 serif minhp-20 lh-1-5" onkeyup="auto_grow(this)" placeholder="Este puede ser texto de Introducción del Liderman para que la gente sepa quién es esa persona. Lorem ipsum dolor."></textarea>
                   </div>
                 </div>
-                Periodo en planilla:<br>
-                <input type="text" class="minh-70 w-100 mb-28 p-14" name="fecha-inicio" value="{fecha-inicio}">
-                <br>
                 Dirección:<br>
-                <textarea type="text" name="direccion" onkeyup="auto_grow(this)" class="minh-70 w-100 mb-28 p-14">{direccion}</textarea>
+                <textarea type="text" name="direccion" onkeyup="auto_grow(this)" class="minh-70 w-100 mb-28 p-14"></textarea>
                 <br>
                 Intereses:<br>
-                <textarea type="text" name="interes" onkeyup="auto_grow(this)" class="minh-70 w-100 p-14">{interes}</textarea>
-                <input type="submit" value="PUBLICAR" class="btn btn-enviar btn-perfil text-white text-hover-white br-none ph-21 thin ls-2 mt-42" />
+                <textarea type="text" name="intereses" onkeyup="auto_grow(this)" class="minh-70 w-100 p-14"></textarea>
+                <button class="btn btn-enviar btn-perfil text-white text-hover-white br-none ph-21 thin ls-2 mt-42">
+                  <span>PUBLICAR</span>
+                  <img src="{site_url}frontend/app/assets/img/Flecha_Publicar.png" alt="" class="pl-14">
+                </button>
               </form>
             </div>
           </div>
         </section>
-        {/exp:user:edit} 
       </div>
     </main>
-    {embed="includes/radio-urbe"}
+    {embed=includes/radio-urbe}
   </div>
-{embed="includes/footer"} 
+  <script src="{site_url}frontend/app/assets/js/lidercard-control.js"></script>
+  {embed=includes/footer}
+</html>
