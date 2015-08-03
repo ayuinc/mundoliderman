@@ -10,6 +10,7 @@ class Wslogin_ext {
 	var $settings = array();
 
 	var $host = "http://190.187.13.164";
+	var $custom_fields;
 
 	var $CI = '';
 
@@ -109,6 +110,9 @@ class Wslogin_ext {
 					 ->get();*/
 			$query = ee()->db->where("username", $username)
 					 ->get("members");
+
+			$this->getCustomMemberFields();
+
 			if ($query->num_rows() > 0) {
 				$member_id = $query->row("member_id");
 				$member_salt = $query->row("salt");
@@ -118,15 +122,137 @@ class Wslogin_ext {
 					ee()->db->update('members',
 						array(
 							'password' => $hash["password"],
-							'salt' => $hash["salt"]
+							'salt' => $hash["salt"],
+							'email' => $data["Correo"]
 						),
 						array(
 							'member_id' => $member_id
 						)
 					);
 				}
-				//ee()->db->update('members')
+				ee()->db->update(
+				    'member_data',
+				    $this->setArrayData($data, $token),
+				    array(
+				        'member_id' => $member_id
+				    )
+				);
+			} else {
+				ee()->load->helper('security');
+				$hash = ee()->auth->hash_password($password);
+
+				// Assign the base query data
+				$member_data = array(
+					'username'		=> $username,
+					'password'		=> $hash["password"],
+					'salt'			=> $hash["salt"],
+					'ip_address'	=> ee()->input->ip_address(),
+					'unique_id'		=> ee()->functions->random('encrypt'),
+					'join_date'		=> ee()->localize->now,
+					'email'			=> $data["Correo"],
+					'screen_name'	=> $username,
+					'url'			=> prep_url(ee()->input->post('url')),
+					'location'		=> ee()->input->post('location'),
+
+					// overridden below if used as optional fields
+					'language'		=> (ee()->config->item('deft_lang')) ?
+											ee()->config->item('deft_lang') : 'english',
+					'date_format'	=> ee()->config->item('date_format') ?
+							 				ee()->config->item('date_format') : '%n/%j/%y',
+					'time_format'	=> ee()->config->item('time_format') ?
+											ee()->config->item('time_format') : '12',
+					'include_seconds' => ee()->config->item('include_seconds') ?
+											ee()->config->item('include_seconds') : 'n',
+					'timezone'		=> ee()->config->item('default_site_timezone')
+				);
+
+				// Set member group
+
+				if (ee()->config->item('req_mbr_activation') == 'manual' OR
+					ee()->config->item('req_mbr_activation') == 'email')
+				{
+					$member_data['group_id'] = 4;  // Pending
+				}
+				else
+				{
+					if (ee()->config->item('default_member_group') == '')
+					{
+						$member_data['group_id'] = 4;  // Pending
+					}
+					else
+					{
+						$member_data['group_id'] = ee()->config->item('default_member_group');
+					}
+				}
+
+				// Optional Fields
+
+				$optional = array(
+					'bio'				=> 'bio',
+					'language'			=> 'deft_lang',
+					'timezone'			=> 'server_timezone',
+					'date_format'		=> 'date_format',
+					'time_format'		=> 'time_format',
+					'include_seconds'	=> 'include_seconds'
+				);
+
+				// We generate an authorization code if the member needs to self-activate
+				if (ee()->config->item('req_mbr_activation') == 'email')
+				{
+					$member_data['authcode'] = ee()->functions->random('alnum', 10);
+				}
+
+				// Insert basic member data
+				ee()->db->query(ee()->db->insert_string('exp_members', $member_data));
+
+				$member_id = ee()->db->insert_id();
+
+				$this->setArrayData($data, $token);
+				$data["member_id"] = $member_id;
+
+				ee()->db->query(ee()->db->insert_string('exp_members_data', $data));
 			}
 		}
 	}
+
+	private function getCustomMemberFields()
+	{
+		$member_fields = ee()->db->where('m_field_reg', 'y')
+						 ->get("member_fields");
+		$this->custom_fields = $member_fields->result_array();
+	}
+
+	private function getMemberFieldId($field_name)
+	{
+		$field_id = 0;
+		foreach ($this->custom_fields as $key => $value) {
+			if ($field_name == $value["m_field_name"]) {
+				$field_id = $value["m_field_id"];
+				break;
+			}
+		}
+		return $field_id;
+	}
+
+	private function setArrayData($data = array(), $token)
+	{
+		return array(
+	        'm_field_id_' . $this->getMemberFieldId('apellidos')  => $data["Apellido"],
+	        'm_field_id_' . $this->getMemberFieldId('cargo')  => $data["Cargo"],
+	        'm_field_id_' . $this->getMemberFieldId('empresa-empleadora')  => $data["Cliente"],
+	        'm_field_id_' . $this->getMemberFieldId('codigo-liderman')  => $data["CodigoLiderman"],
+	        'm_field_id_' . $this->getMemberFieldId('correo-destinatario')  => $data["CorreoDestinatario"],
+	        'm_field_id_' . $this->getMemberFieldId('dni')  => $data["DNI"],
+	        'm_field_id_' . $this->getMemberFieldId('edad')  => $data["Edad"],
+	        'm_field_id_' . $this->getMemberFieldId('lider-zonal')  => $data["LiderZonal"],
+	        'm_field_id_' . $this->getMemberFieldId('nombres')  => $data["Nombres"],
+	        'm_field_id_' . $this->getMemberFieldId('periodo-planilla')  => $data["PeriodoPlanilla"],
+	        'm_field_id_' . $this->getMemberFieldId('sexo')  => $data["Sexo"],
+	        'm_field_id_' . $this->getMemberFieldId('tipo-usuario')  => $data["TipoUsuario"],
+	        'm_field_id_' . $this->getMemberFieldId('token')  => $token,
+	        'm_field_id_' . $this->getMemberFieldId('unidad')  => $data["Unidad"],
+	        'm_field_id_' . $this->getMemberFieldId('zona')  => $data["Zona"]
+	    );
+	}
+
 }
