@@ -268,8 +268,14 @@
 		getYear : function() {
 			return this.year;
 		},
+		setYear : function( year ) {
+			this.year = year;
+		},
 		getMonth : function() {
 			return this.month + 1;
+		},
+		setMonth : function( month ) {
+			this.month = month;
 		},
 		getMonthName : function() {
 			return this.options.displayMonthAbbr ? this.options.monthabbrs[ this.month ] : this.options.months[ this.month ];

@@ -12,10 +12,13 @@ $plugin_info = array(
 class Webservice {
 
 	public $return_data;
+	private $custom_fields;
 
 	public function __construct()
 	{
 		$this->EE =& get_instance();
+		$this->CI =& get_instance();
+		$this->EE->load->library('curl');
 	}
 
 	public static function usage()
@@ -93,11 +96,6 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 		return $this->EE->TMPL->parse_variables($this->EE->TMPL->tagdata, $data);
 	}
 
-	public function test()
-	{
-		return strval($_SESSION['auth']);
-	}
-
 	public function detalle_boleta()
 	{
 		$dni = trim(ee()->TMPL->fetch_param('dni'));
@@ -126,35 +124,28 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 
 	public function tareo()
 	{
-		$dni = trim(ee()->TMPL->fetch_param('dni'));
-		$url = "http://190.187.13.164/WSIntranet/Autenticacion.svc/AutenticacionUsuario/$dni/$dni";
-		$ch = curl_init($url);
-		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_URL,$url);
-		$content=curl_exec($ch);
-		$json = json_decode($content, true);
-		$data = $json["Resultado"];
-		$tag_vars = array($data);
-		$codigoLiderman = $data["CodigoLiderman"];//trim($this->EE->TMPL->fetch_param('codigo'));
-		$mes = trim($this->EE->TMPL->fetch_param('mes'));
+		$member_id = $this->EE->session->userdata('member_id');
+		$codigo_liderman_field_name = $this->getMemberFieldId("codigo-liderman");
+		$token_field_name = $this->getMemberFieldId("token");
+		$query = $this->EE->db->where('member_id', $member_id)
+						 ->select("$codigo_liderman_field_name, $token_field_name")
+				         ->get('exp_member_data');
+		$codigoLiderman = $query->row($codigo_liderman_field_name);
+		$token = $query->row($token_field_name);
+		$mes = trim(ee()->TMPL->fetch_param('mes'));
 		$currentMonth = date('n');
-		$mes = $currentMonth - $mes;
-		$token = $data["TokenSeguridad"];//trim($this->EE->TMPL->fetch_param('token'));
-		$url = "http://190.187.13.164/WSIntranet/Tareo.svc/ListarTareo/$codigoLiderman/$mes/$token";
-		$ch = curl_init($url);
-		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_URL,$url);
-		$content=curl_exec($ch);
-		$json = json_decode($content, true);
-		$data = $json["Resultado"];
+		if (!isset($mes)) {
+			$mes = $currentMonth;
+		}
+		$meses_anticipacion = $currentMonth - ($mes + 1);
+		$url = "http://190.187.13.164/WSIntranet/Tareo.svc/ListarTareo/$codigoLiderman/$meses_anticipacion/$token";
+		$data = $this->EE->curl->get($url);
 		$new_data = array();
-		$j = 0;
-		for ($i=0; $i < count($data)-1; $i++) { 
-			if ($data[$i]['Mes'] == '5') {
-				$new_data[$j] = $data[$i];
-				$j += 1;
+		$i = 0;
+		foreach ($data as $key => $value) {
+			if ($value["Mes"] == ($mes+1)) {
+				$new_data[$i] = $value;
+				$i++;
 			}
 		}
 		return $this->EE->TMPL->parse_variables($this->EE->TMPL->tagdata, $new_data);
@@ -162,46 +153,42 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 
 	public function semaforotareo()
 	{
-		$dni = trim(ee()->TMPL->fetch_param('dni'));
-		$url = "http://190.187.13.164/WSIntranet/Autenticacion.svc/AutenticacionUsuario/$dni/$dni";
-		$ch = curl_init($url);
-		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_URL,$url);
-		$content=curl_exec($ch);
-		$json = json_decode($content, true);
-		$data = $json["Resultado"];
-		$tag_vars = array($data);
-		$codigoLiderman = $data["CodigoLiderman"];//trim($this->EE->TMPL->fetch_param('codigo'));
+		$member_id = $this->EE->session->userdata('member_id');
+		$codigo_liderman_field_name = $this->getMemberFieldId("codigo-liderman");
+		$token_field_name = $this->getMemberFieldId("token");
+		$query = $this->EE->db->where('member_id', $member_id)
+						 ->select("$codigo_liderman_field_name, $token_field_name")
+				         ->get('exp_member_data');
+		$codigoLiderman = $query->row($codigo_liderman_field_name);
+		$token = $query->row($token_field_name);
 		$mes = trim($this->EE->TMPL->fetch_param('mes'));
 		$currentMonth = date('n');
 		$mes = $currentMonth - $mes;
-		$token = $data["TokenSeguridad"];//trim($this->EE->TMPL->fetch_param('token'));
 		$url = "http://190.187.13.164/WSIntranet/Tareo.svc/TraerSemaforoTareo/$codigoLiderman/$mes/$token";
-		$ch = curl_init($url);
-		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_URL,$url);
-		$content=curl_exec($ch);
-		$json = json_decode($content, true);
-		$data = $json["Resultado"];
+		$data = $this->EE->curl->get($url);
 		return $data;
 	}
 
-	public function getdatafromdb()
+	private function getCustomMemberFields()
 	{
-		$channels = ee()->db->select('*')
-		  ->from('members')
-		  ->get();
-		$data = '';
-		if ($channels->num_rows() > 0)
-		{
-		    foreach($channels->result_array() as $row)
-		    {
-		        $data .= $row['username']."<br />\n";
-		    }
+		$member_fields = ee()->db->where('m_field_reg', 'y')
+						 ->get("member_fields");
+		$this->custom_fields = $member_fields->result_array();
+	}
+
+	private function getMemberFieldId($field_name)
+	{
+		$field_id = 0;
+		if (!isset($this->custom_fields)) {
+			$this->getCustomMemberFields();
 		}
-		return $data;
+		foreach ($this->custom_fields as $key => $value) {
+			if ($field_name == $value["m_field_name"]) {
+				$field_id = $value["m_field_id"];
+				break;
+			}
+		}
+		return 'm_field_id_' . $field_id;
 	}
 
 }
