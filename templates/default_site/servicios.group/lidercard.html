@@ -15,89 +15,38 @@
             {embed=includes/perfil-servicios}
             {embed=includes/semaforo-movil}
             <div><h2 class="fz-28 border-bottom-gray pb-14 text-gray-darker pt-21">LíderCard</h2></div>
-            {embed=includes/semaforo}
+            {if {exp:webservice:semaforolidercard mes="8"} == 1}
+                <div class="semaforo clearfix bg-info border-radius mt-28 ph-42 text-white hidden-xs hidden-sm">
+                  <div class="col-md-1 text-center pl-0">
+                  <img src="{site_url}frontend/app/assets/img/Check.png" alt="">
+                </div>
+                <div class="col-md-11 pb-7 pr-28 pl-14">
+                  <h3 class="fz-20 mb-7">Tu semáforo está en verde!</h3>
+                  <p class="fz-14 text-white lh-1-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, praesentium. Blanditiis ab voluptatem molestiae odit natus saepe asperiores..</p>
+                </div>
+              </div>
+            {if:else}
+              <div class="semaforo clearfix bg-primary border-radius mt-28 ph-42 text-white hidden-xs hidden-sm">
+                <div class="col-md-1 text-center pl-0">
+                  <img src="{site_url}frontend/app/assets/img/Check.png" alt="">
+                </div>
+                <div class="col-md-11 pb-7 pr-28 pl-14">
+                  <h3 class="fz-20 mb-7">Tu semáforo está en rojo!</h3>
+                  <p class="fz-14 text-white lh-1-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, praesentium. Blanditiis ab voluptatem molestiae odit natus saepe asperiores..</p>
+                </div>
+              </div>
+            {/if}
             <div class="lidercard">
               <div class="datos bg-white pv-42 mt-42 pv-14-xs border-radius">
                 <div class="pl-42 pb-14 ph-7-xs border-bottom-gray-lighter">
                   <span class="fz-20 pl-42 ml-21 ml-14-xs ph-0-xs"><a href="" class="bonificacion text-gray pb-14">Bonificaciones</a></span>
                   <span class="fz-20 ml-42 pl-35 ml-14-xs pl-0-xs ph-0-xs"><a href="" class="merito text-gray pb-14">Méritos y Deméritos</a></span>
                 </div>
-                <div class="dato-bonificacion ph-42 mh-42 pt-35 ph-0-xs mh-14-xs">
-                  <div class="ph-21 row">
-                    <span class="col-md-4 fz-18">Periodo Bonificación</span>
-                    <p class="col-md-3 fz-18 text-gray-darker">Mayo 2015</p>
-                  </div>
-                  <div class="ph-21 row border-bottom-gray-lighter">
-                    <span class="col-md-4 fz-18">Monto</span>
-                    <p class="col-md-3 fz-18 text-gray-darker">S/.500</p>
-                  </div>
+                <div id="bonificaciones">
+                   
                 </div>
-                <div class="separador-div ml-35 hidden-lg hidden-md"></div>
-                <div class="dato-bonificacion ph-42 mh-42 pt-35 ph-0-xs mh-14-xs">
-                  <div class="ph-21 row">
-                    <span class="col-md-4 fz-18">Periodo Bonificación</span>
-                    <p class="col-md-3 fz-18 text-gray-darker">Mayo 2015</p>
-                  </div>
-                  <div class="ph-21 row border-bottom-gray-lighter">
-                    <span class="col-md-4 fz-18">Monto</span>
-                    <p class="col-md-3 fz-18 text-gray-darker">S/.500</p>
-                  </div>
-                </div>
-                <div class="separador-div ml-35 hidden-lg hidden-md"></div>
-                <div class="dato-bonificacion ph-42 mh-42 pt-35 ph-0-xs mh-14-xs">
-                  <div class="ph-21 row">
-                    <span class="col-md-4 fz-18">Periodo Bonificación</span>
-                    <p class="col-md-3 fz-18 text-gray-darker">Mayo 2015</p>
-                  </div>
-                  <div class="ph-21 row">
-                    <span class="col-md-4 fz-18">Monto</span>
-                    <p class="col-md-3 fz-18 text-gray-darker">S/.500</p>
-                  </div>
-                </div>
-
-                <div class="dato-merito hidden ph-42 mh-42 pt-35 ph-0-xs mh-14-xs">
-                  <div class="ph-21 row">
-                    <span class="col-md-4 fz-18">Fecha</span>
-                    <p class="col-md-8 fz-18 text-gray-darker">Mayo 2015</p>
-                  </div>
-                  <div class="ph-21 row">
-                    <span class="col-md-4 fz-18">Tipo</span>
-                    <p class="col-md-8 fz-18 text-gray-darker">Mérito</p>
-                  </div>
-                  <div class="ph-21 row border-bottom-gray-lighter">
-                    <span class="col-md-4 fz-18">Detalle</span>
-                    <p class="col-md-8 fz-18 text-gray-darker">Excelente uso de los procedimientos en los momentos de urgencia</p>
-                  </div>
-                </div>
-                <div class="separador-div ml-35 hidden-lg hidden-md"></div>
-                <div class="dato-merito hidden ph-42 mh-42 pt-35 ph-0-xs mh-14-xs">
-                  <div class="ph-21 row">
-                    <span class="col-md-4 fz-18">Fecha</span>
-                    <p class="col-md-8 fz-18 text-gray-darker">Mayo 2015</p>
-                  </div>
-                  <div class="ph-21 row">
-                    <span class="col-md-4 fz-18">Tipo</span>
-                    <p class="col-md-8 fz-18 text-gray-darker">Mérito</p>
-                  </div>
-                  <div class="ph-21 row border-bottom-gray-lighter">
-                    <span class="col-md-4 fz-18">Detalle</span>
-                    <p class="col-md-8 fz-18 text-gray-darker">Excelente uso de los procedimientos en los momentos de urgencia</p>
-                  </div>
-                </div>
-                <div class="separador-div ml-35 hidden-lg hidden-md"></div>
-                <div class="dato-merito hidden ph-42 mh-42 pt-35 ph-0-xs mh-14-xs">
-                  <div class="ph-21 row">
-                    <span class="col-md-4 fz-18">Fecha</span>
-                    <p class="col-md-8 fz-18 text-gray-darker">Mayo 2015</p>
-                  </div>
-                  <div class="ph-21 row">
-                    <span class="col-md-4 fz-18">Tipo</span>
-                    <p class="col-md-8 fz-18 text-gray-darker">Mérito</p>
-                  </div>
-                  <div class="ph-21 row border-bottom-gray-lighter">
-                    <span class="col-md-4 fz-18">Detalle</span>
-                    <p class="col-md-8 fz-18 text-gray-darker">Excelente uso de los procedimientos en los momentos de urgencia</p>
-                  </div>
+                <div id="meritos-demeritos">
+                  
                 </div>
               </div>
             </div>
@@ -110,4 +59,23 @@
   {embed=includes/footer}
   <script src="{site_url}frontend/app/assets/js/collapse-control.js"></script>
   <script src="{site_url}frontend/app/assets/js/lidercard-control.js"></script>
+  <script>
+    var month = new Date().getMonth();
+
+    $.ajax({
+      type: 'GET',
+      url: '{site_url}ws/bonificaciones/' + month,
+      success: function(data) {
+        $("#bonificaciones").html(data);
+      }
+    });
+    
+    $.ajax({
+      type: 'GET',
+      url: '{site_url}ws/bonificaciones/' + month,
+      success: function(data) {
+        $("#bonificaciones").html(data);
+      }
+    });
+  </script>
 </html>

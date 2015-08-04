@@ -47,13 +47,12 @@
                     <img src="{site_url}frontend/app/assets/img/Imprimir_Icon.png" alt="" class="pr-7">
                     <span>IMPRIMIR</span>
                   </div>
-                    <h3 class="text-gray-darker pt-35 fz-23 lh-1-5 pt-14-xs">Resultados del tareo del mes de mayo de 2015</h3>
+                    <h3 class="text-gray-darker pt-35 fz-23 lh-1-5 pt-14-xs">Resultados del tareo del mes de <span id="currentMonth"></span> de <span id="currentYear"></span></h3>
                     <div id="cabecera_boleta" class="clearfix">
                     </div>
-                    
                     <div class="total row hidden-xs hidden-sm">
                       <h4 class="bold text-gray-light col-md-8 fz-22">Neto a Pagar</h4>
-                      <h4 class="bold text-gray-light col-md-3 fz-22">0.00</h4>
+                      <h4 class="bold text-gray-light col-md-3 fz-22"><span id="neto"></span></h4>
                     </div>
                   
                 </div>
@@ -79,8 +78,14 @@
   </script>
   <script>
     function updateData() {
+      var months = [ 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Setiembre', 'Octubre', 'Noviembre', 'Diciembre' ];
       var year = parseInt($("#yearCollection").val());
-      var month = parseInt($("#monthCollection").val()) + 1;
+      var month = parseInt($("#monthCollection").val());
+
+      $("#currentMonth").text(months[month]);
+      $("#currentYear").text(year);
+
+      month++;
 
       if (month.toString().length == 1) { month = "0" + month};
 

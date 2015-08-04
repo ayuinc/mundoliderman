@@ -116,6 +116,100 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 		return $data;
 	}
 
+	public function semaforolidernet()
+	{
+		$member_id = $this->EE->session->userdata('member_id');
+		$dni_field_name = $this->getMemberFieldId("dni");
+		$token_field_name = $this->getMemberFieldId("token");
+		$query = $this->EE->db->where('member_id', $member_id)
+						 ->select("$dni_field_name, $token_field_name")
+				         ->get('exp_member_data');
+		$dni = $query->row($dni_field_name);
+		$token = $query->row($token_field_name);
+		$url = "http://190.187.13.164/WSIntranet/LiderNet.svc/TraerSemaforoLiderNet/$dni/$token";
+		$data = $this->EE->curl->get($url);
+		return $data;
+	}
+
+	public function semaforolidercard()
+	{
+		$member_id = $this->EE->session->userdata('member_id');
+		$codigo_liderman_field_name = $this->getMemberFieldId("codigo-liderman");
+		$token_field_name = $this->getMemberFieldId("token");
+		$query = $this->EE->db->where('member_id', $member_id)
+						 ->select("$codigo_liderman_field_name, $token_field_name")
+				         ->get('exp_member_data');
+		$codigoLiderman = $query->row($codigo_liderman_field_name);
+		$token = $query->row($token_field_name);
+		$mes = trim($this->EE->TMPL->fetch_param('mes'));
+		$currentMonth = date('n');
+		$mes = $currentMonth - $mes;
+		$url = "http://190.187.13.164/WSIntranet/LiderCard.svc/TraerSemaforoLiderCard/$codigoLiderman/$mes/$token";
+		$data = $this->EE->curl->get($url);
+		return $data;
+	}
+
+	// http://190.187.13.164/WSIntranet/Prestamo.svc/TraerSemaforoPrestamo/CodigoLiderman/MesesAnticipacion/TokenSeguridad
+
+	public function semaforoprestamo()
+	{
+		$member_id = $this->EE->session->userdata('member_id');
+		$codigo_liderman_field_name = $this->getMemberFieldId("codigo-liderman");
+		$token_field_name = $this->getMemberFieldId("token");
+		$query = $this->EE->db->where('member_id', $member_id)
+						 ->select("$codigo_liderman_field_name, $token_field_name")
+				         ->get('exp_member_data');
+		$codigoLiderman = $query->row($codigo_liderman_field_name);
+		$token = $query->row($token_field_name);
+		$mes = trim($this->EE->TMPL->fetch_param('mes'));
+		$currentMonth = date('n');
+		$mes = $currentMonth - $mes;
+		$url = "http://190.187.13.164/WSIntranet/Prestamo.svc/TraerSemaforoPrestamo/$codigoLiderman/$mes/$token";
+		$data = $this->EE->curl->get($url);
+		return $data;
+	}
+
+// http://190.187.13.164/WSIntranet/LiderCard.svc/ListarBonificaciones/CodigoLiderman/MesesAnticipacion/TokenSeguridad
+
+	public function bonificaciones()
+	{
+		$member_id = $this->EE->session->userdata('member_id');
+		$codigo_liderman_field_name = $this->getMemberFieldId("codigo-liderman");
+		$token_field_name = $this->getMemberFieldId("token");
+		$query = $this->EE->db->where('member_id', $member_id)
+						 ->select("$codigo_liderman_field_name, $token_field_name")
+				         ->get('exp_member_data');
+		$codigoLiderman = $query->row($codigo_liderman_field_name);
+		$token = $query->row($token_field_name);
+		$mes = trim($this->EE->TMPL->fetch_param('mes'));
+		$currentMonth = date('n');
+		$mes = $currentMonth - $mes;
+		$url = "http://190.187.13.164/WSIntranet/LiderCard.svc/ListarBonificaciones/$codigoLiderman/$mes/$token";
+		$data = $this->EE->curl->get($url);
+		return $this->EE->TMPL->parse_variables($this->EE->TMPL->tagdata, $data);
+	}
+
+	// http://190.187.13.164/WSIntranet/LiderCard.svc/ListarMeritosDemerito/CodigoLiderman/MesesAnticipacion/TokenSeguridad
+
+	public function meritosdemeritos()
+	{
+		$member_id = $this->EE->session->userdata('member_id');
+		$codigo_liderman_field_name = $this->getMemberFieldId("codigo-liderman");
+		$token_field_name = $this->getMemberFieldId("token");
+		$query = $this->EE->db->where('member_id', $member_id)
+						 ->select("$codigo_liderman_field_name, $token_field_name")
+				         ->get('exp_member_data');
+		$codigoLiderman = $query->row($codigo_liderman_field_name);
+		$token = $query->row($token_field_name);
+		$mes = trim($this->EE->TMPL->fetch_param('mes'));
+		$currentMonth = date('n');
+		$mes = $currentMonth - $mes;
+		$url = "http://190.187.13.164/WSIntranet/LiderCard.svc/ListarMeritosDemerito/$codigoLiderman/$mes/$token";
+		$data = $this->EE->curl->get($url);
+		return $this->EE->TMPL->parse_variables($this->EE->TMPL->tagdata, $data);
+	}
+
+
 	private function getCustomMemberFields()
 	{
 		$member_fields = ee()->db->where('m_field_reg', 'y')

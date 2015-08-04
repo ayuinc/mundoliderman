@@ -1,94 +1,120 @@
-{exp:webservice:boleta periodo="{segment_3}"}
-<ul class="col-md-5 ph-0 pt-21 mb-0">
-	<li class="clearfix">
-	  <span class="col-xs-7 fz-17 text-gray-dark ph-0">Código</span>
-	  <p class="col-xs-5 fz-17 text-gray-darker pr-0 pl-21">{Codigo}</p>
-	</li>
-	<li class="clearfix">
-	  <span class="col-xs-7 fz-17 text-gray-dark ph-0">Sueldo básico</span>
-	  <p class="col-xs-5 fz-17 text-gray-darker pr-0 pl-21">S/.{SueldoBasico}</p>
-	</li>
-	<li class="clearfix">
-	  <span class="col-xs-7 fz-17 text-gray-dark ph-0">Días Trabajados</span>
-	  <p class="col-xs-5 fz-17 text-gray-darker pr-0 pl-21">{DiasTrabajados}</p>
-	</li>
-	<li class="clearfix">
-	  <span class="col-xs-7 fz-17 text-gray-dark ph-0">Horas extras 25%</span>
-	  <p class="col-xs-5 fz-17 text-gray-darker pr-0 pl-21">{if HorasExtras25 == null} 0.00 {if:else} {HorasExtras25} {/if}</p>
-	</li>
-	<li class="clearfix">
-	  <span class="col-xs-7 fz-17 text-gray-dark ph-0">Horas extras 100%</span>
-	  <p class="col-xs-5 fz-17 text-gray-darker pr-0 pl-21">{if HorasExtras100 == null} 0.00 {if:else} {HorasExtras100} {/if}</p>
-	</li>
-</ul>
-<ul class="col-md-7 clearfix pt-21 mb-0 pr-0 pl-0-xs">
-	<li class="row">
-	  <span class="col-md-6 col-xs-7 fz-17 text-gray-dark">Fecha de Ingreso</span>
-	  <p class="col-md-6 col-xs-5 fz-17 text-gray-darker pr-0">{FechaIngreso format="%d-%m-%Y"}</p>
-	</li>
-	<li class="row">
-	  <span class="col-md-6 col-xs-7 fz-17 text-gray-dark">Costo por hora</span>
-	  <p class="col-md-6 col-xs-5 fz-17 text-gray-darker">S/. {if CostoHora == null} 0.00 {if:else} {CostoHora} {/if}</p>
-	</li>
-	<li class="row">
-	  <span class="col-md-6 col-xs-7 fz-17 text-gray-dark">Horas trabajadas</span>
-	  <p class="col-md-6 col-xs-5 fz-17 text-gray-darker">{if HorasTrabajadas == null} 0 {if:else} {HorasTrabajadas} {/if}</p>
-	</li>
-	<li class="row">
-	  <span class="col-md-6 col-xs-7 fz-17 text-gray-dark">Horas extras 35%</span>
-	  <p class="col-md-6 col-xs-5 fz-17 text-gray-darker">{if HorasExtras35 == null} 0.00 {if:else} {HorasExtras35} {/if}</p>
-	</li>
-	<li class="row">
-	  <span class="col-md-6 col-xs-7 fz-17 text-gray-dark">Inasistencias</span>
-	  <p class="col-md-6 col-xs-5 fz-17 text-gray-darker">{if Inasistencias == null} 0 {if:else} {Inasistencias} {/if}</p>
-	</li>
-</ul>
-{/exp:webservice:boleta}
-
-<ul class="haberes row p-0 pt-21 mb-0 hidden-xs hidden-sm">
-    <li class="clearfix" class="fz-17"><h4 class="text-gray-darker pl-14">Haberes</h4></li>
+<div class="clearfix">
+	<ul class="col-md-5 ph-0 pt-21 mb-0">
+	{exp:webservice:boleta periodo="{segment_3}"}
+		<li class="clearfix">
+		  <span class="col-xs-7 fz-17 text-gray-dark ph-0">Código</span>
+		  <p class="col-xs-5 fz-17 text-gray-darker pr-0 pl-21">{if Codigo == null} - {if:else} {Codigo} {/if}</p>
+		</li>
+		<li class="clearfix">
+		  <span class="col-xs-7 fz-17 text-gray-dark ph-0">Sueldo básico</span>
+		  <p class="col-xs-5 fz-17 text-gray-darker pr-0 pl-21">S/.{if SueldoBasico == null} 0.00 {if:else} {Codigo} {/if}</p>
+		</li>
+		<li class="clearfix">
+		  <span class="col-xs-7 fz-17 text-gray-dark ph-0">Días Trabajados</span>
+		  <p class="col-xs-5 fz-17 text-gray-darker pr-0 pl-21">{if DiasTrabajados == null} 0 {if:else} {DiasTrabajados} {/if}</p>
+		</li>
+		<li class="clearfix">
+		  <span class="col-xs-7 fz-17 text-gray-dark ph-0">Horas extras 25%</span>
+		  <p class="col-xs-5 fz-17 text-gray-darker pr-0 pl-21">{if HorasExtras25 == null} 0.00 {if:else} {HorasExtras25} {/if}</p>
+		</li>
+		<li class="clearfix">
+		  <span class="col-xs-7 fz-17 text-gray-dark ph-0">Horas extras 100%</span>
+		  <p class="col-xs-5 fz-17 text-gray-darker pr-0 pl-21">{if HorasExtras100 == null} 0.00 {if:else} {HorasExtras100} {/if}</p>
+		</li>
+	</ul>
+	<ul class="col-md-7 clearfix pt-21 mb-0 pr-0 pl-0-xs">
+		<li class="row">
+		  <span class="col-md-6 col-xs-7 fz-17 text-gray-dark">Fecha de Ingreso</span>
+		  <p class="col-md-6 col-xs-5 fz-17 text-gray-darker pr-0">{if FechaIngreso == null} - {if:else} {FechaIngreso format="%d-%m-%Y"} {/if}</p>
+		</li>
+		<li class="row">
+		  <span class="col-md-6 col-xs-7 fz-17 text-gray-dark">Costo por hora</span>
+		  <p class="col-md-6 col-xs-5 fz-17 text-gray-darker">S/. {if CostoHora == null} 0.00 {if:else} {CostoHora} {/if}</p>
+		</li>
+		<li class="row">
+		  <span class="col-md-6 col-xs-7 fz-17 text-gray-dark">Horas trabajadas</span>
+		  <p class="col-md-6 col-xs-5 fz-17 text-gray-darker">{if HorasTrabajadas == null} 0 {if:else} {HorasTrabajadas} {/if}</p>
+		</li>
+		<li class="row">
+		  <span class="col-md-6 col-xs-7 fz-17 text-gray-dark">Horas extras 35%</span>
+		  <p class="col-md-6 col-xs-5 fz-17 text-gray-darker">{if HorasExtras35 == null} 0.00 {if:else} {HorasExtras35} {/if}</p>
+		</li>
+		<li class="row">
+		  <span class="col-md-6 col-xs-7 fz-17 text-gray-dark">Inasistencias</span>
+		  <p class="col-md-6 col-xs-5 fz-17 text-gray-darker">{if Inasistencias == null} 0 {if:else} {Inasistencias} {/if}</p>
+		</li>
+	{/exp:webservice:boleta}
+	</ul>
+</div>
+<ul class="haberes row p-0 pt-21 mb-0 hidden-xs hidden-sm pl-14">
+    <li class="clearfix" class="fz-17"><h4 class="text-gray-darker">Haberes</h4></li>
 {exp:webservice:detalle_boleta_haberes periodo="{segment_3}"}
-    <li class="clearfix" class="fz-17 text-gray-dark row">
+	{if Haberes != null}
+    <li class="fz-17 text-gray-dark row">
       <span class="col-md-5 ">{Haberes}</span>
       <p class="col-md-3 m-0"></p>
-      <p class="col-md-3 m-0">{MontoHaberes}</p>
+      <p class="col-md-3 m-0"><span class="monto-haberes">{MontoHaberes}</span></p>
     </li>
+    {/if}
 {/exp:webservice:detalle_boleta_haberes}
-    <li class="clearfix" class="fz-17 text-gray-dark row pt-14">
+    <li class="row fz-17 text-gray-dark row pt-14">
       <span class="col-md-5 ">Total haberes</span>
       <p class="col-md-3"></p>	
-      <p class="col-md-3">1,061.33</p>
+      <p class="col-md-3"><span id="total-haberes"></span></p>
     </li>
 </ul>
 
 <ul class="decuentos clearfix p-0 pt-21 mb-0 hidden-xs hidden-sm">
 	<li class="fz-17 text-gray-darker"><h4>Descuentos</h4></li>
 {exp:webservice:detalle_boleta_descuentos periodo="{segment_3}"}
+	{if Descuentos != null}
 	<li class="fz-17 text-gray-dark row">
 	  <span class="col-md-5 ">{Descuentos}</span>
 	  <p class="col-md-3 m-0"></p>
-	  <p class="col-md-3 m-0">{MontoDescuentos}</p>
+	  <p class="col-md-3 m-0"><span class="monto-descuentos">{MontoDescuentos}</span></p>
 	</li>
+	{/if}
 {/exp:webservice:detalle_boleta_descuentos}
 	<li class="fz-17 text-gray-dark row pt-14">
 	  <span class="col-md-5 ">Total Descuentos</span>
 	  <p class="col-md-3"></p>
-	  <p class="col-md-3">1,061.33</p>
+	  <p class="col-md-3"><span id="total-descuentos"></span></p>
 	</li>
 </ul>
 
 <ul class="aportaciones clearfix p-0 pt-21 pb-7 mb-0 border-bottom-gray-light hidden-xs hidden-sm">
 	<li class="fz-17 text-gray-darker"><h4>Aportaciones</h4></li>
 {exp:webservice:detalle_boleta_aportaciones periodo="{segment_3}"}
+	{if Aportaciones != null}
 	<li class="fz-17 text-gray-dark row">
 	  <span class="col-md-5 ">{Aportaciones}</span>
 	  <p class="col-md-3 m-0"></p>
-	  <p class="col-md-3 m-0">{MontoAportaciones}</p>
+	  <p class="col-md-3 m-0"><span class="monto-aportaciones">{MontoAportaciones}</span></p>
 	</li>
+	{/if}
 {/exp:webservice:detalle_boleta_aportaciones}
 	<li class="fz-17 text-gray-dark row pt-14">
 	  <span class="col-md-5 ">Total Aportaciones</span>
 	  <p class="col-md-3"></p>
-	  <p class="col-md-3">1,061.33</p>
+	  <p class="col-md-3"><span id="total-aportaciones"></span></p>
 	</li>
 </ul>
+
+<script>
+	function calcTotal (amountClass, totalId) {
+		var montos = document.getElementsByClassName(amountClass);
+		var total = 0;
+		for (var i = 0; i < montos.length; i++) {
+			if (montos[i].innerText == undefined || montos[i].innerText == "") { montos[i].innerText = "0.0" };
+			var monto = montos[i].innerText = montos[i].innerText.replace(',','.');
+			console.log(monto);
+			total += parseFloat(monto);
+			console.log(total);
+		};
+		document.getElementById(totalId).innerText = parseFloat(total.toFixed(2));
+	}
+	calcTotal("monto-haberes", "total-haberes");
+	calcTotal("monto-descuentos", "total-descuentos");
+	calcTotal("monto-aportaciones", "total-aportaciones");
+	document.getElementById("neto").innerText = (parseFloat(document.getElementById("total-haberes").innerText) - parseFloat(document.getElementById("total-descuentos").innerText)).toFixed(2);
+</script>
