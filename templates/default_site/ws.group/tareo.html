@@ -1,3 +1,7 @@
+{if logged_out}
+  {redirect="login"}
+{/if}
+
 {exp:webservice:tareo mes="{segment_3}"}
    <ul class="clearfix pl-7 pv-21 border-bottom-gray-lighter">
     <li>
