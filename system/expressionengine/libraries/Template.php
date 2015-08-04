@@ -3602,6 +3602,7 @@ class EE_Template {
 	 */
 	public function parse_variables($tagdata, $variables, $enable_backspace = TRUE)
 	{
+		//return $tagdata;
 		if ($tagdata == '' OR ! is_array($variables) OR empty($variables) OR ! is_array($variables[0]))
 		{
 			return $tagdata;

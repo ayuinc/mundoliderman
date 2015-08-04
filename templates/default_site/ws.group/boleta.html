@@ -1,0 +1,94 @@
+{exp:webservice:boleta periodo="{segment_3}"}
+<ul class="col-md-5 ph-0 pt-21 mb-0">
+	<li class="clearfix">
+	  <span class="col-xs-7 fz-17 text-gray-dark ph-0">Código</span>
+	  <p class="col-xs-5 fz-17 text-gray-darker pr-0 pl-21">{Codigo}</p>
+	</li>
+	<li class="clearfix">
+	  <span class="col-xs-7 fz-17 text-gray-dark ph-0">Sueldo básico</span>
+	  <p class="col-xs-5 fz-17 text-gray-darker pr-0 pl-21">S/.{SueldoBasico}</p>
+	</li>
+	<li class="clearfix">
+	  <span class="col-xs-7 fz-17 text-gray-dark ph-0">Días Trabajados</span>
+	  <p class="col-xs-5 fz-17 text-gray-darker pr-0 pl-21">{DiasTrabajados}</p>
+	</li>
+	<li class="clearfix">
+	  <span class="col-xs-7 fz-17 text-gray-dark ph-0">Horas extras 25%</span>
+	  <p class="col-xs-5 fz-17 text-gray-darker pr-0 pl-21">{if HorasExtras25 == null} 0.00 {if:else} {HorasExtras25} {/if}</p>
+	</li>
+	<li class="clearfix">
+	  <span class="col-xs-7 fz-17 text-gray-dark ph-0">Horas extras 100%</span>
+	  <p class="col-xs-5 fz-17 text-gray-darker pr-0 pl-21">{if HorasExtras100 == null} 0.00 {if:else} {HorasExtras100} {/if}</p>
+	</li>
+</ul>
+<ul class="col-md-7 clearfix pt-21 mb-0 pr-0 pl-0-xs">
+	<li class="row">
+	  <span class="col-md-6 col-xs-7 fz-17 text-gray-dark">Fecha de Ingreso</span>
+	  <p class="col-md-6 col-xs-5 fz-17 text-gray-darker pr-0">{FechaIngreso format="%d-%m-%Y"}</p>
+	</li>
+	<li class="row">
+	  <span class="col-md-6 col-xs-7 fz-17 text-gray-dark">Costo por hora</span>
+	  <p class="col-md-6 col-xs-5 fz-17 text-gray-darker">S/. {if CostoHora == null} 0.00 {if:else} {CostoHora} {/if}</p>
+	</li>
+	<li class="row">
+	  <span class="col-md-6 col-xs-7 fz-17 text-gray-dark">Horas trabajadas</span>
+	  <p class="col-md-6 col-xs-5 fz-17 text-gray-darker">{if HorasTrabajadas == null} 0 {if:else} {HorasTrabajadas} {/if}</p>
+	</li>
+	<li class="row">
+	  <span class="col-md-6 col-xs-7 fz-17 text-gray-dark">Horas extras 35%</span>
+	  <p class="col-md-6 col-xs-5 fz-17 text-gray-darker">{if HorasExtras35 == null} 0.00 {if:else} {HorasExtras35} {/if}</p>
+	</li>
+	<li class="row">
+	  <span class="col-md-6 col-xs-7 fz-17 text-gray-dark">Inasistencias</span>
+	  <p class="col-md-6 col-xs-5 fz-17 text-gray-darker">{if Inasistencias == null} 0 {if:else} {Inasistencias} {/if}</p>
+	</li>
+</ul>
+{/exp:webservice:boleta}
+
+<ul class="haberes row p-0 pt-21 mb-0 hidden-xs hidden-sm">
+    <li class="clearfix" class="fz-17"><h4 class="text-gray-darker pl-14">Haberes</h4></li>
+{exp:webservice:detalle_boleta_haberes periodo="{segment_3}"}
+    <li class="clearfix" class="fz-17 text-gray-dark row">
+      <span class="col-md-5 ">{Haberes}</span>
+      <p class="col-md-3 m-0"></p>
+      <p class="col-md-3 m-0">{MontoHaberes}</p>
+    </li>
+{/exp:webservice:detalle_boleta_haberes}
+    <li class="clearfix" class="fz-17 text-gray-dark row pt-14">
+      <span class="col-md-5 ">Total haberes</span>
+      <p class="col-md-3"></p>	
+      <p class="col-md-3">1,061.33</p>
+    </li>
+</ul>
+
+<ul class="decuentos clearfix p-0 pt-21 mb-0 hidden-xs hidden-sm">
+	<li class="fz-17 text-gray-darker"><h4>Descuentos</h4></li>
+{exp:webservice:detalle_boleta_descuentos periodo="{segment_3}"}
+	<li class="fz-17 text-gray-dark row">
+	  <span class="col-md-5 ">{Descuentos}</span>
+	  <p class="col-md-3 m-0"></p>
+	  <p class="col-md-3 m-0">{MontoDescuentos}</p>
+	</li>
+{/exp:webservice:detalle_boleta_descuentos}
+	<li class="fz-17 text-gray-dark row pt-14">
+	  <span class="col-md-5 ">Total Descuentos</span>
+	  <p class="col-md-3"></p>
+	  <p class="col-md-3">1,061.33</p>
+	</li>
+</ul>
+
+<ul class="aportaciones clearfix p-0 pt-21 pb-7 mb-0 border-bottom-gray-light hidden-xs hidden-sm">
+	<li class="fz-17 text-gray-darker"><h4>Aportaciones</h4></li>
+{exp:webservice:detalle_boleta_aportaciones periodo="{segment_3}"}
+	<li class="fz-17 text-gray-dark row">
+	  <span class="col-md-5 ">{Aportaciones}</span>
+	  <p class="col-md-3 m-0"></p>
+	  <p class="col-md-3 m-0">{MontoAportaciones}</p>
+	</li>
+{/exp:webservice:detalle_boleta_aportaciones}
+	<li class="fz-17 text-gray-dark row pt-14">
+	  <span class="col-md-5 ">Total Aportaciones</span>
+	  <p class="col-md-3"></p>
+	  <p class="col-md-3">1,061.33</p>
+	</li>
+</ul>

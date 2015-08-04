@@ -13,6 +13,7 @@ class Webservice {
 
 	public $return_data;
 	private $custom_fields;
+	private $salary_detail;
 
 	public function __construct()
 	{
@@ -36,90 +37,36 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 		return $buffer;
 	}
 
-	public function authtest()
-	{
-		$dni = trim(ee()->TMPL->fetch_param('dni'));
-		$url = "http://190.187.13.164/WSIntranet/Autenticacion.svc/AutenticacionUsuario/$dni/$dni";
-		$ch = curl_init($url);
-		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_URL,$url);
-		$content=curl_exec($ch);
-		$json = json_decode($content, true);
-		$data = $json["Resultado"];
-		/*$auth = new AuthTest();
-		$auth->setDNI($data["DNI"]);
-		$auth->setCodigo($data["CodigoLiderman"]);
-		$auth->setToken($data["TokenSeguridad"]);*/
-		session_start();
-		$_SESSION['auth'] = $data["TokenSeguridad"];
-	}
-	
-	public function auth()
-	{
-		$dni = trim(ee()->TMPL->fetch_param('dni'));
-		$url = "http://190.187.13.164/WSIntranet/Autenticacion.svc/AutenticacionUsuario/$dni/$dni";
-		$ch = curl_init($url);
-		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_URL,$url);
-		$content=curl_exec($ch);
-		$json = json_decode($content, true);
-		$data = $json["Resultado"];
-		$tag_vars = array($data);
-		return  $this->EE->TMPL->parse_variables($this->EE->TMPL->tagdata, $tag_vars);
-	}
-
 	public function boleta()
 	{
-		$dni = trim(ee()->TMPL->fetch_param('dni'));
-		$url = "http://190.187.13.164/WSIntranet/Autenticacion.svc/AutenticacionUsuario/$dni/$dni";
-		$ch = curl_init($url);
-		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_URL,$url);
-		$content=curl_exec($ch);
-		$json = json_decode($content, true);
-		$data = $json["Resultado"];
-		$tag_vars = array($data);
-		$codigoLiderman = $data["CodigoLiderman"];//trim($this->EE->TMPL->fetch_param('codigo'));
-		$periodo = trim($this->EE->TMPL->fetch_param('periodo'));
-		$token = $data["TokenSeguridad"];//trim($this->EE->TMPL->fetch_param('token'));
+		$member_id = $this->EE->session->userdata('member_id');
+		$codigo_liderman_field_name = $this->getMemberFieldId("codigo-liderman");
+		$token_field_name = $this->getMemberFieldId("token");
+		$query = $this->EE->db->where('member_id', $member_id)
+						 ->select("$codigo_liderman_field_name, $token_field_name")
+				         ->get('exp_member_data');
+		$codigoLiderman = $query->row($codigo_liderman_field_name);
+		$token = $query->row($token_field_name);
+		$periodo = trim(ee()->TMPL->fetch_param('periodo'));
+		//return "Código Liderman : ". $codigoLiderman . ", Token : " . $token . ", Periodo : " . $periodo;
 		$url = "http://190.187.13.164/WSIntranet/BoletaPago.svc/TraerCabeceraBoletaPago/$codigoLiderman/$periodo/$token";
-		$ch = curl_init($url);
-		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_URL,$url);
-		$content=curl_exec($ch);
-		$json = json_decode($content, true);
-		$data = $json["Resultado"];
+		$data = $this->EE->curl->get($url);
 		return $this->EE->TMPL->parse_variables($this->EE->TMPL->tagdata, $data);
 	}
 
-	public function detalle_boleta()
+	public function detalle_boleta_haberes()
 	{
-		$dni = trim(ee()->TMPL->fetch_param('dni'));
-		$url = "http://190.187.13.164/WSIntranet/Autenticacion.svc/AutenticacionUsuario/$dni/$dni";
-		$ch = curl_init($url);
-		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_URL,$url);
-		$content=curl_exec($ch);
-		$json = json_decode($content, true);
-		$data = $json["Resultado"];
-		$tag_vars = array($data);
-		$codigoLiderman = $data["CodigoLiderman"];//trim($this->EE->TMPL->fetch_param('codigo'));
-		$periodo = trim($this->EE->TMPL->fetch_param('periodo'));
-		$token = $data["TokenSeguridad"];//trim($this->EE->TMPL->fetch_param('token'));
-		$url = "http://190.187.13.164/WSIntranet/BoletaPago.svc/TraerDetalleBoletaPago/$codigoLiderman/$periodo/$token";
-		$ch = curl_init($url);
-		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_URL,$url);
-		$content=curl_exec($ch);
-		$json = json_decode($content, true);
-		$data = $json["Resultado"];
-		return $this->EE->TMPL->parse_variables($this->EE->TMPL->tagdata, $data);
+		return $this->detalle_boleta();
+	}
+
+	public function detalle_boleta_descuentos()
+	{
+		return $this->detalle_boleta();
+	}
+
+	public function detalle_boleta_aportaciones()
+	{
+		return $this->detalle_boleta();
 	}
 
 	public function tareo()
@@ -189,6 +136,22 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 			}
 		}
 		return 'm_field_id_' . $field_id;
+	}
+
+	private function detalle_boleta() 
+	{
+		$member_id = $this->EE->session->userdata('member_id');
+		$codigo_liderman_field_name = $this->getMemberFieldId("codigo-liderman");
+		$token_field_name = $this->getMemberFieldId("token");
+		$query = $this->EE->db->where('member_id', $member_id)
+						 ->select("$codigo_liderman_field_name, $token_field_name")
+				         ->get('exp_member_data');
+		$codigoLiderman = $query->row($codigo_liderman_field_name);
+		$token = $query->row($token_field_name);
+		$periodo = trim(ee()->TMPL->fetch_param('periodo'));
+		$url = "http://190.187.13.164/WSIntranet/BoletaPago.svc/TraerDetalleBoletaPago/$codigoLiderman/$periodo/$token";
+		$data = $this->EE->curl->get($url);
+		return $this->EE->TMPL->parse_variables($this->EE->TMPL->tagdata, $data);
 	}
 
 }

@@ -1,54 +1,3 @@
-<!-- <h2>Resultados de Boleta de Pago del mes de Marzo del 2015</h2>
-<table>
-{exp:webservice:boleta dni="27415554" periodo="201503"}
-  <tr>
-    <td>Código</td>
-    <td>{Codigo}</td>
-    <td>Fecha de Ingreso</td>
-    <td>{FechaIngreso}</td>
-  <tr>
-  <tr>
-    <td>Sueldo Básico</td>
-    <td>S/. {SueldoBasico}</td>
-    <td>Costo por hora</td>
-    <td>S/. {CostoHora}</td>
-  <tr>
-  <tr>
-    <td>Días Trabajados</td>
-    <td>{DiasTrabajados}</td>
-    <td>Horas Trabajadas</td>
-    <td>{HorasTrabajadas}</td>
-  <tr>
-  <tr>
-    <td>Horas Extras 25%</td>
-    <td>{HorasExtras25}</td>
-    <td>Horas Extras 35%</td>
-    <td>{HorasExtras35}</td>
-  <tr>
-  <tr>
-    <td>Horas Extras 100%</td>
-    <td>{HorasExtras100}</td>
-    <td>Inasistencia</td>
-    <td>{Inasistencias}</td>
-  <tr>
-{/exp:webservice:boleta}
-</table>
-<h3>Haberes, Descuentos y Aportaciones</h3>
-<table>
-{exp:webservice:detalle_boleta dni="27415554" periodo="201503"}
-    <tr>
-      <td>Haber: {MontoHaberes}</td>
-    </tr>
-    <tr>
-      <td>Descuento: {MontoDescuentos}</td>
-    </tr>
-    <tr>
-      <td>Aportacion: {MontoAportaciones}</td>
-    </tr>
-{/exp:webservice:detalle_boleta}
-</table>
- -->
-
 {embed="includes/head"}
   
   <div class="site-wrapper"> <!-- Body -->
@@ -72,37 +21,24 @@
                   <span class="fz-18 text-gray-darker pr-7-xs">Buscar el periodo</span>
                   <div class="select-group display-ib ml-21 ml-7-xs">
                     <div class="display-ib text-center ph-7 relative">
-                      <select name="" id="" class="text-gray-darker borderless relative">
-                        <option value="" class="fz-14">Mes</option>
-                        <option value="" class="fz-14">En</option>
-                        <option value="" class="fz-14">Feb</option>
-                        <option value="" class="fz-14">Mar</option>
-                        <option value="" class="fz-14">Abr</option>
-                        <option value="" class="fz-14">May</option>
-                        <option value="" class="fz-14">Jun</option>
-                        <option value="" class="fz-14">Jul</option>
-                        <option value="" class="fz-14">Agos</option>
-                        <option value="" class="fz-14">Set</option>
-                        <option value="" class="fz-14">Oct</option>
-                        <option value="" class="fz-14">Nov</option>
-                        <option value="" class="fz-14">Dic</option>
+                      <select name="" id="monthCollection" class="text-gray-darker borderless relative">
+                        <option value="0" class="fz-14">En</option>
+                        <option value="1" class="fz-14">Feb</option>
+                        <option value="2" class="fz-14">Mar</option>
+                        <option value="3" class="fz-14">Abr</option>
+                        <option value="4" class="fz-14">May</option>
+                        <option value="5" class="fz-14">Jun</option>
+                        <option value="6" class="fz-14">Jul</option>
+                        <option value="7" class="fz-14">Agos</option>
+                        <option value="8" class="fz-14">Set</option>
+                        <option value="9" class="fz-14">Oct</option>
+                        <option value="10" class="fz-14">Nov</option>
+                        <option value="11" class="fz-14">Dic</option>
                       </select>
                       <img src="{site_url}frontend/app/assets/img/Flecha_Abajo.png" alt="">
                     </div>
                     <div class="display-ib text-center ph-7 relative ml-14 ml-7-xs">
-                      <select name="" id="" class="text-gray-darker borderless relative">
-                        <option class="fz-14">Año</option>
-                        <option class="fz-14">2005</option>
-                        <option class="fz-14">2006</option>
-                        <option class="fz-14">2007</option>
-                        <option class="fz-14">2008</option>
-                        <option class="fz-14">2009</option>
-                        <option class="fz-14">2010</option>
-                        <option class="fz-14">2011</option>
-                        <option class="fz-14">2012</option>
-                        <option class="fz-14">2013</option>
-                        <option class="fz-14">2014</option>
-                        <option class="fz-14">2015</option>
+                      <select name="" id="yearCollection" class="text-gray-darker borderless relative">
                       </select>
                       <img src="{site_url}frontend/app/assets/img/Flecha_Abajo.png" alt="" class="absolute">
                     </div>
@@ -111,141 +47,15 @@
                     <img src="{site_url}frontend/app/assets/img/Imprimir_Icon.png" alt="" class="pr-7">
                     <span>IMPRIMIR</span>
                   </div>
-                  <h3 class="text-gray-darker pt-35 fz-23 lh-1-5 pt-14-xs">Resultados del tareo del mes de mayo de 2015</h3>
-                  <div class="clearfix">
-                    <ul class="col-md-5 ph-0 pt-21 mb-0">
-                      <li class="clearfix">
-                        <span class="col-xs-7 fz-17 text-gray-dark ph-0">Código</span>
-                        <p class="col-xs-5 fz-17 text-gray-darker pr-0 pl-21">88839</p>
-                      </li>
-                      <li class="clearfix">
-                        <span class="col-xs-7 fz-17 text-gray-dark ph-0">Sueldo básico</span>
-                        <p class="col-xs-5 fz-17 text-gray-darker pr-0 pl-21">S/8.50</p>
-                      </li>
-                      <li class="clearfix">
-                        <span class="col-xs-7 fz-17 text-gray-dark ph-0">Días Trabajados</span>
-                        <p class="col-xs-5 fz-17 text-gray-darker pr-0 pl-21">30</p>
-                      </li>
-                      <li class="clearfix">
-                        <span class="col-xs-7 fz-17 text-gray-dark ph-0">Horas extras 25%</span>
-                        <p class="col-xs-5 fz-17 text-gray-darker pr-0 pl-21">0.00</p>
-                      </li>
-                      <li class="clearfix">
-                        <span class="col-xs-7 fz-17 text-gray-dark ph-0">Horas extras 100%</span>
-                        <p class="col-xs-5 fz-17 text-gray-darker pr-0 pl-21">8.00</p>
-                      </li>
-                    </ul>
-                    <ul class="col-md-7 clearfix pt-21 mb-0 pr-0 pl-0-xs">
-                      <li class="row">
-                        <span class="col-md-6 col-xs-7 fz-17 text-gray-dark">Fecha de Ingreso</span>
-                        <p class="col-md-6 col-xs-5 fz-17 text-gray-darker pr-0">1 de Junio del 2013</p>
-                      </li>
-                      <li class="row">
-                        <span class="col-md-6 col-xs-7 fz-17 text-gray-dark">Costo por hora</span>
-                        <p class="col-md-6 col-xs-5 fz-17 text-gray-darker">S/.5.15</p>
-                      </li>
-                      <li class="row">
-                        <span class="col-md-6 col-xs-7 fz-17 text-gray-dark">Horas trabajadas</span>
-                        <p class="col-md-6 col-xs-5 fz-17 text-gray-darker">250</p>
-                      </li>
-                      <li class="row">
-                        <span class="col-md-6 col-xs-7 fz-17 text-gray-dark">Horas extras 35%</span>
-                        <p class="col-md-6 col-xs-5 fz-17 text-gray-darker">0.00</p>
-                      </li>
-                      <li class="row">
-                        <span class="col-md-6 col-xs-7 fz-17 text-gray-dark">Inasistencias</span>
-                        <p class="col-md-6 col-xs-5 fz-17 text-gray-darker">0.00</p>
-                      </li>
-                    </ul>
-                  </div>
-                  <ul class="haberes row p-0 pt-21 mb-0 hidden-xs hidden-sm">
-                    <li class="clearfix" class="fz-17"><h4 class="text-gray-darker pl-14">Haberes</h4></li>
-                    <li class="clearfix" class="fz-17 text-gray-dark row">
-                      <span class="col-md-5 ">Básico</span>
-                      <p class="col-md-3 m-0">30.00</p>
-                      <p class="col-md-3 m-0">750.00</p>
-                    </li>
-                    <li class="clearfix" class="fz-17 text-gray-dark row">
-                      <span class="col-md-5 ">Asignación familiar</span>
-                      <p class="col-md-3 m-0">30.00</p>
-                      <p class="col-md-3 m-0">75.00</p>
-                    </li>
-                    <li class="clearfix" class="fz-17 text-gray-dark row">
-                      <span class="col-md-5 ">Bonificación de la Unidad</span>
-                      <p class="col-md-3 m-0">30.00</p>
-                      <p class="col-md-3 m-0">170.00</p>
-                    </li>
-                    <li class="clearfix" class="fz-17 text-gray-dark row">
-                      <span class="col-md-5 ">Feriado Laboral y/o Desc.</span>
-                      <p class="col-md-3 m-0">8.00</p>
-                      <p class="col-md-3 m-0">66.33</p>
-                    </li>
-                    <li class="clearfix" class="fz-17 text-gray-dark row pt-14">
-                      <span class="col-md-5 ">Total haberes</span>
-                      <p class="col-md-3"></p>
-                      <p class="col-md-3">1,061.33</p>
-                    </li>
-                  </ul>
-                  <ul class="decuentos clearfix p-0 pt-21 mb-0 hidden-xs hidden-sm">
-                    <li class="fz-17 text-gray-darker"><h4>Descuentos</h4></li>
-                    <li class="fz-17 text-gray-dark row">
-                      <span class="col-md-5 ">SNP</span>
-                      <p class="col-md-3 m-0"></p>
-                      <p class="col-md-3 m-0">750.00</p>
-                    </li>
-                    <li class="fz-17 text-gray-dark row">
-                      <span class="col-md-5 ">Abono de quincena</span>
-                      <p class="col-md-3 m-0"></p>
-                      <p class="col-md-3 m-0">75.00</p>
-                    </li>
-                    <li class="fz-17 text-gray-dark row">
-                      <span class="col-md-5 ">Prestamos</span>
-                      <p class="col-md-3 m-0"></p>
-                      <p class="col-md-3 m-0">170.00</p>
-                    </li>
-                    <li class="fz-17 text-gray-dark row">
-                      <span class="col-md-5 ">1er Abono de fin de mes</span>
-                      <p class="col-md-3 m-0"></p>
-                      <p class="col-md-3 m-0">66.33</p>
-                    </li>
-                    <li class="fz-17 text-gray-dark row">
-                      <span class="col-md-5 ">2do Abono de fin de mes</span>
-                      <p class="col-md-3 m-0"></p>
-                      <p class="col-md-3 m-0">66.33</p>
-                    </li>
-                    <li class="fz-17 text-gray-dark row pt-14">
-                      <span class="col-md-5 ">Total Descuentos</span>
-                      <p class="col-md-3"></p>
-                      <p class="col-md-3">1,061.33</p>
-                    </li>
-                  </ul>
-                  <ul class="aportaciones clearfix p-0 pt-21 pb-7 mb-0 border-bottom-gray-light hidden-xs hidden-sm">
-                    <li class="fz-17 text-gray-darker"><h4>Aportaciones</h4></li>
-                    <li class="fz-17 text-gray-dark row">
-                      <span class="col-md-5 ">ESSALUD</span>
-                      <p class="col-md-3 m-0"></p>
-                      <p class="col-md-3 m-0">95.52</p>
-                    </li>
-                    <li class="fz-17 text-gray-dark row">
-                      <span class="col-md-5 ">S.C.T.R - Salud(P)</span>
-                      <p class="col-md-3 m-0"></p>
-                      <p class="col-md-3 m-0">4.25</p>
-                    </li>
-                    <li class="fz-17 text-gray-dark row">
-                      <span class="col-md-5 ">S.C.T.R - Pensiones(P)</span>
-                      <p class="col-md-3 m-0"></p>
-                      <p class="col-md-3 m-0">3.710</p>
-                    </li>
-                    <li class="fz-17 text-gray-dark row pt-14">
-                      <span class="col-md-5 ">Total Aportaciones</span>
-                      <p class="col-md-3"></p>
-                      <p class="col-md-3">1,061.33</p>
-                    </li>
-                  </ul>
-                  <div class="total row hidden-xs hidden-sm">
-                    <h4 class="bold text-gray-light col-md-8 fz-22">Neto a Pagar</h4>
-                    <h4 class="bold text-gray-light col-md-3 fz-22">0.00</h4>
-                  </div>
+                    <h3 class="text-gray-darker pt-35 fz-23 lh-1-5 pt-14-xs">Resultados del tareo del mes de mayo de 2015</h3>
+                    <div id="cabecera_boleta" class="clearfix">
+                    </div>
+                    
+                    <div class="total row hidden-xs hidden-sm">
+                      <h4 class="bold text-gray-light col-md-8 fz-22">Neto a Pagar</h4>
+                      <h4 class="bold text-gray-light col-md-3 fz-22">0.00</h4>
+                    </div>
+                  
                 </div>
               </div>
             </div>
@@ -256,4 +66,38 @@
     {embed="includes/radio-urbe"}
   </div>
   {embed=includes/footer}
+  <script>
+      var currentMonth = new Date().getMonth();
+      document.getElementById("monthCollection").value = currentMonth;
+      var currentYear = new Date().getFullYear();
+      var yearCollection = document.getElementById("yearCollection");
+      var html = "";
+      for (var i = 0; i <= 10; i++) {
+        html += "<option value='" + (currentYear-i) + "' class='fz-14'>" + (currentYear-i) + "</option>";
+      };
+      yearCollection.innerHTML = html;
+  </script>
+  <script>
+    function updateData() {
+      var year = parseInt($("#yearCollection").val());
+      var month = parseInt($("#monthCollection").val()) + 1;
+
+      if (month.toString().length == 1) { month = "0" + month};
+
+      $.ajax({
+        type: 'GET',
+        url: '{site_url}ws/boleta/' + year + month,
+        success: function(data) {
+          $("#cabecera_boleta").html(data);
+        }
+      });
+    }
+    $( '#monthCollection' ).on( 'change', function(e) {
+      updateData();
+    });
+    $( '#yearCollection' ).on( 'change', function(e) {
+      updateData();
+    });
+    updateData();
+  </script>
 </html>
