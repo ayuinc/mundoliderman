@@ -72,9 +72,9 @@
     
     $.ajax({
       type: 'GET',
-      url: '{site_url}ws/bonificaciones/' + month,
+      url: '{site_url}ws/meritos-demeritos/' + month,
       success: function(data) {
-        $("#bonificaciones").html(data);
+        $("#meritos-demeritos").html(data);
       }
     });
   </script>

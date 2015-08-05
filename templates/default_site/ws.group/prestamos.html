@@ -1,0 +1,21 @@
+{exp:webservice:prestamos mes="{segment_3}"}
+	<ul class="row pl-0 border-bottom-gray-lighter pt-14 pb-35 pl-14 pb-14-xs">
+      <li>
+        <span class="col-md-5 fz-18">Fecha de Aprobación</span>
+        <p class="col-md-7 fz-17">{FechaAprobacion format="%d-%m-%Y"}</p>
+      </li>
+      <li>
+        <span class="col-md-5 fz-18">Saldo de Deuda</span>
+        <p class="col-md-7 fz-17">S/.{SaldoDeuda}</p>
+      </li>
+      <li>
+        <span class="col-md-5 fz-18">Monto de la Deuda</span>
+        <p class="col-md-7 fz-17">S/.{MontoPrestamo}</p>
+      </li>
+      <li>
+        <span class="col-md-5 fz-18">Comentario</span>
+        <p class="col-md-7 fz-17">{Comentario}</p>
+      </li>
+    </ul>
+    <div class="separador-div ml-14 hidden-lg hdden-md"></div>
+{/exp:webservice:prestamos}

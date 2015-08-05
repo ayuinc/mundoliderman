@@ -2,15 +2,15 @@
 	 <div class="dato-merito hidden ph-42 mh-42 pt-35 ph-0-xs mh-14-xs">
         <div class="ph-21 row">
           <span class="col-md-4 fz-18">Fecha</span>
-          <p class="col-md-8 fz-18 text-gray-darker">Mayo 2015</p>
+          <p class="col-md-8 fz-18 text-gray-darker">{if Fecha == null} - {if:else} {Fecha format="%d-%m-%Y"} {/if}</p>
         </div>
         <div class="ph-21 row">
           <span class="col-md-4 fz-18">Tipo</span>
-          <p class="col-md-8 fz-18 text-gray-darker">Mérito</p>
+          <p class="col-md-8 fz-18 text-gray-darker">{if Tipo != null} {Tipo} {/if}</p>
         </div>
         <div class="ph-21 row border-bottom-gray-lighter">
           <span class="col-md-4 fz-18">Detalle</span>
-          <p class="col-md-8 fz-18 text-gray-darker">Excelente uso de los procedimientos en los momentos de urgencia</p>
+          <p class="col-md-8 fz-18 text-gray-darker">{if Detalle != null} {Detalle} {/if}</p>
         </div>
       </div>
       <div class="separador-div ml-35 hidden-lg hidden-md"></div>

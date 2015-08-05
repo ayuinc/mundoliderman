@@ -2,11 +2,11 @@
 	<div class="dato-bonificacion ph-42 mh-42 pt-35 ph-0-xs mh-14-xs">
 	    <div class="ph-21 row">
 	      <span class="col-md-4 fz-18">Periodo Bonificación</span>
-	      <p class="col-md-3 fz-18 text-gray-darker">Mayo 2015</p>
+	      <p class="col-md-3 fz-18 text-gray-darker">{if Periodo != null} {Periodo} {/if}</p>
 	    </div>
 	    <div class="ph-21 row border-bottom-gray-lighter">
 	      <span class="col-md-4 fz-18">Monto</span>
-	      <p class="col-md-3 fz-18 text-gray-darker">S/.500</p>
+	      <p class="col-md-3 fz-18 text-gray-darker">{if Monto != null} S/.{Monto} {/if}</p>
 	    </div>
   	</div>
   	<div class="separador-div ml-35 hidden-lg hidden-md"></div>

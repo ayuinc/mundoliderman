@@ -186,10 +186,12 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 		$mes = $currentMonth - $mes;
 		$url = "http://190.187.13.164/WSIntranet/LiderCard.svc/ListarBonificaciones/$codigoLiderman/$mes/$token";
 		$data = $this->EE->curl->get($url);
-		return $this->EE->TMPL->parse_variables($this->EE->TMPL->tagdata, $data);
+		if (count($data) > 0) {
+			return $this->EE->TMPL->parse_variables($this->EE->TMPL->tagdata, $data);
+		} else {
+			return "";
+		}
 	}
-
-	// http://190.187.13.164/WSIntranet/LiderCard.svc/ListarMeritosDemerito/CodigoLiderman/MesesAnticipacion/TokenSeguridad
 
 	public function meritosdemeritos()
 	{
@@ -206,9 +208,35 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 		$mes = $currentMonth - $mes;
 		$url = "http://190.187.13.164/WSIntranet/LiderCard.svc/ListarMeritosDemerito/$codigoLiderman/$mes/$token";
 		$data = $this->EE->curl->get($url);
-		return $this->EE->TMPL->parse_variables($this->EE->TMPL->tagdata, $data);
+		if (count($data) > 0) {
+			return $this->EE->TMPL->parse_variables($this->EE->TMPL->tagdata, $data);
+		} else {
+			return "";
+		}
 	}
 
+	public function prestamos()
+	{
+		$member_id = $this->EE->session->userdata('member_id');
+		$codigo_liderman_field_name = $this->getMemberFieldId("codigo-liderman");
+		$token_field_name = $this->getMemberFieldId("token");
+		$query = $this->EE->db->where('member_id', $member_id)
+						 ->select("$codigo_liderman_field_name, $token_field_name")
+				         ->get('exp_member_data');
+		$codigoLiderman = $query->row($codigo_liderman_field_name);
+		$token = $query->row($token_field_name);
+		$mes = trim($this->EE->TMPL->fetch_param('mes'));
+		$currentMonth = date('n');
+		$mes = $currentMonth - $mes;
+		$url = "http://190.187.13.164/WSIntranet/Prestamo.svc/ListarPrestamos/$codigoLiderman/$mes/$token";
+		return $url;
+		$data = $this->EE->curl->get($url);
+		if (count($data) > 0) {
+			return $this->EE->TMPL->parse_variables($this->EE->TMPL->tagdata, $data);
+		} else {
+			return "";
+		}
+	}
 
 	private function getCustomMemberFields()
 	{
