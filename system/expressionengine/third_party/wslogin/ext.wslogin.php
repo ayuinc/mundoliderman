@@ -192,7 +192,7 @@ class Wslogin_ext {
 
 				$member_id = ee()->db->insert_id();
 
-				$this->setArrayData($data, $token);
+				$data = $this->setArrayData($data, $token);
 				$data["member_id"] = $member_id;
 
 				ee()->db->query(ee()->db->insert_string('exp_members_data', $data));
