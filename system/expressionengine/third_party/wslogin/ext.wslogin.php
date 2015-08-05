@@ -99,11 +99,13 @@ class Wslogin_ext {
 		if ($token == null) {
 			// Retorna error
 			// return ee()->functions->redirect(ee()->functions->fetch_site_index());
+			return ee()->functions->redirect(ee()->functions->fetch_site_index());
 		}
 		else {
 			// Almacena el token y debería guardar y/o actualizar la data del usuario en la base de datos con la del web service
 			//var_dump(sha1($password));exit();
 			ee()->load->library("auth");
+			ee()->load->helper("url_helper");
 			/*$query = ee()->db->select('member_id, group_id, username, screen_name')
 					 ->from('members')
 					 ->where(array("username" => $username))
@@ -150,7 +152,7 @@ class Wslogin_ext {
 					'unique_id'		=> ee()->functions->random('encrypt'),
 					'join_date'		=> ee()->localize->now,
 					'email'			=> $data["Correo"],
-					'screen_name'	=> $username,
+					'screen_name'	=> $data["Nombres"],
 					'url'			=> prep_url(ee()->input->post('url')),
 					'location'		=> ee()->input->post('location'),
 
@@ -171,18 +173,7 @@ class Wslogin_ext {
 				if (ee()->config->item('req_mbr_activation') == 'manual' OR
 					ee()->config->item('req_mbr_activation') == 'email')
 				{
-					$member_data['group_id'] = 4;  // Pending
-				}
-				else
-				{
-					if (ee()->config->item('default_member_group') == '')
-					{
-						$member_data['group_id'] = 4;  // Pending
-					}
-					else
-					{
-						$member_data['group_id'] = ee()->config->item('default_member_group');
-					}
+					$member_data['group_id'] = ee()->config->item('default_member_group');
 				}
 
 				// Optional Fields
@@ -195,12 +186,6 @@ class Wslogin_ext {
 					'time_format'		=> 'time_format',
 					'include_seconds'	=> 'include_seconds'
 				);
-
-				// We generate an authorization code if the member needs to self-activate
-				if (ee()->config->item('req_mbr_activation') == 'email')
-				{
-					$member_data['authcode'] = ee()->functions->random('alnum', 10);
-				}
 
 				// Insert basic member data
 				ee()->db->query(ee()->db->insert_string('exp_members', $member_data));

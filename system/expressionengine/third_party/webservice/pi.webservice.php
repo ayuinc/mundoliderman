@@ -51,7 +51,11 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 		//return "Código Liderman : ". $codigoLiderman . ", Token : " . $token . ", Periodo : " . $periodo;
 		$url = "http://190.187.13.164/WSIntranet/BoletaPago.svc/TraerCabeceraBoletaPago/$codigoLiderman/$periodo/$token";
 		$data = $this->EE->curl->get($url);
-		return $this->EE->TMPL->parse_variables($this->EE->TMPL->tagdata, $data);
+		if (count($data) > 0) {
+			return $this->EE->TMPL->parse_variables($this->EE->TMPL->tagdata, $data);
+		} else {
+			return "";
+		}
 	}
 
 	public function detalle_boleta_haberes()
@@ -95,7 +99,11 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 				$i++;
 			}
 		}
-		return $this->EE->TMPL->parse_variables($this->EE->TMPL->tagdata, $new_data);
+		if (count($new_data) > 0) {
+			return $this->EE->TMPL->parse_variables($this->EE->TMPL->tagdata, $new_data);
+		} else {
+			return "";
+		}
 	}
 
 	public function semaforotareo()
@@ -169,8 +177,6 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 		return $data;
 	}
 
-// http://190.187.13.164/WSIntranet/LiderCard.svc/ListarBonificaciones/CodigoLiderman/MesesAnticipacion/TokenSeguridad
-
 	public function bonificaciones()
 	{
 		$member_id = $this->EE->session->userdata('member_id');
@@ -229,7 +235,6 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 		$currentMonth = date('n');
 		$mes = $currentMonth - $mes;
 		$url = "http://190.187.13.164/WSIntranet/Prestamo.svc/ListarPrestamos/$codigoLiderman/$mes/$token";
-		return $url;
 		$data = $this->EE->curl->get($url);
 		if (count($data) > 0) {
 			return $this->EE->TMPL->parse_variables($this->EE->TMPL->tagdata, $data);
@@ -273,7 +278,11 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 		$periodo = trim(ee()->TMPL->fetch_param('periodo'));
 		$url = "http://190.187.13.164/WSIntranet/BoletaPago.svc/TraerDetalleBoletaPago/$codigoLiderman/$periodo/$token";
 		$data = $this->EE->curl->get($url);
-		return $this->EE->TMPL->parse_variables($this->EE->TMPL->tagdata, $data);
+		if (count($data) > 0) {
+			return $this->EE->TMPL->parse_variables($this->EE->TMPL->tagdata, $data);
+		} else {
+			return "";
+		}
 	}
 
 }
