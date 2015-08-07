@@ -17,7 +17,8 @@
           <div class="container pt-42 w-100 pb-42 mb-42 ph-0">
             <div class="perfil-servicios clearfix bg-white pv-21 ph-21 ph-7-xs hidden-lg hdden-md">
               <div class="col-md-4 pr-0 pt-21 pl-0-xs">
-                <div style="background-image:url({site_url}frontend/app/assets/img/Herman_Profile_Pic.png)" class="bg-img-block-center"></div>
+                <div class="" style="background-image:url({site_url}frontend/app/assets/img/Herman_Profile_Pic.png)" class="bg-img-block-center">
+                </div>
               </div>
               <div class="col-md-8 ph-0 pt-14 hidden-lg hdden-md">
                 <h3 class="text-primary book m-0 display-ib pr-14 fz-35 pr-0-xs">{screen_name}</h2> 
@@ -30,7 +31,14 @@
               <form class="fz-18">
                 <div class="row mb-42">
                   <div class="col-md-5 pr-0 hidden-xs hdden-sm">
-                    <div style="background-image:url({site_url}frontend/app/assets/img/Herman_Profile_Pic.png)" class="bg-img-block-center brp-100"></div>
+                    <div style="background-image:url({site_url}frontend/app/assets/img/Herman_Profile_Pic.png)" class="foto-editable bg-img-block-center brp-100">
+                      <div class="overlay-foto ebm-overlay ml-14 brp-100 text-center">
+                        <div class="fileUpload">
+                          <span class="relative"><img src="{site_url}frontend/app/assets/img/camera.png" alt=""></span>
+                          <input type="file" class="upload ebm-overlay" />
+                        </div>
+                      </div>
+                    </div>
                   </div>
                   <div class="col-md-7 pl-28 pt-14 ph-21-xs pt-0-xs">
                     <h3 class="text-primary book m-0 display-ib pr-14 fz-30 hidden-xs hdden-sm">Herman Marín</h3> 
