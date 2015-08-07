@@ -332,7 +332,15 @@ header {
   		border-color: transparent;
 		}
 	}
-	.fileUpload input.upload {
+	button {
+		position: absolute;
+		right: 21px;
+		img {
+			width: 33px;
+		}
+	}
+}
+input.upload {
 		position: absolute;
 		top: 0;
 		right: 0;
@@ -343,14 +351,6 @@ header {
 		opacity: 0;
 		filter: alpha(opacity=0);
 	}
-	button {
-		position: absolute;
-		right: 21px;
-		img {
-			width: 33px;
-		}
-	}
-}
 #post{
 	.post {
 		  border: 1px solid #e7e7e7;
@@ -641,6 +641,22 @@ footer > div {
 		.btn-enviar {
 			right: 0;
 			position: absolute;
+		}
+	}
+}
+.overlay-foto {
+	@include transition (all 0.3s ease-in);
+	.fileUpload {
+		@include flex-column-center;
+	}
+	img {
+		display: none;
+	}
+	&:hover {
+		background-color: rgba(0,0,0,0.5);
+		img {
+			@include transition (all 0.3s ease-in);
+			display: inline-block;
 		}
 	}
 }

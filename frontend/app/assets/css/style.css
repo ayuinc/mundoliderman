@@ -1530,7 +1530,15 @@ header .perfil {
   background-color: transparent;
   border-color: transparent;
 }
-#comentar .fileUpload input.upload {
+#comentar button {
+  position: absolute;
+  right: 21px;
+}
+#comentar button img {
+  width: 33px;
+}
+
+input.upload {
   position: absolute;
   top: 0;
   right: 0;
@@ -1540,13 +1548,6 @@ header .perfil {
   cursor: pointer;
   opacity: 0;
   filter: alpha(opacity=0);
-}
-#comentar button {
-  position: absolute;
-  right: 21px;
-}
-#comentar button img {
-  width: 33px;
 }
 
 #post .post {
@@ -1897,6 +1898,52 @@ footer > div .lista p {
 #perfil-contenido .formulario .btn-enviar {
   right: 0;
   position: absolute;
+}
+
+.overlay-foto {
+  -webkit-transition: all 0.3s ease-in;
+  -moz-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
+}
+.overlay-foto .fileUpload {
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  box-orient: vertical;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  box-direction: normal;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-direction: column;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  box-pack: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  -o-justify-content: center;
+  justify-content: center;
+  -ms-flex-pack: center;
+}
+.overlay-foto img {
+  display: none;
+}
+.overlay-foto:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.overlay-foto:hover img {
+  -webkit-transition: all 0.3s ease-in;
+  -moz-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
+  display: inline-block;
 }
 
 /*LISTA-PUBLICACI├ôN*/
