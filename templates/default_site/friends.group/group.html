@@ -1,0 +1,37 @@
+{if segment_4 == "updated"}<div class="friends_success">You have successfully updated this group!</div>{/if}
+{if segment_4 == "member_update"}<div class="friends_success">You have successfully updated your members for this group!</div>{/if}
+
+{exp:friends:groups type="all_groups" friends_group_id="{segment_3}" limit="1" dynamic="off"}
+{exp:friends:member_of_group friends_group_id="{friends_group_id}"}
+{if member_of_group == "n"}<h5><i>(Limited View)</i></h5>{/if}
+<h4>{friends_group_title}{if friends_group_private == "y"} (private){/if}</h4>
+<p>{friends_group_description}</p>
+<hr />
+
+{if member_of_group == "y" AND friends_group_owner_id != logged_in_member_id}<p><i>You are a member of this Group.</i> <a href="{path="friends_groups/add"}/group/{friends_group_id}/delete/">Leave this Group?</a></p>{/if}
+{if member_of_group == "n"}<p><i>You are NOT a member of this group.</i> <a href="{path="friends_groups/add"}/group/{friends_group_id}/">Join this Group?</a></p>{/if}
+{if friends_group_owner_id == logged_in_member_id}<p><i>You own this group.</i> <a href="{path=friends_groups/update}/{friends_group_id}/">Update</a> | <a href="{path=friends_groups/manage_members}/{friends_group_id}/">Manage Members</a> | <a href="{path=friends_groups/delete_confirm}/{friends_group_id}/">Delete Group</a></p>{/if}
+<hr />
+
+<h5>Confirmed Members</h5>
+{if member_of_group == "y"}
+{embed="friends_inc/group_members" friends_group_id="{friends_group_id}"}
+{if:else}
+<p>You must be a confirmed member of this group to view member list.</p>
+{/if}
+<hr />
+
+<h5>Weblog Entries for this Group</h5>
+{if member_of_group == "y"}
+{embed="friends_inc/group_entries" friends_group_id="{friends_group_id}"}
+{if:else}
+<p>You must be a confirmed member of this group to view entries.</p>
+{/if}
+<hr />
+
+<h5>Wall Comments For This Group</h5>
+{embed="friends_inc/group_wall" friends_group_id="{friends_group_id}" {if friends_group_owner_id == logged_in_member_id}group_owner="yes"{/if}}
+<hr />
+
+{/exp:friends:member_of_group}
+{/exp:friends:groups}

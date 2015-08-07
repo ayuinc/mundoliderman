@@ -1,0 +1,5 @@
+{exp:friends:add notification_request="friends_notifications/friend_request" notification_confirm="friends_notifications/friend_confirm" subject_request="{friends_inviter_screen_name} has added you as a Friend!" subject_confirm="{friends_inviter_screen_name} has confirmed you as a Friend!"}
+	{if success}<h4>Successful!</h4>{/if}
+	{if failure}<h4>Error!</h4>{/if}
+	<p>{friends_message}</p>
+{/exp:friends:add}

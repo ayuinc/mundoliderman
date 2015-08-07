@@ -120,7 +120,9 @@ class Wslogin_ext {
 				$member_salt = $query->row("salt");
 				$member_password = $query->row("password");
 				$hash = ee()->auth->hash_password($password, $member_salt, strlen($member_salt));
-				if ($member_salt !== $hash["salt"] || $member_password !== $hash["password"]) {
+				//$hash["salt"] = htmlspecialchars($hash["salt"], ENT_QUOTES);
+				//$hash["password"] = htmlspecialchars($hash["password"], ENT_QUOTES);
+				if ($member_password != $hash["password"]) {
 					ee()->db->update('members',
 						array(
 							'password' => $hash["password"],
@@ -216,27 +218,27 @@ class Wslogin_ext {
 				break;
 			}
 		}
-		return $field_id;
+		return 'm_field_id_' . $field_id;
 	}
 
-	private function setArrayData($data = array(), $token)
+	private function setArrayData($data, $token)
 	{
 		return array(
-	        'm_field_id_' . $this->getMemberFieldId('apellidos')  => $data["Apellido"],
-	        'm_field_id_' . $this->getMemberFieldId('cargo')  => $data["Cargo"],
-	        'm_field_id_' . $this->getMemberFieldId('empresa-empleadora')  => $data["Cliente"],
-	        'm_field_id_' . $this->getMemberFieldId('codigo-liderman')  => $data["CodigoLiderman"],
-	        'm_field_id_' . $this->getMemberFieldId('correo-destinatario')  => $data["CorreoDestinatario"],
-	        'm_field_id_' . $this->getMemberFieldId('dni')  => $data["DNI"],
-	        'm_field_id_' . $this->getMemberFieldId('edad')  => $data["Edad"],
-	        'm_field_id_' . $this->getMemberFieldId('lider-zonal')  => $data["LiderZonal"],
-	        'm_field_id_' . $this->getMemberFieldId('nombres')  => $data["Nombres"],
-	        'm_field_id_' . $this->getMemberFieldId('periodo-planilla')  => $data["PeriodoPlanilla"],
-	        'm_field_id_' . $this->getMemberFieldId('sexo')  => $data["Sexo"],
-	        'm_field_id_' . $this->getMemberFieldId('tipo-usuario')  => $data["TipoUsuario"],
-	        'm_field_id_' . $this->getMemberFieldId('token')  => $token,
-	        'm_field_id_' . $this->getMemberFieldId('unidad')  => $data["Unidad"],
-	        'm_field_id_' . $this->getMemberFieldId('zona')  => $data["Zona"]
+	        $this->getMemberFieldId('apellidos')  => $data["Apellido"],
+	        $this->getMemberFieldId('cargo')  => $data["Cargo"],
+	        $this->getMemberFieldId('empresa-empleadora')  => $data["Cliente"],
+	        $this->getMemberFieldId('codigo-liderman')  => $data["CodigoLiderman"],
+	        $this->getMemberFieldId('correo-destinatario')  => $data["CorreoDestinatario"],
+	        $this->getMemberFieldId('dni')  => $data["DNI"],
+	        $this->getMemberFieldId('edad')  => $data["Edad"],
+	        $this->getMemberFieldId('lider-zonal')  => $data["LiderZonal"],
+	        $this->getMemberFieldId('nombres')  => $data["Nombres"],
+	        $this->getMemberFieldId('periodo-planilla')  => $data["PeriodoPlanilla"],
+	        $this->getMemberFieldId('sexo')  => $data["Sexo"],
+	        $this->getMemberFieldId('tipo-usuario')  => $data["TipoUsuario"],
+	        $this->getMemberFieldId('token')  => $token,
+	        $this->getMemberFieldId('unidad')  => $data["Unidad"],
+	        $this->getMemberFieldId('zona')  => $data["Zona"]
 	    );
 	}
 
