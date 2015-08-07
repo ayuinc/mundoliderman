@@ -125,6 +125,9 @@ body {
 	.relative {
 		position: relative;
 	}
+	.absolute {
+		position: absolute;
+	}
 	textarea {
   	box-shadow: none;
   	overflow: hidden;
@@ -263,10 +266,11 @@ header {
 	}
 }
 .herman-dropdown {
+	top: 20%;
 	ul {
 		top: 48px;
 		min-width: 135px;
-		left: 60px;
+		left: -100px;
 		li a {
 			font-weight: 300;
 			line-height: 1.5;

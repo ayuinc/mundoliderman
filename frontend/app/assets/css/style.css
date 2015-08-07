@@ -1275,6 +1275,9 @@ body .fixed {
 body .relative {
   position: relative;
 }
+body .absolute {
+  position: absolute;
+}
 body textarea {
   box-shadow: none;
   overflow: hidden;
@@ -1443,10 +1446,13 @@ header .perfil {
   color: #A5A5A5;
 }
 
+.herman-dropdown {
+  top: 20%;
+}
 .herman-dropdown ul {
   top: 48px;
   min-width: 135px;
-  left: 60px;
+  left: -100px;
 }
 .herman-dropdown ul li a {
   font-weight: 300;
