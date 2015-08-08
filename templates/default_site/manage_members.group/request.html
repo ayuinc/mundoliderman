@@ -1,0 +1,7 @@
+{exp:friends:group_add 
+	notification_accept="friends_notifications/group_accept" notification_approve="friends_notifications/group_approve" notification_invite="friends_notifications/group_invite" notification_request="friends_notifications/group_request" subject_accept="{friends_user_screen_name} has accepted your invitation to join your group!" subject_approve="You are now a member of the {friends_group_title} group!" subject_invite="{friends_owner_screen_name} would like you to join the {friends_group_title} group" 
+	subject_request="{friends_user_screen_name} has requested to join the {friends_group_title} group"}
+		{if success}{redirect="wall"}{/if}
+		{if failure}<h4>Error!</h4>{/if}
+		<p>{friends_message}</p>
+{/exp:friends:group_add}
