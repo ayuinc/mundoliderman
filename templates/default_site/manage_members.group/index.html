@@ -16,7 +16,7 @@
               <div class="datos bg-white minh-140 pv-42 ph-35 mt-42 ph-14-xs pv-28-xs">
                 <div class="ph-14 clearfix ph-7-xs">
                   {exp:friends:group_form 
-                    return="friends_groups/group/{segment_3}/member_update" 
+                    return="manage_members/{friends_group_id}" 
                     notification_approve="friends_notifications/group_accept" 
                     subject_approve="{friends_owner_screen_name} has accepted you into their group"}
                     <h4>{friends_group_title}{if friends_group_private == "y"} (private){/if}</h4>
