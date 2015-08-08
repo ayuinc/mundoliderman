@@ -1,8 +1,12 @@
-			<div class="alerta bg-primary p-7 text-white pv-14-xs">
-        <div class="container-md ph-21 ph-14-xs clearfix">
-          <img src="{site_url}frontend/app/assets/img/Icono_Atencion.png" alt="" class="hidden-xs hidden-sm">
-          <span class="m-0 pl-7 light fz-14 hidden-xs hidden-sm">Esta sección es solo para alertas del sistema y de la administración</span>
-          <div class="col-xs-1 ph-0 hidden-lg hidden-md"><img src="{site_url}frontend/app/assets/img/Icono_Atencion.png" alt=""></div>
-          <span class="col-xs-10 m-0 pl-7 lh-1-5 light fz-17 hidden-lg hidden-md">Esta sección es solo para alertas del sistema y de la administración</span>
+<div class="alerta bg-primary p-7 text-white pv-14-xs">
+	<div class="container-md ph-21 ph-14-xs clearfix">
+		{exp:channel:entries channel="alertas"}
+    	<img src="{site_url}frontend/app/assets/img/Icono_Atencion.png" alt="" class="hidden-xs hidden-sm">
+        <span class="m-0 pl-7 light fz-14 hidden-xs hidden-sm">{alerta_descripcion}</span>
+        <div class="col-xs-1 ph-0 hidden-lg hidden-md">
+        	<img src="{site_url}frontend/app/assets/img/Icono_Atencion.png" alt="">
         </div>
-      </div>
+        <span class="col-xs-10 m-0 pl-7 lh-1-5 light fz-17 hidden-lg hidden-md">{alerta_descripcion}</span>
+        {/exp:channel:entries}
+	</div>
+</div>
