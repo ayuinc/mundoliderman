@@ -12,7 +12,7 @@
     <div class="container-md container-index  pt-42 clearfix mb-70 ph-14 pb-70-xs">
       <div id="box-left" class="col-md-8 pl-0 ph-0-xs">
         <section id="comentar" class="bg-white">
-          {exp:friends:status_form return="wall" form_id="status_form" form_class="bg-success" enctype="multipart/form-data"}
+          {exp:friends:group_wall_form return="wall" form_id="status_form" form_class="bg-success" enctype="multipart/form-data"}
             <div class="bg-success text-right ph-21 hidden-xs hidden-sm">
               <div class="select-style display-ib text-center">
                 <select name="status_category" id="status_category" class="fz-14 text-white borderless light serif w-100 pt-7">
@@ -22,7 +22,7 @@
                 </select>
               </div>
             </div>
-            <textarea name="friends_status" id="friends_status" class="form-control outline-none serif fz-18 borderless br-none pv-14 ph-14" onkeyup="auto_grow(this)" placeholder="Qué estás pensando..."></textarea>
+            <textarea name="friends_wall_comment" id="friends_status" class="form-control outline-none serif fz-18 borderless br-none pv-14 ph-14" onkeyup="auto_grow(this)" placeholder="Qué estás pensando..."></textarea>
             <div class="fileUpload btn btn-success p-0 ml-21">
               <img src="{site_url}frontend/app/assets/img/Icono_Foto.png" alt="">
               <span class="thin fz-12 pl-14 serif">Subir imagen</span>
@@ -35,7 +35,7 @@
             <button type="submit" name="submit" class="btn bg-warning text-white text-hover-white fz-16 ph-21 mv-14 absolute thin pv-0 hidden-md hidden-lg">
              Publicar
             </button><!--movil-->              
-          {/exp:friends:status_form}
+          {/exp:friends:group_wall_form}
         </section>
         
         {exp:friends:status dynamic="off"}
