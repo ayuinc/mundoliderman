@@ -7499,7 +7499,17 @@ class Friends extends Module_builder_friends
 		//	Send notifications
 		//	----------------------------------------
 
+		$data['status_category'] = $_POST['status_category'];
 
+		if (isset($_FILES['status_image'])) {
+			$data['status_image'] = $_FILES['status_image']['name'];
+		}
+
+		if (ee()->extensions->active_hook('group_wall_comment_hook') === TRUE)
+		{
+			ee()->extensions->universal_call( 'group_wall_comment_hook', $this, $data, $this->entry_id;
+			if ( ee()->extensions->end_script === TRUE ) exit();
+		}
 
 		//	----------------------------------------
 		//	Set return

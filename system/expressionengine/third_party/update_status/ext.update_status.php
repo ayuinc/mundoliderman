@@ -95,7 +95,7 @@ class Update_status_ext
 		$data = array(
 			'class' => __CLASS__,
 			'method' => 'update_cat_img_status',
-			'hook' => 'friends_status_update_status',
+			'hook' => 'group_wall_comment_hook',
 			'settings' => serialize($this->settings),
 			'priority' => 1,
 			'version' => $this->version,
