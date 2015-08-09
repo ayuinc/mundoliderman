@@ -95,25 +95,25 @@
                       <p class="text-gray-darker">{lidernet_contenido}</p>
                     </div>
                   </div>
-                  <div class="texto pt-7">
-                    <h3 class="bold text-gray">Preguntas al respecto de Lidernet</h3>
+                  <div id="preguntas" class="texto pt-7">
+                    <h3 class="bold text-gray">Preguntas al respecto del LiderNet</h3>
                     <form action="">
-                      <p class="pt-14">¿La palabra clave que aprendemos del día de las madres es saber, perdonar y orientar?</p>
+                      <p class="pt-14">¿El liderazgo auténtico se basa en la VERDAD?</p>
                       <p class="checkbox pl-14">
                           <input type="radio" name="gender" value="male">
                           <label for="male" class="text-gray-darker normal">Verdadero</label></br>
                           <input id="female" type="radio" name="gender" value="female">
                           <label for="female" class="text-gray-darker normal">Falso</label>
                       </p>
-                      <p class="pt-14">¿Se brindará trato especial a los Liderman con buenas acciones?</p>
+                      <p class="pt-14">El cliente espera y busca un liderazgo auténtico por parte de nosotros, los Liderman.</p>
                       <p class="checkbox pl-14">
                           <input id="male" type="radio" name="gender" value="male">
                           <label for="male" class="text-gray-darker normal">Verdadero</label></br>
                           <input id="female" type="radio" name="gender" value="female">
                           <label for="female" class="text-gray-darker normal">Falso</label>
                       </p>
-                      <button href="" class="btn btn-enviar text-white text-hover-info br-none ph-21 thin ls-2 mt-42 hidden-xs hidden-sm">ENVIAR <img src="{site_url}frontend/app/assets/img/Flecha_Publicar.png" alt="" class="pl-14"></button>
-                      <button href="" class="btn btn-enviar-movil w-100 text-white text-hover-info br-none ph-21 thin ls-2 mt-42 hidden-lg hidden-md">ENVIAR <img src="{site_url}frontend/app/assets/img/Flecha_Publicar.png" alt="" class="pl-14"></button>
+                      <button href="" class="btn btn-enviar btn-lidernet text-white text-hover-info br-none ph-21 thin ls-2 mt-42 hidden-xs hidden-sm">ENVIAR <img src="{site_url}frontend/app/assets/img/Flecha_Publicar.png" alt="" class="pl-14"></button>
+                      <button href="" class="btn btn-enviar-movil btn-lidernet w-100 text-white text-hover-info br-none ph-21 thin ls-2 mt-42 hidden-lg hidden-md">ENVIAR <img src="{site_url}frontend/app/assets/img/Flecha_Publicar.png" alt="" class="pl-14"></button>
                     </form>
                   </div>
                 </div>
@@ -127,4 +127,9 @@
   </div>
   {embed=includes/footer}
   <script src="{site_url}frontend/app/assets/js/collapse-control.js"></script>
+  <script>
+    $(".btn-lidernet").click(function() {
+      $("#preguntas").hide();
+    });
+  </script>
 </html>
