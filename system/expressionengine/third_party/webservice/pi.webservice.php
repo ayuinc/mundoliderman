@@ -239,7 +239,7 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 		if (count($data) > 0) {
 			return $this->EE->TMPL->parse_variables($this->EE->TMPL->tagdata, $data);
 		} else {
-			return "";
+			return "No tienes préstamos pendientes";
 		}
 	}
 
