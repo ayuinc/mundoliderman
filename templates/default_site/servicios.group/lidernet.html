@@ -1,4 +1,8 @@
-  {embed=includes/head titulo="Mundo Liderman - Lidernet"}
+{if logged_out}
+  {redirect="login"}
+{/if}
+
+  {embed=includes/head titulo="Mundo Liderman - LiderNet"}
   
   <div class="site-wrapper"> <!-- Body -->
     {embed=includes/nav-main}
