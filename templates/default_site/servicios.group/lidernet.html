@@ -37,7 +37,7 @@
               </div>
             {/if}
             <div class="lidernet tareo mt-42 bg-white ph-28 pv-42 pv-28-xs ph-7-xs">
-              <div class="pl-14">
+              <!--<div class="pl-14">
                 <span class="fz-18 text-gray-darker pr-7-xs">Buscar el periodo</span>
                 <div class="btn-group month ml-21-md">
                   <button type="button" class="btn btn-default btn-dropdown dropdown-toggle fz-18 pv-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -77,45 +77,47 @@
                     <li><a href="#">2015</a></li>
                   </ul>
                 </div>
-              </div>
-              <div class="articulo pt-28 ph-14">
-                <div class="img-articulo w-100 text-center"><img src="{site_url}frontend/app/assets/img/Foto2.png" alt="" class="w-100"></div>
-                <div class="texto pt-28 pb-14 text-justify">
-                  <h3 class="bold text-gray">Mes de la Madre</h3>
-                  <div class="parrafos pt-14">
-                    <p class="text-gray-darker">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae possimus sint excepturi, iste esse optio libero amet porro perspiciatis quia voluptas voluptatum facere nostrum debitis quaerat omnis necessitatibus quibusdam consectetur:</p>
-                    <ul class="pl-0 serif text-gray-darker">
-                      <li>Saber</li>
-                      <li>Perdonar</li>
-                      <li>Orientar</li>
-                    </ul>
-                    <p class="text-gray-darker">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum, dolorum. Cumque numquam alias, ut dolorum accusamus officia reiciendis nesciunt provident dolorem, a quibusdam quo nam repellendus debitis beatae ratione nisi?</p>
-                    <p class="text-gray-darker">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae, cum. Dolorum sequi nihil optio similique sed, commodi quis tempore accusamus dolorem incidunt atque eveniet tempora, laborum eius! Eligendi quibusdam, nobis!</p>
-                    <p class="text-gray-darker">¡Lorem ipsum dolor sit amet, consectetu!</p>
+              </div>-->
+              {exp:channel:entries channel="lidernet" limit="1"}
+                <div class="articulo pt-28 ph-14">
+                  <div class="img-articulo w-100 text-center">
+                    {if lidernet_imagen != null}
+                      <img src="{site_url}frontend/app/assets/img/Foto2.png" alt="" class="w-100">
+                    {if:else}
+                      {if lidernet_video != null}
+                        <iframe width="520" height="315" src="{lidernet_video}" frameborder="0" allowfullscreen></iframe>
+                      {/if}
+                    {/if}
+                  </div>
+                  <div class="texto pt-28 pb-14 text-justify">
+                    <h3 class="bold text-gray">{title}</h3>
+                    <div class="parrafos pt-14">
+                      <p class="text-gray-darker">{lidernet_contenido}</p>
+                    </div>
+                  </div>
+                  <div class="texto pt-7">
+                    <h3 class="bold text-gray">Preguntas al respecto de Lidernet</h3>
+                    <form action="">
+                      <p class="pt-14">¿La palabra clave que aprendemos del día de las madres es saber, perdonar y orientar?</p>
+                      <p class="checkbox pl-14">
+                          <input type="radio" name="gender" value="male">
+                          <label for="male" class="text-gray-darker normal">Verdadero</label></br>
+                          <input id="female" type="radio" name="gender" value="female">
+                          <label for="female" class="text-gray-darker normal">Falso</label>
+                      </p>
+                      <p class="pt-14">¿Se brindará trato especial a los Liderman con buenas acciones?</p>
+                      <p class="checkbox pl-14">
+                          <input id="male" type="radio" name="gender" value="male">
+                          <label for="male" class="text-gray-darker normal">Verdadero</label></br>
+                          <input id="female" type="radio" name="gender" value="female">
+                          <label for="female" class="text-gray-darker normal">Falso</label>
+                      </p>
+                      <button href="" class="btn btn-enviar text-white text-hover-info br-none ph-21 thin ls-2 mt-42 hidden-xs hidden-sm">ENVIAR <img src="{site_url}frontend/app/assets/img/Flecha_Publicar.png" alt="" class="pl-14"></button>
+                      <button href="" class="btn btn-enviar-movil w-100 text-white text-hover-info br-none ph-21 thin ls-2 mt-42 hidden-lg hidden-md">ENVIAR <img src="{site_url}frontend/app/assets/img/Flecha_Publicar.png" alt="" class="pl-14"></button>
+                    </form>
                   </div>
                 </div>
-                <div class="texto pt-7">
-                  <h3 class="bold text-gray">Preguntas al respecto de Lidernet</h3>
-                  <form action="">
-                    <p class="pt-14">¿La palabra clave que aprendemos del día de las madres es saber, perdonar y orientar?</p>
-                    <p class="checkbox pl-14">
-                        <input type="radio" name="gender" value="male">
-                        <label for="male" class="text-gray-darker normal">Verdadero</label></br>
-                        <input id="female" type="radio" name="gender" value="female">
-                        <label for="female" class="text-gray-darker normal">Falso</label>
-                    </p>
-                    <p class="pt-14">¿Se brindará trato especial a los Liderman con buenas acciones?</p>
-                    <p class="checkbox pl-14">
-                        <input id="male" type="radio" name="gender" value="male">
-                        <label for="male" class="text-gray-darker normal">Verdadero</label></br>
-                        <input id="female" type="radio" name="gender" value="female">
-                        <label for="female" class="text-gray-darker normal">Falso</label>
-                    </p>
-                    <button href="" class="btn btn-enviar text-white text-hover-info br-none ph-21 thin ls-2 mt-42 hidden-xs hidden-sm">ENVIAR <img src="{site_url}frontend/app/assets/img/Flecha_Publicar.png" alt="" class="pl-14"></button>
-                    <button href="" class="btn btn-enviar-movil w-100 text-white text-hover-info br-none ph-21 thin ls-2 mt-42 hidden-lg hidden-md">ENVIAR <img src="{site_url}frontend/app/assets/img/Flecha_Publicar.png" alt="" class="pl-14"></button>
-                  </form>
-                </div>
-              </div>
+              {/exp:channel:entries}
             </div>
           </div>
         </section>
