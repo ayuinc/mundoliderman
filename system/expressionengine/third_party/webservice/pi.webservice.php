@@ -177,6 +177,25 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 		return $data;
 	}
 
+	public function semaforocapacitaciones()
+	{
+		$member_id = $this->EE->session->userdata('member_id');
+		$dni_field_name = $this->getMemberFieldId("dni");
+		$token_field_name = $this->getMemberFieldId("token");
+		$query = $this->EE->db->where('member_id', $member_id)
+						 ->select("$dni_field_name, $token_field_name")
+				         ->get('exp_member_data');
+		$dni = $query->row($dni_field_name);
+		$token = $query->row($token_field_name);
+		$month_start = strtotime('first day of this month', time());
+		$month_end = strtotime('last day of this month', time());
+		$date_start = date('d-m-Y', $month_start);
+		$date_end = date('d-m-Y', $month_end);
+		$url = "http://190.187.13.164/WSIntranet/Capacitacion.svc/TraerSemaforoCapacitaciones/$dni/$date_start/$date_end/$token";
+		$data = $this->EE->curl->get($url);
+		return $data;
+	}
+
 	public function bonificaciones()
 	{
 		$member_id = $this->EE->session->userdata('member_id');
@@ -239,7 +258,30 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 		if (count($data) > 0) {
 			return $this->EE->TMPL->parse_variables($this->EE->TMPL->tagdata, $data);
 		} else {
-			return "No tienes préstamos pendientes";
+			return "No tienes préstamos pendientes.";
+		}
+	}
+
+	public function capacitaciones()
+	{
+		$member_id = $this->EE->session->userdata('member_id');
+		$dni_field_name = $this->getMemberFieldId("dni");
+		$token_field_name = $this->getMemberFieldId("token");
+		$query = $this->EE->db->where('member_id', $member_id)
+						 ->select("$dni_field_name, $token_field_name")
+				         ->get('exp_member_data');
+		$dni = $query->row($dni_field_name);
+		$token = $query->row($token_field_name);
+		$month_start = strtotime('first day of this month', time());
+		$month_end = strtotime('last day of this month', time());
+		$date_start = date('d-m-Y', $month_start);
+		$date_end = date('d-m-Y', $month_end);
+		$url = "http://190.187.13.164/WSIntranet/Capacitacion.svc/ListarCapacitaciones/$dni/$date_start/$date_end/$token";
+		$data = $this->EE->curl->get($url);
+		if (count($data) > 0) {
+			return $this->EE->TMPL->parse_variables($this->EE->TMPL->tagdata, $data);
+		} else {
+			return "No tienes capacitaciones en curso.";
 		}
 	}
 

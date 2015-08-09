@@ -15,7 +15,27 @@
             {embed=includes/perfil-servicios}
             {embed=includes/semaforo-movil}
             <div><h2 class="fz-28 border-bottom-gray pb-14 text-gray-darker pt-21">Capacitaciones</h2></div>
-            {embed=includes/semaforo}
+            {if {exp:webservice:semaforocapacitaciones mes="8"} == 1}
+                <div class="semaforo clearfix bg-info border-radius mt-28 ph-42 text-white hidden-xs hidden-sm">
+                  <div id="check_semaforo" class="col-md-1 text-center pl-0">
+                  <img src="{site_url}frontend/app/assets/img/Check.png" alt="">
+                </div>
+                <div class="col-md-11 pb-7 pr-28 pl-14">
+                  <h3 class="fz-20 mb-7">Tu semáforo está en verde!</h3>
+                  <!--<p class="fz-14 text-white lh-1-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, praesentium. Blanditiis ab voluptatem molestiae odit natus saepe asperiores..</p>-->
+                </div>
+              </div>
+            {if:else}
+              <div class="semaforo clearfix bg-primary border-radius mt-28 ph-42 text-white hidden-xs hidden-sm">
+                <div id="check_semaforo" class="col-md-1 text-center pl-0">
+                  <img src="{site_url}frontend/app/assets/img/Check.png" alt="">
+                </div>
+                <div class="col-md-11 pb-7 pr-28 pl-14">
+                  <h3 class="fz-20 mb-7">Tu semáforo está en rojo!</h3>
+                  <!--<p class="fz-14 text-white lh-1-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, praesentium. Blanditiis ab voluptatem molestiae odit natus saepe asperiores..</p>-->
+                </div>
+              </div>
+            {/if}
             <div class="capacitacion mt-35">
               <div class="datos bg-white pv-42 pt-0-xs border-radius">
                 <div class="pl-42 pb-14 border-bottom-gray-lighter hidden-xs hdden-sm">
@@ -28,47 +48,8 @@
                   <!--<div class="col-xs-4 pv-7 text-center ph-0 fz-18 otro border-bottom-gray-lighter border-right-gray-lighter">Otros Cursos</div>-->
                   <!--<div class="col-xs-5 pv-7 text-center ph-0 fz-18 nuevo border-bottom-gray-lighter">Nuevos Cursos</div>-->
                 </div>
-                <div class="lista-cursos pr-42 pl-21 mh-42 mh-0-xs mh-0-xs pt-42 mt-14">
-                  <div class="ph-21 row">
-                    <span class="col-md-4 fz-18">Periodo</span>
-                    <p class="col-md-8 fz-17 text-gray-darker">Mayo 2015</p>
-                  </div>
-                  <div class="ph-21 row">
-                    <span class="col-md-4 fz-18">Tema</span>
-                    <p class="col-md-8 fz-17 text-gray-darker">Métodos de Seguridad</p>
-                  </div>
-                  <div class="ph-21 row border-bottom-gray-light">
-                    <span class="col-md-4 fz-18">Nota</span>
-                    <p class="col-md-8 fz-17 pb-21 text-gray-darker">10</p>
-                  </div>
-                </div>
-                <div class="lista-cursos pr-42 pl-21 mh-42 mh-0-xs mh-0-xs pt-35">
-                  <div class="ph-21 row">
-                    <span class="col-md-4 fz-18">Periodo</span>
-                    <p class="col-md-8 fz-17 text-gray-darker">Mayo 2015</p>
-                  </div>
-                  <div class="ph-21 row">
-                    <span class="col-md-4 fz-18">Tema</span>
-                    <p class="col-md-8 fz-17 text-gray-darker">Métodos de Seguridad</p>
-                  </div>
-                  <div class="ph-21 row border-bottom-gray-light">
-                    <span class="col-md-4 fz-18">Nota</span>
-                    <p class="col-md-8 fz-17 pb-21 text-gray-darker">10</p>
-                  </div>
-                </div>
-                <div class="lista-cursos pr-42 pl-21 mh-42 mh-0-xs mh-0-xs pt-35">
-                  <div class="ph-21 row">
-                    <span class="col-md-4 fz-18">Periodo</span>
-                    <p class="col-md-8 fz-17 text-gray-darker">Mayo 2015</p>
-                  </div>
-                  <div class="ph-21 row">
-                    <span class="col-md-4 fz-18">Tema</span>
-                    <p class="col-md-8 fz-17 text-gray-darker">Métodos de Seguridad</p>
-                  </div>
-                  <div class="ph-21 row">
-                    <span class="col-md-4 fz-18">Nota</span>
-                    <p class="col-md-8 fz-17 pb-21 text-gray-darker">10</p>
-                  </div>
+                <div id="capacitaciones">
+                  
                 </div>
 
                 <!--<div class="lista-otros hidden pr-42 pl-21 mh-42 mh-0-xs pt-42 mt-14">
@@ -127,4 +108,13 @@
   {embed=includes/footer}
   <script src="{site_url}frontend/app/assets/js/collapse-control.js"></script>
   <script src="{site_url}frontend/app/assets/js/lidercard-control.js"></script>
+  <script>
+    $.ajax({
+      type: 'GET',
+      url: '{site_url}ws/capacitacion',
+      success: function(data) {
+        $("#capacitaciones").html(data);
+      }
+    });
+  </script>
 </html>
