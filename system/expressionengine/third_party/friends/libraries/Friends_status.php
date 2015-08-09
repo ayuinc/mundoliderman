@@ -123,7 +123,7 @@ class Friends_status extends Friends
 		//	Get statuses of friends or just the member?
 		//	----------------------------------------
 
-		if ( empty( $show_friends ) === TRUE )
+		if ( $show_friends === TRUE )
 		{
 			$sql	.= " AND fs.member_id = ".ee()->db->escape_str( $this->member_id );
 		}

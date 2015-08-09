@@ -144,8 +144,6 @@ class Friends_data extends Addon_builder_data_friends
 			 AND 	member_id = " . ee()->db->escape_str( $member_id )
 		);
 
-		$arr	= array();
-
 		foreach ( $query->result_array() as $row )
 		{
 			$arr[]	= $row['friend_id'];

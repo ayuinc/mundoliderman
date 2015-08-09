@@ -44,7 +44,10 @@
             <div class="clearfix">
               <div class="col-xs-2 pr-0 pl-7 pt-7-xs">
                 {exp:user:stats member_id="CURRENT_USER"}
-                <div class="img-perfil bg-img-block-center brp-100" style="background-image: url({photo_url}{photo_filename})"></div>
+                  <div class="img-perfil bg-img-block-center brp-100" style="background-image: url({photo_url}{photo_filename})"></div>
+                  {if no_results}
+                    <div class="img-perfil bg-img-block-center brp-100" style="background-image: url({site_url}frontend/app/assets/img/Carita.png)"></div>
+                  {/if}
                 {/exp:user:stats}
               </div>
               <div class="name col-xs-10 pl-0">
