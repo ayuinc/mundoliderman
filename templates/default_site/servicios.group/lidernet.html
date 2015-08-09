@@ -17,7 +17,7 @@
             <div><h2 class="fz-28 border-bottom-gray-darker pb-14 text-gray-darker pt-21">Lidernet</h2></div>
             {if {exp:webservice:semaforolidernet} == 1}
                 <div class="semaforo clearfix bg-info border-radius mt-28 ph-42 text-white hidden-xs hidden-sm">
-                  <div class="col-md-1 text-center pl-0">
+                  <div id="check_semaforo" class="col-md-1 text-center pl-0">
                   <img src="{site_url}frontend/app/assets/img/Check.png" alt="">
                 </div>
                 <div class="col-md-11 pb-7 pr-28 pl-14">
@@ -27,7 +27,7 @@
               </div>
             {if:else}
               <div class="semaforo clearfix bg-primary border-radius mt-28 ph-42 text-white hidden-xs hidden-sm">
-                <div class="col-md-1 text-center pl-0">
+                <div id="check_semaforo" class="col-md-1 text-center pl-0">
                   <img src="{site_url}frontend/app/assets/img/Check.png" alt="">
                 </div>
                 <div class="col-md-11 pb-7 pr-28 pl-14">
