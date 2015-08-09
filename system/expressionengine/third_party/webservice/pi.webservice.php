@@ -281,7 +281,7 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 		if (count($data) > 0) {
 			return $this->EE->TMPL->parse_variables($this->EE->TMPL->tagdata, $data);
 		} else {
-			return "No tienes capacitaciones en curso.";
+			return "<div class='pr-42 pl-21 mh-42 mh-0-xs pt-42 mt-14'>No tienes capacitaciones en curso.</div>";
 		}
 	}
 
