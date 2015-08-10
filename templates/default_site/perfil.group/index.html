@@ -18,33 +18,31 @@
           <div class="container pt-42 w-100 ph-0">
             {embed=includes/perfil-servicios}
             <div id="comentar" class="bg-white mt-42">
-              {exp:friends:status_form return="{path='perfil'}" form_class="bg-success"}
-               <div class="bg-success text-right ph-21">
+              {exp:friends:status_form return="wall" form_id="status_form" form_class="bg-success" enctype="multipart/form-data"}
+                <div class="bg-success text-right ph-21">
                   <div class="select-style display-ib text-center">
-                    <select name="status_category" id="" class="fz-14 text-white borderless light serif w-100 pt-7">
+                    <select name="status_category" id="status_category" class="fz-14 text-white borderless light serif w-100 pt-7">
                       {exp:status_category:all}
-                      <option value="{category_id}" class="bg-success">{category_name}</option>
+                        <option value="{category_id}" class="bg-success">{category_name}</option>
                       {/exp:status_category:all}
                     </select>
                   </div>
                 </div>
-                <textarea name="friends_status" class="form-control outline-none serif fz-18 borderless br-none pv-14 ph-14" onkeyup="auto_grow(this)" placeholder="Qué estás pensando..." maxlength="512"></textarea>
+                <textarea name="friends_status" id="friends_status" class="form-control outline-none serif fz-18 borderless br-none pv-14 ph-14" onkeyup="auto_grow(this)" placeholder="Qué estás pensando..."></textarea>
                 <div class="fileUpload btn btn-success p-0 ml-21">
                   <img src="{site_url}frontend/app/assets/img/Icono_Foto.png" alt="">
-                  <span id="uploadImage" class="thin fz-12 pl-14 hidden-xs hidden-sm">Subir imagen</span>
-                  <span id="uploadImage" class="thin fz-16 pl-14 serif hidden-lg hidden-md">Subir imagen</span><!--movil-->
-                  <input type="file" id="inputFile" name="status_image" accept="image" class="upload"/>
+                  <span class="thin fz-12 pl-14 serif">Subir imagen</span>
+                  <input type="file" id="inputFile" name="status_image" class="upload" accept="image" />
                 </div>
                 <button type="submit" name="submit" class="btn bg-warning text-white text-hover-white fz-12 ph-21 mv-7 absolute hidden-xs hidden-sm">
                  PUBLICAR
                  <img src="{site_url}frontend/app/assets/img/Publicar_Dialogo.png" alt="" class="pl-14">
                 </button>
-                <button type="submit" name="submit" class="btn bg-warning text-white text-hover-white fz-16 ph-21 mv-7 absolute hidden-lg hidden-md"><!--movil-->
-                 PUBLICAR
-                </button>
+                <button type="submit" name="submit" class="btn bg-warning text-white text-hover-white fz-16 ph-21 mv-14 absolute thin pv-0 hidden-md hidden-lg">
+                 Publicar
+                </button><!--movil-->              
               {/exp:friends:status_form}
-            </div>
-            {exp:friends:status dynamic="off" member_id="{member_id}"}
+            {exp:friends:status dynamic="off"}
             <section id="post">
               <div class="post-1 post bg-white ph-14 pt-28 pb-28 mt-42">
                 <div class="clearfix">
@@ -215,7 +213,19 @@
         $("#inputFile").trigger("click");
       });
 
-      $("#comentar").attr("enctype", "multipart/form-data");
+      $("#status_form").attr("enctype", "multipart/form-data");
+      $("#status_form").submit(function(e) {
+        $friends_status = $("#friends_status").val();
+        $status_category = $("#status_category").val();
+        if ($status_category == 0) {
+          e.preventDefault();
+          return;
+        };
+        if($friends_status.trim().length == 0 || $friends_status.trim() == "") {
+          e.preventDefault();
+          return;
+        }
+      });
     });
   </script>
 </html>
