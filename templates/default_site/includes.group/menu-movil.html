@@ -13,16 +13,25 @@
           <p class="sans-serif fz-22 mb-14 text-gray-dark"><a href="{url}">Salir</a></p>
         {/exp:user:logout}
         <form action="" class="pt-28">
-          <select name="" id="" class="w-100 mb-14 ph-14">
+          <select name="" id="menu_movil" class="w-100 mb-14 ph-14">
             <option value="" class="w-100">Lidernet</option>
-            <!--<option value="" class="w-100">Lidermanía</option>-->
-            <option value="" class="w-100">Préstamos</option>
-            <option value="" class="w-100">Tareo</option>
-            <option value="" class="w-100">LiderCard</option>
-            <option value="" class="w-100">Capacitaciones</option>
-            <option value="" class="w-100">Boleta de Pago</option>
-            <option value="" class="w-100">SGI</option>
+            <!--<option value="" class="w-100">Lidermanía</option>--> 
+            <option value="{path='servicios/prestamos'}" class="w-100">Préstamos</option>
+            <option value="{path='servicios/prestamos'}" class="w-100">Tareo</option>
+            <option value="{path='servicios/prestamos'}" class="w-100">LiderCard</option>
+            <option value="{path='servicios/prestamos'}" class="w-100">Capacitaciones</option>
+            <option value="{path='servicios/prestamos'}" class="w-100">Boleta de Pago</option>
+            <option value="{path='servicios/prestamos'}" class="w-100">SGI</option>
           </select>
           <input type="text" id="search_bar" class="form-control input-sm fz-18 light ph-14" placeholder="Buscar personas, consultas o preguntas...">
         </form>
       </div>
+
+      <script>
+        var menu_movil = document.getElementById("menu_movil");
+        menu_movil.addEventListener("change", function (e) {
+          e.preventDefault();
+          var ref = this.value;
+          location.href = ref;
+        });
+      </script>
