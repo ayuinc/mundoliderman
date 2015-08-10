@@ -14,14 +14,15 @@
         {/exp:user:logout}
         <form action="" class="pt-28">
           <select name="" id="menu_movil" class="w-100 mb-14 ph-14">
-            <option value="" class="w-100">Lidernet</option>
-            <!--<option value="" class="w-100">Lidermanía</option>--> 
+            <option value="{current_url}" class="w-100">Seleccionar Servicio</option>
+            <option value="{path='servicios/lidernet'}" class="w-100">Lidernet</option>
+            <!--<option value="{path='servicios/lidermania'}" class="w-100">Lidermanía</option>-->editar 
             <option value="{path='servicios/prestamos'}" class="w-100">Préstamos</option>
-            <option value="{path='servicios/prestamos'}" class="w-100">Tareo</option>
-            <option value="{path='servicios/prestamos'}" class="w-100">LiderCard</option>
-            <option value="{path='servicios/prestamos'}" class="w-100">Capacitaciones</option>
-            <option value="{path='servicios/prestamos'}" class="w-100">Boleta de Pago</option>
-            <option value="{path='servicios/prestamos'}" class="w-100">SGI</option>
+            <option value="{path='servicios/tareo'}" class="w-100">Tareo</option>
+            <option value="{path='servicios/lidercard'}" class="w-100">LiderCard</option>
+            <option value="{path='servicios/capacitacion'}" class="w-100">Capacitaciones</option>
+            <option value="{path='servicios/boleta'}" class="w-100">Boleta de Pago</option>
+            <option value="{path='servicios/sgi'}" class="w-100">SGI</option>
           </select>
           <input type="text" id="search_bar" class="form-control input-sm fz-18 light ph-14" placeholder="Buscar personas, consultas o preguntas...">
         </form>
