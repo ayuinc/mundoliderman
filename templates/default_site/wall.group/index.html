@@ -43,9 +43,10 @@
           <div class="post-1 post bg-white ph-14 pt-28 pb-28 mt-42">
             <div class="clearfix">
               <div class="col-xs-2 pr-0 pl-7 pt-7-xs">
-                {exp:user:stats member_id="CURRENT_USER"}
-                  <div class="img-perfil bg-img-block-center brp-100" style="background-image: url({photo_url}{photo_filename})"></div>
-                {/exp:user:stats}
+                {!--{exp:user:stats member_id="CURRENT_USER"}--}
+                  <!--<div class="img-perfil bg-img-block-center brp-100" style="background-image: url({photo_url}{photo_filename})"></div>-->
+                {!--{/exp:user:stats}--}
+                <div class="img-perfil bg-img-block-center brp-100" style="background-image: url({site_url}frontend/app/assets/img/Carita.png)"></div>
               </div>
               <div class="name col-xs-10 pl-0">
                 <div class="info-usuario pl-7 row">
@@ -85,8 +86,6 @@
                 <p class="parrafo pt-14 ph-7 text-gray-darker">{friends_status}</p>
                 {if friends_image}
                 <div class="img-publicacion w-100 ph-7 pt-14 text-center"><img src="{site_url}{friends_image}" alt="" class="w-100"></div>
-                {if:else}
-                <div class="img-publicacion w-100 ph-7 pt-14 text-center"><img src="{site_url}frontend/app/assets/img/Carita.png" alt="" class="w-100"></div>
                 {/if}
                 <div class="clearfix ph-0 mh-7 thin text-gray pt-7 pb-7 border-bottom-gray-lighter fz-12">
                   <ul class="col-xs-7 ph-0 mv-0">
