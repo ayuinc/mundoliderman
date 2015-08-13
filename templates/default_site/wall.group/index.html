@@ -12,7 +12,7 @@
     <div class="container-md container-index  pt-42 clearfix mb-70 ph-14 pb-70-xs">
       <div id="box-left" class="col-md-8 pl-0 ph-0-xs">
         <section id="comentar" class="bg-white">
-          {exp:friends:status_form return="wall" form_id="status_form" form_class="bg-success" enctype="multipart/form-data"}
+          {exp:wall:status_form return="wall" form_id="status_form" form_class="bg-success" enctype="multipart/form-data"}
             <div class="bg-success text-right ph-21 hidden-xs hidden-sm">
               <div class="select-style display-ib text-center">
                 <select name="status_category" id="status_category" class="fz-14 text-white borderless light serif w-100 pt-7">
@@ -22,7 +22,7 @@
                 </select>
               </div>
             </div>
-            <textarea name="friends_status" class="form-control outline-none serif fz-18 borderless br-none pv-14 ph-14" onkeyup="auto_grow(this)" placeholder="Qué estás pensando..."></textarea>
+            <textarea name="wall_status" class="form-control outline-none serif fz-18 borderless br-none pv-14 ph-14" onkeyup="auto_grow(this)" placeholder="Qué estás pensando..."></textarea>
             <div class="fileUpload btn btn-success p-0 ml-21">
               <img src="{site_url}frontend/app/assets/img/Icono_Foto.png" alt="">
               <span class="thin fz-12 pl-14 hidden-xs hidden-sm">Subir imagen</span>
@@ -36,10 +36,10 @@
             <button type="submit" name="submit" class="btn bg-warning text-white text-hover-white fz-16 ph-21 mv-7 absolute hidden-lg hidden-md"><!--movil-->
              PUBLICAR
             </button>
-          {/exp:friends:status_form}
+          {/exp:wall:status_form}
         </section>
         
-        {exp:friends:status dynamic="off"}
+        {exp:wall:status}
         <section id="post">
           <div class="post-1 post bg-white ph-14 pt-28 pb-28 mt-42">
             <div class="clearfix">
@@ -52,41 +52,49 @@
               <div class="name col-xs-10 pl-0">
                 <div class="info-usuario pl-7 row">
                   <div class="col-md-8 hidden-xs hidden-sm">
-                    <span class="categoria text-uppercase fz-10 text-primary le-1-3">{friends_category_name}</span>
-                    <h5 class="text-gray-darker m-0">{friends_screen_name}</h5>
-                    <p class="fz-10 m-0 text-gray"><a href="">Hace 3 horas. {friends_status_date format="%F %j, %Y"}</a></p>
+                    <span class="categoria text-uppercase fz-10 text-primary le-1-3">{post_category_name}</span>
+                    <h5 class="text-gray-darker m-0">{post_screen_name}</h5>
+                    <p class="fz-10 m-0 text-gray"><a href="">{post_status_date:relative past="%s ago"}</a></p>
                   </div>
                   <div class="col-xs-8 hidden-lg hidden-md pl-35"><!--movil-->
-                    <span class="categoria text-uppercase fz-11 text-primary le-1-3">{friends_category_name}</span>
-                    <h5 class="text-gray-darker m-0 fz-22">{friends_screen_name}</h5>
-                    <p class="fz-14 m-0 text-gray fz-14"><a href="">Hace 3 horas. {friends_status_date format="%F %j, %Y"}</a></p>
+                    <span class="categoria text-uppercase fz-11 text-primary le-1-3">{post_category_name}</span>
+                    <h5 class="text-gray-darker m-0 fz-22">{post_screen_name}</h5>
+                    <p class="fz-14 m-0 text-gray fz-14"><a href="">{post_status_date:relative past="%s ago"}</a></p>
                   </div>
                   <div class="col-xs-4 text-center pt-7 hidden-xs hidden-sm">
                     <div class="aviso btn-aviso1 mh-21 bg-info hidden">
                       <div class="circle-green bg-white display-ib"></div>
-                      <p class="text-white thin m-0 display-ib pl-7 fz-14">Resuelto</p>
+                      <p class="text-white thin m-0 display-ib pl-7 fz-14 hidden">Resuelto</p>
+                      <p class="text-white thin m-0 display-ib pl-7 fz-14">Borrado</p>
                     </div>
-                    <div class="aviso btn-aviso2 mh-14 ph-7 bg-primary">
+                    {exp:wall:delete_post_form form_id="delete_post_desktop" form_class="aviso btn-aviso2 mh-14 ph-7 bg-primary"}
                       <div class="circle-green bg-white display-ib"></div>
-                      <p class="text-white thin m-0 display-ib pl-7 fz-14">No resuelto</p>
-                    </div>
+                      <p class="text-white thin m-0 display-ib pl-7 fz-14 hidden">No resuelto</p>
+                      <p class="text-white thin m-0 display-ib pl-7 fz-14">Borrar</p>
+                    {/exp:wall:delete_post_form}
                   </div>
                   <div class="col-xs-4 text-center ph-0 pt-7 hidden-lg hidden-md">
                     <div class="aviso btn-aviso1 bg-info hidden">
                       <div class="circle-green bg-white display-ib"></div>
-                      <p class="text-white thin m-0 display-ib pl-7 fz-17">Resuelto</p>
+                      <p class="text-white thin m-0 display-ib pl-7 fz-17 hidden">Resuelto</p>
+                      <p class="text-white thin m-0 display-ib pl-7 fz-14">Borrado</p>
+                      <input type="hidden" name="post_id" value="{post_id}">
+                      <input type="submit" name="submit" value="submit" id="submit_desktop" class="hidden">
                     </div>
-                    <div class="aviso btn-aviso2 mh-0 ph-0 bg-primary">
+                    {exp:wall:delete_post_form form_id="delete_post_rsp" form_class="aviso btn-aviso2 mh-0 ph-0 bg-primary"}
                       <div class="circle-green bg-white display-ib"></div>
-                      <p class="text-white thin m-0 display-ib pl-0 fz-17">No resuelto</p>
-                    </div>
+                      <p class="text-white thin m-0 display-ib pl-0 fz-17 hidden">No resuelto</p>
+                      <p class="text-white thin m-0 display-ib pl-7 fz-14">Borrar</p>
+                      <input type="hidden" name="post_id" value="{post_id}">
+                      <input type="submit" name="submit" value="submit" id="submit_rsp" class="hidden">
+                    {/exp:wall:delete_post_form}
                   </div>
                 </div>
               </div>
               <div class="col-md-10 col-md-offset-2 col-xs-12 pl-0 ph-0-xs">
-                <p class="parrafo pt-14 ph-7 text-gray-darker">{friends_status}</p>
-                {if friends_image}
-                <div class="img-publicacion w-100 ph-7 pt-14 text-center"><img src="{site_url}{friends_image}" alt="" class="w-100"></div>
+                <p class="parrafo pt-14 ph-7 text-gray-darker">{post_content}</p>
+                {if post_image_path}
+                  <div class="img-publicacion w-100 ph-7 pt-14 text-center"><img src="{site_url}{post_image_path}" alt="" class="w-100"></div>
                 {/if}
                 <div class="clearfix ph-0 mh-7 thin text-gray pt-7 pb-7 border-bottom-gray-lighter fz-12">
                   <ul class="col-xs-7 ph-0 mv-0">
@@ -193,7 +201,7 @@
             </div>
           </div>
         </section>
-        {/exp:friends:status}
+        {/exp:wall:status}
       </div>
       <div id="box-right" class="col-md-4 pl-21 pr-0 hidden-xs hidden-sm">
         {embed="includes/modulo-noticias"}
