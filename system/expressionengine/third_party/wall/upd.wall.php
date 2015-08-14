@@ -169,6 +169,10 @@ class Wall_upd {
 			array(
 				"class" => $this->module_name,
 				"method" => "delete_post"	
+			),
+			array(
+				"class" => $this->module_name,
+				"method" => "comment_post"
 			)
 		);
 

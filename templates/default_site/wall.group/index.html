@@ -13,7 +13,7 @@
       <div id="box-left" class="col-md-8 pl-0 ph-0-xs">
         <section id="comentar" class="bg-white">
           {exp:wall:status_form return="wall" form_id="status_form" form_class="bg-success" enctype="multipart/form-data"}
-            <div class="bg-success text-right ph-21 hidden-xs hidden-sm">
+            <div class="bg-success text-right ph-21">
               <div class="select-style display-ib text-center">
                 <select name="status_category" id="status_category" class="fz-14 text-white borderless light serif w-100 pt-7">
                   {exp:status_category:all}
@@ -67,10 +67,14 @@
                       <p class="text-white thin m-0 display-ib pl-7 fz-14 hidden">Resuelto</p>
                       <p class="text-white thin m-0 display-ib pl-7 fz-14">Borrado</p>
                     </div>
-                    {exp:wall:delete_post_form form_id="delete_post_desktop" form_class="aviso btn-aviso2 mh-14 ph-7 bg-primary"}
-                      <div class="circle-green bg-white display-ib"></div>
-                      <p class="text-white thin m-0 display-ib pl-7 fz-14 hidden">No resuelto</p>
-                      <p class="text-white thin m-0 display-ib pl-7 fz-14">Borrar</p>
+                    {exp:wall:delete_post_form form_id="" form_class=""}
+                      <div id="delete_post_desktop" class="aviso btn-aviso2 mh-14 ph-7 bg-primary">
+                        <div class="circle-green bg-white display-ib"></div>
+                        <p class="text-white thin m-0 display-ib pl-7 fz-14 hidden">No resuelto</p>
+                        <p id="delete_desktop" class="text-white thin m-0 display-ib pl-7 fz-14">Borrar</p>                        
+                      </div>
+                      <input type="hidden" name="post_id" value="{post_id}">
+                      <input type="submit" name="submit" value="submit" id="submit_desktop" class="hidden">
                     {/exp:wall:delete_post_form}
                   </div>
                   <div class="col-xs-4 text-center ph-0 pt-7 hidden-lg hidden-md">
@@ -78,13 +82,13 @@
                       <div class="circle-green bg-white display-ib"></div>
                       <p class="text-white thin m-0 display-ib pl-7 fz-17 hidden">Resuelto</p>
                       <p class="text-white thin m-0 display-ib pl-7 fz-14">Borrado</p>
-                      <input type="hidden" name="post_id" value="{post_id}">
-                      <input type="submit" name="submit" value="submit" id="submit_desktop" class="hidden">
                     </div>
-                    {exp:wall:delete_post_form form_id="delete_post_rsp" form_class="aviso btn-aviso2 mh-0 ph-0 bg-primary"}
-                      <div class="circle-green bg-white display-ib"></div>
-                      <p class="text-white thin m-0 display-ib pl-0 fz-17 hidden">No resuelto</p>
-                      <p class="text-white thin m-0 display-ib pl-7 fz-14">Borrar</p>
+                    {exp:wall:delete_post_form form_id="" form_class=""}
+                      <div id="delete_post_rsp" class="aviso btn-aviso2 mh-0 ph-0 bg-primary">
+                        <div class="circle-green bg-white display-ib"></div>
+                        <p class="text-white thin m-0 display-ib pl-0 fz-17 hidden">No resuelto</p>
+                        <p id="delete_rsp" class="text-white thin m-0 display-ib pl-7 fz-14">Borrar</p>  
+                      </div>
                       <input type="hidden" name="post_id" value="{post_id}">
                       <input type="submit" name="submit" value="submit" id="submit_rsp" class="hidden">
                     {/exp:wall:delete_post_form}
@@ -125,20 +129,23 @@
                 <div class="comentar scroll-down pt-21 pt-35-xs hidden">
                   <div class="area-respuesta pb-21 clearfix hidden">
                     <div class="col-xs-2 pr-0">
-                      <div class="img-respuesta bg-img-block-center brp-100" style="background-image: url({site_url}frontend/app/assets/img/Wall/Cara-2.png)"></div>
+                      <div class="img-respuesta bg-img-block-center brp-100" style="background-image: url({site_url}frontend/app/assets/img/Carita.png)"></div>
                     </div>
                     <div class="col-xs-10 lh-1 pl-0 pl-21-xs hidden-xs hidden-sm">
-                      <span class="fz-14 text-success pr-7">Santiago López</span>
-                      <textarea name="text" id="" onkeyup="auto_grow(this)" placeholder="Escribe un comentario..." class="w-100 mt-7 fz-14 light p-7 serif text-gray-darker book"></textarea>
+                      <span class="fz-14 text-success pr-7">{screen_name}</span>
+                      {exp:wall:comment_post_form form_id="" form_class=""}
+                      <textarea name="comment" id="" onkeyup="auto_grow(this)" placeholder="Escribe un comentario..." class="w-100 mt-7 fz-14 light p-7 serif text-gray-darker book" min-length="1"></textarea>
+                      <input type="submit" name="submit_comment_{post_id}" id="submit_comment" class="comment_submit hidden">
+                      {/exp:wall:comment_post_form}
                     </div>
                     <div class="col-xs-10 lh-1 pl-0 pl-21-xs hidden-lg hidden-md">
-                      <span class="fz-20 text-success pr-7">Santiago López</span>
-                      <textarea name="text" id="" onkeyup="auto_grow(this)" placeholder="Escribe un comentario..." class="w-100 mt-7 fz-18 light p-7 serif text-gray-darker book"></textarea>
+                      <span class="fz-20 text-success pr-7">{screen_name}</span>
+                      <textarea name="comment" id="" onkeyup="auto_grow(this)" placeholder="Escribe un comentario..." class="w-100 mt-7 fz-18 light p-7 serif text-gray-darker book"></textarea>
                     </div>
                   </div>
                   <div class="clearfix conteiner-answer">
                     <div class="col-xs-2 pr-0">
-                      <div class="img-respuesta bg-img-block-center brp-100" style="background-image: url({site_url}frontend/app/assets/img/Wall/Carita2.png)"></div>
+                      <div class="img-respuesta bg-img-block-center brp-100" style="background-image: url({site_url}frontend/app/assets/img/Carita.png)"></div>
                     </div>
                     <div class="col-xs-10 lh-1 pl-0 pl-21-xs">
                       <span class="fz-14 text-success pr-7">Cecilia Ramírez</span>
@@ -164,7 +171,7 @@
                     </div>
                     <div class="cuadro-respuesta clearfix pt-21 ph-0 hidden col-md-10 col-md-offset-2 col-xs-12 hidden-xs hidden-sm">
                       <div class="col-xs-2 pr-0">
-                        <div class="img-respuesta bg-img-block-center brp-100" style="background-image: url({site_url}frontend/app/assets/img/Wall/Carita2.png)"></div>
+                        <div class="img-respuesta bg-img-block-center brp-100" style="background-image: url({site_url}frontend/app/assets/img/Carita.png)"></div>
                       </div>
                       <div class="col-xs-10 pl-0 pl-21-xs">
                         <span class="fz-14 text-success pr-7">Cecilia Ramírez</span>
@@ -173,7 +180,7 @@
                     </div>
                     <div class="respuesta clearfix pt-21 ph-0 hidden col-md-10 col-md-offset-2 col-xs-12 visible-xs">
                       <div class="col-xs-2 pr-0">
-                        <div class="img-respuesta bg-img-block-center brp-100" style="background-image: url({site_url}frontend/app/assets/img/Wall/Cara-1.png)"></div>
+                        <div class="img-respuesta bg-img-block-center brp-100" style="background-image: url({site_url}frontend/app/assets/img/Carita.png)"></div>
                       </div>
                       <div class="col-xs-10 pl-0 pl-21-xs">
                         <span class="fz-14 text-success pr-7">Ivo Sadner</span>
@@ -234,6 +241,19 @@
           return;
         }
       });
+
+      $("#delete_post_desktop").click(function() {
+        $("#submit_desktop").click();
+      });
+
+      function deletePost(id, form) {
+        $(id).click(function (e) {
+          $(form).click();
+        });
+      }
+
+      deletePost("#delete_post_desktop", "#submit_desktop");
+      deletePost("#delete_post_rsp", "#submit_rsp");
     });
 </script>
 

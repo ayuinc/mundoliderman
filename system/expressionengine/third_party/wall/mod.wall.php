@@ -56,6 +56,29 @@ class Wall {
 		return $form;
 	}
 
+	public function comment_post_form()
+	{
+		// Build an array to hold the form's hidden fields
+		$hidden_fields = array(
+			"ACT" => $this->EE->functions->fetch_action_id("Wall", "comment_post")
+		);
+
+		// Build an array with the form data
+		$form_data = array(
+			"id" => $this->EE->TMPL->form_id,
+			"class" => $this->EE->TMPL->form_class,
+			"hidden_fields" => $hidden_fields
+		);
+
+		// Fetch contents of the tag pair
+		$tagdata = $this->EE->TMPL->tagdata;
+
+		$form = $this->EE->functions->form_declaration($form_data) . 
+			$tagdata . "</form>";
+
+		return $form;
+	}
+
 	public function wall_post()
 	{
 		$member_id = $this->EE->session->userdata("member_id");
@@ -114,6 +137,37 @@ class Wall {
 			$tagdata = $this->EE->TMPL->tagdata;
 			return $this->EE->TMPL->parse_variables($tagdata, $data);
 		}
+	}
+
+	public function delete_post() 
+	{
+		$post_id = $this->EE->input->post("post_id");
+		$data = array(
+			"active" => "n"
+		);
+		$this->EE->db->where("id", $post_id);
+		$this->EE->db->update("wall_status", $data);
+		return $this->EE->functions->redirect("wall");
+	}
+
+	public function comment_post()
+	{
+		$post_id = $this->EE->input->post("post_id");
+		$comment_member_id = $this->EE->session->userdata("member_id");
+		$comment = $this->EE->input->post("comment");
+		$comment_date = $this->EE->localize->now;
+
+		$data = array(
+			"post_id" => $post_id,
+			"comment_member_id" => $comment_member_id,
+			"comment" => $comment,
+			"comment_date" => $comment_date
+		);
+
+		$this->EE->db->insert("wall_comment", $data);
+		$comment_post_id = $this->EE->db->insert_id();
+
+		return $this->EE->functions->redirect("wall");
 	}
 
 }
