@@ -2041,6 +2041,18 @@ footer > div .lista p {
   width: 660px;
 }
 
+/*RESULTS SEARCH*/
+#search-results {
+  border: 1px solid #e7e7e7;
+}
+#search-results .resultados {
+  border-bottom: 1px solid #e7e7e7;
+}
+#search-results .resultados .btn:hover {
+  border-color: #f94211;
+  color: #f94211;
+}
+
 @media only screen and (max-width: 768px) {
   /*LOGIN*/
   .container-login .submit img {

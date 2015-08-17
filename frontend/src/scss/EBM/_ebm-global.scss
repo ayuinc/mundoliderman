@@ -749,6 +749,20 @@ footer > div {
 		width: 660px;
 	}
 }
+
+/*RESULTS SEARCH*/
+#search-results {
+	border: 1px solid #e7e7e7;
+	.resultados {
+		border-bottom: 1px solid #e7e7e7;
+		.btn:hover {
+			border-color: #f94211;
+			color: #f94211;
+		}
+	}
+}
+
+
 @media #{$sm-down} {
 	/*LOGIN*/
 	.container-login {
