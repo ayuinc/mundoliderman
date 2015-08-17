@@ -2052,6 +2052,10 @@ footer > div .lista p {
   border-color: #f94211;
   color: #f94211;
 }
+#search-results .resultados .search-img {
+  width: 75px;
+  height: 75px;
+}
 
 @media only screen and (max-width: 768px) {
   /*LOGIN*/
