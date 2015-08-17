@@ -30,6 +30,44 @@ class Wall_upd {
 		$this->EE->db->insert("modules", $mod_data);	
 
 		$fields = array(
+			'id' => array('type' => 'int', 'unsigned' => TRUE, 'auto_increment' => TRUE),
+			'code' => array('type' => 'varchar', 'constraint' => '250', 'null' => FALSE),
+			'description' => array('type' => 'varchar', 'constraint' => '250', 'null' => FALSE)
+		);
+
+		$this->EE->dbforge->add_field($fields);
+		$this->EE->dbforge->add_key('id', TRUE);
+		$this->EE->dbforge->create_table('tareo');
+
+		$data = array(
+			array(
+				'code' => 'BAJA',
+				'description' => 'Personal de Baja'
+			),
+			array(
+				'code' => 'D',
+				'description' => 'Diurno'
+			),
+			array(
+				'code' => 'F',
+				'description' => 'Falta'
+			),
+			array(
+				'code' => 'N',
+				'description' => 'Noche'
+			),
+			array(
+				'code' => 'X',
+				'description' => 'Descanso'
+			)
+		);
+
+		$this->EE->db->insert_batch('tareo', $data);
+
+		unset($fields);
+		unset($data);
+
+		$fields = array(
 			'id' => array('type' => 'int', 'unsigned' => TRUE),
 			'name' => array('type' => 'varchar', 'constraint' => '250', 'null' => FALSE)
 		);

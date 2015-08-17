@@ -91,11 +91,13 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 		$meses_anticipacion = $currentMonth - ($mes + 1);
 		$url = "http://190.187.13.164/WSIntranet/Tareo.svc/ListarTareo/$codigoLiderman/$meses_anticipacion/$token";
 		$data = $this->EE->curl->get($url);
+		$tareo_description = $this->EE->db->select('code, description')->get('tareo')->result_array();
 		$new_data = array();
 		$i = 0;
 		foreach ($data as $key => $value) {
 			if ($value["Mes"] == ($mes+1)) {
 				$new_data[$i] = $value;
+				$new_data[$i]["EventoDescripcion"] = $this->searchEvent($tareo_description, trim($value["Evento"]));
 				$i++;
 			}
 		}
@@ -305,6 +307,17 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 			}
 		}
 		return 'm_field_id_' . $field_id;
+	}
+
+	private function searchEvent($tareo = array(), $code) {
+		$description = "";
+	    foreach ($tareo as $key => $value) {
+	        if ($value["code"] == $code) {
+	            $description = $value["description"];
+	            break;
+	        }
+	    }
+	    return $description;
 	}
 
 	private function detalle_boleta() 

@@ -79,6 +79,49 @@ class Wall {
 		return $form;
 	}
 
+	public function status()
+	{
+		$sql = "SELECT ws.id as post_id, ws.member_id as post_user_id, m.screen_name as post_screen_name, m.username as post_username, 
+				ws.category_id as post_category_id, wsc.name as post_category_name, ws.content as post_content, 
+				ws.image_path as post_image_path, ws.status_date as post_status_date
+				from exp_wall_status ws 
+				inner join exp_members m on ws.member_id = m.member_id 
+				inner join exp_wall_status_category wsc on ws.category_id = wsc.id
+				where ws.active = 'y'
+				order by ws.status_date desc";
+
+		$query = $this->EE->db->query($sql);
+
+		if ($query->num_rows() == 0) {
+			return $this->EE->TMPL->no_results;
+		} else {
+			$data = $query->result_array();
+			$tagdata = $this->EE->TMPL->tagdata;
+			return $this->EE->TMPL->parse_variables($tagdata, $data);
+		}
+	}
+
+	public function comment()
+	{
+		$post_id = $this->EE->TMPL->fetch_param('post_id', 0);
+		$sql = "SELECT wc.post_id as comment_post_id, wc.comment_member_id, wc.comment, wc.comment_date,
+				m.screen_name as comment_screen_name, m.username as comment_username
+				from exp_wall_comment wc
+				inner join exp_members m on wc.comment_member_id = m.member_id
+				where post_id = $post_id
+				order by wc.comment_date desc";
+		
+		$query = $this->EE->db->query($sql);
+
+		if ($query->num_rows() == 0) {
+			return $this->EE->TMPL->no_results;
+		} else {
+			$data = $query->result_array();
+			$tagdata = $this->EE->TMPL->tagdata;
+			return $this->EE->TMPL->parse_variables($tagdata, $data);
+		}
+	}
+
 	public function wall_post()
 	{
 		$member_id = $this->EE->session->userdata("member_id");
@@ -115,28 +158,6 @@ class Wall {
                 $this->EE->db->update("wall_status", $image_data);
         }
         return $this->EE->functions->redirect("wall");
-	}
-
-	public function status()
-	{
-		$sql = "SELECT ws.id as post_id, ws.member_id as post_user_id, m.screen_name as post_screen_name, m.username as post_username, 
-				ws.category_id as post_category_id, wsc.name as post_category_name, ws.content as post_content, 
-				ws.image_path as post_image_path, ws.status_date as post_status_date
-				from exp_wall_status ws 
-				inner join exp_members m on ws.member_id = m.member_id 
-				inner join exp_wall_status_category wsc on ws.category_id = wsc.id
-				where ws.active = 'y'
-				order by ws.status_date desc";
-
-		$query = $this->EE->db->query($sql);
-
-		if ($query->num_rows() == 0) {
-			return $this->EE->TMPL->no_results;
-		} else {
-			$data = $query->result_array();
-			$tagdata = $this->EE->TMPL->tagdata;
-			return $this->EE->TMPL->parse_variables($tagdata, $data);
-		}
 	}
 
 	public function delete_post() 
