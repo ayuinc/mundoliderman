@@ -2058,6 +2058,7 @@ footer > div .lista p {
   height: 75px;
 }
 
+/*ERROR*/
 @media only screen and (max-width: 768px) {
   /*LOGIN*/
   .container-login .submit img {
