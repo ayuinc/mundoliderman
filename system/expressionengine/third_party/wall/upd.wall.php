@@ -29,43 +29,59 @@ class Wall_upd {
 		);
 		$this->EE->db->insert("modules", $mod_data);	
 
+		if (!$this->EE->db->table_exists('tareo')) {
+			$fields = array(
+				'id' => array('type' => 'int', 'unsigned' => TRUE, 'auto_increment' => TRUE),
+				'code' => array('type' => 'varchar', 'constraint' => '250', 'null' => FALSE),
+				'description' => array('type' => 'varchar', 'constraint' => '250', 'null' => FALSE)
+			);
+
+			$this->EE->dbforge->add_field($fields);
+			$this->EE->dbforge->add_key('id', TRUE);
+			$this->EE->dbforge->create_table('tareo');
+
+			$data = array(
+				array(
+					'code' => 'BAJA',
+					'description' => 'Personal de Baja'
+				),
+				array(
+					'code' => 'D',
+					'description' => 'Diurno'
+				),
+				array(
+					'code' => 'F',
+					'description' => 'Falta'
+				),
+				array(
+					'code' => 'N',
+					'description' => 'Noche'
+				),
+				array(
+					'code' => 'X',
+					'description' => 'Descanso'
+				)
+			);
+
+			$this->EE->db->insert_batch('tareo', $data);
+
+			unset($fields);
+			unset($data);
+		}
+
 		$fields = array(
 			'id' => array('type' => 'int', 'unsigned' => TRUE, 'auto_increment' => TRUE),
-			'code' => array('type' => 'varchar', 'constraint' => '250', 'null' => FALSE),
-			'description' => array('type' => 'varchar', 'constraint' => '250', 'null' => FALSE)
+			'post_id' => array('type' => 'int', 'unsigned' => TRUE, 'null' => FALSE), 
+			'member_id' => array('type' => 'int', 'unsigned' => TRUE, 'null' => FALSE), 
+			'like' => array('type' => 'char', 'constraint' => '1', 'null' => FALSE, 'default' => 'n'), 
+			'like_date' => array('type' => 'int', 'constraint' => '10', 'unsigned' => TRUE, 'default' => '0', 'null' => FALSE)
 		);
 
 		$this->EE->dbforge->add_field($fields);
 		$this->EE->dbforge->add_key('id', TRUE);
-		$this->EE->dbforge->create_table('tareo');
-
-		$data = array(
-			array(
-				'code' => 'BAJA',
-				'description' => 'Personal de Baja'
-			),
-			array(
-				'code' => 'D',
-				'description' => 'Diurno'
-			),
-			array(
-				'code' => 'F',
-				'description' => 'Falta'
-			),
-			array(
-				'code' => 'N',
-				'description' => 'Noche'
-			),
-			array(
-				'code' => 'X',
-				'description' => 'Descanso'
-			)
-		);
-
-		$this->EE->db->insert_batch('tareo', $data);
+		$this->EE->dbforge->create_table('wall_like');
 
 		unset($fields);
-		unset($data);
 
 		$fields = array(
 			'id' => array('type' => 'int', 'unsigned' => TRUE),
@@ -211,6 +227,10 @@ class Wall_upd {
 			array(
 				"class" => $this->module_name,
 				"method" => "comment_post"
+			),
+			array(
+				"class" => $this->module_name,
+				"method" => "like_post"
 			)
 		);
 
@@ -244,6 +264,7 @@ class Wall_upd {
 		$this->EE->db->where("class", $this->module_name."_mcp");
 		$this->EE->db->delete("actions");
 
+		$this->EE->dbforge->drop_table("wall_like");
 		$this->EE->dbforge->drop_table("wall_status_category");
 		$this->EE->dbforge->drop_table("wall_status");
 		$this->EE->dbforge->drop_table("wall_comment");

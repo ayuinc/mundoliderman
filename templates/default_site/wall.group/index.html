@@ -107,12 +107,14 @@
                       <a href="" class="btn-comentar text-not-underline fz-15 hidden-lg hidden-md">Comentar &nbsp</a><!--movil-->
                       <img src="{site_url}frontend/app/assets/img/Icono_Comentar.png" alt="">
                     </li>
-                    <li class="display-ib pl-7 like-container">
-                      <a href="" class="like text-not-underline hidden-xs hidden-sm">Me gusta &nbsp</a>
-                      <a href="" class="like text-not-underline fz-15 hidden-lg hidden-md">Me gusta &nbsp</a><!--movil-->
-                      <img src="{site_url}frontend/app/assets/img/corazon_02.png" alt="" class="img-like">
-                      <img src="{site_url}frontend/app/assets/img/corazon_01.png" alt="" class="img-like hidden">
-                    </li>
+                    {exp:wall:like_post_form form_id="" form_class="" post_id="{post_id}" member_id="{member_id}"}
+                      <li class="display-ib pl-7 like-container">
+                        <a href="" class="like text-not-underline hidden-xs hidden-sm">Me gusta &nbsp</a>
+                        <a href="" class="like text-not-underline fz-15 hidden-lg hidden-md">Me gusta &nbsp</a><!--movil-->
+                        <img src="{site_url}frontend/app/assets/img/corazon_02.png" alt="" class="img-like">
+                        <img src="{site_url}frontend/app/assets/img/corazon_01.png" alt="" class="img-like hidden">
+                      </li>
+                    {/exp:wall:like_post_form}
                   </ul>
                   <ul class="col-xs-5 ph-0 mv-0 text-right">
                     <li class="display-ib">

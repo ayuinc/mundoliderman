@@ -44,7 +44,7 @@
                   </button>
                 {/exp:friends:status_form}
               </div>
-              {exp:friends:status dynamic="off"}
+              {exp:wall:status member_id="{if segment_2 == 'index'} {segment_3} {if:else} {segment_2} {/if}"}
                 <div class="post-1 post bg-white pl-28 pr-42 pt-28 pb-28 mt-42 ph-14-xs">
                   <div class="clearfix">
                     <div class="col-xs-2 pr-0 pl-7 pt-7-xs">
@@ -53,22 +53,22 @@
                     <div class="name col-xs-10 pl-0 pl-14-xs">
                       <div class="info-usuario pl-7 row">
                         <div class="col-md-9 hidden-xs hidden-sm">
-                          <span class="categoria text-uppercase fz-10 text-primary le-1-5">{friends_category_name}</span>
+                          <span class="categoria text-uppercase fz-10 text-primary le-1-5">{post_category_name}</span>
                           <span class="fz-10 text-gray-dark pl-7"><a href="">editar</a></span>
-                          <h5 class="text-gray-darker m-0">{friends_screen_name}</h5>
-                          <p class="fz-10 m-0 text-gray pt-7-xs"><a href="">Hace 3 horas. {friends_status_date format="%F %j, %Y"}</a></p>
+                          <h5 class="text-gray-darker m-0">{post_screen_name}</h5>
+                          <p class="fz-10 m-0 text-gray pt-7-xs"><a href="">{post_status_date:relative past="%s ago"}</a></p>
                         </div>
                         <div class="col-xs-9 hidden-lg hidden-md">
-                          <span class="categoria text-uppercase fz-13 text-primary le-1-5">{friends_category_name}</span>
-                          <h5 class="text-gray-darker m-0 fz-22">{friends_screen_name}</h5>
-                          <p class="fz-14 m-0 text-gray pt-7-xs"><a href="">Hace 3 horas. {friends_status_date format="%F %j, %Y"}</a></p>
+                          <span class="categoria text-uppercase fz-13 text-primary le-1-5">{post_category_name}</span>
+                          <h5 class="text-gray-darker m-0 fz-22">{post_screen_name}</h5>
+                          <p class="fz-14 m-0 text-gray pt-7-xs"><a href="">{post_status_date:relative past="%s ago"}</a></p>
                         </div>
                       </div>
                     </div>
                     <div class="col-md-10 col-md-offset-2 col-xs-12 pl-0 ph-0-xs">
-                      <p class="parrafo pt-14 ph-7 text-gray-darker">{friends_status}</p>
-                      {if friends_image}
-                        <div class="img-publicacion w-100 ph-7 text-center"><img src="{site_url}{friends_image}" alt="" class="w-100"></div>
+                      <p class="parrafo pt-14 ph-7 text-gray-darker">{post_content}</p>
+                      {if post_image_path}
+                        <div class="img-publicacion w-100 ph-7 pt-14 text-center"><img src="{site_url}{post_image_path}" alt="" class="w-100"></div>
                       {/if}
                       <div class="clearfix ph-0 mh-7 thin text-gray pt-7 pb-7 border-bottom-gray-lighter fz-12">
                         <ul class="col-xs-7 ph-0 mv-0">
@@ -77,12 +77,14 @@
                             <a href="" class="btn-comentar text-not-underline fz-15 hidden-lg hidden-md">Comentar &nbsp</a><!--movil-->
                             <img src="{site_url}frontend/app/assets/img/Icono_Comentar.png" alt="">
                           </li>
+                          {exp:wall:like_post_form form_id="" form_class="" post_id="{post_id}" member_id="{member_id}"}
                           <li class="display-ib pl-14 like-container">
                             <a href="" class="like text-not-underline hidden-xs hidden-sm">Me gusta &nbsp</a>
                             <a href="" class="like text-not-underline fz-15 hidden-lg hidden-md">Me gusta &nbsp</a><!--movil-->
                             <img src="{site_url}frontend/app/assets/img/corazon_02.png" alt="" class="img-like">
                             <img src="{site_url}frontend/app/assets/img/corazon_01.png" alt="" class="img-like hidden">
                           </li>
+                          {/exp:wall:like_post_form}
                         </ul>
                         <ul class="col-xs-5 ph-0 mv-0 text-right">
                           <li class="display-ib">
@@ -99,27 +101,31 @@
                       <div class="comentar scroll-down pt-21 pt-35-xs hidden">
                         <div class="area-respuesta pb-21 clearfix hidden">
                           <div class="col-xs-2 pr-0">
-                            <div class="img-respuesta bg-img-block-center brp-100" style="background-image: url(assets/img/Wall/Cara-2.png)"></div>
+                            <div class="img-respuesta bg-img-block-center brp-100" style="background-image: url({site_url}frontend/app/assets/img/Carita.png)"></div>
                           </div>
                           <div class="col-xs-10 lh-1 pl-0 pl-21-xs hidden-xs hidden-sm">
-                            <span class="fz-14 text-success pr-7">Santiago López</span>
-                            <textarea name="text" id="" onkeyup="auto_grow(this)" placeholder="Escribe un comentario..." class="w-100 mt-7 fz-14 light p-7 serif text-gray-darker book"></textarea>
+                            <span class="fz-14 text-success pr-7">{screen_name}</span>
+                            {exp:wall:comment_post_form form_id="" form_class=""}
+                            <textarea name="comment" id="" onkeyup="auto_grow(this)" placeholder="Escribe un comentario..." class="w-100 mt-7 fz-14 light p-7 serif text-gray-darker book" min-length="1"></textarea>
+                            <input type="submit" name="submit_comment_{post_id}" id="submit_comment" class="comment_submit hidden">
+                            {/exp:wall:comment_post_form}
                           </div>
                           <div class="col-xs-10 lh-1 pl-0 pl-21-xs hidden-lg hidden-md">
                             <span class="fz-20 text-success pr-7">Santiago López</span>
                             <textarea name="text" id="" onkeyup="auto_grow(this)" placeholder="Escribe un comentario..." class="w-100 mt-7 fz-17 light p-7 serif text-gray-darker book"></textarea>
                           </div>
                         </div>
+                        {exp:wall:comment post_id="{post_id}"}
                         <div class="clearfix conteiner-answer">
                           <div class="col-xs-2 pr-0">
                             <div class="img-respuesta bg-img-block-center brp-100" style="background-image: url({site_url}frontend/app/assets/img/Wall/Carita2.png)"></div>
                           </div>
                           <div class="col-xs-10 lh-1 pl-0 pl-21-xs">
-                            <span class="fz-14 text-success pr-7">Cecilia Ramírez</span>
+                            <span class="fz-14 text-success pr-7">{comment_screen_name}</span>
                             <img src="{site_url}frontend/app/assets/img/forward.png" alt="" class="display-ib">
                             <span class="text-gray fz-10 light">Ivo Sanoa</span>
-                            <span class="text-gray fz-10 light pl-7">hace 9 días</span>
-                            <p class="fz-14 pt-7 mb-0 pb-7 parrafo">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam quidem corrupti optio sed facilis.</p>
+                            <span class="text-gray fz-10 light pl-7">{comment_date:relative past="%s ago"}</span>
+                            <p class="fz-14 pt-7 mb-0 pb-7 parrafo">{comment}</p>
                             <div class="hidden-xs hidden-sm">
                               <span class="fz-8 text-gray-light">1</span>
                               <img src="{site_url}frontend/app/assets/img/Flecha_Abajo.png" alt="" class="w-6">
@@ -141,7 +147,7 @@
                               <div class="img-respuesta bg-img-block-center brp-100" style="background-image: url({site_url}frontend/app/assets/img/Wall/Carita2.png)"></div>
                             </div>
                             <div class="col-xs-10 pl-0 pl-21-xs">
-                              <span class="fz-14 text-success pr-7">Cecilia Ramírez</span>
+                              <span class="fz-14 text-success pr-7">{screen_name}</span>
                               <textarea name="text" id="" onkeyup="auto_grow(this)" placeholder="Escribe una respuesta..." class="w-100 mt-7 fz-14 light ph-7 serif text-gray-darker book"></textarea>
                             </div>
                           </div>
@@ -153,11 +159,12 @@
                             </div>
                           </div>
                         </div>
+                        {/exp:wall:comment}
                       </div>
                     </div>
                   </div>
                 </div>
-              {/exp:friends:status}
+              {/exp:wall:status}
           </div>
         </section>
       </div>
