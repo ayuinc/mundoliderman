@@ -5,10 +5,10 @@
 {embed=includes/head titulo="Mundo Liderman - Perfil"}
   
   <div class="site-wrapper"> <!-- Body -->
-    {embed=includes/nav-main}
+    {embed="includes/nav-main"}
     <main class="site-content clearfix pb-42 mb-42-xs">
-      {embed=includes/menu-movil}
-      {embed=includes/banner-alerta}
+      {embed="includes/menu-movil"}
+      {embed="includes/banner-alerta"}
       <div class="box-gray bg-gray-darker w-100 hidden-lg hdden-md"></div>
       <div class="container-md pb-42-xs mb-42-xs">
         <section id="menu-vertical" class="col-md-4 pr-42 pl-0 hidden-xs hidden-sm">
@@ -16,7 +16,7 @@
         </section>
         <section id="tareo-contenido" class="col-md-8 pb-42 ph-0-xs">
           <div class="container pt-42 w-100 ph-0">
-            {embed=includes/perfil-servicios}
+            {embed=includes/perfil-servicios miembro="{if segment_2 == 'index'} {segment_3} {if:else} {segment_2} {/if}"}
               <div id="comentar" class="bg-white mt-42">
                 {exp:friends:status_form return="perfil" form_id="status_form" form_class="bg-success" enctype="multipart/form-data"}
                   <div class="bg-success text-right ph-21 hidden-xs hidden-sm">
@@ -77,7 +77,7 @@
                             <a href="" class="btn-comentar text-not-underline fz-15 hidden-lg hidden-md">Comentar &nbsp</a><!--movil-->
                             <img src="{site_url}frontend/app/assets/img/Icono_Comentar.png" alt="">
                           </li>
-                          {exp:wall:like_post_form form_id="" form_class="" post_id="{post_id}" member_id="{member_id}"}
+                          {exp:wall:like_post_form form_id="" form_class="" post_id="{post_id}"}
                           <li class="display-ib pl-14 like-container">
                             <a href="" class="like text-not-underline hidden-xs hidden-sm">Me gusta &nbsp</a>
                             <a href="" class="like text-not-underline fz-15 hidden-lg hidden-md">Me gusta &nbsp</a><!--movil-->

@@ -120,16 +120,7 @@ class Wall {
 	public function status()
 	{
 		$member_id = $this->EE->TMPL->fetch_param("member_id");
-		
-		$sql = "SELECT ws.id as post_id, ws.member_id as post_user_id, m.screen_name as post_screen_name, m.username as post_username, 
-				ws.category_id as post_category_id, wsc.name as post_category_name, ws.content as post_content, 
-				ws.image_path as post_image_path, ws.status_date as post_status_date
-				from exp_wall_status ws 
-				inner join exp_members m on ws.member_id = m.member_id 
-				inner join exp_wall_status_category wsc on ws.category_id = wsc.id
-				where ws.active = 'y'
-				order by ws.status_date desc";
-
+	
 		$this->EE->db->select("ws.id as post_id, ws.member_id as post_user_id, m.screen_name as post_screen_name, m.username as post_username,
 										ws.category_id as post_category_id, wsc.name as post_category_name, ws.content as post_content,
 										ws.image_path as post_image_path, ws.status_date as post_status_date")
