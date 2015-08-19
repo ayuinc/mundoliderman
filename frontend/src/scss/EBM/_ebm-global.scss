@@ -36,6 +36,35 @@ body {
 	  }
 	}
 
+	/*CALENDAR COLORS*/
+	$color: colour; 
+
+	/*Ausencia diurna*/
+	@for $i from 1 through 5 {
+		.#{$color}#{$i*2} {
+			color: rgb(216, 73, 40)!important;
+		}
+	}
+
+	/*Asistencua diurna*/
+	@for $i from 1 through 14 {
+		.#{$color}#{$i*2 - 1} {
+			color: rgb(81, 186, 110)!important;
+		}
+	}
+
+	/*Asistencia nocturna*/
+	@for $i from 6 through 15 {
+		.#{$color}#{$i*2} {
+			color: #19572A!important;
+		}
+	}
+
+	/*Ausencia nocturna*/
+	.colour29, .colour31 {
+		color: #4A0101;
+	}
+
 	.w-100 {
 		width: 100%;
 		font-size: (16px)rem;
@@ -226,6 +255,7 @@ header {
   // right: 0;
   .fixed {
 		z-index: 100;
+		box-shadow: 0px 3px 6px 0px rgba(50, 50, 50, 0.1);
   }
 	h1 {
 		font-size: 30px;
@@ -497,6 +527,21 @@ footer > div {
 	width: 13px;
 	height: 13px;
 }
+
+.day-colors {
+	@include transform(translateX(-50%));
+	left: 50%;
+	.color-turno {
+		width: 13px;
+		height: 13px;
+	}
+}
+.bg-danger-dark {
+	background-color: #4A0101;
+}
+.bg-info-dark {
+	background-color: #19572A;
+}
 /*CONTENIDO TAREO*/
 #tareo-contenido {
 	.container {
@@ -554,6 +599,9 @@ footer > div {
 		position: absolute;
 	  right: 10%;
 	}
+}
+.total {
+	border: 1px solid black;
 }
 /*LIDERNET*/
 .img-articulo {
@@ -625,6 +673,21 @@ footer > div {
 	  max-width: 100%;
 	  height: auto;
 	}
+}
+.eraser {
+	.inactivo {
+		cursor: pointer;
+		@include transition (all .3s ease-in-out);
+	}
+	.activo {
+		@include transition (all .3s ease-in-out);
+		right: 0;
+	}
+}
+.desaparecer {
+	opacity: 0;
+	@include transition (all .3s ease-in);
+	display: none;
 }
 /*PERFIL-EDITABLE*/
 #perfil-contenido {
@@ -749,6 +812,27 @@ footer > div {
 		width: 660px;
 	}
 }
+
+/*RESULTS SEARCH*/
+#search-results {
+	border: 1px solid #e7e7e7;
+	.resultados {
+		border-bottom: 1px solid #e7e7e7;
+		.btn:hover {
+			border-color: #f94211;
+			color: #f94211;
+		}
+		.search-img {
+			width: 75px;
+			height: 75px;
+		}
+	}
+}
+
+/*ERROR*/
+
+
+
 @media #{$sm-down} {
 	/*LOGIN*/
 	.container-login {
@@ -1044,6 +1128,10 @@ footer > div {
 		}
 	}
 	.day-colors {
+		.color-turno {
+			width: 15px;
+			height: 15px;
+		}
 		span {
 			font-size: 18px!important;
 			font-size: rem(18px)!important;
@@ -1051,6 +1139,30 @@ footer > div {
 	}
 	.volumen {
     right: -12%!important;
+	}
+
+	/*RESULTS SEARCH*/
+	.nombre-busqueda {
+		img {
+			width: 32px;
+		}
+	}
+	#search-results {
+		border: 1px solid #C3C3C3;;
+		.resultados {
+			border-bottom: 1px solid #C3C3C3!important;
+			.col-xs-7 {
+				h3 {
+					font-size: 20px!important;
+				}
+				h4 {
+					font-size: 12px!important;
+				}
+				span{
+					font-size: 12px;
+				}
+			}
+		}
 	}
 
 	/*FOOTER*/

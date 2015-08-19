@@ -1,0 +1,31 @@
+{if logged_out}
+  {redirect="login"}
+{/if}
+
+{embed="includes/head" titulo="Mundo Liderman - Muro"}
+
+<div class="site-wrapper"> <!-- Body -->
+  {embed="includes/nav-main"}
+  <main class="site-content pb-70 minhp-100 mb-0-xs" role="main">
+    {embed="includes/menu-movil"}
+    {embed="includes/banner-alerta"}
+    <div class="container-md container-index  pt-42 clearfix mb-70 ph-14 pb-70-xs">
+      <div id="box-left" class="col-md-8 pl-0 ph-0-xs">
+        <div class="nombre-busqueda mb-21 hidden-lg hidden-md">
+          <img src="{site_url}frontend/app/assets/img/Icono_Buscar.png" alt="" class="pr-14 pb-7">
+          <span class="fz-26">Buscaste a: Claudia</span>
+        </div>
+        <div><p class="aviso-error pt-70 mt-70 pl-14">Tu búsqueda no ha generado resultados.</br>Intenta de nuevo.</p></div>
+      </div>
+      <div id="box-right" class="col-md-4 pl-21 pr-0 hidden-xs hidden-sm">
+        {embed="includes/modulo-noticias"}
+      </div>
+    </div>
+  </main>
+  {embed="includes/radio-urbe"}
+</div>
+
+{embed="includes/footer"}
+<script src="{site_url}frontend/app/assets/js/aviso-control.js"></script>
+<script src="{site_url}frontend/app/assets/js/textarea-control.js"></script>
+</html>

@@ -73,7 +73,7 @@
 					idx = $cell.index(),
 					$content = $cell.children( 'div' ),
 					dateProp = {
-						day : $cell.children( 'span.fc-date' ).text(),
+						day : $cell.children( 'a span.fc-date' ).text(),
 						month : self.month + 1,
 						monthname : self.options.displayMonthAbbr ? self.options.monthabbrs[ self.month ] : self.options.months[ self.month ],
 						year : self.year,
@@ -155,12 +155,13 @@
 						content = '';
 					
 					if ( day <= monthLength && ( i > 0 || j >= p ) ) {
-
-						inner += '<span class="fc-date">' + day + '</span><span class="fc-weekday">' + this.options.weekabbrs[ j + this.options.startIn > 6 ? j + this.options.startIn - 6 - 1 : j + this.options.startIn ] + '</span>';
-
+						
+						inner += '<a href="#calendarDay'+day+'" class="smooth colour'+day+'"><span class="fc-date">' + day + '</span></a><span class="fc-weekday">' + this.options.weekabbrs[ j + this.options.startIn > 6 ? j + this.options.startIn - 6 - 1 : j + this.options.startIn ] + '</span>';
+						
 						// this day is:
 						var strdate = ( this.month + 1 < 10 ? '0' + ( this.month + 1 ) : this.month + 1 ) + '-' + ( day < 10 ? '0' + day : day ) + '-' + this.year,
 							dayData = this.caldata[ strdate ];
+
 
 						if( dayData ) {
 							content = dayData;
@@ -171,10 +172,10 @@
 						}
 
 						++day;
-
 					}
 					else {
 						today = false;
+						console.log("hola");
 					}
 
 					var cellClasses = today ? 'fc-today ' : '';
@@ -199,6 +200,7 @@
 
 			}
 			html += '</div></div>';
+
 
 			return html;
 

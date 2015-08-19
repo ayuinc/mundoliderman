@@ -1030,6 +1030,11 @@ html::-webkit-scrollbar {
 
 body {
   /*UTILITIES*/
+  /*CALENDAR COLORS*/
+  /*Ausencia diurna*/
+  /*Asistencua diurna*/
+  /*Asistencia nocturna*/
+  /*Ausencia nocturna*/
 }
 body h1, body h2, body h3, body h4, body h5, body span {
   font-family: "Oswald", Helvetica, Arial, sans-serif;
@@ -1181,6 +1186,96 @@ body .fz-39 {
 body .fz-40 {
   font-size: 40px !important;
   font-size: 2.5rem !important;
+}
+body .colour2 {
+  color: #d84928 !important;
+}
+body .colour4 {
+  color: #d84928 !important;
+}
+body .colour6 {
+  color: #d84928 !important;
+}
+body .colour8 {
+  color: #d84928 !important;
+}
+body .colour10 {
+  color: #d84928 !important;
+}
+body .colour1 {
+  color: #51ba6e !important;
+}
+body .colour3 {
+  color: #51ba6e !important;
+}
+body .colour5 {
+  color: #51ba6e !important;
+}
+body .colour7 {
+  color: #51ba6e !important;
+}
+body .colour9 {
+  color: #51ba6e !important;
+}
+body .colour11 {
+  color: #51ba6e !important;
+}
+body .colour13 {
+  color: #51ba6e !important;
+}
+body .colour15 {
+  color: #51ba6e !important;
+}
+body .colour17 {
+  color: #51ba6e !important;
+}
+body .colour19 {
+  color: #51ba6e !important;
+}
+body .colour21 {
+  color: #51ba6e !important;
+}
+body .colour23 {
+  color: #51ba6e !important;
+}
+body .colour25 {
+  color: #51ba6e !important;
+}
+body .colour27 {
+  color: #51ba6e !important;
+}
+body .colour12 {
+  color: #19572A !important;
+}
+body .colour14 {
+  color: #19572A !important;
+}
+body .colour16 {
+  color: #19572A !important;
+}
+body .colour18 {
+  color: #19572A !important;
+}
+body .colour20 {
+  color: #19572A !important;
+}
+body .colour22 {
+  color: #19572A !important;
+}
+body .colour24 {
+  color: #19572A !important;
+}
+body .colour26 {
+  color: #19572A !important;
+}
+body .colour28 {
+  color: #19572A !important;
+}
+body .colour30 {
+  color: #19572A !important;
+}
+body .colour29, body .colour31 {
+  color: #4A0101;
 }
 body .w-100 {
   width: 100%;
@@ -1399,6 +1494,7 @@ header {
 }
 header .fixed {
   z-index: 100;
+  box-shadow: 0px 3px 6px 0px rgba(50, 50, 50, 0.1);
 }
 header h1 {
   font-size: 30px;
@@ -1738,6 +1834,27 @@ footer > div .lista p {
   height: 13px;
 }
 
+.day-colors {
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  left: 50%;
+}
+.day-colors .color-turno {
+  width: 13px;
+  height: 13px;
+}
+
+.bg-danger-dark {
+  background-color: #4A0101;
+}
+
+.bg-info-dark {
+  background-color: #19572A;
+}
+
 /*CONTENIDO TAREO*/
 #tareo-contenido .container, #perfil-contenido .container {
   position: relative;
@@ -1815,6 +1932,10 @@ footer > div .lista p {
   right: 10%;
 }
 
+.total {
+  border: 1px solid black;
+}
+
 /*LIDERNET*/
 .img-articulo {
   width: 100%;
@@ -1882,6 +2003,27 @@ footer > div .lista p {
   width: auto;
   max-width: 100%;
   height: auto;
+}
+
+.eraser .inactivo {
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.eraser .activo {
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  right: 0;
+}
+
+.desaparecer {
+  opacity: 0;
+  -webkit-transition: all 0.3s ease-in;
+  -moz-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
+  display: none;
 }
 
 /*PERFIL-EDITABLE*/
@@ -2041,6 +2183,23 @@ footer > div .lista p {
   width: 660px;
 }
 
+/*RESULTS SEARCH*/
+#search-results {
+  border: 1px solid #e7e7e7;
+}
+#search-results .resultados {
+  border-bottom: 1px solid #e7e7e7;
+}
+#search-results .resultados .btn:hover {
+  border-color: #f94211;
+  color: #f94211;
+}
+#search-results .resultados .search-img {
+  width: 75px;
+  height: 75px;
+}
+
+/*ERROR*/
 @media only screen and (max-width: 768px) {
   /*LOGIN*/
   .container-login .submit img {
@@ -2359,6 +2518,10 @@ footer > div .lista p {
     font-size: 15px;
   }
 
+  .day-colors .color-turno {
+    width: 15px;
+    height: 15px;
+  }
   .day-colors span {
     font-size: 18px !important;
     font-size: 1.125rem !important;
@@ -2366,6 +2529,27 @@ footer > div .lista p {
 
   .volumen {
     right: -12% !important;
+  }
+
+  /*RESULTS SEARCH*/
+  .nombre-busqueda img {
+    width: 32px;
+  }
+
+  #search-results {
+    border: 1px solid #C3C3C3;
+  }
+  #search-results .resultados {
+    border-bottom: 1px solid #C3C3C3 !important;
+  }
+  #search-results .resultados .col-xs-7 h3 {
+    font-size: 20px !important;
+  }
+  #search-results .resultados .col-xs-7 h4 {
+    font-size: 12px !important;
+  }
+  #search-results .resultados .col-xs-7 span {
+    font-size: 12px;
   }
 
   /*FOOTER*/

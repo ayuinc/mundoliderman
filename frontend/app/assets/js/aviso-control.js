@@ -1,5 +1,6 @@
 $(document).ready(function(){
-	/*$(".aviso").click(function(){
+	
+	$(".aviso").click(function(){
 		$(this).parent().find(".btn-aviso1").toggleClass("hidden");
 		$(this).parent().find(".btn-aviso2").toggleClass("hidden");
 	});*/
@@ -24,5 +25,11 @@ $(document).ready(function(){
 			$(like_img).addClass("hidden");
 			$(unlike_img).removeClass("hidden");
 		}
+	});
+
+	/*BTN ELIMINAR PUBLICACIÓN*/
+	$(".eraser").hover(function(){
+		$(".activo").toggleClass("desaparecer");
+		$(".inactivo").toggleClass("desaparecer");
 	});
 });
