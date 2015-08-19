@@ -156,18 +156,12 @@
 					
 					if ( day <= monthLength && ( i > 0 || j >= p ) ) {
 						
-						inner += '<a href="#calendarDay'+day+'" class="smooth"><span class="fc-date">' + day + '</span></a><span class="fc-weekday">' + this.options.weekabbrs[ j + this.options.startIn > 6 ? j + this.options.startIn - 6 - 1 : j + this.options.startIn ] + '</span>';
+						inner += '<a href="#calendarDay'+day+'" class="smooth colour'+day+'"><span class="fc-date">' + day + '</span></a><span class="fc-weekday">' + this.options.weekabbrs[ j + this.options.startIn > 6 ? j + this.options.startIn - 6 - 1 : j + this.options.startIn ] + '</span>';
 						
 						// this day is:
 						var strdate = ( this.month + 1 < 10 ? '0' + ( this.month + 1 ) : this.month + 1 ) + '-' + ( day < 10 ? '0' + day : day ) + '-' + this.year,
 							dayData = this.caldata[ strdate ];
 
-						// var contentSmooth = document.getElementById("calendarDay");
-						// var valor = contentSmooth.textContent;
-
-						// if ( day == 10) {
-						// 	$(".fc-date").addClass("text-info");
-						// }
 
 						if( dayData ) {
 							content = dayData;

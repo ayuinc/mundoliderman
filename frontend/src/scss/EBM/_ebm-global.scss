@@ -36,6 +36,35 @@ body {
 	  }
 	}
 
+	/*CALENDAR COLORS*/
+	$color: colour; 
+
+	/*Ausencia diurna*/
+	@for $i from 1 through 5 {
+		.#{$color}#{$i*2} {
+			color: rgb(216, 73, 40)!important;
+		}
+	}
+
+	/*Asistencua diurna*/
+	@for $i from 1 through 14 {
+		.#{$color}#{$i*2 - 1} {
+			color: rgb(81, 186, 110)!important;
+		}
+	}
+
+	/*Asistencia nocturna*/
+	@for $i from 6 through 15 {
+		.#{$color}#{$i*2} {
+			color: #19572A!important;
+		}
+	}
+
+	/*Ausencia nocturna*/
+	.colour29, .colour31 {
+		color: #4A0101;
+	}
+
 	.w-100 {
 		width: 100%;
 		font-size: (16px)rem;
@@ -498,6 +527,7 @@ footer > div {
 	width: 13px;
 	height: 13px;
 }
+
 .day-colors {
 	@include transform(translateX(-50%));
 	left: 50%;
