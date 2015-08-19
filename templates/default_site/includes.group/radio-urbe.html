@@ -9,12 +9,17 @@
           <div class="col-md-1 col-xs-2 pl-0 text-right"><img src="{site_url}frontend/app/assets/img/Wall/Icono_Senal.png" alt="" class="antena"></div>
           <div class="col-md-8 col-xs-9 p-0">
             <h5 class="text-uppercase m-0">AHORA EN VIVO</h5>
-            <h4 class="text-uppercase m-0 text-white fz-22">La hora del vigilante</h4>
-            <p class="text-gray-lighter m-0 fz-12">Con Giselle Collao. Lunes a Viernes de 9 a 11 pm</p>
+            {exp:channel:entries channel="radio_programacion" search:al_aire_programa="Si" limit="1"}
+            <h4 class="text-uppercase m-0 text-white fz-22">{title}</h4>
+            <p class="text-gray-lighter m-0 fz-12">{nombre_programa}. {horario_programa}</p>
+            {/exp:channel:entries}
           </div>
         </div> 
         <div class="col-md-3 pr-35 text-right {embed:clase}">
+          <!-- Audio -->
           <iframe scrolling="No" frameborder="0" height=“285” src="http://www.wklivehost.info/playersjw/radiourberadio/radiourbeaudio285.html" width="100%"> Texto alternativo para navegadores que no aceptan iframes </iframe> 
+          <!-- Video -->
+          <iframe scrolling="No" frameborder="0" height="285" src="http://www.wklivehost.info/playersjw/radiourbe/radiourbev2.html" width="100%"> Texto alternativo para navegadores que no aceptan iframes </iframe>
           <a href=""><img class="pt-14 volumen" src="{site_url}frontend/app/assets/img/Wall/Icono_Volumen.png" alt=""></a> 
         </div>
       </div>
@@ -24,26 +29,13 @@
         </div>
         <div class="col-md-6 col-xs-12 pl-42">
           <ul class="lista text-white pt-7 ml-14">
+            {exp:channel:entries channel="radio_programacion" search:al_aire_programa="No" limit="5"}
             <li class="text-white">
-              <h2 class="fz-1">URBE AL DÍA</h2>
-              <p class="text-gray-lighter">Con Mauricio Calvo Pérez. Lunes a Viernes de 10am a 11am</p>
+              <h2 class="fz-1">{title}</h2>
+              <p class="text-gray-lighter">{nombre_programa}. {horario_programa}</p>
             </li>
             <li>
-              <h2 class="fz-1">ESPACIO IMSOMNIO</h2>
-              <p class="text-gray-lighter">Escucha lo mejor del rock peruano. Lunes a Viernes de 10am a 11am</p>
-            </li>
-            <li>
-              <h2 class="fz-1 lh-1-3">LA HORA DE LÍDERMAN PARA EL MUNDO</h2>
-              <p class="text-gray-lighter">Con Mauricio Calvo Pérez. Lunes a Viernes de 10am a 11am</p>
-            </li>
-            <li>
-              <h2 class="fz-1">LIDERMANÍA</h2>
-              <p class="text-gray-lighter">Con Mauricio Calvo Pérez. Lunes a Viernes de 10am a 11am</p>
-            </li>
-            <li>
-              <h2 class="fz-1">CAPACITACIONES</h2>
-              <p class="text-gray-lighter">Con Mauricio Calvo Pérez. Lunes a Viernes de 10am a 11am</p>
-            </li>
+            {/exp:channel:entries}
           </ul>
         </div>
       </div>
