@@ -105,7 +105,7 @@ class Friends_status extends Friends
 		//	Get statuses
 		//	----------------------------------------
 
-		$sql	= "SELECT 	fs.status_id 		AS friends_status_id,
+		$sql	= "SELECT distinct	fs.status_id 		AS friends_status_id,
 							fs.member_id 		AS friends_member_id,
 							fs.status 			AS friends_status,
 							fs.status_date 		AS friends_status_date,
