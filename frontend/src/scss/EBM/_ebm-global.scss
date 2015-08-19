@@ -498,6 +498,20 @@ footer > div {
 	width: 13px;
 	height: 13px;
 }
+.day-colors {
+	@include transform(translateX(-50%));
+	left: 50%;
+	.color-turno {
+		width: 13px;
+		height: 13px;
+	}
+}
+.bg-danger-dark {
+	background-color: #4A0101;
+}
+.bg-info-dark {
+	background-color: #19572A;
+}
 /*CONTENIDO TAREO*/
 #tareo-contenido {
 	.container {
@@ -1066,6 +1080,10 @@ footer > div {
 		}
 	}
 	.day-colors {
+		.color-turno {
+			width: 15px;
+			height: 15px;
+		}
 		span {
 			font-size: 18px!important;
 			font-size: rem(18px)!important;

@@ -1739,6 +1739,27 @@ footer > div .lista p {
   height: 13px;
 }
 
+.day-colors {
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  left: 50%;
+}
+.day-colors .color-turno {
+  width: 13px;
+  height: 13px;
+}
+
+.bg-danger-dark {
+  background-color: #4A0101;
+}
+
+.bg-info-dark {
+  background-color: #19572A;
+}
+
 /*CONTENIDO TAREO*/
 #tareo-contenido .container, #perfil-contenido .container {
   position: relative;
@@ -2377,6 +2398,10 @@ footer > div .lista p {
     font-size: 15px;
   }
 
+  .day-colors .color-turno {
+    width: 15px;
+    height: 15px;
+  }
   .day-colors span {
     font-size: 18px !important;
     font-size: 1.125rem !important;
