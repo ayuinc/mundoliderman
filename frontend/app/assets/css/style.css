@@ -1932,6 +1932,10 @@ footer > div .lista p {
   right: 10%;
 }
 
+.total {
+  border: 1px solid black;
+}
+
 /*LIDERNET*/
 .img-articulo {
   width: 100%;
@@ -1999,6 +2003,27 @@ footer > div .lista p {
   width: auto;
   max-width: 100%;
   height: auto;
+}
+
+.eraser .inactivo {
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.eraser .activo {
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  right: 0;
+}
+
+.desaparecer {
+  opacity: 0;
+  -webkit-transition: all 0.3s ease-in;
+  -moz-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
+  display: none;
 }
 
 /*PERFIL-EDITABLE*/

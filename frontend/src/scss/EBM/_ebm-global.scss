@@ -600,6 +600,9 @@ footer > div {
 	  right: 10%;
 	}
 }
+.total {
+	border: 1px solid black;
+}
 /*LIDERNET*/
 .img-articulo {
 	width: 100%;
@@ -670,6 +673,21 @@ footer > div {
 	  max-width: 100%;
 	  height: auto;
 	}
+}
+.eraser {
+	.inactivo {
+		cursor: pointer;
+		@include transition (all .3s ease-in-out);
+	}
+	.activo {
+		@include transition (all .3s ease-in-out);
+		right: 0;
+	}
+}
+.desaparecer {
+	opacity: 0;
+	@include transition (all .3s ease-in);
+	display: none;
 }
 /*PERFIL-EDITABLE*/
 #perfil-contenido {
