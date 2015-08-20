@@ -6,7 +6,7 @@
         </div>
         <div class="ph-21 row">
           <span class="col-md-4 fz-18">Tipo</span>
-          <p class="col-md-8 fz-18 text-gray-darker">{if Tipo != null} {Tipo} {/if}</p>
+          <p class="col-md-8 fz-18 text-gray-darker {if Tipo == 'Merito'}text-info{if:else}text-danger{/if}">{if Tipo != null} {Tipo} {/if}</p>
         </div>
         <div class="ph-21 row border-bottom-gray-lighter">
           <span class="col-md-4 fz-18">Detalle</span>
