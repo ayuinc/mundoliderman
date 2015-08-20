@@ -3,7 +3,7 @@
 {/if}
 
 {exp:webservice:tareo mes="{segment_3}"}
-   <ul class="clearfix pl-7 pv-21 border-bottom-gray-lighter">
+   <ul id="calendarDay{FechaTareo format='%j'}" class="clearfix pl-7 pv-21 border-bottom-gray-lighter">
     <li>
       <span class="col-md-4 col-xs-3 fz-18 pl-0-xs text-gray-dark2">Fecha</span><p class="col-md-8 col-xs-9 fz-18 text-gray-darker">{FechaTareo format="%d-%m-%Y"}</p>
     </li>
@@ -17,4 +17,7 @@
       <span class="col-md-4 col-xs-3 fz-18 pl-0-xs text-gray-dark2">Cargo</span><p class="col-md-8 col-xs-9 fz-18 text-gray-darker">{Cargo}</p>
     </li>
   </ul>
+  <script type="text/javascript">
+    $(".fc-date:contains('{FechaTareo format="%j"}')").parent().addClass("colour{FechaTareo format='%j'}");
+  </script>
 {/exp:webservice:tareo}

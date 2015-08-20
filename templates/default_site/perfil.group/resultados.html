@@ -13,153 +13,27 @@
       <div id="box-left" class="col-md-8 pl-0 ph-0-xs">
         <div class="nombre-busqueda mb-21 hidden-lg hidden-md">
             <img src="{site_url}frontend/app/assets/img/Icono_Buscar.png" alt="" class="pr-14 pb-7">
-            <span class="fz-26">Buscaste a: Claudia</span>
+            <span class="fz-26">Buscaste a: {keywords}</span>
           </div>
           <section id="search-results" class="bg-white minhp-100">
+            {exp:user:results}
             <div class="resultados clearfix pb-28 pt-35 ph-21-xs">
               <div class="col-md-2 col-xs-5 col-md-offset-1">
                 <div class="search-img brp-100"><img src="{site_url}frontend/app/assets/img/Claudia_1.png" alt="" class="w-100"></div>
               </div>
               <div class="col-md-6 col-xs-7 pl-7-xs pr-0-xs">
-                <h3 class="text-gray-darker book m-0 display-ib pr-14 fz-26 lh-1">Claudia López</h3>
-                <h4 class="text-gray fz-16 m-0 pb-7 book">Supervisor, Zona - Unidad</h4>
+                <h3 class="text-gray-darker book m-0 display-ib pr-14 fz-26 lh-1">{screen_name}</h3>
+                <h4 class="text-gray fz-16 m-0 pb-7 book">{if cargo == ""}Cargo{if:else}{cargo}{/if}, {if zona == ""}Zona{if:else}{zona}{/if} - {if unidad == ""}Unidad{if:else}{unidad}{/if}</h4>
                 <img src="{site_url}frontend/app/assets/img/Ubicacion.png" alt="" class="pb-4">
-                <span class="light">Empresa Empleadora</span>
+                <span class="light">{if empresa-empleadora == ""}Liderman{if:else}{empresa-empleadora}{/if}</span>
               </div>
               <div class="col-md-3 text-right pr-28 hidden-xs hidden-sm">
                 <div class="btn btn-default btn-outline btn-gray-light hover-primary pv-0 br-none">
-                  <span class="fz-12">Visitar Perfil</span>
+                  <a href="{site_url}perfil/{member_id}"><span class="fz-12">Visitar Perfil</span></a>
                 </div>
               </div>
             </div>
-            <div class="resultados clearfix pb-28 pt-35 ph-21-xs">
-              <div class="col-md-2 col-xs-5 col-md-offset-1">
-                <div class="search-img brp-100"><img src="{site_url}frontend/app/assets/img/Lopez.png" alt="" class="w-100"></div>
-              </div>
-              <div class="col-md-6 col-xs-7 pl-7-xs pr-0-xs">
-                <h3 class="text-gray-darker book m-0 display-ib pr-14 fz-26 lh-1">Claudia Sánchez</h3>
-                <h4 class="text-gray fz-16 m-0 pb-7 book">Supervisor, Zona - Unidad</h4>
-                <img src="{site_url}frontend/app/assets/img/Ubicacion.png" alt="" class="pb-4">
-                <span class="light">Empresa Empleadora</span>
-              </div>
-              <div class="col-md-3 text-right pr-28 hidden-xs hidden-sm">
-                <div class="btn btn-default btn-outline btn-gray-light hover-primary pv-0 br-none">
-                  <span class="fz-12">Visitar Perfil</span>
-                </div>
-              </div>
-            </div>
-            <div class="resultados clearfix pb-28 pt-35 ph-21-xs">
-              <div class="col-md-2 col-xs-5 col-md-offset-1">
-                <div class="search-img brp-100"><img src="{site_url}frontend/app/assets/img/Caminos.png" alt="" class="w-100"></div>
-              </div>
-              <div class="col-md-6 col-xs-7 pl-7-xs pr-0-xs">
-                <h3 class="text-gray-darker book m-0 display-ib pr-14 fz-26 lh-1">Claudia Caminos</h3>
-                <h4 class="text-gray fz-16 m-0 pb-7 book">Supervisor, Zona - Unidad</h4>
-                <img src="{site_url}frontend/app/assets/img/Ubicacion.png" alt="" class="pb-4">
-                <span class="light">Empresa Empleadora</span>
-              </div>
-              <div class="col-md-3 text-right pr-28 hidden-xs hidden-sm">
-                <div class="btn btn-default btn-outline btn-gray-light hover-primary pv-0 br-none">
-                  <span class="fz-12">Visitar Perfil</span>
-                </div>
-              </div>
-            </div>
-            <div class="resultados clearfix pb-28 pt-35 ph-21-xs">
-              <div class="col-md-2 col-xs-5 col-md-offset-1">
-                <div class="search-img brp-100"><img src="{site_url}frontend/app/assets/img/Cavides.png" alt="" class="w-100"></div>
-              </div>
-              <div class="col-md-6 col-xs-7 pl-7-xs pr-0-xs">
-                <h3 class="text-gray-darker book m-0 display-ib pr-14 fz-26 lh-1">María Claudia Suárez</h3>
-                <h4 class="text-gray fz-16 m-0 pb-7 book">Supervisor, Zona - Unidad</h4>
-                <img src="{site_url}frontend/app/assets/img/Ubicacion.png" alt="" class="pb-4">
-                <span class="light">Empresa Empleadora</span>
-              </div>
-              <div class="col-md-3 text-right pr-28 hidden-xs hidden-sm">
-                <div class="btn btn-default btn-outline btn-gray-light hover-primary pv-0 br-none">
-                  <span class="fz-12">Visitar Perfil</span>
-                </div>
-              </div>
-            </div>
-            <div class="resultados clearfix pb-28 pt-35 ph-21-xs">
-              <div class="col-md-2 col-xs-5 col-md-offset-1">
-                <div class="search-img brp-100"><img src="{site_url}frontend/app/assets/img/Castro.png" alt="" class="w-100"></div>
-              </div>
-              <div class="col-md-6 col-xs-7 pl-7-xs pr-0-xs">
-                <h3 class="text-gray-darker book m-0 display-ib pr-14 fz-26 lh-1">Claudia Castro</h3>
-                <h4 class="text-gray fz-16 m-0 pb-7 book">Supervisor, Zona - Unidad</h4>
-                <img src="{site_url}frontend/app/assets/img/Ubicacion.png" alt="" class="pb-4">
-                <span class="light">Empresa Empleadora</span>
-              </div>
-              <div class="col-md-3 text-right pr-28 hidden-xs hidden-sm">
-                <div class="btn btn-default btn-outline btn-gray-light hover-primary pv-0 br-none">
-                  <span class="fz-12">Visitar Perfil</span>
-                </div>
-              </div>
-            </div>
-            <div class="resultados clearfix pb-28 pt-35 ph-21-xs">
-              <div class="col-md-2 col-xs-5 col-md-offset-1">
-                <div class="search-img brp-100"><img src="{site_url}frontend/app/assets/img/Medina.png" alt="" class="w-100"></div>
-              </div>
-              <div class="col-md-6 col-xs-7 pl-7-xs pr-0-xs">
-                <h3 class="text-gray-darker book m-0 display-ib pr-14 fz-26 lh-1">Claudia Medina</h3>
-                <h4 class="text-gray fz-16 m-0 pb-7 book">Supervisor, Zona - Unidad</h4>
-                <img src="{site_url}frontend/app/assets/img/Ubicacion.png" alt="" class="pb-4">
-                <span class="light">Empresa Empleadora</span>
-              </div>
-              <div class="col-md-3 text-right pr-28 hidden-xs hidden-sm">
-                <div class="btn btn-default btn-outline btn-gray-light hover-primary pv-0 br-none">
-                  <span class="fz-12">Visitar Perfil</span>
-                </div>
-              </div>
-            </div>
-            <div class="resultados clearfix pb-28 pt-35 ph-21-xs">
-              <div class="col-md-2 col-xs-5 col-md-offset-1">
-                <div class="search-img brp-100"><img src="{site_url}frontend/app/assets/img/Cavides.png" alt="" class="w-100"></div>
-              </div>
-              <div class="col-md-6 col-xs-7 pl-7-xs pr-0-xs">
-                <h3 class="text-gray-darker book m-0 display-ib pr-14 fz-26 lh-1">Claudia Torres A.</h3>
-                <h4 class="text-gray fz-16 m-0 pb-7 book">Supervisor, Zona - Unidad</h4>
-                <img src="{site_url}frontend/app/assets/img/Ubicacion.png" alt="" class="pb-4">
-                <span class="light">Empresa Empleadora</span>
-              </div>
-              <div class="col-md-3 text-right pr-28 hidden-xs hidden-sm">
-                <div class="btn btn-default btn-outline btn-gray-light hover-primary pv-0 br-none">
-                  <span class="fz-12">Visitar Perfil</span>
-                </div>
-              </div>
-            </div>
-            <div class="resultados clearfix pb-28 pt-35 ph-21-xs">
-              <div class="col-md-2 col-xs-5 col-md-offset-1">
-                <div class="search-img brp-100"><img src="{site_url}frontend/app/assets/img/Choquehuanca.png" alt="" class="w-100"></div>
-              </div>
-              <div class="col-md-6 col-xs-7 pl-7-xs pr-0-xs">
-                <h3 class="text-gray-darker book m-0 display-ib pr-14 fz-26 lh-1">Claudia Choquehuanca</h3>
-                <h4 class="text-gray fz-16 m-0 pb-7 book">Supervisor, Zona - Unidad</h4>
-                <img src="{site_url}frontend/app/assets/img/Ubicacion.png" alt="" class="pb-4">
-                <span class="light">Empresa Empleadora</span>
-              </div>
-              <div class="col-md-3 text-right pr-28 hidden-xs hidden-sm">
-                <div class="btn btn-default btn-outline btn-gray-light hover-primary pv-0 br-none">
-                  <span class="fz-12">Visitar Perfil</span>
-                </div>
-              </div>
-            </div>
-            <div class="resultados clearfix pb-28 pt-35 ph-21-xs">
-              <div class="col-md-2 col-xs-5 col-md-offset-1">
-                <div class="search-img brp-100"><img src="{site_url}frontend/app/assets/img/Cavides.png" alt="" class="w-100"></div>
-              </div>
-              <div class="col-md-6 col-xs-7 pl-7-xs pr-0-xs">
-                <h3 class="text-gray-darker book m-0 display-ib pr-14 fz-26 lh-1">Claudia Cavides</h3>
-                <h4 class="text-gray fz-16 m-0 pb-7 book">Supervisor, Zona - Unidad</h4>
-                <img src="{site_url}frontend/app/assets/img/Ubicacion.png" alt="" class="pb-4">
-                <span class="light">Empresa Empleadora</span>
-              </div>
-              <div class="col-md-3 text-right pr-28 hidden-xs hidden-sm">
-                <div class="btn btn-default btn-outline btn-gray-light hover-primary pv-0 br-none">
-                  <span class="fz-12">Visitar Perfil</span>
-                </div>
-              </div>
-            </div>
+            {/exp:user:results}
           </section>
       </div>
       <div id="box-right" class="col-md-4 pl-21 pr-0 hidden-xs hidden-sm">

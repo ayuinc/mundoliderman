@@ -15,11 +15,12 @@
       </div>
       <div class="col-md-4 pr-0 hidden-xs hidden-sm">
         {exp:user:search
-          return="user/results"
+          return="perfil/resultados"
           form:class="tool-bar-search-form mt-7 br-5"
         }
           <div class="input-group pr-0 ">
-            <input type="text" id="search_bar" class="form-control input-sm thin pl-14 borderless display-ib" placeholder="Buscar personas, consultas o preguntas...">
+            <input type="text" id="search_bar" class="form-control input-sm thin pl-14 borderless display-ib" placeholder="Buscar personas, consultas o preguntas..." name="keywords">
+            <input type="submit" value="Search" class="hidden">
             <img src="{site_url}frontend/app/assets/img/Icono_Buscar.png" alt="" class="display-ib">
           </div>
         {/exp:user:search}
