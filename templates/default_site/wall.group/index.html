@@ -72,10 +72,10 @@
                     </div>
                   </div>
                   {exp:wall:delete_post_form form_id="" form_class=""}
-                  <div id="" class="col-xs-1 pt-7 text-right eraser relative pl-0">
-                    <img id="delete_post_desktop" src="{site_url}frontend/app/assets/img/Tachito_Inac.png" alt="" class="inactivo">
-                    <div id="" class="pr-14 activo desaparecer absolute bg-white hidden-xs hidden-sm">
-                      <img id="" src="{site_url}frontend/app/assets/img/Tachito_Act.png" alt="">
+                  <div class="col-xs-1 pt-7 text-right eraser relative pl-0">
+                    <img src="{site_url}frontend/app/assets/img/Tachito_Inac.png" alt="" class="inactivo">
+                    <div class="pr-14 activo desaparecer absolute bg-white hidden-xs hidden-sm">
+                      <img class="delete_post" src="{site_url}frontend/app/assets/img/Tachito_Act.png" alt="">
                     </div>
                     <input type="hidden" name="post_id" value="{post_id}">
                     <input type="submit" name="submit" value="submit" id="submit_desktop" class="hidden">
@@ -88,10 +88,10 @@
                       <p class="text-white thin m-0 display-ib pl-7 fz-14">Borrado</p>
                     </div>
                     {exp:wall:delete_post_form form_id="" form_class=""}
-                      <div id="delete_post_rsp" class="aviso btn-aviso2 mh-0 ph-0 bg-primary">
+                      <div class="aviso btn-aviso2 mh-0 ph-0 bg-primary">
                         <div class="circle-green bg-white display-ib"></div>
                         <p class="text-white thin m-0 display-ib pl-0 fz-17 hidden">No resuelto</p>
-                        <p id="delete_rsp" class="text-white thin m-0 display-ib pl-7 fz-14">Borrar</p>  
+                        <p class="text-white thin m-0 display-ib pl-7 fz-14">Borrar</p>  
                       </div>
                       <input type="hidden" name="post_id" value="{post_id}">
                       <input type="submit" name="submit" value="submit" id="submit_rsp" class="hidden">
@@ -250,18 +250,10 @@
         }
       });
 
-      $("#delete_post_desktop").click(function() {
-        alert("Holaaa!");
+      $(".delete_post").click(function(e) {
+        var form = $(this).parent().parent().parent()[0];
+        form.submit.click();
       });
-
-      /*function deletePost(id, form) {
-        $(id).click(function (e) {
-          $(form).click();
-        });
-      }
-
-      deletePost("#delete_post_desktop", "#submit_desktop");
-      deletePost("#delete_post_rsp", "#submit_rsp");*/
     });
 </script>
 
