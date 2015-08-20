@@ -29,7 +29,7 @@ $(document).ready(function(){
 
 	/*BTN ELIMINAR PUBLICACIÓN*/
 	$(".eraser").hover(function(){
-		$(".activo").toggleClass("desaparecer");
-		$(".inactivo").toggleClass("desaparecer");
+		$(this).find(".activo").toggleClass("desaparecer");
+		$(this).find(".inactivo").toggleClass("desaparecer");
 	});
 });

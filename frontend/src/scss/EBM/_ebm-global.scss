@@ -35,7 +35,9 @@ body {
 	    font-size: rem(0px + $i)!important;
 	  }
 	}
-
+	.video table, .video table #mediaspace_wrapper {
+		height: 285px!important;
+	}
 	/*CALENDAR COLORS*/
 	$color: colour; 
 
@@ -478,6 +480,9 @@ footer > div {
 	  left: 50%;
 	  @include transform (translateX(-50%));
 	}
+	.text-fuccia {
+		color: #E83A98 !important;
+	}
 	.audio-video {
 		top: -38px;
 		left: 110px;
@@ -498,6 +503,10 @@ footer > div {
 	    margin-top: 8px;
     }
 	}
+	.audio, .video {
+		height: 285px;
+	}
+	
 	.container {
 		@include flex-column-center;
 	}
@@ -711,6 +720,11 @@ footer > div {
 	.activo {
 		@include transition (all .3s ease-in-out);
 		right: 0;
+		img {
+			width: 22px;
+	    height: 23px;
+	    cursor: pointer;
+    }
 	}
 }
 .desaparecer {

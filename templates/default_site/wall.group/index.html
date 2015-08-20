@@ -51,31 +51,35 @@
               </div>
               <div class="name col-xs-10 pl-0">
                 <div class="info-usuario pl-7 row">
-                  <div class="col-md-8 hidden-xs hidden-sm">
+                  <div class="col-md-7 hidden-xs hidden-sm">
                     <span class="categoria text-uppercase fz-10 text-primary le-1-3">{post_category_name}</span>
                     <h5 class="text-gray-darker m-0">{post_screen_name}</h5>
                     <p class="fz-10 m-0 text-gray"><a href="">{post_status_date:relative past="%s ago"}</a></p>
                   </div>
-                  <div class="col-xs-8 hidden-lg hidden-md pl-35"><!--movil-->
+                  <div class="col-xs-7 hidden-lg hidden-md pl-35"><!--movil-->
                     <span class="categoria text-uppercase fz-11 text-primary le-1-3">{post_category_name}</span>
                     <h5 class="text-gray-darker m-0 fz-22">{post_screen_name}</h5>
                     <p class="fz-14 m-0 text-gray fz-14"><a href="">{post_status_date:relative past="%s ago"}</a></p>
                   </div>
                   <div class="col-xs-4 text-center pt-7 hidden-xs hidden-sm">
-                    <div class="aviso btn-aviso1 mh-21 bg-info hidden">
+                    <div class="aviso btn-aviso1 ml-42 bg-info hidden">
                       <div class="circle-green bg-white display-ib"></div>
-                      <p class="text-white thin m-0 display-ib pl-7 fz-14 hidden">Resuelto</p>
-                      <p class="text-white thin m-0 display-ib pl-7 fz-14">Borrado</p>
+                      <p class="text-white thin m-0 display-ib pl-7 fz-14">Resuelto</p>
                     </div>
-                    {exp:wall:delete_post_form form_id="" form_class=""}
-                      <div id="delete_post_desktop" class="aviso btn-aviso2 mh-14 ph-7 bg-primary">
-                        <div class="circle-green bg-white display-ib"></div>
-                        <p class="text-white thin m-0 display-ib pl-7 fz-14 hidden">No resuelto</p>
-                        <p id="delete_desktop" class="text-white thin m-0 display-ib pl-7 fz-14">Borrar</p>                        
-                      </div>
-                      <input type="hidden" name="post_id" value="{post_id}">
-                      <input type="submit" name="submit" value="submit" id="submit_desktop" class="hidden">
-                    {/exp:wall:delete_post_form}
+                    <div class="aviso btn-aviso2 ml-28 ph-7 bg-primary">
+                      <div class="circle-green bg-white display-ib"></div>
+                      <p class="text-white thin m-0 display-ib pl-7 fz-14">No resuelto</p>                       
+                    </div>
+                  </div>
+                  {exp:wall:delete_post_form form_id="" form_class=""}
+                  <div id="" class="col-xs-1 pt-7 text-right eraser relative pl-0">
+                    <img id="delete_post_desktop" src="{site_url}frontend/app/assets/img/Tachito_Inac.png" alt="" class="inactivo">
+                    <div id="" class="pr-14 activo desaparecer absolute bg-white hidden-xs hidden-sm">
+                      <img id="" src="{site_url}frontend/app/assets/img/Tachito_Act.png" alt="">
+                    </div>
+                    <input type="hidden" name="post_id" value="{post_id}">
+                    <input type="submit" name="submit" value="submit" id="submit_desktop" class="hidden">
+                  {/exp:wall:delete_post_form}
                   </div>
                   <div class="col-xs-4 text-center ph-0 pt-7 hidden-lg hidden-md">
                     <div class="aviso btn-aviso1 bg-info hidden">
@@ -107,7 +111,7 @@
                       <a href="" class="btn-comentar text-not-underline fz-15 hidden-lg hidden-md">Comentar &nbsp</a><!--movil-->
                       <img src="{site_url}frontend/app/assets/img/Icono_Comentar.png" alt="">
                     </li>
-                    {exp:wall:like_post_form form_id="" form_class="" post_id="{post_id}" member_id="{member_id}"}
+                    {exp:wall:like_post_form form_id="" form_class="display-ib" post_id="{post_id}" member_id="{member_id}"}
                       <li class="display-ib pl-7 like-container">
                         <a href="" class="like text-not-underline hidden-xs hidden-sm">Me gusta &nbsp</a>
                         <a href="" class="like text-not-underline fz-15 hidden-lg hidden-md">Me gusta &nbsp</a><!--movil-->
@@ -247,17 +251,17 @@
       });
 
       $("#delete_post_desktop").click(function() {
-        $("#submit_desktop").click();
+        alert("Holaaa!");
       });
 
-      function deletePost(id, form) {
+      /*function deletePost(id, form) {
         $(id).click(function (e) {
           $(form).click();
         });
       }
 
       deletePost("#delete_post_desktop", "#submit_desktop");
-      deletePost("#delete_post_rsp", "#submit_rsp");
+      deletePost("#delete_post_rsp", "#submit_rsp");*/
     });
 </script>
 

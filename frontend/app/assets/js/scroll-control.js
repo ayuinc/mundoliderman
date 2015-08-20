@@ -24,18 +24,26 @@ $(document).ready(function(){
 	$("#up").click(function(event){
 		event.preventDefault();
 		$("footer > div").toggleClass("active-up");
+			/*FRAME VIDEO*/
+		// $(".video object").attr("height", "285px");
 	});
 
 	/*radio urbe*/ 
-	$(".btn-audio").click(function(event){
+	$(".a-audio").click(function(event){
 		event.preventDefault();
-		$(".audio").addClass("hidden");
-		$(".video").removeClass("hidden");
-	});
-	$(".btn-video").click(function(event){
-		event.preventDefault();
+		$("span").removeClass("text-fuccia");
+		$(".btn-audio span").toggleClass("text-fuccia");
 		$(".audio").removeClass("hidden");
 		$(".video").addClass("hidden");
 	});
+	$(".a-video").click(function(event){
+		event.preventDefault();
+		$("span").removeClass("text-fuccia");
+		$(".btn-video span").toggleClass("text-fuccia");
+		$(".audio").addClass("hidden");
+		$(".video").removeClass("hidden");
+	});
+
+
 });
 

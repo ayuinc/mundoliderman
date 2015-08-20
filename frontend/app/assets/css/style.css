@@ -1190,6 +1190,9 @@ body .fz-40 {
   font-size: 40px !important;
   font-size: 2.5rem !important;
 }
+body .video table, body .video table #mediaspace_wrapper {
+  height: 285px !important;
+}
 body .colour2 {
   color: #d84928 !important;
 }
@@ -1761,6 +1764,9 @@ footer > div #up {
   -o-transform: translateX(-50%);
   transform: translateX(-50%);
 }
+footer > div .text-fuccia {
+  color: #E83A98 !important;
+}
 footer > div .audio-video {
   top: -38px;
   left: 110px;
@@ -1778,6 +1784,9 @@ footer > div .audio-video .btn-audio {
   border-left: 1px solid white;
   height: 23px;
   margin-top: 8px;
+}
+footer > div .audio, footer > div .video {
+  height: 285px;
 }
 footer > div .container {
   display: -webkit-box;
@@ -2041,6 +2050,11 @@ footer > div .lista p {
   -moz-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
   right: 0;
+}
+.eraser .activo img {
+  width: 22px;
+  height: 23px;
+  cursor: pointer;
 }
 
 .desaparecer {
