@@ -25,5 +25,17 @@ $(document).ready(function(){
 		event.preventDefault();
 		$("footer > div").toggleClass("active-up");
 	});
+
+	/*radio urbe*/ 
+	$(".btn-audio").click(function(event){
+		event.preventDefault();
+		$(".audio").addClass("hidden");
+		$(".video").removeClass("hidden");
+	});
+	$(".btn-video").click(function(event){
+		event.preventDefault();
+		$(".audio").removeClass("hidden");
+		$(".video").addClass("hidden");
+	});
 });
 

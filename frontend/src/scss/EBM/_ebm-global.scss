@@ -64,7 +64,21 @@ body {
 	.colour29, .colour31 {
 		color: #4A0101;
 	}
-
+	.bg-blue {
+		background-color: #43609c;
+	}
+	.bg-info-dark {
+		background-color: #19572A;
+	}
+	/*Descanso*/
+	.text-blue {
+		color: #43609c;
+	}
+	/*Asistencia nocturna*/
+	.text-info-dark {
+		color: #19572A;
+	}
+	/*text-info(Asistencia diurna) y text-danger(Ausencia)*/
 	.w-100 {
 		width: 100%;
 		font-size: (16px)rem;
@@ -453,7 +467,7 @@ footer > div {
 	background-color: black;
   bottom: 0;
   @include transition(all .2s ease-in-out);
-  @include transform(translateY(374px));
+  @include transform(translateY(370px));
   #up {
 		height: 30px;
 	  width: 40px;
@@ -463,6 +477,26 @@ footer > div {
 	  background-color: black;
 	  left: 50%;
 	  @include transform (translateX(-50%));
+	}
+	.audio-video {
+		top: -38px;
+		left: 110px;
+		.btn-video, .btn-audio {
+	    height: 38px;
+	    height: 38px;
+	    width: 100px;
+	    vertical-align: sub;
+    }
+    a {
+			&:hover div span{
+				color: #E83A98 !important;
+			}
+    }
+    .btn-audio {
+    	border-left: 1px solid white;
+	    height: 23px;
+	    margin-top: 8px;
+    }
 	}
 	.container {
 		@include flex-column-center;
@@ -536,12 +570,7 @@ footer > div {
 		height: 13px;
 	}
 }
-.bg-danger-dark {
-	background-color: #4A0101;
-}
-.bg-info-dark {
-	background-color: #19572A;
-}
+
 /*CONTENIDO TAREO*/
 #tareo-contenido {
 	.container {

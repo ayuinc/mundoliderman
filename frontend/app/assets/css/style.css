@@ -1035,6 +1035,9 @@ body {
   /*Asistencua diurna*/
   /*Asistencia nocturna*/
   /*Ausencia nocturna*/
+  /*Descanso*/
+  /*Asistencia nocturna*/
+  /*text-info(Asistencia diurna) y text-danger(Ausencia)*/
 }
 body h1, body h2, body h3, body h4, body h5, body span {
   font-family: "Oswald", Helvetica, Arial, sans-serif;
@@ -1276,6 +1279,18 @@ body .colour30 {
 }
 body .colour29, body .colour31 {
   color: #4A0101;
+}
+body .bg-blue {
+  background-color: #43609c;
+}
+body .bg-info-dark {
+  background-color: #19572A;
+}
+body .text-blue {
+  color: #43609c;
+}
+body .text-info-dark {
+  color: #19572A;
 }
 body .w-100 {
   width: 100%;
@@ -1726,11 +1741,11 @@ footer > div {
   -webkit-transition: all 0.2s ease-in-out;
   -moz-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
-  -webkit-transform: translateY(374px);
-  -moz-transform: translateY(374px);
-  -ms-transform: translateY(374px);
-  -o-transform: translateY(374px);
-  transform: translateY(374px);
+  -webkit-transform: translateY(370px);
+  -moz-transform: translateY(370px);
+  -ms-transform: translateY(370px);
+  -o-transform: translateY(370px);
+  transform: translateY(370px);
 }
 footer > div #up {
   height: 30px;
@@ -1745,6 +1760,24 @@ footer > div #up {
   -ms-transform: translateX(-50%);
   -o-transform: translateX(-50%);
   transform: translateX(-50%);
+}
+footer > div .audio-video {
+  top: -38px;
+  left: 110px;
+}
+footer > div .audio-video .btn-video, footer > div .audio-video .btn-audio {
+  height: 38px;
+  height: 38px;
+  width: 100px;
+  vertical-align: sub;
+}
+footer > div .audio-video a:hover div span {
+  color: #E83A98 !important;
+}
+footer > div .audio-video .btn-audio {
+  border-left: 1px solid white;
+  height: 23px;
+  margin-top: 8px;
 }
 footer > div .container {
   display: -webkit-box;
@@ -1845,14 +1878,6 @@ footer > div .lista p {
 .day-colors .color-turno {
   width: 13px;
   height: 13px;
-}
-
-.bg-danger-dark {
-  background-color: #4A0101;
-}
-
-.bg-info-dark {
-  background-color: #19572A;
 }
 
 /*CONTENIDO TAREO*/
