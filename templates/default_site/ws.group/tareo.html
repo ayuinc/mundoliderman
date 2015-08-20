@@ -18,6 +18,6 @@
     </li>
   </ul>
   <script type="text/javascript">
-    $(".fc-date:contains('{FechaTareo format="%j"}')").parent().addClass("colour{FechaTareo format='%j'}");
+    $(".fc-date:contains('{FechaTareo format="%j"}')").parent().addClass("{if EventoDescripcion == 'Diurno'}text-info{if:elseif EventoDescripcion == 'Falta'}text-danger{if:elseif EventoDescripcion == 'Noche'}text-info-dark{if:elseif EventoDescripcion == 'Descanso'}text-blue{/if}");
   </script>
 {/exp:webservice:tareo}
