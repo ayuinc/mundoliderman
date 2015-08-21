@@ -1785,8 +1785,8 @@ footer > div .audio-video .btn-audio {
   height: 23px;
   margin-top: 8px;
 }
-footer > div .audio, footer > div .video {
-  height: 285px;
+footer > div iframe.audio, footer > div iframe.video {
+  height: 285px !important;
 }
 footer > div .container {
   display: -webkit-box;

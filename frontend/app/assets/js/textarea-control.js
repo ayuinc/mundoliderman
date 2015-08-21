@@ -11,4 +11,9 @@ $(document).ready(function(){
 			alert("Postea");
 		}
 	});
+
+	/*ENTER-RESPONSIVE*/
+	$(".enter-responsive img").click(function(){
+		alert("Publica :D");
+	});
 });

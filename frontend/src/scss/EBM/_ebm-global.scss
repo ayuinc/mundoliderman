@@ -503,8 +503,8 @@ footer > div {
 	    margin-top: 8px;
     }
 	}
-	.audio, .video {
-		height: 285px;
+	iframe.audio, iframe.video {
+		height: 285px!important;
 	}
 	
 	.container {
