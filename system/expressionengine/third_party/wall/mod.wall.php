@@ -58,9 +58,11 @@ class Wall {
 
 	public function comment_post_form()
 	{
+		$post_id = $this->EE->TMPL->fetch_param("post_id", 0);
 		// Build an array to hold the form's hidden fields
 		$hidden_fields = array(
-			"ACT" => $this->EE->functions->fetch_action_id("Wall", "comment_post")
+			"ACT" => $this->EE->functions->fetch_action_id("Wall", "comment_post"),
+			"post_id" => $post_id
 		);
 
 		// Build an array with the form data
