@@ -7,9 +7,10 @@ $(document).ready(function(){
 	});
 	$(".btn-comentar").click(function(event){
 		event.preventDefault();
-		$(".area-respuesta").addClass("hidden");
-		$(".scroll-down").toggleClass("hidden");
-		$(".area-respuesta").toggleClass("hidden");
+		var target = $(event.target);
+		$(target).parents(".post").find(".area-respuesta").addClass("hidden");
+		$(target).parents(".post").find(".scroll-down").toggleClass("hidden");
+		$(target).parents(".post").find(".area-respuesta").toggleClass("hidden");
 	});
 	$(".responder").click(function(event){
 		event.preventDefault();

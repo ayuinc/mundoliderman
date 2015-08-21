@@ -2355,6 +2355,10 @@ footer > div .lista p {
     height: 50px !important;
   }
 
+  .info-usuario .aviso {
+    border: 0px !important;
+  }
+
   /*LIDERNET*/
   .box-gray {
     height: 100px;

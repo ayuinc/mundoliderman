@@ -974,7 +974,11 @@ footer > div {
 		width: 50px!important;
 		height: 50px!important;
 	}
-
+	.info-usuario {
+		.aviso {
+			border: 0px!important;
+		}
+	}
 
 	/*LIDERNET*/
 	.box-gray {
