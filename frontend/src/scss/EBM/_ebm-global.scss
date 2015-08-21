@@ -431,15 +431,20 @@ input.upload {
 		}
 	}
 }
+.conteiner-answer {
+	&:hover {
+		.delete-comment {
+			opacity: 1;
+		}
+	}
+}
 .delete-comment {
 	right: 15px;
   top: -13px;
   position: absolute;
   cursor: pointer;
   @include transition(all .2s ease-in-out);
-}
-.opacty {
-	opacity: 0; /*para el delete comment*/
+  opacity: 0;
 }
 
 
