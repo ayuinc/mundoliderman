@@ -1695,6 +1695,10 @@ input.upload {
   border: 1px solid #e7e7e7;
 }
 
+.conteiner-answer:hover .delete-comment {
+  opacity: 1;
+}
+
 .delete-comment {
   right: 15px;
   top: -13px;
@@ -1703,11 +1707,7 @@ input.upload {
   -webkit-transition: all 0.2s ease-in-out;
   -moz-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
-}
-
-.opacty {
   opacity: 0;
-  /*para el delete comment*/
 }
 
 #box-right .noticia {
