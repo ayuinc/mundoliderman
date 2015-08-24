@@ -77,8 +77,8 @@
                             <a href="" class="btn-comentar text-not-underline fz-15 hidden-lg hidden-md">Comentar &nbsp</a><!--movil-->
                             <img src="{site_url}frontend/app/assets/img/Icono_Comentar.png" alt="">
                           </li>
-                          {exp:wall:like_post_form form_id="" form_class="" post_id="{post_id}"}
-                          <li class="display-ib pl-14 like-container">
+                          {exp:wall:like_post_form form_id="" form_class="display-ib" post_id="{post_id}"}
+                          <li class="pl-14 like-container">
                             <a href="" class="like text-not-underline hidden-xs hidden-sm">Me gusta &nbsp</a>
                             <a href="" class="like text-not-underline fz-15 hidden-lg hidden-md">Me gusta &nbsp</a><!--movil-->
                             <img src="{site_url}frontend/app/assets/img/corazon_02.png" alt="" class="img-like">
@@ -99,14 +99,14 @@
                         </ul>
                       </div>
                       <div class="comentar scroll-down pt-21 pt-35-xs hidden">
-                        <div class="area-respuesta pb-21 clearfix hidden">
+                        <div class="area-respuesta pb-7 clearfix hidden">
                           <div class="col-xs-2 pr-0">
                             <div class="img-respuesta bg-img-block-center brp-100" style="background-image: url({site_url}frontend/app/assets/img/Carita.png)"></div>
                           </div>
                           <div class="col-xs-10 lh-1 pl-0 pl-21-xs hidden-xs hidden-sm">
                             <span class="fz-14 text-success pr-7">{screen_name}</span>
                             {exp:wall:comment_post_form form_id="" form_class=""}
-                            <textarea name="comment" id="" onkeyup="auto_grow(this)" placeholder="Escribe un comentario..." class="w-100 mt-7 fz-14 light p-7 serif text-gray-darker book" min-length="1"></textarea>
+                            <textarea style="height:28px; border: 1px solid #e7e7e7;" name="comment" id="" onkeyup="auto_grow(this)" placeholder="Escribe un comentario..." class="w-100 mt-7 fz-14 light p-7 serif text-gray-darker book" min-length="1"></textarea>
                             <input type="submit" name="submit_comment_{post_id}" id="submit_comment" class="comment_submit hidden">
                             {/exp:wall:comment_post_form}
                           </div>
@@ -116,7 +116,7 @@
                           </div>
                         </div>
                         {exp:wall:comment post_id="{post_id}"}
-                        <div class="clearfix conteiner-answer">
+                        <div class="clearfix conteiner-answer pv-7">
                           <div class="col-xs-2 pr-0">
                             <div class="img-respuesta bg-img-block-center brp-100" style="background-image: url({site_url}frontend/app/assets/img/Wall/Carita2.png)"></div>
                           </div>
@@ -131,8 +131,8 @@
                               <img src="{site_url}frontend/app/assets/img/Flecha_Abajo.png" alt="" class="w-6">
                               <span class="fz-8 text-gray-light">|</span>
                               <img src="{site_url}frontend/app/assets/img/Flecha_Abajo.png" alt="" class="w-6 rotate-180">
-                              <span class="responder text-gray-dark book fz-10 light pl-7"><a href="">Responder</a></span>
-                              <span class="text-gray-dark book fz-10 light pl-7"><a href="">Compartir</a></span>
+                             <!--  <span class="responder text-gray-dark book fz-10 light pl-7"><a href="">Responder</a></span>
+                              <span class="text-gray-dark book fz-10 light pl-7"><a href="">Compartir</a></span> -->
                             </div>
                             <div class="hidden-lg hidden-md"><!--movil-->
                               <span></span>
