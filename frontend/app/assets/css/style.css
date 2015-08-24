@@ -2618,11 +2618,11 @@ footer > div .lista p {
   footer > div {
     padding: 40px 50px !important;
     position: fixed;
-    -webkit-transform: translateY(83%);
-    -moz-transform: translateY(83%);
-    -ms-transform: translateY(83%);
-    -o-transform: translateY(83%);
-    transform: translateY(83%);
+    -webkit-transform: translateY(100%);
+    -moz-transform: translateY(100%);
+    -ms-transform: translateY(100%);
+    -o-transform: translateY(100%);
+    transform: translateY(100%);
   }
   footer > div .col-md-6:last-child, footer > div .container {
     padding: 0rem !important;
