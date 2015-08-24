@@ -5,7 +5,7 @@
   </div>
   <div class="col-md-8 pl-28 pt-14 hidden-xs hdden-sm">
     <h3 class="text-primary book m-0 display-ib pr-14 fz-30">{screen_name}</h2> 
-    <a href="{path='perfil/editar/{member_id}'}"> 
+    <a id="edit_profile" href="{path='perfil/editar/{member_id}'}"> 
       <span class="fz-12 text-gray light">Editar</span>
       <img src="{site_url}frontend/app/assets/img/Icono_Editar.png" alt="">
     </a>
@@ -24,3 +24,12 @@
   </div>
 </div>
 {/exp:member:custom_profile_data}
+
+<script type="text/javascript">
+  var member_search = "{embed:miembro}";
+  var current_member = "{embed:miembro_actual}";
+  var edit_profile = document.getElementById("edit_profile");
+  if (member_search != current_member) {
+    edit_profile.classList.add("hidden");
+  } 
+</script>
