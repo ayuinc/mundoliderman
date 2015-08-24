@@ -18,7 +18,7 @@
           <div class="container pt-42 w-100 ph-0">
             {embed=includes/perfil-servicios miembro="{if segment_2 == 'index'} {segment_3} {if:else} {segment_2} {/if}" miembro_actual="{member_id}"}
               <div id="comentar" class="bg-white mt-42">
-                {exp:friends:status_form return="perfil" form_id="status_form" form_class="bg-success" enctype="multipart/form-data"}
+                {exp:wall:status_form return="perfil/{member_id}" form_id="status_form" form_class="bg-success" enctype="multipart/form-data"}
                   <div class="bg-success text-right ph-21 hidden-xs hidden-sm">
                     <div class="select-style display-ib text-center">
                       <select name="status_category" id="status_category" class="fz-14 text-white borderless light serif w-100 pt-7">
@@ -28,7 +28,7 @@
                       </select>
                     </div>
                   </div>
-                  <textarea name="friends_status" class="form-control outline-none serif fz-18 borderless br-none pv-14 ph-14" onkeyup="auto_grow(this)" placeholder="Qué estás pensando..."></textarea>
+                  <textarea name="wall_status" class="form-control outline-none serif fz-18 borderless br-none pv-14 ph-14" onkeyup="auto_grow(this)" placeholder="Qué estás pensando..."></textarea>
                   <div class="fileUpload btn btn-success p-0 ml-21">
                     <img src="{site_url}frontend/app/assets/img/Icono_Foto.png" alt="">
                     <span class="thin fz-12 pl-14 hidden-xs hidden-sm">Subir imagen</span>
@@ -42,7 +42,7 @@
                   <button type="submit" name="submit" class="btn bg-warning text-white text-hover-white fz-16 ph-21 mv-7 absolute hidden-lg hidden-md"><!--movil-->
                    PUBLICAR
                   </button>
-                {/exp:friends:status_form}
+                {/exp:wall:status_form}
               </div>
               {exp:wall:status member_id="{if segment_2 == 'index'} {segment_3} {if:else} {segment_2} {/if}"}
                 <div class="post-1 post bg-white pl-28 pr-42 pt-28 pb-28 mt-42 ph-14-xs">

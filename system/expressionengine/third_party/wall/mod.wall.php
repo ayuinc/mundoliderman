@@ -12,9 +12,12 @@ class Wall {
 
 	public function status_form()
 	{
+		$ret = $this->EE->TMPL->fetch_param("return");
+		$ret = $this->EE->functions->fetch_site_index(TRUE) . $ret;
 		// Build an array to hold the form's hidden fields
 		$hidden_fields = array(
-			"ACT" => $this->EE->functions->fetch_action_id("Wall", "wall_post")
+			"ACT" => $this->EE->functions->fetch_action_id("Wall", "wall_post"),
+			"RET" => $ret
 		);
 
 		// Build an array with the form data
@@ -181,7 +184,7 @@ class Wall {
 			"status_date" => $post_date,
 			"active" => "y"
 		);
-
+		
 		$this->EE->db->insert("wall_status", $post_data);
 		$post_id = $this->EE->db->insert_id();
 
@@ -202,7 +205,8 @@ class Wall {
                 $this->EE->db->where("id", $post_id);
                 $this->EE->db->update("wall_status", $image_data);
         }
-        return $this->EE->functions->redirect("wall");
+        $return = $this->_prep_return();
+        return $this->EE->functions->redirect($return);
 	}
 
 	public function delete_post() 
@@ -272,5 +276,32 @@ class Wall {
 			$this->EE->db->insert('wall_like', $data);
 		}
 		return $this->EE->functions->redirect("wall");
+	}
+
+	private function _prep_return( $return = '' )
+	{
+		if ( ee()->input->get_post('return') !== FALSE AND ee()->input->get_post('return') != '' )
+		{
+			$return	= ee()->input->get_post('return');
+		}
+		elseif ( ee()->input->get_post('RET') !== FALSE AND ee()->input->get_post('RET') != '' )
+		{
+			$return	= ee()->input->get_post('RET');
+		}
+		else
+		{
+			$return = ee()->functions->fetch_current_uri();
+		}
+
+		if ( preg_match( "/".LD."\s*path=(.*?)".RD."/", $return, $match ) )
+		{
+			$return	= ee()->functions->create_url( $match['1'] );
+		}
+		elseif ( stristr( $return, "http://" ) === FALSE && stristr( $return, "https://" ) === FALSE )
+		{
+			$return	= ee()->functions->create_url( $return );
+		}
+
+		return $return;
 	}
 }
