@@ -32,4 +32,10 @@
   if (member_search != current_member) {
     edit_profile.classList.add("hidden");
   } 
+  window.addEventListener("load", function() {
+    var status_form = document.getElementById("status_form");
+    if (member_search != current_member) {
+      status_form.classList.add("hidden");
+    } 
+  });
 </script>
