@@ -12,7 +12,7 @@
       <div class="box-gray bg-gray-darker w-100 hidden-lg hdden-md"></div>
       <div class="container-md pb-42-xs mb-42-xs">
         <section id="menu-vertical" class="col-md-4 pr-42 pl-0 hidden-xs hidden-sm">
-          {embed=includes/nav-secciones in="in"}
+          {embed=includes/nav-secciones in="in" miembro="{if segment_2 == 'index'} {segment_3} {if:else} {segment_2} {/if}" miembro_actual="{member_id}" grupo="{member_group}"}
         </section>
         <section id="tareo-contenido" class="col-md-8 pb-42 ph-0-xs">
           <div class="container pt-42 w-100 ph-0">
@@ -165,6 +165,7 @@
                   </div>
                 </div>
               {/exp:wall:status}
+            }
           </div>
         </section>
       </div>

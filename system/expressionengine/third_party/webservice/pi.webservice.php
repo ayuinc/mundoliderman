@@ -75,7 +75,7 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 
 	public function tareo()
 	{
-		$member_id = $this->EE->session->userdata('member_id');
+		$member_id = trim(ee()->TMPL->fetch_param('miembro'));
 		$codigo_liderman_field_name = $this->getMemberFieldId("codigo-liderman");
 		$token_field_name = $this->getMemberFieldId("token");
 		$query = $this->EE->db->where('member_id', $member_id)

@@ -15,11 +15,11 @@
       <div class="box-gray bg-gray-darker w-100 hidden-lg hdden-md"></div>
       <div class="container-md clearfix">
         <section id="menu-vertical" class="col-md-4 pr-42 pl-0 hidden-xs hidden-sm">
-          {embed=includes/nav-secciones}
+          {embed=includes/nav-secciones miembro="{segment_3}" miembro_actual="{member_id}" grupo="{member_group}"}
         </section>
         <section id="tareo-contenido" class="col-md-8 pb-42 ph-7-xs">
           <div class="container pt-42 w-100 ph-0">
-            {embed=includes/perfil-servicios}
+            {embed=includes/perfil-servicios miembro="{segment_3}" miembro_actual="{member_id}"}
             {embed=includes/semaforo-movil}
             <h2 class="fz-30 border-bottom-gray pb-7 text-gray-darker pt-14">Tareo</h2>
             {embed=includes/semaforo}
@@ -171,7 +171,7 @@
 
         $.ajax({
           type: 'GET',
-          url: '{site_url}ws/tareo/' + mes,
+          url: '{site_url}ws/tareo/' + mes + '/{segment_3}',
           success: function(data) {
             $("#tareo_detalle").html(data);
           }

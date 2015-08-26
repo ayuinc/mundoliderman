@@ -30,12 +30,16 @@
   var current_member = "{embed:miembro_actual}";
   var edit_profile = document.getElementById("edit_profile");
   if (member_search != current_member) {
-    edit_profile.classList.add("hidden");
+    if (edit_profile != null) {
+      edit_profile.classList.add("hidden");
+    }
   } 
   window.addEventListener("load", function() {
     var status_form = document.getElementById("status_form");
-    if (member_search != current_member) {
-      status_form.classList.add("hidden");
-    } 
+    if (status_form != null) {
+      if (member_search != current_member) {
+        status_form.classList.add("hidden");
+      }
+    }; 
   });
 </script>
