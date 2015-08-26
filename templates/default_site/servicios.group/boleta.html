@@ -12,11 +12,11 @@
       <div class="box-gray bg-gray-darker w-100 hidden-lg hdden-md"></div>
       <div class="container-md clearfix">
         <section id="menu-vertical" class="col-md-4 pr-42 pl-0 hidden-xs hdden-sm">
-          {embed="includes/nav-secciones" in="in"}
+          {embed="includes/nav-secciones" in="in" miembro="{segment_3}" miembro_actual="{member_id}" grupo="{member_group}"}
         </section>
         <section id="tareo-contenido" class="col-md-8 pb-42">
           <div class="container pt-42 w-100 ph-0">
-            {embed=includes/perfil-servicios}
+            {embed=includes/perfil-servicios miembro="{segment_3}" miembro_actual="{member_id}"}
             {embed=includes/semaforo-movil}
             <div class="boleta">
               <h2 class="fz-30 border-bottom-gray pb-7 pt-21 text-gray-darker">Boleta de pagos</h2>
@@ -95,7 +95,7 @@
 
       $.ajax({
         type: 'GET',
-        url: '{site_url}ws/boleta/' + year + month,
+        url: '{site_url}ws/boleta/' + year + month + '/{segment_3}',
         success: function(data) {
           $("#cabecera_boleta").html(data);
         }

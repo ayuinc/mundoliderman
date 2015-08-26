@@ -1,6 +1,6 @@
 <div class="clearfix">
 	<ul class="col-md-5 ph-0 pt-21 mb-0">
-	{exp:webservice:boleta periodo="{segment_3}"}
+	{exp:webservice:boleta periodo="{segment_3}" miembro="{segment_4}"}
 		<li class="clearfix border-bottom-gray-lighter">
 			<span class="col-xs-7 fz-17 text-gray-light light ph-0">Código</span>
 			<p class="col-xs-5 fz-15 text-gray-darker pr-0 pl-21">{if Codigo == null} - {if:else} {Codigo} {/if}</p>
@@ -48,7 +48,7 @@
 </div>
 <ul class="haberes clearfix p-0 pt-21 mb-0 hidden-xs hidden-sm">
     <li class="clearfix fz-17"><h4 class="text-gray-darker">Haberes</h4></li>
-{exp:webservice:detalle_boleta_haberes periodo="{segment_3}"}
+{exp:webservice:detalle_boleta_haberes periodo="{segment_3}" miembro="{segment_4}"}
 	{if Haberes != null}
     <li class="row fz-17 pv-7 text-gray-light light row border-bottom-gray-lighter">
       <span class="col-md-5 ">{Haberes}</span>
@@ -66,7 +66,7 @@
 
 <ul class="decuentos clearfix p-0 pt-21 mb-0 hidden-xs hidden-sm">
 	<li class="fz-17 text-gray-darker"><h4>Descuentos</h4></li>
-{exp:webservice:detalle_boleta_descuentos periodo="{segment_3}"}
+{exp:webservice:detalle_boleta_descuentos periodo="{segment_3}" miembro="{segment_4}"}
 	{if Descuentos != null}
 	<li class="fz-17 text-gray-light light border-bottom-gray-lighter pv-7 row">
 	  <span class="col-md-5 ">{Descuentos}</span>

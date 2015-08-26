@@ -39,7 +39,7 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 
 	public function boleta()
 	{
-		$member_id = $this->EE->session->userdata('member_id');
+		$member_id = trim($this->EE->TMPL->fetch_param('miembro'));
 		$codigo_liderman_field_name = $this->getMemberFieldId("codigo-liderman");
 		$token_field_name = $this->getMemberFieldId("token");
 		$query = $this->EE->db->where('member_id', $member_id)
@@ -47,7 +47,7 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 				         ->get('exp_member_data');
 		$codigoLiderman = $query->row($codigo_liderman_field_name);
 		$token = $query->row($token_field_name);
-		$periodo = trim(ee()->TMPL->fetch_param('periodo'));
+		$periodo = trim($this->EE->TMPL->fetch_param('periodo'));
 		//return "Código Liderman : ". $codigoLiderman . ", Token : " . $token . ", Periodo : " . $periodo;
 		$url = "http://190.187.13.164/WSIntranet/BoletaPago.svc/TraerCabeceraBoletaPago/$codigoLiderman/$periodo/$token";
 		$data = $this->EE->curl->get($url);
@@ -322,7 +322,7 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 
 	private function detalle_boleta() 
 	{
-		$member_id = $this->EE->session->userdata('member_id');
+		$member_id = trim($this->EE->TMPL->fetch_param('miembro'));
 		$codigo_liderman_field_name = $this->getMemberFieldId("codigo-liderman");
 		$token_field_name = $this->getMemberFieldId("token");
 		$query = $this->EE->db->where('member_id', $member_id)
@@ -330,7 +330,7 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 				         ->get('exp_member_data');
 		$codigoLiderman = $query->row($codigo_liderman_field_name);
 		$token = $query->row($token_field_name);
-		$periodo = trim(ee()->TMPL->fetch_param('periodo'));
+		$periodo = trim($this->EE->TMPL->fetch_param('periodo'));
 		$url = "http://190.187.13.164/WSIntranet/BoletaPago.svc/TraerDetalleBoletaPago/$codigoLiderman/$periodo/$token";
 		$data = $this->EE->curl->get($url);
 		if (count($data) > 0) {
