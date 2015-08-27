@@ -460,7 +460,7 @@ input.upload {
 		  width: 85%;
 		  bottom: 0;
 		  left: 50%;
-		  height: 50%;
+		  height: auto;
 		  @include transform(translateX(-50%));
 		  border-top-left-radius: 4%;
 		  border-top-right-radius: 4%;
@@ -470,6 +470,7 @@ input.upload {
 		  .read {
 				position: relative;
   			bottom: 10px;
+  			margin-bottom: 0;
 		  }
 		}
 	}

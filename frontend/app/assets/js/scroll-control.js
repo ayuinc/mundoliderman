@@ -14,8 +14,9 @@ $(document).ready(function(){
 	});
 	$(".responder").click(function(event){
 		event.preventDefault();
-		$(".respuesta").toggleClass("hidden visible-xs");
-		$(".cuadro-respuesta").toggleClass("hidden");
+		var target = $(event.target);
+		$(target).parents(".conteiner-answer").find(".respuesta").toggleClass("hidden visible-xs");
+		$(target).parents(".conteiner-answer").find(".cuadro-respuesta").toggleClass("hidden");
 	});
 	$(".active-slide").click(function(event){
 		event.preventDefault();
