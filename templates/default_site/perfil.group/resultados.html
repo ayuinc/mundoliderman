@@ -15,7 +15,7 @@
             <img src="{site_url}frontend/app/assets/img/Icono_Buscar.png" alt="" class="pr-14 pb-7">
             <span class="fz-26">Buscaste a: {keywords}</span>
           </div>
-          <section id="search-results" class="bg-white minhp-100">
+          <section id="search-results" class="bg-white minh-280">
             {exp:user:results}
             <div class="resultados clearfix pb-28 pt-35 ph-21-xs">
               <div class="col-md-2 col-xs-5 col-md-offset-1">
@@ -34,12 +34,12 @@
               </div>
             </div>
             {if user_no_results}
-            <div id="box-left" class="col-md-8 pl-0 ph-0-xs minhp-100">
+            <div id="box-left" class="pl-0 ph-0-xs text-center">
               <div class="nombre-busqueda mb-21 hidden-lg hidden-md">
                 <img src="assets/img/Icono_Buscar.png" alt="" class="pr-14 pb-7">
                 <span class="fz-26">Buscaste a: {keywords}</span>
               </div>
-              <div><p class="aviso-error pt-70 mt-70">Tu búsqueda no ha generado resultados.</br>Intenta de nuevo.</p></div>
+              <div><p class="aviso-error pt-42 mt-70">Tu búsqueda no ha generado resultados.</br>Intenta de nuevo.</p></div>
             </div>
             {/if}
             {/exp:user:results}

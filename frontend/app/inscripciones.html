@@ -213,7 +213,7 @@
                 Anim pariatur cliche repre henderit, enim eiusmod high life accusamus terry richardson ad.
               </div>
             </div>
-            <div><h2 class="fz-28 border-bottom-gray-darker pb-14 text-gray-darker pt-21">Lidermanía/ Ama el trato</h2></div>
+            <div><h2 class="fz-28 border-bottom-gray-darker pb-14 text-gray-darker pt-21">Lidermanía/ Ama el trato/ Inscripciones</h2></div>
             <div class="lidermania pt-14-xs">
               <select name="" id="" class="w-100 select-lista pl-14 fz-24 hidden-lg hdden-md">
                 <option value="" class="fz-24">Ama el trato</option>
@@ -221,9 +221,10 @@
                 <option value="" class="fz-24">Ama el pago</option>
               </select>
               <div class="datos datos-lidermania bg-white pv-42 ph-42 ph-21-xs mt-28-xs pv-21-xs">
-                <a href="" class="back text-primary text-hover-primary pl-7 fz-12 hidden-xs hidden-sm">&larr; Regresar</a>
-                <h3 class="fz-18 text-gray-darker pl-7 mt-14">Respeto</h3>
-                <div class="texto-ajax"></div>
+                <h3 class="fz-18 text-gray-darker pl-7 mt-14">Inscripciones</h3>
+                <div>
+                  
+                </div>
               </div>
             </div>
           </div>
@@ -290,36 +291,4 @@
   <script src="assets/js/menu-movil-control.js"></script>
   <script src="assets/js/collapse-control.js"></script>
   <script src="assets/js/menu-2-control.js"></script>
-  <script>
-      $.ajax({
-        type: "GET",
-        async: true,
-        url: "./text-lidermania.html",
-        success: function(a) {
-          $('.texto-ajax').html(a);
-        }
-      });
-      $(document).on('click', '.more-lidermania', function(e) {
-        e.preventDefault();
-        $.ajax({
-          type: "GET",
-          async: true,
-          url: "./texto-lidermania.html",
-          success: function(a) {
-            $('.texto-lider').html(a);
-          }
-        });
-      });
-      $(".back").click(function(e){
-        e.preventDefault();
-        $.ajax({
-          type: "GET",
-          async: true,
-          url: "./text-lidermania.html",
-          success: function(a) {
-            $('.texto-ajax').html(a);
-          }
-        });
-      });
-  </script>
 </html>
