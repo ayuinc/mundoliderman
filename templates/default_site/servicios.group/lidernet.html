@@ -12,11 +12,11 @@
       <div class="box-gray bg-gray-darker w-100 hidden-lg hdden-md"></div>
       <div class="container-md clearfix mb-42-xs pb-42-xs">
         <section id="menu-vertical" class="col-md-4 pr-42 pl-0 hidden-xs hdden-sm">
-          {embed=includes/nav-secciones in="in"}
+          {embed=includes/nav-secciones in="in" miembro="{segment_3}" miembro_actual="{member_id}" grupo="{member_group}"}
         </section>
         <section id="tareo-contenido" class="col-md-8 pb-42 ph-7-xs ph-7-sm">
           <div class="container pt-42 w-100 ph-0">
-            {embed=includes/perfil-servicios}
+            {embed=includes/perfil-servicios miembro="{segment_3}" miembro_actual="{member_id}"}
             {embed=includes/semaforo-movil}
             <div><h2 class="fz-28 border-bottom-gray-darker pb-14 text-gray-darker pt-21">Lidernet</h2></div>
             {if {exp:webservice:semaforolidernet} == 1}
@@ -131,10 +131,4 @@
   </div>
   {embed=includes/footer}
   <script src="{site_url}frontend/app/assets/js/collapse-control.js"></script>
-  <script>
-    $(".btn-lidernet").click(function(e) {
-      e.preventDefault();
-      $("#preguntas").hide();
-    });
-  </script>
 </html>
