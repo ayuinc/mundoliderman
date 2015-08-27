@@ -866,9 +866,30 @@ footer > div {
 }
 
 /*INSCRIPCIONES*/
-.field_label, .size1of1 ul li label {
-	font-weight: 100;
+.ff_composer .field_label, 
+.size1of1 ul li label {
+	font-weight: 100!important;
 }
+.size1of1 {
+	// text-align: right;
+	p strong {
+	  font-size: 14px;
+	}
+}
+.ff_composer textarea {
+	height: 80px;
+	padding: 7px;
+}
+input[type="submit"] {
+  background-color: black;
+  color: white;
+  border: transparent;
+  font-size: 16px;
+  font-family: "Oswald";
+  font-weight: 300;
+  padding: 5px 20px;
+}
+
 
 /*CUADRO ESTADÍSTICO*/
 #cuadro-estadistico {
