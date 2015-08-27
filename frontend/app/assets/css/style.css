@@ -2230,6 +2230,11 @@ footer > div .lista p {
   list-style: inherit;
 }
 
+/*INSCRIPCIONES*/
+.field_label, .size1of1 ul li label {
+  font-weight: 100;
+}
+
 /*CUADRO ESTAD├ìSTICO*/
 #cuadro-estadistico {
   margin: 0 auto;
