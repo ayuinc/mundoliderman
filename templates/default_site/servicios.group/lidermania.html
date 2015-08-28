@@ -14,12 +14,11 @@
             <div>
               <h3 class="m-0 bg-gray-lighter pb-7 ph-14"><a href="" class="fz-17 text-gray-dark2 text-hover-gray-dark">Ama el trato</a></h3>
               <ul class="pt-14 list-styled">
-                <li><a href="" class="fz-15 text-gray-darker light text-not-underline">Respeto</a></li>
+                <li class="link-menu"><a href="" class="fz-15 text-gray-darker light text-not-underline">Respeto</a></li>
                 <li><a href="" class="fz-15 text-gray-darker light text-not-underline">Orgullo</a></li>
                 <li><a href="" class="fz-15 text-gray-darker light text-not-underline">Camaradería</a></li>
                 <li><a href="" class="fz-15 text-gray-darker light text-not-underline">Credibilidad</a></li>
                 <li><a href="" class="fz-15 text-gray-darker light text-not-underline">Imparcialidad</a></li>
-                <li><a href="" class="fz-15 text-gray-darker light text-not-underline">Inscripciones</a></li>
               </ul>
             </div>
             <div class="pt-14">
@@ -29,7 +28,7 @@
                 <li><a href="" class="fz-15 text-gray-darker light text-not-underline">Cursos de crecimiento profesional</a></li>
                 <li><a href="" class="fz-15 text-gray-darker light text-not-underline">Cursos de especialización</a></li>
                 <li><a href="" class="fz-15 text-gray-darker light text-not-underline">Liderman Premium</a></li>
-                <li><a href="" class="fz-15 text-gray-darker light text-not-underline">Inscripciones</a></li>
+                <li class="inscribite"><a href="" class="fz-15 text-gray-darker light text-not-underline">Inscripciones</a></li>
               </ul>
             </div>
             <div class="pt-14">
@@ -49,26 +48,6 @@
                 <option value="" class="fz-24">Ama el pago</option>
               </select>
               <div class="datos datos-lidermania bg-white pv-42 ph-42 ph-21-xs mt-28-xs pv-21-xs">
-                <a href="" class="text-primary text-hover-primary pl-7 fz-12 hidden-xs hidden-sm">&larr; Regresar</a>
-                <h3 class="fz-18 text-gray-darker pl-7 mt-14">Respeto</h3>
-                <ul class="pl-42 serif fz-18 clearfix pl-28-xs pt-21-xs">
-                  <li class="col-md-10 text-gray-darker">Conociéndonos mejor</li>
-                  <span class="col-md-2 fz-12  pr-0 hidden-xs hidden-sm"><a href="" class="text-primary thin ">Leer más &rarr;</a></span>
-                  <li class="col-md-10 text-gray-darker">Reconocimiento por buenas acciones</li>
-                  <span class="col-md-2 fz-12  pr-0 hidden-xs hidden-sm"><a href="" class="text-primary thin ">Leer más &rarr;</a></span>
-                  <li class="col-md-10 text-gray-darker">Visita a colaboradores delicados de salud</li>
-                  <span class="col-md-2 fz-12  pr-0 hidden-xs hidden-sm"><a href="" class="text-primary thin ">Leer más &rarr;</a></span>
-                  <li class="col-md-10 text-gray-darker">Contigo en verano e invierno</li>
-                  <span class="col-md-2 fz-12  pr-0 hidden-xs hidden-sm"><a href="" class="text-primary thin ">Leer más &rarr;</a></span>
-                  <li class="col-md-10 text-gray-darker">Intercambio cultutal entre países</li>
-                  <span class="col-md-2 fz-12  pr-0 hidden-xs hidden-sm"><a href="" class="text-primary thin ">Leer más &rarr;</a></span>
-                  <li class="col-md-10 text-gray-darker">Bonos de alimentación</li>
-                  <span class="col-md-2 fz-12  pr-0 hidden-xs hidden-sm"><a href="" class="text-primary thin ">Leer más &rarr;</a></span>
-                  <li class="col-md-10 text-gray-darker">Trabajo en casa</li>
-                  <span class="col-md-2 fz-12 pr-0 hidden-xs hidden-sm"><a href="" class="text-primary thin ">Leer más &rarr;</a></span>
-                  <li class="col-md-10 text-gray-darker">Políticas de puertas abiertas</li>
-                  <span class="col-md-2 fz-12  pr-0 hidden-xs hidden-sm"><a href="" class="text-primary thin ">Leer más &rarr;</a></span>
-                </ul>
               </div>
             </div>
           </div>
@@ -80,4 +59,62 @@
   {embed=includes/footer}
   <script src="{site_url}frontend/app/assets/js/collapse-control.js"></script>
   <script src="{site_url}frontend/app/assets/js/menu-2-control.js"></script>
+  <script>
+    $.ajax({
+      type: "GET",
+      async: true,
+      url: "{path='ajax-text/texto-inicio'}",
+      success: function(a) {
+        $('.datos-lidermania').html(a);
+      }
+    });
+    /*cuando le das click a los menus*/
+    $(".link-menu").click(function(e){
+      e.preventDefault();
+      $.ajax({
+        type: "GET",
+        async: true,
+        url: "{path='ajax-text/texto-menu'}",
+        success: function(a) {
+          $('.datos-lidermania').html(a);
+        }
+      });
+    });
+    /*cuando le das click a leer más*/
+    $(document).on('click', '.more-lidermania', function(e) {
+      e.preventDefault();
+      $.ajax({
+        type: "GET",
+        async: true,
+        url: "{path='ajax-text/texto-lidermania'}",
+        success: function(a) {
+          $('.texto-ajax').html(a);
+        }
+      });
+    });
+    /*Regresas contenido de los links*/
+    $(document).on('click', '.back', function(e) {
+      e.preventDefault();
+      $.ajax({
+        type: "GET",
+        async: true,
+        url: "{path='ajax-text/texto-menu'}",
+        success: function(a) {
+          $('.datos-lidermania').html(a);
+        }
+      });
+    });
+    /*Click a inscripciones*/
+    $(document).on('click', '.inscribite', function(e) {
+      e.preventDefault();
+      $.ajax({
+        type: "GET",
+        async: true,
+        url: "{path='ajax-text/texto-inscripciones'}",
+        success: function(a) {
+          $('.datos-lidermania').html(a);
+        }
+      });
+    });
+  </script>
 </html>

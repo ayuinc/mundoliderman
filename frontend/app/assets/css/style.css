@@ -2236,6 +2236,11 @@ footer > div .lista p {
   font-weight: 100 !important;
 }
 
+.size1of1 {
+  font-family: "Merriweather";
+  font-size: 15px;
+  color: #313131;
+}
 .size1of1 p strong {
   font-size: 14px;
 }

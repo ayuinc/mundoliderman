@@ -151,12 +151,11 @@
             <div>
               <h3 class="m-0 bg-gray-lighter pb-7 ph-14"><a href="" class="fz-17 text-gray-dark2 text-hover-gray-dark">Ama el trato</a></h3>
               <ul class="pt-14 list-styled">
-                <li><a href="" class="fz-15 text-gray-darker light text-not-underline">Respeto</a></li>
+                <li class="link-menu"><a href="" class="fz-15 text-gray-darker light text-not-underline">Respeto</a></li>
                 <li><a href="" class="fz-15 text-gray-darker light text-not-underline">Orgullo</a></li>
                 <li><a href="" class="fz-15 text-gray-darker light text-not-underline">Camaradería</a></li>
                 <li><a href="" class="fz-15 text-gray-darker light text-not-underline">Credibilidad</a></li>
                 <li><a href="" class="fz-15 text-gray-darker light text-not-underline">Imparcialidad</a></li>
-                <li><a href="" class="fz-15 text-gray-darker light text-not-underline">Inscripciones</a></li>
               </ul>
             </div>
             <div class="pt-14">
@@ -166,7 +165,7 @@
                 <li><a href="" class="fz-15 text-gray-darker light text-not-underline">Cursos de crecimiento profesional</a></li>
                 <li><a href="" class="fz-15 text-gray-darker light text-not-underline">Cursos de especialización</a></li>
                 <li><a href="" class="fz-15 text-gray-darker light text-not-underline">Liderman Premium</a></li>
-                <li><a href="" class="fz-15 text-gray-darker light text-not-underline">Inscripciones</a></li>
+                <li><a href="" class="inscribite fz-15 text-gray-darker light text-not-underline">Inscripciones</a></li>
               </ul>
             </div>
             <div class="pt-14">
@@ -221,9 +220,6 @@
                 <option value="" class="fz-24">Ama el pago</option>
               </select>
               <div class="datos datos-lidermania bg-white pv-42 ph-42 ph-21-xs mt-28-xs pv-21-xs">
-                <a href="" class="back text-primary text-hover-primary pl-7 fz-12 hidden-xs hidden-sm">&larr; Regresar</a>
-                <h3 class="fz-18 text-gray-darker pl-7 mt-14">Respeto</h3>
-                <div class="texto-ajax"></div>
               </div>
             </div>
           </div>
@@ -290,36 +286,5 @@
   <script src="assets/js/menu-movil-control.js"></script>
   <script src="assets/js/collapse-control.js"></script>
   <script src="assets/js/menu-2-control.js"></script>
-  <script>
-      $.ajax({
-        type: "GET",
-        async: true,
-        url: "./text-lidermania.html",
-        success: function(a) {
-          $('.texto-ajax').html(a);
-        }
-      });
-      $(document).on('click', '.more-lidermania', function(e) {
-        e.preventDefault();
-        $.ajax({
-          type: "GET",
-          async: true,
-          url: "./texto-lidermania.html",
-          success: function(a) {
-            $('.texto-lider').html(a);
-          }
-        });
-      });
-      $(".back").click(function(e){
-        e.preventDefault();
-        $.ajax({
-          type: "GET",
-          async: true,
-          url: "./text-lidermania.html",
-          success: function(a) {
-            $('.texto-ajax').html(a);
-          }
-        });
-      });
-  </script>
+  <script src="assets/js/ajax-control.js"></script>
 </html>

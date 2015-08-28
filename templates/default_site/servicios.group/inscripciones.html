@@ -1,68 +1,7 @@
-  {embed=includes/head titulo="Mundo Liderman - Lidermanía"}
-  
-  <div class="site-wrapper"> <!-- Body -->
-    {embed=includes/nav-main}
-    <main class="site-content clearfix pb-42 mb-0-xs">
-      {embed=includes/menu-movil}
-      {embed=includes/banner-alerta}
-      <div class="box-gray bg-gray-darker w-100 hidden-lg hdden-md"></div>
-      <div class="container-md ph-0-xs mb-42-xs pb-42-xs">
-        <section id="menu-vertical" class="col-md-4 pr-42 pl-0 hidden-xs hdden-sm">
-          {embed=includes/nav-secciones}
-          <div class="contenedor-menu-2 pt-35 ph-42">
-            <h2 class="fz-20 text-gray-dark2 m-0 pt-14 pb-21">Lidermanía</h2>
-            <div>
-              <h3 class="m-0 bg-gray-lighter pb-7 ph-14"><a href="" class="fz-17 text-gray-dark2 text-hover-gray-dark">Ama el trato</a></h3>
-              <ul class="pt-14 list-styled">
-                <li><a href="" class="fz-15 text-gray-darker light text-not-underline">Respeto</a></li>
-                <li><a href="" class="fz-15 text-gray-darker light text-not-underline">Orgullo</a></li>
-                <li><a href="" class="fz-15 text-gray-darker light text-not-underline">Camaradería</a></li>
-                <li><a href="" class="fz-15 text-gray-darker light text-not-underline">Credibilidad</a></li>
-                <li><a href="" class="fz-15 text-gray-darker light text-not-underline">Imparcialidad</a></li>
-                <li><a href="" class="fz-15 text-gray-darker light text-not-underline">Inscripciones</a></li>
-              </ul>
-            </div>
-            <div class="pt-14">
-              <h3 class="m-0 bg-gray-lighter pb-7 ph-14"><a href="" class="fz-17 text-gray-dark2 text-hover-gray-dark">Ama el crecimiento</a></h3>
-              <ul class="pt-14 list-styled">
-                <li><a href="" class="fz-15 text-gray-darker light text-not-underline">Cursos de crecimiento personal</a></li>
-                <li><a href="" class="fz-15 text-gray-darker light text-not-underline">Cursos de crecimiento profesional</a></li>
-                <li><a href="" class="fz-15 text-gray-darker light text-not-underline">Cursos de especialización</a></li>
-                <li><a href="" class="fz-15 text-gray-darker light text-not-underline">Liderman Premium</a></li>
-                <li><a href="" class="fz-15 text-gray-darker light text-not-underline">Inscripciones</a></li>
-              </ul>
-            </div>
-            <div class="pt-14">
-              <h3 class="m-0 bg-gray-lighter pb-7 ph-14"><a href="" class="fz-17 text-gray-dark2 text-hover-gray-dark">Ama el pago</a></h3>
-            </div>
-          </div>
-        </section>
-        <section id="tareo-contenido" class="col-md-8 pb-42">
-          <div class="container pt-42 w-100 ph-0 ph-7-xs">
-            {embed=includes/perfil-servicios}
-            {embed=includes/semaforo-movil}
-            <div><h2 class="fz-28 border-bottom-gray-darker pb-14 text-gray-darker pt-21">Lidermanía/ Ama el trato/ Inscripciones</h2></div>
-            <div class="lidermania pt-14-xs">
-              <select name="" id="" class="w-100 select-lista pl-14 fz-24 hidden-lg hdden-md">
-                <option value="" class="fz-24">Ama el trato</option>
-                <option value="" class="fz-24">Ama el cremiento</option>
-                <option value="" class="fz-24">Ama el pago</option>
-              </select>
-              <div class="datos datos-lidermania bg-white pv-42 ph-42 ph-21-xs mt-28-xs pv-21-xs">
-                {exp:freeform:composer
-                  form_name="inscripciones_lidermania"
-                  composer_template_name="inscripciones_lidermania"
-                  return= "wall/index"
-                }
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-    </main>
-    {embed=includes/radio-urbe}
-  </div>
-  {embed=includes/footer}
-  <script src="{site_url}frontend/app/assets/js/collapse-control.js"></script>
-  <script src="{site_url}frontend/app/assets/js/menu-2-control.js"></script>
-</html>
+<div class="datos datos-lidermania bg-white pv-42 ph-42 ph-21-xs mt-28-xs pv-21-xs">
+  {exp:freeform:composer
+    form_name="inscripciones_lidermania"
+    composer_template_name="inscripciones_lidermania"
+    return= "wall/index"
+  }
+</div>
