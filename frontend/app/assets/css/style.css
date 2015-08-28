@@ -2080,6 +2080,12 @@ footer > div .lista p {
   display: none;
 }
 
+.img-destacado, .img-premium {
+  position: absolute;
+  right: 0px;
+  top: -28px;
+}
+
 /*PERFIL-EDITABLE*/
 #perfil-contenido .formulario {
   position: relative;

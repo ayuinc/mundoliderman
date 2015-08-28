@@ -749,6 +749,13 @@ footer > div {
 	@include transition (all .3s ease-in);
 	display: none;
 }
+.img-destacado, .img-premium {
+  position: absolute;
+  right: 0px;
+  top: -28px;
+}
+
+
 /*PERFIL-EDITABLE*/
 #perfil-contenido {
 	@extend #tareo-contenido;
