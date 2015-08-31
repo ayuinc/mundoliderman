@@ -48,8 +48,10 @@
                     </div>
                   </div>
                   <div class="imprimir btn btn-gray-darker light hidden-xs hidden-sm">
-                    <img src="{site_url}frontend/app/assets/img/Imprimir_Icon.png" alt="" class="pr-7">
-                    <span>IMPRIMIR</span>
+                    <a id="print_bill" href="{path='servicios/boleta-impresa'}" target="_blank">
+                      <img src="{site_url}frontend/app/assets/img/Imprimir_Icon.png" alt="" class="pr-7">
+                      <span>IMPRIMIR</span>
+                    </a>
                   </div>
                     <h3 class="text-gray-darker pt-35 fz-23 lh-1-5 pt-14-xs">Resultados de la boleta de pago del mes de <span id="currentMonth"></span> de <span id="currentYear"></span></h3>
                     <div id="cabecera_boleta" class="clearfix">
@@ -70,15 +72,15 @@
   </div>
   {embed=includes/footer}
   <script>
-      var currentMonth = new Date().getMonth();
-      document.getElementById("monthCollection").value = currentMonth;
-      var currentYear = new Date().getFullYear();
-      var yearCollection = document.getElementById("yearCollection");
-      var html = "";
-      for (var i = 0; i <= 10; i++) {
-        html += "<option value='" + (currentYear-i) + "' class='fz-14'>" + (currentYear-i) + "</option>";
-      };
-      yearCollection.innerHTML = html;
+    var currentMonth = new Date().getMonth();
+    document.getElementById("monthCollection").value = currentMonth;
+    var currentYear = new Date().getFullYear();
+    var yearCollection = document.getElementById("yearCollection");
+    var html = "";
+    for (var i = 0; i <= 10; i++) {
+      html += "<option value='" + (currentYear-i) + "' class='fz-14'>" + (currentYear-i) + "</option>";
+    };
+    yearCollection.innerHTML = html;
   </script>
   <script>
     function updateData() {
@@ -108,5 +110,14 @@
       updateData();
     });
     updateData();
+  </script>
+  <script>
+    $("#print_bill").click(function(e) {
+      var year = parseInt($("#yearCollection").val());
+      var month = parseInt($("#monthCollection").val()) + 1;
+      if (month.toString().length == 1) { month = "0" + month};
+      var url = '{site_url}servicios/boleta-impresa/' + year + month + '/{segment_3}'
+      $("#print_bill").attr("href", url);
+    });
   </script>
 </html>
