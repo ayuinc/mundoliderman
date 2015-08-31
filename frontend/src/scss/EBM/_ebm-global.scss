@@ -680,6 +680,12 @@ footer > div {
 		font-size: rem(26px);
 	}
 }
+.size1of2 {
+		.field_label {
+			font-family: "Merriweather";
+			font-weight: 500!important;
+		}
+	}
 /*LIDERCARD*/
 .lidercard {
 	.bonificacion {
@@ -863,7 +869,6 @@ footer > div {
 		list-style: inherit;
 	}
 }
-
 
 /*CUADRO ESTADÍSTICO*/
 #cuadro-estadistico {

@@ -2006,6 +2006,11 @@ footer > div .lista p {
   font-size: 1.625rem;
 }
 
+.size1of2 .field_label {
+  font-family: "Merriweather";
+  font-weight: 500 !important;
+}
+
 /*LIDERCARD*/
 .lidercard .bonificacion {
   border-bottom: 3px solid #f94211;

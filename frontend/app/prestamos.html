@@ -218,7 +218,7 @@
                       <p class="col-md-7 fz-17">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum voluptatibus amet et! Dolorum quos quibusdam.</p>
                     </li>
                   </ul>
-                  <div class="separador-div ml-14 hidden-lg hdden-md"></div>
+                  <!-- <div class="separador-div ml-14 hidden-lg hdden-md"></div>
                   <ul class="row pl-0 border-bottom-gray-lighter pt-35 pb-21 pl-14 pb-14-xs">
                     <li>
                       <span class="col-md-5 fz-18">Fecha de Aprobación</span>
@@ -236,7 +236,16 @@
                       <span class="col-md-5 fz-18">Comentario</span>
                       <p class="col-md-7 fz-17">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum voluptatibus amet et! Dolorum quos quibusdam.</p>
                     </li>
-                  </ul>
+                  </ul> -->
+                </div>
+                <div class="solicitar-prestamo">
+                  <h3 class="text-gray-darker">Solicitar préstamo</h3>
+                  {exp:freeform:composer
+                    form_name="solicitar_prestamo"
+                    composer_template_name="solicitar_prestamo"
+                    
+                    return= "wall/index"
+                  }
                 </div>
               </div>
             </div>
