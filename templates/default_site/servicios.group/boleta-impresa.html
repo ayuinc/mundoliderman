@@ -40,13 +40,12 @@
 	}
   </script>
   <div class="site-wrapper"> <!-- Body -->
-    <main class="">
+    <main class="mb-0">
       <div class="page container-md">
-        <div class="ph-7 clearfix mt-42 mb-14">
+        <div class="ph-7 clearfix mb-14">
           <span id="fecha-boleta" class="col-xs-2 fz-13 thin ph-0"></span>
-          <div class="col-xs-8 fz-13 text-gray-darker text-center ph-0">SpringNet</div>
         </div>
-        <div id="boleta-impresa" class="mb-42 fz-13 light text-gray-darker" style="border:1px solid #e7e7e7">
+        <div id="boleta-impresa" class="fz-13 light text-gray-darker" style="border:1px solid #e7e7e7">
           {exp:webservice:boleta periodo="{segment_3}" miembro="{segment_4}"}
           <div class="border-bottom-gray-lighter ph-7">
             <span>{Compania}</span></br>
@@ -148,7 +147,7 @@
           <div class="clearfix">
             <div class="col-xs-4 ph-0 border-bottom-gray-lighter border-right-gray-lighter">
               <div class="border-bottom-gray-lighter text-center book text-gray-dark">HABERES</div>
-              <div class="lista-haberes border-bottom-gray-lighter pv-7">
+              <div class="lista-haberes border-bottom-gray-lighter pv-7" style="min-height:230px">
               	 {exp:webservice:detalle_boleta_haberes periodo="{segment_3}" miembro="{segment_4}"}
               	 {if Haberes != null}
                  <ul class="clearfix pl-0 mb-0">
@@ -169,7 +168,7 @@
             </div>
             <div class="col-xs-4 ph-0 border-bottom-gray-lighter border-right-gray-lighter">
               <div class="border-bottom-gray-lighter text-center book text-gray-dark">DESCUENTOS</div>
-              <div class="lista-haberes border-bottom-gray-lighter pv-7">
+              <div class="lista-descuentos border-bottom-gray-lighter pv-7" style="min-height:230px">
               	 {exp:webservice:detalle_boleta_descuentos periodo="{segment_3}" miembro="{segment_4}"}
               	 {if Descuentos != null}
                  <ul class="clearfix pl-0 mb-0">
@@ -190,7 +189,7 @@
             </div>
             <div class="col-xs-4 ph-0 border-bottom-gray-lighter">
               <div class="border-bottom-gray-lighter text-center book text-gray-dark">APORTACIONES</div>
-              <div class="lista-haberes border-bottom-gray-lighter pv-7">
+              <div class="lista-aportaciones border-bottom-gray-lighter pv-7" style="min-height:230px">
                  {exp:webservice:detalle_boleta_aportaciones periodo="{segment_3}" miembro="{segment_4}"}
                  {if Aportaciones != null}
                  <ul class="clearfix pl-0 mb-0">
@@ -220,8 +219,8 @@
               </script>
             </div>
             <div class="clearfix">
-              <span class="col-xs-offset-2 col-xs-2 border-top-gray-dark pt-7 pr-35 book fz-11 mt-70 mb-21 text-center">RECIBÍ CONFORME</span>
-              <span class="col-xs-offset-3 col-xs-3 border-top-gray-dark text-center mt-70 mb-21 fz-11 pt-7 book">José Iñigo La Riva</br>Gerente de Administración y Finanzas</span>
+              <span class="col-xs-offset-2 col-xs-2 border-top-gray-dark pr-35 book fz-11 mt-70 mb-21 text-center">RECIBÍ CONFORME</span>
+              <span class="col-xs-offset-3 col-xs-3 border-top-gray-dark text-center mt-70 mb-21 fz-11 book">José Iñigo La Riva</br>Gerente de Administración y Finanzas</span>
             </div> 
           </div>
         </div>
