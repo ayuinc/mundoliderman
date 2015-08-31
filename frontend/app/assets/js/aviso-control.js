@@ -32,4 +32,16 @@ $(document).ready(function(){
 		$(this).find(".activo").toggleClass("desaparecer");
 		$(this).find(".inactivo").toggleClass("desaparecer");
 	});
+
+	/*Btn-premium y destacado*/
+	$(".btn-premium").click(function(){
+		$(this).toggleClass("text-primary");
+		$(this).toggleClass("text-gray");
+		$(".img-premium").toggleClass("opacity-active");
+	});
+	$(".btn-destacado").click(function(){
+		$(this).toggleClass("text-primary");
+		$(this).toggleClass("text-gray");
+		$(".img-destacado").toggleClass("opacity-active");
+	});
 });

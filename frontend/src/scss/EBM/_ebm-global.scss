@@ -749,10 +749,20 @@ footer > div {
 	@include transition (all .3s ease-in);
 	display: none;
 }
+.opacity-active {
+	opacity: 0;
+	@include transition (all .2s ease-in);
+}
+
 .img-destacado, .img-premium {
   position: absolute;
   right: 0px;
   top: -28px;
+  @include transition (all .2s ease-in);
+}
+
+.img-premium {
+	right: 55px!important;
 }
 
 

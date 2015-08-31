@@ -17,6 +17,13 @@
         <section id="tareo-contenido" class="col-md-8 pb-42 ph-0-xs">
           <div class="container pt-42 w-100 ph-0">
             {embed=includes/perfil-servicios miembro="{if segment_2 == 'index'} {segment_3} {if:else} {segment_2} {/if}" miembro_actual="{member_id}"}
+            <div class="bg-gray-lighter ph-21 pv-7 relative" style="top: -10px">
+              <div class="float-left"><span class="serif fz-14">Indicar Liderman como:</span></div>
+              <div class="float-right text-right">
+                <a class="btn-premium pr-21 text-gray" style="cursor:pointer">Premium</a>|
+                <a class="btn-destacado pl-21 text-gray" style="cursor:pointer">Destacado</a>
+              </div>
+            </div>
               <div id="comentar" class="bg-white mt-42">
                 {exp:wall:status_form return="perfil/{member_id}" form_id="status_form" form_class="bg-success" enctype="multipart/form-data"}
                   <div class="bg-success text-right ph-21 hidden-xs hidden-sm">
