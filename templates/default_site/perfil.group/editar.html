@@ -33,11 +33,15 @@
               <form class="fz-18">
                 <div class="row mb-42">
                   <div class="col-md-5 pr-0 hidden-xs hdden-sm">
+                    {if photo_filename == null}
                     <div style="background-image:url({site_url}frontend/app/assets/img/Herman_Profile_Pic.png)" class="foto-editable bg-img-block-center brp-100">
+                    {if:else}
+                    <div style="background-image:url({photo_url}{photo_filename})" class="foto-editable bg-img-block-center brp-100">
+                    {/if}
                       <div class="overlay-foto ebm-overlay ml-14 brp-100 text-center">
                         <div class="fileUpload">
                           <span class="relative"><img src="{site_url}frontend/app/assets/img/camera.png" alt=""></span>
-                          <input type="file" class="upload ebm-overlay" />
+                          <input type="file" name="photo_filename" class="upload ebm-overlay" />
                         </div>
                       </div>
                     </div>
@@ -51,9 +55,11 @@
                 Nombre de Usuario <br>
                 <input type="text" name="screen_name" id="" class="minh-50 w-100 mb-28 p-14" value="{screen_name}">
                 Correo Electrónico <br>
-                <input type="text" name="email" id="" class="minh-50 w-100 mb-28 p-14" value="{email}">
-                Celular <br>
+                <input type="text" name="email-perfil" id="" class="minh-50 w-100 mb-28 p-14" value="{email-perfil}">
+                Teléfono <br>
                 <input type="text" name="celular" id="" class="minh-50 w-100 mb-28 p-14" value="{celular}">
+                Ciudad <br>
+                <input type="text" name="ciudad" id="" class="minh-50 w-100 mb-28 p-14" value="{ciudad}">
                 Dirección:<br>
                 <textarea type="text" name="direccion" onkeyup="auto_grow(this)" class="minh-70 w-100 mb-28 p-14">{direccion}</textarea>
                 <br>

@@ -1,6 +1,13 @@
-
-  {exp:freeform:composer
-    form_name="inscripciones_lidermania"
-    composer_template_name="inscripciones_lidermania"
-    return= "wall/index"
-  }
+{exp:user:edit member_id="{segment_3}"}
+	{if nombres=="" || apellidos=="" || lider-zonal==""}
+		Solicite que se llenen los datos de su perfil en el sistema.
+	{if:elseif email-perfil=="" || ciudad==""}
+		Complete su perfil.
+	{if:else}
+		{exp:freeform:composer
+		form_name="inscripciones_lidermania"
+		composer_template_name="inscripciones_lidermania"
+		return= "servicios/lidermania"
+		}
+	{/if}
+{/exp:user:edit}
