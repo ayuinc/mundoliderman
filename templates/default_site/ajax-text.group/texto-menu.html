@@ -1,21 +1,13 @@
-<h3 class="fz-18 text-gray-darker pl-7 mt-14">Respeto</h3>
+{exp:channel:categories category_group="3" style="linear"}
+{if category_id == segment_3}
+<h3 class="fz-18 text-gray-darker pl-7 mt-14">{category_name}</h3>
+{/if}
+{/exp:channel:categories}
 <div class="texto-ajax">
   <ul class="texto-lider pl-42 serif fz-16 clearfix pl-28-xs pt-21-xs">
-    <li class="col-md-10 text-gray-darker">Conociéndonos mejor</li>
+    {exp:channel:entries channel="ama_crece" dynamic="no" category="{segment_3}"}
+    <li class="col-md-10 text-gray-darker">{title}</li>
     <span class="more-lidermania col-md-2 fz-12  pr-0 hidden-xs hidden-sm"><a href="" class=" text-primary thin ">Leer más &rarr;</a></span>
-    <li class="col-md-10 text-gray-darker">Reconocimiento por buenas acciones</li>
-    <span class="more-lidermania col-md-2 fz-12  pr-0 hidden-xs hidden-sm"><a href="" class="text-primary thin ">Leer más &rarr;</a></span>
-    <li class="col-md-10 text-gray-darker">Visita a colaboradores delicados de salud</li>
-    <span class="more-lidermania col-md-2 fz-12  pr-0 hidden-xs hidden-sm"><a href="" class="text-primary thin ">Leer más &rarr;</a></span>
-    <li class="col-md-10 text-gray-darker">Contigo en verano e invierno</li>
-    <span class="more-lidermania col-md-2 fz-12  pr-0 hidden-xs hidden-sm"><a href="" class="text-primary thin ">Leer más &rarr;</a></span>
-    <li class="col-md-10 text-gray-darker">Intercambio cultutal entre países</li>
-    <span class="more-lidermania col-md-2 fz-12  pr-0 hidden-xs hidden-sm"><a href="" class="text-primary thin ">Leer más &rarr;</a></span>
-    <li class="col-md-10 text-gray-darker">Bonos de alimentación</li>
-    <span class="more-lidermania col-md-2 fz-12  pr-0 hidden-xs hidden-sm"><a href="" class="text-primary thin ">Leer más &rarr;</a></span>
-    <li class="col-md-10 text-gray-darker">Trabajo en casa</li>
-    <span class="more-lidermania col-md-2 fz-12 pr-0 hidden-xs hidden-sm"><a href="" class="text-primary thin ">Leer más &rarr;</a></span>
-    <li class="col-md-10 text-gray-darker">Políticas de puertas abiertas</li>
-    <span class="more-lidermania col-md-2 fz-12  pr-0 hidden-xs hidden-sm"><a href="" class="text-primary thin ">Leer más &rarr;</a></span>
+    {/exp:channel:entries}
   </ul>
 </div>

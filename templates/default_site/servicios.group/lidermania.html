@@ -24,10 +24,9 @@
             <div class="pt-14">
               <h3 class="m-0 bg-gray-lighter pb-7 ph-14"><a href="" class="fz-17 text-gray-dark2 text-hover-gray-dark">Ama el crecimiento</a></h3>
               <ul class="pt-14 list-styled">
-                <li><a href="" class="fz-15 text-gray-darker light text-not-underline">Cursos de crecimiento personal</a></li>
-                <li><a href="" class="fz-15 text-gray-darker light text-not-underline">Cursos de crecimiento profesional</a></li>
-                <li><a href="" class="fz-15 text-gray-darker light text-not-underline">Cursos de especialización</a></li>
-                <li><a href="" class="fz-15 text-gray-darker light text-not-underline">Liderman Premium</a></li>
+                {exp:channel:categories category_group="3" style="linear"}
+                <li><a href="" class="fz-15 text-gray-darker light text-not-underline link-menu" data-cat-id="{category_id}" >{category_name}</a></li>
+                {/exp:channel:categories}
                 <li class="inscribite"><a href="" class="fz-15 text-gray-darker light text-not-underline">Inscripciones</a></li>
               </ul>
             </div>
@@ -70,11 +69,12 @@
     });
     /*cuando le das click a los menus*/
     $(".link-menu").click(function(e){
+      var cat_id = $(this).attr("data-cat-id");
       e.preventDefault();
       $.ajax({
         type: "GET",
         async: true,
-        url: "{path='ajax-text/texto-menu'}",
+        url: "{path='ajax-text/texto-menu'}/" + cat_id,
         success: function(a) {
           $('.datos-lidermania').html(a);
         }
