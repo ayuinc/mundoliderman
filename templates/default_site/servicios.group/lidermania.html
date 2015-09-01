@@ -69,8 +69,8 @@
     });
     /*cuando le das click a los menus*/
     $(".link-menu").click(function(e){
-      var cat_id = $(this).attr("data-cat-id");
       e.preventDefault();
+      var cat_id = $(this).attr("data-cat-id");
       $.ajax({
         type: "GET",
         async: true,
@@ -83,10 +83,11 @@
     /*cuando le das click a leer más*/
     $(document).on('click', '.more-lidermania', function(e) {
       e.preventDefault();
+      var entry_id = $(this).attr("data-entry-id");
       $.ajax({
         type: "GET",
         async: true,
-        url: "{path='ajax-text/texto-lidermania'}",
+        url: "{path='ajax-text/texto-lidermania'}/" + entry_id,
         success: function(a) {
           $('.texto-ajax').html(a);
         }
@@ -95,10 +96,11 @@
     /*Regresas contenido de los links*/
     $(document).on('click', '.back', function(e) {
       e.preventDefault();
+      var cat_id = $(this).attr("data-cat-id");
       $.ajax({
         type: "GET",
         async: true,
-        url: "{path='ajax-text/texto-menu'}",
+        url: "{path='ajax-text/texto-menu'}/" + cat_id,
         success: function(a) {
           $('.datos-lidermania').html(a);
         }
