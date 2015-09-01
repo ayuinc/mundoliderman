@@ -2087,7 +2087,8 @@ footer > div .lista p {
   transition: all 0.2s ease-in;
 }
 
-.img-destacado, .img-premium {
+.img-destacado,
+.img-premium {
   position: absolute;
   right: 0px;
   top: -28px;
@@ -2098,6 +2099,21 @@ footer > div .lista p {
 
 .img-premium {
   right: 55px !important;
+}
+
+.rec-ambos {
+  top: -10px;
+  right: -15px;
+}
+
+.rec-trofeo {
+  top: -8px;
+  right: -22px;
+}
+
+.rec-estrella {
+  top: -8px;
+  right: -24px;
 }
 
 /*PERFIL-EDITABLE*/
@@ -2448,6 +2464,22 @@ footer > div .lista p {
   }
   .conteiner-answer .col-xs-10 img {
     width: 9px;
+  }
+
+  /*Reconocimientos muro*/
+  .rec-ambos {
+    top: -12px;
+    right: -8px;
+  }
+
+  .rec-trofeo {
+    top: -8px;
+    right: -14px;
+  }
+
+  .rec-estrella {
+    top: -8px;
+    right: -16px;
   }
 
   /*PR├ëSTAMOS*/
