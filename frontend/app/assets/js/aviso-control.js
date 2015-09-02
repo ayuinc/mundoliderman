@@ -38,10 +38,25 @@ $(document).ready(function(){
 		$(this).toggleClass("text-primary");
 		$(this).toggleClass("text-gray");
 		$(".img-premium").toggleClass("opacity-active");
+		$(".premium-resp").toggleClass("opacity-active");
 	});
 	$(".btn-destacado").click(function(){
 		$(this).toggleClass("text-primary");
 		$(this).toggleClass("text-gray");
 		$(".img-destacado").toggleClass("opacity-active");
+		$(".destacado-resp").toggleClass("opacity-active");
+	});
+
+	/*Btn-premium y destacado responsive*/
+	var atrrPremium = $(".premium-resp").attr("class");
+	var atrrDestacado = $(".destacado-resp").attr("class");
+	var opacity = "premium-resp relative hidden-lg hidden-md opacity-active";
+
+	$(".btn-destacado").click(function(){
+		if ( (atrrPremium != opacity) && (atrrDestacado != opacity)) {
+			console.log("Hola");
+			$(".premium-resp").attr("style", "right:0px!important; top:-25px");
+			$(".destacado-resp").attr("style", "right:0px!important; top:-25px");
+		}
 	});
 });

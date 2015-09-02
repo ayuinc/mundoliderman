@@ -4,9 +4,10 @@
     <img src="{site_url}frontend/app/assets/img/Copita.png" alt="" class="img-premium opacity-active hidden-xs hidden-sm">
     <img src="{site_url}frontend/app/assets/img/Estrella.png" alt="" class="img-destacado opacity-active hidden-xs hidden-sm">
     <div class="col-md-4 pr-0 pt-21 pl-0-xs">
-      <div style="background-image:url({site_url}frontend/app/assets/img/Herman_Profile_Pic.png)" class="bg-img-block-center"></div>
-      <img src="{site_url}frontend/app/assets/img/Rec_Trofeo.png" alt="" class="img-premium hidden-lg hidden-md">
+      <div style="background-image:url({site_url}frontend/app/assets/img/Herman_Profile_Pic.png); z-index:1" class="bg-img-block-center relative"></div>
     </div>
+    <img src="{site_url}frontend/app/assets/img/icon_copa_huge.png" alt="" class="premium-resp relative hidden-lg hidden-md opacity-active" style="top:-25px; right:-22px">
+    <img src="{site_url}frontend/app/assets/img/Icon_estrella_huge.png" alt="" class="destacado-resp relative hidden-lg hidden-md opacity-active" style="top:-25px; right:21px">
     <div class="col-md-8 pl-28 pt-14 hidden-xs hdden-sm">
       <h3 class="text-primary book m-0 display-ib pr-14 fz-30">{screen_name}</h2> 
       <a id="edit_profile" href="{path='perfil/editar/{member_id}'}"> 
@@ -18,7 +19,7 @@
       <span class="light">{if empresa-empleadora == ""}Liderman{if:else}{empresa-empleadora}{/if}</span>
       <p class="fz-12 pt-21">{if introduccion == ""}Este puede ser texto de Introducción del Liderman para que la gente sepa quién es esa persona.{if:else}{introduccion}{/if}</br>Periodo en la Planilla: {if periodo-planilla == ""}DD/MM/AA{if:else}{periodo-planilla}{/if}</p>
     </div>
-    <div class="col-md-8 ph-0 pt-14 hidden-lg hdden-md">
+    <div class="col-md-8 ph-0 pt-7 hidden-lg hdden-md">
       <h3 class="text-primary book m-0 display-ib pr-14 fz-35 pr-0-xs">{screen_name}</h2> 
       <h4 class="text-gray fz-21 m-0 pt-7 pb-14 book">{if cargo == ""}Cargo{if:else}{cargo}{/if}, {if zona == ""}Zona{if:else}{zona}{/if} - {if unidad == ""}Unidad{if:else}{unidad}{/if}</h4>
       <img src="{site_url}frontend/app/assets/img/Ubicacion.png" alt="" class="pb-4">

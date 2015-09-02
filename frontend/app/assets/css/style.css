@@ -2482,6 +2482,13 @@ footer > div .lista p {
     right: -16px;
   }
 
+  /*Reconocimientos perfil*/
+  .texto-premio,
+  .reconocimientos {
+    float: none !important;
+    text-align: center !important;
+  }
+
   /*PR├ëSTAMOS*/
   .prestamos h3 {
     font-size: 24px !important;
