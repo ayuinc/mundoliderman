@@ -751,6 +751,36 @@ footer > div {
 	@include transition (all .3s ease-in);
 	display: none;
 }
+.opacity-active {
+	opacity: 0;
+	@include transition (all .2s ease-in);
+}
+
+.img-destacado, 
+.img-premium {
+  position: absolute;
+  right: 0px;
+  top: -28px;
+  @include transition (all .2s ease-in);
+}
+
+.img-premium {
+	right: 55px!important;
+}
+
+.rec-ambos {
+	top:-10px; 
+	right:-15px;
+}
+.rec-trofeo {
+	top: -8px;
+	right: -22px;
+}
+.rec-estrella {
+	top: -8px;
+	right: -24px;
+}
+
 /*PERFIL-EDITABLE*/
 #perfil-contenido {
 	@extend #tareo-contenido;
@@ -1082,6 +1112,27 @@ input[type="submit"] {
 				width: 9px;
 			}
 		}
+	}
+
+	/*Reconocimientos muro*/
+	.rec-ambos {
+		top:-12px; 
+		right:-8px;
+	}
+	.rec-trofeo {
+		top: -8px;
+		right: -14px;
+	}
+	.rec-estrella {
+		top: -8px;
+		right: -16px;
+	}
+
+	/*Reconocimientos perfil*/
+	.texto-premio, 
+	.reconocimientos {
+		float: none!important;
+		text-align: center!important;
 	}
 
 

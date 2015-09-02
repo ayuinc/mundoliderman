@@ -2081,6 +2081,42 @@ footer > div .lista p {
   display: none;
 }
 
+.opacity-active {
+  opacity: 0;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+
+.img-destacado,
+.img-premium {
+  position: absolute;
+  right: 0px;
+  top: -28px;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+
+.img-premium {
+  right: 55px !important;
+}
+
+.rec-ambos {
+  top: -10px;
+  right: -15px;
+}
+
+.rec-trofeo {
+  top: -8px;
+  right: -22px;
+}
+
+.rec-estrella {
+  top: -8px;
+  right: -24px;
+}
+
 /*PERFIL-EDITABLE*/
 #perfil-contenido .formulario {
   position: relative;
@@ -2459,6 +2495,29 @@ input[type="submit"] {
   }
   .conteiner-answer .col-xs-10 img {
     width: 9px;
+  }
+
+  /*Reconocimientos muro*/
+  .rec-ambos {
+    top: -12px;
+    right: -8px;
+  }
+
+  .rec-trofeo {
+    top: -8px;
+    right: -14px;
+  }
+
+  .rec-estrella {
+    top: -8px;
+    right: -16px;
+  }
+
+  /*Reconocimientos perfil*/
+  .texto-premio,
+  .reconocimientos {
+    float: none !important;
+    text-align: center !important;
   }
 
   /*PR├ëSTAMOS*/
