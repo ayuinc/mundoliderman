@@ -1132,6 +1132,22 @@ footer > div {
 	.size1of2 input[type="submit"] {
 		margin-top: 0px!important;
 	}
+	.size1of2 select, 
+	.size1of2 #freeform_introduce_el_monto_solicitado {
+    margin-top: -5px !important;
+    width: 100%;
+    padding: 3px 20px;
+	}
+	.size1of2 select {
+    background-position-x: 90%!important;
+  }
+  .size1of2 input[type="submit"] {
+    width: 100%;
+    border-radius: 2px;
+    padding: 7px 20px;
+    font-size: 18px;
+    font-weight: 400;
+  }
 
 
 	/*LIDERCARD*/

@@ -50,11 +50,16 @@
                 </div>
                 <div class="solicitar-prestamo ph-14 mt-42">
                   <h3 class="text-gray-darker">Solicitar préstamo</h3> 
-                    {exp:freeform:composer
-                      form_name="solicitar_prestamo"
-                      composer_template_name="solicitar_prestamo"
-                      return= "servicios/prestamos/{segment_3}"
-                    }
+                    {exp:freeform:entries form_name="solicitar_prestamo" status="pending" author_id="{segment_3}"}
+                      Ya solicitó un préstamo.
+                      {if freeform:no_results}
+                        {exp:freeform:composer
+                          form_name="solicitar_prestamo"
+                          composer_template_name="solicitar_prestamo"
+                          return= "servicios/prestamos/{segment_3}"
+                        }
+                      {/if}
+                    {/exp:freeform:entries}
                 </div>
                 <!-- <div>
                   {exp:freeform:entries form_id="4"}
