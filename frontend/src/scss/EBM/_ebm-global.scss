@@ -820,6 +820,11 @@ footer > div {
 	top: -8px;
 	right: -24px;
 }
+.circulo-semaforo {
+	width: 8px!important;
+	height: 8px!important;
+}
+
 
 /*PERFIL-EDITABLE*/
 #perfil-contenido {
@@ -1125,6 +1130,12 @@ input[type="submit"] {
 	.btn-enviar-movil {
 		background-color: black;
 	}
+	.img-articulo {
+		iframe {
+			width: 100%!important;
+    	height: auto!important;
+		}
+	}
 
 	/*MURO*/
 	#comentar {
@@ -1173,7 +1184,19 @@ input[type="submit"] {
 		float: none!important;
 		text-align: center!important;
 	}
-
+	/*Semáforo perfil*/
+	.resumen-semaforo {
+		.col-md-4 .circulo-semaforo {
+	    width: 8px !important;
+	    height: 8px !important;
+	  }
+	  h4 {
+	  	font-size: 18px!important;
+	  }
+	  ul {
+			font-size: 15px!important;
+	  }
+	}
 
 	/*PRÉSTAMOS*/
 	.prestamos {
