@@ -1125,6 +1125,13 @@ footer > div {
 		width: 27px;
 		border-bottom: 1px solid #BFBFBF;
 	}
+	.size1of2:first-child,
+	.size1of2:last-child {
+		width: 100%!important;
+	}
+	.size1of2 input[type="submit"] {
+		margin-top: 0px!important;
+	}
 
 
 	/*LIDERCARD*/
