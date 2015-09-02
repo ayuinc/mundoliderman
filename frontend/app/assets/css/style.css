@@ -2006,9 +2006,48 @@ footer > div .lista p {
   font-size: 1.625rem;
 }
 
+.line:nth-child(2) {
+  display: none;
+}
+
+.size1of2:first-child {
+  width: 60% !important;
+}
+
+.size1of2:last-child {
+  width: 40% !important;
+}
+
+.size1of2 {
+  padding: 0 !important;
+}
+.size1of2 p {
+  color: #707274 !important;
+}
+.size1of2 select,
+.size1of2 #freeform_introduce_el_monto_solicitado {
+  margin-top: 10px !important;
+  width: 135px;
+  padding: 3px 5px;
+}
+.size1of2 select {
+  background-image: url(../img/Flecha_Abajo.png);
+  background-repeat: no-repeat;
+  background-position-x: 107px;
+  background-position-y: center;
+}
+.size1of2 input[type="submit"] {
+  font-family: "Oswald";
+  background-color: #51BA6E;
+  color: white;
+  font-weight: 300;
+  border-radius: 4px;
+  border-color: transparent;
+  padding: 3px 20px;
+  margin-top: 15px;
+}
 .size1of2 .field_label {
-  font-family: "Merriweather";
-  font-weight: 500 !important;
+  display: none;
 }
 
 /*LIDERCARD*/
