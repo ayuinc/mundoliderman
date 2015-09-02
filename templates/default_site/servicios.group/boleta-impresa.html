@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+  <meta charset="utf-8">
+  <title>Mundo Liderman - Boleta de Pago</title>
+  <meta name="description" content="">
+  <meta name="keywords" content=""> 
+  <meta name="author" content="">
+  <link media="print" rel="Alternate" href="print.pdf">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <link rel="icon" type="image/png" href="{site_url}frontend/app/assets/img/Favicon.png" />
+  <link rel="shortcut icon" href="{site_url}frontend/app/assets/img/Favicon.png">
+  <link href="{site_url}frontend/app/assets/css/style.css" rel="stylesheet"> <!-- App styles -->
+  <link href="{site_url}frontend/app/assets/css/ebm.css" rel="stylesheet">
+  <style type="text/css" media="print">
+  </style>
+  <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,700|Oswald:400,300,700' rel='stylesheet' type='text/css'>
+  <style>
+    @media print { 
+      .page {
+        padding: 0.5cm 1cm;
+      }
+      @page {
+        size: A4 landscape;
+        margin: 0;
+      }
+    }
+  </style>
+  <script type="text/javascript">
+  	function calcTotal (amountClass, totalId) {
+		var montos = document.getElementsByClassName(amountClass);
+		var total = 0;
+		for (var i = 0; i < montos.length; i++) {
+			if (montos[i].innerText == undefined || montos[i].innerText == "") { montos[i].innerText = "0.0" };
+			var monto = montos[i].innerText = montos[i].innerText.replace(',','.');
+			console.log(monto);
+			total += parseFloat(monto);
+			console.log(total);
+		};
+		document.getElementById(totalId).innerText = parseFloat(total.toFixed(2));
+	}
+  </script>
+  <div class="site-wrapper"> <!-- Body -->
+    <main class="mb-0">
+      <div class="page container-md">
+        <div class="ph-7 clearfix mb-14">
+          <span id="fecha-boleta" class="col-xs-2 fz-13 thin ph-0"></span>
+        </div>
+        <div id="boleta-impresa" class="fz-13 light text-gray-darker" style="border:1px solid #e7e7e7">
+          {exp:webservice:boleta periodo="{segment_3}" miembro="{segment_4}"}
+          <div class="border-bottom-gray-lighter ph-7">
+            <span>{Compania}</span></br>
+            <span>{RUC}</span>
+            <h1 class="fz-15 bold text-center mt-0">Planilla de Empleado ({TipoPlanilla}) de <span id="month">Julio</span> del <span id="year">2015</span></h1>
+          </div>
+          <div class="clearfix border-bottom-gray-lighter">
+            <div class="col-xs-1 ph-0 border-right-gray-lighter text-center">
+              <div class="border-bottom-gray-lighter book text-gray-dark">CÓDIGO</div>
+              <span>{Codigo}</span>
+            </div>
+            <div class="col-xs-2 ph-0 border-right-gray-lighter text-center">
+              <div class="border-bottom-gray-lighter book text-gray-dark">SIS PENSIONES</div>
+              <span>{SistemaPension}</span>
+            </div>
+            <div class="col-xs-4 ph-0 border-right-gray-lighter text-center">
+              <div class="border-bottom-gray-lighter book text-gray-dark">APELLIDOS Y NOMBRES</div>
+              <span>{ApellidosNombres}</span>
+            </div>
+            <div class="col-xs-3 ph-0 border-right-gray-lighter text-center">
+              <div class="border-bottom-gray-lighter book text-gray-dark">OCUPACIÓN</div>
+              <span>{Ocupacion}</span>
+            </div>
+            <div class="col-xs-2 ph-0 text-center">
+              <div class="border-bottom-gray-lighter book text-gray-dark">SITUACIÓN</div>
+              <span>{Situacion}</span>
+            </div>
+          </div>
+          <div class="clearfix border-bottom-gray-lighter">
+            <div class="col-xs-1 ph-0 border-right-gray-lighter text-center">
+              <div class="border-bottom-gray-lighter book text-gray-dark">FECHA ING</div>
+              <span>{FechaIngreso format="%d/%m/%Y"}</span>
+            </div>
+            <div class="col-xs-2 ph-0 border-right-gray-lighter text-center">
+              <div class="border-bottom-gray-lighter book text-gray-dark">NÚMERO CUSPP</div>
+              <span>{NumeroCUSPP}</span>
+            </div>
+            <div class="col-xs-2 ph-0 border-right-gray-lighter text-center">
+              <div class="border-bottom-gray-lighter book text-gray-dark">Tipo de Documento</div>
+              <span>{TipoDocumento}</span>
+            </div>
+            <div class="col-xs-2 ph-0 border-right-gray-lighter text-center">
+              <div class="border-bottom-gray-lighter book text-gray-dark">Nro. Documento</div>
+              <span>{NumeroDocumento}</span>
+            </div>
+            <div class="col-xs-2 ph-0 border-right-gray-lighter text-center">
+              <div class="border-bottom-gray-lighter book text-gray-dark">SUELDO BÁSICO</div>
+              <span>{SueldoBasico}</span>
+            </div>
+            <div class="col-xs-1 ph-0 border-right-gray-lighter text-center">
+              <div class="border-bottom-gray-lighter book text-gray-dark">COSTO HORA</div>
+              <span>{CostoHora}</span>
+            </div>
+            <div class="col-xs-1 ph-0 border-right-gray-lighter text-center">
+              <div class="border-bottom-gray-lighter book text-gray-dark">FEC.SAL.VAC.</div>
+              <span>{FechaInicioVacaciones format="%d/%m/%Y"}</span>
+            </div>
+            <div class="col-xs-1 ph-0 text-center">
+              <div class="border-bottom-gray-lighter book text-gray-dark">FEC.RET.VAC.</div>
+              <span>{FechaFinVacaciones format="%d/%m/%Y"}</span>
+            </div>
+          </div>
+          <div class="clearfix border-bottom-gray-lighter">
+            <div class="col-xs-1 ph-0 border-right-gray-lighter text-center">
+              <div class="border-bottom-gray-lighter book text-gray-dark">DÍAS TRAB</div>
+              <span>{DiasTrabajados}</span>
+            </div>
+            <div class="col-xs-1 ph-0 border-right-gray-lighter text-center">
+              <div class="border-bottom-gray-lighter book text-gray-dark">HORAS TRAB</div>
+              <span>{HorasTrabajadas}</span>
+            </div>
+            <div class="col-xs-2 ph-0 border-right-gray-lighter text-center">
+              <div class="border-bottom-gray-lighter book text-gray-dark">HORAS EXTRAS 25%</div>
+              <span>{HorasExtras25}</span>
+            </div>
+            <div class="col-xs-2 ph-0 border-right-gray-lighter text-center">
+              <div class="border-bottom-gray-lighter book text-gray-dark">HORAS EXTRAS 35%</div>
+              <span>{HorasExtras35}</span>
+            </div>
+            <div class="col-xs-3 ph-0 border-right-gray-lighter text-center">
+              <div class="border-bottom-gray-lighter book text-gray-dark">HORAS EXTRAS 100%</div>
+              <span>{HorasExtras100}</span>
+            </div>
+            <div class="col-xs-1 ph-0 border-right-gray-lighter text-center">
+              <div class="border-bottom-gray-lighter book text-gray-dark">FECHA NAC</div>
+              <span>{FechaNacimiento format="%d/%m/%Y"}</span>
+            </div>
+            <div class="col-xs-2 ph-0 text-center">
+              <div class="border-bottom-gray-lighter book text-gray-dark">INASISTENCIAS</div>
+              <span>{Inasistencias}</span>
+            </div>
+          </div>
+          {/exp:webservice:boleta}
+          <script type="text/javascript">
+            var months = [ 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Setiembre', 'Octubre', 'Noviembre', 'Diciembre' ];
+            document.getElementById("month").innerText = months[parseInt("{segment_3}".substr(-2)) - 1];
+            document.getElementById("year").innerText = "{segment_3}".substr(0, 4);
+          </script>
+          <div class="clearfix">
+            <div class="col-xs-4 ph-0 border-bottom-gray-lighter border-right-gray-lighter">
+              <div class="border-bottom-gray-lighter text-center book text-gray-dark">HABERES</div>
+              <div class="lista-haberes border-bottom-gray-lighter pv-7" style="min-height:230px">
+              	 {exp:webservice:detalle_boleta_haberes periodo="{segment_3}" miembro="{segment_4}"}
+              	 {if Haberes != null}
+                 <ul class="clearfix pl-0 mb-0">
+                   <li class="col-xs-6">{Haberes}</li>
+                   <li class="col-xs-3"></li>
+                   <li class="col-xs-3 monto-haberes">{MontoHaberes}</li>
+                 </ul>
+                 {/if}
+              	 {/exp:webservice:detalle_boleta_haberes}
+              </div>
+              <div class="pv-7 clearfix book text-gray-dark">
+                 <span class="col-xs-9">TOTAL HABERES:</span>
+                 <span id="total-haberes" class="col-xs-3">0</span>
+              </div>
+              <script type="text/javascript">
+              	calcTotal("monto-haberes", "total-haberes");
+              </script>
+            </div>
+            <div class="col-xs-4 ph-0 border-bottom-gray-lighter border-right-gray-lighter">
+              <div class="border-bottom-gray-lighter text-center book text-gray-dark">DESCUENTOS</div>
+              <div class="lista-descuentos border-bottom-gray-lighter pv-7" style="min-height:230px">
+              	 {exp:webservice:detalle_boleta_descuentos periodo="{segment_3}" miembro="{segment_4}"}
+              	 {if Descuentos != null}
+                 <ul class="clearfix pl-0 mb-0">
+                   <li class="col-xs-6">{Descuentos}</li>
+                   <li class="col-xs-3"></li>
+                   <li class="col-xs-3 monto-descuentos">{MontoDescuentos}</li>
+                 </ul>
+                 {/if}
+                 {/exp:webservice:detalle_boleta_descuentos}
+              </div>
+              <div class="pv-7 clearfix book text-gray-dark">
+                <span class="col-xs-9">TOTAL DESCUENTOS:</span>
+                <span id="total-descuentos" class="col-xs-3">0</span>
+              </div>
+              <script type="text/javascript">
+              	calcTotal("monto-descuentos", "total-descuentos");
+              </script>
+            </div>
+            <div class="col-xs-4 ph-0 border-bottom-gray-lighter">
+              <div class="border-bottom-gray-lighter text-center book text-gray-dark">APORTACIONES</div>
+              <div class="lista-aportaciones border-bottom-gray-lighter pv-7" style="min-height:230px">
+                 {exp:webservice:detalle_boleta_aportaciones periodo="{segment_3}" miembro="{segment_4}"}
+                 {if Aportaciones != null}
+                 <ul class="clearfix pl-0 mb-0">
+                   <li class="col-xs-6">{Aportaciones}</li>
+                   <li class="col-xs-3"></li>
+                   <li class="col-xs-3 monto-aportaciones">{MontoAportaciones}</li>
+                 </ul>
+                 {/if}
+                 {/exp:webservice:detalle_boleta_aportaciones}
+              </div>
+              <div class="pv-7 clearfix book text-gray-dark">
+                <span class="col-xs-9">TOTAL APORTACIONES:</span>
+                <span id="total-aportaciones" class="col-xs-3">0</span>
+              </div>
+              <script type="text/javascript">
+              	calcTotal("monto-aportaciones", "total-aportaciones");
+              </script>
+            </div>
+            <div class="col-xs-offset-4 col-xs-8 ph-0 mb-42">
+              <div class="col-xs-6 ph-0 border-left-gray-lighter"></div>
+              <div class="col-xs-6 ph-0 fz-12 bold text-gray-darker border-left-gray-lighter border-bottom-gray-lighter">
+                <span class="col-xs-9">NETO A PAGAR:</span>
+                <span id="neto" class="col-xs-3">0.00</span>
+              </div>
+              <script type="text/javascript">
+              	document.getElementById("neto").innerText = (parseFloat(document.getElementById("total-haberes").innerText) - parseFloat(document.getElementById("total-descuentos").innerText)).toFixed(2);
+              </script>
+            </div>
+            <div class="clearfix">
+              <span class="col-xs-offset-2 col-xs-2 border-top-gray-dark pr-35 book fz-11 mt-70 mb-21 text-center">RECIBÍ CONFORME</span>
+              <span class="col-xs-offset-3 col-xs-3 border-top-gray-dark text-center mt-70 mb-21 fz-11 book">José Iñigo La Riva</br>Gerente de Administración y Finanzas</span>
+            </div> 
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script type="text/javascript">
+  	window.print();
+  </script>
+</html>
