@@ -780,6 +780,22 @@ footer > div {
 	top: -8px;
 	right: -24px;
 }
+.circulo-semaforo {
+	width: 8px!important;
+	height: 8px!important;
+	border: 1px solid;
+}
+/*Clases semáforo perfil*/
+.border-primary {
+	border-color: rgb(249, 66, 17);
+}
+.border-info {
+	border-color: #51ba6e;
+}
+.border-danger {
+	border-color: rgb(216, 73, 40);
+}
+
 
 /*PERFIL-EDITABLE*/
 #perfil-contenido {
