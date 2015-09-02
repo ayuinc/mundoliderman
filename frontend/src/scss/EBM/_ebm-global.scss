@@ -1091,6 +1091,12 @@ input[type="submit"] {
 	.btn-enviar-movil {
 		background-color: black;
 	}
+	.img-articulo {
+		iframe {
+			width: 100%!important;
+    	height: auto!important;
+		}
+	}
 
 	/*MURO*/
 	#comentar {
