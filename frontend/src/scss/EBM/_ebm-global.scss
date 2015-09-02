@@ -783,17 +783,6 @@ footer > div {
 .circulo-semaforo {
 	width: 8px!important;
 	height: 8px!important;
-	border: 1px solid;
-}
-/*Clases semáforo perfil*/
-.border-primary {
-	border-color: rgb(249, 66, 17);
-}
-.border-info {
-	border-color: #51ba6e;
-}
-.border-danger {
-	border-color: rgb(216, 73, 40);
 }
 
 
@@ -1150,7 +1139,19 @@ input[type="submit"] {
 		float: none!important;
 		text-align: center!important;
 	}
-
+	/*Semáforo perfil*/
+	.resumen-semaforo {
+		.col-md-4 .circulo-semaforo {
+	    width: 8px !important;
+	    height: 8px !important;
+	  }
+	  h4 {
+	  	font-size: 18px!important;
+	  }
+	  ul {
+			font-size: 15px!important;
+	  }
+	}
 
 	/*PRÉSTAMOS*/
 	.prestamos {

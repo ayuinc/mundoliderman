@@ -2120,20 +2120,6 @@ footer > div .lista p {
 .circulo-semaforo {
   width: 8px !important;
   height: 8px !important;
-  border: 1px solid;
-}
-
-/*Clases sem├íforo perfil*/
-.border-primary {
-  border-color: #f94211;
-}
-
-.border-info {
-  border-color: #51ba6e;
-}
-
-.border-danger {
-  border-color: #d84928;
 }
 
 /*PERFIL-EDITABLE*/
@@ -2537,6 +2523,18 @@ input[type="submit"] {
   .reconocimientos {
     float: none !important;
     text-align: center !important;
+  }
+
+  /*Sem├íforo perfil*/
+  .resumen-semaforo .col-md-4 .circulo-semaforo {
+    width: 8px !important;
+    height: 8px !important;
+  }
+  .resumen-semaforo h4 {
+    font-size: 18px !important;
+  }
+  .resumen-semaforo ul {
+    font-size: 15px !important;
   }
 
   /*PR├ëSTAMOS*/
