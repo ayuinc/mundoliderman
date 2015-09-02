@@ -2007,6 +2007,50 @@ footer > div .lista p {
   font-size: 1.625rem;
 }
 
+.line:nth-child(2) {
+  display: none;
+}
+
+.size1of2:first-child {
+  width: 60% !important;
+}
+
+.size1of2:last-child {
+  width: 40% !important;
+}
+
+.size1of2 {
+  padding: 0 !important;
+}
+.size1of2 p {
+  color: #707274 !important;
+}
+.size1of2 select,
+.size1of2 #freeform_introduce_el_monto_solicitado {
+  margin-top: 10px !important;
+  width: 135px;
+  padding: 3px 5px;
+}
+.size1of2 select {
+  background-image: url(../img/Flecha_Abajo.png);
+  background-repeat: no-repeat;
+  background-position-x: 107px;
+  background-position-y: center;
+}
+.size1of2 input[type="submit"] {
+  font-family: "Oswald";
+  background-color: #51BA6E;
+  color: white;
+  font-weight: 300;
+  border-radius: 4px;
+  border-color: transparent;
+  padding: 3px 20px;
+  margin-top: 15px;
+}
+.size1of2 .field_label {
+  display: none;
+}
+
 /*LIDERCARD*/
 .lidercard .bonificacion {
   border-bottom: 3px solid #f94211;
@@ -2555,6 +2599,34 @@ input[type="submit"] {
   .separador-div {
     width: 27px;
     border-bottom: 1px solid #BFBFBF;
+  }
+
+  .size1of2:first-child,
+  .size1of2:last-child {
+    width: 100% !important;
+  }
+
+  .size1of2 input[type="submit"] {
+    margin-top: 0px !important;
+  }
+
+  .size1of2 select,
+  .size1of2 #freeform_introduce_el_monto_solicitado {
+    margin-top: -5px !important;
+    width: 100%;
+    padding: 3px 20px;
+  }
+
+  .size1of2 select {
+    background-position-x: 90% !important;
+  }
+
+  .size1of2 input[type="submit"] {
+    width: 100%;
+    border-radius: 2px;
+    padding: 7px 20px;
+    font-size: 18px;
+    font-weight: 400;
   }
 
   /*LIDERCARD*/
