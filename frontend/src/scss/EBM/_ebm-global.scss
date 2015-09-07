@@ -724,6 +724,18 @@ footer > div {
 }
 
 /*ACEPTAR O RECHAZAR PRÉSTAMO*/
+.resultados-prestamos {
+	h3 {
+		font-size: 22px!important;
+	}
+	h4 {
+		font-size: 14px!important;
+	}
+	.general-dates span,
+	.monto-prestamo span:first-child {
+			font-size: 12px
+	}
+}
 .btn-group-prestamo {
 	outline: none;
 	button {
@@ -737,6 +749,12 @@ footer > div {
 			border-left: 1px solid #e7e7e7;
     	border-radius: 0px;
 		}
+	}
+}
+.monto-prestamo {
+	text-align: left!important;
+	span:first-child {
+		display: inline!important;
 	}
 }
 

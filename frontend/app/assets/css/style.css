@@ -2052,6 +2052,17 @@ footer > div .lista p {
 }
 
 /*ACEPTAR O RECHAZAR PR├ëSTAMO*/
+.resultados-prestamos h3 {
+  font-size: 22px !important;
+}
+.resultados-prestamos h4 {
+  font-size: 14px !important;
+}
+.resultados-prestamos .general-dates span,
+.resultados-prestamos .monto-prestamo span:first-child {
+  font-size: 12px;
+}
+
 .btn-group-prestamo {
   outline: none;
 }
@@ -2062,6 +2073,13 @@ footer > div .lista p {
 .btn-group-prestamo button:last-child {
   border-left: 1px solid #e7e7e7;
   border-radius: 0px;
+}
+
+.monto-prestamo {
+  text-align: left !important;
+}
+.monto-prestamo span:first-child {
+  display: inline !important;
 }
 
 /*LIDERCARD*/
