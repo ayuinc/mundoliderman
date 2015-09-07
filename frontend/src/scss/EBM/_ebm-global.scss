@@ -722,6 +722,25 @@ footer > div {
 		display: none;
 	}
 }
+
+/*ACEPTAR O RECHAZAR PRÉSTAMO*/
+.btn-group-prestamo {
+	outline: none;
+	button {
+		&:hover,
+		&:focus,
+		&:active{
+			background-color: transparent!important;
+			outline: none!important;
+		}
+		&:last-child {
+			border-left: 1px solid #e7e7e7;
+    	border-radius: 0px;
+		}
+	}
+}
+
+
 /*LIDERCARD*/
 .lidercard {
 	.bonificacion {

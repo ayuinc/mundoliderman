@@ -2051,6 +2051,19 @@ footer > div .lista p {
   display: none;
 }
 
+/*ACEPTAR O RECHAZAR PR├ëSTAMO*/
+.btn-group-prestamo {
+  outline: none;
+}
+.btn-group-prestamo button:hover, .btn-group-prestamo button:focus, .btn-group-prestamo button:active {
+  background-color: transparent !important;
+  outline: none !important;
+}
+.btn-group-prestamo button:last-child {
+  border-left: 1px solid #e7e7e7;
+  border-radius: 0px;
+}
+
 /*LIDERCARD*/
 .lidercard .bonificacion {
   border-bottom: 3px solid #f94211;
