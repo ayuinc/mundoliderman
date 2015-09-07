@@ -2007,7 +2007,7 @@ footer > div .lista p {
   font-size: 1.625rem;
 }
 
-.line:nth-child(2) {
+.solicitar-prestamo .line:nth-child(2) {
   display: none;
 }
 
@@ -2147,18 +2147,18 @@ footer > div .lista p {
 }
 
 .rec-ambos {
-  top: -10px;
-  right: -15px;
+  top: 57px;
+  right: 40px;
 }
 
 .rec-trofeo {
-  top: -8px;
-  right: -22px;
+  top: 62px;
+  right: 46px;
 }
 
 .rec-estrella {
-  top: -8px;
-  right: -24px;
+  top: 63px;
+  right: 48px;
 }
 
 .circulo-semaforo {
@@ -2553,18 +2553,18 @@ input[type="submit"] {
 
   /*Reconocimientos muro*/
   .rec-ambos {
-    top: -12px;
-    right: -8px;
+    top: 46px;
+    right: 1px;
   }
 
   .rec-trofeo {
-    top: -8px;
-    right: -14px;
+    top: 53px;
+    right: 7px;
   }
 
   .rec-estrella {
-    top: -8px;
-    right: -16px;
+    top: 54px;
+    right: 8px;
   }
 
   /*Reconocimientos perfil*/
