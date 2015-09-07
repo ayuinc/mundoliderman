@@ -144,7 +144,6 @@ class Wslogin_ext {
 			} else {
 				ee()->load->helper('security');
 				$hash = ee()->auth->hash_password($password);
-				echo 
 				// Assign the base query data
 				$member_data = array(
 					'username'		=> $username,
