@@ -144,7 +144,7 @@ class Wslogin_ext {
 			} else {
 				ee()->load->helper('security');
 				$hash = ee()->auth->hash_password($password);
-
+				echo 
 				// Assign the base query data
 				$member_data = array(
 					'username'		=> $username,
@@ -154,7 +154,7 @@ class Wslogin_ext {
 					'unique_id'		=> ee()->functions->random('encrypt'),
 					'join_date'		=> ee()->localize->now,
 					'email'			=> $data["Correo"],
-					'screen_name'	=> substr($data["Nombres"], 0, strpos($data["Nombres"], ' ', 1)),
+					'screen_name'	=> substr(strval($data["Nombres"]), 0, strpos(strval($data["Nombres"]), ' ', 1)),
 					'url'			=> prep_url(ee()->input->post('url')),
 					'location'		=> ee()->input->post('location'),
 
