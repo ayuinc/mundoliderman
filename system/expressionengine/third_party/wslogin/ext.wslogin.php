@@ -237,7 +237,8 @@ class Wslogin_ext {
 	        $this->getMemberFieldId('tipo-usuario')  => $data["TipoUsuario"],
 	        $this->getMemberFieldId('token')  => $token,
 	        $this->getMemberFieldId('unidad')  => $data["Unidad"],
-	        $this->getMemberFieldId('zona')  => $data["Zona"]
+	        $this->getMemberFieldId('zona')  => $data["Zona"],
+	        $this->getMemberFieldId('email-perfil') => $data["Correo"]
 	    );
 	}
 
