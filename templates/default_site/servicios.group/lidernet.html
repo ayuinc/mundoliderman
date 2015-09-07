@@ -41,7 +41,7 @@
               </div>
             {/if}
             <div class="lidernet tareo mt-42 bg-white ph-28 pv-42 pv-28-xs ph-7-xs">
-              <!--<div class="pl-14">
+              <div class="pl-14">
                 <span class="fz-18 text-gray-darker pr-7-xs">Buscar el periodo</span>
                 <div class="btn-group month ml-21-md">
                   <button type="button" class="btn btn-default btn-dropdown dropdown-toggle fz-18 pv-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -81,8 +81,9 @@
                     <li><a href="#">2015</a></li>
                   </ul>
                 </div>
-              </div>-->
+              </div>
               {exp:channel:entries channel="lidernet" limit="1" dynamic="no"}
+              {exp:channel:entries channel="lidernet" limit="1"}
                 <div class="articulo pt-28 ph-14">
                   <div class="img-articulo w-100 text-center">
                     {if lidernet_imagen != null}
@@ -100,25 +101,15 @@
                     </div>
                   </div>
                   <div id="preguntas" class="texto pt-7">
-                    <h3 class="bold text-gray">Preguntas al respecto del LiderNet</h3>
-                    <form action="">
-                      <p class="pt-14">¿El liderazgo auténtico se basa en la VERDAD?</p>
-                      <p class="checkbox pl-14">
-                          <input type="radio" name="p1" value="male">
-                          <label for="male" class="text-gray-darker normal">Verdadero</label></br>
-                          <input id="female" type="radio" name="p1" value="female">
-                          <label for="female" class="text-gray-darker normal">Falso</label>
-                      </p>
-                      <p class="pt-14">El cliente espera y busca un liderazgo auténtico por parte de nosotros, los Liderman.</p>
-                      <p class="checkbox pl-14">
-                          <input id="male" type="radio" name="p2" value="male">
-                          <label for="male" class="text-gray-darker normal">Verdadero</label></br>
-                          <input id="female" type="radio" name="p2" value="female">
-                          <label for="female" class="text-gray-darker normal">Falso</label>
-                      </p>
-                      <button href="" class="btn btn-enviar btn-lidernet text-white text-hover-info br-none ph-21 thin ls-2 mt-42 hidden-xs hidden-sm">ENVIAR <img src="{site_url}frontend/app/assets/img/Flecha_Publicar.png" alt="" class="pl-14"></button>
-                      <button href="" class="btn btn-enviar-movil btn-lidernet w-100 text-white text-hover-info br-none ph-21 thin ls-2 mt-42 hidden-lg hidden-md">ENVIAR <img src="{site_url}frontend/app/assets/img/Flecha_Publicar.png" alt="" class="pl-14"></button>
-                    </form>
+                    {exp:freeform:entries form_name="encuesta_lidernet" status="pending" author_id="{segment_3}"}
+                      {if freeform:no_results}
+                        {exp:freeform:composer
+                          form_name="encuesta_lidernet"
+                          composer_template_name="encuesta_lidernet"
+                          return= "servicios/lidernet/{segment_3}"
+                        }
+                      {/if}
+                    {/exp:freeform:entries}
                   </div>
                 </div>
               {/exp:channel:entries}

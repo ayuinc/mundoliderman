@@ -2007,7 +2007,7 @@ footer > div .lista p {
   font-size: 1.625rem;
 }
 
-.line:nth-child(2) {
+.solicitar-prestamo .line:nth-child(2) {
   display: none;
 }
 
@@ -2049,6 +2049,10 @@ footer > div .lista p {
 }
 .size1of2 .field_label {
   display: none;
+}
+
+#preguntas .ff_composer .line:last-child p {
+  text-align: right !important;
 }
 
 /*LIDERCARD*/

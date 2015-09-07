@@ -682,8 +682,10 @@ footer > div {
 		font-size: rem(26px);
 	}
 }
-.line:nth-child(2) {
-	display: none;
+.solicitar-prestamo {
+	.line:nth-child(2) {
+		display: none;
+	}
 }
 .size1of2:first-child {
 	width: 60%!important;
@@ -722,6 +724,14 @@ footer > div {
 		display: none;
 	}
 }
+#preguntas {
+	.ff_composer .line:last-child {
+		p {
+			text-align: right!important;
+		}
+	}
+}
+
 /*LIDERCARD*/
 .lidercard {
 	.bonificacion {
