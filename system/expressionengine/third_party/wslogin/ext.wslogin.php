@@ -154,7 +154,7 @@ class Wslogin_ext {
 					'unique_id'		=> ee()->functions->random('encrypt'),
 					'join_date'		=> ee()->localize->now,
 					'email'			=> $data["Correo"],
-					'screen_name'	=> $data["Nombres"],
+					'screen_name'	=> substr($data["Nombres"], 0, strpos($data["Nombres"], ' ', 1)),
 					'url'			=> prep_url(ee()->input->post('url')),
 					'location'		=> ee()->input->post('location'),
 
