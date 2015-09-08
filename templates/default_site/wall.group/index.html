@@ -49,9 +49,9 @@
                 {!--{/exp:user:stats}--}
                 <div class="img-perfil relative text-center bg-img-block-center brp-100" style="background-image: url({site_url}frontend/app/assets/img/Carita.png); z-index:1;">
                 </div>
-                <img src="{site_url}frontend/app/assets/img/Rec_Estrella.png" alt="" class="rec-estrella relative hidden">
-                <img src="{site_url}frontend/app/assets/img/rec_ambos.png" alt="" class="rec-ambos relative">
-                <img src="{site_url}frontend/app/assets/img/Rec_Trofeo.png" alt="" class="rec-trofeo relative hidden">
+                <img src="{site_url}frontend/app/assets/img/Rec_Estrella.png" alt="" class="rec-estrella absolute hidden">
+                <img src="{site_url}frontend/app/assets/img/rec_ambos.png" alt="" class="rec-ambos absolute">
+                <img src="{site_url}frontend/app/assets/img/Rec_Trofeo.png" alt="" class="rec-trofeo absolute hidden">
               </div>
               <div class="name col-xs-10 pl-0">
                 <div class="info-usuario pl-7 row">
@@ -60,7 +60,7 @@
                     <h5 class="text-gray-darker m-0">{post_screen_name}</h5>
                     <p class="fz-10 m-0 text-gray"><a href="">{post_status_date:relative past="%s ago"}</a></p>
                   </div>
-                  <div class="col-xs-8 hidden-lg hidden-md pl-35"><!--movil-->
+                  <div class="col-xs-8 hidden-lg hidden-md pl-35 pr-0-xs"><!--movil-->
                     <span class="categoria text-uppercase fz-11 text-primary le-1-3">{post_category_name}</span>
                     <h5 class="text-gray-darker m-0 fz-22 lh-1-3">{post_screen_name}</h5>
                     <p class="fz-14 m-0 text-gray fz-14"><a href="">{post_status_date:relative past="%s ago"}</a></p>

@@ -2007,7 +2007,11 @@ footer > div .lista p {
   font-size: 1.625rem;
 }
 
-.solicitar-prestamo .line:nth-child(2) {
+.line:first-child .size1of1 {
+  padding-left: 0px !important;
+}
+
+.solicitar-prestamo .line:nth-child(3) {
   display: none;
 }
 
@@ -2053,6 +2057,37 @@ footer > div .lista p {
 
 #preguntas .ff_composer .line:last-child p {
   text-align: right !important;
+}
+
+/*ACEPTAR O RECHAZAR PR├ëSTAMO*/
+.resultados-prestamos h3 {
+  font-size: 22px !important;
+}
+.resultados-prestamos h4 {
+  font-size: 14px !important;
+}
+.resultados-prestamos .general-dates span,
+.resultados-prestamos .monto-prestamo span:first-child {
+  font-size: 12px;
+}
+
+.btn-group-prestamo {
+  outline: none;
+}
+.btn-group-prestamo button:hover, .btn-group-prestamo button:focus, .btn-group-prestamo button:active {
+  background-color: transparent !important;
+  outline: none !important;
+}
+.btn-group-prestamo button:last-child {
+  border-left: 1px solid #e7e7e7;
+  border-radius: 0px;
+}
+
+.monto-prestamo {
+  text-align: left !important;
+}
+.monto-prestamo span:first-child {
+  display: inline !important;
 }
 
 /*LIDERCARD*/
@@ -2151,18 +2186,18 @@ footer > div .lista p {
 }
 
 .rec-ambos {
-  top: -10px;
-  right: -15px;
+  top: 57px;
+  right: 40px;
 }
 
 .rec-trofeo {
-  top: -8px;
-  right: -22px;
+  top: 62px;
+  right: 46px;
 }
 
 .rec-estrella {
-  top: -8px;
-  right: -24px;
+  top: 63px;
+  right: 48px;
 }
 
 .circulo-semaforo {
@@ -2557,18 +2592,18 @@ input[type="submit"] {
 
   /*Reconocimientos muro*/
   .rec-ambos {
-    top: -12px;
-    right: -8px;
+    top: 46px;
+    right: 1px;
   }
 
   .rec-trofeo {
-    top: -8px;
-    right: -14px;
+    top: 53px;
+    right: 7px;
   }
 
   .rec-estrella {
-    top: -8px;
-    right: -16px;
+    top: 54px;
+    right: 8px;
   }
 
   /*Reconocimientos perfil*/
