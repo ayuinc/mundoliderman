@@ -2007,7 +2007,11 @@ footer > div .lista p {
   font-size: 1.625rem;
 }
 
-.solicitar-prestamo .line:nth-child(2) {
+.line:first-child .size1of1 {
+  padding-left: 0px !important;
+}
+
+.solicitar-prestamo .line:nth-child(3) {
   display: none;
 }
 

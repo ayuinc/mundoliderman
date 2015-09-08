@@ -682,7 +682,10 @@ footer > div {
 		font-size: rem(26px);
 	}
 }
-.solicitar-prestamo .line:nth-child(2) {
+.line:first-child .size1of1 {
+	padding-left: 0px!important;
+}
+.solicitar-prestamo .line:nth-child(3) {
 	display: none;
 }
 .size1of2:first-child {
