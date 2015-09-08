@@ -745,7 +745,7 @@ footer > div {
 	}
 	.general-dates span,
 	.monto-prestamo span:first-child {
-			font-size: 12px
+		font-size: 12px!important;
 	}
 }
 .btn-group-prestamo {
@@ -1442,6 +1442,12 @@ input[type="submit"] {
 				}
 			}
 		}
+	}
+
+	/*Rechazar préstamo*/
+	.rechazar img:last-child, 
+	.aceptar img:last-child {
+		display: inline-block!important;
 	}
 
 	/*FOOTER*/

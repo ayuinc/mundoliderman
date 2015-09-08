@@ -2068,7 +2068,7 @@ footer > div .lista p {
 }
 .resultados-prestamos .general-dates span,
 .resultados-prestamos .monto-prestamo span:first-child {
-  font-size: 12px;
+  font-size: 12px !important;
 }
 
 .btn-group-prestamo {
@@ -2831,6 +2831,12 @@ input[type="submit"] {
   }
   #search-results .resultados .col-xs-7 span {
     font-size: 12px;
+  }
+
+  /*Rechazar pr├®stamo*/
+  .rechazar img:last-child,
+  .aceptar img:last-child {
+    display: inline-block !important;
   }
 
   /*FOOTER*/
