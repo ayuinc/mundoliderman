@@ -94,6 +94,7 @@ class Wall {
 				where wl.post_id = $post_id and wl.member_id = $member_id";
 
 		$query = $this->EE->db->query($sql);
+		
 		$post_like = "n";
 		if ($query->num_rows() > 0) {
 			$post_like = $query->result_array()[0]["post_like"];
@@ -243,7 +244,7 @@ class Wall {
 	public function like_post()
 	{
 		$post_id = $this->EE->input->post("post_id");
-		$like = $this->EE->input->post("post_like_status");
+		//$like = $this->EE->input->post("post_like_status");
 		$member_id = $this->EE->session->userdata("member_id");
 
 		$data_where = array(
@@ -251,15 +252,17 @@ class Wall {
 			'member_id' => $member_id
 		);
 
-		$query = $this->EE->db->select('id')->from('wall_like')->where($data_where)->get();
+		$query = $this->EE->db->select('id, like')->from('wall_like')->where($data_where)->get();
 
-		if ($like == "n") {
-			$like = "y";
-		} else {
-			$like = "n";
-		}
-
+		$like = "y";
+		
 		if ($query->num_rows() > 0) {
+			$like = $query->row('like');
+			if ($like == "n") {
+				$like = "y";
+			} else {
+				$like = "n";
+			}
 			$data = array(
 				'like' => $like
 			);

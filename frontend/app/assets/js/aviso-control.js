@@ -4,11 +4,18 @@ $(document).ready(function(){
 		$(this).parent().find(".btn-aviso1").toggleClass("hidden");
 		$(this).parent().find(".btn-aviso2").toggleClass("hidden");
 	});
+	
 	$(".like-container").click(function(e){
 		e.preventDefault();
-		//$(this).parent().find(".like").toggleClass("active-like");
-		//$(this).parent().find(".img-like").toggleClass("hidden");
-		$(this).parent().submit();
+		var btn = $(this);
+		var form = btn.parent();
+		var url = form.attr("action");
+		var data = form.serialize();
+
+		$.post(url, data, function (result) {
+			btn.parent().find(".like").toggleClass("active-like");
+			btn.parent().find(".img-like").toggleClass("hidden");
+		});
 	});
 
 	$(".like-container").each(function(index, element) {
