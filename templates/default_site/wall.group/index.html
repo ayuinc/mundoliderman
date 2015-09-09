@@ -260,8 +260,17 @@
       });
 
       $(".delete_post").click(function(e) {
-        var form = $(this).parent().parent().parent()[0];
-        form.submit.click();
+        e.preventDefault();
+        var img = $(this);
+        var form = img.parent().parent().parent()[0];
+        var post = $(form).parent().parent().parent().parent();
+        
+        var url = $(form).attr("action");
+        var data = $(form).serialize();
+
+        $.post(url, data, function(result) {
+          post.fadeOut();
+        });
       });
     });
 </script>

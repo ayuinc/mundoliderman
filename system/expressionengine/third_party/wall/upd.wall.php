@@ -213,6 +213,20 @@ class Wall_upd {
 		$this->EE->dbforge->add_key('id', TRUE);
 		$this->EE->dbforge->create_table('wall_comment');
 
+		unset($fields);
+		
+		$fields = array(
+			'id' => array('type' => 'int', 'unsigned' => TRUE, 'auto_increment' => TRUE),
+			'member_id' => array('type' => 'int', 'unsigned' => TRUE, 'constraint' => '10', 'null' => FALSE),
+			'premium' => array('type' => 'char', 'constraint' => '1', 'null' => FALSE, 'default' => 'n'), 
+			'prominent' => array('type' => 'char', 'constraint' => '1', 'null' => FALSE, 'default' => 'n'), 
+			'achieve_date' => array('type' => 'int', 'constraint' => '10', 'unsigned' => TRUE, 'default' => '0', 'null' => FALSE)
+		);
+
+		$this->EE->dbforge->add_field($fields);
+		$this->EE->dbforge->add_key('id', TRUE);
+		$this->EE->dbforge->create_table('member_achievement');
+
 		unset($data);
 
 		$data = array(
@@ -231,6 +245,14 @@ class Wall_upd {
 			array(
 				"class" => $this->module_name,
 				"method" => "like_post"
+			),
+			array(
+				"class" => $this->module_name,
+				"method" => "member_premium"
+			),
+			array(
+				"class" => $this->module_name,
+				"method" => "member_prominent"
 			)
 		);
 
@@ -268,7 +290,8 @@ class Wall_upd {
 		$this->EE->dbforge->drop_table("wall_status_category");
 		$this->EE->dbforge->drop_table("wall_status");
 		$this->EE->dbforge->drop_table("wall_comment");
-
+		$this->EE->dbforge->drop_table("member_achievement");
+		
 		return TRUE;
 	}
 

@@ -123,6 +123,80 @@ class Wall {
 		return $form;
 	}
 
+	public function member_premium_form() 
+	{
+		$member_id = $this->EE->TMPL->fetch_param("member_id");
+		$ret = $this->EE->TMPL->fetch_param("return");
+		$ret = $this->EE->functions->fetch_site_index(TRUE) . $ret;
+
+		$query = $this->EE->db->select("premium")->where("member_id", $member_id)->get("member_achievement");
+		
+		$premium_status = "n";
+		if ($query->num_rows() > 0) {
+			$premium_status = $query->row("premium");
+		}
+
+		// Build an array to hold the form's hidden fields
+		$hidden_fields = array(
+			"ACT" => $this->EE->functions->fetch_action_id("Wall", "member_premium"),
+			"RET" => $ret,
+			"member_id" => $member_id,
+			"premium_status" => $premium_status
+		);
+
+		// Build an array with the form data
+		$form_data = array(
+			"id" => $this->EE->TMPL->form_id,
+			"class" => $this->EE->TMPL->form_class,
+			"hidden_fields" => $hidden_fields
+		);
+
+		// Fetch contents of the tag pair
+		$tagdata = $this->EE->TMPL->tagdata;
+
+		$form = $this->EE->functions->form_declaration($form_data) .
+			$tagdata . "</form>";
+
+		return $form;
+	}
+
+	public function member_prominent_form() 
+	{
+		$member_id = $this->EE->TMPL->fetch_param("member_id");
+		$ret = $this->EE->TMPL->fetch_param("return");
+		$ret = $this->EE->functions->fetch_site_index(TRUE) . $ret;
+
+		$query = $this->EE->db->select("prominent")->where("member_id", $member_id)->get("member_achievement");
+		
+		$prominent_status = "n";
+		if ($query->num_rows() > 0) {
+			$prominent_status = $query->row("prominent");
+		}
+
+		// Build an array to hold the form's hidden fields
+		$hidden_fields = array(
+			"ACT" => $this->EE->functions->fetch_action_id("Wall", "member_prominent"),
+			"RET" => $ret,
+			"member_id" => $member_id,
+			"premium_status" => $prominent_status
+		);
+
+		// Build an array with the form data
+		$form_data = array(
+			"id" => $this->EE->TMPL->form_id,
+			"class" => $this->EE->TMPL->form_class,
+			"hidden_fields" => $hidden_fields
+		);
+
+		// Fetch contents of the tag pair
+		$tagdata = $this->EE->TMPL->tagdata;
+
+		$form = $this->EE->functions->form_declaration($form_data) .
+			$tagdata . "</form>";
+
+		return $form;
+	}
+
 	public function status()
 	{
 		$member_id = $this->EE->TMPL->fetch_param("member_id");
@@ -279,6 +353,74 @@ class Wall {
 			$this->EE->db->insert('wall_like', $data);
 		}
 		return $this->EE->functions->redirect("wall");
+	}
+
+	public function member_premium()
+	{
+		$member_id = $this->EE->input->post("member_id");
+		$data_where = array(
+			"member_id" => $member_id
+		);
+		$query = $this->EE->db->select('id, premium')->where($data_where)->get('member_achievement');
+		$premium = 'y';
+		if ($query->num_rows() > 0) {
+			$premium = $query->row('premium');
+			if ($premium == 'n') {
+				$premium = 'y';
+			} else {
+				$premium = 'n';
+			}
+			$data = array(
+				'premium' => $premium
+			);
+			$this->EE->db->where($data_where);
+			$this->EE->db->update('member_achievement', $data);
+		} else {
+			$premium_date = $this->EE->localize->now;
+			$data = array(
+				'member_id' => $member_id,
+				'premium' => $premium,
+				'prominent' => 'n',
+				'achieve_date' => $premium_date
+			);
+			$this->EE->db->insert('member_achievement', $data);
+		}
+		$return = $this->_prep_return();
+        return $this->EE->functions->redirect($return);
+	}
+
+	public function member_prominent()
+	{
+		$member_id = $this->EE->input->post("member_id");
+		$data_where = array(
+			"member_id" => $member_id
+		);
+		$query = $this->EE->db->select('id, prominent')->where($data_where)->get('member_achievement');
+		$prominent = 'y';
+		if ($query->num_rows() > 0) {
+			$prominent = $query->row('prominent');
+			if ($prominent == 'n') {
+				$prominent = 'y';
+			} else {
+				$prominent = 'n';
+			}
+			$data = array(
+				'prominent' => $prominent
+			);
+			$this->EE->db->where($data_where);
+			$this->EE->db->update('member_achievement', $data);
+		} else {
+			$premium_date = $this->EE->localize->now;
+			$data = array(
+				'member_id' => $member_id,
+				'premium' => 'n',
+				'prominent' => $prominent,
+				'achieve_date' => $premium_date
+			);
+			$this->EE->db->insert('member_achievement', $data);
+		}
+		$return = $this->_prep_return();
+        return $this->EE->functions->redirect($return);
 	}
 
 	private function _prep_return( $return = '' )
