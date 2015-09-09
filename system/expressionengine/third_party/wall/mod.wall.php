@@ -203,10 +203,12 @@ class Wall {
 	
 		$this->EE->db->select("ws.id as post_id, ws.member_id as post_user_id, m.screen_name as post_screen_name, m.username as post_username,
 										ws.category_id as post_category_id, wsc.name as post_category_name, ws.content as post_content,
-										ws.image_path as post_image_path, ws.status_date as post_status_date")
+										ws.image_path as post_image_path, ws.status_date as post_status_date, 
+										ma.premium as member_premium, ma.prominent as member_prominent")
 							  ->from("wall_status ws")
 							  ->join("members m", "ws.member_id = m.member_id")
 							  ->join("wall_status_category wsc", "ws.category_id = wsc.id")
+							  ->join("member_achievement ma", "m.member_id = ma.member_id", "left")
 							  ->where("ws.active", "y");
 		
 		if (!empty($member_id)) {
