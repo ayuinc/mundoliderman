@@ -200,7 +200,8 @@ class Wall {
 	public function status()
 	{
 		$member_id = $this->EE->TMPL->fetch_param("member_id");
-	
+		$post_id = $this->EE->TMPL->fetch_param("post_id", 0);
+		
 		$this->EE->db->select("ws.id as post_id, ws.member_id as post_user_id, m.screen_name as post_screen_name, m.username as post_username,
 										ws.category_id as post_category_id, wsc.name as post_category_name, ws.content as post_content,
 										ws.image_path as post_image_path, ws.status_date as post_status_date, 
@@ -214,6 +215,10 @@ class Wall {
 		if (!empty($member_id)) {
 			$this->EE->db->where("ws.member_id", $member_id);
 		} 
+
+		if (!empty($post_id) && $post_id != 0) {
+			$this->EE->db->where("ws.id", $post_id);
+		}
 
 		$query = $this->EE->db->order_by("ws.status_date", "desc")->get();
 
@@ -282,8 +287,11 @@ class Wall {
                 $this->EE->db->where("id", $post_id);
                 $this->EE->db->update("wall_status", $image_data);
         }
+        echo $post_id;
+        /*
         $return = $this->_prep_return();
         return $this->EE->functions->redirect($return);
+        */
 	}
 
 	public function delete_post() 

@@ -22,7 +22,7 @@
                 </select>
               </div>
             </div>
-            <textarea name="wall_status" class="form-control outline-none serif fz-18 borderless br-none pv-14 ph-14" onkeyup="auto_grow(this)" placeholder="Qué estás pensando..."></textarea>
+            <textarea id="wall_status" name="wall_status" class="form-control outline-none serif fz-18 borderless br-none pv-14 ph-14" onkeyup="auto_grow(this)" placeholder="Qué estás pensando..."></textarea>
             <div class="fileUpload btn btn-success p-0 ml-21">
               <img src="{site_url}frontend/app/assets/img/Icono_Foto.png" alt="">
               <span class="thin fz-12 pl-14 hidden-xs hidden-sm">Subir imagen</span>
@@ -39,8 +39,12 @@
           {/exp:wall:status_form}
         </section>
         
-        {exp:wall:status}
+        <section id="new_post">
+          
+        </section>
+
         <section id="post">
+        {exp:wall:status}        
           <div class="post-1 post bg-white ph-14 pt-28 pb-28 mt-42 relative">
             <div class="clearfix">
               <div class="col-xs-2 pr-0 pl-7 pt-7-xs">
@@ -230,8 +234,8 @@
               </div>
             </div>
           </div>
-        </section>
         {/exp:wall:status}
+        </section>
       </div>
       <div id="box-right" class="col-md-4 pl-21 pr-0 hidden-xs hidden-sm">
         {embed="includes/modulo-noticias"}
@@ -253,16 +257,31 @@
 
       $("#status_form").attr("enctype", "multipart/form-data");
       $("#status_form").submit(function(e) {
-        $friends_status = $("#friends_status").val();
-        $status_category = $("#status_category").val();
-        if ($status_category == 0) {
-          e.preventDefault();
+        e.preventDefault();
+        var friends_status = $("#wall_status").val();
+        var status_category = $("#status_category").val();
+        if (status_category == 0) {
           return;
         };
-        if($friends_status.trim().length == 0 || $friends_status.trim() == "") {
-          e.preventDefault();
+        if(friends_status.trim().length == 0 || friends_status.trim() == "") {
           return;
         }
+        var form = $(this);
+        var url = form.attr("action");
+        var data = form.serialize();
+
+        $.post(url, data, function(result) {
+          $.ajax({
+            method: 'GET',
+            url: '{site_url}wall/new_post/' + result
+          })
+          .done(function(data) {
+            $("#post").hide();
+            var old_posts = $("#post").html();
+            $("#post").html(data + old_posts);
+            $("#post").fadeIn();
+          });
+        });
       });
 
       $(".delete_post").click(function(e) {
