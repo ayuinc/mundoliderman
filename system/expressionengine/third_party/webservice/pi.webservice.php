@@ -119,8 +119,8 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 		$codigoLiderman = $query->row($codigo_liderman_field_name);
 		$token = $query->row($token_field_name);
 		$mes = trim($this->EE->TMPL->fetch_param('mes'));
+		if (!empty($mes)) $mes = date('n');
 		$currentMonth = date('n');
-		$mes = $currentMonth - $mes;
 		$url = "http://190.187.13.164/WSIntranet/Tareo.svc/TraerSemaforoTareo/$codigoLiderman/$mes/$token";
 		$data = $this->EE->curl->get($url);
 		return $data;
@@ -152,8 +152,12 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 		$codigoLiderman = $query->row($codigo_liderman_field_name);
 		$token = $query->row($token_field_name);
 		$mes = trim($this->EE->TMPL->fetch_param('mes'));
-		$currentMonth = date('n');
-		$mes = $currentMonth - $mes;
+		if (!empty($mes)) {
+			$currentMonth = date('n');
+			$mes = $currentMonth - $mes;
+		} else {
+			$mes = date('n');
+		}
 		$url = "http://190.187.13.164/WSIntranet/LiderCard.svc/TraerSemaforoLiderCard/$codigoLiderman/$mes/$token";
 		$data = $this->EE->curl->get($url);
 		return $data;
@@ -172,6 +176,7 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 		$codigoLiderman = $query->row($codigo_liderman_field_name);
 		$token = $query->row($token_field_name);
 		$mes = trim($this->EE->TMPL->fetch_param('mes'));
+		if (!empty($mes)) $mes = date('n');
 		$currentMonth = date('n');
 		$mes = $currentMonth - $mes;
 		$url = "http://190.187.13.164/WSIntranet/Prestamo.svc/TraerSemaforoPrestamo/$codigoLiderman/$mes/$token";

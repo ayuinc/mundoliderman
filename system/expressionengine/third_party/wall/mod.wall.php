@@ -197,6 +197,17 @@ class Wall {
 		return $form;
 	}
 
+	public function like_count() 
+	{
+		$post_id = $this->EE->TMPL->fetch_param("post_id");
+		$data_where = array(
+			"post_id" => $post_id,
+			"like" => "y"
+		);
+		$like_count = $this->EE->db->where($data_where)->from("wall_like")->count_all_results();
+		return $like_count;
+	}
+
 	public function status()
 	{
 		$member_id = $this->EE->TMPL->fetch_param("member_id");
