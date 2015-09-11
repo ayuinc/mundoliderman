@@ -4,11 +4,18 @@ $(document).ready(function(){
 		$(this).parent().find(".btn-aviso1").toggleClass("hidden");
 		$(this).parent().find(".btn-aviso2").toggleClass("hidden");
 	});
+	
 	$(".like-container").click(function(e){
 		e.preventDefault();
-		//$(this).parent().find(".like").toggleClass("active-like");
-		//$(this).parent().find(".img-like").toggleClass("hidden");
-		$(this).parent().submit();
+		var btn = $(this);
+		var form = btn.parent();
+		var url = form.attr("action");
+		var data = form.serialize();
+
+		$.post(url, data, function (result) {
+			btn.parent().find(".like").toggleClass("active-like");
+			btn.parent().find(".img-like").toggleClass("hidden");
+		});
 	});
 
 	$(".like-container").each(function(index, element) {
@@ -34,12 +41,33 @@ $(document).ready(function(){
 	});
 
 	/*Btn-premium y destacado*/
-	$(".reconocer").click(function() {
-		var id = $(this).attr("id");
-		var img = $(this).attr("data-img");
-		var img_resp = $(this).attr("data-img-resp");
-		$(this).toggleClass("text-primary");
-		$(this).toggleClass("text-gray");
+	$(".reconocer").click(function(e) {
+		e.preventDefault();
+		var element = $(this);
+		var form = element.parent();
+		var url = form.attr("action");
+		var data = form.serialize();
+
+		$.post(url, data, function(result) {
+			set_achievement(element);
+		});
+	});
+
+	$(".reconocer").each(function(index, element) {
+		console.log($(element));
+		var form = $(element).parent();
+		var premium_status = form.find("input[name=premium_status]").val();
+		if (premium_status == 'y') {
+			set_achievement(element);
+		};
+	});
+
+	function set_achievement(element) {
+		var id = $(element).attr("id");
+		var img = $(element).attr("data-img");
+		var img_resp = $(element).attr("data-img-resp");
+		$(element).toggleClass("text-primary");
+		$(element).toggleClass("text-gray");
 		$("." + img).toggleClass("opacity-active");
 		$("." + img_resp).toggleClass("opacity-active");
 		var btn_premium = "btn-premium";
@@ -68,5 +96,5 @@ $(document).ready(function(){
 				$("." + img_premium).attr("style", "right: 0px !important;");
 			}
 		}
-	});
+	}
 });

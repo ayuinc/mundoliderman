@@ -94,6 +94,7 @@ class Wall {
 				where wl.post_id = $post_id and wl.member_id = $member_id";
 
 		$query = $this->EE->db->query($sql);
+		
 		$post_like = "n";
 		if ($query->num_rows() > 0) {
 			$post_like = $query->result_array()[0]["post_like"];
@@ -122,21 +123,102 @@ class Wall {
 		return $form;
 	}
 
+	public function member_premium_form() 
+	{
+		$member_id = $this->EE->TMPL->fetch_param("member_id");
+		$ret = $this->EE->TMPL->fetch_param("return");
+		$ret = $this->EE->functions->fetch_site_index(TRUE) . $ret;
+
+		$query = $this->EE->db->select("premium")->where("member_id", $member_id)->get("member_achievement");
+		
+		$premium_status = "n";
+		if ($query->num_rows() > 0) {
+			$premium_status = $query->row("premium");
+		}
+
+		// Build an array to hold the form's hidden fields
+		$hidden_fields = array(
+			"ACT" => $this->EE->functions->fetch_action_id("Wall", "member_premium"),
+			"RET" => $ret,
+			"member_id" => $member_id,
+			"premium_status" => $premium_status
+		);
+
+		// Build an array with the form data
+		$form_data = array(
+			"id" => $this->EE->TMPL->form_id,
+			"class" => $this->EE->TMPL->form_class,
+			"hidden_fields" => $hidden_fields
+		);
+
+		// Fetch contents of the tag pair
+		$tagdata = $this->EE->TMPL->tagdata;
+
+		$form = $this->EE->functions->form_declaration($form_data) .
+			$tagdata . "</form>";
+
+		return $form;
+	}
+
+	public function member_prominent_form() 
+	{
+		$member_id = $this->EE->TMPL->fetch_param("member_id");
+		$ret = $this->EE->TMPL->fetch_param("return");
+		$ret = $this->EE->functions->fetch_site_index(TRUE) . $ret;
+
+		$query = $this->EE->db->select("prominent")->where("member_id", $member_id)->get("member_achievement");
+		
+		$prominent_status = "n";
+		if ($query->num_rows() > 0) {
+			$prominent_status = $query->row("prominent");
+		}
+
+		// Build an array to hold the form's hidden fields
+		$hidden_fields = array(
+			"ACT" => $this->EE->functions->fetch_action_id("Wall", "member_prominent"),
+			"RET" => $ret,
+			"member_id" => $member_id,
+			"premium_status" => $prominent_status
+		);
+
+		// Build an array with the form data
+		$form_data = array(
+			"id" => $this->EE->TMPL->form_id,
+			"class" => $this->EE->TMPL->form_class,
+			"hidden_fields" => $hidden_fields
+		);
+
+		// Fetch contents of the tag pair
+		$tagdata = $this->EE->TMPL->tagdata;
+
+		$form = $this->EE->functions->form_declaration($form_data) .
+			$tagdata . "</form>";
+
+		return $form;
+	}
+
 	public function status()
 	{
 		$member_id = $this->EE->TMPL->fetch_param("member_id");
-	
+		$post_id = $this->EE->TMPL->fetch_param("post_id", 0);
+		
 		$this->EE->db->select("ws.id as post_id, ws.member_id as post_user_id, m.screen_name as post_screen_name, m.username as post_username,
 										ws.category_id as post_category_id, wsc.name as post_category_name, ws.content as post_content,
-										ws.image_path as post_image_path, ws.status_date as post_status_date")
+										ws.image_path as post_image_path, ws.status_date as post_status_date, 
+										ma.premium as member_premium, ma.prominent as member_prominent")
 							  ->from("wall_status ws")
 							  ->join("members m", "ws.member_id = m.member_id")
 							  ->join("wall_status_category wsc", "ws.category_id = wsc.id")
+							  ->join("member_achievement ma", "m.member_id = ma.member_id", "left")
 							  ->where("ws.active", "y");
 		
 		if (!empty($member_id)) {
 			$this->EE->db->where("ws.member_id", $member_id);
 		} 
+
+		if (!empty($post_id) && $post_id != 0) {
+			$this->EE->db->where("ws.id", $post_id);
+		}
 
 		$query = $this->EE->db->order_by("ws.status_date", "desc")->get();
 
@@ -205,8 +287,11 @@ class Wall {
                 $this->EE->db->where("id", $post_id);
                 $this->EE->db->update("wall_status", $image_data);
         }
+        echo $post_id;
+        /*
         $return = $this->_prep_return();
         return $this->EE->functions->redirect($return);
+        */
 	}
 
 	public function delete_post() 
@@ -243,7 +328,7 @@ class Wall {
 	public function like_post()
 	{
 		$post_id = $this->EE->input->post("post_id");
-		$like = $this->EE->input->post("post_like_status");
+		//$like = $this->EE->input->post("post_like_status");
 		$member_id = $this->EE->session->userdata("member_id");
 
 		$data_where = array(
@@ -251,15 +336,17 @@ class Wall {
 			'member_id' => $member_id
 		);
 
-		$query = $this->EE->db->select('id')->from('wall_like')->where($data_where)->get();
+		$query = $this->EE->db->select('id, like')->from('wall_like')->where($data_where)->get();
 
-		if ($like == "n") {
-			$like = "y";
-		} else {
-			$like = "n";
-		}
-
+		$like = "y";
+		
 		if ($query->num_rows() > 0) {
+			$like = $query->row('like');
+			if ($like == "n") {
+				$like = "y";
+			} else {
+				$like = "n";
+			}
 			$data = array(
 				'like' => $like
 			);
@@ -276,6 +363,74 @@ class Wall {
 			$this->EE->db->insert('wall_like', $data);
 		}
 		return $this->EE->functions->redirect("wall");
+	}
+
+	public function member_premium()
+	{
+		$member_id = $this->EE->input->post("member_id");
+		$data_where = array(
+			"member_id" => $member_id
+		);
+		$query = $this->EE->db->select('id, premium')->where($data_where)->get('member_achievement');
+		$premium = 'y';
+		if ($query->num_rows() > 0) {
+			$premium = $query->row('premium');
+			if ($premium == 'n') {
+				$premium = 'y';
+			} else {
+				$premium = 'n';
+			}
+			$data = array(
+				'premium' => $premium
+			);
+			$this->EE->db->where($data_where);
+			$this->EE->db->update('member_achievement', $data);
+		} else {
+			$premium_date = $this->EE->localize->now;
+			$data = array(
+				'member_id' => $member_id,
+				'premium' => $premium,
+				'prominent' => 'n',
+				'achieve_date' => $premium_date
+			);
+			$this->EE->db->insert('member_achievement', $data);
+		}
+		$return = $this->_prep_return();
+        return $this->EE->functions->redirect($return);
+	}
+
+	public function member_prominent()
+	{
+		$member_id = $this->EE->input->post("member_id");
+		$data_where = array(
+			"member_id" => $member_id
+		);
+		$query = $this->EE->db->select('id, prominent')->where($data_where)->get('member_achievement');
+		$prominent = 'y';
+		if ($query->num_rows() > 0) {
+			$prominent = $query->row('prominent');
+			if ($prominent == 'n') {
+				$prominent = 'y';
+			} else {
+				$prominent = 'n';
+			}
+			$data = array(
+				'prominent' => $prominent
+			);
+			$this->EE->db->where($data_where);
+			$this->EE->db->update('member_achievement', $data);
+		} else {
+			$premium_date = $this->EE->localize->now;
+			$data = array(
+				'member_id' => $member_id,
+				'premium' => 'n',
+				'prominent' => $prominent,
+				'achieve_date' => $premium_date
+			);
+			$this->EE->db->insert('member_achievement', $data);
+		}
+		$return = $this->_prep_return();
+        return $this->EE->functions->redirect($return);
 	}
 
 	private function _prep_return( $return = '' )
