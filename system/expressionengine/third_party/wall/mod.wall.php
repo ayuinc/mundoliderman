@@ -200,12 +200,15 @@ class Wall {
 	public function like_count() 
 	{
 		$post_id = $this->EE->TMPL->fetch_param("post_id");
-		$data_where = array(
-			"post_id" => $post_id,
-			"like" => "y"
-		);
-		$like_count = $this->EE->db->where($data_where)->from("wall_like")->count_all_results();
+		$like_count = $this->total_count($post_id);
 		return $like_count;
+	}
+
+	public function comment_count()
+	{
+		$post_id = $this->EE->TMPL->fetch_param("post_id");
+		$comment_count = $this->total_comment($post_id);
+		return $comment_count;
 	}
 
 	public function status()
@@ -245,15 +248,30 @@ class Wall {
 	public function comment()
 	{
 		$post_id = $this->EE->TMPL->fetch_param('post_id', 0);
-		$sql = "SELECT wc.post_id as comment_post_id, wc.comment_member_id, wc.comment, wc.comment_date,
+		$comment_id = $this->EE->TMPL->fetch_param('comment_id', 0);
+		/*$sql = "SELECT wc.post_id as comment_post_id, wc.comment_member_id, wc.comment, wc.comment_date,
 				m.screen_name as comment_screen_name, m.username as comment_username
 				from exp_wall_comment wc
 				inner join exp_members m on wc.comment_member_id = m.member_id
 				where post_id = $post_id
-				order by wc.comment_date desc";
+				order by wc.comment_date asc";*/
+		$this->EE->db->select("wc.post_id as comment_post_id, wc.comment_member_id, wc.comment, wc.comment_date,
+							   m.screen_name as comment_screen_name, m.username as comment_username")
+					 ->from("wall_comment wc")
+					 ->join("members m", "wc.comment_member_id = m.member_id");
 		
-		$query = $this->EE->db->query($sql);
+		// $query = $this->EE->db->query($sql);
 
+		if (!empty($post_id) && $post_id != 0) {
+			$this->EE->db->where("wc.post_id", $post_id);
+		}
+
+		if (!empty($comment_id) && $comment_id != 0) {
+			$this->EE->db->where("wc.id", $comment_id);
+		}
+
+		$query = $this->EE->db->order_by("wc.comment_date", "asc")->get();
+		
 		if ($query->num_rows() == 0) {
 			return $this->EE->TMPL->no_results;
 		} else {
@@ -333,7 +351,11 @@ class Wall {
 		$this->EE->db->insert("wall_comment", $data);
 		$comment_post_id = $this->EE->db->insert_id();
 
-		return $this->EE->functions->redirect("wall");
+		echo json_encode(array(
+			"post_id" => $post_id,
+			"comment_id" => $comment_post_id,
+			"total" => $this->total_comment($post_id)
+		));
 	}
 
 	public function like_post()
@@ -373,7 +395,10 @@ class Wall {
 			);
 			$this->EE->db->insert('wall_like', $data);
 		}
-		return $this->EE->functions->redirect("wall");
+		echo json_encode(array(
+			"post_id" => $post_id,
+			"total" => $this->total_count($post_id)
+		));
 	}
 
 	public function member_premium()
@@ -469,5 +494,24 @@ class Wall {
 		}
 
 		return $return;
+	}
+
+	private function total_count($post_id) 
+	{
+		$data_where = array(
+			"post_id" => $post_id,
+			"like" => "y"
+		);
+		$like_count = $this->EE->db->where($data_where)->from("wall_like")->count_all_results();
+		return $like_count;
+	}
+
+	private function total_comment($post_id)
+	{
+		$data_where = array(
+			"post_id" => $post_id
+		);
+		$comment_count = $this->EE->db->where($data_where)->from("wall_comment")->count_all_results();
+		return $comment_count;
 	}
 }
