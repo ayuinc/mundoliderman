@@ -3,6 +3,8 @@
 {/if}
 
 {embed="includes/head" titulo="Mundo Liderman - Muro"}
+<link href="{site_url}frontend/app/assets/css/jquery.filer.css" type="text/css" rel="stylesheet" />
+<link href="{site_url}frontend/app/assets/css/themes/jquery.filer-dragdropbox-theme.css" type="text/css" rel="stylesheet" />
 
 <div class="site-wrapper"> <!-- Body -->
   {embed="includes/nav-main"}
@@ -23,18 +25,16 @@
               </div>
             </div>
             <textarea id="wall_status" name="wall_status" class="form-control outline-none serif fz-18 borderless br-none pv-14 ph-14" onkeyup="auto_grow(this)" placeholder="Qué estás pensando..."></textarea>
-            <div class="fileUpload btn btn-success p-0 ml-21">
+            <div class="galery-photos"></div>
+            <div class="fileUpload file_input btn btn-success p-0 ml-21" data-jfiler-name="files" data-jfiler-extensions="jpg, jpeg, png, gif">
               <img src="{site_url}frontend/app/assets/img/Icono_Foto.png" alt="">
               <span class="thin fz-12 pl-14 hidden-xs hidden-sm">Subir imagen</span>
               <span class="thin fz-16 pl-14 serif hidden-lg hidden-md">Subir imagen</span><!--movil-->
-              <input type="file" id="inputFile" name="status_image" class="upload" accept="image" />
+              <!-- <input type="file" id="inputFile" name="status_image" class="upload" accept="image" /> -->
             </div>
             <button type="submit" name="submit" class="btn bg-warning text-white text-hover-white fz-12 ph-21 mv-7 absolute hidden-xs hidden-sm">
              PUBLICAR
              <img src="{site_url}frontend/app/assets/img/Publicar_Dialogo.png" alt="" class="pl-14">
-            </button>
-            <button type="submit" name="submit" class="btn bg-warning text-white text-hover-white fz-16 ph-21 mv-7 absolute hidden-lg hidden-md"><!--movil-->
-             PUBLICAR
             </button>
           {/exp:wall:status_form}
         </section>
@@ -298,6 +298,69 @@
         });
       });
     });
+</script>
+<script src="{site_url}frontend/app/assets/js/jquery.filer.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('.file_input').filer({
+        showThumbs: true,
+        appendTo: "#status_form .galery-photos", 
+        templates: {
+            box: '<ul class="jFiler-item-list clearfix" style="background-color: white;"></ul>',
+            item: '<li class="jFiler-item">\
+                        <div class="jFiler-item-container mb-0">\
+                            <div class="jFiler-item-inner">\
+                                <div class="jFiler-item-thumb">\
+                                    <div class="jFiler-item-status"></div>\
+                                    <div class="jFiler-item-info">\
+                                        <span class="jFiler-item-title"><b title="{{fi-name}}">{{fi-name | limitTo: 25}}</b></span>\
+                                    </div>\
+                                    {{fi-image}}\
+                                </div>\
+                                <div class="jFiler-item-assets jFiler-row">\
+                                    <ul class="list-inline pull-right">\
+                                        <li><a class="icon-jfi-trash jFiler-item-trash-action absolute fz-35 thin" style="top:-25px; right:5px;">&times;</a></li>\
+                                    </ul>\
+                                </div>\
+                            </div>\
+                        </div>\
+                    </li>',
+            itemAppend: '<li class="jFiler-item">\
+                        <div class="jFiler-item-container mb-0">\
+                            <div class="jFiler-item-inner">\
+                                <div class="jFiler-item-thumb">\
+                                    <div class="jFiler-item-status"></div>\
+                                    <div class="jFiler-item-info">\
+                                        <span class="jFiler-item-title"><b title="{{fi-name}}">{{fi-name | limitTo: 25}}</b></span>\
+                                    </div>\
+                                    {{fi-image}}\
+                                </div>\
+                                <div class="jFiler-item-assets jFiler-row">\
+                                    <ul class="list-inline pull-right">\
+                                        <li><a class="icon-jfi-trash jFiler-item-trash-action absolute fz-35 thin" style="top:-25px; right:5px;">&times;</a></li>\
+                                    </ul>\
+                                </div>\
+                            </div>\
+                        </div>\
+                    </li>',
+            progressBar: '<div class="bar"></div>',
+            itemAppendToEnd: false,
+            removeConfirmation: false,
+            _selectors: {
+                list: '.jFiler-item-list',
+                item: '.jFiler-item',
+                progressBar: '.bar',
+                remove: '.jFiler-item-trash-action',
+            }
+        },
+        addMore: true,
+        captions: {
+              errors: {
+                  filesType: "Este formato no está permitido.",
+              }
+          }
+    });
+  });
 </script>
 
 </html>

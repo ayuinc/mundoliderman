@@ -369,6 +369,27 @@ header {
     	outline: none!important;
 		}
 	}
+	.jFiler-item .jFiler-item-container {
+		border: 0px!important;
+		ul.list-inline.pull-right {
+			position: absolute;
+	    top: 10px;
+	    right: 10px;
+		}
+		.jFiler-item-inner {
+			&:hover {
+				.icon-jfi-trash {
+					display: block;
+				}
+			}
+		}
+	}
+	.icon-jfi-trash {
+		display: none;
+		&:before {
+			content: ""!important;
+		}
+	}
 	.fileUpload {
 		position: relative;
 		overflow: hidden;
@@ -382,6 +403,7 @@ header {
 	button {
 		position: absolute;
 		right: 21px;
+		bottom: 0px;
 		img {
 			width: 33px;
 		}
@@ -488,7 +510,7 @@ footer > div {
 	background-color: black;
   bottom: 0;
   @include transition(all .2s ease-in-out);
-  @include transform(translateY(370px));
+  @include transform(translateY(473px));
   #up {
 		height: 30px;
 	  width: 40px;

@@ -1634,6 +1634,23 @@ header .perfil {
   max-height: 100%;
   outline: none !important;
 }
+#comentar .jFiler-item .jFiler-item-container {
+  border: 0px !important;
+}
+#comentar .jFiler-item .jFiler-item-container ul.list-inline.pull-right {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+#comentar .jFiler-item .jFiler-item-container .jFiler-item-inner:hover .icon-jfi-trash {
+  display: block;
+}
+#comentar .icon-jfi-trash {
+  display: none;
+}
+#comentar .icon-jfi-trash:before {
+  content: "" !important;
+}
 #comentar .fileUpload {
   position: relative;
   overflow: hidden;
@@ -1647,6 +1664,7 @@ header .perfil {
 #comentar button {
   position: absolute;
   right: 21px;
+  bottom: 0px;
 }
 #comentar button img {
   width: 33px;
@@ -1760,11 +1778,11 @@ footer > div {
   -webkit-transition: all 0.2s ease-in-out;
   -moz-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
-  -webkit-transform: translateY(370px);
-  -moz-transform: translateY(370px);
-  -ms-transform: translateY(370px);
-  -o-transform: translateY(370px);
-  transform: translateY(370px);
+  -webkit-transform: translateY(473px);
+  -moz-transform: translateY(473px);
+  -ms-transform: translateY(473px);
+  -o-transform: translateY(473px);
+  transform: translateY(473px);
 }
 footer > div #up {
   height: 30px;
