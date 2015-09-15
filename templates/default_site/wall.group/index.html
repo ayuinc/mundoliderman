@@ -271,20 +271,27 @@
         var form = $(this);
         var url = form.attr("action");
         var data = form.serialize();
+        var formData = new FormData(form[0]);
 
-        $.post(url, data, function(result) {
-          $.ajax({
-            method: 'GET',
-            url: '{site_url}wall/new_post/' + result
-          })
-          .done(function(post) {
-            //$("#new_post").hide();
-            $("#wall_status").val('');
-            $("#status_category").val('0');
-            $("#post").prepend(post);
-            //$("#new_post").html(post);
-            //$("#new_post").fadeIn();
-          });
+        $.ajax({
+          url: url,
+          type: 'POST',
+          data: formData,
+          async: false,
+          success: function(result) {
+            $.ajax({
+              method: 'GET',
+              url: '{site_url}wall/new_post/' + result
+            })
+            .done(function(post) {
+              $("#wall_status").val('');
+              $("#status_category").val('0');
+              $("#post").prepend(post);
+            });
+          },
+          cache: false,
+          contentType: false,
+          processData: false
         });
       });
     });
