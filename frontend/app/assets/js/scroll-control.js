@@ -5,13 +5,14 @@ $(document).ready(function(){
 		$(".scroll-down").toggleClass("hidden");
 		$(".area-respuesta").addClass("hidden");
 	});
-	$(".btn-comentar").click(function(event){
+	/*$(".btn-comentar").click(function(event){
 		event.preventDefault();
 		var target = $(event.target);
 		$(target).parents(".post").find(".area-respuesta").addClass("hidden");
 		$(target).parents(".post").find(".scroll-down").toggleClass("hidden");
 		$(target).parents(".post").find(".area-respuesta").toggleClass("hidden");
-	});
+	});*/
+	
 	$(".responder").click(function(event){
 		event.preventDefault();
 		var target = $(event.target);
@@ -49,3 +50,16 @@ $(document).ready(function(){
 
 });
 
+function expandComments(element) {
+	$(element).parents(".post").find(".area-respuesta").addClass("hidden");
+	$(element).parents(".post").find(".scroll-down").toggleClass("hidden");
+	$(element).parents(".post").find(".area-respuesta").toggleClass("hidden");	
+}
+
+/*$(".btn-comentar").click(function(event){
+	event.preventDefault();
+	var target = $(event.target);
+	$(target).parents(".post").find(".area-respuesta").addClass("hidden");
+	$(target).parents(".post").find(".scroll-down").toggleClass("hidden");
+	$(target).parents(".post").find(".area-respuesta").toggleClass("hidden");
+});*/
