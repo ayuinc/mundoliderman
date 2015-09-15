@@ -84,16 +84,6 @@
                       <p class="text-white thin m-0 display-ib pl-7 fz-14">No resuelto</p>                       
                     </div>
                   </div>
-                  {exp:wall:delete_post_form form_id="" form_class="hidden-xs hidden-sm"}
-                  <div class="col-xs-1 pt-7 text-right eraser relative pl-0">
-                    <img src="{site_url}frontend/app/assets/img/Tachito_Inac.png" alt="" class="inactivo">
-                    <div class="pr-14 activo desaparecer absolute bg-white hidden-xs hidden-sm">
-                      <img class="delete_post" src="{site_url}frontend/app/assets/img/Tachito_Act.png" alt="">
-                    </div>
-                    <input type="hidden" name="post_id" value="{post_id}">
-                    <input type="submit" name="submit" value="submit" id="submit_desktop" class="hidden">
-                  {/exp:wall:delete_post_form}
-                  </div>
                   <div class="col-xs-2 text-center ph-0 pt-7 hidden-lg hidden-md">
                     <div class="aviso btn-aviso1 hidden">
                       <div class="circle-green bg-info display-ib"></div>
@@ -102,14 +92,14 @@
                       <div class="circle-green bg-primary display-ib"></div>
                     </div>
                   </div>
-                  {exp:wall:delete_post_form form_id="" form_class="hidden-lg hidden-md"}
-                  <div class="col-xs-1 pt-7 text-right eraser relative pl-0 ">
+                  {exp:wall:delete_post_form form_id="" form_class=""}
+                  <div class="col-xs-1 pt-7 text-right eraser relative pl-0">
                     <img src="{site_url}frontend/app/assets/img/Tachito_Inac.png" alt="" class="inactivo">
                     <div class="pr-14 activo desaparecer absolute bg-white hidden-xs hidden-sm">
                       <img class="delete_post" src="{site_url}frontend/app/assets/img/Tachito_Act.png" alt="">
                     </div>
                     <input type="hidden" name="post_id" value="{post_id}">
-                    <input type="submit" name="submit" value="submit" id="submit_rsp" class="hidden">
+                    <input type="submit" name="submit" value="submit" id="submit_desktop" class="hidden">
                   {/exp:wall:delete_post_form}
                   </div>
                 </div>
