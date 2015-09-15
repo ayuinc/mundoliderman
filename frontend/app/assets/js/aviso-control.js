@@ -4,21 +4,6 @@ $(document).ready(function(){
 		$(this).parent().find(".btn-aviso1").toggleClass("hidden");
 		$(this).parent().find(".btn-aviso2").toggleClass("hidden");
 	});
-	
-	$(".like-container").click(function(e){
-		e.preventDefault();
-		var btn = $(this);
-		var form = btn.parent();
-		var url = form.attr("action");
-		var data = form.serialize();
-
-		$.post(url, data, function (result) {
-			var like = JSON.parse(result);
-			btn.parent().find(".like").toggleClass("active-like");
-			btn.parent().find(".img-like").toggleClass("hidden");
-			$("span[data-like-post-id=" + like.post_id + "]").text(like.total);
-		});
-	});
 
 	$(".like-container").each(function(index, element) {
 		var like_status = $(element).parent().find("input[name=post_like_status]").val();
@@ -34,12 +19,6 @@ $(document).ready(function(){
 			$(like_img).addClass("hidden");
 			$(unlike_img).removeClass("hidden");
 		}
-	});
-
-	/*BTN ELIMINAR PUBLICACIÓN*/
-	$(".eraser").hover(function(){
-		$(this).find(".activo").toggleClass("desaparecer");
-		$(this).find(".inactivo").toggleClass("desaparecer");
 	});
 
 	/*Btn-premium y destacado*/
