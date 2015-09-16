@@ -3,13 +3,15 @@
 {/if}
 
 {embed="includes/head" titulo="Mundo Liderman - Muro"}
+<link href="{site_url}frontend/app/assets/css/jquery.filer.css" type="text/css" rel="stylesheet" />
+<link href="{site_url}frontend/app/assets/css/themes/jquery.filer-dragdropbox-theme.css" type="text/css" rel="stylesheet" />
 
 <div class="site-wrapper"> <!-- Body -->
   {embed="includes/nav-main"}
-  <main class="site-content pb-70 minhp-100 mb-0-xs" role="main">
+  <main class="site-content pb-70 minhp-100 mb-0" role="main">
     {embed="includes/menu-movil"}
     {embed="includes/banner-alerta"}
-    <div class="container-md container-index  pt-42 clearfix mb-70 ph-14 pb-70-xs">
+    <div class="container-md container-index  pt-42 clearfix ph-14 pb-70-xs">
       <div id="box-left" class="col-md-8 pl-0 ph-0-xs">
         <section id="comentar" class="bg-white">
           {exp:wall:status_form return="wall" form_id="status_form" form_class="bg-success" enctype="multipart/form-data"}
@@ -23,27 +25,24 @@
               </div>
             </div>
             <textarea id="wall_status" name="wall_status" class="form-control outline-none serif fz-18 borderless br-none pv-14 ph-14" onkeyup="auto_grow(this)" placeholder="Qué estás pensando..."></textarea>
-            <div class="fileUpload btn btn-success p-0 ml-21">
+            <div class="galery-photos"></div>
+            <div class="fileUpload file_input btn btn-success p-0 ml-21" data-jfiler-name="files" data-jfiler-extensions="jpg, jpeg, png, gif">
               <img src="{site_url}frontend/app/assets/img/Icono_Foto.png" alt="">
               <span class="thin fz-12 pl-14 hidden-xs hidden-sm">Subir imagen</span>
               <span class="thin fz-16 pl-14 serif hidden-lg hidden-md">Subir imagen</span><!--movil-->
-              <input type="file" id="inputFile" name="status_image" class="upload" accept="image" />
+              <input type="file" id="inputFile" name="status_image" class="upload" accept="image" /> 
             </div>
             <button type="submit" name="submit" class="btn bg-warning text-white text-hover-white fz-12 ph-21 mv-7 absolute hidden-xs hidden-sm">
              PUBLICAR
              <img src="{site_url}frontend/app/assets/img/Publicar_Dialogo.png" alt="" class="pl-14">
             </button>
-            <button type="submit" name="submit" class="btn bg-warning text-white text-hover-white fz-16 ph-21 mv-7 absolute hidden-lg hidden-md"><!--movil-->
-             PUBLICAR
-            </button>
           {/exp:wall:status_form}
         </section>
         
-        <section id="new_post">
+        <section id="new_post" class="pokerface">
           
         </section>
-
-        <section id="post">
+        <section id="post" class="pokerface">
         {exp:wall:status}        
           <div class="post-1 post bg-white ph-14 pt-28 pb-28 mt-42 relative">
             <div class="clearfix">
@@ -85,16 +84,6 @@
                       <p class="text-white thin m-0 display-ib pl-7 fz-14">No resuelto</p>                       
                     </div>
                   </div>
-                  {exp:wall:delete_post_form form_id="" form_class="hidden-xs hidden-sm"}
-                  <div class="col-xs-1 pt-7 text-right eraser relative pl-0">
-                    <img src="{site_url}frontend/app/assets/img/Tachito_Inac.png" alt="" class="inactivo">
-                    <div class="pr-14 activo desaparecer absolute bg-white hidden-xs hidden-sm">
-                      <img class="delete_post" src="{site_url}frontend/app/assets/img/Tachito_Act.png" alt="" onclick="deletePost(this); return false;">
-                    </div>
-                    <input type="hidden" name="post_id" value="{post_id}">
-                    <input type="submit" name="submit" value="submit" id="submit_desktop" class="hidden">
-                  {/exp:wall:delete_post_form}
-                  </div>
                   <div class="col-xs-2 text-center ph-0 pt-7 hidden-lg hidden-md">
                     <div class="aviso btn-aviso1 hidden">
                       <div class="circle-green bg-info display-ib"></div>
@@ -103,14 +92,14 @@
                       <div class="circle-green bg-primary display-ib"></div>
                     </div>
                   </div>
-                  {exp:wall:delete_post_form form_id="" form_class="hidden-lg hidden-md"}
-                  <div class="col-xs-1 pt-7 text-right eraser relative pl-0 ">
+                  {exp:wall:delete_post_form form_id="" form_class=""}
+                  <div class="col-xs-1 pt-7 text-right eraser relative pl-0">
                     <img src="{site_url}frontend/app/assets/img/Tachito_Inac.png" alt="" class="inactivo">
                     <div class="pr-14 activo desaparecer absolute bg-white hidden-xs hidden-sm">
                       <img class="delete_post" src="{site_url}frontend/app/assets/img/Tachito_Act.png" alt="">
                     </div>
                     <input type="hidden" name="post_id" value="{post_id}">
-                    <input type="submit" name="submit" value="submit" id="submit_rsp" class="hidden">
+                    <input type="submit" name="submit" value="submit" id="submit_desktop" class="hidden">
                   {/exp:wall:delete_post_form}
                   </div>
                 </div>
@@ -175,25 +164,9 @@
                       <div class="col-xs-10 lh-1 pl-0 pl-21-xs">
                         <span class="fz-14 text-success pr-7">{comment_screen_name}</span>
                         <img src="{site_url}frontend/app/assets/img/forward.png" alt="" class="display-ib">
-                        <span class="text-gray fz-10 light">Ivo Sanoa</span>
                         <span class="text-gray fz-10 light pl-7">{comment_date:relative past="%s ago"}</span>
                         <span class="delete-comment hidden-xs col-md-offset-3 fz-35 light opacity">&times;</span>
                         <p class="fz-14 pt-7 mb-0 pb-7 parrafo">{comment}</p>
-                        <div class="hidden-xs hidden-sm">
-                          <span class="fz-8 text-gray-light">1</span>
-                          <img src="{site_url}frontend/app/assets/img/Flecha_Abajo.png" alt="" class="w-6">
-                          <span class="fz-8 text-gray-light">|</span>
-                          <img src="{site_url}frontend/app/assets/img/Flecha_Abajo.png" alt="" class="w-6 rotate-180">
-                          <!--<span class="responder text-gray-dark book fz-10 light pl-7"><a href="">Responder</a></span>-->
-                          <!-- <span class="text-gray-dark book fz-10 light pl-7"><a href="">Compartir</a></span> -->
-                        </div>
-                        <div class="hidden-lg hidden-md"><!--movil-->
-                          <span></span>
-                          <span class="fz-14 text-gray-light">1</span>
-                          <img src="{site_url}frontend/app/assets/img/Flecha_Abajo.png" alt="" class="w-6">
-                          <span class="fz-12 text-gray-light ph-7">|</span>
-                          <img src="{site_url}frontend/app/assets/img/Flecha_Abajo.png" alt="" class="w-6 rotate-180">
-                        </div>
                       </div>
 
                       <div class="cuadro-respuesta clearfix pt-21 ph-0 hidden col-md-10 col-md-offset-2 col-xs-12 hidden-xs hidden-sm">
@@ -203,30 +176,6 @@
                         <div class="col-xs-10 pl-0 pl-21-xs">
                           <span class="fz-14 text-success pr-7">{screen_name}</span>
                           <textarea name="text" id="" onkeyup="auto_grow(this)" placeholder="Escribe una respuesta..." class="w-100 mt-7 fz-14 light ph-7 serif text-gray-darker book"></textarea>
-                        </div>
-                      </div>
-                      <div class="respuesta clearfix ph-0 hidden col-md-10 col-md-offset-2 col-xs-12 visible-xs">
-                        <div class="col-xs-2 pr-0">
-                          <div class="img-respuesta bg-img-block-center brp-100" style="background-image: url({site_url}frontend/app/assets/img/Carita.png)"></div>
-                        </div>
-                        <div class="col-xs-10 pl-0 pl-21-xs">
-                          <span class="fz-14 text-success pr-7">Ivo Sadner</span>
-                          <img src="{site_url}frontend/app/assets/img/forward.png" alt="" class="display-ib">
-                          <span class="text-gray fz-10 light">{comment_screen_name}</span>
-                          <span class="text-gray fz-10 light pl-7">{comment_date:relative past="%s ago"}</span>
-                          <p class="fz-14 pt-7 mb-0 pb-7 parrafo">{comment}</p>
-                          <div class="hidden-xs hidden-sm">
-                            <span class="fz-8 text-gray-light">1</span>
-                            <img src="{site_url}frontend/app/assets/img/Flecha_Abajo.png" alt="" class="w-6">
-                            <span class="fz-8 text-gray-light">|</span>
-                            <img src="{site_url}frontend/app/assets/img/Flecha_Abajo.png" alt="" class="w-6 rotate-180">
-                          </div>
-                          <div class="hidden-lg hidden-md">
-                            <span class="fz-14 text-gray-light">1</span>
-                            <img src="{site_url}frontend/app/assets/img/Flecha_Abajo.png" alt="" class="w-6">
-                            <span class="fz-12 text-gray-light">|</span>
-                            <img src="{site_url}frontend/app/assets/img/Flecha_Abajo.png" alt="" class="w-6 rotate-180">
-                          </div>
                         </div>
                       </div>
                     </div>
@@ -246,17 +195,11 @@
   </main>
   {embed="includes/radio-urbe"}
 </div>
-
 {embed="includes/footer"}
 <script src="{site_url}frontend/app/assets/js/aviso-control.js"></script>
 <script src="{site_url}frontend/app/assets/js/textarea-control.js"></script>
 <script type="text/javascript">
   $(document).ready(function() {
-      $("#uploadImage").on("click", function(e) {
-        e.preventDefault();
-        $("#inputFile").trigger("click");
-      });
-
       $("#status_form").attr("enctype", "multipart/form-data");
       $("#status_form").submit(function(e) {
         e.preventDefault();
@@ -358,6 +301,69 @@
         });
       }
     });
+</script>
+<script src="{site_url}frontend/app/assets/js/jquery.filer.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('.file_input').filer({
+        showThumbs: true,
+        appendTo: "#status_form .galery-photos", 
+        templates: {
+            box: '<ul class="jFiler-item-list clearfix" style="background-color: white;"></ul>',
+            item: '<li class="jFiler-item">\
+                        <div class="jFiler-item-container mb-0">\
+                            <div class="jFiler-item-inner">\
+                                <div class="jFiler-item-thumb">\
+                                    <div class="jFiler-item-status"></div>\
+                                    <div class="jFiler-item-info">\
+                                        <span class="jFiler-item-title"><b title="{{fi-name}}">{{fi-name | limitTo: 25}}</b></span>\
+                                    </div>\
+                                    {{fi-image}}\
+                                </div>\
+                                <div class="jFiler-item-assets jFiler-row">\
+                                    <ul class="list-inline pull-right">\
+                                        <li><a class="icon-jfi-trash jFiler-item-trash-action absolute fz-35 thin" style="top:-25px; right:5px;">&times;</a></li>\
+                                    </ul>\
+                                </div>\
+                            </div>\
+                        </div>\
+                    </li>',
+            itemAppend: '<li class="jFiler-item">\
+                        <div class="jFiler-item-container mb-0">\
+                            <div class="jFiler-item-inner">\
+                                <div class="jFiler-item-thumb">\
+                                    <div class="jFiler-item-status"></div>\
+                                    <div class="jFiler-item-info">\
+                                        <span class="jFiler-item-title"><b title="{{fi-name}}">{{fi-name | limitTo: 25}}</b></span>\
+                                    </div>\
+                                    {{fi-image}}\
+                                </div>\
+                                <div class="jFiler-item-assets jFiler-row">\
+                                    <ul class="list-inline pull-right">\
+                                        <li><a class="icon-jfi-trash jFiler-item-trash-action absolute fz-35 thin" style="top:-25px; right:5px;">&times;</a></li>\
+                                    </ul>\
+                                </div>\
+                            </div>\
+                        </div>\
+                    </li>',
+            progressBar: '<div class="bar"></div>',
+            itemAppendToEnd: false,
+            removeConfirmation: false,
+            _selectors: {
+                list: '.jFiler-item-list',
+                item: '.jFiler-item',
+                progressBar: '.bar',
+                remove: '.jFiler-item-trash-action',
+            }
+        },
+        addMore: true,
+        captions: {
+            errors: {
+                filesType: "Este formato no está permitido.",
+            }
+        }
+    });
+  });
 </script>
 
 </html>
