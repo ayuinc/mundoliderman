@@ -2,11 +2,9 @@
   <div class="post-1 post bg-white ph-14 pt-28 pb-28 mt-42 relative">
     <div class="clearfix">
       <div class="col-xs-2 pr-0 pl-7 pt-7-xs">
-        {!--{exp:user:stats member_id="CURRENT_USER"}--}
-          <!--<div class="img-perfil bg-img-block-center brp-100" style="background-image: url({photo_url}{photo_filename})"></div>-->
-        {!--{/exp:user:stats}--}
-        <div class="img-perfil relative text-center bg-img-block-center brp-100" style="background-image: url({site_url}frontend/app/assets/img/Carita.png); z-index:1;">
-        </div>
+        {exp:user:stats member_id="{post_user_id}"}
+          <div class="img-perfil relative text-center bg-img-block-center brp-100" style="background-image: url({if photo_filename == null}{site_url}frontend/app/assets/img/Herman_Profile_Pic.png{if:else}{photo_url}{photo_filename}{/if}); z-index:1;"></div>
+        {/exp:user:stats}
         {if member_premium == 'y' && member_prominent == 'y'}
           <img src="{site_url}frontend/app/assets/img/rec_ambos.png" alt="" class="rec-ambos absolute">
         {if:else}

@@ -33,11 +33,7 @@
               <form class="fz-18">
                 <div class="row mb-42">
                   <div class="col-md-5 pr-0 hidden-xs hdden-sm">
-                    {if photo_filename == null}
-                    <div id="profile_picture" style="background-image:url({site_url}frontend/app/assets/img/Herman_Profile_Pic.png)" class="foto-editable bg-img-block-center brp-100">
-                    {if:else}
-                    <div id="profile_picture" style="background-image:url({photo_url}{photo_filename})" class="foto-editable bg-img-block-center brp-100">
-                    {/if}
+                    <div id="profile_picture" style="background-image:url({if photo_filename == null}{site_url}frontend/app/assets/img/Herman_Profile_Pic.png{if:else}{photo_url}{photo_filename}{/if})" class="foto-editable bg-img-block-center brp-100">
                       <div class="overlay-foto ebm-overlay ml-14 brp-100 text-center">
                         <div class="fileUpload">
                           <span class="relative"><img src="{site_url}frontend/app/assets/img/camera.png" alt=""></span>
