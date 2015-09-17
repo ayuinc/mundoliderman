@@ -1660,6 +1660,27 @@ header .perfil {
 #comentar button img {
   width: 33px;
 }
+#comentar #error-message img,
+#comentar #error-categoria img {
+  -webkit-box-shadow: -1px 1px 8px -4px;
+  -moz-box-shadow: -1px 1px 8px -4px;
+  box-shadow: -1px 1px 8px -4px;
+  opacity: 0.95;
+}
+#comentar #error-message {
+  left: -25%;
+  top: 40%;
+}
+#comentar #error-message img {
+  width: 150px;
+}
+#comentar #error-categoria {
+  top: -11%;
+  left: 37%;
+}
+#comentar #error-categoria img {
+  width: 160px;
+}
 
 input.upload {
   position: absolute;

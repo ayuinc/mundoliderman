@@ -403,6 +403,29 @@ header {
 			width: 33px;
 		}
 	}
+	#error-message,
+	#error-categoria {
+    img {
+    	-webkit-box-shadow: -1px 1px 8px -4px;
+    	-moz-box-shadow: -1px 1px 8px -4px;
+    	box-shadow: -1px 1px 8px -4px;
+    	opacity: 0.95;
+    }
+	}
+	#error-message {
+		left: -25%;
+		top: 40%;
+		img {
+			width: 150px;
+		}
+	}
+	#error-categoria {
+		top: -11%;
+    left: 37%;
+		img {
+			width: 160px;
+		}
+	}
 }
 input.upload {
 		position: absolute;
