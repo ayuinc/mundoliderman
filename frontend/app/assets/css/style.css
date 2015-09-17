@@ -1614,20 +1614,11 @@ header .perfil {
   overflow: hidden;
   width: 200px;
 }
-#comentar .select-style::before {
-  content: "";
-  position: absolute;
-  width: 17px;
-  height: 32px;
-  right: 0;
-  top: 4px;
-  background: url(../img/Flecha-para-arriba.png) no-repeat right;
-  background-size: contain;
-  -webkit-transform: rotate(180deg);
-  -moz-transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
-  -o-transform: rotate(180deg);
-  transform: rotate(180deg);
+#comentar .select-style select {
+  background-repeat: no-repeat;
+  background-position-y: 65%;
+  background-position-x: 100%;
+  background-size: 8%;
 }
 #comentar .publicacion textarea {
   min-height: 100px;

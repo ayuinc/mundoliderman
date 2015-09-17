@@ -350,16 +350,11 @@ header {
 		position: relative;
 		overflow: hidden;
 		width: 200px;
-		&::before {
-			content: "";
-			position: absolute;
-			width: 17px;
-			height: 32px;
-			right: 0;
-			top: 4px;
-			background: url(../img/Flecha-para-arriba.png) no-repeat right;
-			background-size: contain;
-			@include transform(rotate(180deg));
+		select {
+			background-repeat:no-repeat;
+			background-position-y: 65%;
+	    background-position-x: 100%;
+	    background-size: 8%;
 		}
 	}
 	.publicacion { 
