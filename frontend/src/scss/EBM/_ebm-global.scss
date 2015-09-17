@@ -288,6 +288,8 @@ header {
 		width: 45px;
 		height: 45px;
 		background-size: cover;
+		background-position: center;
+		border-radius: 100%;
 	}
 }
 .alerta {
@@ -406,6 +408,10 @@ header {
 			width: 33px;
 		}
 	}
+	.btn:hover, .btn:focus, .btn.focus {
+		color: white!important;
+	}
+
 	#error-message,
 	#error-categoria {
     img {
