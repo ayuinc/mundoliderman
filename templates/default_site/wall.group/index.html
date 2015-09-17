@@ -14,10 +14,12 @@
     <div class="container-md container-index  pt-42 clearfix ph-14 pb-70-xs">
       <div id="box-left" class="col-md-8 pl-0 ph-0-xs">
         <section id="comentar" class="bg-white">
+          <div id="error-message" class="absolute"></div>
+          <div id="error-categoria" class="absolute"></div>
           {exp:wall:status_form return="wall" form_id="status_form" form_class="bg-success" enctype="multipart/form-data"}
             <div class="bg-success text-right ph-21">
               <div class="select-style display-ib text-center">
-                <select name="status_category" id="status_category" class="fz-14 text-white borderless light serif w-100 pt-7">
+                <select name="status_category" id="status_category" class="fz-14 text-white borderless light serif w-100 pt-7" style="background-image: url({site_url}frontend/app/assets/img/Flecha-para-abajo.png);">
                   {exp:status_category:all}
                     <option value="{category_id}" class="bg-success">{category_name}</option>
                   {/exp:status_category:all}
@@ -205,11 +207,17 @@
         var friends_status = $("#wall_status").val();
         var status_category = $("#status_category").val();
         if (status_category == 0) {
+          $('#error-categoria').html('<img src="{site_url}frontend/app/assets/img/categoria2.png">');
           return;
+        } else {
+          $("#error-categoria").empty();
         };
         if(friends_status.trim().length == 0 || friends_status.trim() == "") {
+          $('#error-message').html('<img src="{site_url}frontend/app/assets/img/mensaje.png">');
           return;
-        }
+        } else {
+            $("#error-message").empty();
+          };
         var form = $(this);
         var url = form.attr("action");
         var data = form.serialize();
