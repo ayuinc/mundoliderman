@@ -34,14 +34,14 @@
                 <div class="row mb-42">
                   <div class="col-md-5 pr-0 hidden-xs hdden-sm">
                     {if photo_filename == null}
-                    <div style="background-image:url({site_url}frontend/app/assets/img/Herman_Profile_Pic.png)" class="foto-editable bg-img-block-center brp-100">
+                    <div id="profile_picture" style="background-image:url({site_url}frontend/app/assets/img/Herman_Profile_Pic.png)" class="foto-editable bg-img-block-center brp-100">
                     {if:else}
-                    <div style="background-image:url({photo_url}{photo_filename})" class="foto-editable bg-img-block-center brp-100">
+                    <div id="profile_picture" style="background-image:url({photo_url}{photo_filename})" class="foto-editable bg-img-block-center brp-100">
                     {/if}
                       <div class="overlay-foto ebm-overlay ml-14 brp-100 text-center">
                         <div class="fileUpload">
                           <span class="relative"><img src="{site_url}frontend/app/assets/img/camera.png" alt=""></span>
-                          <input type="file" name="photo_filename" class="upload ebm-overlay" />
+                          <input id="photo_profile" type="file" name="photo_filename" class="upload ebm-overlay" />
                         </div>
                       </div>
                     </div>
@@ -79,4 +79,23 @@
     {embed=includes/radio-urbe}
   </div>
   {embed=includes/footer}
+  <script type="text/javascript">
+    $(document).ready(function() {
+      function setImageFromInputFile(inputImage, imageContainer) {
+        if (inputImage.files) {
+          var file = inputImage.files[0];
+          if (file) {
+            var reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = function(e) {
+              document.getElementById(imageContainer).style.backgroundImage = "url('" + e.target.result + "')";
+            }
+          };
+        };
+      }
+      $("#photo_profile").change(function() {
+        setImageFromInputFile(this, "profile_picture");
+      })
+    });
+  </script>
 </html>
