@@ -206,9 +206,15 @@
         var friends_status = $("#wall_status").val();
         var status_category = $("#status_category").val();
         if (status_category == 0) {
+
           return;
         };
         if(friends_status.trim().length == 0 || friends_status.trim() == "") {
+          // document.getElementById("wall_status").innerHTML= "Holi";
+          $("#wall_status").HTML("<div class='text-info'>Hola</div>");
+          
+          // console.log("Hola");
+          // document.write("Hola monse");
           return;
         }
         var form = $(this);
