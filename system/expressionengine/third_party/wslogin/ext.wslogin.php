@@ -99,7 +99,7 @@ class Wslogin_ext {
 		if ($token == null) {
 			// Retorna error
 			// return ee()->functions->redirect(ee()->functions->fetch_site_index());
-			return ee()->functions->redirect(ee()->functions->fetch_site_index());
+			return ee()->output->show_user_error('submission', 'Usuario y/o contraseña incorrecta');
 		}
 		else {
 			// Almacena el token y debería guardar y/o actualizar la data del usuario en la base de datos con la del web service
