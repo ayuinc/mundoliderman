@@ -30,7 +30,7 @@
         <div class="display-ib text-right ph-0">
           <div class="clearfix display-ib">
             <p class="text-gray-dark m-0 mt-14 light float-left pr-7 fz-14">Hola, <span id="name" class="fz-13">{screen_name}</span></p>
-            <div class="perfil float-left" style="background-image: url({site_url}frontend/app/assets/img/Carita.png)"></div>
+            <div class="perfil float-left" style="background-image: url({exp:member:custom_profile_data}{if photo_filename == null}{site_url}frontend/app/assets/img/Herman_Profile_Pic.png{if:else}{photo_url}{/if}{/exp:member:custom_profile_data})"></div>
           </div>
           <div class="dropdown herman-dropdown absolute display-ib">
             <button class="bg-white dropdown-toggle b-none outline-none text-gray-light book serif" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">

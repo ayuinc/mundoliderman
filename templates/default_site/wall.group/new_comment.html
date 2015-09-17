@@ -1,7 +1,7 @@
 {exp:wall:comment comment_id="{segment_3}"}
 <div class="clearfix conteiner-answer pv-7">
   <div class="col-xs-2 pr-0">
-    <div class="img-respuesta bg-img-block-center brp-100" style="background-image: url({site_url}frontend/app/assets/img/Carita.png)"></div>
+    <div class="img-respuesta bg-img-block-center brp-100" style="background-image: url({exp:member:custom_profile_data member_id='{comment_member_id}'}{if photo_filename == null}{site_url}frontend/app/assets/img/Carita.png{if:else}{photo_url}{/if}{/exp:member:custom_profile_data})"></div>
   </div>
   <div class="col-xs-10 lh-1 pl-0 pl-21-xs">
     <span class="fz-14 text-success pr-7">{comment_screen_name}</span>
@@ -13,7 +13,7 @@
 
   <div class="cuadro-respuesta clearfix pt-21 ph-0 hidden col-md-10 col-md-offset-2 col-xs-12 hidden-xs hidden-sm">
     <div class="col-xs-2 pr-0">
-      <div class="img-respuesta bg-img-block-center brp-100" style="background-image: url({site_url}frontend/app/assets/img/Carita.png)"></div>
+      <div class="img-respuesta bg-img-block-center brp-100" style="background-image: url({exp:member:custom_profile_data member_id='{comment_member_id}'}{if photo_filename == null}{site_url}frontend/app/assets/img/Carita.png{if:else}{photo_url}{/if}{/exp:member:custom_profile_data})"></div>
     </div>
     <div class="col-xs-10 pl-0 pl-21-xs">
       <span class="fz-14 text-success pr-7">{screen_name}</span>
