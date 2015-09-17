@@ -1620,20 +1620,11 @@ header .perfil {
   overflow: hidden;
   width: 200px;
 }
-#comentar .select-style::before {
-  content: "";
-  position: absolute;
-  width: 17px;
-  height: 32px;
-  right: 0;
-  top: 4px;
-  background: url(../img/Flecha-para-arriba.png) no-repeat right;
-  background-size: contain;
-  -webkit-transform: rotate(180deg);
-  -moz-transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
-  -o-transform: rotate(180deg);
-  transform: rotate(180deg);
+#comentar .select-style select {
+  background-repeat: no-repeat;
+  background-position-y: 65%;
+  background-position-x: 100%;
+  background-size: 8%;
 }
 #comentar .publicacion textarea {
   min-height: 100px;
@@ -1674,6 +1665,27 @@ header .perfil {
 }
 #comentar button img {
   width: 33px;
+}
+#comentar #error-message img,
+#comentar #error-categoria img {
+  -webkit-box-shadow: -1px 1px 8px -4px;
+  -moz-box-shadow: -1px 1px 8px -4px;
+  box-shadow: -1px 1px 8px -4px;
+  opacity: 0.95;
+}
+#comentar #error-message {
+  left: -25%;
+  top: 40%;
+}
+#comentar #error-message img {
+  width: 150px;
+}
+#comentar #error-categoria {
+  top: -11%;
+  left: 37%;
+}
+#comentar #error-categoria img {
+  width: 160px;
 }
 
 input.upload {
