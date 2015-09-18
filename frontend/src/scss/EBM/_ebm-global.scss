@@ -402,7 +402,7 @@ header {
 	}
 	button {
 		position: absolute;
-		right: 21px;
+		right: 14px;
 		bottom: 0px;
 		img {
 			width: 33px;
@@ -1254,8 +1254,25 @@ input[type="submit"] {
 	/*MURO*/
 	#comentar {
 		textarea {
-			font-size: 20px!important;
+			font-size: 18px!important;
 		}
+		.select-style {
+	    position: relative;
+	    overflow: hidden;
+	    width: 100%;
+	  }
+	  .select-style select {
+	  	background-position-x: 95%;
+	    background-size: 5%;
+	  }
+	  button {
+	  	font-size: 11px!important;
+	  }
+	  .fileUpload {
+	  	img {
+	  		width: 16px;
+	  	}
+	  }
 	}
 	.post {
 		.parrafo {

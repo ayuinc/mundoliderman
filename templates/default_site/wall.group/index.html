@@ -12,12 +12,12 @@
     <div class="container-md container-index  pt-42 clearfix ph-14 pb-70-xs">
       <div id="box-left" class="col-md-8 pl-0 ph-0-xs">
         <section id="comentar" class="bg-white">
-          <div id="error-message" class="absolute"></div>
-          <div id="error-categoria" class="absolute"></div>
+          <div id="error-message" class="absolute hidden-xs hidden-sm"></div>
+          <div id="error-categoria" class="absolute hidden-xs hidden-sm"></div>
           {exp:wall:status_form return="wall" form_id="status_form" form_class="bg-success" enctype="multipart/form-data"}
-            <div class="bg-success text-right ph-21">
+            <div class="bg-success text-right ph-21 ph-0-xs">
               <div class="select-style display-ib text-center">
-                <select name="status_category" id="status_category" class="fz-14 text-white borderless light serif w-100 pt-7" style="background-image: url({site_url}frontend/app/assets/img/Flecha-para-abajo.png);">
+                <select name="status_category" id="status_category" class="ph-21-xs fz-14 text-white borderless light serif w-100 pt-7" style="background-image: url({site_url}frontend/app/assets/img/Flecha-para-abajo.png);">
                   {exp:status_category:all}
                     <option value="{category_id}" class="bg-success">{category_name}</option>
                   {/exp:status_category:all}
@@ -28,13 +28,13 @@
             <div class="container-photos bg-white" style="">
               <div id='photos-post' class='relative'><img src='{site_url}frontend/app/assets/img/ex_rojo.png' class='close-image absolute' style='z-index:10000'></div>
             </div>
-            <div class="fileUpload file_input btn btn-success p-0 ml-21">
+            <div class="fileUpload file_input btn btn-success p-0 ml-21 mt-7-xs">
               <img src="{site_url}frontend/app/assets/img/Icono_Foto.png" alt="">
               <span class="thin fz-12 pl-14 hidden-xs hidden-sm">Subir imagen</span>
-              <span class="thin fz-16 pl-14 serif hidden-lg hidden-md">Subir imagen</span><!--movil-->
+              <span class="thin fz-14 pl-14 serif hidden-lg hidden-md">Subir imagen</span><!--movil-->
               <input type="file" id="inputFile" name="status_image" class="upload" accept="image" /> 
             </div>
-            <button type="submit" name="submit" class="btn bg-warning text-white text-hover-white fz-12 ph-21 mv-7 absolute hidden-xs hidden-sm">
+            <button type="submit" name="submit" class="btn bg-warning text-white text-hover-white fz-12 ph-21 ph-14-xs mv-7 absolute">
              PUBLICAR
              <img src="{site_url}frontend/app/assets/img/Publicar_Dialogo.png" alt="" class="pl-14">
             </button>
