@@ -199,50 +199,8 @@
 <script src="{site_url}frontend/app/assets/js/textarea-control.js"></script>
 <script type="text/javascript">
   $(document).ready(function() {
-      $("#status_form").attr("enctype", "multipart/form-data");
-      $("#status_form").submit(function(e) {
-        e.preventDefault();
-        var friends_status = $("#wall_status").val();
-        var status_category = $("#status_category").val();
-        if (status_category == 0) {
-          $('#error-categoria').html('<img src="{site_url}frontend/app/assets/img/categoria2.png">');
-          return;
-        } else {
-          $("#error-categoria").empty();
-        };
-        if(friends_status.trim().length == 0 || friends_status.trim() == "") {
-          $('#error-message').html('<img src="{site_url}frontend/app/assets/img/mensaje.png">');
-          return;
-        } else {
-            $("#error-message").empty();
-          };
-        var form = $(this);
-        var url = form.attr("action");
-        var data = form.serialize();
-        var formData = new FormData(form[0]);
-
-        $.ajax({
-          url: url,
-          type: 'POST',
-          data: formData,
-          async: false,
-          success: function(result) {
-            $.ajax({
-              method: 'GET',
-              url: '{site_url}wall/new_post/' + result
-            })
-            .done(function(post) {
-              $("#wall_status").val('');
-              $("#status_category").val('0');
-              $("#post").prepend(post);
-            });
-          },
-          cache: false,
-          contentType: false,
-          processData: false
-        });
-      });
-    });
+      $("#status_form").attr("enctype", "multipart/form-data");    
+  });
     
     $(document).on('click', '.delete_post', function(e) {
       e.preventDefault();
@@ -306,5 +264,92 @@
         });
       }
     });
+</script>
+<script src="{site_url}frontend/app/assets/js/fancywebsocket.js"></script>
+<script>
+  var Server;
+
+  function log( text ) {
+    console.log(text);
+  }
+
+  function send( text ) {
+    Server.send( 'message', text );
+  }
+
+  $(document).ready(function() {
+    log('Connecting...');
+    Server = new FancyWebSocket('ws://192.168.1.19:9300');
+
+    $("#status_form").submit(function(e) {
+      e.preventDefault();
+      var friends_status = $("#wall_status").val();
+      var status_category = $("#status_category").val();
+      if (status_category == 0) {
+        $('#error-categoria').html('<img src="{site_url}frontend/app/assets/img/categoria2.png">');
+        return;
+      } else {
+        $("#error-categoria").empty();
+      };
+      if(friends_status.trim().length == 0 || friends_status.trim() == "") {
+        $('#error-message').html('<img src="{site_url}frontend/app/assets/img/mensaje.png">');
+        return;
+      } else {
+        $("#error-message").empty();
+      };
+      var form = $(this);
+      var url = form.attr("action");
+      var data = form.serialize();
+      var formData = new FormData(form[0]);
+
+      $.ajax({
+        url: url,
+        type: 'POST',
+        data: formData,
+        async: false,
+        success: function(result) {
+          $.ajax({
+            method: 'GET',
+            url: '{site_url}wall/new_post/' + result
+          })
+          .done(function(post) {
+            $("#wall_status").val('');
+            $("#status_category").val('0');
+            $("#post").prepend(post);
+            log(post);
+            send(post);
+          });
+        },
+        cache: false,
+        contentType: false,
+        processData: false
+      });
+    });
+    /*$('#message').keypress(function(e) {
+      if ( e.keyCode == 13 && this.value ) {
+        log( 'You: ' + this.value );
+        send( this.value );
+
+        $(this).val('');
+      }
+    });*/
+
+    //Let the user know we're connected
+    Server.bind('open', function() {
+      log( "Connected." );
+    });
+
+    //OH NOES! Disconnection occurred.
+    Server.bind('close', function( data ) {
+      log( "Disconnected." );
+    });
+
+    //Log any messages sent from server
+    Server.bind('message', function( payload ) {
+      $("#post").prepend(payload);
+    });
+
+    Server.connect();
+  });
 </script>
 </html>
