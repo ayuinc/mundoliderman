@@ -423,7 +423,7 @@ header {
 	}
 	#error-message {
 		left: -25%;
-		top: 40%;
+		top: 50px;
 		img {
 			width: 150px;
 		}
@@ -433,6 +433,22 @@ header {
     left: 37%;
 		img {
 			width: 160px;
+		}
+	}
+	#photos-post {
+		.close-image {
+			right: 5px;
+	    top: 5px;
+	    width: 10px;
+	    display: none;
+	    cursor: pointer;
+		}
+		&:hover {
+			opacity: 0.8;
+			@include transition(all .2s ease-in-out);
+			.close-image {
+				display: block;
+			}
 		}
 	}
 }

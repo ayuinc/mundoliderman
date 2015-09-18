@@ -25,7 +25,9 @@
               </div>
             </div>
             <textarea id="wall_status" name="wall_status" class="form-control outline-none serif fz-18 borderless br-none pv-14 ph-14" onkeyup="auto_grow(this)" placeholder="Qué estás pensando..."></textarea>
-            <div class="galery-photos"></div>
+            <div class="container-photos bg-white" style="">
+              <div id='photos-post' class='relative'><img src='{site_url}frontend/app/assets/img/ex_rojo.png' class='close-image absolute' style='z-index:10000'></div>
+            </div>
             <div class="fileUpload file_input btn btn-success p-0 ml-21">
               <img src="{site_url}frontend/app/assets/img/Icono_Foto.png" alt="">
               <span class="thin fz-12 pl-14 hidden-xs hidden-sm">Subir imagen</span>
@@ -307,4 +309,33 @@
       }
     });
 </script>
+<script type="text/javascript">
+    $(document).ready(function() {
+      function setImageFromInputFile(inputImage, imageContainer) {
+        if (inputImage.files) {
+          var file = inputImage.files[0];
+          if (file) {
+            var reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = function(e) {
+              document.getElementById(imageContainer).style.backgroundImage = "url('" + e.target.result + "')";
+            }
+          };
+        };
+      }
+      $("#inputFile").change(function() {
+        if ($(this).val()) {
+          $(".container-photos").addClass("pt-7 pb-21 pl-21");
+          $("#photos-post").attr("style", "border: 1px solid #e7e7e7; width:150px; height:150px; background-size:cover; background-position:center; z-index:1");
+          setImageFromInputFile(this, "photos-post");
+          $("#photos-post").show();
+        }
+      });
+      $(".close-image").on("click", function(){
+        $("#photos-post").css('background-image', "url('')");
+        $("#inputFile").val('');
+        $("#photos-post").hide();
+      });
+    });
+  </script>
 </html>

@@ -1680,7 +1680,7 @@ header .perfil {
 }
 #comentar #error-message {
   left: -25%;
-  top: 40%;
+  top: 50px;
 }
 #comentar #error-message img {
   width: 150px;
@@ -1691,6 +1691,22 @@ header .perfil {
 }
 #comentar #error-categoria img {
   width: 160px;
+}
+#comentar #photos-post .close-image {
+  right: 5px;
+  top: 5px;
+  width: 10px;
+  display: none;
+  cursor: pointer;
+}
+#comentar #photos-post:hover {
+  opacity: 0.8;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+#comentar #photos-post:hover .close-image {
+  display: block;
 }
 
 input.upload {
