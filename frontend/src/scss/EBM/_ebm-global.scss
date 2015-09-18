@@ -1265,6 +1265,11 @@ input[type="submit"] {
 	  	background-position-x: 95%;
 	    background-size: 5%;
 	  }
+	  #photos-post {
+			.close-image img {
+				display: block;
+			}
+		}
 	  button {
 	  	font-size: 11px!important;
 	  }
