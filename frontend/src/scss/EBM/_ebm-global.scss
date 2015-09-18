@@ -1266,8 +1266,8 @@ input[type="submit"] {
 	    background-size: 5%;
 	  }
 	  #photos-post {
-			.close-image img {
-				display: block;
+			.close-image {
+				display: block!important;
 			}
 		}
 	  button {
