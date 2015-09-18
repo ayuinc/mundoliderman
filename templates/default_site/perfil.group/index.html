@@ -29,31 +29,35 @@
                 {/exp:wall:member_prominent_form}
               </div>
             </div>
-              <div id="comentar" class="bg-white mt-42">
-                {exp:wall:status_form return="wall" form_id="status_form" form_class="bg-success" enctype="multipart/form-data"}
-                  <div class="bg-success text-right ph-21">
-                    <div class="select-style display-ib text-center">
-                      <select name="status_category" id="status_category" class="fz-14 text-white borderless light serif w-100 pt-7">
-                        {exp:status_category:all}
-                          <option value="{category_id}" class="bg-success">{category_name}</option>
-                        {/exp:status_category:all}
-                      </select>
-                    </div>
+            <section id="comentar" class="bg-white mt-42">
+              <div id="error-message" class="absolute hidden-xs hidden-sm"></div>
+              <div id="error-categoria" class="absolute hidden-xs hidden-sm"></div>
+              {exp:wall:status_form return="wall" form_id="status_form" form_class="bg-success" enctype="multipart/form-data"}
+                <div class="bg-success text-right ph-21 ph-0-xs">
+                  <div class="select-style display-ib text-center">
+                    <select name="status_category" id="status_category" class="ph-21-xs fz-14 text-white borderless light serif w-100 pt-7" style="background-image: url({site_url}frontend/app/assets/img/Flecha-para-abajo.png);">
+                      {exp:status_category:all}
+                        <option value="{category_id}" class="bg-success">{category_name}</option>
+                      {/exp:status_category:all}
+                    </select>
                   </div>
-                  <textarea id="wall_status" name="wall_status" class="form-control outline-none serif fz-18 borderless br-none pv-14 ph-14" onkeyup="auto_grow(this)" placeholder="Qué estás pensando..."></textarea>
-                  <div class="galery-photos"></div>
-                  <div class="fileUpload file_input btn btn-success p-0 ml-21">
-                    <img src="{site_url}frontend/app/assets/img/Icono_Foto.png" alt="">
-                    <span class="thin fz-12 pl-14 hidden-xs hidden-sm">Subir imagen</span>
-                    <span class="thin fz-16 pl-14 serif hidden-lg hidden-md">Subir imagen</span><!--movil-->
-                    <input type="file" id="inputFile" name="status_image" class="upload" accept="image" />
-                  </div>
-                  <button type="submit" name="submit" class="btn bg-warning text-white text-hover-white fz-12 ph-21 mv-7 absolute hidden-xs hidden-sm">
-                   PUBLICAR
-                   <img src="{site_url}frontend/app/assets/img/Publicar_Dialogo.png" alt="" class="pl-14">
-                  </button>
-                {/exp:wall:status_form}
-              </div>
+                </div>
+                <textarea id="wall_status" name="wall_status" class="form-control outline-none serif fz-18 borderless br-none pv-14 ph-14" onkeyup="auto_grow(this)" placeholder="Qué estás pensando..."></textarea>
+                <div class="container-photos bg-white" style="">
+                  <div id='photos-post' class='relative'><img src='{site_url}frontend/app/assets/img/ex_rojo.png' class='close-image absolute' style='z-index:10000'></div>
+                </div>
+                <div class="fileUpload file_input btn btn-success p-0 ml-21 mt-7-xs">
+                  <img src="{site_url}frontend/app/assets/img/Icono_Foto.png" alt="">
+                  <span class="thin fz-12 pl-14 hidden-xs hidden-sm">Subir imagen</span>
+                  <span class="thin fz-14 pl-14 serif hidden-lg hidden-md">Subir imagen</span><!--movil-->
+                  <input type="file" id="inputFile" name="status_image" class="upload" accept="image" /> 
+                </div>
+                <button type="submit" name="submit" class="btn bg-warning text-white text-hover-white fz-12 ph-21 ph-14-xs mv-7 absolute">
+                 PUBLICAR
+                 <img src="{site_url}frontend/app/assets/img/Publicar_Dialogo.png" alt="" class="pl-14">
+                </button>
+              {/exp:wall:status_form}
+              </section>
               {exp:wall:status member_id="{if segment_2 == 'index'} {segment_3} {if:else} {segment_2} {/if}"}
                 <div class="post-1 post bg-white pl-28 pr-42 pt-28 pb-28 mt-42 ph-14-xs">
                   <div class="clearfix">
@@ -172,24 +176,76 @@
   <script src="{site_url}frontend/app/assets/js/aviso-control.js"></script>
   <script>
     $(document).ready(function() {
-      $("#uploadImage").on("click", function(e) {
-        e.preventDefault();
-        $("#inputFile").trigger("click");
-      });
-
       $("#status_form").attr("enctype", "multipart/form-data");
       $("#status_form").submit(function(e) {
-        $friends_status = $("#friends_status").val();
-        $status_category = $("#status_category").val();
-        if ($status_category == 0) {
-          e.preventDefault();
+        e.preventDefault();
+        var friends_status = $("#wall_status").val();
+        var status_category = $("#status_category").val();
+        if (status_category == 0) {
+          $('#error-categoria').html('<img src="{site_url}frontend/app/assets/img/categoria2.png">');
           return;
+        } else {
+          $("#error-categoria").empty();
         };
-        if($friends_status.trim().length == 0 || $friends_status.trim() == "") {
-          e.preventDefault();
+        if(friends_status.trim().length == 0 || friends_status.trim() == "") {
+          $('#error-message').html('<img src="{site_url}frontend/app/assets/img/mensaje.png">');
           return;
+        } else {
+            $("#error-message").empty();
+          };
+        var form = $(this);
+        var url = form.attr("action");
+        var data = form.serialize();
+        var formData = new FormData(form[0]);
+
+        $.ajax({
+          url: url,
+          type: 'POST',
+          data: formData,
+          async: false,
+          success: function(result) {
+            $.ajax({
+              method: 'GET',
+              url: '{site_url}wall/new_post/' + result
+            })
+            .done(function(post) {
+              $("#wall_status").val('');
+              $("#status_category").val('0');
+              $("#post").prepend(post);
+            });
+          },
+          cache: false,
+          contentType: false,
+          processData: false
+        });
+      });
+      /*PREVISUALIZACION IMAGEN*/
+      function setImageFromInputFile(inputImage, imageContainer) {
+        if (inputImage.files) {
+          var file = inputImage.files[0];
+          if (file) {
+            var reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = function(e) {
+              document.getElementById(imageContainer).style.backgroundImage = "url('" + e.target.result + "')";
+            }
+          };
+        };
+      }
+      $("#inputFile").change(function() {
+        if ($(this).val()) {
+          $(".container-photos").addClass("pt-7 pb-21 pl-21");
+          $("#photos-post").attr("style", "border: 1px solid #e7e7e7; width:150px; height:150px; background-size:cover; background-position:center; z-index:1");
+          setImageFromInputFile(this, "photos-post");
+          $("#photos-post").show();
         }
+      });
+      $(".close-image").on("click", function(){
+        $("#photos-post").css('background-image', "url('')");
+        $("#inputFile").val('');
+        $("#photos-post").hide();
       });
     });
   </script>
+  <script src="{site_url}frontend/app/assets/js/publish.js"></script>
 </html>
