@@ -1,5 +1,5 @@
 <footer class="relative" style="z-index:1">
-  <div class="w-100 pt-28-xs">
+  <div class="w-100 pt-28-xs ph-42-xs">
      <div class="audio-video absolute hidden-xs hidden-sm" style="background-color:black">
           <a href="" class="a-video">
             <div class="btn-video display-ib text-center">
@@ -12,8 +12,10 @@
             </div>
           </a>
         </div>
-    <div id="up" class="text-center ">
-      <a href=""><img src="{site_url}frontend/app/assets/img/Flecha-para-arriba.png" alt=""></a>
+    <div id="up" class="text-center ph-21 pv-7" style="cursor:pointer">
+      <img src="{site_url}frontend/app/assets/img/Wall/Icono_Senal.png" alt="" class="mb-7 mr-7" style="width:16px">
+      <span class="text-white light">RADIO URBE</span>
+     <!--  <a href=""><img src="{site_url}frontend/app/assets/img/Flecha-para-arriba.png" alt=""></a> -->
     </div>
     <div class="container pt-21 pb-42"> 
       <div class="row">
@@ -32,14 +34,14 @@
         </div>
       </div>
       <div class="descripcion row pt-14 pb-42 pb-0-xs">
-        <div class="col-md-6 hidden-xs hidden-sm">
+        <div class="col-md-6 ph-0-xs">
           <!-- <img src="{site_url}frontend/app/assets/img/Wall/RadioUrbe.png" alt=""> -->
           <!-- Audio -->
           <iframe class="audio hidden" scrolling="No" frameborder="0" height="285" src="http://www.wklivehost.info/playersjw/radiourberadio/radiourbeaudio285.html" width="100%"> Texto alternativo para navegadores que no aceptan iframes </iframe> 
           <!-- Video -->
           <iframe class="video" scrolling="No" frameborder="0" height="285" src="http://www.wklivehost.info/playersjw/radiourbe/radiourbev2.html" width="100%"> Texto alternativo para navegadores que no aceptan iframes </iframe>
         </div>
-        <div class="col-md-6 col-xs-12 pl-42">
+        <div class="col-md-6 col-xs-12 pl-42 hidden-xs hidden-sm">
           <ul class="lista text-white pt-7 ml-14">
             {exp:channel:entries channel="radio_programacion" search:al_aire_programa="No" limit="5"}
             <li class="text-white">

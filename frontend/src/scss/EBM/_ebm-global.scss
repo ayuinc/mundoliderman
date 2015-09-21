@@ -3,9 +3,6 @@
 */
 
 html {
-	&::-webkit-scrollbar { 
-    display: none; 
-	}
 }
 
 body {
@@ -36,7 +33,7 @@ body {
 	    font-size: rem(0px + $i)!important;
 	  }
 	}
-	.video table, .video table #mediaspace_wrapper {
+	.video table, .video table div#mediaspace_wrapper {
 		height: 285px!important;
 	}
 	/*CALENDAR COLORS*/
@@ -553,16 +550,19 @@ footer > div {
 	background-color: black;
   bottom: 0;
   @include transition(all .2s ease-in-out);
-  @include transform(translateY(473px));
+  @include transform(translateY(462px));
   #up {
-		height: 30px;
-	  width: 40px;
+		height: 45px;
+	  width: auto;
 	  position: absolute;
 	  bottom: 0;
-	  top: -29px;
+	  top: -38px;
 	  background-color: black;
 	  left: 50%;
 	  @include transform (translateX(-50%));
+	  span:hover {
+	  	color: #E83A98;
+	  }
 	}
 	.text-fuccia {
 		color: #E83A98 !important;
@@ -587,8 +587,15 @@ footer > div {
 	    margin-top: 8px;
     }
 	}
-	iframe.audio, iframe.video {
-		height: 285px!important;
+	iframe.audio, 
+	iframe.video {
+		height: 285px;
+		table {
+			height: 285px!important;
+			object#mediaspace {
+				height: 285px;
+			}
+		}
 	}
 	
 	.container {
@@ -1591,4 +1598,12 @@ input[type="submit"] {
 		position: absolute!important;
 		@include transform(translateY(0%));
 	}
+	iframe.audio, iframe.video {
+		height: 380px!important;
+	}
 }
+
+
+	#mediaspace_wrapper {
+		height: 280px !important;
+	}
