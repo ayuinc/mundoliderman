@@ -178,7 +178,7 @@
 						console.log("hola");
 					}
 
-					var cellClasses = today ? 'fc-today ' : '';
+					var cellClasses = today ? 'fc-today colour'+day+'' : 'colour'+(day-1)+'';
 					if( content !== '' ) {
 						cellClasses += 'fc-content';
 					}

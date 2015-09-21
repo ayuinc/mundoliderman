@@ -1027,10 +1027,10 @@
 body {
   /*UTILITIES*/
   /*CALENDAR COLORS*/
-  /*Ausencia diurna*/
-  /*Asistencua diurna*/
-  /*Asistencia nocturna*/
-  /*Ausencia nocturna*/
+  /*Falta*/
+  /*Asistencua nocturna*/
+  /*Asistencia diurna*/
+  /*Descanso*/
   /*Descanso*/
   /*Asistencia nocturna*/
   /*text-info(Asistencia diurna) y text-danger(Ausencia)*/
@@ -1190,100 +1190,106 @@ body .video table, body .video table div#mediaspace_wrapper {
   height: 285px !important;
 }
 body .colour2 {
-  color: #d84928 !important;
+  border-top: 5px solid #CA6060 !important;
 }
 body .colour4 {
-  color: #d84928 !important;
+  border-top: 5px solid #CA6060 !important;
 }
 body .colour6 {
-  color: #d84928 !important;
+  border-top: 5px solid #CA6060 !important;
 }
 body .colour8 {
-  color: #d84928 !important;
+  border-top: 5px solid #CA6060 !important;
 }
 body .colour10 {
-  color: #d84928 !important;
+  border-top: 5px solid #CA6060 !important;
 }
 body .colour1 {
-  color: #51ba6e !important;
+  border-top: 5px solid #A6BBAB !important;
 }
 body .colour3 {
-  color: #51ba6e !important;
+  border-top: 5px solid #A6BBAB !important;
 }
 body .colour5 {
-  color: #51ba6e !important;
+  border-top: 5px solid #A6BBAB !important;
 }
 body .colour7 {
-  color: #51ba6e !important;
+  border-top: 5px solid #A6BBAB !important;
 }
 body .colour9 {
-  color: #51ba6e !important;
+  border-top: 5px solid #A6BBAB !important;
 }
 body .colour11 {
-  color: #51ba6e !important;
+  border-top: 5px solid #A6BBAB !important;
 }
 body .colour13 {
-  color: #51ba6e !important;
+  border-top: 5px solid #A6BBAB !important;
 }
 body .colour15 {
-  color: #51ba6e !important;
+  border-top: 5px solid #A6BBAB !important;
 }
 body .colour17 {
-  color: #51ba6e !important;
+  border-top: 5px solid #A6BBAB !important;
 }
 body .colour19 {
-  color: #51ba6e !important;
+  border-top: 5px solid #A6BBAB !important;
 }
 body .colour21 {
-  color: #51ba6e !important;
+  border-top: 5px solid #A6BBAB !important;
 }
 body .colour23 {
-  color: #51ba6e !important;
+  border-top: 5px solid #A6BBAB !important;
 }
 body .colour25 {
-  color: #51ba6e !important;
+  border-top: 5px solid #A6BBAB !important;
 }
 body .colour27 {
-  color: #51ba6e !important;
+  border-top: 5px solid #A6BBAB !important;
 }
 body .colour12 {
-  color: #19572A !important;
+  border-top: 5px solid #C1E7CB !important;
 }
 body .colour14 {
-  color: #19572A !important;
+  border-top: 5px solid #C1E7CB !important;
 }
 body .colour16 {
-  color: #19572A !important;
+  border-top: 5px solid #C1E7CB !important;
 }
 body .colour18 {
-  color: #19572A !important;
+  border-top: 5px solid #C1E7CB !important;
 }
 body .colour20 {
-  color: #19572A !important;
+  border-top: 5px solid #C1E7CB !important;
 }
 body .colour22 {
-  color: #19572A !important;
+  border-top: 5px solid #C1E7CB !important;
 }
 body .colour24 {
-  color: #19572A !important;
+  border-top: 5px solid #C1E7CB !important;
 }
 body .colour26 {
-  color: #19572A !important;
+  border-top: 5px solid #C1E7CB !important;
 }
 body .colour28 {
-  color: #19572A !important;
+  border-top: 5px solid #C1E7CB !important;
 }
 body .colour30 {
-  color: #19572A !important;
+  border-top: 5px solid #C1E7CB !important;
 }
 body .colour29, body .colour31 {
-  color: #4A0101;
+  border-top: 5px solid #8CB4D6;
 }
 body .bg-blue {
-  background-color: #43609c;
+  background-color: #8CB4D6;
 }
-body .bg-info-dark {
-  background-color: #19572A;
+body .bg-green {
+  background-color: #C1E7CB;
+}
+body .bg-green-dark {
+  background-color: #A6BBAB;
+}
+body .bg-red {
+  background-color: #CA6060;
 }
 body .text-blue {
   color: #43609c;

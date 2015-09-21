@@ -39,36 +39,42 @@ body {
 	/*CALENDAR COLORS*/
 	$color: colour; 
 
-	/*Ausencia diurna*/
+	/*Falta*/
 	@for $i from 1 through 5 {
 		.#{$color}#{$i*2} {
-			color: rgb(216, 73, 40)!important;
+			border-top: 5px solid #CA6060!important;
 		}
 	}
 
-	/*Asistencua diurna*/
+	/*Asistencua nocturna*/
 	@for $i from 1 through 14 {
 		.#{$color}#{$i*2 - 1} {
-			color: rgb(81, 186, 110)!important;
+			border-top: 5px solid #A6BBAB!important;
 		}
 	}
 
-	/*Asistencia nocturna*/
+	/*Asistencia diurna*/
 	@for $i from 6 through 15 {
 		.#{$color}#{$i*2} {
-			color: #19572A!important;
+			border-top: 5px solid #C1E7CB!important;
 		}
 	}
 
-	/*Ausencia nocturna*/
+	/*Descanso*/
 	.colour29, .colour31 {
-		color: #4A0101;
+		border-top: 5px solid #8CB4D6;
 	}
 	.bg-blue {
-		background-color: #43609c;
+		background-color: #8CB4D6;
 	}
-	.bg-info-dark {
-		background-color: #19572A;
+	.bg-green {
+		background-color: #C1E7CB;
+	}
+	.bg-green-dark {
+		background-color: #A6BBAB;
+	}
+	.bg-red {
+		background-color: #CA6060;	
 	}
 	/*Descanso*/
 	.text-blue {
