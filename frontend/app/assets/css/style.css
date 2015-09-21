@@ -1024,10 +1024,6 @@
 /*
 	EBM Global styles
 */
-html::-webkit-scrollbar {
-  display: none;
-}
-
 body {
   /*UTILITIES*/
   /*CALENDAR COLORS*/
@@ -1190,7 +1186,7 @@ body .fz-40 {
   font-size: 40px !important;
   font-size: 2.5rem !important;
 }
-body .video table, body .video table #mediaspace_wrapper {
+body .video table, body .video table div#mediaspace_wrapper {
   height: 285px !important;
 }
 body .colour2 {
@@ -1817,18 +1813,18 @@ footer > div {
   -webkit-transition: all 0.2s ease-in-out;
   -moz-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
-  -webkit-transform: translateY(473px);
-  -moz-transform: translateY(473px);
-  -ms-transform: translateY(473px);
-  -o-transform: translateY(473px);
-  transform: translateY(473px);
+  -webkit-transform: translateY(462px);
+  -moz-transform: translateY(462px);
+  -ms-transform: translateY(462px);
+  -o-transform: translateY(462px);
+  transform: translateY(462px);
 }
 footer > div #up {
-  height: 30px;
-  width: 40px;
+  height: 45px;
+  width: auto;
   position: absolute;
   bottom: 0;
-  top: -29px;
+  top: -38px;
   background-color: black;
   left: 50%;
   -webkit-transform: translateX(-50%);
@@ -1836,6 +1832,9 @@ footer > div #up {
   -ms-transform: translateX(-50%);
   -o-transform: translateX(-50%);
   transform: translateX(-50%);
+}
+footer > div #up span:hover {
+  color: #E83A98;
 }
 footer > div .text-fuccia {
   color: #E83A98 !important;
@@ -1858,8 +1857,17 @@ footer > div .audio-video .btn-audio {
   height: 23px;
   margin-top: 8px;
 }
-footer > div iframe.audio, footer > div iframe.video {
+footer > div iframe.audio,
+footer > div iframe.video {
+  height: 285px;
+}
+footer > div iframe.audio table,
+footer > div iframe.video table {
   height: 285px !important;
+}
+footer > div iframe.audio table object#mediaspace,
+footer > div iframe.video table object#mediaspace {
+  height: 285px;
 }
 footer > div .container {
   display: -webkit-box;
@@ -2975,6 +2983,13 @@ input[type="submit"] {
     -o-transform: translateY(0%);
     transform: translateY(0%);
   }
+
+  iframe.audio, iframe.video {
+    height: 380px !important;
+  }
+}
+#mediaspace_wrapper {
+  height: 280px !important;
 }
 
 /*# sourceMappingURL=style.css.map */
