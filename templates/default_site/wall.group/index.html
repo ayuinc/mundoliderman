@@ -166,7 +166,9 @@
                         <span class="fz-14 text-success pr-7">{comment_screen_name}</span>
                         <img src="{site_url}frontend/app/assets/img/forward.png" alt="" class="display-ib">
                         <span class="text-gray fz-10 light pl-7">{comment_date:relative past="%s ago"}</span>
+                        {exp:wall:delete_comment_form form_id="" form_class="" post_id="{comment_post_id}" comment_id="{comment_id}"}
                         <span class="delete-comment hidden-xs col-md-offset-3 fz-35 light opacity">&times;</span>
+                        {/exp:wall:delete_comment_form}
                         <p class="fz-14 pt-7 mb-0 pb-7 parrafo">{comment}</p>
                       </div>
 
@@ -231,6 +233,22 @@
 
     $.post(url, data, function(result) {
       post.fadeOut();
+    });
+  });
+
+  $(document).on('click', '.delete-comment', function(e) {
+    e.preventDefault();
+    var span = $(this);
+    var form = span.parent();
+    var comment = $(span).parent().parent().parent();
+
+    var url = $(form).attr("action");
+    var data = $(form).serialize();
+
+    $.post(url, data, function(result) {
+      var comment_data = JSON.parse(result);
+      comment.fadeOut();
+      $("span[data-comment-post-id=" + comment_data.post_id +"]").text(comment_data.total);
     });
   });
 
