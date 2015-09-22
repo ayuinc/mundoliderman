@@ -156,6 +156,12 @@ class Wall_upd {
 				'constraint' => '512',
 				'null' => TRUE
 			),
+			'solved' => array(
+				'type' => 'char',
+				'constraint' => '1',
+				'default' => 'n',
+				'null' => FALSE
+			),
 			"active" => array(
 				'type' => 'char',
 				'constraint' => '1',
@@ -255,6 +261,10 @@ class Wall_upd {
 			array(
 				"class" => $this->module_name,
 				"method" => "like_post"
+			),
+			array(
+				"class" => $this->module_name,
+				"method" => "solve_post"
 			),
 			array(
 				"class" => $this->module_name,

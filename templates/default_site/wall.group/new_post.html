@@ -27,25 +27,27 @@
             <h5 class="text-gray-darker m-0 fz-22 lh-1-3">{post_screen_name}</h5>
             <p class="fz-14 m-0 text-gray fz-14"><a href="">{post_status_date:relative past="%s ago"}</a></p>
           </div>
+          {if post_category_id != 1}
           <div class="col-xs-4 text-center pt-7 hidden-xs hidden-sm">
-            <div class="aviso btn-aviso1 ml-42 bg-info hidden">
+            <div class="aviso btn-aviso1 ml-42 bg-info" onclick="return solve(this);">
               <div class="circle-green bg-white display-ib"></div>
               <p class="text-white thin m-0 display-ib pl-7 fz-14">Resuelto</p>
             </div>
-            <div class="aviso btn-aviso2 ml-28 ph-7 bg-primary">
+            <div class="aviso btn-aviso2 ml-28 ph-7 bg-primary" onclick="return solve(this);">
               <div class="circle-green bg-white display-ib"></div>
               <p class="text-white thin m-0 display-ib pl-7 fz-14">No resuelto</p>                       
             </div>
           </div>
           <div class="col-xs-2 text-center ph-0 pt-7 hidden-lg hidden-md">
-            <div class="aviso btn-aviso1 hidden">
+            <div class="aviso btn-aviso1" onclick="return solve(this);">
               <div class="circle-green bg-info display-ib"></div>
             </div>
-            <div class="aviso btn-aviso2 mh-0 ph-0">
+            <div class="aviso btn-aviso2 mh-0 ph-0" onclick="return solve(this);">
               <div class="circle-green bg-primary display-ib"></div>
             </div>
           </div>
-          {exp:wall:delete_post_form form_id="" form_class="hidden-xs hidden-sm"}
+          {/if}
+          {exp:wall:delete_post_form form_id="" form_class="pull-right"}
           <div class="col-xs-1 pt-7 text-right eraser relative pl-0">
             <img src="{site_url}frontend/app/assets/img/Tachito_Inac.png" alt="" class="inactivo">
             <div class="pr-14 activo desaparecer absolute bg-white hidden-xs hidden-sm">
