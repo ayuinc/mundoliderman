@@ -556,7 +556,7 @@ footer > div {
 	background-color: black;
   bottom: 0;
   @include transition(all .2s ease-in-out);
-  @include transform(translateY(462px));
+  @include transform(translateY(476px));
   #up {
 		height: 45px;
 	  width: auto;
@@ -1599,13 +1599,21 @@ input[type="submit"] {
 				}
   		}
 		}
+		.audio-video {
+			top: 0px;
+			left: 0px;
+		}
+		#up {
+			top: -43px;
+		}
+
 	}
 	.active-up {
 		position: absolute!important;
 		@include transform(translateY(0%));
 	}
 	iframe.audio, iframe.video {
-		height: 380px!important;
+		height: 285px!important;
 	}
 }
 
