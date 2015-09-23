@@ -15434,6 +15434,103 @@ a.bg-hover-linkedin:not(.btn):hover,
 
 /* 
   =================
+  Backgrounds
+  =================
+*/
+.bg-primary-op {
+  background-color: rgba(249, 66, 17, 0.7);
+}
+
+.bg-success-op {
+  background-color: rgba(98, 98, 98, 0.7);
+}
+
+.bg-info-op {
+  background-color: rgba(81, 186, 110, 0.7);
+}
+
+.bg-warning-op {
+  background-color: rgba(84, 84, 84, 0.7);
+}
+
+.bg-danger-op {
+  background-color: rgba(216, 73, 40, 0.7);
+}
+
+.bg-gray-darker-op {
+  background-color: rgba(49, 49, 49, 0.7);
+}
+
+.bg-gray-dark-op {
+  background-color: rgba(112, 114, 116, 0.7);
+}
+
+.bg-gray-op {
+  background-color: rgba(125, 126, 127, 0.7);
+}
+
+.bg-gray-light-op {
+  background-color: rgba(181, 182, 183, 0.7);
+}
+
+.bg-gray-lighter-op {
+  background-color: rgba(231, 231, 231, 0.7);
+}
+
+.bg-white-op {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.bg-blue-darker-op {
+  background-color: rgba(58, 73, 89, 0.7);
+}
+
+.bg-blue-dark-op {
+  background-color: rgba(100, 126, 154, 0.7);
+}
+
+.bg-blue-op {
+  background-color: rgba(143, 162, 182, 0.7);
+}
+
+.bg-blue-light-op {
+  background-color: rgba(230, 234, 239, 0.7);
+}
+
+.bg-blue-lighter-op {
+  background-color: rgba(251, 252, 253, 0.7);
+}
+
+.bg-facebook-op {
+  background-color: rgba(59, 89, 152, 0.7);
+}
+
+.bg-twitter-op {
+  background-color: rgba(52, 204, 254, 0.7);
+}
+
+.bg-pinterest-op {
+  background-color: rgba(208, 36, 32, 0.7);
+}
+
+.bg-google-plus-op {
+  background-color: rgba(220, 67, 53, 0.7);
+}
+
+.bg-youtube-op {
+  background-color: rgba(242, 48, 48, 0.7);
+}
+
+.bg-instagram-op {
+  background-color: rgba(65, 135, 251, 0.7);
+}
+
+.bg-linkedin-op {
+  background-color: rgba(28, 135, 189, 0.7);
+}
+
+/* 
+  =================
   TEXT HOVER COLOR
   =================
 */

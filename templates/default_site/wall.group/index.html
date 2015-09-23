@@ -26,7 +26,7 @@
             </div>
             <textarea id="wall_status" name="wall_status" class="form-control outline-none serif fz-18 borderless br-none pv-14 ph-14" onkeyup="auto_grow(this)" placeholder="Qué estás pensando..." min-length="1" max-length="512"></textarea>
             <div class="container-photos bg-white" style="">
-              <div id='photos-post' class='relative'><img src='{site_url}frontend/app/assets/img/ex_rojo.png' class='close-image absolute' style='z-index:10000'></div>
+              <div id='photos-post' class='relative'><img src='{site_url}frontend/app/assets/img/ex_rojo.png' class='close-image close-display absolute' style='z-index:10000'></div>
             </div>
             <div class="fileUpload file_input btn btn-success p-0 ml-21 mt-7-xs">
               <img src="{site_url}frontend/app/assets/img/Icono_Foto.png" alt="">
@@ -40,7 +40,7 @@
             </button>
           {/exp:wall:status_form}
         </section>
-        
+        {embed="includes/alerta-publicaciones"}
         <section id="new_post" class="pokerface">
           
         </section>
@@ -106,7 +106,7 @@
                   {exp:wall:delete_post_form form_id="" form_class="pull-right"}
                   <div class="col-xs-1 pt-7 text-right eraser relative pl-0">
                     <img src="{site_url}frontend/app/assets/img/Tachito_Inac.png" alt="" class="inactivo">
-                    <div class="pr-14 activo desaparecer absolute bg-white hidden-xs hidden-sm">
+                    <div class="pr-14 pl-14-xs pr-0-xs activo desaparecer absolute bg-white">
                       <img class="delete_post" src="{site_url}frontend/app/assets/img/Tachito_Act.png" alt="">
                     </div>
                     <input type="hidden" name="post_id" value="{post_id}">
@@ -215,21 +215,6 @@
 <script>
   $(document).ready(function() {
     $("#status_form").attr("enctype", "multipart/form-data");
-
-    $("#inputFile").change(function() {
-      if ($(this).val()) {
-        $(".container-photos").addClass("pt-7 pb-21 pl-21");
-        $("#photos-post").attr("style", "border: 1px solid #e7e7e7; width:120px; height:120px; background-size:cover; background-position:center; z-index:1");
-        setImageFromInputFile(this, "photos-post");
-        $("#photos-post").show();
-      }
-    });
-
-    $(".close-image").on("click", function(){
-      $("#photos-post").css('background-image', "url('')");
-      $("#inputFile").val('');
-      $("#photos-post").hide();
-    });
   });
 
   $(document).on('click', '.delete_post', function(e) {
@@ -310,7 +295,39 @@
       });
     }
   });
+
+    /*PREVISUALIZACION IMAGEN*/
+      function setImageFromInputFile(inputImage, imageContainer) {
+        if (inputImage.files) {
+          var file = inputImage.files[0];
+          if (file) {
+            var reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = function(e) {
+              document.getElementById(imageContainer).style.backgroundImage = "url('" + e.target.result + "')";
+            }
+          };
+        };
+      }
+      $("#inputFile").change(function() {
+        if ($(this).val()) {
+          $(".container-photos").addClass("pt-7 pb-21 pl-21");
+          $("#photos-post").attr("style", "border: 1px solid #e7e7e7; width:120px; height:120px; background-size:cover; background-position:center; z-index:1");
+          $(".close-image").addClass("btn-block");
+          $(".close-image").removeClass("close-display");
+          setImageFromInputFile(this, "photos-post");
+          $("#photos-post").show();
+        }
+      });
+      $(".close-image").on("click", function(){
+        $("#photos-post").css('background-image', "url('')");
+        $("#inputFile").val('');
+        $("#photos-post").hide();
+        $(".close-image").removeClass("btn-block");
+        $(".close-image").addClass("close-display");
+      });
 </script>
+<script src="{site_url}frontend/app/assets/js/smooth-scroll.js"></script>
 <script src="{site_url}frontend/app/assets/js/fancywebsocket.js"></script>
 <script>
   var Server;

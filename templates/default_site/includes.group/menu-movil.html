@@ -6,8 +6,8 @@
             <p class="sans-serif fz-22">{screen_name}</p>
           </div>
         </div>
-        <p class="sans-serif fz-22 mb-14 text-gray-dark"><a href="{path='wall'}">Ir al Inicio</a></p>
-        <p class="sans-serif fz-22 mb-14 text-gray-dark"><a href="{path='perfil/editar'}">Editar Perfil</a></p>
+        <p class="sans-serif fz-22 mb-14 text-gray-dark"><a href="{path='wall/{member_id}'}">Ir al Inicio</a></p>
+        <p class="sans-serif fz-22 mb-14 text-gray-dark"><a href="{path='perfil/index/{member_id}'}">Mi Perfil</a></p>
         <!--<p class="sans-serif fz-22 mb-14 text-gray-dark"><a href="{path='servicios/estadisticas'}">Ver estadísticas</a></p>-->
         {exp:user:logout return="login"}
           <p class="sans-serif fz-22 mb-14 text-gray-dark"><a href="{url}">Salir</a></p>
