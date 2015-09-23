@@ -19,7 +19,7 @@
             {exp:user:results}
             <div class="resultados clearfix pb-28 pt-35 ph-21-xs">
               <div class="col-md-2 col-xs-5 col-md-offset-1">
-                <div class="search-img brp-100"><img src="{site_url}frontend/app/assets/img/Claudia_1.png" alt="" class="w-100"></div>
+                <div class="search-img brp-100"><img src="{if photo_filename == null}{site_url}frontend/app/assets/img/Herman_Profile_Pic.png{if:else}{photo_url}{photo_filename}{/if}" alt="" class="w-100"></div>
               </div>
               <div class="col-md-6 col-xs-7 pl-7-xs pr-0-xs">
                 <h3 class="text-gray-darker book m-0 display-ib pr-14 fz-26 lh-1">{nombres}</h3>

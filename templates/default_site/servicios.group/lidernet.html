@@ -26,7 +26,6 @@
                 </div>
                 <div class="col-md-11 pb-7 pr-28 pl-14">
                   <h3 class="fz-20 mb-7">Tu semáforo está en verde!</h3>
-                  <!--<p class="fz-14 text-white lh-1-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, praesentium. Blanditiis ab voluptatem molestiae odit natus saepe asperiores..</p>-->
                 </div>
               </div>
             {if:else}
@@ -36,83 +35,39 @@
                 </div>
                 <div class="col-md-11 pb-7 pr-28 pl-14">
                   <h3 class="fz-20 mb-7">Tu semáforo está en rojo!</h3>
-                  <!--<p class="fz-14 text-white lh-1-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, praesentium. Blanditiis ab voluptatem molestiae odit natus saepe asperiores..</p>-->
                 </div>
               </div>
             {/if}
             <div class="lidernet tareo mt-42 bg-white ph-28 pv-42 pv-28-xs ph-7-xs">
               <div class="pl-14">
                 <span class="fz-18 text-gray-darker pr-7-xs">Buscar el periodo</span>
-                <div class="btn-group month ml-21-md">
-                  <button type="button" class="btn btn-default btn-dropdown dropdown-toggle fz-18 pv-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Mes <span class="pl-14 pl-7-xs"><img src="{site_url}frontend/app/assets/img/Flecha_Abajo.png" alt=""></span>
-                  </button>
-                  <ul class="dropdown-menu">
-                    <li><a href="#">Enero</a></li>
-                    <li><a href="#">Febrero</a></li>
-                    <li><a href="#">Marzo</a></li>
-                    <li><a href="#">Abril</a></li>
-                    <li><a href="#">Mayo</a></li>
-                    <li><a href="#">Junio</a></li>
-                    <li><a href="#">Julio</a></li>
-                    <li><a href="#">Agosto</a></li>
-                    <li><a href="#">Setiembre</a></li>
-                    <li><a href="#">Octubre</a></li>
-                    <li><a href="#">Noviembre</a></li>
-                    <li><a href="#">Diciembre</a></li>
-                  </ul>
-                </div>
-                <div class="btn-group year ml-14-md">
-                  <button type="button" class="btn btn-default btn-dropdown dropdown-toggle fz-18 pv-0 border-radius" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Año <span class="pl-14 pl-7-xs"><img src="{site_url}frontend/app/assets/img/Flecha_Abajo.png" alt=""></span>
-                  </button>
-                  <ul class="dropdown-menu">
-                    <li><a href="#"></a></li>
-                    <li><a href="#">2005</a></li>
-                    <li><a href="#">2006</a></li>
-                    <li><a href="#">2007</a></li>
-                    <li><a href="#">2008</a></li>
-                    <li><a href="#">2009</a></li>
-                    <li><a href="#">2010</a></li>
-                    <li><a href="#">2011</a></li>
-                    <li><a href="#">2012</a></li>
-                    <li><a href="#">2013</a></li>
-                    <li><a href="#">2014</a></li>
-                    <li><a href="#">2015</a></li>
-                  </ul>
+                <div class="select-group display-ib ml-21 ml-7-xs">
+                  <div class="display-ib text-center ph-7 relative">
+                    <select name="" id="monthCollection" class="text-gray-darker borderless relative">
+                      <option value="0" class="fz-14">Ene</option>
+                      <option value="1" class="fz-14">Feb</option>
+                      <option value="2" class="fz-14">Mar</option>
+                      <option value="3" class="fz-14">Abr</option>
+                      <option value="4" class="fz-14">May</option>
+                      <option value="5" class="fz-14">Jun</option>
+                      <option value="6" class="fz-14">Jul</option>
+                      <option value="7" class="fz-14">Agos</option>
+                      <option value="8" class="fz-14">Set</option>
+                      <option value="9" class="fz-14">Oct</option>
+                      <option value="10" class="fz-14">Nov</option>
+                      <option value="11" class="fz-14">Dic</option>
+                    </select>
+                    <img src="{site_url}frontend/app/assets/img/Flecha_Abajo.png" alt="">
+                  </div>
+                  <div class="display-ib text-center ph-7 relative ml-14 ml-7-xs">
+                    <select name="" id="yearCollection" class="text-gray-darker borderless relative">
+                    </select>
+                    <img src="{site_url}frontend/app/assets/img/Flecha_Abajo.png" alt="" class="absolute">
+                  </div>
                 </div>
               </div>
-              {exp:channel:entries channel="lidernet" limit="1" dynamic="no"}
-              {exp:channel:entries channel="lidernet" limit="1"}
-                <div class="articulo pt-28 ph-14">
-                  <div class="img-articulo w-100 text-center">
-                    {if lidernet_imagen != null}
-                      <img src="{site_url}frontend/app/assets/img/Foto2.png" alt="" class="w-100">
-                    {if:else}
-                      {if lidernet_video != null}
-                        <iframe width="520" height="315" src="{lidernet_video}" frameborder="0" allowfullscreen></iframe>
-                      {/if}
-                    {/if}
-                  </div>
-                  <div class="texto pt-28 pb-14 text-justify">
-                    <h3 class="bold text-gray">{title}</h3>
-                    <div class="parrafos pt-14">
-                      <p class="text-gray-darker">{lidernet_contenido}</p>
-                    </div>
-                  </div>
-                  <div id="preguntas" class="texto pt-7">
-                    {exp:freeform:entries form_name="encuesta_lidernet" status="pending" author_id="{segment_3}"}
-                      {if freeform:no_results}
-                        {exp:freeform:composer
-                          form_name="encuesta_lidernet"
-                          composer_template_name="encuesta_lidernet"
-                          return= "servicios/lidernet/{segment_3}"
-                        }
-                      {/if}
-                    {/exp:freeform:entries}
-                  </div>
-                </div>
-              {/exp:channel:entries}
+              <div id="lidernet_content" class="articulo ph-14">
+              </div>
             </div>
           </div>
         </section>
@@ -122,4 +77,44 @@
   </div>
   {embed=includes/footer}
   <script src="{site_url}frontend/app/assets/js/collapse-control.js"></script>
+  <script>
+    var currentMonth = new Date().getMonth();
+    document.getElementById("monthCollection").value = currentMonth;
+    var currentYear = new Date().getFullYear();
+    var yearCollection = document.getElementById("yearCollection");
+    var html = "";
+    for (var i = 0; i <= 10; i++) {
+      html += "<option value='" + (currentYear-i) + "' class='fz-14'>" + (currentYear-i) + "</option>";
+    };
+    yearCollection.innerHTML = html;
+  </script>
+  <script type="text/javascript">
+    function updateData() {
+      var months = [ 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Setiembre', 'Octubre', 'Noviembre', 'Diciembre' ];
+      var year = parseInt($("#yearCollection").val());
+      var month = parseInt($("#monthCollection").val());
+
+      $("#currentMonth").text(months[month]);
+      $("#currentYear").text(year);
+
+      month++;
+
+      $.ajax({
+        type: 'GET',
+        url: '{site_url}ws/lidernet/{segment_3}/' + year + '/' + month,
+        success: function(data) {
+          $("#lidernet_content").hide();
+          $("#lidernet_content").html(data);
+          $("#lidernet_content").fadeIn();
+        }
+      });
+    }
+    $( '#monthCollection' ).on( 'change', function(e) {
+      updateData();
+    });
+    $( '#yearCollection' ).on( 'change', function(e) {
+      updateData();
+    });
+    updateData();
+  </script>
 </html>

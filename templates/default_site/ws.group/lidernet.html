@@ -1,0 +1,30 @@
+{exp:channel:entries channel="lidernet" limit="1" dynamic="no" year="{segment_4}" month="{segment_5}"}
+  <div class="texto pb-7 text-justify">
+    <h3 class="bold text-gray">{title}</h3>
+    <div class="img-articulo w-100 text-center pt-14">
+      {if lidernet_video != null}
+        <iframe width="520" height="315" src="{lidernet_video}" frameborder="0" allowfullscreen></iframe>
+      {/if}
+    </div>
+    <div class="parrafos pt-14">
+      <p class="text-gray-darker">{lidernet_contenido}</p>
+    </div>
+  </div>
+  <div id="preguntas" class="texto pt-7">
+    {if formulario_id != null}
+      {exp:freeform:entries form_id="{formulario_id}" status="pending" author_id="{segment_3}"}
+        {if freeform:no_results}
+          {exp:freeform:composer
+            form_id="{formulario_id}"
+            return= "servicios/lidernet/{segment_3}"
+          }
+        {/if}
+      {/exp:freeform:entries}
+    {/if}
+  </div>
+  {if no_results}
+    <div class="texto pt-14 text-justify">
+      <p class="text-gray-darker">No hay lidernet para la fecha seleccionada.</p>
+    </div>
+  {/if}
+{/exp:channel:entries}
