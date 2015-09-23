@@ -59,6 +59,33 @@ class Wall {
 		return $form;
 	}
 
+	public function delete_comment_form()
+	{
+		$post_id = $this->EE->TMPL->fetch_param("post_id", 0);
+		$comment_id = $this->EE->TMPL->fetch_param("comment_id", 0);
+		// Build an array to hold the form's hidden fields
+		$hidden_fields = array(
+			"ACT" => $this->EE->functions->fetch_action_id("Wall", "delete_comment"),
+			"post_id" => $post_id,
+			"comment_id" => $comment_id
+		);
+
+		// Build an array with the form data
+		$form_data = array(
+			"id" => $this->EE->TMPL->form_id,
+			"class" => $this->EE->TMPL->form_class,
+			"hidden_fields" => $hidden_fields
+		);
+
+		// Fetch contents of the tag pair
+		$tagdata = $this->EE->TMPL->tagdata;
+
+		$form = $this->EE->functions->form_declaration($form_data) .
+			$tagdata . "</form>";
+
+		return $form;	
+	}
+
 	public function comment_post_form()
 	{
 		$post_id = $this->EE->TMPL->fetch_param("post_id", 0);
@@ -118,6 +145,31 @@ class Wall {
 		$tagdata = $this->EE->TMPL->tagdata;
 
 		$form = $this->EE->functions->form_declaration($form_data) .
+			$tagdata . "</form>";
+
+		return $form;
+	}
+
+	public function solve_post_form()
+	{
+		$post_id = $this->EE->TMPL->fetch_param("post_id", 0);
+		// Build an array to hold the form's hidden fields
+		$hidden_fields = array(
+			"ACT" => $this->EE->functions->fetch_action_id("Wall", "solve_post"),
+			"post_id" => $post_id
+		);
+
+		// Build an array with the form data
+		$form_data = array(
+			"id" => $this->EE->TMPL->form_id,
+			"class" => $this->EE->TMPL->form_class,
+			"hidden_fields" => $hidden_fields
+		);
+
+		// Fetch contents of the tag pair
+		$tagdata = $this->EE->TMPL->tagdata;
+
+		$form = $this->EE->functions->form_declaration($form_data) . 
 			$tagdata . "</form>";
 
 		return $form;
@@ -218,7 +270,7 @@ class Wall {
 		
 		$this->EE->db->select("ws.id as post_id, ws.member_id as post_user_id, m.screen_name as post_screen_name, m.username as post_username,
 										ws.category_id as post_category_id, wsc.name as post_category_name, ws.content as post_content,
-										ws.image_path as post_image_path, ws.status_date as post_status_date, 
+										ws.image_path as post_image_path, ws.status_date as post_status_date, ws.solved as post_is_solved,
 										ma.premium as member_premium, ma.prominent as member_prominent")
 							  ->from("wall_status ws")
 							  ->join("members m", "ws.member_id = m.member_id")
@@ -255,10 +307,11 @@ class Wall {
 				inner join exp_members m on wc.comment_member_id = m.member_id
 				where post_id = $post_id
 				order by wc.comment_date asc";*/
-		$this->EE->db->select("wc.post_id as comment_post_id, wc.comment_member_id, wc.comment, wc.comment_date,
+		$this->EE->db->select("wc.id as comment_id, wc.post_id as comment_post_id, wc.comment_member_id, wc.comment, wc.comment_date,
 							   m.screen_name as comment_screen_name, m.username as comment_username")
 					 ->from("wall_comment wc")
-					 ->join("members m", "wc.comment_member_id = m.member_id");
+					 ->join("members m", "wc.comment_member_id = m.member_id")
+					 ->where("wc.active", "y");
 		
 		// $query = $this->EE->db->query($sql);
 
@@ -358,6 +411,22 @@ class Wall {
 		));
 	}
 
+	public function delete_comment()
+	{
+		$post_id = $this->EE->input->post("post_id");
+		$comment_id = $this->EE->input->post("comment_id");
+		$data = array(
+			"active" => "n"
+		);
+		$this->EE->db->where("id", $comment_id);
+		$this->EE->db->update("wall_comment", $data);
+		echo json_encode(array(
+			"post_id" => $post_id,
+			"comment_id" => $comment_id,
+			"total" => $this->total_comment($post_id)
+		));
+	}
+
 	public function like_post()
 	{
 		$post_id = $this->EE->input->post("post_id");
@@ -398,6 +467,37 @@ class Wall {
 		echo json_encode(array(
 			"post_id" => $post_id,
 			"total" => $this->total_count($post_id)
+		));
+	}
+
+	public function solve_post()
+	{
+		$post_id = $this->EE->input->post("post_id");
+
+		$data_where = array(
+			'id' => $post_id
+		);
+
+		$query = $this->EE->db->select('id, solved')->from('wall_status')->where($data_where)->get();
+
+		$solved = "y";
+		
+		if ($query->num_rows() > 0) {
+			$solved = $query->row('solved');
+			if ($solved == "n") {
+				$solved = "y";
+			} else {
+				$solved = "n";
+			}
+			$data = array(
+				'solved' => $solved
+			);
+			$this->EE->db->where($data_where);
+			$this->EE->db->update('wall_status', $data);
+		}
+		echo json_encode(array(
+			"post_id" => $post_id,
+			"solved" => $solved
 		));
 	}
 
@@ -509,7 +609,8 @@ class Wall {
 	private function total_comment($post_id)
 	{
 		$data_where = array(
-			"post_id" => $post_id
+			"post_id" => $post_id,
+			"active" => "y"
 		);
 		$comment_count = $this->EE->db->where($data_where)->from("wall_comment")->count_all_results();
 		return $comment_count;

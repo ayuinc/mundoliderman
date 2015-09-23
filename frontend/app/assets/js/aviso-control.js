@@ -1,9 +1,22 @@
-$(document).ready(function(){
-	
-	$(".aviso").click(function(){
-		$(this).parent().find(".btn-aviso1").toggleClass("hidden");
-		$(this).parent().find(".btn-aviso2").toggleClass("hidden");
+function solve(post) {
+	var form = $(post).parent();
+	var url = form.attr("action");
+	var data = form.serialize();
+
+	$.post(url, data, function(result) {
+		var solved_data = JSON.parse(result);
+		if (solved_data.solved == 'y') {
+			$(".btn-aviso1[data-solve-post-id=" + solved_data.post_id + "]").removeClass("hidden");
+			$(".btn-aviso2[data-solve-post-id=" + solved_data.post_id + "]").addClass("hidden");
+		} else {
+			$(".btn-aviso1[data-solve-post-id=" + solved_data.post_id + "]").addClass("hidden");
+			$(".btn-aviso2[data-solve-post-id=" + solved_data.post_id + "]").removeClass("hidden");			
+		}
 	});
+	return false;
+}
+
+$(document).ready(function(){
 
 	$(".like-container").each(function(index, element) {
 		var like_status = $(element).parent().find("input[name=post_like_status]").val();
