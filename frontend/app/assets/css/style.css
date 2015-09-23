@@ -1570,6 +1570,43 @@ header .perfil {
   color: #A5A5A5;
 }
 
+.alert-container {
+  height: 85px;
+}
+.alert-container #alert-publication {
+  width: 300px;
+  cursor: pointer;
+  z-index: 5;
+  box-shadow: 0px 2px 11px -1px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 0px 2px 11px -1px rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: 0px 2px 11px -1px rgba(0, 0, 0, 0.4);
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  -webkit-transform: translate(50%);
+  -moz-transform: translate(50%);
+  -ms-transform: translate(50%);
+  -o-transform: translate(50%);
+  transform: translate(50%);
+}
+.alert-container #alert-publication .close-alert {
+  cursor: pointer;
+  float: right;
+  line-height: 0.7;
+}
+
+.top-banner {
+  top: 65px;
+}
+
+.alert-hidden {
+  opacity: 0;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  visibility: hidden;
+}
+
 .herman-dropdown {
   top: 20%;
 }
@@ -2653,9 +2690,6 @@ input[type="submit"] {
     background-position-x: 95%;
     background-size: 5%;
   }
-  #comentar #photos-post .close-image {
-    display: block !important;
-  }
   #comentar button {
     font-size: 11px !important;
   }
@@ -2712,6 +2746,16 @@ input[type="submit"] {
   }
   .resumen-semaforo ul {
     font-size: 15px !important;
+  }
+
+  /*alerta publicaciones*/
+  .alert-container #alert-publication {
+    -webkit-transform: translate(-50%);
+    -moz-transform: translate(-50%);
+    -ms-transform: translate(-50%);
+    -o-transform: translate(-50%);
+    transform: translate(-50%);
+    left: 50%;
   }
 
   /*PR├ëSTAMOS*/

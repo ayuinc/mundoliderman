@@ -56,8 +56,9 @@
                  PUBLICAR
                  <img src="{site_url}frontend/app/assets/img/Publicar_Dialogo.png" alt="" class="pl-14">
                 </button>
-              {/exp:wall:status_form}
+                {/exp:wall:status_form}
               </section>
+              {embed="includes/alerta-publicaciones"}
               {exp:wall:status member_id="{if segment_2 == 'index'} {segment_3} {if:else} {segment_2} {/if}"}
                 <div class="post-1 post bg-white pl-28 pr-42 pt-28 pb-28 mt-42 ph-14-xs">
                   <div class="clearfix">
@@ -248,4 +249,5 @@
     });
   </script>
   <script src="{site_url}frontend/app/assets/js/publish.js"></script>
+  <script src="{site_url}frontend/app/assets/js/smooth-scroll.js"></script>
 </html>

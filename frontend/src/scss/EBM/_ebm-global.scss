@@ -320,6 +320,32 @@ header {
 	  font-size: rem(16px);
 	}
 }
+.alert-container {
+	height: 85px;
+	#alert-publication {
+		width: 300px;
+		cursor:pointer;  
+		z-index:5;
+		box-shadow: 0px 2px 11px -1px rgba(0,0,0,0.4);
+		-moz-box-shadow: 0px 2px 11px -1px rgba(0,0,0,0.4);
+		-webkit-box-shadow: 0px 2px 11px -1px rgba(0,0,0,0.4);
+		@include transition(all .2s ease-in-out);
+		@include transform(translate(50%));
+		.close-alert {
+			cursor:pointer; 
+			float:right; 
+			line-height:0.7
+		}
+	}
+} 
+.top-banner {
+	top: 65px;
+}
+.alert-hidden {
+	opacity: 0;
+	@include transition(all .2s ease-in-out);
+	visibility: hidden;
+}
 .herman-dropdown {
 	top: 20%;
 	ul {
@@ -1280,7 +1306,7 @@ input[type="submit"] {
 	  }
 	  #photos-post {
 			.close-image {
-				display: block!important;
+				// display: block!important;
 			}
 		}
 	  button {
@@ -1345,6 +1371,14 @@ input[type="submit"] {
 	  ul {
 			font-size: 15px!important;
 	  }
+	}
+
+	/*alerta publicaciones*/
+	.alert-container {
+		#alert-publication {
+			@include transform(translate(-50%));
+			left: 50%;
+		}
 	}
 
 	/*PRÉSTAMOS*/
@@ -1607,7 +1641,7 @@ input[type="submit"] {
 			top: -43px;
 		}
 
-	}
+	} 
 	.active-up {
 		position: absolute!important;
 		@include transform(translateY(0%));
