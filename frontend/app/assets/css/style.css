@@ -2512,8 +2512,11 @@ input[type="submit"] {
   color: #f94211;
 }
 #search-results .resultados .search-img {
+  overflow: hidden;
   width: 75px;
   height: 75px;
+  background-position: center;
+  background-size: cover;
 }
 
 /*ERROR*/

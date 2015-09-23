@@ -1140,8 +1140,11 @@ input[type="submit"] {
 			color: #f94211;
 		}
 		.search-img {
+			overflow: hidden;
 			width: 75px;
 			height: 75px;
+			background-position: center;
+			background-size: cover;
 		}
 	}
 }
