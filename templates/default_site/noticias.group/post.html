@@ -7,20 +7,113 @@
         <div id="box-left" class="col-md-8 pl-0">
           <section id="post">
             <div class="post-1">
-            <h3 class="mt-14">{title}</h3>
-            <div class="publicacion bg-white p-42 mt-35 border-radius">
-              <div class="triangulo-llamada"></div>
-              <div class="pv-7">
-                <div class="img-publicacion w-100 ph-7 text-center">
-	                {noticias_imagen}
-	                	<img src="{image:url}" alt="" class="w-100">
-	                {/noticias_imagen}
-	              </div>
+              <h3 class="mt-14">{title}</h3>
+              <div class="publicacion bg-white p-42 mt-35 border-radius">
+                <div class="triangulo-llamada"></div>
+                <div class="pv-7">
+                  <div class="img-publicacion w-100 ph-7 text-center">
+  	                {noticias_imagen}
+  	                	<img src="{image:url}" alt="" class="w-100">
+  	                {/noticias_imagen}
+  	              </div>
+                </div>
+                <div class="texto fz-18 mt-42 pt-14 lh-1-5 mb-ch-28">
+                  {noticias_contenido}
+                </div>
               </div>
-              <div class="texto fz-18 mt-42 pt-14 lh-1-5 mb-ch-28">
-                {noticias_contenido}
-              </div>
-            </div>
+              <h2 class="fz-24 border-bottom-gray pb-7 pt-21 text-gray-darker">Comentarios</h2>
+              {exp:wall:status_form return="noticias/post" form_id="status_form" form_class="bg-success" enctype="multipart/form-data"}
+                <div id="comentario-noticia" class="bg-white pv-35 ph-28">
+                  <div class="escribe-comentario text-right clearfix bg-gray-lighter mb-42 pv-14 ph-14">
+                    <div class="col-md-2 pl-7">
+                      
+                      <div class="img-perfil relative text-center bg-img-block-center brp-100" style="background-image: url({site_url}frontend/app/assets/img/Foto1.png"></div>
+                      
+                    </div>
+                    <div class="col-md-10 pl-0">
+                      <textarea id="wall_status" name="wall_status" class="form-control outline-none serif fz-14 borderless br-none pv-14 ph-14" onkeyup="auto_grow(this)" placeholder="Escribe un comentario" min-length="1" max-length="512"></textarea>
+                    </div>
+                    <button type="submit" name="submit" class="btn bg-warning text-white text-hover-white fz-12 mr-14 ph-21 ph-14-xs mt-7">
+                     PUBLICAR
+                     <img src="{site_url}frontend/app/assets/img/Publicar_Dialogo.png" alt="" class="pl-14">
+                    </button>
+                  </div>
+                  <div class="comentarios clearfix mt-28">
+                    <div class="col-xs-2 pr-0 pl-7 pt-7-xs">
+                      <div class="img-perfil relative text-center bg-img-block-center brp-100" style="background-image: url({site_url}frontend/app/assets/img/Foto1.png"></div>
+                    </div>
+                    <div class="name col-xs-10 pl-0">
+                      <div class="info-usuario pl-7 row">
+                        <div class="col-md-7 hidden-xs hidden-sm">
+                          <h5 class="text-gray-darker m-0">{post_screen_name}</h5>
+                          <p class="fz-10 m-0 text-gray"><a href="">{post_status_date:relative past="%s ago"}</a></p>
+                        </div>
+                        <div class="col-xs-8 hidden-lg hidden-md pl-35 pr-0-xs"><!--movil-->
+                          <h5 class="text-gray-darker m-0 fz-22 lh-1-3">{post_screen_name}</h5>
+                          <p class="fz-14 m-0 text-gray fz-14"><a href="">{post_status_date:relative past="%s ago"}</a></p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-10 col-md-offset-2 col-xs-12 pl-0 ph-0-xs">
+                      <p class="parrafo ph-7 text-gray-darker">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum animi perferendis quae voluptas deleniti vero quo molestiae quam! Odit quos aliquid deserunt a, ratione explicabo deleniti, velit atque porro voluptatibus!</p>
+                      <div class="clearfix ph-0 mh-7 thin text-gray pt-7 pb-7 mb-7 border-bottom-gray-lighter fz-12">
+                        <ul class="col-xs-7 ph-0 mv-0">
+                          <li class="display-ib pl-7 like-container">
+                            <a href="" class="like text-not-underline hidden-xs hidden-sm">Me gusta &nbsp</a>
+                            <a href="" class="like text-not-underline fz-15 hidden-lg hidden-md">Me gusta &nbsp</a><!--movil-->
+                            <img src="{site_url}frontend/app/assets/img/corazon_02.png" alt="" class="img-like">
+                            <img src="{site_url}frontend/app/assets/img/corazon_01.png" alt="" class="img-like hidden">
+                          </li>
+                        </ul>
+                        <ul class="col-xs-5 ph-0 mv-0 text-right">
+                          <li class="display-ib">
+                            <a href="" class="contador-like text-not-underline hidden-xs hidden-sm"><span class="like_counter" data-like-post-id="{post_id}">{exp:wall:like_count post_id="{post_id}"}</span> &nbsp</a>
+                            <a href="" class="contador-like text-not-underline fz-15 hidden-lg hidden-md"><span class="like_counter" data-like-post-id="{post_id}">{exp:wall:like_count post_id="{post_id}"}</span> &nbsp</a><!--movil-->
+                            <img src="{site_url}frontend/app/assets/img/Icono_Corazon.png" alt="">
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="comentarios clearfix mt-28">
+                    <div class="col-xs-2 pr-0 pl-7 pt-7-xs">
+                      <div class="img-perfil relative text-center bg-img-block-center brp-100" style="background-image: url({site_url}frontend/app/assets/img/Foto1.png"></div>
+                    </div>
+                    <div class="name col-xs-10 pl-0">
+                      <div class="info-usuario pl-7 row">
+                        <div class="col-md-7 hidden-xs hidden-sm">
+                          <h5 class="text-gray-darker m-0">{post_screen_name}</h5>
+                          <p class="fz-10 m-0 text-gray"><a href="">{post_status_date:relative past="%s ago"}</a></p>
+                        </div>
+                        <div class="col-xs-8 hidden-lg hidden-md pl-35 pr-0-xs"><!--movil-->
+                          <h5 class="text-gray-darker m-0 fz-22 lh-1-3">{post_screen_name}</h5>
+                          <p class="fz-14 m-0 text-gray fz-14"><a href="">{post_status_date:relative past="%s ago"}</a></p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-10 col-md-offset-2 col-xs-12 pl-0 ph-0-xs">
+                      <p class="parrafo ph-7 text-gray-darker">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum animi perferendis quae voluptas deleniti vero quo molestiae quam! Odit quos aliquid deserunt a, ratione explicabo deleniti, velit atque porro voluptatibus!</p>
+                      <div class="clearfix ph-0 mh-7 thin text-gray pt-7 pb-7 mb-7 border-bottom-gray-lighter fz-12">
+                        <ul class="col-xs-7 ph-0 mv-0">
+                          <li class="display-ib pl-7 like-container">
+                            <a href="" class="like text-not-underline hidden-xs hidden-sm">Me gusta &nbsp</a>
+                            <a href="" class="like text-not-underline fz-15 hidden-lg hidden-md">Me gusta &nbsp</a><!--movil-->
+                            <img src="{site_url}frontend/app/assets/img/corazon_02.png" alt="" class="img-like">
+                            <img src="{site_url}frontend/app/assets/img/corazon_01.png" alt="" class="img-like hidden">
+                          </li>
+                        </ul>
+                        <ul class="col-xs-5 ph-0 mv-0 text-right">
+                          <li class="display-ib">
+                            <a href="" class="contador-like text-not-underline hidden-xs hidden-sm"><span class="like_counter" data-like-post-id="{post_id}">{exp:wall:like_count post_id="{post_id}"}</span> &nbsp</a>
+                            <a href="" class="contador-like text-not-underline fz-15 hidden-lg hidden-md"><span class="like_counter" data-like-post-id="{post_id}">{exp:wall:like_count post_id="{post_id}"}</span> &nbsp</a><!--movil-->
+                            <img src="{site_url}frontend/app/assets/img/Icono_Corazon.png" alt="">
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {/exp:wall:status_form}
             </div>
           </section>
         </div>
@@ -33,3 +126,4 @@
     {embed="includes/radio-urbe"}
   </div>
 {embed="includes/footer"}
+<script src="{site_url}frontend/app/assets/js/textarea-control.js"></script>
