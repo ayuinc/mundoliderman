@@ -1529,6 +1529,9 @@ main {
 .registro-fan #upfile input[type="file"] {
   display: none;
 }
+.registro-fan .border-red {
+  border-color: red;
+}
 
 /*MEN├Ü*/
 header {
