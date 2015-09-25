@@ -267,6 +267,20 @@ $xxl-desktop: 1980px;
 		}
 	}
 }
+.registro-fan {
+	input {
+		border: 1px solid #BDBDBD;
+		@include placeholder {
+	    color: #B5B5B5;
+	  }
+	}
+	#upfile {
+		cursor: pointer;
+		input[type="file"] {
+			display: none;
+		}
+	}
+}
 /*MENÚ*/
 header {
 	height: 80px;
