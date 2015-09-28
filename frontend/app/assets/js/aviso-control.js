@@ -48,7 +48,6 @@ $(document).ready(function(){
 	});
 
 	$(".reconocer").each(function(index, element) {
-		console.log($(element));
 		var form = $(element).parent();
 		var premium_status = form.find("input[name=premium_status]").val();
 		if (premium_status == 'y') {
