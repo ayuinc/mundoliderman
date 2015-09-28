@@ -41,8 +41,7 @@
           {/exp:wall:status_form}
         </section>
         {embed="includes/alerta-publicaciones"}
-        <section id="new_post" class="pokerface">
-          
+        <section id="new_post" class="pokerface hidden">
         </section>
         <section id="post" class="pokerface">
         {exp:wall:status}        
@@ -411,7 +410,9 @@
 
     //Log any messages sent from server
     Server.bind('message', function( payload ) {
-      $("#post").prepend(payload);
+      $("#new_post").prepend(payload);
+      $("#new_post_count").text($("#new_post").find(".post-1").length);
+      $("#alert-publication").fadeIn().delay(5000).fadeOut();
     });
 
     Server.connect();
