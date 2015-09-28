@@ -1570,9 +1570,6 @@ header .perfil {
   color: #A5A5A5;
 }
 
-.alert-container {
-  height: 85px;
-}
 .alert-container #alert-publication {
   width: 300px;
   cursor: pointer;
