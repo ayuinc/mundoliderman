@@ -19,12 +19,12 @@
             <div class="thin text-gray-darker col-xs-12 fz-15 mt-14 pr-35 pl-0">Tú también puedes ser parte de Mundo Liderman,<br>Ingresa tus datos para registrarte</div>
           </div>
 
-          {exp:member:login_form return="login" form_class="registro-fan text-right ph-42 mh-70 mt-28 clearfix"}
+          <form class="registro-fan text-right ph-42 mh-70 mt-28 clearfix" method="POST">
           	<div class="error-nombre"></div>
             <div class="col-md-6 pl-0 pr-7"><input type="text" id="nombre" name="nombre" class="input-registro ph-14 w-100 pv-7 thin serif fz-16" placeholder="Nombre"></div>
             <div class="col-md-6 pr-0 pl-7"><input type="text" id="apellido" name="apellido" class="input-registro ph-14 w-100 pv-7 thin serif fz-16" placeholder="Apellido"></div>
             <input type="text" id="email" name="email" placeholder="mail@example.com" class="input-registro w-100 ph-14 pv-7 thin serif fz-16 mt-14">
-            <input type="password" id="password" name="contraseña" placeholder="Contraseña" class="input-registro w-100 ph-14 pv-7 thin serif fz-16 mt-14">
+            <input type="password" id="password" name="password" placeholder="Contraseña" class="input-registro w-100 ph-14 pv-7 thin serif fz-16 mt-14">
             <input type="password" id="confirmacion" name="confirmacion" placeholder="Confirmar contraseña" class="input-registro w-100 ph-14 pv-7 thin serif fz-16 mt-14">
             <div id="upfile" class="relative text-white bg-gray-light text-center col-md-4 border-radius mv-28 pv-7" style="cursor:pointer">
             	Subir foto
@@ -34,8 +34,7 @@
             <button type="submit" name="submit" class="submit btn btn-info w-100 text-center ph-28 pv-7 mt-14" style="border-radius:2px">
               <p class="sans-serif thin fz-16 text-white pt-14 lh-0 pr-21">Crear Cuenta</p>
             </button>
-          {/exp:member:login_form}
-        </div>
+        </form>
       </div>
       <!-- <div class="container-sm container-login ph-42 hidden-lg hidden-md">
         <div class="caja w-100 bg-white minhp-70 text-center p-42 pb-70">
@@ -73,8 +72,8 @@
 	$(document).ready(function() {
 		$('.input-registro').keypress(function(e){
 			if(e.which == 13){
-				$(this).prev('.input-registro').focus();
-				aler("Hola");
+        e.preventDefault();
+				$('.input-registro').prev('.input-registro').focus();
 			}
 		});
     function validar(e) {
