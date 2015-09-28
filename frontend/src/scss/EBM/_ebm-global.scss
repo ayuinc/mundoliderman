@@ -283,6 +283,17 @@ $xxl-desktop: 1980px;
 	.border-red {
 		border-color: red;
 	}
+	/*mensajes de error*/
+	.error-nombre {
+		position: absolute;
+    right: 93%;
+    top: 6px;
+	}
+	.error-apellido {
+		position: absolute;
+    top: 6px;
+    left: 93%;
+	}
 }
 /*MENÚ*/
 header {

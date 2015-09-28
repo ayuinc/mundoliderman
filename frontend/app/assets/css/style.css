@@ -1508,6 +1508,9 @@ main {
   width: 14px;
 }
 
+.registro-fan {
+  /*mensajes de error*/
+}
 .registro-fan input {
   border: 1px solid #BDBDBD;
 }
@@ -1531,6 +1534,16 @@ main {
 }
 .registro-fan .border-red {
   border-color: red;
+}
+.registro-fan .error-nombre {
+  position: absolute;
+  right: 93%;
+  top: 6px;
+}
+.registro-fan .error-apellido {
+  position: absolute;
+  top: 6px;
+  left: 93%;
 }
 
 /*MEN├Ü*/
