@@ -1536,14 +1536,24 @@ main {
   border-color: red;
 }
 .registro-fan .error-nombre {
-  position: absolute;
   right: 93%;
   top: 6px;
 }
 .registro-fan .error-apellido {
-  position: absolute;
   top: 6px;
   left: 93%;
+}
+.registro-fan .error-email {
+  right: 93%;
+  top: 17%;
+}
+.registro-fan .error-password {
+  right: 93%;
+  top: 32.5%;
+}
+.registro-fan .error-confirmacion {
+  right: 93%;
+  top: 48.5%;
 }
 
 /*MEN├Ü*/

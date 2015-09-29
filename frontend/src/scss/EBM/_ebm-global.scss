@@ -285,14 +285,24 @@ $xxl-desktop: 1980px;
 	}
 	/*mensajes de error*/
 	.error-nombre {
-		position: absolute;
     right: 93%;
     top: 6px;
 	}
 	.error-apellido {
-		position: absolute;
     top: 6px;
     left: 93%;
+	}
+	.error-email {
+		right: 93%;
+    top: 17%;
+	}
+	.error-password {
+		right: 93%;
+    top: 32.5%;
+	}
+	.error-confirmacion {
+		right: 93%;
+    top: 48.5%;
 	}
 }
 /*MENÚ*/
