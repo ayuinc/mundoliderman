@@ -177,6 +177,9 @@ body {
 	.absolute {
 		position: absolute;
 	}
+	.close-display {
+		display: none;
+	}
 	textarea {
   	box-shadow: none;
   	overflow: hidden;
@@ -284,8 +287,14 @@ $xxl-desktop: 1980px;
 		border-color: red;
 	}
 	/*mensajes de error*/
+	.error-nombre,
+	.error-email,
+	.error-password,
+	.error-confirmacion,
+	.error-inputFile {
+		right: 93%;
+	}
 	.error-nombre {
-    right: 93%;
     top: 6px;
 	}
 	.error-apellido {
@@ -293,16 +302,16 @@ $xxl-desktop: 1980px;
     left: 93%;
 	}
 	.error-email {
-		right: 93%;
-    top: 17%;
+    top: 63px;
 	}
 	.error-password {
-		right: 93%;
-    top: 32.5%;
+    top: 120px;
 	}
 	.error-confirmacion {
-		right: 93%;
-    top: 48.5%;
+    top: 175px;
+	}
+	.error-inputFile {
+		top: 67%;
 	}
 }
 /*MENÚ*/

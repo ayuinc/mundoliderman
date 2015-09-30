@@ -25,18 +25,21 @@
             <div class="error-apellido absolute"></div>
             <div class="error-email absolute"></div>
             <div class="error-password absolute"></div>
-          	<div class="error-confirmacion absolute"></div>
+          	<div class="error-inputFile absolute"></div>
             <!-- -->
             <div class="col-md-6 pl-0 pr-7"><input type="text" id="nombre" data-id="0" name="nombre" class="input-registro ph-14 w-100 pv-7 thin serif fz-16" placeholder="Nombre"></div>
             <div class="col-md-6 pr-0 pl-7"><input type="text" id="apellido" data-id="1" name="apellido" class="input-registro ph-14 w-100 pv-7 thin serif fz-16" placeholder="Apellido"></div>
             <input type="text" id="email" data-id="2" name="email" placeholder="mail@example.com" class="input-registro w-100 ph-14 pv-7 thin serif fz-16 mt-14">
             <input type="password" id="password" data-id="3" name="password" placeholder="Contraseña" class="input-registro w-100 ph-14 pv-7 thin serif fz-16 mt-14">
             <input type="password" id="confirmacion" data-id="4" name="confirmacion" placeholder="Confirmar contraseña" class="input-registro w-100 ph-14 pv-7 thin serif fz-16 mt-14">
-            <div id="upfile" class="relative text-white bg-gray-light text-center col-md-4 border-radius mv-28 pv-7" style="cursor:pointer">
+            <div class="error-confirmacion absolute"></div>
+            <div id="upfile" class="fileUpload file_input relative text-white bg-gray-light text-center col-md-4 border-radius mv-28 pv-7" style="cursor:pointer">
             	Subir foto
-            	
             </div>
-            <input type="file" id="up-photo" class="ebm-overlay absolute w-100" style="display:none">
+            <div class="container-photos bg-white" style="">
+              <div id='photos-post' class='relative'><img src='{site_url}frontend/app/assets/img/ex_rojo.png' class='close-image close-display absolute' style='z-index:10000; width: 10px; right: 5%; top: 5%; cursor:pointer;'></div>
+            </div>
+            <input type="file" id="inputFile" name="status_image" class="upload ebm-overlay absolute w-100" accept="image" style="display:none">
             <button type="submit" name="submit" class="submit btn btn-info w-100 text-center ph-28 pv-7 mt-14" style="border-radius:2px">
               <p class="sans-serif thin fz-16 text-white pt-14 lh-0 pr-21">Crear Cuenta</p>
             </button>
@@ -50,20 +53,52 @@
 <script>
 	/*Subir foto de perfil*/
 	$("#upfile").click(function(){
-		$('#up-photo').click();
+		$('#inputFile').click();
 	});
+
+  /*PREVISUALIZACION IMAGEN*/
+  function setImageFromInputFile(inputImage, imageContainer) {
+    if (inputImage.files) {
+      var file = inputImage.files[0];
+      if (file) {
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function(e) {
+          document.getElementById(imageContainer).style.backgroundImage = "url('" + e.target.result + "')";
+        }
+      };
+    };
+  }
+  $("#inputFile").change(function() {
+    if ($(this).val()) {
+      $(".container-photos").addClass("pt-7 pb-21 pl-21");
+      $("#photos-post").attr("style", "border: 1px solid #e7e7e7; width:120px; height:120px; left: 71.5%; top: 19px; background-size:cover; background-position:center; z-index:1");
+      $(".close-image").addClass("btn-block");
+      $(".close-image").removeClass("close-display");
+      setImageFromInputFile(this, "photos-post");
+      $("#photos-post").show();
+    }
+  });
+  $(".close-image").on("click", function(){
+    $("#photos-post").css('background-image', "url('')");
+    $("#inputFile").val('');
+    $("#photos-post").hide();
+    $(".close-image").removeClass("btn-block");
+    $(".close-image").addClass("close-display");
+  });
 
 	/*Validacion formulario*/
 
 	$(document).ready(function() {
     $("button.submit").click(function(e){
-      if($("#nombre").val() == "" || $("#apellido").val() == "" || $("#email").val() == "" || $("#confirmacion").val() == "" || $("#password").val() == ""){
+      if($("#nombre").val() == "" || $("#apellido").val() == "" || $("#email").val() == "" || $("#confirmacion").val() == "" || $("#password").val() == "" || $("#inputFile").val() == ""){
         e.preventDefault();
         submitValidate("#nombre", ".error-nombre", '<img src="{site_url}frontend/app/assets/img/globos/nombre.png">');
         submitValidate("#apellido", ".error-apellido", '<img src="{site_url}frontend/app/assets/img/globos/apellido.png">');
         submitValidate("#email", ".error-email", '<img src="{site_url}frontend/app/assets/img/globos/email.png">');
         submitValidate("#password", ".error-password", '<img src="{site_url}frontend/app/assets/img/globos/password.png">');
         submitValidate("#confirmacion", ".error-confirmacion", '<img src="{site_url}frontend/app/assets/img/globos/confirmation.png">');
+        submitValidate("#inputFile", ".error-inputFile", '<img src="{site_url}frontend/app/assets/img/globos/sube-foto.png">');
         function submitValidate( inputName, divError, img){
           if($(inputName).val() == ""){
             $(divError).html(img);
@@ -74,20 +109,22 @@
     function validar(e, inputName, divError, img, imgValido) {
       var inputVal = String.fromCharCode(e.keyCode);
       var numericReg = /^[0-9\b]+$/;
-      // var numericRegEmail = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
       var numberInput = $(inputName).data("id");
       if(numericReg.test(inputVal) && e.keyCode != 8) {
           e.preventDefault();
           $(divError).html(imgValido);
         }
-      else if($('.input-registro').keypress){
+      else if($('.input-registro').keydown){
         if((e.which == 13) && ($(inputName).val() == "")){
             e.preventDefault();
             $(divError).html(img);
           }else if ((e.which == 13) && ($(inputName).val() != "")) {
             e.preventDefault();
-            $(divError).empty();
             $('.input-registro')[numberInput+1].focus();  
+            return;
+          }
+          else {
+            $(divError).empty();
             return;
           }
       }
@@ -99,8 +136,6 @@
     function validarEmail(e) {
       var inputVal = $("#email").val();
       var numericRegEmail = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-
-
       if((e.which == 13) && (inputVal != "")) {
         e.preventDefault();
         var numberInput = $("#email").data("id");
@@ -128,8 +163,6 @@
         e.preventDefault();
         if(inputVal.length < 4) {
           $(".error-password").html('<img src="{site_url}frontend/app/assets/img/globos/password-min.png">');
-          (".error-password").html("error");
-          console.log("Hola");
         }
         else {
           $(".error-password").empty();
@@ -147,10 +180,9 @@
     }
     function validarConfirmacion(e) {
       var inputVal = $("#confirmacion").val();
-
+      var numberInput = $("#confirmacion").data("id");
       if((e.which == 13) && (inputVal != "")) {
         e.preventDefault();
-        var numberInput = $("#confirmacion").data("id");
         if(inputVal != $("#password").val()) {
             $(".error-confirmacion").html('<img src="{site_url}frontend/app/assets/img/globos/same-password.png">');
           }
@@ -182,6 +214,11 @@
       });
     $('#confirmacion').keydown(function(e) {
       validarConfirmacion(e);
+    });
+    $("#inputFile").change(function(){
+      if($(this).val() != ""){
+        $(".error-inputFile").empty();
+      }
     });
   });
 </script>

@@ -1393,6 +1393,9 @@ body .relative {
 body .absolute {
   position: absolute;
 }
+body .close-display {
+  display: none;
+}
 body textarea {
   box-shadow: none;
   overflow: hidden;
@@ -1535,8 +1538,14 @@ main {
 .registro-fan .border-red {
   border-color: red;
 }
-.registro-fan .error-nombre {
+.registro-fan .error-nombre,
+.registro-fan .error-email,
+.registro-fan .error-password,
+.registro-fan .error-confirmacion,
+.registro-fan .error-inputFile {
   right: 93%;
+}
+.registro-fan .error-nombre {
   top: 6px;
 }
 .registro-fan .error-apellido {
@@ -1544,16 +1553,16 @@ main {
   left: 93%;
 }
 .registro-fan .error-email {
-  right: 93%;
-  top: 17%;
+  top: 63px;
 }
 .registro-fan .error-password {
-  right: 93%;
-  top: 32.5%;
+  top: 120px;
 }
 .registro-fan .error-confirmacion {
-  right: 93%;
-  top: 48.5%;
+  top: 175px;
+}
+.registro-fan .error-inputFile {
+  top: 67%;
 }
 
 /*MEN├Ü*/
