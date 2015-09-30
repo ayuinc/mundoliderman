@@ -1,0 +1,225 @@
+{if logged_in}
+  {redirect='login'}
+{/if}
+
+{embed="includes/head" titulo="Mundoliderman - Login"}
+
+<div class="site-wrapper"> <!-- Body -->
+  <main class="site-content registro pt-0-xs">
+    <div class="bg-img-block-center minhp-100">
+      <div class="container-sm ph-0 hidden-sm hidden-xs">
+        <div class="caja w-100 minhp-90 text-center p-42">
+          <div class="row ph-14">
+            <div class="col-md-4 col-xs-offset-3 pr-0 pl-14">
+              <h1 class="title-login text-uppercase fz-28 text-gray-darker bold float-left ph-0">Mundo Liderman</h1>
+            </div>
+            <div class="col-md-2 pl-0 text-left pt-7"> 
+              <img src="{site_url}frontend/app/assets/img/Liderboy.png" alt="Mundo Liderman" class="liderboy" style="width:65px">
+            </div>
+            <div class="thin text-gray-darker col-xs-12 fz-15 mt-14 pr-35 pl-0">Tú también puedes ser parte de Mundo Liderman,<br>Ingresa tus datos para registrarte</div>
+          </div>
+
+          <form class="registro-fan text-right ph-42 mh-70 mt-28 clearfix relative" method="POST" action="{site_url}login/index">
+            <!--Mensajes de Error-->
+            <div class="error-nombre absolute"></div>
+            <div class="error-apellido absolute"></div>
+            <div class="error-email absolute"></div>
+            <div class="error-password absolute"></div>
+          	<div class="error-inputFile absolute"></div>
+            <!-- -->
+            <div class="col-md-6 pl-0 pr-7"><input type="text" id="nombre" data-id="0" name="nombre" class="input-registro ph-14 w-100 pv-7 thin serif fz-16" placeholder="Nombre"></div>
+            <div class="col-md-6 pr-0 pl-7"><input type="text" id="apellido" data-id="1" name="apellido" class="input-registro ph-14 w-100 pv-7 thin serif fz-16" placeholder="Apellido"></div>
+            <input type="text" id="email" data-id="2" name="email" placeholder="mail@example.com" class="input-registro w-100 ph-14 pv-7 thin serif fz-16 mt-14">
+            <input type="password" id="password" data-id="3" name="password" placeholder="Contraseña" class="input-registro w-100 ph-14 pv-7 thin serif fz-16 mt-14">
+            <input type="password" id="confirmacion" data-id="4" name="confirmacion" placeholder="Confirmar contraseña" class="input-registro w-100 ph-14 pv-7 thin serif fz-16 mt-14">
+            <div class="error-confirmacion absolute"></div>
+            <div id="upfile" class="fileUpload file_input relative text-white bg-gray-light text-center col-md-4 border-radius mv-28 pv-7" style="cursor:pointer">
+            	Subir foto
+            </div>
+            <div class="container-photos bg-white" style="">
+              <div id='photos-post' class='relative'><img src='{site_url}frontend/app/assets/img/ex_rojo.png' class='close-image close-display absolute' style='z-index:10000; width: 10px; right: 5%; top: 5%; cursor:pointer;'></div>
+            </div>
+            <input type="file" id="inputFile" name="status_image" class="upload ebm-overlay absolute w-100" accept="image" style="display:none">
+            <button type="submit" name="submit" class="submit btn btn-info w-100 text-center ph-28 pv-7 mt-14" style="border-radius:2px">
+              <p class="sans-serif thin fz-16 text-white pt-14 lh-0 pr-21">Crear Cuenta</p>
+            </button>
+        </form>
+      </div>
+    </div>
+  </main>
+  <footer></footer>
+</div>
+{embed="includes/footer"}
+<script src="{site_url}frontend/app/assets/js/publish.js"></script>
+<script>
+	/*Subir foto de perfil*/
+	$("#upfile").click(function(){
+		$('#inputFile').click();
+	});
+
+  /*PREVISUALIZACION IMAGEN*/
+  $("#inputFile").change(function() {
+    if ($(this).val()) {
+      $(".container-photos").addClass("pt-7 pb-21 pl-21");
+      $("#photos-post").attr("style", "border: 1px solid #e7e7e7; width:120px; height:120px; left: 71.5%; top: 19px; background-size:cover; background-position:center; z-index:1");
+      $(".close-image").addClass("btn-block");
+      $(".close-image").removeClass("close-display");
+      setImageFromInputFile(this, "photos-post");
+      $("#photos-post").show();
+    }
+  });
+  $(".close-image").on("click", function(){
+    $("#photos-post").css('background-image', "url('')");
+    $("#inputFile").val('');
+    $("#photos-post").hide();
+    $(".close-image").removeClass("btn-block");
+    $(".close-image").addClass("close-display");
+  });
+
+	/*Validacion formulario*/
+
+	$(document).ready(function() {
+    $("button.submit").click(function(e){
+      if($("#nombre").val() == "" || $("#apellido").val() == "" || $("#email").val() == "" || $("#confirmacion").val() == "" || $("#password").val() == "" || $("#inputFile").val() == ""){
+        e.preventDefault();
+        submitValidate("#nombre", ".error-nombre", '<img src="{site_url}frontend/app/assets/img/globos/nombre.png">');
+        submitValidate("#apellido", ".error-apellido", '<img src="{site_url}frontend/app/assets/img/globos/apellido.png">');
+        submitValidate("#email", ".error-email", '<img src="{site_url}frontend/app/assets/img/globos/email.png">');
+        submitValidate("#password", ".error-password", '<img src="{site_url}frontend/app/assets/img/globos/password.png">');
+        submitValidate("#confirmacion", ".error-confirmacion", '<img src="{site_url}frontend/app/assets/img/globos/confirmation.png">');
+        submitValidate("#inputFile", ".error-inputFile", '<img src="{site_url}frontend/app/assets/img/globos/sube-foto.png">');
+        function submitValidate( inputName, divError, img){
+          if($(inputName).val() == ""){
+            $(divError).html(img);
+          }
+        }
+      }else if($("#password").val() != $("#confirmacion").val()){
+        e.preventDefault();
+        $(".error-confirmacion").html('<img src="{site_url}frontend/app/assets/img/globos/same-password.png">');
+      }
+    });
+    function validar(e, inputName, divError, img, imgValido) {
+      var inputVal = String.fromCharCode(e.keyCode);
+      var numericReg = /^[0-9\b]+$/;
+      var numberInput = $(inputName).data("id");
+      if(numericReg.test(inputVal) && e.keyCode != 8) {
+          e.preventDefault();
+          $(divError).html(imgValido);
+        }
+      else if($('.input-registro').keydown){
+        if((e.which == 13) && ($(inputName).val() == "")){
+            e.preventDefault();
+            $(divError).html(img);
+          }else if ((e.which == 13) && ($(inputName).val() != "")) {
+            e.preventDefault();
+            $('.input-registro')[numberInput+1].focus();  
+            return;
+          }
+          else {
+            $(divError).empty();
+            return;
+          }
+      }
+      else {
+        $(divError).empty();
+        return;
+      }
+    }
+    function validarEmail(e) {
+      var inputVal = $("#email").val();
+      var numericRegEmail = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+      if((e.which == 13) && (inputVal != "")) {
+        e.preventDefault();
+        var numberInput = $("#email").data("id");
+        if(!numericRegEmail.test(inputVal) ) {
+          $(".error-email").html('<img src="{site_url}frontend/app/assets/img/globos/email_valido.png">');
+        }
+        else {
+          $(".error-email").empty();
+          $('.input-registro')[numberInput+1].focus(); 
+          return;
+        }
+      } else if ((inputVal != "") && !numericRegEmail.test(inputVal)){
+          $(".error-email").html('<img src="{site_url}frontend/app/assets/img/globos/email_valido.png">');
+      }
+      else if( (e.which == 13) && (inputVal == "")) {
+          e.preventDefault();
+          $(".error-email").html('<img src="{site_url}frontend/app/assets/img/globos/email.png">');
+        }
+      else {
+        $(".error-email").empty();
+        return;
+      }
+    }
+    function validarPassword(e) {
+      var inputVal = $("#password").val();
+      var numberInput = $("#password").data("id");
+      if((e.which == 13) && (inputVal != "")) {
+        e.preventDefault();
+        if(inputVal.length < 4) {
+          $(".error-password").html('<img src="{site_url}frontend/app/assets/img/globos/password-min.png">');
+        }
+        else {
+          $(".error-password").empty();
+          $('.input-registro')[numberInput+1].focus(); 
+          return;
+        }
+      } 
+      else if ((inputVal != "") && (inputVal.length < 4)) {
+        $(".error-password").html('<img src="{site_url}frontend/app/assets/img/globos/password-min.png">');
+      }
+      else if( (e.which == 13) && (inputVal == "")) {
+          e.preventDefault();
+          $(".error-password").html('<img src="{site_url}frontend/app/assets/img/globos/password.png">');
+        }
+      else {
+        $(".error-password").empty();
+        return;
+      }
+    }
+    function validarConfirmacion(e) {
+      var inputVal = $("#confirmacion").val();
+      var numberInput = $("#confirmacion").data("id");
+      if(e.which == 13 && inputVal != "" || ($("#password").keyup()) ) {
+        if(inputVal != $("#password").val()) {
+            $(".error-confirmacion").html('<img src="{site_url}frontend/app/assets/img/globos/same-password.png">');
+          }
+          else if ((inputVal != $("#password").val()) ) {
+            $(".error-confirmacion").empty(); 
+          }
+          else {
+            $(".error-confirmacion").empty(); 
+            return;
+          }
+      } else if( (e.which == 13) && (inputVal == "")) {
+          e.preventDefault();
+          $(".error-confirmacion").html('<img src="{site_url}frontend/app/assets/img/globos/confirmation.png">');
+        }
+      else {
+        $(".error-confirmacion").empty();
+        return;
+      }
+    }
+    $('#nombre').keydown(function(e) {
+        validar(e, "#nombre", ".error-nombre", '<img src="{site_url}frontend/app/assets/img/globos/nombre.png">', '<img src="{site_url}frontend/app/assets/img/globos/nombre-valido.png">');
+    });
+    $('#apellido').keydown(function(e) {
+        validar(e, "#apellido", ".error-apellido", '<img src="{site_url}frontend/app/assets/img/globos/apellido.png">', '<img src="{site_url}frontend/app/assets/img/globos/apellido-valido.png">');
+    });
+    $('#email').keyup(function(e) {
+      validarEmail(e);
+    });
+    $('#password').keyup(function(e) {
+        validarPassword(e);
+      });
+    $('#confirmacion').keyup(function(e) {
+      validarConfirmacion(e);
+    });
+    $("#inputFile").change(function(){
+      if($(this).val() != ""){
+        $(".error-inputFile").empty();
+      }
+    });
+  });
+</script>
+</html>

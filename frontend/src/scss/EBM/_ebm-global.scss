@@ -177,6 +177,9 @@ body {
 	.absolute {
 		position: absolute;
 	}
+	.close-display {
+		display: none;
+	}
 	textarea {
   	box-shadow: none;
   	overflow: hidden;
@@ -265,6 +268,50 @@ $xxl-desktop: 1980px;
   			}
 			}
 		}
+	}
+}
+.registro-fan {
+	input {
+		border: 1px solid #BDBDBD;
+		@include placeholder {
+	    color: #B5B5B5;
+	  }
+	}
+	#upfile {
+		cursor: pointer;
+		input[type="file"] {
+			display: none;
+		}
+	}
+	.border-red {
+		border-color: red;
+	}
+	/*mensajes de error*/
+	.error-nombre,
+	.error-email,
+	.error-password,
+	.error-confirmacion,
+	.error-inputFile {
+		right: 93%;
+	}
+	.error-nombre {
+    top: 6px;
+	}
+	.error-apellido {
+    top: 6px;
+    left: 93%;
+	}
+	.error-email {
+    top: 63px;
+	}
+	.error-password {
+    top: 120px;
+	}
+	.error-confirmacion {
+    top: 175px;
+	}
+	.error-inputFile {
+		top: 67%;
 	}
 }
 /*MENÚ*/

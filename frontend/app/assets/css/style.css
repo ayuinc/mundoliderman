@@ -1393,6 +1393,9 @@ body .relative {
 body .absolute {
   position: absolute;
 }
+body .close-display {
+  display: none;
+}
 body textarea {
   box-shadow: none;
   overflow: hidden;
@@ -1506,6 +1509,60 @@ main {
   -o-transform: rotate(90deg);
   transform: rotate(90deg);
   width: 14px;
+}
+
+.registro-fan {
+  /*mensajes de error*/
+}
+.registro-fan input {
+  border: 1px solid #BDBDBD;
+}
+.registro-fan input::-webkit-input-placeholder {
+  color: #B5B5B5;
+}
+.registro-fan input::-moz-placeholder {
+  color: #B5B5B5;
+}
+.registro-fan input:-moz-placeholder {
+  color: #B5B5B5;
+}
+.registro-fan input:-ms-input-placeholder {
+  color: #B5B5B5;
+}
+.registro-fan #upfile {
+  cursor: pointer;
+}
+.registro-fan #upfile input[type="file"] {
+  display: none;
+}
+.registro-fan .border-red {
+  border-color: red;
+}
+.registro-fan .error-nombre,
+.registro-fan .error-email,
+.registro-fan .error-password,
+.registro-fan .error-confirmacion,
+.registro-fan .error-inputFile {
+  right: 93%;
+}
+.registro-fan .error-nombre {
+  top: 6px;
+}
+.registro-fan .error-apellido {
+  top: 6px;
+  left: 93%;
+}
+.registro-fan .error-email {
+  top: 63px;
+}
+.registro-fan .error-password {
+  top: 120px;
+}
+.registro-fan .error-confirmacion {
+  top: 175px;
+}
+.registro-fan .error-inputFile {
+  top: 67%;
 }
 
 /*MEN├Ü*/
