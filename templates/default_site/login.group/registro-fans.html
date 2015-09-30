@@ -104,6 +104,9 @@
             $(divError).html(img);
           }
         }
+      }else if($("#password").val() != $("#confirmacion").val()){
+        e.preventDefault();
+        $(".error-confirmacion").html('<img src="{site_url}frontend/app/assets/img/globos/same-password.png">');
       }
     });
     function validar(e, inputName, divError, img, imgValido) {
@@ -147,7 +150,10 @@
           $('.input-registro')[numberInput+1].focus(); 
           return;
         }
-      } else if( (e.which == 13) && (inputVal == "")) {
+      } else if ((inputVal != "") && !numericRegEmail.test(inputVal)){
+          $(".error-email").html('<img src="{site_url}frontend/app/assets/img/globos/email_valido.png">');
+      }
+      else if( (e.which == 13) && (inputVal == "")) {
           e.preventDefault();
           $(".error-email").html('<img src="{site_url}frontend/app/assets/img/globos/email.png">');
         }
@@ -181,14 +187,15 @@
     function validarConfirmacion(e) {
       var inputVal = $("#confirmacion").val();
       var numberInput = $("#confirmacion").data("id");
-      if((e.which == 13) && (inputVal != "")) {
-        e.preventDefault();
+      if(e.which == 13 && inputVal != "" || ($("#password").keyup()) ) {
         if(inputVal != $("#password").val()) {
             $(".error-confirmacion").html('<img src="{site_url}frontend/app/assets/img/globos/same-password.png">');
           }
+          else if ((inputVal != $("#password").val()) ) {
+            $(".error-confirmacion").empty(); 
+          }
           else {
-            $(".error-confirmacion").empty();
-            $(".submit").removeAtrr("disabled"); 
+            $(".error-confirmacion").empty(); 
             return;
           }
       } else if( (e.which == 13) && (inputVal == "")) {
@@ -212,7 +219,7 @@
     $('#password').keydown(function(e) {
         validarPassword(e);
       });
-    $('#confirmacion').keydown(function(e) {
+    $('#confirmacion').keyup(function(e) {
       validarConfirmacion(e);
     });
     $("#inputFile").change(function(){
