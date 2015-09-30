@@ -50,6 +50,7 @@
   <footer></footer>
 </div>
 {embed="includes/footer"}
+<script src="{site_url}frontend/app/assets/js/publish.js"></script>
 <script>
 	/*Subir foto de perfil*/
 	$("#upfile").click(function(){
@@ -57,18 +58,6 @@
 	});
 
   /*PREVISUALIZACION IMAGEN*/
-  function setImageFromInputFile(inputImage, imageContainer) {
-    if (inputImage.files) {
-      var file = inputImage.files[0];
-      if (file) {
-        var reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = function(e) {
-          document.getElementById(imageContainer).style.backgroundImage = "url('" + e.target.result + "')";
-        }
-      };
-    };
-  }
   $("#inputFile").change(function() {
     if ($(this).val()) {
       $(".container-photos").addClass("pt-7 pb-21 pl-21");
