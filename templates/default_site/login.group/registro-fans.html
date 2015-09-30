@@ -56,6 +56,21 @@
 	/*Validacion formulario*/
 
 	$(document).ready(function() {
+    $("button.submit").click(function(e){
+      if($("#nombre").val() == "" || $("#apellido").val() == "" || $("#email").val() == "" || $("#confirmacion").val() == "" || $("#password").val() == ""){
+        e.preventDefault();
+        submitValidate("#nombre", ".error-nombre", '<img src="{site_url}frontend/app/assets/img/globos/nombre.png">');
+        submitValidate("#apellido", ".error-apellido", '<img src="{site_url}frontend/app/assets/img/globos/apellido.png">');
+        submitValidate("#email", ".error-email", '<img src="{site_url}frontend/app/assets/img/globos/email.png">');
+        submitValidate("#password", ".error-password", '<img src="{site_url}frontend/app/assets/img/globos/password.png">');
+        submitValidate("#confirmacion", ".error-confirmacion", '<img src="{site_url}frontend/app/assets/img/globos/confirmation.png">');
+        function submitValidate( inputName, divError, img){
+          if($(inputName).val() == ""){
+            $(divError).html(img);
+          }
+        }
+      }
+    });
     function validar(e, inputName, divError, img, imgValido) {
       var inputVal = String.fromCharCode(e.keyCode);
       var numericReg = /^[0-9\b]+$/;
@@ -81,97 +96,93 @@
         return;
       }
     }
+    function validarEmail(e) {
+      var inputVal = $("#email").val();
+      var numericRegEmail = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+
+      if((e.which == 13) && (inputVal != "")) {
+        e.preventDefault();
+        var numberInput = $("#email").data("id");
+        if(!numericRegEmail.test(inputVal) ) {
+          $(".error-email").html('<img src="{site_url}frontend/app/assets/img/globos/email_valido.png">');
+        }
+        else {
+          $(".error-email").empty();
+          $('.input-registro')[numberInput+1].focus(); 
+          return;
+        }
+      } else if( (e.which == 13) && (inputVal == "")) {
+          e.preventDefault();
+          $(".error-email").html('<img src="{site_url}frontend/app/assets/img/globos/email.png">');
+        }
+      else {
+        $(".error-email").empty();
+        return;
+      }
+    }
+    function validarPassword(e) {
+      var inputVal = $("#password").val();
+      var numberInput = $("#password").data("id");
+      if((e.which == 13) && (inputVal != "")) {
+        e.preventDefault();
+        if(inputVal.length < 4) {
+          $(".error-password").html('<img src="{site_url}frontend/app/assets/img/globos/password-min.png">');
+          (".error-password").html("error");
+          console.log("Hola");
+        }
+        else {
+          $(".error-password").empty();
+          $('.input-registro')[numberInput+1].focus(); 
+          return;
+        }
+      } else if( (e.which == 13) && (inputVal == "")) {
+          e.preventDefault();
+          $(".error-password").html('<img src="{site_url}frontend/app/assets/img/globos/password.png">');
+        }
+      else {
+        $(".error-password").empty();
+        return;
+      }
+    }
+    function validarConfirmacion(e) {
+      var inputVal = $("#confirmacion").val();
+
+      if((e.which == 13) && (inputVal != "")) {
+        e.preventDefault();
+        var numberInput = $("#confirmacion").data("id");
+        if(inputVal != $("#password").val()) {
+            $(".error-confirmacion").html('<img src="{site_url}frontend/app/assets/img/globos/same-password.png">');
+          }
+          else {
+            $(".error-confirmacion").empty();
+            $(".submit").removeAtrr("disabled"); 
+            return;
+          }
+      } else if( (e.which == 13) && (inputVal == "")) {
+          e.preventDefault();
+          $(".error-confirmacion").html('<img src="{site_url}frontend/app/assets/img/globos/confirmation.png">');
+        }
+      else {
+        $(".error-confirmacion").empty();
+        return;
+      }
+    }
     $('#nombre').keydown(function(e) {
         validar(e, "#nombre", ".error-nombre", '<img src="{site_url}frontend/app/assets/img/globos/nombre.png">', '<img src="{site_url}frontend/app/assets/img/globos/nombre-valido.png">');
     });
     $('#apellido').keydown(function(e) {
         validar(e, "#apellido", ".error-apellido", '<img src="{site_url}frontend/app/assets/img/globos/apellido.png">', '<img src="{site_url}frontend/app/assets/img/globos/apellido-valido.png">');
     });
-
-    function validarEmail(e, inputName, divError, img, imgInvalid) {
-      var inputVal = $(inputName).val();
-      var numericRegEmail = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-
-
-      if((e.which == 13) && (inputVal != "")) {
-        e.preventDefault();
-        var numberInput = $(inputName).data("id");
-        if(!numericRegEmail.test(inputVal) ) {
-          $(divError).html(imgInvalid);
-        }
-        else {
-          $(divError).empty();
-          $('.input-registro')[numberInput+1].focus(); 
-          return;
-        }
-      } else if( (e.which == 13) && ($(inputName).val() == "")) {
-          e.preventDefault();
-          $(divError).html(img);
-        }
-      else {
-        $(divError).empty();
-        return;
-      }
-    }
     $('#email').keydown(function(e) {
-      validarEmail(e, "#email", ".error-email", '<img src="{site_url}frontend/app/assets/img/globos/email.png">', '<img src="{site_url}frontend/app/assets/img/globos/email_valido.png">');
+      validarEmail(e);
     });
-
-
-    function validarPassword(e, inputName, divError, img, imgInvalid) {
-      var inputVal = $(inputName).val();
-      var numberInput = $(inputName).data("id");
-      if((e.which == 13) && (inputVal != "")) {
-        e.preventDefault();
-        if(inputVal.length < 4) {
-          $(divError).html(imgInvalid);
-          (divError).html("error");
-          console.log("Hola");
-        }
-        else {
-          $(divError).empty();
-          $('.input-registro')[numberInput+1].focus(); 
-          return;
-        }
-      } else if( (e.which == 13) && ($(inputName).val() == "")) {
-          e.preventDefault();
-          $(divError).html(img);
-        }
-      else {
-        $(divError).empty();
-        return;
-      }
-    }
     $('#password').keydown(function(e) {
-        validarPassword(e, "#password", ".error-password", '<img src="{site_url}frontend/app/assets/img/globos/password.png">', '<img src="{site_url}frontend/app/assets/img/globos/password-min.png">');
+        validarPassword(e);
       });
-
-    function validarConfirmacion(e, inputName, divError, img, imgInvalid) {
-      var inputVal = $(inputName).val();
-
-      if((e.which == 13) && (inputVal != "")) {
-        e.preventDefault();
-        var numberInput = $(inputName).data("id");
-        if(inputVal != $("#password").val()) {
-            $(divError).html(imgInvalid);
-          }
-          else {
-            $(divError).empty();
-            $('.input-registro')[numberInput+1].focus(); 
-            return;
-          }
-      } else if( (e.which == 13) && ($(inputName).val() == "")) {
-          e.preventDefault();
-          $(divError).html(img);
-        }
-      else {
-        $(divError).empty();
-        return;
-      }
-    }
     $('#confirmacion').keydown(function(e) {
-      validarConfirmacion(e, "#confirmacion", ".error-confirmacion", '<img src="{site_url}frontend/app/assets/img/globos/confirmation.png">', '<img src="{site_url}frontend/app/assets/img/globos/same-password.png">');
-      });
+      validarConfirmacion(e);
+    });
   });
 </script>
 </html>
