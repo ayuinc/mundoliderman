@@ -175,7 +175,11 @@
           $('.input-registro')[numberInput+1].focus(); 
           return;
         }
-      } else if( (e.which == 13) && (inputVal == "")) {
+      } 
+      else if ((inputVal != "") && (inputVal.length < 4)) {
+        $(".error-password").html('<img src="{site_url}frontend/app/assets/img/globos/password-min.png">');
+      }
+      else if( (e.which == 13) && (inputVal == "")) {
           e.preventDefault();
           $(".error-password").html('<img src="{site_url}frontend/app/assets/img/globos/password.png">');
         }
@@ -213,10 +217,10 @@
     $('#apellido').keydown(function(e) {
         validar(e, "#apellido", ".error-apellido", '<img src="{site_url}frontend/app/assets/img/globos/apellido.png">', '<img src="{site_url}frontend/app/assets/img/globos/apellido-valido.png">');
     });
-    $('#email').keydown(function(e) {
+    $('#email').keyup(function(e) {
       validarEmail(e);
     });
-    $('#password').keydown(function(e) {
+    $('#password').keyup(function(e) {
         validarPassword(e);
       });
     $('#confirmacion').keyup(function(e) {
