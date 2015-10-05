@@ -7,19 +7,19 @@
 <div class="site-wrapper"> <!-- Body -->
   <main class="site-content registro pt-0-xs">
     <div class="bg-img-block-center minhp-100">
-      <div class="container-sm ph-0 hidden-sm hidden-xs">
-        <div class="caja w-100 minhp-90 text-center p-42">
-          <div class="row ph-14">
-            <div class="col-md-4 col-xs-offset-3 pr-0 pl-14">
+      <div class="container-sm ph-0">
+        <div class="caja caja-registro w-100 minhp-90 text-center p-42">
+          <div class="row ph-14 ph-7-xs ph-7-sm">
+            <div class="col-md-4 col-xs-9 col-md-offset-3 pr-0 pl-14">
               <h1 class="title-login text-uppercase fz-28 text-gray-darker bold float-left ph-0">Mundo Liderman</h1>
             </div>
-            <div class="col-md-2 pl-0 text-left pt-7"> 
+            <div class="col-md-2 col-xs-3 pl-0 ph-7-xs text-left pt-7"> 
               <img src="{site_url}frontend/app/assets/img/Liderboy.png" alt="Mundo Liderman" class="liderboy" style="width:65px">
             </div>
-            <div class="thin text-gray-darker col-xs-12 fz-15 mt-14 pr-35 pl-0">Tú también puedes ser parte de Mundo Liderman,<br>Ingresa tus datos para registrarte</div>
+            <div class="text-registro thin text-gray-darker col-xs-12 fz-15 mt-14 pr-35 pl-0 pr-0-xs pr-0-sm">Tú también puedes ser parte de Mundo Liderman,<br>Ingresa tus datos para registrarte</div>
           </div>
 
-          <form class="registro-fan text-right ph-42 mh-70 mt-28 clearfix relative" method="POST" action="{site_url}login/index">
+          <form class="registro-fan text-right ph-42 mh-70 mh-0-xs ph-0-xs mt-28 mt-42-xs clearfix relative" method="POST" action="{site_url}login/index">
             <!--Mensajes de Error-->
             <div class="error-nombre absolute"></div>
             <div class="error-apellido absolute"></div>
@@ -27,20 +27,20 @@
             <div class="error-password absolute"></div>
           	<div class="error-inputFile absolute"></div>
             <!-- -->
-            <div class="col-md-6 pl-0 pr-7"><input type="text" id="nombre" data-id="0" name="nombre" class="input-registro ph-14 w-100 pv-7 thin serif fz-16" placeholder="Nombre"></div>
-            <div class="col-md-6 pr-0 pl-7"><input type="text" id="apellido" data-id="1" name="apellido" class="input-registro ph-14 w-100 pv-7 thin serif fz-16" placeholder="Apellido"></div>
+            <div class="col-md-6 col-xs-12 pl-0 pr-7 ph-0-xs"><input type="text" id="nombre" data-id="0" name="nombre" class="input-registro ph-14 col-xs-12 w-100 pv-7 thin serif fz-16" placeholder="Nombre"></div>
+            <div class="col-md-6 pr-0 pl-7 ph-0-xs"><input type="text" id="apellido" data-id="1" name="apellido" class="input-registro ph-14 w-100 pv-7 thin serif fz-16 mt-14-xs" placeholder="Apellido"></div>
             <input type="text" id="email" data-id="2" name="email" placeholder="mail@example.com" class="input-registro w-100 ph-14 pv-7 thin serif fz-16 mt-14">
             <input type="password" id="password" data-id="3" name="password" placeholder="Contraseña" class="input-registro w-100 ph-14 pv-7 thin serif fz-16 mt-14">
             <input type="password" id="confirmacion" data-id="4" name="confirmacion" placeholder="Confirmar contraseña" class="input-registro w-100 ph-14 pv-7 thin serif fz-16 mt-14">
             <div class="error-confirmacion absolute"></div>
-            <div id="upfile" class="fileUpload file_input relative text-white bg-gray-light text-center col-md-4 border-radius mv-28 pv-7" style="cursor:pointer">
+            <div id="upfile" class="fileUpload file_input relative text-white bg-gray-light text-center col-md-4 border-radius mv-28 mt-42-xs mb-14-xs pv-7" style="cursor:pointer">
             	Subir foto
             </div>
-            <div class="container-photos bg-white" style="">
+            <div class="container-photos" style="">
               <div id='photos-post' class='relative'><img src='{site_url}frontend/app/assets/img/ex_rojo.png' class='close-image close-display absolute' style='z-index:10000; width: 10px; right: 5%; top: 5%; cursor:pointer;'></div>
             </div>
             <input type="file" id="inputFile" name="status_image" class="upload ebm-overlay absolute w-100" accept="image" style="display:none">
-            <button type="submit" name="submit" class="submit btn btn-info w-100 text-center ph-28 pv-7 mt-14" style="border-radius:2px">
+            <button type="submit" name="submit" class="submit btn btn-info w-100 text-center ph-28 pv-7 pv-14-xs mt-14" style="border-radius:2px">
               <p class="sans-serif thin fz-16 text-white pt-14 lh-0 pr-21">Crear Cuenta</p>
             </button>
         </form>

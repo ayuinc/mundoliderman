@@ -2584,6 +2584,40 @@ input[type="submit"] {
     width: 30px !important;
   }
 
+  /*REGISTRO FAN*/
+  .caja-registro .liderboy {
+    width: 50px !important;
+  }
+  .caja-registro .title-login {
+    font-size: 25px !important;
+    float: none;
+    line-height: 1;
+  }
+  .caja-registro .text-registro {
+    font-size: 16px !important;
+  }
+
+  .registro-fan input {
+    font-size: 16px !important;
+  }
+  .registro-fan button.submit p {
+    font-size: 22px !important;
+  }
+  .registro-fan #upfile {
+    font-size: 22px;
+    font-weight: 100;
+  }
+  .registro-fan #photos-post {
+    left: 50% !important;
+    transform: translateX(-50%);
+    top: 0px !important;
+  }
+  .registro-fan .error-nombre, .registro-fan .error-confirmacion,
+  .registro-fan .error-password, .registro-fan .error-email,
+  .registro-fan .error-apellido, .registro-fan .error-inputFile {
+    display: none;
+  }
+
   /*INDEX*/
   .site-content .container-index {
     padding-top: 30px !important;

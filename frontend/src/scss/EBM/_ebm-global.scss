@@ -1210,6 +1210,44 @@ input[type="submit"] {
 		width: 30px!important;
 	}
 
+	/*REGISTRO FAN*/
+	.caja-registro {
+		.liderboy {
+			width: 50px!important;
+		}
+		.title-login {
+			font-size: 25px!important;
+			float: none;
+			line-height: 1;
+		}
+		.text-registro {
+			font-size: 16px!important;
+		}
+	}
+	.registro-fan {
+		input {
+			font-size: 16px!important;
+		}
+		button.submit {
+			p {
+				font-size: 22px!important;
+			}
+		}
+		#upfile {
+			font-size: 22px;
+    	font-weight: 100;
+		}
+		#photos-post {
+			left: 50%!important;
+    	transform: translateX(-50%);
+    	top: 0px!important;
+		}
+		.error-nombre, .error-confirmacion,
+		.error-password, .error-email,
+		.error-apellido, .error-inputFile {
+			display: none;
+		}
+	}
 
 
 	/*INDEX*/
