@@ -1027,12 +1027,8 @@
 body {
   /*UTILITIES*/
   /*CALENDAR COLORS*/
-  /*Falta*/
-  /*Asistencua nocturna*/
-  /*Asistencia diurna*/
   /*Descanso*/
-  /*Descanso*/
-  /*Asistencia nocturna*/
+  /*COLORES TAREO*/
   /*text-info(Asistencia diurna) y text-danger(Ausencia)*/
 }
 body h1, body h2, body h3, body h4, body h5, body span {
@@ -1189,107 +1185,74 @@ body .fz-40 {
 body .video table, body .video table div#mediaspace_wrapper {
   height: 285px !important;
 }
-body .colour2 {
-  background-color: #CA6060 !important;
-}
-body .colour4 {
-  background-color: #CA6060 !important;
-}
-body .colour6 {
-  background-color: #CA6060 !important;
-}
-body .colour8 {
-  background-color: #CA6060 !important;
-}
-body .colour10 {
-  background-color: #CA6060 !important;
-}
-body .colour1 {
-  background-color: #A6BBAB !important;
-}
-body .colour3 {
-  background-color: #A6BBAB !important;
-}
-body .colour5 {
-  background-color: #A6BBAB !important;
-}
-body .colour7 {
-  background-color: #A6BBAB !important;
-}
-body .colour9 {
-  background-color: #A6BBAB !important;
-}
-body .colour11 {
-  background-color: #A6BBAB !important;
-}
-body .colour13 {
-  background-color: #A6BBAB !important;
-}
-body .colour15 {
-  background-color: #A6BBAB !important;
-}
-body .colour17 {
-  background-color: #A6BBAB !important;
-}
-body .colour19 {
-  background-color: #A6BBAB !important;
-}
-body .colour21 {
-  background-color: #A6BBAB !important;
-}
-body .colour23 {
-  background-color: #A6BBAB !important;
-}
-body .colour25 {
-  background-color: #A6BBAB !important;
-}
-body .colour27 {
-  background-color: #A6BBAB !important;
-}
-body .colour12 {
-  background-color: #C1E7CB !important;
-}
-body .colour14 {
-  background-color: #C1E7CB !important;
-}
-body .colour16 {
-  background-color: #C1E7CB !important;
-}
-body .colour18 {
-  background-color: #C1E7CB !important;
-}
-body .colour20 {
-  background-color: #C1E7CB !important;
-}
-body .colour22 {
-  background-color: #C1E7CB !important;
-}
-body .colour24 {
-  background-color: #C1E7CB !important;
-}
-body .colour26 {
-  background-color: #C1E7CB !important;
-}
-body .colour28 {
-  background-color: #C1E7CB !important;
-}
-body .colour30 {
-  background-color: #C1E7CB !important;
-}
 body .colour29, body .colour31 {
   background-color: #78A4CA;
 }
-body .bg-blue {
-  background-color: #78A4CA;
+body .bg-falto {
+  background-color: #D1D3D4;
 }
-body .bg-green {
-  background-color: #C1E7CB;
+body .bg-abandono, body .colour2, body .colour4 {
+  background-color: #887B96;
 }
-body .bg-green-dark {
-  background-color: #A6BBAB;
+body .bg-baja {
+  background-color: #1E6658;
 }
-body .bg-red {
-  background-color: #CA6060;
+body .bg-descanso {
+  background-color: #173457;
+}
+body .bg-descanso2, body .colour58, body .colour60 {
+  background-color: #22517F;
+}
+body .bg-descanso3 {
+  background-color: #3E91E5;
+}
+body .bg-subsidio {
+  background-color: #00AEEF;
+}
+body .bg-subsidio2 {
+  background-color: #76CBE5;
+}
+body .bg-vacaciones {
+  background-color: #FFBE00;
+}
+body .bg-venta {
+  background-color: #FFDE20;
+}
+body .bg-suspension {
+  background-color: #6118EF;
+}
+body .bg-traslado {
+  background-color: #553285;
+}
+body .bg-incapacidad {
+  background-color: #231F20;
+}
+body .bg-incapacidad2 {
+  background-color: #58595B;
+}
+body .bg-licencia, body .colour15, body .colour17 {
+  background-color: #A6DD4E;
+}
+body .bg-licencia2 {
+  background-color: #40561E;
+}
+body .bg-pagado {
+  background-color: #223322;
+}
+body .bg-pagado2 {
+  background-color: #91F991;
+}
+body .bg-servicio {
+  background-color: #FF853B;
+}
+body .bg-servicio2 {
+  background-color: #F94211;
+}
+body .bg-servicio3 {
+  background-color: #D13213;
+}
+body .bg-servicio4 {
+  background-color: #AA2B11;
 }
 body .w-100 {
   width: 100%;
@@ -2048,14 +2011,6 @@ footer > div .lista p {
   height: 13px;
 }
 
-.day-colors {
-  -webkit-transform: translateX(-50%);
-  -moz-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  -o-transform: translateX(-50%);
-  transform: translateX(-50%);
-  left: 50%;
-}
 .day-colors .color-turno {
   width: 13px;
   height: 13px;

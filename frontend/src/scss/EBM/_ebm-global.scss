@@ -39,24 +39,21 @@ body {
 	/*CALENDAR COLORS*/
 	$color: colour; 
 
-	/*Falta*/
-	@for $i from 1 through 5 {
+	@for $i from 1 through 2 {
 		.#{$color}#{$i*2} {
-			background-color: #CA6060!important;
+			@extend .bg-abandono;
 		}
 	}
 
-	/*Asistencua nocturna*/
-	@for $i from 1 through 14 {
+	@for $i from 8 through 9 {
 		.#{$color}#{$i*2 - 1} {
-			background-color: #A6BBAB!important;
+			@extend .bg-licencia;
 		}
 	}
 
-	/*Asistencia diurna*/
-	@for $i from 6 through 15 {
+	@for $i from 29 through 30 {
 		.#{$color}#{$i*2} {
-			background-color: #C1E7CB!important;
+			@extend .bg-descanso2;
 		}
 	}
 
@@ -64,26 +61,88 @@ body {
 	.colour29, .colour31 {
 		background-color: #78A4CA; 
 	}
-	.bg-blue {
-		background-color: #78A4CA;
-	}
-	.bg-green {
-		background-color: #C1E7CB;
-	}
-	.bg-green-dark {
-		background-color: #A6BBAB;
-	}
-	.bg-red {
-		background-color: #CA6060;	
-	}
-	/*Descanso*/
-	// .text-blue {
-	// 	color: #43609c;
+	// .bg-blue {
+	// 	background-color: #78A4CA;
 	// }
-	/*Asistencia nocturna*/
-	// .text-info-dark {
-	// 	color: #19572A;
+	// .bg-green {
+	// 	background-color: #C1E7CB;
 	// }
+	// .bg-green-dark {
+	// 	background-color: #A6BBAB;
+	// }
+	// .bg-red {
+	// 	background-color: #CA6060;	
+	// }
+	/*COLORES TAREO*/
+		.bg-falto {
+			background-color: #D1D3D4;
+		}
+		.bg-abandono {
+			background-color: #887B96;
+		}
+		.bg-baja {
+			background-color: #1E6658;
+		}
+		.bg-descanso {
+			background-color: #173457;
+		}
+		.bg-descanso2 {
+			background-color: #22517F;
+		}
+		.bg-descanso3 {
+			background-color: #3E91E5;
+		}
+		.bg-subsidio{
+			background-color: #00AEEF;
+		}
+		.bg-subsidio2 {
+			background-color: #76CBE5;
+		}
+		.bg-vacaciones {
+			background-color: #FFBE00;
+		}
+		.bg-venta {
+			background-color: #FFDE20;
+		}
+		.bg-suspension {
+			background-color: #6118EF;
+		}
+		.bg-traslado {
+			background-color: #553285;
+		}
+		.bg-incapacidad {
+			background-color: #231F20;
+		}
+		.bg-incapacidad2 {
+			background-color: #58595B;
+		}
+		.bg-licencia {
+			background-color: #A6DD4E;
+		}
+		.bg-licencia2 {
+			background-color: #40561E;
+		}
+		.bg-pagado {
+			background-color: #223322;
+		}
+		.bg-pagado2 {
+			background-color: #91F991;
+		}
+		.bg-servicio {
+			background-color: #FF853B;
+		}
+		.bg-servicio2 {
+			background-color: #F94211;
+		}
+		.bg-servicio3 {
+			background-color: #D13213;
+		}
+		.bg-servicio4 {
+			background-color: #AA2B11;
+		}
+
+
+
 	/*text-info(Asistencia diurna) y text-danger(Ausencia)*/
 	.w-100 {
 		width: 100%;
@@ -740,9 +799,7 @@ footer > div {
 	height: 13px;
 }
 
-.day-colors {
-	@include transform(translateX(-50%));
-	left: 50%;
+.day-colors {	
 	.color-turno {
 		width: 13px;
 		height: 13px;
