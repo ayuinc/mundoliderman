@@ -5,7 +5,7 @@
 {embed=includes/head titulo="Mundo Liderman - Perfil"}
   
   <div class="site-wrapper"> <!-- Body -->
-    {embed="includes/nav-main"}
+    {embed="includes/nav-main" acceso_directo="Ir al inicio" link="{site_url}wall"}
     <main class="site-content clearfix pb-42 mb-0">
       {embed="includes/menu-movil"}
       {embed="includes/banner-alerta"}
@@ -42,7 +42,7 @@
                     </select>
                   </div>
                 </div>
-                <textarea id="wall_status" name="wall_status" class="form-control outline-none serif fz-18 borderless br-none pv-14 ph-14" onkeyup="auto_grow(this)" placeholder="Qué estás pensando..."></textarea>
+                <textarea id="wall_status" name="wall_status" class="form-control outline-none serif fz-18 borderless br-none pv-14 ph-14" onkeyup="auto_grow(this)" placeholder="Chatea aquí..."></textarea>
                 <div class="container-photos bg-white" style="">
                   <div id='photos-post' class='relative'><img src='{site_url}frontend/app/assets/img/ex_rojo.png' class='close-image absolute' style='z-index:10000'></div>
                 </div>
@@ -52,7 +52,7 @@
                   <span class="thin fz-14 pl-14 serif hidden-lg hidden-md">Subir imagen</span><!--movil-->
                   <input type="file" id="inputFile" name="status_image" class="upload" accept="image" /> 
                 </div>
-                <button type="submit" name="submit" class="btn bg-warning text-white text-hover-white fz-12 ph-21 ph-14-xs mv-7 absolute">
+                <button type="submit" name="submit" class="btn bg-warning text-white text-hover-white fz-12 ph-21 ph-14-xs mv-7 absolute" style="border: 1px solid #e7e7e7;">
                  PUBLICAR
                  <img src="{site_url}frontend/app/assets/img/Publicar_Dialogo.png" alt="" class="pl-14">
                 </button>

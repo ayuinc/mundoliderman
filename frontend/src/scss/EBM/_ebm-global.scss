@@ -42,27 +42,27 @@ body {
 	/*Falta*/
 	@for $i from 1 through 5 {
 		.#{$color}#{$i*2} {
-			border-top: 5px solid #CA6060!important;
+			background-color: #CA6060!important;
 		}
 	}
 
 	/*Asistencua nocturna*/
 	@for $i from 1 through 14 {
 		.#{$color}#{$i*2 - 1} {
-			border-top: 5px solid #A6BBAB!important;
+			background-color: #A6BBAB!important;
 		}
 	}
 
 	/*Asistencia diurna*/
 	@for $i from 6 through 15 {
 		.#{$color}#{$i*2} {
-			border-top: 5px solid #C1E7CB!important;
+			background-color: #C1E7CB!important;
 		}
 	}
 
 	/*Descanso*/
 	.colour29, .colour31 {
-		border-top: 5px solid #78A4CA; 
+		background-color: #78A4CA; 
 	}
 	.bg-blue {
 		background-color: #78A4CA;
@@ -77,13 +77,13 @@ body {
 		background-color: #CA6060;	
 	}
 	/*Descanso*/
-	.text-blue {
-		color: #43609c;
-	}
+	// .text-blue {
+	// 	color: #43609c;
+	// }
 	/*Asistencia nocturna*/
-	.text-info-dark {
-		color: #19572A;
-	}
+	// .text-info-dark {
+	// 	color: #19572A;
+	// }
 	/*text-info(Asistencia diurna) y text-danger(Ausencia)*/
 	.w-100 {
 		width: 100%;
