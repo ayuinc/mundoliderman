@@ -116,7 +116,7 @@
                             <a href="" class="btn-comentar text-not-underline fz-15 hidden-lg hidden-md">Comentar &nbsp</a><!--movil-->
                             <img src="{site_url}frontend/app/assets/img/Icono_Comentar.png" alt="">
                           </li>
-                          {exp:wall:like_post_form form_id="" form_class="display-ib" post_id="{post_id}"}
+                          {exp:wall:like_post_form form_id="" form_class="display-ib" post_id="{post_id}" member_id="{member_id}"}
                           <li class="pl-14 like-container">
                             <a href="" class="like text-not-underline hidden-xs hidden-sm">Me gusta &nbsp</a>
                             <a href="" class="like text-not-underline fz-15 hidden-lg hidden-md">Me gusta &nbsp</a><!--movil-->
@@ -131,8 +131,8 @@
                             <img src="{site_url}frontend/app/assets/img/Icono_Corazon.png" alt="">
                           </li>
                           <li class="display-ib pl-7">
-                            <a href="" class="comment text-not-underline hidden-xs hidden-sm">&nbsp 1 comentarios &nbsp</a>
-                            <a href="" class="comment text-not-underline fz-15 hidden-lg hidden-md">&nbsp 1 comentarios &nbsp</a><!--movil-->
+                            <a href="" class="comment text-not-underline hidden-xs hidden-sm">&nbsp <span class="comment_counter" data-comment-post-id="{post_id}">{exp:wall:comment_count post_id="{post_id}"}</span> comentarios &nbsp</a>
+                            <a href="" class="comment text-not-underline fz-15 hidden-lg hidden-md">&nbsp <span class="comment_counter" data-comment-post-id="{post_id}">{exp:wall:comment_count post_id="{post_id}"}</span> comentarios &nbsp</a><!--movil-->
                           </li>
                         </ul>
                       </div>
