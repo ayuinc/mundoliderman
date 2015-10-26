@@ -354,15 +354,14 @@
       var status_category = $("#status_category").val();
       if (status_category == 0) {
         $('#error-categoria').html('<img src="{site_url}frontend/app/assets/img/categoria2.png">');
-        $("#submit-post").remoteAttr("disabled");
+        $("#submit-post").removeAttr("disabled");
         return;
       } else {
         $("#error-categoria").empty();
-        $("#submit-post").remoteAttr("disabled");
       };
       if(friends_status.trim().length == 0 || friends_status.trim() == "") {
         $('#error-message').html('<img src="{site_url}frontend/app/assets/img/mensaje.png">');
-        $("#submit-post").remoteAttr("disabled");
+        $("#submit-post").removeAttr("disabled");
         return;
       } else {
         $("#error-message").empty();
@@ -390,14 +389,14 @@
             $("#inputFile").val('');
             $("#photos-post").hide();
             $("#post").prepend(post);
-            $("#submit-post").remoteAttr("disabled");
+            $("#submit-post").removeAttr("disabled");
           })
           .fail(function(error) {
-            $("#submit-post").remoteAttr("disabled");
+            $("#submit-post").removeAttr("disabled");
           });
         },
         error: function(result) {
-          $("#submit-post").remoteAttr("disabled");
+          $("#submit-post").removeAttr("disabled");
         },
         cache: false,
         contentType: false,
