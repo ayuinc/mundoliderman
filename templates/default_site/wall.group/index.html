@@ -230,7 +230,7 @@
     var data = $(form).serialize();
 
     $.post(url, data, function(result) {
-      post.fadeOut();
+      $(post).fadeOut();
     });
   });
 
