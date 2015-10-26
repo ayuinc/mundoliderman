@@ -223,8 +223,8 @@
   $(document).on('click', '.delete_post', function(e) {
     e.preventDefault();
     var img = $(this);
-    var form = img.parent().parent().parent()[0];
-    var post = $(form).parent().parent().parent().parent();
+    var form = img.parents()[1];
+    var post = $(form).parents()[4];
     
     var url = $(form).attr("action");
     var data = $(form).serialize();
