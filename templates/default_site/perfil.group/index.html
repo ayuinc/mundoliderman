@@ -65,7 +65,9 @@
                 <div class="post-1 post bg-white pl-28 pr-42 pt-28 pb-28 mt-42 ph-14-xs">
                   <div class="clearfix">
                     <div class="col-xs-2 pr-0 pl-7 pt-7-xs">
-                      <div class="img-perfil bg-img-block-center brp-100" style="background-image: url({site_url}frontend/app/assets/img/Carita.png)"></div>
+                      {exp:user:stats member_id="{post_user_id}"}
+                        <div class="img-perfil bg-img-block-center brp-100" style="background-image: url({if photo_filename == null}{site_url}frontend/app/assets/img/Herman_Profile_Pic.png{if:else}{photo_url}{photo_filename}{/if});"></div>
+                      {/exp:user:stats}
                     </div>
                     <div class="name col-xs-10 pl-0 pl-14-xs">
                       <div class="info-usuario pl-7 row">
