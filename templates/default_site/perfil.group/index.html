@@ -143,8 +143,8 @@
                           </div>
                           <div class="col-xs-10 lh-1 pl-0 pl-21-xs hidden-xs hidden-sm">
                             <span class="fz-14 text-success pr-7">{screen_name}</span>
-                            {exp:wall:comment_post_form form_id="" form_class=""}
-                            <textarea style="height:28px; border: 1px solid #e7e7e7;" name="comment" id="" onkeyup="auto_grow(this)" placeholder="Escribe un comentario..." class="w-100 mt-7 fz-14 light p-7 serif text-gray-darker book" min-length="1"></textarea>
+                            {exp:wall:comment_post_form form_id="" form_class="" post_id="{post_id}"}
+                            <textarea style="height:28px; border: 1px solid #e7e7e7;" name="comment" id="" onkeyup="auto_grow(this)" placeholder="Escribe un comentario..." class="write-comment w-100 mt-7 fz-14 light p-7 serif text-gray-darker book" min-length="1" max-length="512"></textarea>
                             <input type="submit" name="submit_comment_{post_id}" id="submit_comment" class="comment_submit hidden">
                             {/exp:wall:comment_post_form}
                           </div>
