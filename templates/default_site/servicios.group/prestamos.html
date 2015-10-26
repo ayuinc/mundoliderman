@@ -1,4 +1,4 @@
-{if logged_out}
+  {if logged_out}
   {redirect="login"}
 {/if}
 
@@ -46,7 +46,7 @@
                   <h3 class="text-gray-darker">Préstamos solicitados</h3>
                   <div id="prestamos-ws"> 
                   </div>
-                  <div class="solicitar-prestamo mt-42"> 
+                  <!--<div class="solicitar-prestamo mt-42"> 
                     {exp:freeform:entries form_name="solicitar_prestamo" status="pending" author_id="{segment_3}"}
                       <p>Ya solicitó un préstamo.</p>
                       {if freeform:no_results}
@@ -57,7 +57,7 @@
                         }
                       {/if}
                     {/exp:freeform:entries}
-                </div>
+                </div>-->
                 </div>
               </div>
             </div>
