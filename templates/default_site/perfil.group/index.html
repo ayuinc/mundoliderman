@@ -68,6 +68,15 @@
                       {exp:user:stats member_id="{post_user_id}"}
                         <div class="img-perfil bg-img-block-center brp-100" style="background-image: url({if photo_filename == null}{site_url}frontend/app/assets/img/Herman_Profile_Pic.png{if:else}{photo_url}{photo_filename}{/if});"></div>
                       {/exp:user:stats}
+                      {if member_premium == 'y' && member_prominent == 'y'}
+                        <img src="{site_url}frontend/app/assets/img/rec_ambos.png" alt="" class="rec-ambos absolute">
+                      {if:else}
+                        {if member_premium == 'y'}
+                          <img src="{site_url}frontend/app/assets/img/Rec_Trofeo.png" alt="" class="rec-trofeo absolute">
+                        {if:elseif member_prominent == 'y'}
+                          <img src="{site_url}frontend/app/assets/img/Rec_Estrella.png" alt="" class="rec-estrella absolute">
+                        {/if}
+                      {/if}
                     </div>
                     <div class="name col-xs-10 pl-0 pl-14-xs">
                       <div class="info-usuario pl-7 row">
@@ -81,15 +90,17 @@
                         <h5 class="text-gray-darker m-0 fz-22 lh-1-3">{post_screen_name}</h5>
                         <p class="fz-14 m-0 text-gray fz-14"><a href="">{post_status_date:relative past="%s ago"}</a></p>
                       </div>
-                      {exp:wall:delete_post_form form_id="" form_class=""}
                       <div class="col-xs-1 col-xs-offset-4 pt-7 text-right eraser relative pl-0">
-                        <img src="{site_url}frontend/app/assets/img/Tachito_Inac.png" alt="" class="inactivo">
-                        <div class="pr-14 activo desaparecer absolute bg-white hidden-xs hidden-sm">
-                          <img class="delete_post" src="{site_url}frontend/app/assets/img/Tachito_Act.png" alt="">
-                        </div>
-                        <input type="hidden" name="post_id" value="{post_id}">
-                        <input type="submit" name="submit" value="submit" id="submit_desktop" class="hidden">
-                      {/exp:wall:delete_post_form}
+                        {if member_group == 6}
+                          {exp:wall:delete_post_form form_id="" form_class=""}
+                            <img src="{site_url}frontend/app/assets/img/Tachito_Inac.png" alt="" class="inactivo">
+                            <div class="pr-14 activo desaparecer absolute bg-white hidden-xs hidden-sm">
+                              <img class="delete_post" src="{site_url}frontend/app/assets/img/Tachito_Act.png" alt="">
+                            </div>
+                            <input type="hidden" name="post_id" value="{post_id}">
+                            <input type="submit" name="submit" value="submit" id="submit_desktop" class="hidden">
+                          {/exp:wall:delete_post_form}
+                        {/if}
                       </div>
                     </div>
                     </div>
