@@ -1188,6 +1188,12 @@ body .video table, body .video table div#mediaspace_wrapper {
 body .colour29, body .colour31 {
   background-color: #78A4CA;
 }
+body .bg-diurno {
+  background-color: #51BA6E;
+}
+body .bg-nocturno {
+  background-color: #19572A;
+}
 body .bg-falto {
   background-color: #D1D3D4;
 }
@@ -1200,7 +1206,7 @@ body .bg-baja {
 body .bg-descanso {
   background-color: #173457;
 }
-body .bg-descanso2, body .colour58, body .colour60 {
+body .bg-descanso2 {
   background-color: #22517F;
 }
 body .bg-descanso3 {
@@ -1242,7 +1248,7 @@ body .bg-pagado {
 body .bg-pagado2 {
   background-color: #91F991;
 }
-body .bg-servicio {
+body .bg-servicio, body .colour18, body .colour20, body .colour22 {
   background-color: #FF853B;
 }
 body .bg-servicio2 {

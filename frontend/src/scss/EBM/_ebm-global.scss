@@ -51,9 +51,9 @@ body {
 		}
 	}
 
-	@for $i from 29 through 30 {
+	@for $i from 9 through 11 {
 		.#{$color}#{$i*2} {
-			@extend .bg-descanso2;
+			@extend .bg-servicio;
 		}
 	}
 
@@ -74,6 +74,12 @@ body {
 	// 	background-color: #CA6060;	
 	// }
 	/*COLORES TAREO*/
+		.bg-diurno {
+			background-color: #51BA6E;
+		}
+		.bg-nocturno {
+			background-color: #19572A;
+		}
 		.bg-falto {
 			background-color: #D1D3D4;
 		}
