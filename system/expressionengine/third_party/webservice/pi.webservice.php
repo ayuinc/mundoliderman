@@ -91,13 +91,14 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 		$meses_anticipacion = $currentMonth - ($mes + 1);
 		$url = "http://190.187.13.164/WSIntranet/Tareo.svc/ListarTareo/$codigoLiderman/$meses_anticipacion/$token";
 		$data = $this->EE->curl->get($url);
-		$tareo_description = $this->EE->db->select('code, description')->get('tareo')->result_array();
+		$tareo_description = $this->EE->db->select('code, description, bg_color')->get('tareo')->result_array();
 		$new_data = array();
 		$i = 0;
 		foreach ($data as $key => $value) {
 			if ($value["Mes"] == ($mes+1)) {
 				$new_data[$i] = $value;
-				$new_data[$i]["EventoDescripcion"] = $this->searchEvent($tareo_description, trim($value["Evento"]));
+				$new_data[$i]["EventoDescripcion"] = $this->getEventDescription(trim($value["Evento"]), $tareo_description);
+				$new_data[$i]["EventoBgColor"] = $this->getEventBgColor(trim($value["Evento"]), $tareo_description);
 				$i++;
 			}
 		}
@@ -311,7 +312,8 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 		return 'm_field_id_' . $field_id;
 	}
 
-	private function searchEvent($tareo = array(), $code) {
+	private function getEventDescription($code, $tareo = array()) 
+	{
 		$description = "";
 	    foreach ($tareo as $key => $value) {
 	        if ($value["code"] == $code) {
@@ -320,6 +322,18 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 	        }
 	    }
 	    return $description;
+	}
+
+	private function getEventBgColor($code, $tareo = array()) 
+	{
+		$bgColor = "";
+	    foreach ($tareo as $key => $value) {
+	        if ($value["code"] == $code) {
+	            $bgColor = $value["bg_color"];
+	            break;
+	        }
+	    }
+	    return $bgColor;
 	}
 
 	private function detalle_boleta() 
