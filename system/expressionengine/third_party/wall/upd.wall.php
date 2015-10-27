@@ -33,7 +33,8 @@ class Wall_upd {
 			$fields = array(
 				'id' => array('type' => 'int', 'unsigned' => TRUE, 'auto_increment' => TRUE),
 				'code' => array('type' => 'varchar', 'constraint' => '250', 'null' => FALSE),
-				'description' => array('type' => 'varchar', 'constraint' => '250', 'null' => FALSE)
+				'description' => array('type' => 'varchar', 'constraint' => '250', 'null' => FALSE),
+				'bg_color' => array('type' => 'varchar', 'constraint' => '250')
 			);
 
 			$this->EE->dbforge->add_field($fields);
@@ -43,23 +44,113 @@ class Wall_upd {
 			$data = array(
 				array(
 					'code' => 'BAJA',
-					'description' => 'Personal de Baja'
+					'description' => 'Personal de Baja',
+					'bg_color' => 'bg-baja'
 				),
 				array(
 					'code' => 'D',
-					'description' => 'Diurno'
+					'description' => 'Diurno',
+					'bg_color' => 'bg-diurno'
 				),
 				array(
-					'code' => 'F',
-					'description' => 'Falta'
+					'code' => 'FF',
+					'description' => 'Falto al Servicio',
+					'bg_color' => 'bg-falto'
 				),
 				array(
 					'code' => 'N',
-					'description' => 'Noche'
+					'description' => 'Noche',
+					'bg_color' => 'bg-nocturno'
 				),
 				array(
 					'code' => 'X',
-					'description' => 'Descanso'
+					'description' => 'Descanso por Cambio Operativo',
+					'bg_color' => 'bg-descanso3'
+				),
+				array(
+					'code' => 'ASERV',
+					'description' => 'Abandono de Servicio',
+					'bg_color' => 'bg-abandono'
+				),
+				array(
+					'code' => 'DM',
+					'description' => 'Descanso Médico',
+					'bg_color' => 'bg-descanso2'
+				),
+				array(
+					'code' => 'DESC',
+					'description' => 'Descanso',
+					'bg_color' => 'bg-descanso'
+				),
+				array(
+					'code' => 'SUBEN',
+					'description' => 'Subsidio Enfermedad',
+					'bg_color' => 'bg-subsidio'
+				),
+				array(
+					'code' => 'SUBMA',
+					'description' => 'Subsidio Maternidad',
+					'bg_color' => 'bg-subsidio2'
+				),
+				array(
+					'code' => 'VC',
+					'description' => 'Vacaciones',
+					'bg_color' => 'bg-vacaciones'
+				),
+				array(
+					'code' => 'VT',
+					'description' => 'Venta de Vacaciones',
+					'bg_color' => 'bg-venta'
+				),
+				array(
+					'code' => 'S',
+					'description' => 'Suspensión',
+					'bg_color' => 'bg-suspension'
+				),
+				array(
+					'code' => 'PT',
+					'description' => 'Traslado a Pulpo',
+					'bg_color' => 'bg-traslado'
+				),
+				array(
+					'code' => 'IP',
+					'description' => 'Incapacidad Permanente',
+					'bg_color' => 'bg-incapacidad'
+				),
+				array(
+					'code' => 'ITTSS',
+					'description' => 'Incapacidad Temporal Sin Subsidio',
+					'bg_color' => 'bg-incapacidad2'
+				),
+				array(
+					'code' => 'PN',
+					'description' => 'Permiso no Pagado',
+					'bg_color' => 'bg-pagado'
+				),
+				array(
+					'code' => 'PP',
+					'description' => 'Permiso Pagado',
+					'bg_color' => 'bg-pagado2'
+				),
+				array(
+					'code' => 'SF',
+					'description' => 'Servicio Especial Extraordinario',
+					'bg_color' => 'bg-servicio'
+				),
+				array(
+					'code' => 'SP',
+					'description' => 'Servicio Permanente',
+					'bg_color' => 'bg-servicio2'
+				),
+				array(
+					'code' => 'SNCUB',
+					'description' => 'Servicio No Cubierto',
+					'bg_color' => 'bg-servicio3'
+				),
+				array(
+					'code' => 'SDESA',
+					'description' => 'Servicio Desactivado',
+					'bg_color' => 'bg-servicio4'
 				)
 			);
 
