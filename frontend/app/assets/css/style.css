@@ -1026,8 +1026,6 @@
 */
 body {
   /*UTILITIES*/
-  /*CALENDAR COLORS*/
-  /*Descanso*/
   /*COLORES TAREO*/
   /*text-info(Asistencia diurna) y text-danger(Ausencia)*/
 }
@@ -1185,9 +1183,6 @@ body .fz-40 {
 body .video table, body .video table div#mediaspace_wrapper {
   height: 285px !important;
 }
-body .colour29, body .colour31 {
-  background-color: #78A4CA;
-}
 body .bg-diurno {
   background-color: #51BA6E;
 }
@@ -1197,7 +1192,7 @@ body .bg-nocturno {
 body .bg-falto {
   background-color: #D1D3D4;
 }
-body .bg-abandono, body .colour2, body .colour4 {
+body .bg-abandono {
   background-color: #887B96;
 }
 body .bg-baja {
@@ -1236,7 +1231,7 @@ body .bg-incapacidad {
 body .bg-incapacidad2 {
   background-color: #58595B;
 }
-body .bg-licencia, body .colour15, body .colour17 {
+body .bg-licencia {
   background-color: #A6DD4E;
 }
 body .bg-licencia2 {
@@ -1248,7 +1243,7 @@ body .bg-pagado {
 body .bg-pagado2 {
   background-color: #91F991;
 }
-body .bg-servicio, body .colour18, body .colour20, body .colour22 {
+body .bg-servicio {
   background-color: #FF853B;
 }
 body .bg-servicio2 {

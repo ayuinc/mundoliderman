@@ -36,43 +36,7 @@ body {
 	.video table, .video table div#mediaspace_wrapper {
 		height: 285px!important;
 	}
-	/*CALENDAR COLORS*/
-	$color: colour; 
 
-	@for $i from 1 through 2 {
-		.#{$color}#{$i*2} {
-			@extend .bg-abandono;
-		}
-	}
-
-	@for $i from 8 through 9 {
-		.#{$color}#{$i*2 - 1} {
-			@extend .bg-licencia;
-		}
-	}
-
-	@for $i from 9 through 11 {
-		.#{$color}#{$i*2} {
-			@extend .bg-servicio;
-		}
-	}
-
-	/*Descanso*/
-	.colour29, .colour31 {
-		background-color: #78A4CA; 
-	}
-	// .bg-blue {
-	// 	background-color: #78A4CA;
-	// }
-	// .bg-green {
-	// 	background-color: #C1E7CB;
-	// }
-	// .bg-green-dark {
-	// 	background-color: #A6BBAB;
-	// }
-	// .bg-red {
-	// 	background-color: #CA6060;	
-	// }
 	/*COLORES TAREO*/
 		.bg-diurno {
 			background-color: #51BA6E;
