@@ -101,11 +101,11 @@
             </div>
             <div class="col-xs-1 ph-0 border-right-gray-lighter text-center">
               <div class="border-bottom-gray-lighter book text-gray-dark">FEC.SAL.VAC.</div>
-              <span>{FechaInicioVacaciones format="%d/%m/%Y"}</span>
+              <span>{if FechaInicioVacaciones == null}00/00/0000{if:else}{FechaInicioVacaciones format="%d/%m/%Y"}{/if}</span>
             </div>
             <div class="col-xs-1 ph-0 text-center">
               <div class="border-bottom-gray-lighter book text-gray-dark">FEC.RET.VAC.</div>
-              <span>{FechaFinVacaciones format="%d/%m/%Y"}</span>
+              <span>{if FechaFinVacaciones == null}00/00/0000{if:else}{FechaFinVacaciones format="%d/%m/%Y"}{/if}</span>
             </div>
           </div>
           <div class="clearfix border-bottom-gray-lighter">
@@ -119,15 +119,15 @@
             </div>
             <div class="col-xs-2 ph-0 border-right-gray-lighter text-center">
               <div class="border-bottom-gray-lighter book text-gray-dark">HORAS EXTRAS 25%</div>
-              <span>{HorasExtras25}</span>
+              <span>{if HorasExtras25 == null}0{if:else}{HorasExtras25}{/if}</span>
             </div>
             <div class="col-xs-2 ph-0 border-right-gray-lighter text-center">
               <div class="border-bottom-gray-lighter book text-gray-dark">HORAS EXTRAS 35%</div>
-              <span>{HorasExtras35}</span>
+              <span>{if HorasExtras35 == null}0{if:else}{HorasExtras35}{/if}</span>
             </div>
             <div class="col-xs-3 ph-0 border-right-gray-lighter text-center">
               <div class="border-bottom-gray-lighter book text-gray-dark">HORAS EXTRAS 100%</div>
-              <span>{HorasExtras100}</span>
+              <span>{if HorasExtras100 == null}0{if:else}{HorasExtras100}{/if}</span>
             </div>
             <div class="col-xs-1 ph-0 border-right-gray-lighter text-center">
               <div class="border-bottom-gray-lighter book text-gray-dark">FECHA NAC</div>
@@ -152,7 +152,7 @@
               	 {if Haberes != null}
                  <ul class="clearfix pl-0 mb-0">
                    <li class="col-xs-6">{Haberes}</li>
-                   <li class="col-xs-3"></li>
+                   <li class="col-xs-3">{HorasHaberes}</li>
                    <li class="col-xs-3 monto-haberes">{MontoHaberes}</li>
                  </ul>
                  {/if}
