@@ -30,13 +30,13 @@
           {if post_category_id != 1}
           <div class="col-xs-4 text-center pt-7 hidden-xs hidden-sm">
             {exp:wall:solve_post_form form_id="" form_class="" post_id="{post_id}"}
-            <div class="aviso btn-aviso1 ml-42 bg-info {if post_is_solved != 'y'}hidden{/if}" data-solve-post-id="{post_id}" onclick="return solve(this);">
+            <div class="aviso btn-aviso1 ml-42 bg-info {if post_is_solved != 'y'}hidden{/if}" data-solve-post-id="{post_id}" onclick="return {if segment_4 == 6}return solve(this);{if:else}return false;{/if}">
               <div class="circle-green bg-white display-ib"></div>
               <p class="text-white thin m-0 display-ib pl-7 fz-14">Resuelto</p>
             </div>
             {/exp:wall:solve_post_form}
             {exp:wall:solve_post_form form_id="" form_class="" post_id="{post_id}"}
-            <div class="aviso btn-aviso2 ml-28 ph-7 bg-primary {if post_is_solved == 'y'}hidden{/if}" data-solve-post-id="{post_id}" onclick="return solve(this);">
+            <div class="aviso btn-aviso2 ml-28 ph-7 bg-primary {if post_is_solved == 'y'}hidden{/if}" data-solve-post-id="{post_id}" onclick="{if segment_4 == 6}return solve(this);{if:else}return false;{/if}">
               <div class="circle-green bg-white display-ib"></div>
               <p class="text-white thin m-0 display-ib pl-7 fz-14">No resuelto</p>                
             </div>
@@ -44,26 +44,28 @@
           </div>
           <div class="col-xs-2 text-center ph-0 pt-7 hidden-lg hidden-md">
             {exp:wall:solve_post_form form_id="" form_class="" post_id="{post_id}"}
-            <div class="aviso btn-aviso1 {if post_is_solved != 'y'}hidden{/if}" data-solve-post-id="{post_id}" onclick="return solve(this);">
+            <div class="aviso btn-aviso1 {if post_is_solved != 'y'}hidden{/if}" data-solve-post-id="{post_id}" onclick="{if segment_4 == 6}return solve(this);{if:else}return false;{/if}">
               <div class="circle-green bg-info display-ib"></div>
             </div>
             {/exp:wall:solve_post_form}
             {exp:wall:solve_post_form form_id="" form_class="" post_id="{post_id}"}
-            <div class="aviso btn-aviso2 mh-0 ph-0 {if post_is_solved == 'y'}hidden{/if}" data-solve-post-id="{post_id}" onclick="return solve(this);">
+            <div class="aviso btn-aviso2 mh-0 ph-0 {if post_is_solved == 'y'}hidden{/if}" data-solve-post-id="{post_id}" onclick="{if segment_4 == 6}return solve(this);{if:else}return false;{/if}">
               <div class="circle-green bg-primary display-ib"></div>
             </div>
             {/exp:wall:solve_post_form}
           </div>
           {/if}
-          {exp:wall:delete_post_form form_id="" form_class="pull-right"}
           <div class="col-xs-1 pt-7 text-right eraser relative pl-0">
-            <img src="{site_url}frontend/app/assets/img/Tachito_Inac.png" alt="" class="inactivo">
-            <div class="pr-14 activo desaparecer absolute bg-white hidden-xs hidden-sm">
-              <img class="delete_post" src="{site_url}frontend/app/assets/img/Tachito_Act.png" alt="">
-            </div>
-            <input type="hidden" name="post_id" value="{post_id}">
-            <input type="submit" name="submit" value="submit" id="submit_desktop" class="hidden">
-          {/exp:wall:delete_post_form}
+            {if segment_4 == 6}
+              {exp:wall:delete_post_form form_id="" form_class="pull-right"}
+                <img src="{site_url}frontend/app/assets/img/Tachito_Inac.png" alt="" class="inactivo">
+                <div class="pr-14 activo desaparecer absolute bg-white hidden-xs hidden-sm">
+                  <img class="delete_post" src="{site_url}frontend/app/assets/img/Tachito_Act.png" alt="">
+                </div>
+                <input type="hidden" name="post_id" value="{post_id}">
+                <input type="submit" name="submit" value="submit" id="submit_desktop" class="hidden">
+              {/exp:wall:delete_post_form}
+            {/if}
           </div>
         </div>
       </div>
