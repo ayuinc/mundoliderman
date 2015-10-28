@@ -1,14 +1,14 @@
 <header id="menu-desktop" class="site-menu bg-white">
   <div class="w-100 fixed bg-white">
     <div class="container-md minh-70 clearfix ph-0 pv-14 ph-21">
-      <div class="logo col-md-4 pl-0 hidden-xs hidden-sm">  
-        <a href="{site_url}wall/{member_id}">
-          <div class="col-md-9 text-left ph-0 pt-14">
+      <div class="logo col-md-3 pl-0 hidden-xs hidden-sm">  
+        <!-- <a href="{site_url}wall/{member_id}"> -->
+          <!-- <div class="col-md-9 text-left ph-0 pt-14">
             <h1 class="text-uppercase bold text-gray-darker m-0">Mundo liderman</h1>
-          </div>
-          <div class="col-md-2 ph-0">
+          </div> -->
+          <div class="ph-0">
             <a href="{site_url}wall/{member_id}">
-              <img src="{site_url}frontend/app/assets/img/Liderboy.png" alt="Mundo Liderman" class="liderboy">              
+              <img src="{site_url}frontend/app/assets/img/logomundoliderman.png" alt="Mundo Liderman" class="liderboy" style="width: 120px;">              
             </a>
           </div>
         </a>
@@ -19,18 +19,18 @@
           form:class="tool-bar-search-form mt-7 br-5"
         }
           <div class="input-group pr-0 ">
-            <input type="text" id="search_bar" class="form-control input-sm thin pl-14 borderless display-ib" placeholder="Buscar personas, consultas o preguntas..." name="keywords">
+            <input type="text" id="search_bar" class="form-control input-sm thin pl-14 borderless display-ib" placeholder="Buscar personas..." name="keywords">
             <input type="submit" value="Search" class="hidden">
             <img src="{site_url}frontend/app/assets/img/Icono_Buscar.png" alt="" class="display-ib">
           </div>
         {/exp:user:search}
       </div>
-      <div class="col-md-4 text-center pr-0 pl-28 hidden-xs hidden-sm">
-        <div class="float-left pr-14"><p class="mt-14 mb-0 border-right-gray-light pr-21 text-right"><a href="{embed:link}" class="text-gray book fz-14">{embed:acceso_directo}</a></p></div>
-        <div class="display-ib text-right ph-0">
-          <div class="clearfix display-ib">
+      <div class="col-md-5 text-center pr-0 pl-28 hidden-xs hidden-sm">
+        <div class="float-left pr-14 col-md-5 ph-0"><p class="mt-14 mb-0 border-right-gray-light pr-21 text-right"><a href="{embed:link}" class="text-gray book fz-14">{embed:acceso_directo}</a></p></div>
+        <div class="display-ib text-right ph-0 col-md-7">
+          <div class="clearfix pl-21">
             <p class="text-gray-dark m-0 mt-14 light float-left pr-0 fz-13">Hola, <span id="name" class="fz-12">{screen_name}</span></p>
-            <div class="perfil float-left" style="background-image: url({exp:member:custom_profile_data}{if photo_filename == null}{site_url}frontend/app/assets/img/Herman_Profile_Pic.png{if:else}{photo_url}{/if}{/exp:member:custom_profile_data})"></div>
+            <div class="perfil ml-21 display-ib" style="background-image: url({exp:member:custom_profile_data}{if photo_filename == null}{site_url}frontend/app/assets/img/Herman_Profile_Pic.png{if:else}{photo_url}{/if}{/exp:member:custom_profile_data})"></div>
           </div>
           <div class="dropdown herman-dropdown absolute display-ib">
             <button class="bg-white dropdown-toggle b-none outline-none text-gray-light book serif" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
