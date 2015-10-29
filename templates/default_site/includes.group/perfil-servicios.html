@@ -33,11 +33,11 @@
         <div class="col-md-4 col-xs-6 col-md-offset-0 col-xs-offset-3 pl-0 pl-21-xs text-left">
           <ul class="pl-0 thin fz-13 mb-0-xs">
               <div class="circulo-semaforo brp-100 display-ib mr-7 {if exp:webservice:semaforolidernet == 1}bg-info{if:else}bg-primary{/if}"></div>
-              <a href="{path='servicios/lidernet}/{member_id}" class="text-gray-dark">Lidernet</a>
+              <a href="{path='servicios/lidernet}/{member_id}" class="text-gray-dark semaforo">Lidernet</a>
             </li>
             <li>
               <div class="circulo-semaforo brp-100 display-ib mr-7 {if {exp:webservice:semaforoprestamo mes='{current_time format='%n'}'} == 1}bg-info{if:else}bg-primary{/if}"></div>
-              <a href="{path='servicios/prestamos}/{member_id}" class="text-gray-dark">Préstamos</a>
+              <a href="{path='servicios/prestamos}/{member_id}" class="text-gray-dark semaforo">Préstamos</a>
             </li>
           </ul>
         </div>
@@ -45,11 +45,11 @@
           <ul class="pl-0 thin fz-13 mb-0-xs">
             <li>
               <div class="circulo-semaforo brp-100 display-ib mr-7 {if {exp:webservice:semaforotareo mes='{current_time format='%n'}'} == 1}bg-info{if:else}bg-primary{/if}"></div>
-              <a href="{path='servicios/tareo}/{member_id}" class="text-gray-dark">Tareo</a>
+              <a href="{path='servicios/tareo}/{member_id}" class="text-gray-dark semaforo">Tareo</a>
             </li>
             <li>
               <div class="circulo-semaforo brp-100 display-ib mr-7 {if {exp:webservice:semaforolidercard mes='{current_time format='%n'}'} == 1}bg-info{if:else}bg-primary{/if}"></div>
-              <a href="{path='servicios/lidercard}/{member_id}" class="text-gray-dark">LiderCard</a>
+              <a href="{path='servicios/lidercard}/{member_id}" class="text-gray-dark semaforo">LiderCard</a>
             </li>
           </ul>
         </div>
@@ -57,7 +57,7 @@
           <ul class="pl-0 thin fz-13 mb-0-xs">
             <li>
               <div class="circulo-semaforo brp-100 display-ib mr-7 {if {exp:webservice:semaforocapacitaciones} == 1}bg-info{if:else}bg-primary{/if}"></div>
-              <a href="{path='servicios/capacitacion}/{member_id}" class="text-gray-dark">Capacitaciones</a>
+              <a href="{path='servicios/capacitacion}/{member_id}" class="text-gray-dark semaforo">Capacitaciones</a>
             </li>
           </ul>
         </div>
@@ -74,6 +74,12 @@
   if (member_search != current_member) {
     if (edit_profile != null) {
       edit_profile.classList.add("hidden");
+    }
+    var services = document.getElementsByClassName("semaforo");
+    if (services != null) {
+      for (var i = services.length - 1; i >= 0; i--) {
+        services[i].removeAttribute("href");
+      }
     }
   } 
   window.addEventListener("load", function() {
