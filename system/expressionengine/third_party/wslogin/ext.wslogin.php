@@ -284,7 +284,7 @@ class Wslogin_ext {
 				if (ee()->config->item('req_mbr_activation') == 'manual' OR
 					ee()->config->item('req_mbr_activation') == 'email')
 				{
-					$member_data['group_id'] = $profiles->row("group_id");
+					$member_data['group_id'] = isset($profiles->row("group_id")) ? $profiles->row("group_id") : ee()->config->item('default_member_group');
 				}
 
 				// Optional Fields
