@@ -23,7 +23,8 @@ class Wslogin_ext {
 	{
 		$this->settings = $settings;
 		$this->CI =& get_instance();
-		ee()->load->dbforge();
+		$this->EE =& get_instance();
+		$this->EE->load->dbforge();
 		$this->CI->load->library("curl");
 	}
 	// END
@@ -47,7 +48,110 @@ class Wslogin_ext {
 			'enabled' => 'y'
 		);
 
-		ee()->db->insert('extensions', $data);
+		$this->EE->db->insert('extensions', $data);
+
+		unset($data);
+
+		$fields = array(
+				'id' => array('type' => 'int', 'unsigned' => TRUE, 'auto_increment' => TRUE),
+				'code' => array('type' => 'varchar', 'constraint' => '250', 'null' => FALSE),
+				'description' => array('type' => 'varchar', 'constraint' => '250', 'null' => FALSE),
+				'group_id' => array('type' => 'int', 'unsigned' => TRUE, 'null' => FALSE)
+			);
+
+		$this->EE->dbforge->add_field($fields);
+		$this->EE->dbforge->add_key('id', TRUE);
+		$this->EE->dbforge->create_table('profiles');
+
+		$data = array(
+			array(
+				'code' => '001 01',
+				'description' => 'Tipo Persona - Mundo Liderman Liderman',
+				'group_id' => '7'
+			),
+			array(
+				'code' => '001 02',
+				'description' => 'Tipo Persona - Mundo Liderman Resguardo',
+				'group_id' => '8'
+			),
+			array(
+				'code' => '001 03',
+				'description' => 'Tipo Persona - Mundo Liderman Chateadoras',
+				'group_id' => '6'
+			),
+			array(
+				'code' => '001 04',
+				'description' => 'Tipo Persona - Mundo Liderman Sub Gerencia Comunicaciones',
+				'group_id' => '9'
+			),
+			array(
+				'code' => '001 05',
+				'description' => 'Tipo Persona - Mundo Liderman Ama Crece',
+				'group_id' => '10'
+			),
+			array(
+				'code' => '001 06',
+				'description' => 'Tipo Persona - Mundo Liderman Sub Gerencia GTH',
+				'group_id' => '11'
+			),
+			array(
+				'code' => '001 07',
+				'description' => 'Tipo Persona - Mundo Liderman Sub Gerencia de Operaciones',
+				'group_id' => '12'
+			),
+			array(
+				'code' => '001 08',
+				'description' => 'Tipo Persona - Gerencia de Operaciones',
+				'group_id' => '13'
+			),
+			array(
+				'code' => '001 09',
+				'description' => 'Tipo Persona - Mundo Liderman Lideres Zonales Lima',
+				'group_id' => '14'
+			),
+			array(
+				'code' => '001 10',
+				'description' => 'Tipo Persona - Mundo Liderman Lideres Zonales Provincias',
+				'group_id' => '15'
+			),
+			array(
+				'code' => '001 11',
+				'description' => 'Tipo Persona - Mundo Liderman Sistemas',
+				'group_id' => '16'
+			),
+			array(
+				'code' => '001 12',
+				'description' => 'Tipo Persona - Mundo Liderman Liderman Premium',
+				'group_id' => '17'
+			),
+			array(
+				'code' => '001 13',
+				'description' => 'Tipo Persona - Mundo Liderman Planillas',
+				'group_id' => '18'
+			),
+			array(
+				'code' => '001 14',
+				'description' => 'Tipo Persona - Mundo Liderman Centro de Control',
+				'group_id' => '19'
+			),
+			array(
+				'code' => '001 15',
+				'description' => 'Tipo Persona - Mundo Liderman Central de Agentes',
+				'group_id' => '20'
+			),
+			array(
+				'code' => '001 16',
+				'description' => 'Tipo Persona - Mundo Liderman Liderman Coordinador',
+				'group_id' => '21'
+			),
+			array(
+				'code' => '001 17',
+				'description' => 'Tipo Persona - Mundo Liderman Clientes',
+				'group_id' => '22'
+			)
+		);
+
+		$this->EE->db->insert_batch('profiles', $data);
 	}
 
 	/**
@@ -87,6 +191,8 @@ class Wslogin_ext {
 	{
 		ee()->db->where('class', __CLASS__);
 		ee()->db->delete('extensions');
+
+		$this->EE->dbforge->drop_table("profiles");
 	}
 
 	function ws_login() 
@@ -96,6 +202,7 @@ class Wslogin_ext {
 		$url = $this->host . "/WSIntranet/Autenticacion.svc/AutenticacionUsuario/$username/$password";
 		$data = $this->CI->curl->get($url);
 		$token = $data["TokenSeguridad"];
+		$employee_category = $data["CategoriaEmpleado"];
 		if ($token == null) {
 			// Retorna error
 			// return ee()->functions->redirect(ee()->functions->fetch_site_index());
@@ -169,12 +276,15 @@ class Wslogin_ext {
 					'timezone'		=> ee()->config->item('default_site_timezone')
 				);
 
+				$profiles = ee()->db->where("description", $employee_category)
+					 	 	->get("profiles");
+
 				// Set member group
 
 				if (ee()->config->item('req_mbr_activation') == 'manual' OR
 					ee()->config->item('req_mbr_activation') == 'email')
 				{
-					$member_data['group_id'] = ee()->config->item('default_member_group');
+					$member_data['group_id'] = $profiles->row("group_id");
 				}
 
 				// Optional Fields
