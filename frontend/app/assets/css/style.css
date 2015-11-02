@@ -2535,6 +2535,13 @@ input[type="submit"] {
     width: 30px !important;
   }
 
+  .registro .submit p {
+    line-height: 2;
+  }
+  .registro .submit img {
+    margin-bottom: -7px;
+  }
+
   /*REGISTRO FAN*/
   .caja-registro .liderboy {
     width: 50px !important;
