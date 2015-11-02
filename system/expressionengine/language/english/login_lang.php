@@ -7,65 +7,65 @@ $lang = array(
 //----------------------------
 
 'remember_me' =>
-'Auto log-in on future visits?',
+'Auto log-in en ingresos futuros?',
 
 'no_username' =>
-'The username field is required.',
+'El nombre de usuario es requerido.',
 
 'no_password' =>
-'The password field is required.',
+'La contraseña es requerida.',
 
 'no_email' =>
-'You must submit your email address.',
+'Debe enviar su correo electrónico.',
 
 'credential_missmatch' =>
-'Invalid username or password.',
+'Nombre de usuario y contraseña invalidos.',
 
 'multi_login_warning' =>
-'Someone is already logged in using this account.',
+'Alguien más esta logueado con tus credenciales en el sistema.',
 
 'return_to_login' =>
-'Return to login',
+'Regresar al login',
 
 'password_lockout_in_effect' =>
-'You are only permitted to make four login attempts every %d minute(s)',
+'Solo es permitido tener 4 oportunidades de ingresar cada %d minuto(s).',
 
 'unauthorized_request' =>
-'You are not authorized to perform this action',
+'No está autorizado a realizar esta acción.',
 
 'new_password_request' =>
-'New Password Request',
+'Solicitar nueva contraseña',
 
 'session_auto_timeout' =>
-'Your session has timed out due to inactivity',
+'Su sesión expiró.',
 
 //-----------------------------------
 // Reset Password
 //-----------------------------------
 
 'forgotten_password' =>
-'Reset Password',
+'Cambiar la contraseña',
 
 'no_reset_id' =>
-'The password reset token does not appear to be valid.  Please check the link you followed.',
+'El token no es válido. Revisar el que el hiperviculo compartido sea válido.',
 
 'id_not_found' =>
-'The code number you submitted was not found in the database.',
+'El código enviado no fue encontrado en la base de datos.',
 
 'password_changed' =>
-'Password Successfully Changed',
+'La contraseña fue cambiada exitosamente',
 
 'successfully_changed_password' =>
-'You have successfully changed your password.  Please login using your new password.',
+'La contraseña fue cambiada con éxito. Ingresar al sistema usando la nueva contraseña.',
 
 'new_password' =>
-'New Password',
+'Nueva contraseña',
 
 'new_password_confirm' =>
-'Confirm New Password',
+'Confirmar la contraseña',
 
 'enter_new_password' =>
-'Enter a New Password',
+'Ingrese una nueva contraseña',
 
 ''=>''
 );

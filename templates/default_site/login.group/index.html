@@ -54,25 +54,4 @@
 </div>
 
 {embed="includes/footer"}
-
-<script>
-  $(document).ready(function() {
-    function validar(e) {
-      var inputVal = String.fromCharCode(e.keyCode);
-      var mensaje = document.getElementById("mensaje");
-        var numericReg = /^[0-9\b]+$/;
-      if(numericReg.test(inputVal) && e.keyCode != 8) {
-        // mensaje.innerText = "No se puede ingresar numeros";
-          e.preventDefault();
-        }
-        else {
-          mensaje.innerText = "";;
-          return;
-        }
-    }
-    $('.usuario').keydown(function(e) {
-        validar(e);
-    });
-  });
-</script> 
 </html>

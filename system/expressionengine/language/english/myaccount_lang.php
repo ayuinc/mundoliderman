@@ -402,16 +402,16 @@ $lang = array(
 'Current Password',
 
 'invalid_email_address' =>
-'The email you submitted is not valid',
+'El correo electrónico que ingresó no es válido',
 
 'missing_username' =>
-'You must submit a username',
+'Debes ingresar un nombre de usuario',
 
 'invalid_characters_in_username' =>
-'Username contains illegal characters.',
+'El nombre de usuario contiene caracteres que no están permitidos',
 
 'missing_password' =>
-'You must submit a password',
+'Debes ingresar una contraseña',
 
 'missing_current_password' =>
 'In order to make changes you must submit the current password',
@@ -423,22 +423,22 @@ $lang = array(
 'Password must contain at least one uppercase character, one lowercase character and one number',
 
 'invalid_password' =>
-'The password you submitted was not correct',
+'La contraseña que ingresó no es correcta',
 
 'missing_email' =>
-'You must submit an email address',
+'Debes ingresar una dirección de correo electrónico',
 
 'banned_email' =>
-'The email address you submitted is banned',
+'La dirección de correo electrónico que se ha usado está bloqueada',
 
 'missmatched_passwords' =>
-'The password and password confirmation do not match',
+'La contraseña y la confirmación de la contraseña no son iguales',
 
 'username_too_short' =>
-'The username you submitted must be at least %x characters long',
+'El nombre de usuario debe tener al menos %x caracteres',
 
 'password_too_short' =>
-'The password you submitted must be at least %x characters long',
+'La contraseña debe tener al menos %x caracteres',
 
 'username_password_too_long' =>
 'Usernames and passwords cannot be over 32 characters in length',
@@ -450,10 +450,10 @@ $lang = array(
 'The screen name you chose is not available',
 
 'email_taken' =>
-'The email you chose is not available',
+'El correo electrónico que usted eligió no está disponible',
 
 'valid_user_email' =>
-'The email you chose is not valid',
+'La dirección de correo electrónico que usted eligió no es valido',
 
 'password_based_on_username' =>
 'The password cannot be based on the username',

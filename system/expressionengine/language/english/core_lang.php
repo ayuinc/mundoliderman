@@ -10,7 +10,7 @@ $lang = array(
 'No',
 
 'yes' =>
-'Yes',
+'Si',
 
 'on' =>
 'on',
@@ -19,10 +19,10 @@ $lang = array(
 'off',
 
 'first' =>
-'First',
+'Primero',
 
 'last' =>
-'Last',
+'Último',
 
 'enabled' =>
 'enabled',
@@ -31,73 +31,73 @@ $lang = array(
 'disabled',
 
 'back' =>
-'Back',
+'Atrás',
 
 'submit' =>
-'Submit',
+'Enviar',
 
 'update' =>
-'Update',
+'Actualizar',
 
 'thank_you' =>
-'Thank You!',
+'Gracias!',
 
 'page' =>
 'Page',
 
 'of' =>
-'of',
+'de',
 
 'by' =>
-'by',
+'por',
 
 'at' =>
-'at',
+'en',
 
 'dot' =>
-'dot',
+'punto',
 
 'and' =>
-'and',
+'y',
 
 'or' =>
-'or',
+'o',
 
 'id' =>
 'ID',
 
 'encoded_email' =>
-'(JavaScript must be enabled to view this email address)',
+'(Javascript debe ser habilitado para ver esta dirección de correo electrónico)',
 
 'search' =>
-'Search',
+'búsqueda',
 
 'system_off_msg' =>
-'This site is currently inactive.',
+'Este sitio se encuentra actualmente inactivo.',
 
 'not_authorized' =>
-'You are not authorized to perform this action',
+'Usted no está autorizado para realizar esta acción',
 
 'auto_redirection' =>
-'You will be redirected automatically in %x seconds',
+'Usted será redirigido automáticamente en %x segundos',
 
 'click_if_no_redirect' =>
-'Click here if you are not redirected automatically',
+'Haga clic aquí si usted no está redirigido',
 
 'return_to_previous' =>
-'Return to Previous Page',
+'Volver a la pagina anterior',
 
 'not_available' =>
-'Not available',
+'No disponible',
 
 'setting' =>
-'Setting',
+'ajuste',
 
 'preference' =>
-'Preference',
+'preferencia',
 
-'pag_first_link' => '&lsaquo; First',
-'pag_last_link' => 'Last &rsaquo;',
+'pag_first_link' => '&lsaquo; primero',
+'pag_last_link' => 'último &rsaquo;',
 
 //----------------------------
 // Errors
@@ -107,37 +107,37 @@ $lang = array(
 'Error',
 
 'generic_fatal_error' =>
-'Something has gone wrong and this URL cannot be processed at this time.',
+'Algo ha salido mal y este URL no puede ser procesado en este momento.',
 
 'invalid_url' =>
-'The URL you submitted is not valid.',
+'La URL que ha enviado no es válido.',
 
 'submission_error' =>
-'The form you submitted contained the following errors',
+'ATENCIÓN',
 
 'general_error' =>
-'The following errors were encountered',
+'Se encontraron los siguientes errores',
 
 'invalid_action' =>
-'The action you have requested is invalid.',
+'La acción que ha solicitado no es válido.',
 
 'csrf_token_expired' =>
-'This form has expired. Please refresh and try again.',
+'Esta forma ha expirado. Por favor regenere y vuelva a intentarlo.',
 
 'current_password_required' =>
-'Your current password is required.',
+'Se requiere su contraseña actual.',
 
 'current_password_incorrect' =>
-'Your current password was not submitted correctly.',
+'Su contraseña actual no se presentó correctamente.',
 
 'captcha_required' =>
-'You must submit the word that appears in the image',
+'Debe enviar la palabra que aparece en la imagen',
 
 'captcha_incorrect' =>
-'You did not submit the word exactly as it appears in the image',
+'El texto que ingresaste no es el mismo que el de la imagen. Por favor intenta nuevamente.',
 
 'nonexistent_page' =>
-'The page you requested was not found',
+'La página solicitada no fue encontrada',
 
 'unable_to_load_field_type' =>
 'Unable to load requested field type file:  %s.<br />
@@ -180,31 +180,31 @@ and email %s to report the link that generated this message.',
 //----------------------------
 
 'error_tag_syntax' =>
-'The following tag has a syntax error:',
+'La siguiente etiqueta tiene un error de sintaxis:',
 
 'error_fix_syntax' =>
-'Please correct the syntax in your template.',
+'Por favor, corrija la sintaxis en su plantilla.',
 
 'error_tag_module_processing' =>
-'The following tag cannot be processed:',
+'La siguiente etiqueta no puede ser procesada:',
 
 'error_fix_module_processing' =>
-'Please check that the \'%x\' module is installed and that \'%y\' is an available method of the module',
+'Por favor verifique que el \'%x\' módulo está instalado y que \'%y\' es un método disponible del módulo ',
 
 'template_loop' =>
-'You have caused a template loop due to improperly nested sub-templates (\'%s\' recursively called)',
+'Has causado un bucle de plantilla debido a la sub-plantillas incorrectamente anidados (\'%s\' recursiva llamada)',
 
 'template_load_order' =>
-'Template load order',
+'Orden de carga de plantilla',
 
 'error_multiple_layouts' =>
-'Multiple Layouts found, please ensure you only have one layout tag per template',
+'Múltiples diseños encontrados, por favor asegúrese de que sólo tiene una etiqueta de diseño por plantilla',
 
 'error_layout_too_late' =>
-'Plugin or module tag found before layout declaration. Please move the layout tag to the top of your template.',
+'Plugin o módulo tag found antes de la declaración de diseño. Por favor, mueva la etiqueta de diseño para la tapa de su plantilla.',
 
 'error_invalid_conditional' =>
-'You have an invalid conditional in your template. Please review your conditionals for an unclosed string, invalid operators, a missing }, or a missing {/if}.',
+'Usted tiene una condición no válida en su plantilla. Por favor, revise sus condicionales para una cadena sin cerrar, los operadores no válidos, un faltante}, o una falta {/if}.',
 
 'layout_contents_reserved' =>
 'The name "contents" is reserved for the template data and cannot be used as a layout variable (i.e. {layout:set name="contents"} or {layout="foo/bar" contents=""}).',
@@ -214,92 +214,92 @@ and email %s to report the link that generated this message.',
 //----------------------------
 
 'forgotten_email_sent' =>
-'If this email address is associated with an account, instructions for resetting your password have just been emailed to you.',
+'Si esta dirección de correo electrónico está asociada a una cuenta, instrucciones para restablecer su contraseña acaban de ser enviado por correo electrónico a usted.',
 
 'error_sending_email' =>
-'Unable to send email at this time.',
+'No se puede enviar correo electrónico en este momento.',
 
 'no_email_found' =>
-'The email address you submitted was not found in the database.',
+'La dirección de correo electrónico que ha enviado no se encontró en la base de datos.',
 
 'password_reset_flood_lock' =>
-'You have tried to reset your password too many times today. Please check your inbox and spam folders for previous requests, or contact the site administrator.',
+'Usted ha tratado de restablecer su contraseña demasiadas veces hoy. Por favor, compruebe sus carpetas de bandeja de entrada de spam y para las solicitudes anteriores, o póngase en contacto con el administrador del sitio.',
 
 'your_new_login_info' =>
-'Login information',
+'información de acceso',
 
 'password_has_been_reset' =>
-'Your password was reset and a new one has been emailed to you.',
+'Su contraseña se restableció y uno nuevo ha sido enviado por correo electrónico a usted.',
 
 //----------------------------
 // Date
 //----------------------------
 
 'singular' =>
-'one',
+'uno',
 
 'less_than' =>
-'less than',
+'menos que',
 
 'about' =>
-'about',
+'acerca de',
 
 'past' =>
-'%s ago',
+'%s atrás',
 
 'future' =>
-'in %s',
+'en %s',
 
 'ago' =>
-'%x ago',
+'%x atrás',
 
 'year' =>
-'year',
+'año',
 
 'years' =>
-'years',
+'añoss',
 
 'month' =>
-'month',
+'mes',
 
 'months' =>
-'months',
+'meses',
 
 'fortnight' =>
-'fortnight',
+'quincena',
 
 'fortnights' =>
-'fortnights',
+'quincenas',
 
 'week' =>
-'week',
+'semana',
 
 'weeks' =>
-'weeks',
+'semanas',
 
 'day' =>
-'day',
+'día',
 
 'days' =>
-'days',
+'días',
 
 'hour' =>
-'hour',
+'hora',
 
 'hours' =>
-'hours',
+'horass',
 
 'minute' =>
-'minute',
+'minuto',
 
 'minutes' =>
-'minutes',
+'minutoss',
 
 'second' =>
-'second',
+'segundo',
 
 'seconds' =>
-'seconds',
+'segundoss',
 
 'am' =>
 'am',
@@ -314,71 +314,71 @@ and email %s to report the link that generated this message.',
 'PM',
 
 'Sun' =>
-'Sun',
+'Dom',
 
 'Mon' =>
-'Mon',
+'Lun',
 
 'Tue' =>
-'Tue',
+'Mar',
 
 'Wed' =>
-'Wed',
+'Mie',
 
 'Thu' =>
-'Thu',
+'Jue',
 
 'Fri' =>
-'Fri',
+'Vie',
 
 'Sat' =>
-'Sat',
+'Sab',
 
 'Su' =>
-'S',
+'D',
 
 'Mo' =>
-'M',
+'L',
 
 'Tu' =>
-'T',
+'M',
 
 'We' =>
-'W',
+'M',
 
 'Th' =>
-'T',
+'J',
 
 'Fr' =>
-'F',
+'V',
 
 'Sa' =>
 'S',
 
 'Sunday' =>
-'Sunday',
+'Domingo',
 
 'Monday' =>
-'Monday',
+'Lunes',
 
 'Tuesday' =>
-'Tuesday',
+'Martes',
 
 'Wednesday' =>
-'Wednesday',
+'Miércoles',
 
 'Thursday' =>
-'Thursday',
+'Jueves',
 
 'Friday' =>
-'Friday',
+'Viernes',
 
 'Saturday' =>
-'Saturday',
+'Sabado',
 
 
 'Jan' =>
-'Jan',
+'Ene',
 
 'Feb' =>
 'Feb',
@@ -387,7 +387,7 @@ and email %s to report the link that generated this message.',
 'Mar',
 
 'Apr' =>
-'Apr',
+'Abr',
 
 'May' =>
 'May',
@@ -399,7 +399,7 @@ and email %s to report the link that generated this message.',
 'Jul',
 
 'Aug' =>
-'Aug',
+'Ago',
 
 'Sep' =>
 'Sep',
@@ -411,43 +411,43 @@ and email %s to report the link that generated this message.',
 'Nov',
 
 'Dec' =>
-'Dec',
+'Dic',
 
 'January' =>
-'January',
+'Enero',
 
 'February' =>
-'February',
+'Febrero',
 
 'March' =>
-'March',
+'Marzo',
 
 'April' =>
-'April',
+'Abril',
 
 'May_l' =>
-'May',
+'Mayo',
 
 'June' =>
-'June',
+'Junio',
 
 'July' =>
-'July',
+'Julio',
 
 'August' =>
-'August',
+'Agosto',
 
 'September' =>
-'September',
+'Septiembre',
 
 'October' =>
-'October',
+'Octubre',
 
 'November' =>
-'November',
+'Noviember',
 
 'December' =>
-'December',
+'Diciembre',
 
 
 'UM12'		=>	'(UTC -12:00) Baker/Howland Island',

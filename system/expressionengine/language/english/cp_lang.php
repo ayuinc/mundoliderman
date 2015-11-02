@@ -219,10 +219,10 @@ $lang = array(
 'CP Home',
 
 'username' =>
-'Username',
+'Nombre de Usuario',
 
 'password' =>
-'Password',
+'Contraseña',
 
 'logged_back_in'	=>
 'You are now logged back in!',
@@ -240,7 +240,7 @@ $lang = array(
 'User Guide',
 
 'logout' =>
-'Log-out',
+'Salir',
 
 'session_idle' =>
 'Idle session detected',
@@ -285,7 +285,7 @@ $lang = array(
 'INVALID LICENSE',
 
 'forgot_password' =>
-'Forgot your password?',
+'Olvidaste tu contraseña?',
 
 'e_no_css' =>
 'The requested CSS file could not be opened.',
@@ -324,13 +324,13 @@ $lang = array(
 'Indicates required fields',
 
 'login' =>
-'Login',
+'Ingresar',
 
 'forgotten_password' =>
-'Forgotten password',
+'Olvidé mi contraseña',
 
 'submit_email_address' =>
-'Submit your email address',
+'Ingresar tu correo electrónico',
 
 'click_to_edit' =>
 'Click to Edit',
@@ -361,22 +361,22 @@ $lang = array(
 //----------------------------
 
 'submit' =>
-'Submit',
+'Enviar',
 
 'preview' =>
 'Preview',
 
 'update' =>
-'Update',
+'Actualizar',
 
 'edit' =>
-'Edit',
+'Editar',
 
 'delete' =>
-'Delete',
+'Borrar',
 
 'save_changes' =>
-'Save changes',
+'Guardar los cambios',
 
 'save' =>
 'Save',
@@ -385,10 +385,10 @@ $lang = array(
 'Synchronize',
 
 'cancel' =>
-'Cancel',
+'Cancelar',
 
 'done' =>
-'Done',
+'Finalizar',
 
 //----------------------------
 // Log
@@ -419,7 +419,7 @@ $lang = array(
 'Cleared Log Files',
 
 'close' =>
-'Close',
+'Cerrar',
 
 //----------------------------
 // Common

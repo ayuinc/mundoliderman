@@ -24,58 +24,58 @@ $lang = array(
 'Display smiley images in entries.',
 
 'invalid_email_address' =>
-'You did not submit a valid email address',
+'El correo electrónico enviado no es válido',
 
 'disallowed_screen_chars' =>
-'Screen Name contains illegal characters',
+'Nombre de pantalla contiene caracteres no válidos',
 
 'return_to_forum' =>
 'Return to the forums',
 
 'settings_update' =>
-'Settings Update Form',
+'Ajustes Formulario de actualización',
 
 'your_current_un_pw' =>
-'Your existing username and password',
+'Su nombre de usuario y contraseña',
 
 'access_notice' =>
-'Important notice: The administrator has changed the access requirements for this site as follows:',
+'Aviso importante: El administrador ha cambiado los requisitos de acceso a este sitio de la siguiente manera:',
 
 'choose_new_un' =>
-'Please choose a new username',
+'Por favor, elija un nuevo nombre de usuario',
 
 'choose_new_pw' =>
-'Please choose a new password',
+'Por favor elige una contraseña nueva',
 
 'confirm_new_pw' =>
-'Confirm your new password',
+'Confirme su nueva contraseña',
 
 'existing_un' =>
-'Your existing username',
+'Tu nombre de usuario existente',
 
 'un_len' =>
-'Usernames must be at least %s characters in length',
+'Los nombres de usuario deben ser al menos %s caracteres de longitud',
 
 'pw_len' =>
-'Passwords must be at least %s characters in length',
+'Las contraseñas deben tener al menos %s caracteres de longitud',
 
 'yun_len' =>
-'Your username is currently %s characters long',
+'Su nombre de usuario es actualmente %s caracteres de largo',
 
 'ypw_len' =>
-'Your password is currently %s characters long',
+'Su contraseña es actualmente %s caracteres de largo',
 
 'existing_username' =>
-'Your Existing Username',
+'Tu nombre de usuario existente',
 
 'existing_password' =>
-'Your Current Password',
+'Tu contraseña actual',
 
 'all_fields_required' =>
-'You must submit all fields',
+'Usted debe presentar todos los campos',
 
 'invalid_existing_un_pw' =>
-'The existing username and/or password you submitted are not valid',
+'El nombre de usuario existente y/o la contraseña que indicó no son válidos',
 
 'unpw_updated' =>
 'Your settings have been updated.  You may now log-in.',
@@ -483,55 +483,55 @@ content associated with your account will also be deleted.',
 
 
 'mbr_form_empty' =>
-'You must submit your username and password',
+'Usted debe presentar su nombre de usuario y contraseña',
 
 'mbr_account_not_active' =>
-'Your membership account has not been activated yet.',
+'Tu cuenta de miembro no se ha activado todavía.',
 
 'mbr_you_are_logged_in' =>
-'You are now logged in.',
+'Ahora está conectado.',
 
 'mbr_you_are_logged_out' =>
-'You are now logged out.',
+'Ahora está desconectado.',
 
 'mbr_no_reset_id' =>
-'The password reset token does not appear to be valid.  Please check the link you followed.',
+'El testigo de restablecimiento de contraseña no parece ser válida. Por favor, consulte el enlace has seguido.',
 
 'mbr_id_not_found' =>
-'The code number you submitted was not found in the database.',
+'El número de código que ha enviado no se encontró en la base de datos.',
 
 'mbr_username' =>
-'Username',
+'Nombre de usuario',
 
 'mbr_password' =>
-'Password',
+'Contraseña',
 
 'mbr_submit' =>
-'Submit',
+'Enviar',
 
 'mbr_update' =>
-'Update',
+'Actualizar',
 
 'mbr_password_confirm' =>
-'Confirm Password',
+'Confirmar contraseña',
 
 'mbr_auto_login' =>
-'Auto-login on future visits',
+'Auto-login en futuras visitas',
 
 'mbr_show_name' =>
-'Show my name in the online users list',
+'Mostrar mi nombre en la lista de usuarios',
 
 'mbr_forgot_password' =>
-'Forgot your password?',
+'Olvidaste tu contraseña?',
 
 'mbr_email_address' =>
-'Email Address',
+'Dirección de correo electrónico',
 
 'mbr_email_confirm' =>
-'Confirm Email Address',
+'Confirmar El Correo',
 
 'mbr_your_email' =>
-'Your Email Address',
+'Tu correo electrónico',
 
 'mbr_email_short' =>
 'Email',
@@ -582,10 +582,10 @@ content associated with your account will also be deleted.',
 'Registration Complete',
 
 'mbr_registration_completed' =>
-'Your registration has been successfully completed.',
+'Su inscripción se ha realizado correctamente.',
 
 'mbr_admin_will_activate' =>
-'A site administrator will activate your account and notify you when it is ready for use.',
+'Un administrador del sitio se activará su cuenta y le notificaremos cuando está listo para su uso.',
 
 'mbr_membership_instructions_email' =>
 'You have just been sent an email containing membership activation instructions.',
@@ -706,7 +706,7 @@ We reserve the right to remove, edit, or move any messages for any reason.',
 'I agree to the terms of service',
 
 'mbr_terms_of_service_required' =>
-'You must click the \'agree to terms of service\' checkbox',
+'Debes aceptar \'los términos y condiciones\'',
 
 'mbr_emails_not_match' =>
 'The provided emails do not match',

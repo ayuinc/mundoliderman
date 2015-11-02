@@ -177,7 +177,7 @@ $lang = array(
 'Email addresses have been deleted',
 
 'ml_missing_email' =>
-'You must submit an email address',
+'Debes ingresar una dirección de correo electrónico',
 
 'ml_invalid_email' =>
 'Invalid email address',
