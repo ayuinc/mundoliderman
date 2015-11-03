@@ -291,9 +291,11 @@ $xxl-desktop: 1980px;
 				  	border-bottom-color: transparent!important;
 				  }
   			}
-  			.submit img {
-  			 @include transform(rotate(90deg));
-  			 width: 14px;
+  			.submit {
+					img {
+		  			@include transform(rotate(90deg));
+		  			width: 14px;
+	  			}
   			}
 			}
 		}
@@ -809,7 +811,7 @@ footer > div {
 .semaforo {
 	.col-md-1 {
 		position: relative;
-		top: 45px;
+		top: 23px!important;
 	}
 }
 .tareo {
@@ -1236,6 +1238,16 @@ input[type="submit"] {
 	}
 	.liderboy {
 		width: 30px!important;
+	}
+	.registro {
+		.submit {
+			p {
+				line-height: 2; 
+			}
+			img {
+				margin-bottom: -7px;
+			}
+		}
 	}
 
 	/*REGISTRO FAN*/

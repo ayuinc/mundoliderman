@@ -2072,7 +2072,7 @@ footer > div .lista p {
 
 .semaforo .col-md-1 {
   position: relative;
-  top: 45px;
+  top: 23px !important;
 }
 
 .tareo .btn-dropdown, .boleta .btn-dropdown {
@@ -2533,6 +2533,13 @@ input[type="submit"] {
 
   .liderboy {
     width: 30px !important;
+  }
+
+  .registro .submit p {
+    line-height: 2;
+  }
+  .registro .submit img {
+    margin-bottom: -7px;
   }
 
   /*REGISTRO FAN*/
