@@ -1,3 +1,11 @@
+{if logged_out}
+  {redirect="login"}
+{if:else}
+  {if member_id != segment_3}
+    {redirect="wall"}
+  {/if}
+{/if}
+
   {embed=includes/head titulo="Mundo Liderman - Lidermanía"}
   
   <div class="site-wrapper"> <!-- Body -->

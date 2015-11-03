@@ -1,3 +1,11 @@
+{if logged_out}
+  {redirect="login"}
+{if:else}
+  {if member_id != segment_3}
+    {redirect="wall"}
+  {/if}
+{/if}
+
 {embed=includes/head titulo="Mundoliderman - Estadística"}
 <link href="{site_url}frontend/app/assets/css/font-awesome.css" rel="stylesheet">
 <link href="{site_url}frontend/app/assets/css/jquery-ui.css" rel="stylesheet">
