@@ -25,10 +25,10 @@ $lang = array(
 'Último',
 
 'enabled' =>
-'enabled',
+'habilitado',
 
 'disabled' =>
-'disabled',
+'deshabilitado',
 
 'back' =>
 'Atrás',
@@ -43,7 +43,7 @@ $lang = array(
 'Gracias!',
 
 'page' =>
-'Page',
+'Página',
 
 'of' =>
 'de',
@@ -85,7 +85,7 @@ $lang = array(
 'Haga clic aquí si usted no está redirigido',
 
 'return_to_previous' =>
-'Volver a la pagina anterior',
+'Volver a la página anterior',
 
 'not_available' =>
 'No disponible',
@@ -119,10 +119,10 @@ $lang = array(
 'Se encontraron los siguientes errores',
 
 'invalid_action' =>
-'La acción que ha solicitado no es válido.',
+'La acción que ha solicitado no es válida.',
 
 'csrf_token_expired' =>
-'Esta forma ha expirado. Por favor regenere y vuelva a intentarlo.',
+'Este formulario ha expirado. Por favor regrese y vuelva a intentarlo.',
 
 'current_password_required' =>
 'Se requiere su contraseña actual.',
@@ -236,7 +236,7 @@ and email %s to report the link that generated this message.',
 //----------------------------
 
 'singular' =>
-'uno',
+'un',
 
 'less_than' =>
 'menos que',
@@ -257,7 +257,7 @@ and email %s to report the link that generated this message.',
 'año',
 
 'years' =>
-'añoss',
+'años',
 
 'month' =>
 'mes',
@@ -287,19 +287,19 @@ and email %s to report the link that generated this message.',
 'hora',
 
 'hours' =>
-'horass',
+'horas',
 
 'minute' =>
 'minuto',
 
 'minutes' =>
-'minutoss',
+'minutos',
 
 'second' =>
 'segundo',
 
 'seconds' =>
-'segundoss',
+'segundos',
 
 'am' =>
 'am',
@@ -444,7 +444,7 @@ and email %s to report the link that generated this message.',
 'Octubre',
 
 'November' =>
-'Noviember',
+'Noviembre',
 
 'December' =>
 'Diciembre',
