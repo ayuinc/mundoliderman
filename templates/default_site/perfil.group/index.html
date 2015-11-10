@@ -35,8 +35,8 @@
               <div id="error-message" class="absolute hidden-xs hidden-sm"></div>
               <div id="error-categoria" class="absolute hidden-xs hidden-sm"></div>
               {exp:wall:status_form return="wall" form_id="status_form" form_class="bg-success" enctype="multipart/form-data"}
-                <div class="bg-success text-right ph-21 ph-0-xs">
-                  <div class="select-style display-ib text-center">
+                <div class="contenedor-select bg-success text-right pl-21 ph-0-xs">
+                  <div class="select-style display-ib text-center ph-14">
                     <select name="status_category" id="status_category" class="ph-21-xs fz-14 text-white borderless light serif w-100 pt-7" style="background-image: url({site_url}frontend/app/assets/img/Flecha-para-abajo.png);">
                       {exp:status_category:all}
                         <option value="{category_id}" class="bg-success">{category_name}</option>
@@ -54,7 +54,7 @@
                   <span class="thin fz-14 pl-14 serif hidden-lg hidden-md">Subir imagen</span><!--movil-->
                   <input type="file" id="inputFile" name="status_image" class="upload" accept="image" /> 
                 </div>
-                <button type="submit" name="submit" class="btn bg-warning text-white text-hover-white fz-12 ph-21 ph-14-xs mv-7 absolute" style="border: 1px solid #e7e7e7;">
+                <button type="submit" name="submit" class="btn bg-primary text-white text-hover-white fz-12 ph-21 ph-14-xs mv-7 absolute" style="border: 1px solid #e7e7e7;">
                  PUBLICAR
                  <img src="{site_url}frontend/app/assets/img/Publicar_Dialogo.png" alt="" class="pl-14">
                 </button>

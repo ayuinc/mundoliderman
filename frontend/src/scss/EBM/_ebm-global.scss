@@ -648,6 +648,14 @@ input.upload {
 		}
 	}
 }
+.contenedor-select {
+	height: 40px;
+	.select-style { 
+		border: 1px solid #f94211;        
+    width: 230px;
+    height: 40px;
+	}
+}
 /*Deslizador de la radio*/
 .active-up {
 	@include transform(translateY(0));
@@ -657,7 +665,7 @@ input.upload {
 /*FOOTER*/
 footer > div {
 	position: fixed;
-	background-color: black;
+	background-color: black;   
   bottom: 0;
   @include transition(all .2s ease-in-out);
   @include transform(translateY(476px));

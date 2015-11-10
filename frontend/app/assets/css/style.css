@@ -1849,6 +1849,15 @@ input.upload {
   margin-bottom: 0;
 }
 
+.contenedor-select {
+  height: 40px;
+}
+.contenedor-select .select-style {
+  border: 1px solid #f94211;
+  width: 230px;
+  height: 40px;
+}
+
 /*Deslizador de la radio*/
 .active-up {
   -webkit-transform: translateY(0);
