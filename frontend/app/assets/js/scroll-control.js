@@ -20,7 +20,6 @@ $(document).ready(function(){
 		event.preventDefault();
 		$("footer > div").toggleClass("active-up");
 		$(".audio-video").toggleClass("hidden");
-		$(".audio-video").toggleClass("hidden");
 		$(".flecha-up").toggleClass("hidden");
 		$(".flecha-down").toggleClass("hidden");
 			/*FRAME VIDEO*/
