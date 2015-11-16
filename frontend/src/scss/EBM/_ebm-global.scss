@@ -656,6 +656,17 @@ input.upload {
     height: 40px;
 	}
 }
+
+/*LOADER*/
+#loader {
+	img {
+		width: 110px;
+		@include transition(all .2s ease-in-out);
+		display: none;
+	}
+}
+
+
 /*Deslizador de la radio*/
 .active-up {
 	@include transform(translateY(0));

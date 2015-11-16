@@ -1858,6 +1858,15 @@ input.upload {
   height: 40px;
 }
 
+/*LOADER*/
+#loader img {
+  width: 110px;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  display: none;
+}
+
 /*Deslizador de la radio*/
 .active-up {
   -webkit-transform: translateY(0);
