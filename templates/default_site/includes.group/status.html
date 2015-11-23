@@ -1,0 +1,158 @@
+{exp:wall:status limit="{embed:limit}" offset="{embed:offset}"}
+<div class="post-1 post bg-white ph-14 pt-28 pb-28 mt-42 relative">
+    <div class="clearfix">
+        <div class="col-xs-2 pr-0 pl-7 pt-7-xs">
+            {exp:user:stats member_id="{post_user_id}"}
+            <!--<div class="img-perfil bg-img-block-center brp-100" style="background-image: url({photo_url}{photo_filename})"></div>-->
+            <div class="img-perfil relative text-center bg-img-block-center brp-100" style="background-image: url({if photo_filename == null}{site_url}frontend/app/assets/img/Herman_Profile_Pic.png{if:else}{photo_url}{photo_filename}{/if}); z-index:1;"></div>
+            {/exp:user:stats}
+            {if member_premium == 'y' && member_prominent == 'y'}
+            <img src="{site_url}frontend/app/assets/img/rec_ambos.png" alt="" class="rec-ambos absolute">
+            {if:else}
+            {if member_premium == 'y'}
+            <img src="{site_url}frontend/app/assets/img/Rec_Trofeo.png" alt="" class="rec-trofeo absolute">
+            {if:elseif member_prominent == 'y'}
+            <img src="{site_url}frontend/app/assets/img/Rec_Estrella.png" alt="" class="rec-estrella absolute">
+            {/if}
+            {/if}
+        </div>
+        <div class="name col-xs-10 pl-0">
+            <div class="info-usuario pl-7 row">
+                <div class="col-md-7 hidden-xs hidden-sm">
+                    <span class="categoria text-uppercase fz-10 text-primary le-1-3">{post_category_name}</span>
+                    <h5 class="text-gray-darker m-0">{post_screen_name}</h5>
+                    <p class="fz-10 m-0 text-gray">{post_status_date:relative past="%s ago"}</p>
+                </div>
+                <div class="col-xs-8 hidden-lg hidden-md pl-35 pr-0-xs"><!--movil-->
+                    <span class="categoria text-uppercase fz-11 text-primary le-1-3">{post_category_name}</span>
+                    <h5 class="text-gray-darker m-0 fz-22 lh-1-3">{post_screen_name}</h5>
+                    <p class="fz-14 m-0 text-gray fz-14">{post_status_date:relative past="%s ago"}</p>
+                </div>
+                {if post_category_id != 1}
+                <div class="col-xs-4 text-center pt-7 hidden-xs hidden-sm">
+                    {exp:wall:solve_post_form form_id="" form_class="" post_id="{post_id}"}
+                    <div class="aviso btn-aviso1 ml-42 bg-info {if post_is_solved != 'y'}hidden{/if}" data-solve-post-id="{post_id}" onclick="{if member_group == 6}return solve(this);{if:else}return false;{/if}">
+                        <div class="circle-green bg-white display-ib"></div>
+                        <p class="text-white thin m-0 display-ib pl-7 fz-14">Resuelto</p>
+                    </div>
+                    {/exp:wall:solve_post_form}
+                    {exp:wall:solve_post_form form_id="" form_class="" post_id="{post_id}"}
+                    <div class="aviso btn-aviso2 ml-28 ph-7 bg-primary {if post_is_solved == 'y'}hidden{/if}" data-solve-post-id="{post_id}" onclick="{if member_group == 6}return solve(this);{if:else}return false;{/if}">
+                        <div class="circle-green bg-white display-ib"></div>
+                        <p class="text-white thin m-0 display-ib pl-7 fz-14">No resuelto</p>
+                    </div>
+                    {/exp:wall:solve_post_form}
+                </div>
+                <div class="col-xs-2 text-center ph-0 pt-7 hidden-lg hidden-md">
+                    {exp:wall:solve_post_form form_id="" form_class="" post_id="{post_id}"}
+                    <div class="aviso btn-aviso1 {if post_is_solved != 'y'}hidden{/if}" data-solve-post-id="{post_id}" onclick="{if member_group == 6}return solve(this);{if:else}return false;{/if}">
+                        <div class="circle-green bg-info display-ib"></div>
+                    </div>
+                    {/exp:wall:solve_post_form}
+                    {exp:wall:solve_post_form form_id="" form_class="" post_id="{post_id}"}
+                    <div class="aviso btn-aviso2 mh-0 ph-0 {if post_is_solved == 'y'}hidden{/if}" data-solve-post-id="{post_id}" onclick="{if member_group == 6}return solve(this);{if:else}return false;{/if}">
+                        <div class="circle-green bg-primary display-ib"></div>
+                    </div>
+                    {/exp:wall:solve_post_form}
+                </div>
+                {/if}
+                <div class="col-xs-1 pt-7 text-right eraser relative pl-0" style="float:right">
+                    {if member_group == 6}
+                    {exp:wall:delete_post_form form_id="" form_class="pull-right"}
+                    <img src="{site_url}frontend/app/assets/img/Tachito_Inac.png" alt="" class="inactivo">
+                    <div class="pr-14 pl-14-xs pr-0-xs activo desaparecer absolute bg-white">
+                        <img class="delete_post" src="{site_url}frontend/app/assets/img/Tachito_Act.png" alt="">
+                    </div>
+                    <input type="hidden" name="post_id" value="{post_id}">
+                    <input type="submit" name="submit" value="submit" id="submit_desktop" class="hidden">
+                    {/exp:wall:delete_post_form}
+                    {/if}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-10 col-md-offset-2 col-xs-12 pl-0 ph-0-xs">
+            <p class="parrafo pt-14 ph-7 text-gray-darker">{post_content}</p>
+            {if post_image_path}
+            <div class="img-publicacion w-100 ph-7 pt-14 text-center"><img src="{site_url}{post_image_path}" alt="" class="w-100"></div>
+            {/if}
+            <div class="clearfix ph-0 mh-7 thin text-gray pt-7 pb-7 mb-7 border-bottom-gray-lighter fz-12">
+                <ul class="col-xs-7 ph-0 mv-0">
+                    <li class="pr-7 display-ib">
+                        <a href="" class="btn-comentar text-not-underline hidden-xs hidden-sm">Comentar &nbsp</a>
+                        <a href="" class="btn-comentar text-not-underline fz-15 hidden-lg hidden-md">Comentar &nbsp</a><!--movil-->
+                        <img src="{site_url}frontend/app/assets/img/Icono_Comentar.png" alt="">
+                    </li>
+                    {exp:wall:like_post_form form_id="" form_class="display-ib" post_id="{post_id}" member_id="{member_id}"}
+                    <li class="display-ib pl-7 like-container">
+                        <a href="" class="like text-not-underline hidden-xs hidden-sm">Me gusta &nbsp</a>
+                        <a href="" class="like text-not-underline fz-15 hidden-lg hidden-md">Me gusta &nbsp</a><!--movil-->
+                        <img src="{site_url}frontend/app/assets/img/corazon_02.png" alt="" class="img-like">
+                        <img src="{site_url}frontend/app/assets/img/corazon_01.png" alt="" class="img-like hidden">
+                    </li>
+                    {/exp:wall:like_post_form}
+                </ul>
+                <ul class="col-xs-5 ph-0 mv-0 text-right">
+                    <li class="display-ib">
+                        <a href="" class="contador-like text-not-underline hidden-xs hidden-sm"><span class="like_counter" data-like-post-id="{post_id}">{exp:wall:like_count post_id="{post_id}"}</span> &nbsp</a>
+                        <a href="" class="contador-like text-not-underline fz-15 hidden-lg hidden-md"><span class="like_counter" data-like-post-id="{post_id}">{exp:wall:like_count post_id="{post_id}"}</span> &nbsp</a><!--movil-->
+                        <img src="{site_url}frontend/app/assets/img/Icono_Corazon.png" alt="">
+                    </li>
+                    <li class="display-ib pl-7">
+                        <a href="" class="comment text-not-underline hidden-xs hidden-sm">&nbsp <span class="comment_counter" data-comment-post-id="{post_id}">{exp:wall:comment_count post_id="{post_id}"}</span> comentarios &nbsp</a>
+                        <a href="" class="comment text-not-underline fz-15 hidden-lg hidden-md">&nbsp <span class="comment_counter" data-comment-post-id="{post_id}">{exp:wall:comment_count post_id="{post_id}"}</span> comentarios &nbsp</a><!--movil-->
+                    </li>
+                </ul>
+            </div>
+            <div class="comentar scroll-down hidden">
+                <div class="area-respuesta pt-7 pb-7 pb-0-xs pt-35-xs clearfix hidden relative">
+                    <div class="col-xs-2 pr-0">
+                        <div class="img-respuesta bg-img-block-center brp-100" style="background-image: url({exp:member:custom_profile_data}{if photo_filename == null}{site_url}frontend/app/assets/img/Carita.png{if:else}{photo_url}{/if}{/exp:member:custom_profile_data})"></div>
+                    </div>
+                    <div class="col-xs-10 lh-1 pl-0 pl-21-xs hidden-xs hidden-sm">
+                        <span class="fz-14 text-success pr-7">{screen_name}</span>
+                        {exp:wall:comment_post_form form_id="" form_class="" post_id="{post_id}"}
+                        <textarea name="comment" onkeyup="auto_grow(this)" placeholder="Escribe un comentario..." class="write-comment w-100 mt-7 fz-14 light p-7 serif text-gray-darker book" min-length="1" max-length="512"></textarea>
+                        <input type="submit" name="submit_comment_{post_id}" id="submit_comment" class="comment_submit hidden">
+                        {/exp:wall:comment_post_form}
+                    </div>
+                    <div class="col-xs-10 lh-1 pl-0 pl-21-xs hidden-lg hidden-md">
+                        <span class="fz-20 text-success pr-7">{screen_name}</span>
+                        <textarea name="comment" id="" onkeyup="auto_grow(this)" placeholder="Escribe un comentario..." class="w-100 mt-7 fz-18 light p-7 serif text-gray-darker book" max-length="512" min-length="1"></textarea>
+                    </div>
+                </div>
+                <div class="enter-responsive text-right relative hidden-lg hidden-md" style="right:15px"><img src="{site_url}frontend/app/assets/img/flecha_naranja.png" alt="" style="cursor:pointer"></div>
+                <div class="comment-container" data-comment-container-post-id="{post_id}">
+                    {exp:wall:comment post_id="{post_id}"}
+                    <div class="clearfix conteiner-answer pv-7">
+                        <div class="col-xs-2 pr-0">
+                            <div class="img-respuesta bg-img-block-center brp-100" style="background-image: url({exp:member:custom_profile_data member_id='{comment_member_id}'}{if photo_filename == null}{site_url}frontend/app/assets/img/Carita.png{if:else}{photo_url}{/if}{/exp:member:custom_profile_data})"></div>
+                        </div>
+                        <div class="col-xs-10 lh-1 pl-0 pl-21-xs">
+                            <span class="fz-14 text-success pr-7">{comment_screen_name}</span>
+                            <img src="{site_url}frontend/app/assets/img/forward.png" alt="" class="display-ib">
+                            <span class="text-gray fz-10 light pl-7">{comment_date:relative past="%s ago"}</span>
+                            {if member_group == 6}
+                            {exp:wall:delete_comment_form form_id="" form_class="" post_id="{comment_post_id}" comment_id="{comment_id}"}
+                            <span class="delete-comment hidden-xs col-md-offset-3 fz-35 light opacity">&times;</span>
+                            {/exp:wall:delete_comment_form}
+                            {/if}
+                            <p class="fz-14 pt-7 mb-0 pb-7 parrafo">{comment}</p>
+                        </div>
+
+                        <div class="cuadro-respuesta clearfix pt-21 ph-0 hidden col-md-10 col-md-offset-2 col-xs-12 hidden-xs hidden-sm">
+                            <div class="col-xs-2 pr-0">
+                                <div class="img-respuesta bg-img-block-center brp-100" style="background-image: url({exp:member:custom_profile_data member_id='{comment_member_id}'}{if photo_filename == null}{site_url}frontend/app/assets/img/Carita.png{if:else}{photo_url}{/if}{/exp:member:custom_profile_data})"></div>
+                            </div>
+                            <div class="col-xs-10 pl-0 pl-21-xs">
+                                <span class="fz-14 text-success pr-7">{screen_name}</span>
+                                <textarea name="text" id="" onkeyup="auto_grow(this)" placeholder="Escribe una respuesta..." class="w-100 mt-7 fz-14 light ph-7 serif text-gray-darker book"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    {/exp:wall:comment}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/exp:wall:status}
