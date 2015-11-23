@@ -269,7 +269,8 @@ class Wall {
 		$member_id = $this->EE->TMPL->fetch_param("member_id");
 		$post_id = $this->EE->TMPL->fetch_param("post_id", 0);
 
-		$limit = isset($this->EE->config->item("status_limit")) ? $this->EE->config->item("status_limit") : 5;
+		$status_limit = $this->EE->config->item("status_limit");
+		$limit = isset($status_limit) ? $status_limit : 5;
 		$offset = $limit * $offset;
 
 		$this->EE->db->select("ws.id as post_id, ws.member_id as post_user_id, m.screen_name as post_screen_name, m.username as post_username,
