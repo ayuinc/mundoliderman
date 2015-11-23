@@ -223,6 +223,7 @@ class Wslogin_ext {
 			$this->getCustomMemberFields();
 
 			if ($query->num_rows() > 0) {
+				var_dump($data);exit;
 				$member_id = $query->row("member_id");
 				$member_salt = $query->row("salt");
 				$member_password = $query->row("password");
@@ -251,6 +252,7 @@ class Wslogin_ext {
 			} else {
 				ee()->load->helper('security');
 				$hash = ee()->auth->hash_password($password);
+				$space_position = strpos(strval($data["Nombres"]), ' ', 1);
 				// Assign the base query data
 				$member_data = array(
 					'username'		=> $username,
@@ -260,7 +262,7 @@ class Wslogin_ext {
 					'unique_id'		=> ee()->functions->random('encrypt'),
 					'join_date'		=> ee()->localize->now,
 					'email'			=> $data["Correo"],
-					'screen_name'	=> substr(strval($data["Nombres"]), 0, strpos(strval($data["Nombres"]), ' ', 1)),
+					'screen_name'	=> ($space_position > 0) ? substr(strval($data["Nombres"]), 0, $space_position) : strval($data["Nombres"]),
 					'url'			=> prep_url(ee()->input->post('url')),
 					'location'		=> ee()->input->post('location'),
 
