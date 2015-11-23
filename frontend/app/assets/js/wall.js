@@ -80,3 +80,11 @@ $(document).on('keypress', '.write-comment', function(e){
     });
   }
 });
+
+$(document).on('click', '.comment', function(e){
+  e.preventDefault();
+  var $scroll_down = $(this).parents().eq(3).find(".scroll-down");
+  var $area_respuesta = $(this).parents().eq(3).find(".area-respuesta");
+  $scroll_down.toggleClass("hidden");
+  $area_respuesta.addClass("hidden");
+});

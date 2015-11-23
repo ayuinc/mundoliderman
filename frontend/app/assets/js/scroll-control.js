@@ -1,10 +1,5 @@
 $(document).ready(function(){
 	/*RESPUESTAS Y COMENTARIOS*/
-	$(".comment").click(function(event){
-		event.preventDefault();
-		$(".scroll-down").toggleClass("hidden");
-		$(".area-respuesta").addClass("hidden");
-	});	
 	$(".responder").click(function(event){
 		event.preventDefault();
 		var target = $(event.target);
