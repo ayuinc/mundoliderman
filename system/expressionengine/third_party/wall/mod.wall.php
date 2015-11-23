@@ -265,10 +265,12 @@ class Wall {
 
 	public function status()
 	{
-		$limit = $this->EE->TMPL->fetch_param("limit", 10);
 		$offset = $this->EE->TMPL->fetch_param("offset", 1);
 		$member_id = $this->EE->TMPL->fetch_param("member_id");
 		$post_id = $this->EE->TMPL->fetch_param("post_id", 0);
+
+		$limit = isset($this->EE->config->item("status_limit")) ? $this->EE->config->item("status_limit") : 5;
+		$offset = $limit * $offset;
 
 		$this->EE->db->select("ws.id as post_id, ws.member_id as post_user_id, m.screen_name as post_screen_name, m.username as post_username,
 										ws.category_id as post_category_id, wsc.name as post_category_name, ws.content as post_content,

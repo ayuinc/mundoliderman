@@ -1,14 +1,14 @@
 $(function() {
-    var offset = 0;
+    var offset = 1;
     $(window).scroll(function() {
         if ($(document).height() - ($(window).scrollTop() + $(window).height()) <= 5 ) {
             $.ajax({
-                url: '{site_url}wall/status/' + (offset + 20),
+                url: '{site_url}wall/status/' + offset,
                 method: 'get',
                 success: function(response) {
                     if (response.length > 0) {
                         $("#post").append(response);
-                        offset = offset + 20;
+                        offset += 1;
                     }
                 },
                 error: function(error) {
