@@ -1,6 +1,7 @@
 <?php
 // prevent the server from timing out
 set_time_limit(0);
+date_default_timezone_set('America/Lima');
 
 // include the web sockets server script (the server is started at the far bottom of this file)
 require 'PHPWebSocket.php';
@@ -63,6 +64,6 @@ $Server->bind('open', 'wsOnOpen');
 $Server->bind('close', 'wsOnClose');
 // for other computers to connect, you will probably need to change this to your LAN IP or external IP,
 // alternatively use: gethostbyaddr(gethostbyname($_SERVER['SERVER_NAME']))
-$Server->wsStartServer('192.168.1.19', 9300);
+$Server->wsStartServer('dev.laboratoria.la', 9300);
 
 ?>

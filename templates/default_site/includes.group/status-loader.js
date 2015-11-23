@@ -9,7 +9,7 @@ $(function() {
                     if (response.length > 0) {
                         $("#post").append(response);
                         offset += 1;
-                    }
+	            }
                 },
                 error: function(error) {
                     console.log(error);
