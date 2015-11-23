@@ -1,6 +1,6 @@
+{exp:channel:entries channel="alertas" dynamic="no"}
 <div class="alerta bg-primary p-7 text-white pv-14-xs">
 	<div class="container-md pr-0 pl-21 ph-14-xs clearfix">
-		{exp:channel:entries channel="alertas" dynamic="no"}
         <div class="col-xs-11 ph-0 lh-1 pv-7">
         	<img src="{site_url}frontend/app/assets/img/Icono_Atencion.png" alt="" class="hidden-xs hidden-sm">
           <span class="m-0 pl-7 light fz-14 hidden-xs hidden-sm">{alerta_descripcion}</span>
@@ -9,7 +9,7 @@
           </div>
           <span class="col-xs-10 m-0 pl-7 lh-1-5 light fz-17 hidden-lg hidden-md">{alerta_descripcion}</span>
         </div>
-        {/exp:channel:entries}
         <div id="close-banner" class="col-xs-1 text-right ph-0"><span class="fz-30 lh-1" style="cursor:pointer">&times;</span></div>
 	</div>
 </div>
+{/exp:channel:entries}
