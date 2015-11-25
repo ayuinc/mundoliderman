@@ -1,16 +1,16 @@
 {exp:channel:entries dynamic="no" entry_id="{segment_3}"}
 <div class="ph-14 fz-16">
-  {if ama_crece_imagen != null}
-  	<img src="{ama_crece_imagen}" alt="{title}">
+  {if lidermania_imagen != null}
+  	<img src="{lidermania_imagen}" alt="{title}">
   {/if}
-  {if ama_crece_contenido != null}
-  	{ama_crece_contenido}
+  {if lidermania_contenido != null}
+  	{lidermania_contenido}
   {/if}
-  {if ama_crece_video != null}
-  	<iframe width="520" height="315" src="{lidernet_video}" frameborder="0" allowfullscreen></iframe>
+  {if lidermania_video != null}
+  	<iframe width="520" height="315" src="https://www.youtube.com/embed/{lidermania_video}" frameborder="0" allowfullscreen></iframe>
   {/if}
   <div class="text-right">
-    <a href="" class="back text-primary text-hover-primary pl-7 fz-12 hidden-xs hidden-sm" data-cat-id="{categories}{category_id}{/categories}">&larr; Regresar</a>
+    <a href="" class="back text-primary text-hover-primary pl-7 fz-12 hidden-xs hidden-sm" data-cat-id="{categories}{if parent_id != 0 || category_id == 18}{category_id}{/if}{/categories}">&larr; Regresar</a>
   </div>
 </div>
 {/exp:channel:entries}
