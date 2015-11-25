@@ -210,7 +210,6 @@ class Wslogin_ext {
 		}
 		else {
 			// Almacena el token y debería guardar y/o actualizar la data del usuario en la base de datos con la del web service
-			//var_dump(sha1($password));exit();
 			ee()->load->library("auth");
 			ee()->load->helper("url_helper");
 			/*$query = ee()->db->select('member_id, group_id, username, screen_name')
@@ -223,7 +222,6 @@ class Wslogin_ext {
 			$this->getCustomMemberFields();
 
 			if ($query->num_rows() > 0) {
-				var_dump($data);exit;
 				$member_id = $query->row("member_id");
 				$member_salt = $query->row("salt");
 				$member_password = $query->row("password");
