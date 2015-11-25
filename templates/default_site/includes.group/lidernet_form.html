@@ -1,0 +1,10 @@
+{exp:freeform:form
+	form_id="{embed:formulario_id}"
+	return= "servicios/lidernet/{segment_3}"
+}
+	{freeform:all_form_fields}
+	  <dt><label>{freeform:field_label}</label></dt>
+	  <dd>{freeform:field_output}</dd>
+	{/freeform:all_form_fields}
+	<p>{freeform:submit attr:value="Enviar"}</p>
+{/exp:freeform:form}

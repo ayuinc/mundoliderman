@@ -1,4 +1,4 @@
-{exp:channel:entries channel="lidernet" limit="1" dynamic="no" year="{segment_4}" month="{segment_5}"}
+{exp:channel:entries channel="lidernet" limit="1" dynamic="off" year="{segment_4}" month="{segment_5}"}
   <div class="texto pb-7 text-justify">
     <h3 class="bold text-gray">{title}</h3>
     <div class="img-articulo w-100 text-center pt-14">
@@ -14,10 +14,7 @@
     {if formulario_id != null}
       {exp:freeform:entries form_id="{formulario_id}" status="pending" author_id="{segment_3}"}
         {if freeform:no_results}
-          {exp:freeform:composer
-            form_id="{formulario_id}"
-            return= "servicios/lidernet/{segment_3}"
-          }
+          {embed="includes/lidernet_form" formulario_id="{formulario_id}"}
         {/if}
       {/exp:freeform:entries}
     {/if}
