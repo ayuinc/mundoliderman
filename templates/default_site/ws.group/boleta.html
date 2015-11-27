@@ -1,4 +1,6 @@
-<div class="clearfix">
+<h3 class="text-gray-darker pt-35 fz-23 lh-1-5 pt-14-xs">Resultados de la boleta de pago del mes de <span id="currentMonth"></span> de <span id="currentYear"></span></h3>
+<div id="cabecera_boleta" class="clearfix">
+	<div class="clearfix">
 	<ul class="col-md-5 ph-0 pt-21 mb-0">
 	{exp:webservice:boleta periodo="{segment_3}" miembro="{segment_4}"}
 		<li class="clearfix border-bottom-gray-lighter">
@@ -99,22 +101,8 @@
 	  <p class="col-md-3"><span id="total-aportaciones"></span></p>
 	</li>
 </ul>
-
-<script>
-	function calcTotal (amountClass, totalId) {
-		var montos = document.getElementsByClassName(amountClass);
-		var total = 0;
-		for (var i = 0; i < montos.length; i++) {
-			if (montos[i].innerText == undefined || montos[i].innerText == "") { montos[i].innerText = "0.0" };
-			var monto = montos[i].innerText = montos[i].innerText.replace(',','.');
-			console.log(monto);
-			total += parseFloat(monto);
-			console.log(total);
-		};
-		document.getElementById(totalId).innerText = parseFloat(total.toFixed(2));
-	}
-	calcTotal("monto-haberes", "total-haberes");
-	calcTotal("monto-descuentos", "total-descuentos");
-	calcTotal("monto-aportaciones", "total-aportaciones");
-	document.getElementById("neto").innerText = (parseFloat(document.getElementById("total-haberes").innerText) - parseFloat(document.getElementById("total-descuentos").innerText)).toFixed(2);
-</script>
+</div>
+<div class="total clearfix hidden-xs hidden-sm ph-21 mt-42">
+  <h4 class="text-gray-darker light col-md-9 fz-20 mv-0 pv-14">Neto a Pagar</h4>
+  <h4 class="text-gray-darker light col-md-3 fz-20 mv-0 pv-14"><span id="neto"></span></h4>
+</div>
