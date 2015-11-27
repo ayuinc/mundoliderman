@@ -24,7 +24,8 @@
                 </select>
               </div>
             </div>
-            <textarea id="wall_status" name="wall_status" class="form-control outline-none serif fz-18 borderless br-none pv-14 ph-14" onkeyup="auto_grow(this)" placeholder="Chatea aquí..." min-length="1" max-length="512"></textarea>
+            <textarea id="wall_status_format" class="form-control outline-none serif fz-18 borderless br-none pv-14 ph-14" onkeyup="auto_grow(this)" placeholder="Chatea aquí..." min-length="1" max-length="512"></textarea>
+            <input type="text" id="wall_status" name="wall_status" class="hidden" min-length="1" max-length="512"></textarea>
             <div class="container-photos bg-white" style="">
               <div id='photos-post' class='relative'><img src='{site_url}frontend/app/assets/img/ex_rojo.png' class='close-image close-display absolute' style='z-index:10000'></div>
             </div>
@@ -94,7 +95,7 @@
         if (urls.length == 0) return text;
         var text_formated = '';
         urls.forEach(function(url) {
-          text_formated = text.replace(url, '<a href="' + url + '" target="_blank">' + url + '</a>');
+          text_formated = text.replace(url, '<a href="' + (url.indexOf('http') ? '//' + url : url) + '" target="_blank">' + url + '</a>');
         });
         return text_formated;
       }
@@ -138,7 +139,7 @@
     $("#status_form").submit(function(e) {
       e.preventDefault();
       $("#submit-post").attr("disabled", true);
-      var friends_status = $("#wall_status").val();
+      var friends_status = $("#wall_status_format").val();
       var status_category = $("#status_category").val();
       if (status_category == 0) {
         $('#error-categoria').html('<img src="{site_url}frontend/app/assets/img/categoria2.png">');
@@ -176,6 +177,7 @@
           })
           .done(function(post) {
             $("#wall_status").val('');
+            $("#wall_status_format").val('');
             $("#status_category").val('0');
             $("#photos-post").css('background-image', "url('')");
             $("#inputFile").val('');
