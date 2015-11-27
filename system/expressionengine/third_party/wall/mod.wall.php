@@ -265,13 +265,15 @@ class Wall {
 
 	public function status()
 	{
-		$offset = $this->EE->TMPL->fetch_param("offset", 1);
+		$offset = $this->EE->TMPL->fetch_param("offset", -1);
 		$member_id = $this->EE->TMPL->fetch_param("member_id");
 		$post_id = $this->EE->TMPL->fetch_param("post_id", 0);
 
-		$status_limit = $this->EE->config->item("status_limit");
-		$limit = isset($status_limit) ? $status_limit : 5;
-		$offset = $limit * $offset;
+		if ($offset != -1) {
+			$status_limit = $this->EE->config->item("status_limit");
+			$limit = isset($status_limit) ? $status_limit : 5;
+			$offset = $limit * $offset;
+		}
 
 		$this->EE->db->select("ws.id as post_id, ws.member_id as post_user_id, m.screen_name as post_screen_name, m.username as post_username,
 										ws.category_id as post_category_id, wsc.name as post_category_name, ws.content as post_content,
@@ -291,7 +293,13 @@ class Wall {
 			$this->EE->db->where("ws.id", $post_id);
 		}
 
-		$query = $this->EE->db->order_by("ws.status_date", "desc")->limit($limit, $offset)->get();
+		$this->EE->db->order_by("ws.status_date", "desc");
+
+		if ($offset != -1) {
+			$this->EE->db->limit($limit, $offset);
+		}
+
+		$query = $this->EE->db->get();
 
 		if ($query->num_rows() == 0) {
 			return $this->EE->TMPL->no_results;

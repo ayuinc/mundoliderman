@@ -59,9 +59,7 @@
 <script src="{site_url}frontend/app/assets/js/aviso-control.js"></script>
 <script src="{site_url}frontend/app/assets/js/textarea-control.js"></script>
 <script src="{site_url}frontend/app/assets/js/publish.js"></script>
-<script src="{site_url}includes/status-loader"></script>
 <script>
-    /*PREVISUALIZACION IMAGEN*/
       function setImageFromInputFile(inputImage, imageContainer) {
         if (inputImage.files) {
           var file = inputImage.files[0];
@@ -73,6 +71,32 @@
             }
           };
         };
+      }
+      function findUrls( text ) {
+          var source = (text || '').toString();
+          var urlArray = [];
+          var url;
+          var matchArray;
+
+          // Regular expression to find FTP, HTTP(S) and email URLs.
+          var regexToken = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
+
+          // Iterate through any URLs in the text.
+          while( (matchArray = regexToken.exec( source )) !== null )
+          {
+              var token = matchArray[0];
+              urlArray.push( token );
+          }
+
+          return urlArray;
+      }
+      function replaceLinks( text, urls ) {
+        if (urls.length == 0) return text;
+        var text_formated = '';
+        urls.forEach(function(url) {
+          text_formated = text.replace(url, '<a href="' + url + '" target="_blank">' + url + '</a>');
+        });
+        return text_formated;
       }
       $("#inputFile").change(function() {
         if ($(this).val()) {
@@ -95,6 +119,7 @@
 <script src="{site_url}frontend/app/assets/js/smooth-scroll.js"></script>
 <script src="{site_url}frontend/app/assets/js/fancywebsocket.js"></script>
 <script src="{site_url}frontend/app/assets/js/wall.js"></script>
+<script src="{site_url}includes/status-loader"></script>
 <script>
   var Server;
 
@@ -128,17 +153,21 @@
         return;
       } else {
         $("#error-message").empty();
-      };
+      }
       var form = $(this);
       var url = form.attr("action");
-      var data = form.serialize();
+      var urls = findUrls(friends_status);
+      var post_formatted = replaceLinks(friends_status, urls);
+      $("#wall_status").val(post_formatted);
       var formData = new FormData(form[0]);
-
       $.ajax({
         url: url,
         type: 'POST',
         data: formData,
         async: false,
+        beforeSend: function() {
+          $("#loader").fadeIn();
+        },
         success: function(result) {
           send(result);
           $.ajax({
@@ -153,13 +182,16 @@
             $("#photos-post").hide();
             $("#post").prepend(post);
             $("#submit-post").removeAttr("disabled");
+            $("#loader").fadeOut();
           })
           .fail(function(error) {
             $("#submit-post").removeAttr("disabled");
+            $("#loader").fadeOut();
           });
         },
         error: function(result) {
           $("#submit-post").removeAttr("disabled");
+          $("#loader").fadeOut();
         },
         cache: false,
         contentType: false,
