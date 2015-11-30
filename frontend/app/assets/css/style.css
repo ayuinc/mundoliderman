@@ -2258,6 +2258,13 @@ footer > div .lista p {
   margin-left: 83%;
 }
 
+.img-boleta-impresa {
+  position: absolute;
+  width: 125px;
+  top: -125px;
+  left: 50px;
+}
+
 /*PR├ëSTAMOS*/
 .prestamos h3 {
   font-size: 26px;
