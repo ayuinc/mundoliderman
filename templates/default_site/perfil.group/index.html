@@ -36,7 +36,7 @@
               <div id="error-categoria" class="absolute hidden-xs hidden-sm"></div>
               {exp:wall:status_form return="wall" form_id="status_form" form_class="bg-success" enctype="multipart/form-data"}
                 <div class="contenedor-select bg-success text-right pl-21 ph-0-xs">
-                  <div class="select-style display-ib text-center ph-14">
+                  <div class="select-style bg-primary display-ib text-center ph-14">
                     <select name="status_category" id="status_category" class="ph-21-xs fz-14 text-white borderless light serif w-100 pt-7" style="background-image: url({site_url}frontend/app/assets/img/Flecha-para-abajo.png);">
                       {exp:status_category:all}
                         <option value="{category_id}" class="bg-success">{category_name}</option>
