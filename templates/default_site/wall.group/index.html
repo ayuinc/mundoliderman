@@ -99,44 +99,32 @@
         });
         return text_formated;
       }
-      $("#inputFile").change(function() {
-        if ($(this).val()) {
-          $(".container-photos").addClass("pt-7 pb-21 pl-21");
-          $("#photos-post").attr("style", "border: 1px solid #e7e7e7; width:120px; height:120px; background-size:cover; background-position:center; z-index:1");
-          $(".close-image").addClass("btn-block");
-          $(".close-image").removeClass("close-display");
-          setImageFromInputFile(this, "photos-post");
-          $("#photos-post").show();
-        }
-      });
-      $(".close-image").on("click", function(){
-        $("#photos-post").css('background-image', "url('')");
-        $("#inputFile").val('');
-        $("#photos-post").hide();
-        $(".close-image").removeClass("btn-block");
-        $(".close-image").addClass("close-display");
-      });
 </script>
 <script src="{site_url}frontend/app/assets/js/smooth-scroll.js"></script>
 <script src="{site_url}frontend/app/assets/js/fancywebsocket.js"></script>
+<script src="{site_url}js/status-loader"></script>
+<script src="{site_url}js/socket"></script>
 <script src="{site_url}frontend/app/assets/js/wall.js"></script>
-<script src="{site_url}includes/status-loader"></script>
-<script>
-  var Server;
-
-  function log( text ) {
-    console.log(text);
-  }
-
-  function send( text ) {
-    Server.send( 'message', text );
-  }
-
-  $(document).ready(function() {
-    log('Connecting...');
-    Server = new FancyWebSocket('ws://52.20.3.133:9300');
-
-    $("#status_form").submit(function(e) {
+<script type="text/javascript">
+  $(function() {
+    $("#inputFile").on('change', function() {
+      if ($(this).val()) {
+        $(".container-photos").addClass("pt-7 pb-21 pl-21");
+        $("#photos-post").attr("style", "border: 1px solid #e7e7e7; width:120px; height:120px; background-size:cover; background-position:center; z-index:1");
+        $(".close-image").addClass("btn-block");
+        $(".close-image").removeClass("close-display");
+        setImageFromInputFile(this, "photos-post");
+        $("#photos-post").show();
+      }
+    });
+    $(".close-image").on('click', function(){
+      $("#photos-post").css('background-image', "url('')");
+      $("#inputFile").val('');
+      $("#photos-post").hide();
+      $(".close-image").removeClass("btn-block");
+      $(".close-image").addClass("close-display");
+    });
+    $("#status_form").on('submit', function(e) {
       e.preventDefault();
       $("#submit-post").attr("disabled", true);
       var friends_status = $("#wall_status_format").val();
@@ -169,29 +157,32 @@
         beforeSend: function() {
           $("#loader").fadeIn();
         },
-        success: function(result) {
-          send(result);
-          $.ajax({
-            method: 'GET',
-            url: '{site_url}wall/new_post/' + result + '/{member_group}'
-          })
-          .done(function(post) {
-            $("#wall_status").val('');
-            $("#wall_status_format").val('');
-            $("#status_category").val('0');
-            $("#photos-post").css('background-image', "url('')");
-            $("#inputFile").val('');
-            $("#photos-post").hide();
-            $("#post").prepend(post);
-            $("#submit-post").removeAttr("disabled");
-            $("#loader").fadeOut();
-          })
-          .fail(function(error) {
-            $("#submit-post").removeAttr("disabled");
-            $("#loader").fadeOut();
-          });
+        success: function(data) {
+          var response = JSON.parse(data);
+          if (response.result == 'success') {
+            send(response);
+            $.ajax({
+              method: 'GET',
+              url: '{site_url}wall/new_post/' + response.post_id + '/{member_group}'
+            })
+            .done(function(post) {
+              $("#wall_status").val('');
+              $("#wall_status_format").val('');
+              $("#status_category").val('0');
+              $("#photos-post").css('background-image', "url('')");
+              $("#inputFile").val('');
+              $("#photos-post").hide();
+              $("#post").prepend(post);
+              $("#submit-post").removeAttr("disabled");
+              $("#loader").fadeOut();
+            })
+            .fail(function(error) {
+              $("#submit-post").removeAttr("disabled");
+              $("#loader").fadeOut();
+            });
+          }
         },
-        error: function(result) {
+        error: function(data) {
           $("#submit-post").removeAttr("disabled");
           $("#loader").fadeOut();
         },
@@ -200,39 +191,6 @@
         processData: false
       });
     });
-    /*$('#message').keypress(function(e) {
-      if ( e.keyCode == 13 && this.value ) {
-        log( 'You: ' + this.value );
-        send( this.value );
-
-        $(this).val('');
-      }
-    });*/
-
-    //Let the user know we're connected
-    Server.bind('open', function() {
-      log( "Connected." );
-    });
-
-    //OH NOES! Disconnection occurred.
-    Server.bind('close', function( data ) {
-      log( "Disconnected." );
-    });
-
-    //Log any messages sent from server
-    Server.bind('message', function( payload ) {
-      $.ajax({
-        method: 'GET',
-        url: '{site_url}wall/new_post/' + payload + '/{member_group}'
-      })
-      .done(function(post) {
-        $("#new_post").prepend(post);
-        $("#new_post_count").text($("#new_post").find(".post-1").length);
-        $("#alert-publication").fadeIn().delay(5000).fadeOut();
-      });
-    });
-
-    Server.connect();
   });
 </script>
 </html>

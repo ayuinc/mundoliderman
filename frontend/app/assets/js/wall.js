@@ -68,6 +68,7 @@ $(document).on('keypress', '.write-comment', function(e){
 
     $.post(url, data, function(result) {
       var comment_data = JSON.parse(result);
+      send(comment_data);
       $.ajax({
         method: "GET",
         url: url + "wall/new_comment/" + comment_data.comment_id

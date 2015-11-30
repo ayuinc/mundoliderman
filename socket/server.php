@@ -65,10 +65,6 @@ $Server->bind('open', 'wsOnOpen');
 $Server->bind('close', 'wsOnClose');
 // for other computers to connect, you will probably need to change this to your LAN IP or external IP,
 // alternatively use: 
-//$ip = $_SERVER['HTTP_HOST'];
-//$ip = gethostbyaddr(gethostbyname($_SERVER['SERVER_NAME']));
-//$ip = 'mundoliderman.radiourbe.pe';
-//$ip = '52.20.3.133';
 $ip = '10.0.0.5';
 $Server->wsStartServer($ip, 9300);
 

@@ -314,12 +314,6 @@ class Wall {
 	{
 		$post_id = $this->EE->TMPL->fetch_param('post_id', 0);
 		$comment_id = $this->EE->TMPL->fetch_param('comment_id', 0);
-		/*$sql = "SELECT wc.post_id as comment_post_id, wc.comment_member_id, wc.comment, wc.comment_date,
-				m.screen_name as comment_screen_name, m.username as comment_username
-				from exp_wall_comment wc
-				inner join exp_members m on wc.comment_member_id = m.member_id
-				where post_id = $post_id
-				order by wc.comment_date asc";*/
 		$this->EE->db->select("wc.id as comment_id, wc.post_id as comment_post_id, wc.comment_member_id, wc.comment, wc.comment_date,
 							   m.screen_name as comment_screen_name, m.username as comment_username")
 					 ->from("wall_comment wc")
@@ -349,44 +343,49 @@ class Wall {
 
 	public function wall_post()
 	{
-		$member_id = $this->EE->session->userdata("member_id");
-		$category_id = $this->EE->input->post("status_category", TRUE);
-		$post_content = $this->EE->input->post("wall_status", TRUE);
-		$post_date = $this->EE->localize->now;
-
-		$post_data = array(
-			"member_id" => $member_id,
-			"category_id" => $category_id,
-			"content" => $post_content,
-			"status_date" => $post_date,
-			"active" => "y"
+		$response = array(
+			'result' => 'success',
+			'action' => 'status'
 		);
-		
-		$this->EE->db->insert("wall_status", $post_data);
-		$post_id = $this->EE->db->insert_id();
+		try {
+			$member_id = $this->EE->session->userdata("member_id");
+			$category_id = $this->EE->input->post("status_category", TRUE);
+			$post_content = $this->EE->input->post("wall_status", TRUE);
+			$post_date = $this->EE->localize->now;
 
-		$upload_config['upload_path']          = $this->EE->config->item("server_path") . $this->EE->config->item("status_image_path");
-        $upload_config['allowed_types']        = 'gif|jpg|png';
+			$post_data = array(
+				"member_id" => $member_id,
+				"category_id" => $category_id,
+				"content" => $post_content,
+				"status_date" => $post_date,
+				"active" => "y"
+			);
+			
+			$this->EE->db->insert("wall_status", $post_data);
+			$post_id = $this->EE->db->insert_id();
 
-        $this->EE->load->library('upload', $upload_config);
-        if ( ! $this->EE->upload->do_upload("status_image"))
-        {
-                $error = array('error' => $this->EE->upload->display_errors());
-        }
-        else
-        {
-        		$image_path = $this->EE->config->item("status_image_path") . $this->EE->upload->data("file_name")["file_name"];
-                $image_data = array(
-                	"image_path" => $image_path
-                );
-                $this->EE->db->where("id", $post_id);
-                $this->EE->db->update("wall_status", $image_data);
-        }
-        echo $post_id;
-        /*
-        $return = $this->_prep_return();
-        return $this->EE->functions->redirect($return);
-        */
+			$upload_config['upload_path']          = $this->EE->config->item("server_path") . $this->EE->config->item("status_image_path");
+	        $upload_config['allowed_types']        = 'gif|jpg|png';
+
+	        $this->EE->load->library('upload', $upload_config);
+	        if ( ! $this->EE->upload->do_upload("status_image"))
+	        {
+	            $error = array('error' => $this->EE->upload->display_errors());
+	        }
+	        else
+	        {
+	        	$image_path = $this->EE->config->item("status_image_path") . $this->EE->upload->data("file_name")["file_name"];
+	            $image_data = array(
+	            	"image_path" => $image_path
+	            );
+	            $this->EE->db->where("id", $post_id);
+	            $this->EE->db->update("wall_status", $image_data);
+	        }	
+	        $response['post_id'] = $post_id;
+		} catch (Exception $e) {
+			$response['result'] = 'fail';
+		}
+        echo json_encode($response);
 	}
 
 	public function delete_post() 
@@ -402,26 +401,34 @@ class Wall {
 
 	public function comment_post()
 	{
-		$post_id = $this->EE->input->post("post_id");
-		$comment_member_id = $this->EE->session->userdata("member_id");
-		$comment = $this->EE->input->post("comment");
-		$comment_date = $this->EE->localize->now;
-
-		$data = array(
-			"post_id" => $post_id,
-			"comment_member_id" => $comment_member_id,
-			"comment" => $comment,
-			"comment_date" => $comment_date
+		$response = array(
+			'result' => 'success',
+			'action' => 'comment'
 		);
+		try {
+			$post_id = $this->EE->input->post("post_id");
+			$comment_member_id = $this->EE->session->userdata("member_id");
+			$comment = $this->EE->input->post("comment");
+			$comment_date = $this->EE->localize->now;
 
-		$this->EE->db->insert("wall_comment", $data);
-		$comment_post_id = $this->EE->db->insert_id();
+			$data = array(
+				"post_id" => $post_id,
+				"comment_member_id" => $comment_member_id,
+				"comment" => $comment,
+				"comment_date" => $comment_date
+			);
 
-		echo json_encode(array(
-			"post_id" => $post_id,
-			"comment_id" => $comment_post_id,
-			"total" => $this->total_comment($post_id)
-		));
+			$this->EE->db->insert("wall_comment", $data);
+			$comment_post_id = $this->EE->db->insert_id();
+
+			$response["post_id"] = $post_id;
+			$response["comment_id"] = $comment_post_id;
+			$response["total"] = $this->total_comment($post_id);
+		} catch (Exception $e) {
+			$response["result"] = 'fail';
+		}
+
+		echo json_encode($response);
 	}
 
 	public function delete_comment()
