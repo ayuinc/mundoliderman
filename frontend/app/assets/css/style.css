@@ -1401,6 +1401,132 @@ main {
 /*
 	Media queries
 */
+/*EFECTO DE CARGA WALL*/
+.loading-status:before,
+.loading-status:after,
+.loading-status {
+  border-radius: 50%;
+  width: 2.5em;
+  height: 2.5em;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation: load7 1.8s infinite ease-in-out;
+  animation: load7 1.8s infinite ease-in-out;
+}
+
+.loading-status {
+  font-size: 10px;
+  margin: 80px auto;
+  position: relative;
+  text-indent: -9999em;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+
+.loading-status:before {
+  left: -3.5em;
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+
+.loading-status:after {
+  left: 3.5em;
+}
+
+.loading-status:before,
+.loading-status:after {
+  content: '';
+  position: absolute;
+  top: 0;
+}
+
+@-webkit-keyframes load7 {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 2.5em 0 -1.3em #f94211;
+  }
+  40% {
+    box-shadow: 0 2.5em 0 0 #f94211;
+  }
+}
+@keyframes load7 {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 2.5em 0 -1.3em #f94211;
+  }
+  40% {
+    box-shadow: 0 2.5em 0 0 #f94211;
+  }
+}
+/*ANIMACI├ôN BOLETA*/
+.loader,
+.loader:before,
+.loader:after {
+  background: #f94211;
+  -webkit-animation: load1 1s infinite ease-in-out;
+  animation: load1 1s infinite ease-in-out;
+  width: 1em;
+  height: 4em;
+}
+
+.loader:before,
+.loader:after {
+  position: absolute;
+  top: 0;
+  content: '';
+}
+
+.loader:before {
+  left: -1.5em;
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+
+.loader {
+  text-indent: -9999em;
+  margin: 88px auto;
+  position: relative;
+  font-size: 11px;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+
+.loader:after {
+  left: 1.5em;
+}
+
+@-webkit-keyframes load1 {
+  0%,
+    80%,
+    100% {
+    box-shadow: 0 0 #f94211;
+    height: 4em;
+  }
+  40% {
+    box-shadow: 0 -2em #f94211;
+    height: 5em;
+  }
+}
+@keyframes load1 {
+  0%,
+    80%,
+    100% {
+    box-shadow: 0 0 #f94211;
+    height: 4em;
+  }
+  40% {
+    box-shadow: 0 -2em #f94211;
+    height: 5em;
+  }
+}
 /*REGISTRO*/
 .registro {
   margin-bottom: 0 !important;

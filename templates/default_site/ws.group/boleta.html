@@ -1,48 +1,48 @@
-<h3 class="text-gray-darker pt-35 fz-23 lh-1-5 pt-14-xs">Resultados de la boleta de pago del mes de <span id="currentMonth"></span> de <span id="currentYear"></span></h3>
+<h3 class="text-gray-darker pt-35 fz-20 lh-1-5 pt-14-xs">Resultados de la boleta de pago del mes de <span id="currentMonth"></span> de <span id="currentYear"></span></h3>
 <div id="cabecera_boleta" class="clearfix">
 	<div class="clearfix">
 	<ul class="col-md-5 ph-0 pt-21 mb-0">
 	{exp:webservice:boleta periodo="{segment_3}" miembro="{segment_4}"}
 		<li class="clearfix border-bottom-gray-lighter">
-			<span class="col-xs-7 fz-17 text-gray-light light ph-0">Código</span>
+			<span class="col-xs-7 fz-17 text-gray light ph-0">Código</span>
 			<p class="col-xs-5 fz-15 text-gray-darker pr-0 pl-21">{if Codigo == null} - {if:else} {Codigo} {/if}</p>
 		</li>
 		<li class="clearfix pt-7 border-bottom-gray-lighter">
-		    <span class="col-xs-7 fz-17 text-gray-light light ph-0">Sueldo básico</span>
+		    <span class="col-xs-7 fz-17 text-gray light ph-0">Sueldo básico</span>
 		    <p class="col-xs-5 fz-15 text-gray-darker pr-0 pl-21">S/.{if SueldoBasico == null} 0.00 {if:else}{SueldoBasico}{/if}</p>
 		</li>
 		<li class="clearfix pt-7 border-bottom-gray-lighter">
-		    <span class="col-xs-7 fz-17 text-gray-light light ph-0">Días Trabajados</span>
+		    <span class="col-xs-7 fz-17 text-gray light ph-0">Días Trabajados</span>
 		    <p class="col-xs-5 fz-15 text-gray-darker pr-0 pl-21">{if DiasTrabajados == null} 0 {if:else} {DiasTrabajados} {/if}</p>
 		</li>
 		<li class="clearfix pt-7 border-bottom-gray-lighter">
-		    <span class="col-xs-7 fz-17 text-gray-light light ph-0">Horas extras 25%</span>
+		    <span class="col-xs-7 fz-17 text-gray light ph-0">Horas extras 25%</span>
 		    <p class="col-xs-5 fz-15 text-gray-darker pr-0 pl-21">{if HorasExtras25 == null} 0.00 {if:else} {HorasExtras25} {/if}</p>
 		</li>
 		<li class="clearfix pt-7">
-		    <span class="col-xs-7 fz-17 text-gray-light light ph-0">Horas extras 100%</span>
+		    <span class="col-xs-7 fz-17 text-gray light ph-0">Horas extras 100%</span>
 		    <p class="col-xs-5 fz-15 text-gray-darker pr-0 pl-21">{if HorasExtras100 == null} 0.00 {if:else} {HorasExtras100} {/if}</p>
 		</li>
 	</ul>
 	<ul class="col-md-7 clearfix pt-21 mb-0 pr-0 pl-0-xs">
 		<li class="row border-bottom-gray-lighter">
-		    <span class="col-md-6 col-xs-7 fz-17 text-gray-light light">Fecha de Ingreso</span>
+		    <span class="col-md-6 col-xs-7 fz-17 text-gray light">Fecha de Ingreso</span>
 		    <p class="col-md-6 col-xs-5 fz-15 text-gray-darker pr-0">{if FechaIngreso == null} - {if:else} {FechaIngreso format="%d-%m-%Y"} {/if}</p>
 		</li>
 		<li class="row pt-7 border-bottom-gray-lighter">
-		    <span class="col-md-6 col-xs-7 fz-17 text-gray-light light">Costo por hora</span>
+		    <span class="col-md-6 col-xs-7 fz-17 text-gray light">Costo por hora</span>
 		    <p class="col-md-6 col-xs-5 fz-15 text-gray-darker">S/.{if CostoHora == null} 0.00 {if:else}{CostoHora}{/if}</p>
 		</li>
 		<li class="row pt-7 border-bottom-gray-lighter">
-		    <span class="col-md-6 col-xs-7 fz-17 text-gray-light light">Horas trabajadas</span>
+		    <span class="col-md-6 col-xs-7 fz-17 text-gray light">Horas trabajadas</span>
 		    <p class="col-md-6 col-xs-5 fz-15 text-gray-darker">{if HorasTrabajadas == null} 0 {if:else} {HorasTrabajadas} {/if}</p>
 		</li>
 		<li class="row pt-7 border-bottom-gray-lighter">
-		    <span class="col-md-6 col-xs-7 fz-17 text-gray-light light">Horas extras 35%</span>
+		    <span class="col-md-6 col-xs-7 fz-17 text-gray light">Horas extras 35%</span>
 		    <p class="col-md-6 col-xs-5 fz-15 text-gray-darker">{if HorasExtras35 == null} 0.00 {if:else} {HorasExtras35} {/if}</p>
 		</li>
 		<li class="row pt-7">
-		    <span class="col-md-6 col-xs-7 fz-17 text-gray-light light">Inasistencias</span>
+		    <span class="col-md-6 col-xs-7 fz-17 text-gray light">Inasistencias</span>
 		    <p class="col-md-6 col-xs-5 fz-15 text-gray-darker">{if Inasistencias == null} 0 {if:else} {Inasistencias} {/if}</p>
 		</li>
 	{/exp:webservice:boleta}
@@ -52,7 +52,7 @@
     <li class="clearfix fz-17"><h4 class="text-gray-darker">Haberes</h4></li>
 {exp:webservice:detalle_boleta_haberes periodo="{segment_3}" miembro="{segment_4}"}
 	{if Haberes != null}
-    <li class="row fz-17 pv-7 text-gray-light light row border-bottom-gray-lighter">
+    <li class="row fz-17 pv-7 text-gray light row border-bottom-gray-lighter">
       <span class="col-md-5 ">{Haberes}</span>
       <p class="col-md-3 m-0">{HorasHaberes}</p>
       <p class="col-md-3 m-0"><span class="monto-haberes">{MontoHaberes}</span></p>
@@ -70,7 +70,7 @@
 	<li class="fz-17 text-gray-darker"><h4>Descuentos</h4></li>
 {exp:webservice:detalle_boleta_descuentos periodo="{segment_3}" miembro="{segment_4}"}
 	{if Descuentos != null}
-	<li class="fz-17 text-gray-light light border-bottom-gray-lighter pv-7 row">
+	<li class="fz-17 text-gray light border-bottom-gray-lighter pv-7 row">
 	  <span class="col-md-5 ">{Descuentos}</span>
 	  <p class="col-md-3 m-0"></p>
 	  <p class="col-md-3 m-0"><span class="monto-descuentos">{MontoDescuentos}</span></p>
@@ -88,7 +88,7 @@
 	<li class="fz-17 text-gray-darker"><h4>Aportaciones</h4></li>
 {exp:webservice:detalle_boleta_aportaciones periodo="{segment_3}" miembro="{segment_4}"}
 	{if Aportaciones != null}
-	<li class="fz-17 text-gray-light light pv-7 row border-bottom-gray-lighter">
+	<li class="fz-17 text-gray light pv-7 row border-bottom-gray-lighter">
 	  <span class="col-md-5 ">{Aportaciones}</span>
 	  <p class="col-md-3 m-0"></p>
 	  <p class="col-md-3 m-0"><span class="monto-aportaciones">{MontoAportaciones}</span></p>
