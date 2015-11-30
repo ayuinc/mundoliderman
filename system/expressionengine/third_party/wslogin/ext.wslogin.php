@@ -101,7 +101,7 @@ class Wslogin_ext {
 			),
 			array(
 				'code' => '001 08',
-				'description' => 'Tipo Persona - Gerencia de Operaciones',
+				'description' => 'Tipo Persona - Mundo Liderman Gerencia de Operaciones',
 				'group_id' => '13'
 			),
 			array(
@@ -205,17 +205,12 @@ class Wslogin_ext {
 		$employee_category = $data["CategoriaEmpleado"];
 		if ($token == null) {
 			// Retorna error
-			// return ee()->functions->redirect(ee()->functions->fetch_site_index());
 			return ee()->output->show_user_error('submission', 'Usuario y/o contraseña incorrecta');
 		}
 		else {
 			// Almacena el token y debería guardar y/o actualizar la data del usuario en la base de datos con la del web service
 			ee()->load->library("auth");
 			ee()->load->helper("url_helper");
-			/*$query = ee()->db->select('member_id, group_id, username, screen_name')
-					 ->from('members')
-					 ->where(array("username" => $username))
-					 ->get();*/
 			$query = ee()->db->where("username", $username)
 					 ->get("members");
 
@@ -226,8 +221,6 @@ class Wslogin_ext {
 				$member_salt = $query->row("salt");
 				$member_password = $query->row("password");
 				$hash = ee()->auth->hash_password($password, $member_salt, strlen($member_salt));
-				//$hash["salt"] = htmlspecialchars($hash["salt"], ENT_QUOTES);
-				//$hash["password"] = htmlspecialchars($hash["password"], ENT_QUOTES);
 				if ($member_password != $hash["password"]) {
 					ee()->db->update('members',
 						array(
