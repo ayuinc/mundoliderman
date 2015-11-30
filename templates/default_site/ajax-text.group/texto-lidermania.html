@@ -1,7 +1,9 @@
 {exp:channel:entries dynamic="no" entry_id="{segment_3}"}
 <div class="ph-14 fz-16">
   {if lidermania_imagen != null}
-  	<img src="{lidermania_imagen}" alt="{title}">
+    {exp:channel_images:images entry_id="{segment_3}"}
+  	   <img src="{image:url}" alt="{image:title}" width="520" height="315">
+    {/exp:channel_images:images}
   {/if}
   {if lidermania_contenido != null}
   	{lidermania_contenido}
