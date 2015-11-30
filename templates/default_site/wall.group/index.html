@@ -160,7 +160,7 @@
         success: function(data) {
           var response = JSON.parse(data);
           if (response.result == 'success') {
-            send(response);
+            send(data);
             $.ajax({
               method: 'GET',
               url: '{site_url}wall/new_post/' + response.post_id + '/{member_group}'

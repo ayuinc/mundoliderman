@@ -23,12 +23,13 @@ $(function() {
 
   //Log any messages sent from server
   Server.bind('message', function( payload ) {
-    if (payload.result == 'success') {
-      switch(payload.action) {
+    var response = JSON.parse(payload);
+    if (response.result == 'success') {
+      switch(response.action) {
         case 'status': 
             $.ajax({
                 method: 'GET',
-                url: '{site_url}wall/new_post/' + payload.post_id + '/{member_group}'
+                url: '{site_url}wall/new_post/' + response.post_id + '/{member_group}'
             })
             .done(function(post) {
                 $("#new_post").prepend(post);
@@ -39,7 +40,7 @@ $(function() {
         case 'comment':
             $.ajax({
                 method: "GET",
-                url: url + "wall/new_comment/" + payload.comment_id
+                url: url + "wall/new_comment/" + response.comment_id
             })
             .done(function(comment) {
                 $("div[data-comment-container-post-id=" + comment_data.post_id +"]").append(comment);
