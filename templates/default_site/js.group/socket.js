@@ -40,7 +40,7 @@ $(function() {
         case 'comment':
             $.ajax({
                 method: "GET",
-                url: url + "wall/new_comment/" + response.comment_id
+                url: "{site_url}wall/new_comment/" + response.comment_id
             })
             .done(function(comment) {
                 $("div[data-comment-container-post-id=" + comment_data.post_id +"]").append(comment);
