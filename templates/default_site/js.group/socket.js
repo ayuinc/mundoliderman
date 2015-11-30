@@ -45,8 +45,10 @@ $(function() {
             .done(function(comment) {
                 $("div[data-comment-container-post-id=" + response.post_id +"]").append(comment);
                 $("span[data-comment-post-id=" + response.post_id +"]").text(response.total);
-                comment_area.val("");
             });
+            break;
+        case 'like':
+            $("span[data-like-post-id=" + response.post_id + "]").text(response.total);
             break;
     }
 }

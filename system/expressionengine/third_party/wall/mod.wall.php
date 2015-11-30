@@ -449,45 +449,54 @@ class Wall {
 
 	public function like_post()
 	{
-		$post_id = $this->EE->input->post("post_id");
-		//$like = $this->EE->input->post("post_like_status");
-		$member_id = $this->EE->session->userdata("member_id");
-
-		$data_where = array(
-			'post_id' => $post_id,
-			'member_id' => $member_id
+		$response = array(
+			'result' => 'success',
+			'action' => 'like'
 		);
-
-		$query = $this->EE->db->select('id, like')->from('wall_like')->where($data_where)->get();
-
-		$like = "y";
 		
-		if ($query->num_rows() > 0) {
-			$like = $query->row('like');
-			if ($like == "n") {
-				$like = "y";
-			} else {
-				$like = "n";
-			}
-			$data = array(
-				'like' => $like
-			);
-			$this->EE->db->where($data_where);
-			$this->EE->db->update('wall_like', $data);
-		} else {
-			$like_date = $this->EE->localize->now;
-			$data = array(
+		try {
+			$post_id = $this->EE->input->post("post_id");
+			//$like = $this->EE->input->post("post_like_status");
+			$member_id = $this->EE->session->userdata("member_id");
+
+			$data_where = array(
 				'post_id' => $post_id,
-				'member_id' => $member_id,
-				'like' => $like,
-				'like_date' => $like_date
+				'member_id' => $member_id
 			);
-			$this->EE->db->insert('wall_like', $data);
+
+			$query = $this->EE->db->select('id, like')->from('wall_like')->where($data_where)->get();
+
+			$like = "y";
+			
+			if ($query->num_rows() > 0) {
+				$like = $query->row('like');
+				if ($like == "n") {
+					$like = "y";
+				} else {
+					$like = "n";
+				}
+				$data = array(
+					'like' => $like
+				);
+				$this->EE->db->where($data_where);
+				$this->EE->db->update('wall_like', $data);
+			} else {
+				$like_date = $this->EE->localize->now;
+				$data = array(
+					'post_id' => $post_id,
+					'member_id' => $member_id,
+					'like' => $like,
+					'like_date' => $like_date
+				);
+				$this->EE->db->insert('wall_like', $data);
+			}	
+			$response['post_id'] = $post_id;
+			$response['total'] = $this->total_count($post_id);
+		} catch (Exception $e) {
+			$response['result'] = 'fail';
 		}
-		echo json_encode(array(
-			"post_id" => $post_id,
-			"total" => $this->total_count($post_id)
-		));
+
+		echo json_encode($response);
 	}
 
 	public function solve_post()

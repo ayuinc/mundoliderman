@@ -50,11 +50,14 @@ $(document).on('click', '.like-container', function(e){
   var url = form.attr("action");
   var data = form.serialize();
 
-  $.post(url, data, function (result) {
-    var like = JSON.parse(result);
-    btn.parent().find(".like").toggleClass("active-like");
-    btn.parent().find(".img-like").toggleClass("hidden");
-    $("span[data-like-post-id=" + like.post_id + "]").text(like.total);
+  $.post(url, data, function (response) {
+    var like = JSON.parse(response);
+    if (like.result = 'success') {
+      send(response);
+      btn.parent().find(".like").toggleClass("active-like");
+      btn.parent().find(".img-like").toggleClass("hidden");
+      $("span[data-like-post-id=" + like.post_id + "]").text(like.total);
+    }
   });
 });
 
