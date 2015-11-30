@@ -43,8 +43,8 @@ $(function() {
                 url: "{site_url}wall/new_comment/" + response.comment_id
             })
             .done(function(comment) {
-                $("div[data-comment-container-post-id=" + comment_data.post_id +"]").append(comment);
-                $("span[data-comment-post-id=" + comment_data.post_id +"]").text(comment_data.total);
+                $("div[data-comment-container-post-id=" + response.post_id +"]").append(comment);
+                $("span[data-comment-post-id=" + response.post_id +"]").text(response.total);
                 comment_area.val("");
             });
             break;
