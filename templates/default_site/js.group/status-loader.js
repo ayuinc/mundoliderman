@@ -1,9 +1,12 @@
 $(function() {
     var offset = 1;
     $(window).scroll(function() {
+        var url = '{site_url}wall/status/' + offset;
+        var member_id = $("#status_member_id").val();
+        if (member_id) { url += '/' + member_id; }
         if ($(document).height() - ($(window).scrollTop() + $(window).height()) <= 5 ) {
             $.ajax({
-                url: '{site_url}wall/status/' + offset,
+                url: url,
                 method: 'get',
                 beforeSend: function() {
                     $(".loading-status").fadeIn();

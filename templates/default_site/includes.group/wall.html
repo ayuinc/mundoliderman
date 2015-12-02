@@ -1,0 +1,40 @@
+<section id="comentar" class="bg-white">
+  <input type="hidden" id="status_member_id" value="{embed:miembro}">
+  <div id="error-message" class="absolute hidden-xs hidden-sm"></div>
+  <div id="error-categoria" class="absolute hidden-xs hidden-sm"></div>
+  {exp:wall:status_form return="wall" form_id="status_form" form_class="bg-success" enctype="multipart/form-data"}
+    <div class="contenedor-select bg-success text-right pl-21 ph-0-xs">
+      <div class="select-style bg-primary display-ib text-center ph-14">
+        <select name="status_category" id="status_category" class="ph-21-xs fz-14 text-white borderless light serif w-100 pt-7" style="background-image: url({site_url}frontend/app/assets/img/Flecha-para-abajo.png);">
+          {exp:status_category:all}
+            <option value="{category_id}" class="bg-success">{category_name}</option>
+          {/exp:status_category:all}
+        </select>
+      </div>
+    </div>
+    <textarea id="wall_status_format" class="form-control outline-none serif fz-18 borderless br-none pv-14 ph-14" onkeyup="auto_grow(this)" placeholder="Chatea aquí..." min-length="1" max-length="512"></textarea>
+    <input type="text" id="wall_status" name="wall_status" class="hidden" min-length="1" max-length="512"></textarea>
+    <div class="container-photos bg-white" style="">
+      <div id='photos-post' class='relative'><img src='{site_url}frontend/app/assets/img/ex_rojo.png' class='close-image close-display absolute' style='z-index:10000'></div>
+    </div>
+    <div class="fileUpload file_input btn btn-success p-0 ml-21 mt-7-xs">
+      <img src="{site_url}frontend/app/assets/img/Icono_Foto.png" alt="">
+      <span class="thin fz-12 pl-14 hidden-xs hidden-sm">Subir imagen</span>
+      <span class="thin fz-14 pl-14 serif hidden-lg hidden-md">Subir imagen</span><!--movil-->
+      <input type="file" id="inputFile" name="status_image" class="upload" accept="image" /> 
+    </div>
+    <button type="submit" name="submit" id="submit-post" class="btn bg-primary text-white text-hover-white fz-12 ph-21 ph-14-xs mv-7 absolute" style="border: 1px solid #e7e7e7;">
+     PUBLICAR
+     <img src="{site_url}frontend/app/assets/img/Publicar_Dialogo.png" alt="" class="pl-14">
+    </button>
+  {/exp:wall:status_form}
+</section>
+{embed="includes/loader"}
+{embed="includes/alerta-publicaciones"}
+<section id="new_post" class="pokerface hidden">
+</section>
+<section id="post" class="pokerface">
+  {embed="includes/status" offset="0" miembro="{embed:miembro}"}
+</section>
+<section class="loading-status pokerface" style="display:none">
+</section>
