@@ -116,10 +116,12 @@
                     </div>
                     <div class="col-xs-10 lh-1 pl-0 pl-21-xs hidden-lg hidden-md">
                         <span class="fz-20 text-success pr-7">{screen_name}</span>
+                        {exp:wall:comment_post_form form_id="" form_class="" post_id="{post_id}"}
                         <textarea name="comment" id="" onkeyup="auto_grow(this)" placeholder="Escribe un comentario..." class="w-100 mt-7 fz-18 light p-7 serif text-gray-darker book" max-length="512" min-length="1"></textarea>
+                        <div class="enter-responsive text-right relative hidden-lg hidden-md" style="right:15px"><img  class="mobile_comment" src="{site_url}frontend/app/assets/img/flecha_naranja.png" alt="" style="cursor:pointer"></div>
+                        {/exp:wall:comment_post_form}
                     </div>
                 </div>
-                <div class="enter-responsive text-right relative hidden-lg hidden-md" style="right:15px"><img src="{site_url}frontend/app/assets/img/flecha_naranja.png" alt="" style="cursor:pointer"></div>
                 <div class="comment-container" data-comment-container-post-id="{post_id}">
                     {exp:wall:comment post_id="{post_id}"}
                     <div class="clearfix conteiner-answer pv-7">

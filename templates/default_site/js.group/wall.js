@@ -64,14 +64,42 @@ $(document).on('click', '.like-container', function(e){
 $(document).on('keypress', '.write-comment', function(e){
   if(e.which == 13) {
     e.preventDefault();
-    var comment_area = $(this);
-    var form = comment_area.parent();
-    var url = $(form).attr("action");
-    var data = $(form).serialize();
+    var $comment_area = $(this);
+    var comment = $comment_area.val();
+    if (comment.trim() != "" || comment.trim().length != 0) {
+      var form = $comment_area.parent();
+      var url = $(form).attr("action");
+      var data = $(form).serialize();
 
-    $.post(url, data, function(result) {
-      var comment_data = JSON.parse(result);
-      send(result);
+      $.post(url, data, function(result) {
+        var comment_data = JSON.parse(result);
+        send(result);
+        $.ajax({
+          method: "GET",
+          url: url + "wall/new_comment/" + comment_data.comment_id
+        })
+        .done(function(comment) {
+          $("div[data-comment-container-post-id=" + comment_data.post_id +"]").append(comment);
+          $("span[data-comment-post-id=" + comment_data.post_id +"]").text(comment_data.total);
+          $comment_area.val("");
+        });
+      });
+    }
+  }
+});
+
+
+$(document).on('click', '.mobile_comment', function(e) {
+  var $form = $(this).parents().eq(1);
+  var $comment_data = $form.find("textarea");
+  var comment = $comment_data.val();
+  if (comment.trim() != "" || comment.trim().length != 0) {
+    var url = $form.attr("action");
+    var data = $form.serialize();
+
+    $.post(url, data, function(response) {
+      var comment_data = JSON.parse(response);
+      send(response);
       $.ajax({
         method: "GET",
         url: url + "wall/new_comment/" + comment_data.comment_id
@@ -79,34 +107,10 @@ $(document).on('keypress', '.write-comment', function(e){
       .done(function(comment) {
         $("div[data-comment-container-post-id=" + comment_data.post_id +"]").append(comment);
         $("span[data-comment-post-id=" + comment_data.post_id +"]").text(comment_data.total);
-        comment_area.val("");
+        $comment_data.val('');
       });
     });
   }
-});
-
-
-$(document).on('click', '.enter-responsive img', function(e) {
-  alert('click');
-  console.log($(this));
-  /*var comment_area = $(this);
-  var form = comment_area.parent();
-  var url = $(form).attr("action");
-  var data = $(form).serialize();
-
-  $.post(url, data, function(result) {
-    var comment_data = JSON.parse(result);
-    send(result);
-    $.ajax({
-      method: "GET",
-      url: url + "wall/new_comment/" + comment_data.comment_id
-    })
-    .done(function(comment) {
-      $("div[data-comment-container-post-id=" + comment_data.post_id +"]").append(comment);
-      $("span[data-comment-post-id=" + comment_data.post_id +"]").text(comment_data.total);
-      comment_area.val("");
-    });
-  });*/
 });
 
 $(document).on('click', '.comment', function(e){
