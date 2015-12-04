@@ -148,6 +148,81 @@ class Wslogin_ext {
 				'code' => '001 17',
 				'description' => 'Tipo Persona - Mundo Liderman Clientes',
 				'group_id' => '22'
+			),
+			array(
+				'code' => '001 18',
+				'description' => 'Tipo Persona - Mundo Liderman Equipo Administración, Contabilidad, Finanzas, Facturación y Legal',
+				'group_id' => '23'
+			),
+			array(
+				'code' => '001 19',
+				'description' => 'Tipo Persona - Mundo Liderman Equipo Bienestar Social',
+				'group_id' => '24'
+			),
+			array(
+				'code' => '001 20',
+				'description' => 'Tipo Persona - Mundo Liderman Gerencia General Liderman',
+				'group_id' => '25'
+			),
+			array(
+				'code' => '001 21',
+				'description' => 'Tipo Persona - Mundo Liderman Gerencia Comercial',
+				'group_id' => '26'
+			),
+			array(
+				'code' => '001 22',
+				'description' => 'Tipo Persona - Mundo Liderman Asistente Lideres Zonales',
+				'group_id' => '27'
+			),
+			array(
+				'code' => '001 23',
+				'description' => 'Tipo Persona - Mundo Liderman Logística',
+				'group_id' => '28'
+			),
+			array(
+				'code' => '001 24',
+				'description' => 'Tipo Persona - Mundo Liderman Guardianes',
+				'group_id' => '29'
+			),
+			array(
+				'code' => '001 25',
+				'description' => 'Tipo Persona - Mundo Liderman Equipo Operaciones',
+				'group_id' => '30'
+			),
+			array(
+				'code' => '001 26',
+				'description' => 'Tipo Persona - Mundo Liderman Equipo GTH',
+				'group_id' => '31'
+			),
+			array(
+				'code' => '001 27',
+				'description' => 'Tipo Persona - Mundo Liderman Equipo Comunicaciones',
+				'group_id' => '32'
+			),
+			array(
+				'code' => '001 28',
+				'description' => 'Tipo Persona - Mundo Liderman Gerencia de Administración y Finanzas',
+				'group_id' => '33'
+			),
+			array(
+				'code' => '001 29',
+				'description' => 'Tipo Persona - Mundo Liderman Otros (chofer javier, recepcionistas, limpieza, guardianes)',
+				'group_id' => '34'
+			),
+			array(
+				'code' => '001 30',
+				'description' => 'Tipo Persona - Mundo Liderman Clave 03',
+				'group_id' => '35'
+			),
+			array(
+				'code' => '001 31',
+				'description' => 'Tipo Persona - Mundo Liderman Supervisores',
+				'group_id' => '36'
+			),
+			array(
+				'code' => '001 32',
+				'description' => 'Tipo Persona - Mundo Liderman Recibo por honorarios',
+				'group_id' => '37'
 			)
 		);
 
