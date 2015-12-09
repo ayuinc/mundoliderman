@@ -37,7 +37,7 @@ $lang = array(
 'Weeks',
 
 'months' =>
-'Months',
+'meses',
 
 'years' =>
 'Years',
@@ -49,7 +49,7 @@ $lang = array(
 'Week',
 
 'month' =>
-'Month',
+'mes',
 
 'year' =>
 'Year',

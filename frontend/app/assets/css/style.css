@@ -1031,10 +1031,12 @@ body {
 }
 body h1, body h2, body h3, body h4, body h5, body span {
   font-family: "Oswald", Helvetica, Arial, sans-serif;
+  line-height: 1.5;
 }
 body p {
   font-family: "Merriweather", Georgia, "Times New Roman", Times, serif;
   color: #4a4a4a;
+  line-height: 1.5;
 }
 body a, body a:hover, body a:visited {
   text-decoration: none;
