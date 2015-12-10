@@ -4,7 +4,7 @@ $(function() {
         var url = '{site_url}wall/status/' + offset;
         var member_id = $("#status_member_id").val();
         if (member_id) { url += '/' + member_id; }
-        if ($(document).height() <= ($(window).scrollTop() + $(window).height())) {
+        if ($(document).height() >= ($(window).scrollTop() + $(window).height() + 1)) {
             $.ajax({
                 url: url,
                 method: 'get',
