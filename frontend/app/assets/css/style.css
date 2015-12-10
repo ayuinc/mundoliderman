@@ -1262,6 +1262,7 @@ body .w-100 {
   font-size: 16px rem;
 }
 body .parrafo {
+  overflow-wrap: break-word;
   line-height: 1.5;
   font-size: 14px;
   font-size: 0.875rem;

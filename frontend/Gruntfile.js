@@ -343,7 +343,7 @@ module.exports = function (grunt) {
     'sass:ebm',
     'sass:dev',
     // 'bower:dev',
-     'connect:livereload',
+     // 'connect:livereload',
      'uglify',
      'open',
     'watch'
@@ -357,7 +357,7 @@ module.exports = function (grunt) {
     'bower:dev',
     'responsive_images:dev',
     'responsive_images_extender:dev',
-    'connect:livereload',
+    // 'connect:livereload',
     'uglify',
     'open',
     'watch'
@@ -370,7 +370,7 @@ module.exports = function (grunt) {
     'sass:dev',
     'bower:dev',
     'jshint',
-    'connect:livereload',
+    // 'connect:livereload',
     'uglify',
     'open',
     'watch'
