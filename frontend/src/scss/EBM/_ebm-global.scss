@@ -8,14 +8,14 @@ html {
 body {
 	h1, h2, h3, h4, h5, span {
 	 font-family: $font-family-sans-serif;
-	 line-height: 1.5;
+	 line-height: 135%;
 	}
-	p {
+	p, label {
 		font-family: $font-family-serif ;
 		color: rgb(74, 74, 74);
-		line-height: 1.5;
+		line-height: 135%;
 	}
-	a, a:hover, a:visited {
+	a, a:hover, a:visited { 
 		text-decoration: none;
 	}
 	ul {
