@@ -850,6 +850,7 @@ footer > div {
 	}
 	
 	.container {
+		height: 475px;
 		@include flex-column-center;
 	}
 	.antena {
