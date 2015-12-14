@@ -2042,6 +2042,9 @@ footer > div #up span:hover {
 footer > div .text-fuccia {
   color: #E83A98 !important;
 }
+footer > div .bg-fuccia {
+  background-color: #E83A98 !important;
+}
 footer > div .audio-video {
   top: -38px;
   left: 110px;
