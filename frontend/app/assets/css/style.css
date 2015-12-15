@@ -2076,6 +2076,7 @@ footer > div iframe.video table object#mediaspace {
   height: 285px;
 }
 footer > div .container {
+  height: 475px;
   display: -webkit-box;
   display: -moz-box;
   display: box;
