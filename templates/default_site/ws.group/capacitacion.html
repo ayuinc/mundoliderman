@@ -13,4 +13,7 @@
         <p class="col-md-8 fz-17 pb-21 text-gray-darker">{Nota}</p>
       </div>
     </div>
+    {if no_results}
+      <h4 class="fz-20 mv-28 pl-63">No tiene autocapacitaciones durante los últimos 3 meses.</h4>
+    {/if}
 {/exp:webservice:capacitaciones}
