@@ -12,17 +12,17 @@ $mobile-navbar-height: 56px; // Mobile header
 	height: $mobile-navbar-height;
 	background: white;
 	border-bottom: 1px solid $gray-lighter;
-	@include flex-space-between;
+	// @include flex-space-between;
 	padding: 0 $container-fluid;
 	.left,
 	.right {
 		height: $mobile-navbar-height;
-		@include flex-middle;
+		// @include flex-middle;
 	}
 	.left {}
 	.right {}
 	.logo {
-		@include bg-img-control;
+		// @include bg-img-control;
 		width: $mobile-navbar-height - 7;
 		height: $mobile-navbar-height - 7;
 	}
@@ -35,6 +35,7 @@ $mobile-navbar-height: 56px; // Mobile header
 		font-size: $font-size-h1;
 	}
 }
+$header-height-control:5%;
 
 .mobile-menu {
 	@include transition(transform 0.2s ease-in-out);

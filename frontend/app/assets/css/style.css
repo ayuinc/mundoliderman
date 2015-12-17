@@ -2111,8 +2111,8 @@ footer > div .volumen {
   width: 26px;
 }
 footer > div .lista h2 {
-  font-size: 22px;
-  font-size: 1.375rem;
+  font-size: 19px;
+  font-size: 1.1875rem;
   margin: 0;
 }
 footer > div .lista p {
@@ -2170,6 +2170,10 @@ footer > div .lista p {
 }
 
 /*CONTENIDO TAREO*/
+.fc-date {
+  padding: 28% 34% 28% 34%;
+}
+
 #tareo-contenido .container, #perfil-contenido .container {
   position: relative;
 }
@@ -3146,6 +3150,9 @@ input[type="submit"] {
   }
   .fc-calendar-container .fc-calendar .fc-head {
     font-size: 15px;
+  }
+  .fc-calendar-container .fc-date {
+    padding: 28% 35% 28% 35%;
   }
 
   .day-colors .color-turno {
