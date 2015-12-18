@@ -40,7 +40,9 @@
               <a href="{path='servicios/lidernet}/{member_id}" class="text-gray-dark semaforo">Cultura</a>
             </li>
             <li>
-              <div class="circulo-semaforo brp-100 display-ib mr-7 {if {exp:webservice:semaforoprestamo mes='{current_time format='%n'}'} == 1}bg-info{if:else}bg-primary{/if}"></div>
+              {exp:webservice:semaforoprestamo}
+              <div class="circulo-semaforo brp-100 display-ib mr-7 {if semaforo}bg-info{if:else}bg-primary{/if}"></div>
+              {/exp:webservice:semaforoprestamo}
               <a href="{path='servicios/prestamos}/{member_id}" class="text-gray-dark semaforo">Orden económico</a>
             </li>
           </ul>
@@ -60,8 +62,10 @@
         <div class="col-md-4 col-xs-6 col-md-offset-0 col-xs-offset-3 pl-0 pl-21-xs text-left">
           <ul class="pl-0 thin fz-13 mb-0-xs">
             <li>
-              <div class="circulo-semaforo brp-100 display-ib mr-7 {if {exp:webservice:semaforocapacitaciones} == 1}bg-info{if:else}bg-primary{/if}"></div>
-              <a href="{path='servicios/capacitacion}/{member_id}" class="text-gray-dark semaforo">Autocapacitación</a>
+              {exp:webservice:semaforocapacitaciones}
+              <div class="circulo-semaforo brp-100 display-ib mr-7 {if semaforo}bg-info{if:else}bg-primary{/if}"></div>
+              {/exp:webservice:semaforocapacitaciones}
+              <a href="{path='servicios/capacitacion}/{member_id}" class="text-gray-dark semaforo absolute">Autocapacitaciones</a>
             </li>
           </ul>
         </div>
