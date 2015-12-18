@@ -26,9 +26,17 @@
         <section id="tareo-contenido" class="col-md-8 pb-42 ph-7-xs">
           <div class="container pt-42 w-100 ph-0">
             {embed=includes/perfil-servicios miembro="{segment_3}" miembro_actual="{member_id}"}
-            {embed=includes/semaforo-movil}
             <h2 class="fz-30 border-bottom-gray pb-7 text-gray-darker pt-14">Tareo</h2>
-            {embed=includes/semaforo}
+            {exp:webservice:semaforotareo mes="{current_time format='%n'}"} 
+              <div class="semaforo clearfix {if semaforo}bg-info{if:else}bg-primary{/if} border-radius mt-28 ph-42 text-white hidden-xs hidden-sm">
+                <div id="check_semaforo" class="col-md-1 text-center pl-0">
+                  <img src="{site_url}frontend/app/assets/img/Check.png" alt="">
+                </div>
+                <div class="col-md-11 pr-28 pl-14">
+                  <h3 class="fz-20 mv-28">Tu estado está en {if semaforo}verde{if:else}rojo{/if}!</h3>
+                </div>
+              </div>
+            {/exp:webservice:semaforotareo}
             <div class="tareo">
               <div class="datos bg-white pv-42 ph-42 mt-42 ph-0-xs">
                 <div class="ph-21">

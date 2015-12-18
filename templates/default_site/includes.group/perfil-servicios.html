@@ -36,7 +36,9 @@
         <h4 class="text-gray fz-16 m-0 pt-7 book pb-14">Semáforo General</h4>
         <div class="col-md-4 col-xs-6 col-md-offset-0 col-xs-offset-3 pl-0 pl-21-xs text-left">
           <ul class="pl-0 thin fz-13 mb-0-xs">
-              <div class="circulo-semaforo brp-100 display-ib mr-7 {if exp:webservice:semaforolidernet == 1}bg-info{if:else}bg-primary{/if}"></div>
+              {exp:webservice:semaforolidernet}
+              <div class="circulo-semaforo brp-100 display-ib mr-7 {if semaforo}bg-info{if:else}bg-primary{/if}"></div>
+              {/exp:webservice:semaforolidernet}
               <a href="{path='servicios/lidernet}/{member_id}" class="text-gray-dark semaforo">Cultura</a>
             </li>
             <li>
@@ -50,11 +52,15 @@
         <div class="col-md-4 col-xs-6 col-md-offset-0 col-xs-offset-3 pl-0 pl-21-xs text-left">
           <ul class="pl-0 thin fz-13 mb-0-xs">
             <li>
-              <div class="circulo-semaforo brp-100 display-ib mr-7 {if {exp:webservice:semaforotareo mes='{current_time format='%n'}'} == 1}bg-info{if:else}bg-primary{/if}"></div>
+              {exp:webservice:semaforotareo mes="{current_time format='%n'}"}
+              <div class="circulo-semaforo brp-100 display-ib mr-7 {if semaforo}bg-info{if:else}bg-primary{/if}"></div>
+              {/exp:webservice:semaforotareo}
               <a href="{path='servicios/tareo}/{member_id}" class="text-gray-dark semaforo">Tareo</a>
             </li>
             <li>
-              <div class="circulo-semaforo brp-100 display-ib mr-7 {if {exp:webservice:semaforolidercard mes='{current_time format='%n'}'} == 1}bg-info{if:else}bg-primary{/if}"></div>
+              {exp:webservice:semaforolidercard mes="{current_time format='%n'}"}
+              <div class="circulo-semaforo brp-100 display-ib mr-7 {if semaforo}bg-info{if:else}bg-primary{/if}"></div>
+              {/exp:webservice:semaforolidercard}
               <a href="{path='servicios/lidercard}/{member_id}" class="text-gray-dark semaforo">Valor agregado</a>
             </li>
           </ul>
