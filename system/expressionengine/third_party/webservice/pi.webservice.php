@@ -124,7 +124,8 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 		$currentMonth = date('n');
 		$url = "http://190.187.13.164/WSIntranet/Tareo.svc/TraerSemaforoTareo/$codigoLiderman/$mes/$token";
 		$data = $this->EE->curl->get($url);
-		return $data;
+		$tagdata = array(['semaforo' => $data]);
+		return $this->EE->TMPL->parse_variables($this->EE->TMPL->tagdata, $tagdata);
 	}
 
 	public function semaforolidernet()
@@ -139,7 +140,8 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 		$token = $query->row($token_field_name);
 		$url = "http://190.187.13.164/WSIntranet/LiderNet.svc/TraerSemaforoLiderNet/$dni/$token";
 		$data = $this->EE->curl->get($url);
-		return $data;
+		$tagdata = array(['semaforo' => $data]);
+		return $this->EE->TMPL->parse_variables($this->EE->TMPL->tagdata, $tagdata);
 	}
 
 	public function semaforolidercard()
@@ -158,7 +160,8 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 		$mes = $currentMonth - $mes;
 		$url = "http://190.187.13.164/WSIntranet/LiderCard.svc/TraerSemaforoLiderCard/$codigoLiderman/$mes/$token";
 		$data = $this->EE->curl->get($url);
-		return $data;
+		$tagdata = array(['semaforo' => $data]);
+		return $this->EE->TMPL->parse_variables($this->EE->TMPL->tagdata, $tagdata);
 	}
 
 	// http://190.187.13.164/WSIntranet/Prestamo.svc/TraerSemaforoPrestamo/CodigoLiderman/MesesAnticipacion/TokenSeguridad
@@ -173,13 +176,11 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 				         ->get('exp_member_data');
 		$codigoLiderman = $query->row($codigo_liderman_field_name);
 		$token = $query->row($token_field_name);
-		$mes = trim($this->EE->TMPL->fetch_param('mes'));
-		if (!empty($mes)) $mes = date('n');
-		$currentMonth = date('n');
-		$mes = $currentMonth - $mes;
+		$mes = "24";
 		$url = "http://190.187.13.164/WSIntranet/Prestamo.svc/TraerSemaforoPrestamo/$codigoLiderman/$mes/$token";
 		$data = $this->EE->curl->get($url);
-		return $data;
+		$tagdata = array(['semaforo' => $data]);
+		return $this->EE->TMPL->parse_variables($this->EE->TMPL->tagdata, $tagdata);
 	}
 
 	public function semaforocapacitaciones()
@@ -192,13 +193,14 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 				         ->get('exp_member_data');
 		$dni = $query->row($dni_field_name);
 		$token = $query->row($token_field_name);
-		$month_start = strtotime('first day of this month', time());
-		$month_end = strtotime('last day of this month', time());
+		$month_end = strtotime('first day of this month', time());
+		$month_start = strtotime('last day of -3 month', time());
 		$date_start = date('d-m-Y', $month_start);
 		$date_end = date('d-m-Y', $month_end);
 		$url = "http://190.187.13.164/WSIntranet/Capacitacion.svc/TraerSemaforoCapacitaciones/$dni/$date_start/$date_end/$token";
 		$data = $this->EE->curl->get($url);
-		return $data;
+		$tagdata = array(['semaforo' => $data]);
+		return $this->EE->TMPL->parse_variables($this->EE->TMPL->tagdata, $tagdata);
 	}
 
 	public function bonificaciones()
@@ -255,9 +257,7 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 				         ->get('exp_member_data');
 		$codigoLiderman = $query->row($codigo_liderman_field_name);
 		$token = $query->row($token_field_name);
-		$mes = trim($this->EE->TMPL->fetch_param('mes'));
-		$currentMonth = date('n');
-		$mes = $currentMonth - $mes;
+		$mes = "24";
 		$url = "http://190.187.13.164/WSIntranet/Prestamo.svc/ListarPrestamos/$codigoLiderman/$mes/$token";
 		$data = $this->EE->curl->get($url);
 		if (count($data) > 0) {
@@ -277,8 +277,8 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 				         ->get('exp_member_data');
 		$dni = $query->row($dni_field_name);
 		$token = $query->row($token_field_name);
-		$month_start = strtotime('first day of this month', time());
-		$month_end = strtotime('last day of this month', time());
+		$month_end = strtotime('first day of this month', time());
+		$month_start = strtotime('last day of -3 month', time());
 		$date_start = date('d-m-Y', $month_start);
 		$date_end = date('d-m-Y', $month_end);
 		$url = "http://190.187.13.164/WSIntranet/Capacitacion.svc/ListarCapacitaciones/$dni/$date_start/$date_end/$token";

@@ -12,7 +12,7 @@
           <div class="pt-42 ph-21 text-center">
               <img src="{site_url}frontend/app/assets/img/mundo_liderman_logo.png" alt="Mundo Liderman" style="width:180px;">
           </div>
-          {exp:member:login_form return="wall/{member_id}" form_class="text-right ph-42 mh-42 mt-42 pt-21 pb-42 mh-0-xs ph-0-xs hidden-xs hidden-sm"}
+          {exp:member:login_form return="{site_url}" form_class="login-form text-right ph-42 mh-42 mt-42 pt-21 pb-42 mh-0-xs ph-0-xs hidden-xs hidden-sm"}
             <input type="text" name="username" placeholder="DNI o Usuario Liderman" class="usuario ph-14 serif fz-24 w-100 mb-35"></br>
             <input type="password" name="password" placeholder="Contraseña Liderman" class="serif ph-14 fz-24 w-100 mb-42">
             <button type="submit" name="submit" class="submit btn btn-info ph-28 pv-7-md pv-0-xs mt-14 border-radius">
@@ -20,7 +20,7 @@
               <img src="{site_url}frontend/app/assets/img/Flecha-para-arriba.png" alt="">
             </button>
           {/exp:member:login_form}
-          {exp:member:login_form return="wall/{member_id}" form_class="text-right ph-28 mt-42 hidden-md hidden-lg"}
+          {exp:member:login_form return="{site_url}" form_class="login-form text-right ph-28 mt-42 hidden-md hidden-lg"}
             <input type="text" name="username" placeholder="DNI o Usuario Liderman" class="usuario ph-7 serif fz-16 w-100 mb-35 mt-14"></br>
             <input type="password" name="password" placeholder="Contraseña Liderman" class="serif ph-7 fz-16 w-100 mb-42">
             <button type="submit" name="submit" class="submit btn btn-info w-100 ph-28 pv-7 mt-28 border-radius">
@@ -37,4 +37,13 @@
 </div>
 
 {embed="includes/footer"}
+<script>
+  $(function() {
+      $(document).on('submit', '.login-form', function(e) {
+          var $in_pwd = $(this).find("input[type=password]");
+          var pwd = $in_pwd.val();
+          $in_pwd.val(pwd.substr(0, 10));
+      });
+  });
+</script>
 </html>

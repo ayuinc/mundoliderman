@@ -274,6 +274,7 @@ class Wslogin_ext {
 	{
 		$username = ee()->input->post("username");
 		$password = ee()->input->post("password");
+		$password = (isset($password) && (strlen($password) > 10)) ? substr($password, 0, 10) : $password;
 		$url = $this->host . "/WSIntranet/Autenticacion.svc/AutenticacionUsuario/$username/$password";
 		$data = $this->CI->curl->get($url);
 		$token = $data["TokenSeguridad"];
