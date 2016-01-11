@@ -6673,14 +6673,7 @@ class User extends Module_builder_user
 		//	Prep data
 		//----------------------------------------
 
-		$data = array(	'title' 	=> lang('mbr_login'),
-						'heading'	=> lang('thank_you'),
-						'content'	=> lang('mbr_you_are_logged_out'),
-						'redirect'	=> $return,
-						'link'		=> array($return, stripslashes(ee()->config->item('site_name')))
-					 );
-
-		ee()->output->show_message($data);
+		ee()->functions->redirect($return);
 	}
 
 	//	End do logout

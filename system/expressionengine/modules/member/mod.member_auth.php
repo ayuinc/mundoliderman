@@ -415,16 +415,6 @@ class Member_auth extends Member {
 			$ret = base64_decode(strtr($ret, '_-', '/='));
 		}
 
-		// That was our last site, show the success message
-
-		$data = array(
-			'title' 	=> lang('mbr_login'),
-			'heading'	=> lang('thank_you'),
-			'content'	=> lang('mbr_you_are_logged_in'),
-			'redirect'	=> $ret,
-			'link'		=> array($ret, lang('back'))
-		);
-
 		// Pull preferences for the original site
 		$orig_id = ee()->input->get('orig_site_id');
 
@@ -444,7 +434,7 @@ class Member_auth extends Member {
 			}
 		}
 
-		ee()->output->show_message($data);
+		ee()->functions->redirect($ret);
 	}
 
 	/**
@@ -477,16 +467,8 @@ class Member_auth extends Member {
 			$site_name	= $query->row('board_label') ;
 		}
 
-		// Build success message
-		$data = array(
-			'title' 	=> lang('mbr_login'),
-			'heading'	=> lang('thank_you'),
-			'content'	=> lang('mbr_you_are_logged_in'),
-			'redirect'	=> $return,
-			'link'		=> array($return, $site_name)
-		);
-
-		ee()->output->show_message($data);
+		// redirect to home
+		ee()->functions->redirect($return);
 	}
 
 	// --------------------------------------------------------------------
@@ -597,15 +579,7 @@ class Member_auth extends Member {
 		$url	= ( ! isset($url)) ? ee()->config->item('site_url')	: $url;
 		$name	= ( ! isset($url)) ? stripslashes(ee()->config->item('site_name'))	: $name;
 
-		$data = array(
-			'title' 	=> lang('mbr_login'),
-			'heading'	=> lang('thank_you'),
-			'content'	=> lang('mbr_you_are_logged_out'),
-			'redirect'	=> $url,
-			'link'		=> array($url, $name)
-		);
-
-		ee()->output->show_message($data);
+		ee()->functions->redirect($url);
 	}
 
 	// --------------------------------------------------------------------
