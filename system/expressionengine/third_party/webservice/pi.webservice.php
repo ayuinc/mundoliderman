@@ -84,11 +84,13 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 		$codigoLiderman = $query->row($codigo_liderman_field_name);
 		$token = $query->row($token_field_name);
 		$mes = trim(ee()->TMPL->fetch_param('mes'));
+		$year = intval(ee()->TMPL->fetch_param('year'));
+		$currentYear = date('Y');
 		$currentMonth = date('n');
 		if (!isset($mes)) {
 			$mes = $currentMonth;
 		}
-		$meses_anticipacion = $currentMonth - ($mes + 1);
+		$meses_anticipacion = ($currentYear - $year) * 12 + ($currentMonth - $mes) + 1;
 		$url = "http://190.187.13.164/WSIntranet/Tareo.svc/ListarTareo/$codigoLiderman/$meses_anticipacion/$token";
 		$data = $this->EE->curl->get($url);
 		$tareo_description = $this->EE->db->select('code, description, bg_color')->get('tareo')->result_array();

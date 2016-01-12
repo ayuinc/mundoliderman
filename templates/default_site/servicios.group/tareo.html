@@ -269,7 +269,7 @@
 
         $.ajax({
           type: 'GET',
-          url: '{site_url}ws/tareo/' + mes + '/{segment_3}',
+          url: '{site_url}ws/tareo/' + mes + '/' + year + '/{segment_3}',
           success: function(data) {
             $("#tareo_detalle").html(data);
           }
