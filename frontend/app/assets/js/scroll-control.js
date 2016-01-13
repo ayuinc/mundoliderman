@@ -57,7 +57,10 @@ $(".btn-comentar").click(function(event){
 $(document).on('click', '.btn-comentar', function(event){
 	event.preventDefault();
 	var target = $(event.target);
-	$(target).parents(".post").find(".area-respuesta").addClass("hidden");
-	$(target).parents(".post").find(".scroll-down").toggleClass("hidden");
-	$(target).parents(".post").find(".area-respuesta").toggleClass("hidden");
+	$(target).parents(".post").find(".area-respuesta").removeClass("hidden");
+	var $scroll_down = $(target).parents(".post").find(".scroll-down");
+	if ($scroll_down.hasClass('hidden')) {
+		$scroll_down.removeClass("hidden");
+	}
+	$scroll_down.find(".write-comment").focus();
 });
