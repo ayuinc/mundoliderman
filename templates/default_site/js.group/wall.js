@@ -118,7 +118,7 @@ $(document).on('click', '.comment', function(e){
   var $scroll_down = $(this).parents().eq(3).find(".scroll-down");
   var $area_respuesta = $(this).parents().eq(3).find(".area-respuesta");
   $scroll_down.toggleClass("hidden");
-  $area_respuesta.addClass("hidden");
+  $area_respuesta.removeClass("hidden");
 });
 
 $(document).on('change', '#inputFile', function() {
