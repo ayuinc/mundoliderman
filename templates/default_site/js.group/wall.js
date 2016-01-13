@@ -70,7 +70,7 @@ $(document).on('keypress', '.write-comment', function(e){
       var form = $comment_area.parent();
       var url = $(form).attr("action");
       var data = $(form).serialize();
-
+      $comment_area.prop("disabled", true);
       $.post(url, data, function(result) {
         var comment_data = JSON.parse(result);
         send(result);
@@ -82,6 +82,7 @@ $(document).on('keypress', '.write-comment', function(e){
           $("div[data-comment-container-post-id=" + comment_data.post_id +"]").append(comment);
           $("span[data-comment-post-id=" + comment_data.post_id +"]").text(comment_data.total);
           $comment_area.val("");
+          $comment_area.prop("disabled", false);
         });
       });
     }
@@ -96,7 +97,7 @@ $(document).on('click', '.mobile_comment', function(e) {
   if (comment.trim() != "" || comment.trim().length != 0) {
     var url = $form.attr("action");
     var data = $form.serialize();
-
+    $comment_data.prop("disabled", true);
     $.post(url, data, function(response) {
       var comment_data = JSON.parse(response);
       send(response);
@@ -108,6 +109,7 @@ $(document).on('click', '.mobile_comment', function(e) {
         $("div[data-comment-container-post-id=" + comment_data.post_id +"]").append(comment);
         $("span[data-comment-post-id=" + comment_data.post_id +"]").text(comment_data.total);
         $comment_data.val('');
+        $comment_data.prop("disabled", false);
       });
     });
   }
