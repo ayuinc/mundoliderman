@@ -27,7 +27,7 @@
           <div class="container pt-42 w-100 ph-0">
             {embed=includes/perfil-servicios miembro="{segment_3}" miembro_actual="{member_id}"}
             <h2 class="fz-30 border-bottom-gray pb-7 text-gray-darker pt-14">Tareo</h2>
-            {exp:webservice:semaforotareo mes="{current_time format='%n'}"} 
+            {exp:webservice:semaforotareo} 
               <div class="semaforo clearfix {if semaforo}bg-info{if:else}bg-primary{/if} border-radius mt-28 ph-42 text-white hidden-xs hidden-sm">
                 <div id="check_semaforo" class="col-md-1 text-center pl-0">
                   <img src="{site_url}frontend/app/assets/img/Check.png" alt="">
@@ -304,7 +304,7 @@
       var currentYear = new Date().getFullYear();
       var yearCollection = document.getElementById("yearCollection");
       var html = "";
-      for (var i = 0; i <= 10; i++) {
+      for (var i = 0; i <= 1; i++) {
         html += "<option value='" + (currentYear-i) + "' class='fz-14'>" + (currentYear-i) + "</option>";
       };
       yearCollection.innerHTML = html;

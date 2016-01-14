@@ -52,13 +52,13 @@
         <div class="col-md-4 col-xs-6 col-md-offset-0 col-xs-offset-3 pl-0 pl-21-xs text-left">
           <ul class="pl-0 thin fz-13 mb-0-xs">
             <li>
-              {exp:webservice:semaforotareo mes="{current_time format='%n'}"}
+              {exp:webservice:semaforotareo}
               <div class="circulo-semaforo brp-100 display-ib mr-7 {if semaforo}bg-info{if:else}bg-primary{/if}"></div>
               {/exp:webservice:semaforotareo}
               <a href="{path='servicios/tareo}/{member_id}" class="text-gray-dark semaforo">Tareo</a>
             </li>
             <li>
-              {exp:webservice:semaforolidercard mes="{current_time format='%n'}"}
+              {exp:webservice:semaforolidercard}
               <div class="circulo-semaforo brp-100 display-ib mr-7 {if semaforo}bg-info{if:else}bg-primary{/if}"></div>
               {/exp:webservice:semaforolidercard}
               <a href="{path='servicios/lidercard}/{member_id}" class="text-gray-dark semaforo">Valor agregado</a>
