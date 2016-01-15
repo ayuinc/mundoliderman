@@ -33,8 +33,10 @@ $(function() {
             })
             .done(function(post) {
                 $("#new_post").prepend(post);
-                $("#new_post_count").text($("#new_post").find(".post-1").length);
-                $("#alert-publication").fadeIn().delay(5000).fadeOut();
+                var count = $("#new_post").find(".post-1").length;
+                $("#new_post_count").text(count);
+                addNotificationsHeader(count);
+                $("#alert-publication").fadeIn().delay(5000);
             });
             break;
         case 'comment':
