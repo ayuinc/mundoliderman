@@ -323,8 +323,8 @@
           monthFirst = 11 + currentMonth - limitMonth + 2;
           monthLast = 11;
         } else {
-          monthFirst = currentMonth - limitMonth;
-          monthLast = monthFirst + limitMonth;
+          monthFirst = currentMonth - limitMonth + 1;
+          monthLast = monthFirst + limitMonth - 1;
           if (monthFirst < 0) monthFirst = 0;
         }
 
