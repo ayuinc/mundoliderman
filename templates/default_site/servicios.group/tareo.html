@@ -45,6 +45,7 @@
                   <div class="select-group display-ib ml-21 ml-0-xs">
                     <div class="display-ib text-center ph-7 relative">
                       <select name="" id="monthCollection" class="borderless relative">
+                        
                         <option value="0" class="fz-14">En</option>
                         <option value="1" class="fz-14">Feb</option>
                         <option value="2" class="fz-14">Mar</option>
@@ -57,6 +58,7 @@
                         <option value="9" class="fz-14">Oct</option>
                         <option value="10" class="fz-14">Nov</option>
                         <option value="11" class="fz-14">Dic</option>
+                        
                       </select>
                       <img src="{site_url}frontend/app/assets/img/Flecha_Abajo.png" alt="">
                     </div>
@@ -255,9 +257,10 @@
         cal.goto($(this).val(), $( '#yearCollection' ).val(), updateMonthYear );
       } );
       $( '#yearCollection' ).on( 'change', function(e) {
+        showAvailableMonths($(this).val());
         cal.goto($( '#monthCollection' ).val(), $(this).val(), updateMonthYear );
       });
-      function updateMonthYear() {   
+      function updateMonthYear() {  
         var month = cal.getMonthName();
         var year = cal.getYear();
         $month.html( month );
@@ -295,19 +298,47 @@
           Modernizr.csstransitions ? $events.on( transEndEventName, function() { $( this ).remove(); } ) : $events.remove();
         }
       }
-      updateMonthYear();
-    });
-  </script>
-  <script>
+
+      var months = [ 'Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Set', 'Oct', 'Nov', 'Dic' ];
+      var limitMonth = 6;
       var currentMonth = new Date().getMonth();
       document.getElementById("monthCollection").value = currentMonth;
       var currentYear = new Date().getFullYear();
       var yearCollection = document.getElementById("yearCollection");
       var html = "";
-      for (var i = 0; i <= 1; i++) {
+      var numYears = 1;
+      if (currentMonth < (limitMonth -1 )) numYears++;
+
+      for (var i = 0; i <= (numYears - 1); i++) {
         html += "<option value='" + (currentYear-i) + "' class='fz-14'>" + (currentYear-i) + "</option>";
       };
+      
       yearCollection.innerHTML = html;
+
+      function showAvailableMonths(yearSelected) {
+        $("#monthCollection").html("");
+        var monthFirst, monthLast;
+
+        if (yearSelected < currentYear) {
+          monthFirst = 11 + currentMonth - limitMonth + 2;
+          monthLast = 11;
+        } else {
+          monthFirst = currentMonth - limitMonth;
+          monthLast = monthFirst + limitMonth;
+          if (monthFirst < 0) monthFirst = 0;
+        }
+
+        var html = "";
+        for (var i = monthFirst; i <= monthLast; i++) {
+          html += "<option value='" + (i) + "' class='fz-14'>" + months[i] + "</option>";
+        };
+        $("#monthCollection").html(html);
+        $("#monthCollection").val(monthLast);
+      };
+
+      showAvailableMonths(currentYear);
+      updateMonthYear();
+    });
   </script>
   <script src="{site_url}frontend/app/assets/js/smooth-scroll.js"></script>
 </html>
