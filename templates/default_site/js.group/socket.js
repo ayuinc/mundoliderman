@@ -9,7 +9,7 @@ function send( text ) {
 }
 
 $(function() {
-  Server = new FancyWebSocket('ws://52.20.3.133:9300');
+  Server = new FancyWebSocket('ws://55.20.3.133:9300');
 
   //Let the user know we're connected
   Server.bind('open', function() {
