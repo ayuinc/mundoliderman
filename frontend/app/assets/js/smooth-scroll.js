@@ -16,6 +16,7 @@ if ($("#alert-publication").length > 0) {
     showAlert(scroll, positionAlert);
 
     $(".close-alert").on("click", function(){
+      removeNotificationsHeader();
       $("#alert-publication").fadeOut();  
     });
 
@@ -26,6 +27,8 @@ if ($("#alert-publication").length > 0) {
       var new_posts = $("#new_post").html();
       $("#post").prepend(new_posts);
       $("#new_post").html("");
+      removeNotificationsHeader();
+      $("#alert-publication").fadeOut();
     }); 
   });
 
@@ -45,4 +48,13 @@ if ($("#alert-publication").length > 0) {
         $("#alert-publication").addClass("relative");
     }
   }
+}
+
+var pageTitle = document.title;
+function addNotificationsHeader(num) {
+  document.title = "(" + num + ") " + pageTitle;
+}
+
+function removeNotificationsHeader() {
+  document.title = pageTitle;
 }
