@@ -11,10 +11,9 @@ if ($("#alert-publication").length > 0) {
   /*Banner alerta de publicaciones*/
   var positionAlert;
   $(document).ready(function(){
-  	positionAlert = $("#alert-publication").offset().top - 82;	
+  	positionAlert = $("#alert-publication").offset().top - 82;
     var scroll = $(this).scrollTop();
     showAlert(scroll, positionAlert);
-
     $(".close-alert").on("click", function(){
       removeNotificationsHeader();
       $("#alert-publication").fadeOut();  
@@ -48,13 +47,4 @@ if ($("#alert-publication").length > 0) {
         $("#alert-publication").addClass("relative");
     }
   }
-}
-
-var pageTitle = document.title;
-function addNotificationsHeader(num) {
-  document.title = "(" + num + ") " + pageTitle;
-}
-
-function removeNotificationsHeader() {
-  document.title = pageTitle;
 }
