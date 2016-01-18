@@ -9,7 +9,7 @@ function send( text ) {
 }
 
 $(function() {
-  Server = new FancyWebSocket('ws://55.20.3.133:9300');
+  Server = new FancyWebSocket('{exp:socket:socket_url}');
 
   //Let the user know we're connected
   Server.bind('open', function() {
@@ -36,6 +36,12 @@ $(function() {
                 var count = $("#new_post").find(".post-1").length;
                 $("#new_post_count").text(count);
                 addNotificationsHeader(count);
+                if (location.pathname.indexOf('perfil') >= 0) {
+                  $("#alert-publication").on('click', function(e) {
+                    location.href = '{site_url}';
+                  });
+                  console.log($("#alert-publication"));
+                }
                 $("#alert-publication").fadeIn().delay(5000);
             });
             break;
