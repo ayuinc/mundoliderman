@@ -35,8 +35,10 @@
                         </a>
                     {/if}
                     </h5>
+                    {if member_group == 6}
                     <p class="fz-12 m-0 text-gray">{nombres} {apellidos} {dni}</p>
                     {if unidad != "" }<p class="fz-12 m-0 text-gray">Unidad: {unidad}</p>{/if}
+                    {/if}
                     <p class="fz-10 m-0 text-gray">{post_status_date:relative past="%s atrás"}</p>
                 </div>
                 <div class="col-xs-8 hidden-lg hidden-md pl-35 pr-0-xs"><!--movil-->
