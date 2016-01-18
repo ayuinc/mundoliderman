@@ -77,6 +77,9 @@ $(function() {
     }
 }
 });
-
-  Server.connect();
+  
+  // Conectar siempre el web socket excepto en el login
+  if(location.pathname.indexOf('login') < 0) {
+    Server.connect();
+  }
 });
