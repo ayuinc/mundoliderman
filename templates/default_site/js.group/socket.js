@@ -1,4 +1,14 @@
 var Server;
+var CHATEADORA = 6;
+
+var pageTitle = document.title;
+function addNotificationsHeader(num) {
+  document.title = "(" + num + ") " + pageTitle;
+}
+
+function removeNotificationsHeader() {
+  document.title = pageTitle;
+}
 
 function log( text ) {
   console.log(text);
@@ -9,7 +19,7 @@ function send( text ) {
 }
 
 $(function() {
-  Server = new FancyWebSocket('ws://52.20.3.133:9300');
+  Server = new FancyWebSocket('{exp:socket:socket_url}');
 
   //Let the user know we're connected
   Server.bind('open', function() {
@@ -27,6 +37,11 @@ $(function() {
     if (response.result == 'success') {
       switch(response.action) {
         case 'status': 
+            var notInWall = location.pathname.indexOf('perfil') >= 0 || location.pathname.indexOf('servicios') >= 0;
+            var member_group = {member_group};
+
+            if (notInWall && member_group !== CHATEADORA) return;
+
             $.ajax({
                 method: 'GET',
                 url: '{site_url}wall/new_post/' + response.post_id + '/{member_group}'
@@ -36,6 +51,13 @@ $(function() {
                 var count = $("#new_post").find(".post-1").length;
                 $("#new_post_count").text(count);
                 addNotificationsHeader(count);
+                
+                if (notInWall) {
+                  $("#alert-publication").on('click', function(e) {
+                    location.href = '{site_url}';
+                  });
+                }
+
                 $("#alert-publication").fadeIn().delay(5000);
             });
             break;
@@ -55,6 +77,9 @@ $(function() {
     }
 }
 });
-
-  Server.connect();
+  
+  // Conectar siempre el web socket excepto en el login
+  if(location.pathname.indexOf('login') < 0) {
+    Server.connect();
+  }
 });
