@@ -186,6 +186,7 @@ $(document).on('submit', '#status_form', function(e) {
         .done(function(post) {
           $("#wall_status").val('');
           $("#wall_status_format").val('');
+          reset_grow(document.getElementById("wall_status_format"));
           $("#status_category").val('0');
           $("#photos-post").css('background-image', "url('')");
           $("#inputFile").val('');
