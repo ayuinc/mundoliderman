@@ -1,5 +1,6 @@
 var Server;
 var CHATEADORA = 6;
+var newComments = 0;
 
 var pageTitle = document.title;
 function addNotificationsHeader(num) {
@@ -34,11 +35,11 @@ $(function() {
   //Log any messages sent from server
   Server.bind('message', function( payload ) {
     var response = JSON.parse(payload);
+    var notInWall = location.pathname.indexOf('perfil') >= 0 || location.pathname.indexOf('servicios') >= 0;
+    var member_group = {member_group};
     if (response.result == 'success') {
       switch(response.action) {
         case 'status': 
-            var notInWall = location.pathname.indexOf('perfil') >= 0 || location.pathname.indexOf('servicios') >= 0;
-            var member_group = {member_group};
 
             if (notInWall && member_group !== CHATEADORA) return;
 
@@ -69,6 +70,21 @@ $(function() {
             .done(function(comment) {
                 $("div[data-comment-container-post-id=" + response.post_id +"]").append(comment);
                 $("span[data-comment-post-id=" + response.post_id +"]").text(response.total);
+                if (notInWall && member_group !== CHATEADORA) {
+                  newComments++;
+                  $('a.scroll').unbind('click');
+                  $("#new_post_count").text(newComments);
+                  $("#new_event_description").html(" nuevo(s) comentario!");
+                  addNotificationsHeader(newComments);
+                  $("#alert-publication").fadeIn().delay(1000);
+                  $("#alert-publication").on('click', function(e){
+                    e.preventDefault();
+                    $(document.body).animate({'scrollTop':   $('#comment-' + response.comment_id).offset().top - 150}, 1000);
+                    $("#alert-publication").fadeOut();
+                    removeNotificationsHeader();
+                    newComments = [];
+                  });
+                }
             });
             break;
         case 'like':
