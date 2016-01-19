@@ -34,44 +34,44 @@
     <div class="resumen-semaforo pt-14 clearfix">
       <div class="col-md-8 col-md-offset-4 pl-28">
         <h4 class="text-gray fz-16 m-0 pt-7 book pb-14">Semáforo General</h4>
-        <div class="col-md-4 col-xs-6 col-md-offset-0 col-xs-offset-3 pl-0 pl-21-xs text-left">
+        <div class="col-md-4 col-xs-12 col-md-offset-0 pl-0 pr-0 pl-21-xs text-left">
           <ul class="pl-0 thin fz-13 mb-0-xs">
               {exp:webservice:semaforolidernet}
               <div class="circulo-semaforo brp-100 display-ib mr-7 {if semaforo}bg-info{if:else}bg-primary{/if}"></div>
               {/exp:webservice:semaforolidernet}
-              <a href="{path='servicios/lidernet}/{member_id}" class="text-gray-dark semaforo">Cultura</a>
+              <a href="{path='servicios/lidernet}/{member_id}" class="text-gray-dark semaforo">Lidernet (Cultura)</a>
             </li>
             <li>
               {exp:webservice:semaforoprestamo}
               <div class="circulo-semaforo brp-100 display-ib mr-7 {if semaforo}bg-info{if:else}bg-primary{/if}"></div>
               {/exp:webservice:semaforoprestamo}
-              <a href="{path='servicios/prestamos}/{member_id}" class="text-gray-dark semaforo">Orden económico</a>
+              <a href="{path='servicios/prestamos}/{member_id}" class="text-gray-dark semaforo">Préstamos <span class="hidden-lg hidden-md">(Orden económico)</span><br><span class="pl-14 hidden-xs hidden-sm">(Orden económico)</span></a>
             </li>
           </ul>
         </div>
-        <div class="col-md-4 col-xs-6 col-md-offset-0 col-xs-offset-3 pl-0 pl-21-xs text-left">
+        <div class="col-md-4 col-xs-12 col-md-offset-0 pl-0 pl-21-xs text-left">
           <ul class="pl-0 thin fz-13 mb-0-xs">
             <li>
               {exp:webservice:semaforotareo}
               <div class="circulo-semaforo brp-100 display-ib mr-7 {if semaforo}bg-info{if:else}bg-primary{/if}"></div>
               {/exp:webservice:semaforotareo}
-              <a href="{path='servicios/tareo}/{member_id}" class="text-gray-dark semaforo">Tareo</a>
+              <a href="{path='servicios/tareo}/{member_id}" class="text-gray-dark semaforo">Tareo (Conducta)</a>
             </li>
             <li>
               {exp:webservice:semaforolidercard}
               <div class="circulo-semaforo brp-100 display-ib mr-7 {if semaforo}bg-info{if:else}bg-primary{/if}"></div>
               {/exp:webservice:semaforolidercard}
-              <a href="{path='servicios/lidercard}/{member_id}" class="text-gray-dark semaforo">Valor agregado</a>
+              <a href="{path='servicios/lidercard}/{member_id}" class="text-gray-dark semaforo">Lidercard <span class="hidden-lg hidden-md">(Valor agregado)</span><br><span class="pl-14 hidden-xs hidden-sm">(Valor agregado)</span></a>
             </li>
           </ul>
         </div>
-        <div class="col-md-4 col-xs-6 col-md-offset-0 col-xs-offset-3 pl-0 pl-21-xs text-left">
+        <div class="col-md-4 col-xs-12 col-md-offset-0 pl-0 pl-21-xs text-left">
           <ul class="pl-0 thin fz-13 mb-0-xs">
             <li>
               {exp:webservice:semaforocapacitaciones}
               <div class="circulo-semaforo brp-100 display-ib mr-7 {if semaforo}bg-info{if:else}bg-primary{/if}"></div>
               {/exp:webservice:semaforocapacitaciones}
-              <a href="{path='servicios/capacitacion}/{member_id}" class="text-gray-dark semaforo absolute">Autocapacitaciones</a>
+              <a href="{path='servicios/capacitacion}/{member_id}" class="text-gray-dark semaforo absolute">Capacitaciones (Autocapacitaciones)</a>
             </li>
           </ul>
         </div>
