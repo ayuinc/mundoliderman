@@ -32,7 +32,7 @@ function replaceLinks( text, urls ) {
 	if (urls.length == 0) return text;
 	var text_formated = '';
 	urls.forEach(function(url) {
-	  text_formated = text.replace(url, '<a href="' + (url.indexOf('http') ? '//' + url : url) + '" target="_blank">' + url + '</a>');
+	  text_formated = text.replace(url, '<a href="' + (url.indexOf('http') ? '//' + url : url) + '" target="_blank" class="post-link" >' + url + '</a>');
 	});
 	return text_formated;
 }

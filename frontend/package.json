@@ -13,7 +13,7 @@
   "devDependencies": {
     "bower": "latest",
     "connect-livereload": "latest",
-    "grunt": "latest",
+    "grunt": "^0.4.5",
     "grunt-autoprefixer": "latest",
     "grunt-bower-task": "latest",
     "grunt-contrib-clean": "latest",
@@ -25,13 +25,13 @@
     "grunt-contrib-sass": "latest",
     "grunt-contrib-uglify": "latest",
     "grunt-contrib-watch": "latest",
+    "grunt-open": "latest",
+    "grunt-purifycss": "latest",
     "grunt-responsive-images": "latest",
     "grunt-responsive-images-extender": "latest",
-    "grunt-purifycss": "latest",
-    "grunt-open": "latest",
-    "matchdep": "latest",    
-    "pgwbrowser": "latest",
-    "logdown": "latest"
+    "logdown": "latest",
+    "matchdep": "latest",
+    "pgwbrowser": "latest"
   },
   "scripts": {
     "postinstall": "node_modules/.bin/bower install"
