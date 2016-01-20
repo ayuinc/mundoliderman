@@ -1,5 +1,6 @@
 $(document).ready(function() {
   $("#status_form").attr("enctype", "multipart/form-data");
+  formatLinks();
 });
 
 $(document).on('click', '.delete_post', function(e) {
@@ -68,10 +69,6 @@ $(document).on('keypress', '.write-comment', function(e){
     var comment = $comment_area.val();
     if (comment.trim() != "" || comment.trim().length != 0) {
       var form = $comment_area.parent();
-      var urls = findUrls(comment);
-      var comment_formatted = replaceLinks(comment, urls);
-      var textComment = $(form).find(".comment-content");
-      textComment.val(comment_formatted);
       var url = $(form).attr("action");
       var data = $(form).serialize();
       $comment_area.prop("disabled", true);
@@ -88,6 +85,7 @@ $(document).on('keypress', '.write-comment', function(e){
           $comment_area.val("");
           $comment_area.prop("disabled", false);
           reset_grow($comment_area[0]);
+          formatLinks();
         });
       });
     }
@@ -101,10 +99,6 @@ $(document).on('click', '.mobile_comment', function(e) {
   var comment = $comment_data.val();
   if (comment.trim() != "" || comment.trim().length != 0) {
     var url = $form.attr("action");
-    var urls = findUrls(comment);
-    var comment_formatted = replaceLinks(comment, urls);
-    var textComment = $($form).find(".comment-content");
-    textComment.val(comment_formatted);
     var data = $form.serialize();
     $comment_data.prop("disabled", true);
     $.post(url, data, function(response) {
@@ -120,6 +114,7 @@ $(document).on('click', '.mobile_comment', function(e) {
         $comment_data.val('');
         $comment_data.prop("disabled", false);
         reset_grow($comment_data[0]);
+        formatLinks();
       });
     });
   }
@@ -155,7 +150,7 @@ $(document).on('click', '.close-image', function(){
 $(document).on('submit', '#status_form', function(e) {
   e.preventDefault();
   $("#submit-post").attr("disabled", true);
-  var friends_status = $("#wall_status_format").val();
+  var friends_status = $("#wall_status").val();
   var status_category = $("#status_category").val();
   if (status_category == 0) {
     $('#error-categoria').html('<img src="{site_url}frontend/app/assets/img/categoria2.png">');
@@ -173,9 +168,6 @@ $(document).on('submit', '#status_form', function(e) {
   }
   var form = $(this);
   var url = form.attr("action");
-  var urls = findUrls(friends_status);
-  var post_formatted = replaceLinks(friends_status, urls);
-  $("#wall_status").val(post_formatted);
   var formData = new FormData(form[0]);
   $.ajax({
     url: url,
@@ -195,7 +187,6 @@ $(document).on('submit', '#status_form', function(e) {
         })
         .done(function(post) {
           $("#wall_status").val('');
-          $("#wall_status_format").val('');
           $("#status_category").val('0');
           $("#photos-post").css('background-image', "url('')");
           $("#inputFile").val('');
@@ -203,7 +194,8 @@ $(document).on('submit', '#status_form', function(e) {
           $("#post").prepend(post);
           $("#submit-post").removeAttr("disabled");
           $("#loader").fadeOut();
-          reset_grow(document.getElementById("wall_status_format"));
+          reset_grow(document.getElementById("wall_status"));
+          formatLinks();
         })
         .fail(function(error) {
           $("#submit-post").removeAttr("disabled");
@@ -220,3 +212,4 @@ $(document).on('submit', '#status_form', function(e) {
     processData: false
   });
 });
+

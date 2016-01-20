@@ -22,6 +22,7 @@ $(function() {
                         }
 $(".scroll-down").removeClass("hidden");
                     }
+                    formatLinks();
                     $(".loading-status").fadeOut();
                 },
                 error: function(error) {
