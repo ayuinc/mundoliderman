@@ -68,6 +68,10 @@ $(document).on('keypress', '.write-comment', function(e){
     var comment = $comment_area.val();
     if (comment.trim() != "" || comment.trim().length != 0) {
       var form = $comment_area.parent();
+      var urls = findUrls(comment);
+      var comment_formatted = replaceLinks(comment, urls);
+      var textComment = $(form).find(".comment-content");
+      textComment.val(comment_formatted);
       var url = $(form).attr("action");
       var data = $(form).serialize();
       $comment_area.prop("disabled", true);
@@ -83,6 +87,7 @@ $(document).on('keypress', '.write-comment', function(e){
           $("span[data-comment-post-id=" + comment_data.post_id +"]").text(comment_data.total);
           $comment_area.val("");
           $comment_area.prop("disabled", false);
+          reset_grow($comment_area[0]);
         });
       });
     }
@@ -96,6 +101,10 @@ $(document).on('click', '.mobile_comment', function(e) {
   var comment = $comment_data.val();
   if (comment.trim() != "" || comment.trim().length != 0) {
     var url = $form.attr("action");
+    var urls = findUrls(comment);
+    var comment_formatted = replaceLinks(comment, urls);
+    var textComment = $($form).find(".comment-content");
+    textComment.val(comment_formatted);
     var data = $form.serialize();
     $comment_data.prop("disabled", true);
     $.post(url, data, function(response) {
@@ -110,6 +119,7 @@ $(document).on('click', '.mobile_comment', function(e) {
         $("span[data-comment-post-id=" + comment_data.post_id +"]").text(comment_data.total);
         $comment_data.val('');
         $comment_data.prop("disabled", false);
+        reset_grow($comment_data[0]);
       });
     });
   }
@@ -186,7 +196,6 @@ $(document).on('submit', '#status_form', function(e) {
         .done(function(post) {
           $("#wall_status").val('');
           $("#wall_status_format").val('');
-          reset_grow(document.getElementById("wall_status_format"));
           $("#status_category").val('0');
           $("#photos-post").css('background-image', "url('')");
           $("#inputFile").val('');
@@ -194,6 +203,7 @@ $(document).on('submit', '#status_form', function(e) {
           $("#post").prepend(post);
           $("#submit-post").removeAttr("disabled");
           $("#loader").fadeOut();
+          reset_grow(document.getElementById("wall_status_format"));
         })
         .fail(function(error) {
           $("#submit-post").removeAttr("disabled");
