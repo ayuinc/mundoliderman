@@ -20,6 +20,7 @@ $(function() {
                             old_offset = offset;
                             offset += 1;
                         }
+$(".scroll-down").removeClass("hidden");
                     }
                     $(".loading-status").fadeOut();
                 },
