@@ -36,3 +36,14 @@ function replaceLinks( text, urls ) {
 	});
 	return text_formated;
 }
+function formatLinks() {
+  $(".pending-format").each(function(index, element){
+       element.innerHTML = urlify(element.innerHTML);
+       $(element).removeClass("pending-format");
+  });
+}
+
+function urlify(text) {
+  var urls = findUrls(text);
+  return replaceLinks(text, urls);
+}

@@ -49,6 +49,7 @@ $(function() {
             })
             .done(function(post) {
                 $("#new_post").prepend(post);
+                formatLinks();
                 var count = $("#new_post").find(".post-1").length;
                 $("#new_post_count").text(count);
                 addNotificationsHeader(count);
@@ -58,7 +59,6 @@ $(function() {
                     location.href = '{site_url}';
                   });
                 }
-
                 $("#alert-publication").fadeIn().delay(5000);
             });
             break;
@@ -70,6 +70,7 @@ $(function() {
             .done(function(comment) {
                 $("div[data-comment-container-post-id=" + response.post_id +"]").append(comment);
                 $("span[data-comment-post-id=" + response.post_id +"]").text(response.total);
+                formatLinks();
                 if (notInWall && member_group !== CHATEADORA) {
                   newComments++;
                   $('a.scroll').unbind('click');

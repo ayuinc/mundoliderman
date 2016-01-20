@@ -21,6 +21,7 @@ $(function() {
                             offset += 1;
                         }
                     }
+                    formatLinks();
                     $(".loading-status").fadeOut();
                 },
                 error: function(error) {
