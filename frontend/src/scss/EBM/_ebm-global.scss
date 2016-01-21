@@ -39,78 +39,156 @@ body {
 		height: 285px!important;
 	}
 
+	.item-event {
+		padding: 2px;
+		font-size: 10px;
+		background: white !important;
+	}
+
 	/*COLORES TAREO*/
 		.bg-diurno {
-			background-color: #51BA6E;
+			background-color: transparent;
+		}
+		.bg-diurno .event:after {
+			content: "D";
 		}
 		.bg-nocturno {
-			background-color: #19572A;
+			background-color: transparent;
+		}
+		.bg-nocturno .event:after {
+			content: "N";
 		}
 		.bg-falto {
-			background-color: #D1D3D4;
+			background-color: #62C800;
+		}
+		.bg-falto .event:after {
+			content: "FF";
 		}
 		.bg-abandono {
-			background-color: #887B96;
+			background-color: #62C800;
+		}
+		.bg-abandono .event:after {
+			content: "ASERV";
 		}
 		.bg-baja {
-			background-color: #1E6658;
+			background-color: #62C800;
+		}
+		.bg-baja .event:after {
+			content: "BAJA";
 		}
 		.bg-descanso {
-			background-color: #173457;
+			background-color: #62C800;
+		}
+		.bg-descanso .event:after {
+			content: "DESC";
 		}
 		.bg-descanso2 {
-			background-color: #22517F;
+			background-color: #62C800;
+		}
+		.bg-descanso2 .event:after {
+			content: "DM";
 		}
 		.bg-descanso3 {
-			background-color: #3E91E5;
+			background-color: #F27507;
+		}
+		.bg-descanso3 .event:after {
+			content: "X";
 		}
 		.bg-subsidio{
-			background-color: #00AEEF;
+			background-color: #62C800;
+		}
+		.bg-subsidio .event:after {
+			content: "SUBEN";
 		}
 		.bg-subsidio2 {
-			background-color: #76CBE5;
+			background-color: #62C800;
+		}
+		.bg-subsidio2 .event:after {
+			content: "SUBMA";
 		}
 		.bg-vacaciones {
-			background-color: #FFBE00;
+			background-color: #62C800;
+		}
+		.bg-vacaciones .event:after {
+			content: "VC";
 		}
 		.bg-venta {
-			background-color: #FFDE20;
+			background-color: #62C800;
+		}
+		.bg-venta .event:after {
+			content: "VT";
 		}
 		.bg-suspension {
-			background-color: #6118EF;
+			background-color: #62C800;
+		}
+		.bg-suspension .event:after {
+			content: "S";
 		}
 		.bg-traslado {
-			background-color: #553285;
+			background-color: #62C800;
+		}
+		.bg-traslado .event:after {
+			content: "PT";
 		}
 		.bg-incapacidad {
-			background-color: #231F20;
+			background-color: #62C800;
+		}
+		.bg-incapacidad .event:after {
+			content: "IP";
 		}
 		.bg-incapacidad2 {
-			background-color: #58595B;
+			background-color: #62C800;
 		}
-		.bg-licencia {
+		.bg-incapacidad2 .event:after {
+			content: "ITTSS";
+		}
+		/*.bg-licencia {
 			background-color: #A6DD4E;
+		}
+		.bg-licencia .event:after {
+			content: "ITTSS";
 		}
 		.bg-licencia2 {
 			background-color: #40561E;
 		}
+		.bg-licencia2 .event:after {
+			content: "ITTSS";
+		}*/
 		.bg-pagado {
-			background-color: #223322;
+			background-color: #62C800;
+		}
+		.bg-pagado .event:after {
+			content: "PN";
 		}
 		.bg-pagado2 {
-			background-color: #91F991;
+			background-color: #62C800;
+		}
+		.bg-pagado2  .event:after {
+			content: "PP";
 		}
 		.bg-servicio {
-			background-color: #FF853B;
+			background-color: #62C800;
+		}
+		.bg-servicio  .event:after {
+			content: "SF";
 		}
 		.bg-servicio2 {
-			background-color: #F94211;
+			background-color: #62C800;
+		}
+		.bg-servicio2  .event:after {
+			content: "SP";
 		}
 		.bg-servicio3 {
-			background-color: #D13213;
+			background-color: #62C800;
+		}
+		.bg-servicio3  .event:after {
+			content: "SNCUB";
 		}
 		.bg-servicio4 {
-			background-color: #AA2B11;
+			background-color: #62C800;
+		}
+		.bg-servicio4  .event:after {
+			content: "SDESA";
 		}
 
 
@@ -926,8 +1004,16 @@ footer > div {
 
 /*CONTENIDO TAREO*/
 
+.fc-row > div {
+  position: relative !important;
+}
+
 .fc-date{
-	padding:28% 34% 28% 34%;
+	bottom: 0px;
+	right: 0px;
+  	font-size: 10px;
+  	padding: 1px;
+  	position: absolute;
 }
 
 #tareo-contenido {
@@ -1821,8 +1907,6 @@ input[type="submit"] {
 		height: 13px;
 	}
 	
-	
-	
 
 	.fc-calendar-container {
 
@@ -1836,7 +1920,8 @@ input[type="submit"] {
 			    
 		}
 		.fc-date {
-		padding: 28% 35% 28% 35%;
+			font-size: 8px;
+			padding: 2px;
 		}
 	}
 
