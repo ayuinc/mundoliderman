@@ -47,7 +47,8 @@ class Update_status_ext
 
 		$fields = array(
 			'category_id' => array('type' => 'int', 'unsigned' => TRUE),
-			'category_name' => array('type' => 'varchar', 'constraint' => '250', 'null' => FALSE)
+			'category_name' => array('type' => 'varchar', 'constraint' => '250', 'null' => FALSE),
+			'num_order' => array('type' => 'int', 'unsigned' => TRUE)
 		);
 
 		ee()->dbforge->add_field($fields);
@@ -60,31 +61,43 @@ class Update_status_ext
 		$data = array(
 			array(
 				'category_id' => '0',
-				'category_name' => 'Escoge una categoría'
+				'category_name' => 'Escoge una categoría',
+				'num_order' => '0'
 			),
 			array(
 				'category_id' => '1',
-				'category_name' => 'Quiero divertirme'
+				'category_name' => 'Quiero divertirme',
+				'num_order' => '1'
 			),
 			array(
 				'category_id' => '2',
-				'category_name' => 'Quiero dar mi testimonio'
+				'category_name' => 'Quiero dar mi testimonio',
+				'num_order' => '2'
 			),
 			array(
 				'category_id' => '3',
-				'category_name' => 'Tengo una solicitud'
+				'category_name' => 'Tengo una solicitud',
+				'num_order' => '3'
 			),
 			array(
 				'category_id' => '4',
-				'category_name' => 'Tengo una consulta'
+				'category_name' => 'Tengo una consulta',
+				'num_order' => '4'
 			),
 			array(
 				'category_id' => '5',
-				'category_name' => 'Necesito ayuda'
+				'category_name' => 'Necesito ayuda',
+				'num_order' => '5'
 			),
 			array(
 				'category_id' => '6',
-				'category_name' => 'Otro'
+				'category_name' => 'Otro',
+				'num_order' => '7'
+			),
+			array(
+				'category_id' => '7',
+				'category_name' => 'Reclamo',
+				'num_order' => '6'
 			)
 		);
 
