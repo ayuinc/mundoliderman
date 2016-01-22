@@ -52,41 +52,29 @@ body {
 		.bg-diurno .event:after {
 			content: "D";
 		}
+		.bg-tarde {
+			background-color: transparent;
+		}
+		.bg-tarde .event:after {
+			content: "T";
+		}
 		.bg-nocturno {
 			background-color: transparent;
 		}
 		.bg-nocturno .event:after {
 			content: "N";
 		}
-		.bg-falto {
-			background-color: #62C800;
+		.bg-guardian {
+			background-color: transparent;
 		}
-		.bg-falto .event:after {
-			content: "FF";
+		.bg-guardian .event:after {
+			content: "G";
 		}
-		.bg-abandono {
-			background-color: #62C800;
+		.bg-falto2 {
+			background-color: transparent;
 		}
-		.bg-abandono .event:after {
-			content: "ASERV";
-		}
-		.bg-baja {
-			background-color: #62C800;
-		}
-		.bg-baja .event:after {
-			content: "BAJA";
-		}
-		.bg-descanso {
-			background-color: #62C800;
-		}
-		.bg-descanso .event:after {
-			content: "DESC";
-		}
-		.bg-descanso2 {
-			background-color: #62C800;
-		}
-		.bg-descanso2 .event:after {
-			content: "DM";
+		.bg-falto2 .event:after {
+			content: "F";
 		}
 		.bg-descanso3 {
 			background-color: #F27507;
@@ -94,29 +82,29 @@ body {
 		.bg-descanso3 .event:after {
 			content: "X";
 		}
-		.bg-subsidio{
+		.bg-feriado {
+			background-color: transparent;
+		}
+		.bg-feriado .event:after {
+			content: "O";
+		}
+		.bg-falto {
 			background-color: #62C800;
 		}
-		.bg-subsidio .event:after {
-			content: "SUBEN";
+		.bg-falto .event:after {
+			content: "FF";
 		}
-		.bg-subsidio2 {
+		.bg-baja {
 			background-color: #62C800;
 		}
-		.bg-subsidio2 .event:after {
-			content: "SUBMA";
+		.bg-baja .event:after {
+			content: "BAJA";
 		}
-		.bg-vacaciones {
+		.bg-pagado {
 			background-color: #62C800;
 		}
-		.bg-vacaciones .event:after {
-			content: "VC";
-		}
-		.bg-venta {
-			background-color: #62C800;
-		}
-		.bg-venta .event:after {
-			content: "VT";
+		.bg-pagado .event:after {
+			content: "PN";
 		}
 		.bg-suspension {
 			background-color: #62C800;
@@ -130,11 +118,17 @@ body {
 		.bg-traslado .event:after {
 			content: "PT";
 		}
-		.bg-incapacidad {
+		.bg-lsgoc {
 			background-color: #62C800;
 		}
-		.bg-incapacidad .event:after {
-			content: "IP";
+		.bg-lsgoc .event:after {
+			content: "LSGOC";
+		}
+		.bg-abandono {
+			background-color: #62C800;
+		}
+		.bg-abandono .event:after {
+			content: "ASERV";
 		}
 		.bg-incapacidad2 {
 			background-color: #62C800;
@@ -142,29 +136,11 @@ body {
 		.bg-incapacidad2 .event:after {
 			content: "ITTSS";
 		}
-		/*.bg-licencia {
-			background-color: #A6DD4E;
-		}
-		.bg-licencia .event:after {
-			content: "ITTSS";
-		}
-		.bg-licencia2 {
-			background-color: #40561E;
-		}
-		.bg-licencia2 .event:after {
-			content: "ITTSS";
-		}*/
-		.bg-pagado {
+		.bg-servicio4 {
 			background-color: #62C800;
 		}
-		.bg-pagado .event:after {
-			content: "PN";
-		}
-		.bg-pagado2 {
-			background-color: #62C800;
-		}
-		.bg-pagado2  .event:after {
-			content: "PP";
+		.bg-servicio4  .event:after {
+			content: "SDESA";
 		}
 		.bg-servicio {
 			background-color: #62C800;
@@ -172,26 +148,72 @@ body {
 		.bg-servicio  .event:after {
 			content: "SF";
 		}
-		.bg-servicio2 {
-			background-color: #62C800;
-		}
-		.bg-servicio2  .event:after {
-			content: "SP";
-		}
 		.bg-servicio3 {
 			background-color: #62C800;
 		}
 		.bg-servicio3  .event:after {
 			content: "SNCUB";
 		}
-		.bg-servicio4 {
+		.bg-servicio2 {
 			background-color: #62C800;
 		}
-		.bg-servicio4  .event:after {
-			content: "SDESA";
+		.bg-servicio2  .event:after {
+			content: "SP";
 		}
-
-
+		.bg-subsidio{
+			background-color: #62C800;
+		}
+		.bg-subsidio .event:after {
+			content: "SUBEN";
+		}
+		.bg-subsidio2 {
+			background-color: #62C800;
+		}
+		.bg-subsidio2 .event:after {
+			content: "SUBMA";
+		}
+		.bg-descanso2 {
+			background-color: #62C800;
+		}
+		.bg-descanso2 .event:after {
+			content: "DM";
+		}
+		.bg-pagado2 {
+			background-color: #62C800;
+		}
+		.bg-pagado2  .event:after {
+			content: "PP";
+		}
+		.bg-vacaciones {
+			background-color: #62C800;
+		}
+		.bg-vacaciones .event:after {
+			content: "VC";
+		}
+		.bg-venta {
+			background-color: #62C800;
+		}
+		.bg-venta .event:after {
+			content: "VT";
+		}
+		.bg-lcgoc {
+			background-color: #62C800;
+		}
+		.bg-lcgoc .event:after {
+			content: "LCGOC";
+		}
+		.bg-descanso {
+			background-color: #62C800;
+		}
+		.bg-descanso .event:after {
+			content: "DESC";
+		}
+		.bg-incapacidad {
+			background-color: #62C800;
+		}
+		.bg-incapacidad .event:after {
+			content: "IP";
+		}
 
 	/*text-info(Asistencia diurna) y text-danger(Ausencia)*/
 	.w-100 {

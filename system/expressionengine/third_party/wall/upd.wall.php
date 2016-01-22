@@ -43,19 +43,14 @@ class Wall_upd {
 
 			$data = array(
 				array(
-					'code' => 'BAJA',
-					'description' => 'Personal de Baja',
-					'bg_color' => 'bg-baja'
-				),
-				array(
 					'code' => 'D',
 					'description' => 'Diurno',
 					'bg_color' => 'bg-diurno'
 				),
 				array(
-					'code' => 'FF',
-					'description' => 'Falto al Servicio',
-					'bg_color' => 'bg-falto'
+					'code' => 'T',
+					'description' => 'Tarde',
+					'bg_color' => 'bg-tarde'
 				),
 				array(
 					'code' => 'N',
@@ -63,44 +58,34 @@ class Wall_upd {
 					'bg_color' => 'bg-nocturno'
 				),
 				array(
+					'code' => 'G',
+					'description' => 'Guardian',
+					'bg_color' => 'bg-guardian'
+				),
+				array(
+					'code' => 'F',
+					'description' => 'Falto',
+					'bg_color' => 'bg-falto2'
+				),
+				array(
 					'code' => 'X',
-					'description' => 'Descanso por Cambio Operativo',
+					'description' => 'Descanso Laboral',
 					'bg_color' => 'bg-descanso3'
 				),
 				array(
-					'code' => 'ASERV',
-					'description' => 'Abandono de Servicio',
-					'bg_color' => 'bg-abandono'
+					'code' => 'FF',
+					'description' => 'Falto al Servicio',
+					'bg_color' => 'bg-falto'
 				),
 				array(
-					'code' => 'DM',
-					'description' => 'Descanso Médico',
-					'bg_color' => 'bg-descanso2'
+					'code' => 'BAJA',
+					'description' => 'Personal de Baja',
+					'bg_color' => 'bg-baja'
 				),
 				array(
-					'code' => 'DESC',
-					'description' => 'Descanso',
-					'bg_color' => 'bg-descanso'
-				),
-				array(
-					'code' => 'SUBEN',
-					'description' => 'Subsidio Enfermedad',
-					'bg_color' => 'bg-subsidio'
-				),
-				array(
-					'code' => 'SUBMA',
-					'description' => 'Subsidio Maternidad',
-					'bg_color' => 'bg-subsidio2'
-				),
-				array(
-					'code' => 'VC',
-					'description' => 'Vacaciones',
-					'bg_color' => 'bg-vacaciones'
-				),
-				array(
-					'code' => 'VT',
-					'description' => 'Venta de Vacaciones',
-					'bg_color' => 'bg-venta'
+					'code' => 'PN',
+					'description' => 'Permiso no Pagado',
+					'bg_color' => 'bg-pagado'
 				),
 				array(
 					'code' => 'S',
@@ -113,9 +98,14 @@ class Wall_upd {
 					'bg_color' => 'bg-traslado'
 				),
 				array(
-					'code' => 'IP',
-					'description' => 'Incapacidad Permanente',
-					'bg_color' => 'bg-incapacidad'
+					'code' => 'LSGOC',
+					'description' => 'Licencia sin Goce',
+					'bg_color' => 'bg-lsgoc'
+				),
+				array(
+					'code' => 'ASERV',
+					'description' => 'Abandono de Servicio',
+					'bg_color' => 'bg-abandono'
 				),
 				array(
 					'code' => 'ITTSS',
@@ -123,14 +113,9 @@ class Wall_upd {
 					'bg_color' => 'bg-incapacidad2'
 				),
 				array(
-					'code' => 'PN',
-					'description' => 'Permiso no Pagado',
-					'bg_color' => 'bg-pagado'
-				),
-				array(
-					'code' => 'PP',
-					'description' => 'Permiso Pagado',
-					'bg_color' => 'bg-pagado2'
+					'code' => 'SDESA',
+					'description' => 'Servicio Desactivado',
+					'bg_color' => 'bg-servicio4'
 				),
 				array(
 					'code' => 'SF',
@@ -138,19 +123,59 @@ class Wall_upd {
 					'bg_color' => 'bg-servicio'
 				),
 				array(
-					'code' => 'SP',
-					'description' => 'Servicio Permanente',
-					'bg_color' => 'bg-servicio2'
-				),
-				array(
 					'code' => 'SNCUB',
 					'description' => 'Servicio No Cubierto',
 					'bg_color' => 'bg-servicio3'
 				),
 				array(
-					'code' => 'SDESA',
-					'description' => 'Servicio Desactivado',
-					'bg_color' => 'bg-servicio4'
+					'code' => 'SP',
+					'description' => 'Servicio Permanente',
+					'bg_color' => 'bg-servicio2'
+				),
+				array(
+					'code' => 'SUBEN',
+					'description' => 'Subsidio Enfermedad',
+					'bg_color' => 'bg-subsidio'
+				),
+				array(
+					'code' => 'SUBMA',
+					'description' => 'Subsidio Maternidad',
+					'bg_color' => 'bg-subsidio2'
+				),
+				array(
+					'code' => 'DM',
+					'description' => 'Descanso Médico',
+					'bg_color' => 'bg-descanso2'
+				),
+				array(
+					'code' => 'PP',
+					'description' => 'Permiso Pagado',
+					'bg_color' => 'bg-pagado2'
+				),
+				array(
+					'code' => 'VC',
+					'description' => 'Vacaciones',
+					'bg_color' => 'bg-vacaciones'
+				),
+				array(
+					'code' => 'VT',
+					'description' => 'Venta de Vacaciones',
+					'bg_color' => 'bg-venta'
+				),
+				array(
+					'code' => 'LCGOC',
+					'description' => 'Licencia con Goce',
+					'bg_color' => 'bg-lcgoc'
+				),
+				array(
+					'code' => 'DESC',
+					'description' => 'Descanso',
+					'bg_color' => 'bg-descanso'
+				),
+				array(
+					'code' => 'IP',
+					'description' => 'Incapacidad Permanente',
+					'bg_color' => 'bg-incapacidad'
 				)
 			);
 
