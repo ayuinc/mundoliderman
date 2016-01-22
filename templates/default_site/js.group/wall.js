@@ -53,11 +53,13 @@ $(document).on('click', '.like-container', function(e){
 
   $.post(url, data, function (response) {
     var like = JSON.parse(response);
-    if (like.result = 'success') {
+    if (like.result == 'success') {
       send(response);
       btn.parent().find(".like").toggleClass("active-like");
       btn.parent().find(".img-like").toggleClass("hidden");
       $("span[data-like-post-id=" + like.post_id + "]").text(like.total);
+    } else if (like.result == 'fail') {
+      location.reload(true);
     }
   });
 });
@@ -74,19 +76,23 @@ $(document).on('keypress', '.write-comment', function(e){
       $comment_area.prop("disabled", true);
       $.post(url, data, function(result) {
         var comment_data = JSON.parse(result);
-        send(result);
-        $.ajax({
-          method: "GET",
-          url: url + "wall/new_comment/" + comment_data.comment_id
-        })
-        .done(function(comment) {
-          $("div[data-comment-container-post-id=" + comment_data.post_id +"]").append(comment);
-          $("span[data-comment-post-id=" + comment_data.post_id +"]").text(comment_data.total);
-          $comment_area.val("");
-          $comment_area.prop("disabled", false);
-          reset_grow($comment_area[0]);
-          formatLinks();
-        });
+        if (comment_data.result == 'success') {
+          send(result);
+          $.ajax({
+            method: "GET",
+            url: url + "wall/new_comment/" + comment_data.comment_id
+          })
+          .done(function(comment) {
+            $("div[data-comment-container-post-id=" + comment_data.post_id +"]").append(comment);
+            $("span[data-comment-post-id=" + comment_data.post_id +"]").text(comment_data.total);
+            $comment_area.val("");
+            $comment_area.prop("disabled", false);
+            reset_grow($comment_area[0]);
+            formatLinks();
+          });
+        } else if (comment_data.result == 'fail') {
+          location.reload(true);
+        }
       });
     }
   }
@@ -103,19 +109,24 @@ $(document).on('click', '.mobile_comment', function(e) {
     $comment_data.prop("disabled", true);
     $.post(url, data, function(response) {
       var comment_data = JSON.parse(response);
-      send(response);
-      $.ajax({
-        method: "GET",
-        url: url + "wall/new_comment/" + comment_data.comment_id
-      })
-      .done(function(comment) {
-        $("div[data-comment-container-post-id=" + comment_data.post_id +"]").append(comment);
-        $("span[data-comment-post-id=" + comment_data.post_id +"]").text(comment_data.total);
-        $comment_data.val('');
-        $comment_data.prop("disabled", false);
-        reset_grow($comment_data[0]);
-        formatLinks();
-      });
+      if (comment_data.result == 'success') {
+        send(response);
+        $.ajax({
+          method: "GET",
+          url: url + "wall/new_comment/" + comment_data.comment_id
+        })
+        .done(function(comment) {
+          $("div[data-comment-container-post-id=" + comment_data.post_id +"]").append(comment);
+          $("span[data-comment-post-id=" + comment_data.post_id +"]").text(comment_data.total);
+          $comment_data.val('');
+          $comment_data.prop("disabled", false);
+          reset_grow($comment_data[0]);
+          formatLinks();
+        });
+      } else if (comment_data.result == 'fail') {
+        location.reload(true);
+      }
+      
     });
   }
 });
@@ -201,6 +212,8 @@ $(document).on('submit', '#status_form', function(e) {
           $("#submit-post").removeAttr("disabled");
           $("#loader").fadeOut();
         });
+      } else if (response.result == 'fail') {
+        location.reload(true);
       }
     },
     error: function(data) {

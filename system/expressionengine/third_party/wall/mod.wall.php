@@ -353,6 +353,10 @@ class Wall {
 			$post_content = $this->EE->input->post("wall_status", TRUE);
 			$post_date = $this->EE->localize->now;
 
+			if ($member_id == null || $member_id <= 0) {
+				throw new Exception("Session timeout");
+			}
+
 			$post_data = array(
 				"member_id" => $member_id,
 				"category_id" => $category_id,
@@ -411,6 +415,10 @@ class Wall {
 			$comment = $this->EE->input->post("comment");
 			$comment_date = $this->EE->localize->now;
 
+			if ($comment_member_id == null || $comment_member_id <= 0) {
+				throw new Exception("Session timeout");
+			}
+
 			$data = array(
 				"post_id" => $post_id,
 				"comment_member_id" => $comment_member_id,
@@ -458,6 +466,10 @@ class Wall {
 			$post_id = $this->EE->input->post("post_id");
 			//$like = $this->EE->input->post("post_like_status");
 			$member_id = $this->EE->session->userdata("member_id");
+
+			if ($member_id == null || $member_id <= 0) {
+				throw new Exception("Session timeout");
+			}
 
 			$data_where = array(
 				'post_id' => $post_id,
