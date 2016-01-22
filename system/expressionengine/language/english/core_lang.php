@@ -236,7 +236,7 @@ and email %s to report the link that generated this message.',
 //----------------------------
 
 'singular' =>
-'un',
+'1',
 
 'less_than' =>
 'menos que',

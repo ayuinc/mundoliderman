@@ -164,6 +164,24 @@ $lang = array(
 'new_login_info' => 
 'Aqui esta tu nueva informacion de acceso:',
 
+'singular' =>
+'1',
+
+'less_than' =>
+'menos de',
+
+'about' =>
+'hace',
+
+'past' =>
+'%s atrás',
+
+'future' =>
+'en %s',
+
+'ago' =>
+'%x atrás',
+
 'year' => 
 'año',
 
