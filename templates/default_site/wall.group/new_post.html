@@ -143,9 +143,10 @@
               <div class="enter-responsive text-right relative hidden-lg hidden-md" style="right:15px"><img  class="mobile_comment" src="{site_url}frontend/app/assets/img/flecha_naranja.png" alt="" style="cursor:pointer"></div>
               {/exp:wall:comment_post_form}
             </div>
+          </div>
           <div class="comment-container" data-comment-container-post-id="{post_id}">
           {exp:wall:comment post_id="{post_id}"}
-          <div class="clearfix conteiner-answer pv-7">
+          <div id="comment-{comment_id}" class="comment-group-member-{comment_member_group_id} clearfix conteiner-answer pv-7">
             <div class="col-xs-2 pr-0">
               <div class="img-respuesta bg-img-block-center brp-100" style="background-image: url({site_url}frontend/app/assets/img/Carita.png)"></div>
             </div>

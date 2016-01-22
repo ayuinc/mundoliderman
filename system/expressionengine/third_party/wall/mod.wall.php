@@ -315,7 +315,7 @@ class Wall {
 		$post_id = $this->EE->TMPL->fetch_param('post_id', 0);
 		$comment_id = $this->EE->TMPL->fetch_param('comment_id', 0);
 		$this->EE->db->select("wc.id as comment_id, wc.post_id as comment_post_id, wc.comment_member_id as comment_member_id, wc.comment, wc.comment_date,
-							   m.screen_name as comment_screen_name, m.username as comment_username")
+							   m.screen_name as comment_screen_name, m.username as comment_username, m.group_id as comment_member_group_id")
 					 ->from("wall_comment wc")
 					 ->join("members m", "wc.comment_member_id = m.member_id")
 					 ->where("wc.active", "y");
