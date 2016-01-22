@@ -236,6 +236,10 @@ class Wall_upd {
 			array(
 				'id' => '6',
 				'name' => 'Otro'
+			),
+			array(
+				'id' => '7',
+				'name' => 'Reclamo'
 			)
 		);
 

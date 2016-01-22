@@ -42,7 +42,8 @@ Plugin that returns a list of status categories
 
 	public function all() 
 	{
-		$categories = $this->EE->db->get('friends_status_category');
+		$this->EE->db->from('friends_status_category')->order_by('num_order');
+		$categories = $this->EE->db->get();
 		$data = json_decode(json_encode($categories->result()), true);
 		return  $this->EE->TMPL->parse_variables($this->EE->TMPL->tagdata, $data);
 	}
