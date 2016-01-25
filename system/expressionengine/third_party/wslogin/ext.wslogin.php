@@ -316,6 +316,19 @@ class Wslogin_ext {
 				        'member_id' => $member_id
 				    )
 				);
+
+				$profiles = ee()->db->where("description", $employee_category)
+					 	 	->get("profiles");
+
+				ee()->db->update(
+					'members',
+					array(
+						'group_id' => $profiles->row("group_id")
+					),
+					array(
+						'member_id' => $member_id
+					)
+				);
 			} else {
 				ee()->load->helper('security');
 				$hash = ee()->auth->hash_password($password);
