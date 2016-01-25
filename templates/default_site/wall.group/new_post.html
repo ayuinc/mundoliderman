@@ -49,7 +49,7 @@
             </h5>
             <p class="fz-14 m-0 text-gray fz-14"><a href="">{post_status_date:relative past="%s atrás"}</a></p>
           </div>
-          {if post_category_id != 1}
+          {if post_category_id != 1 && post_category_id !=2 }
           <div class="col-xs-4 text-center pt-7 hidden-xs hidden-sm">
             {exp:wall:solve_post_form form_id="" form_class="" post_id="{post_id}"}
             <div class="aviso btn-aviso1 ml-42 bg-info {if post_is_solved != 'y'}hidden{/if}" data-solve-post-id="{post_id}" onclick="return {if segment_4 == 6}return solve(this);{if:else}return false;{/if}">
