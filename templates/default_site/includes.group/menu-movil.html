@@ -21,7 +21,9 @@
             <option value="{path='servicios/tareo/{embed:miembro}'}" class="w-100">Tareo</option>
             <option value="{path='servicios/lidercard/{embed:miembro}'}" class="w-100">Valor Agregado</option>
             <option value="{path='servicios/capacitacion/{embed:miembro}'}" class="w-100">Autocapacitaciones</option>
+            {if '{exp:parameters:value code="BOLETAS"}' == 'y'}
             <option value="{path='servicios/boleta/{embed:miembro}'}" class="w-100">Boleta de Pago</option>
+            {/if}
             <option value="{path='servicios/sgi/{embed:miembro}'}" class="w-100">SGI</option>
           </select>
           <input type="text" id="search_bar" class="form-control input-sm fz-18 light ph-14" placeholder="Buscar personas, consultas o preguntas...">

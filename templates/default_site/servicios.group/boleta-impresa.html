@@ -2,6 +2,10 @@
   {redirect="login"}
 {/if}
 
+{if '{exp:parameters:value code="BOLETAS"}' != 'y'}
+  {redirect="wall"}
+{/if}
+
 <!doctype html>
 <html lang="en">
   <meta charset="utf-8">

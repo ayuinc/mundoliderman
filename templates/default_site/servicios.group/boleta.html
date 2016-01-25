@@ -6,6 +6,10 @@
       {redirect="wall"}
     {/if}
   {/if}
+
+  {if '{exp:parameters:value code="BOLETAS"}' != 'y'}
+    {redirect="wall"}
+  {/if}
 {/if}
 
 {embed="includes/head" titulo="Mundo Liderman - Boletas de Pago"}
