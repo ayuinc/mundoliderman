@@ -1,0 +1,10 @@
+{
+	"autoload": {
+        "psr-0": {
+            "Aws\\": "vendor/aws/aws-sdk-php"
+        }
+    },
+    "require": {
+        "aws/aws-sdk-php": "2.*"
+    }
+}

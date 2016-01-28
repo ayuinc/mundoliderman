@@ -11597,10 +11597,10 @@ class User extends Module_builder_user
 			$upload_path = ee()->config->slash_item('sig_img_path');
 		}
 
-		if ( ! @is_dir($upload_path) OR ! is_writable($upload_path))
-		{
-			return $this->_output_error('general', array(lang('missing_upload_path')));
-		}
+		// if ( ! @is_dir($upload_path) OR ! is_writable($upload_path))
+		// {
+		// 	return $this->_output_error('general', array(lang('missing_upload_path')));
+		// }
 
 		/**	----------------------------------------
 		/**	Set some defaults
@@ -11705,6 +11705,7 @@ class User extends Module_builder_user
 		$config['upload_path']		= $upload_path;
 		$config['allowed_types']	= 'gif|jpg|jpeg|png';
 		$config['max_size']			= $max_kb;
+		$config['ignore_path_exists'] = TRUE;
 		//$config['max_width']		= $max_width;
 		//$config['max_height']		= $max_height;
 		$config['overwrite']		= TRUE;
@@ -11718,11 +11719,9 @@ class User extends Module_builder_user
 			$config['xss_clean'] = (ee()->session->userdata('group_id') == 1) ? FALSE : TRUE;
 		}
 
-		ee()->load->library('upload');
+		ee()->load->library('upload', $config);
 
-		ee()->upload->initialize($config);
-
-		if (ee()->upload->do_upload($this->uploads[$type]) === FALSE)
+		if (ee()->upload->do_upload_to_s3($this->uploads[$type]) === FALSE)
 		{
 			// Upload Failed.  Make sure that file is gone!
 			@unlink($upload_path.$filename.$extension);

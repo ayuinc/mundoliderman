@@ -1,4 +1,6 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+require 'S3.php';
 /**
  * CodeIgniter
  *
@@ -51,6 +53,7 @@ class CI_Upload {
 	public $xss_clean				= FALSE;
 	public $temp_prefix				= "temp_file_";
 	public $client_name				= '';
+	public $ignore_path_exists		= FALSE;
 
 	protected $_file_name_override	= '';
 
@@ -104,7 +107,8 @@ class CI_Upload {
 							'remove_spaces'		=> TRUE,
 							'xss_clean'			=> FALSE,
 							'temp_prefix'		=> "temp_file_",
-							'client_name'		=> ''
+							'client_name'		=> '',
+							'ignore_path_exists'=> FALSE
 						);
 
 
@@ -318,6 +322,146 @@ class CI_Upload {
 		return TRUE;
 	}
 
+	public function do_upload_to_s3($field = 'userfile') {
+		// Is $_FILES[$field] set? If not, no reason to continue.
+		if ( ! isset($_FILES[$field]))
+		{
+			$this->set_error('upload_no_file_selected');
+			return FALSE;
+		}
+
+		// Was the file able to be uploaded? If not, determine the reason why.
+		if ( ! is_uploaded_file($_FILES[$field]['tmp_name']))
+		{
+			$error = ( ! isset($_FILES[$field]['error'])) ? 4 : $_FILES[$field]['error'];
+
+			switch($error)
+			{
+				case 1:	// UPLOAD_ERR_INI_SIZE
+					$this->set_error('upload_file_exceeds_limit');
+					break;
+				case 2: // UPLOAD_ERR_FORM_SIZE
+					$this->set_error('upload_file_exceeds_form_limit');
+					break;
+				case 3: // UPLOAD_ERR_PARTIAL
+					$this->set_error('upload_file_partial');
+					break;
+				case 4: // UPLOAD_ERR_NO_FILE
+					$this->set_error('upload_no_file_selected');
+					break;
+				case 6: // UPLOAD_ERR_NO_TMP_DIR
+					$this->set_error('upload_no_temp_directory');
+					break;
+				case 7: // UPLOAD_ERR_CANT_WRITE
+					$this->set_error('upload_unable_to_write_file');
+					break;
+				case 8: // UPLOAD_ERR_EXTENSION
+					$this->set_error('upload_stopped_by_extension');
+					break;
+				default :   $this->set_error('upload_no_file_selected');
+					break;
+			}
+
+			return FALSE;
+		}
+
+		// Set the uploaded data as class variables
+		$this->file_temp = $_FILES[$field]['tmp_name'];
+		$this->file_size = $_FILES[$field]['size'];
+		$this->file_type = preg_replace("/^(.+?);.*$/", "\\1", $_FILES[$field]['type']);
+		$this->file_type = strtolower(trim(stripslashes($this->file_type), '"'));
+		$this->file_name = $this->_prep_filename($_FILES[$field]['name']);
+		$this->file_ext	 = $this->get_extension($this->file_name);
+		$this->client_name = $this->file_name;
+
+		// Is the file type allowed to be uploaded?
+		if ( ! $this->is_allowed_filetype())
+		{
+			$this->set_error('upload_invalid_filetype');
+			return FALSE;
+		}
+
+		// if we're overriding, let's now make sure the new name and type is allowed
+		if ($this->_file_name_override != '')
+		{
+			$this->file_name = $this->_prep_filename($this->_file_name_override);
+			$this->file_ext  = $this->get_extension($this->file_name);
+
+			if ( ! $this->is_allowed_filetype(TRUE))
+			{
+				$this->set_error('upload_invalid_filetype');
+				return FALSE;
+			}
+		}
+
+		// Convert the file size to kilobytes
+		if ($this->file_size > 0)
+		{
+			$this->file_size = round($this->file_size/1024, 2);
+		}
+
+		// Is the file size within the allowed maximum?
+		if ( ! $this->is_allowed_filesize())
+		{
+			$this->set_error('upload_invalid_filesize');
+			return FALSE;
+		}
+
+		// Are the image dimensions within the allowed size?
+		// Note: This can fail if the server has an open_basdir restriction.
+		if ( ! $this->is_allowed_dimensions())
+		{
+			$this->set_error('upload_invalid_dimensions');
+			return FALSE;
+		}
+
+		// Sanitize the file name for security
+		$this->file_name = $this->clean_file_name($this->file_name);
+
+		// Truncate the file name if it's too long
+		if ($this->max_filename > 0)
+		{
+			$this->file_name = $this->limit_filename_length($this->file_name, $this->max_filename);
+		}
+
+		// Remove white spaces in the name
+		if ($this->remove_spaces == TRUE)
+		{
+			$this->file_name = preg_replace("/\s+/", "_", $this->file_name);
+		}
+
+		/*
+		 * Run the file through the XSS hacking filter
+		 * This helps prevent malicious code from being
+		 * embedded within a file.  Scripts can easily
+		 * be disguised as images or other file types.
+		 */
+		if ($this->xss_clean)
+		{
+			if ($this->do_xss_clean() === FALSE)
+			{
+				$this->set_error('upload_unable_to_write_file');
+				return FALSE;
+			}
+		}
+
+		/*
+		 * Upload to S3
+		 */
+		$clientS3 = new S3();
+		$clientS3->uploadFile($this->file_temp, $this->upload_path . $this->file_name);
+
+		/*
+		 * Set the finalized image dimensions
+		 * This sets the image width/height (assuming the
+		 * file was an image).  We use this information
+		 * in the "data" function.
+		 */
+		$this->set_image_properties($this->file_temp);
+
+		return TRUE;
+	}
+
 	// --------------------------------------------------------------------
 
 	/**
@@ -377,13 +521,17 @@ class CI_Upload {
 	 */
 	public function set_filename($path, $filename)
 	{
+		if ($this->ignore_path_exists) {
+			return $this->file_name;
+		}
+
 		if ($this->encrypt_name == TRUE)
 		{
 			mt_srand();
 			$filename = md5(uniqid(mt_rand())).$this->file_ext;
 		}
 
-		if ( ! file_exists($path.$filename))
+		if (! file_exists($path.$filename))
 		{
 			return $filename;
 		}

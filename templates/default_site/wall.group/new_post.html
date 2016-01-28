@@ -94,7 +94,7 @@
       <div class="col-md-10 col-md-offset-2 col-xs-12 pl-0 ph-0-xs">
         <p class="parrafo pt-14 ph-7 text-gray-darker pending-format">{post_content}</p>
         {if post_image_path}
-          <div class="img-publicacion w-100 ph-7 pt-14 text-center"><img src="{site_url}{post_image_path}" alt="" class="w-100"></div>
+          <div class="img-publicacion w-100 ph-7 pt-14 text-center"><img src="{exp:routes:S3_PATH}{post_image_path}" alt="" class="w-100"></div>
         {/if}
         <div class="clearfix ph-0 mh-7 thin text-gray pt-7 pb-7 mb-7 border-bottom-gray-lighter fz-12">
           <ul class="col-xs-7 ph-0 mv-0">

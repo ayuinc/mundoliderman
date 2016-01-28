@@ -368,11 +368,14 @@ class Wall {
 			$this->EE->db->insert("wall_status", $post_data);
 			$post_id = $this->EE->db->insert_id();
 
-			$upload_config['upload_path']          = $this->EE->config->item("server_path") . $this->EE->config->item("status_image_path");
+			$upload_config['file_name'] = "post-" . $post_id . "-" . (isset($_FILES["status_image"]) ? $_FILES["status_image"]['name'] : "");
+			$upload_config['upload_path']          = "/" . $this->EE->config->item("status_image_path");
 	        $upload_config['allowed_types']        = 'gif|jpg|png';
+	        $upload_config['ignore_path_exists'] = TRUE;
+	        $upload_config['overwrite']		= TRUE;
 
 	        $this->EE->load->library('upload', $upload_config);
-	        if ( ! $this->EE->upload->do_upload("status_image"))
+	        if ( ! $this->EE->upload->do_upload_to_s3("status_image"))
 	        {
 	            $error = array('error' => $this->EE->upload->display_errors());
 	        }

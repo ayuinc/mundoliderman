@@ -20,7 +20,7 @@ function send( text ) {
 }
 
 $(function() {
-  Server = new FancyWebSocket('{exp:socket:socket_url}');
+  Server = new FancyWebSocket('{exp:routes:socket_url}');
 
   //Let the user know we're connected
   Server.bind('open', function() {
