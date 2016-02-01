@@ -710,7 +710,10 @@ input.upload {
 			}
 		}
 		p {
-			line-height: 2;
+			line-height: 1.5;
+			&:last-child {
+				line-height: 2;
+			}
 		}
 	}
 	.prestamo {

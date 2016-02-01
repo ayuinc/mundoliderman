@@ -1918,6 +1918,9 @@ input.upload {
   border-radius: 100%;
 }
 #post .info-usuario p, .pokerface .info-usuario p {
+  line-height: 1.5;
+}
+#post .info-usuario p:last-child, .pokerface .info-usuario p:last-child {
   line-height: 2;
 }
 #post .prestamo p, .pokerface .prestamo p {
