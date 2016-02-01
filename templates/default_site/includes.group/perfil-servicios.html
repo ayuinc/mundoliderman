@@ -34,9 +34,9 @@
       <p class="fz-17 lh-1-5">Periodo en la Planilla: {if periodo-planilla == ""}DD/MM/AA{if:else}{periodo-planilla}{/if} meses</p>
     </div>
     <div class="resumen-semaforo pt-14 clearfix">
-      <div class="col-md-8 col-md-offset-4 pl-28">
+      <div class="pl-14">
         <h4 class="text-gray fz-16 m-0 pt-7 book pb-14">Semáforo General</h4>
-        <div class="col-md-4 col-xs-12 col-md-offset-0 pl-0 pr-0 pl-21-xs text-left">
+        <div class="col-md-4 col-xs-11 col-xs-offset-1 col-md-offset-0 pl-0 pr-0 pl-21-xs text-left">
           <ul class="pl-0 thin fz-13 mb-0-xs">
               {exp:webservice:semaforolidernet}
               <div class="circulo-semaforo brp-100 display-ib mr-7 {if semaforo}bg-info{if:else}bg-primary{/if}"></div>
@@ -47,11 +47,11 @@
               {exp:webservice:semaforoprestamo}
               <div class="circulo-semaforo brp-100 display-ib mr-7 {if semaforo}bg-info{if:else}bg-primary{/if}"></div>
               {/exp:webservice:semaforoprestamo}
-              <a href="{path='servicios/prestamos}/{member_id}" class="text-gray-dark semaforo">Préstamos <span class="hidden-lg hidden-md">(Orden económico)</span><br><span class="pl-14 hidden-xs hidden-sm">(Orden económico)</span></a>
+              <a href="{path='servicios/prestamos}/{member_id}" class="text-gray-dark semaforo">Préstamos (Orden económico)</a>
             </li>
           </ul>
         </div>
-        <div class="col-md-4 col-xs-12 col-md-offset-0 pl-0 pl-21-xs text-left">
+        <div class="col-md-4 col-xs-11 col-xs-offset-1 col-md-offset-0 pl-0 pl-21-xs text-left">
           <ul class="pl-0 thin fz-13 mb-0-xs">
             <li>
               {exp:webservice:semaforotareo}
@@ -63,11 +63,11 @@
               {exp:webservice:semaforolidercard}
               <div class="circulo-semaforo brp-100 display-ib mr-7 {if semaforo}bg-info{if:else}bg-primary{/if}"></div>
               {/exp:webservice:semaforolidercard}
-              <a href="{path='servicios/lidercard}/{member_id}" class="text-gray-dark semaforo">Lidercard <span class="hidden-lg hidden-md">(Valor agregado)</span><br><span class="pl-14 hidden-xs hidden-sm">(Valor agregado)</span></a>
+              <a href="{path='servicios/lidercard}/{member_id}" class="text-gray-dark semaforo">Lidercard (Valor agregado)</a>
             </li>
           </ul>
         </div>
-        <div class="col-md-4 col-xs-12 col-md-offset-0 pl-0 pl-21-xs text-left">
+        <div class="col-md-4 col-xs-11 col-xs-offset-1 col-md-offset-0 pl-0 pl-21-xs text-left">
           <ul class="pl-0 thin fz-13 mb-0-xs">
             <li>
               {exp:webservice:semaforocapacitaciones}
