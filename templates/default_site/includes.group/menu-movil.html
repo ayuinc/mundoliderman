@@ -1,6 +1,6 @@
       <div class="overlay-menu ebm-overlay w-100 minhp-100 fixed bg-white hidden-lg hidden-md ph-35">
         <div class="clearfix pt-42 pb-28">
-          <div style="background-image:url({site_url}frontend/app/assets/img/Herman_Profile_Pic.png)" class="perfil-menu bg-img-block-center brp-100 float-left"></div>
+          <div style="background-image: url({exp:member:custom_profile_data}{if photo_filename == null}{site_url}frontend/app/assets/img/Herman_Profile_Pic.png{if:else}{photo_url}{/if}{/exp:member:custom_profile_data})" class="perfil-menu bg-img-block-center brp-100 float-left"></div>
           <div class="float-left pt-21 pl-21">
             <p class="sans-serif fz-15 light lh-1 mb-0">Hola</p>
             <p class="sans-serif fz-22">{screen_name}</p>

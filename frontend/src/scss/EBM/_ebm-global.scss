@@ -1322,6 +1322,9 @@ footer > div {
 
 
 /*PERFIL-EDITABLE*/
+.black-overlay {
+	background-color: rgba(0,0,0,0.5);
+}
 #perfil-contenido {
 	@extend #tareo-contenido;
 	.formulario {

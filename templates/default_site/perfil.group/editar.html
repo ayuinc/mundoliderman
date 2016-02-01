@@ -19,7 +19,12 @@
           <div class="container pt-42 w-100 pb-42 mb-42 ph-0">
             <div class="perfil-servicios clearfix bg-white pv-21 ph-21 ph-7-xs hidden-lg hdden-md">
               <div class="col-md-4 pr-0 pt-21 pl-0-xs">
-                <div style="background-image:url({site_url}frontend/app/assets/img/Herman_Profile_Pic.png)" class="bg-img-block-center">
+                <div id="profile_movil"  style="background-image:url({if photo_filename == null}{site_url}frontend/app/assets/img/Herman_Profile_Pic.png{if:else}{photo_url}{photo_filename}{/if})" class="bg-img-block-center">
+                  <div class="brp-100 black-overlay">
+                    <div class="flex-column-center">
+                      <span class="relative"><img src="{site_url}frontend/app/assets/img/camera.png" alt=""></span>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div class="col-md-8 ph-0 pt-14 hidden-lg hdden-md">
@@ -85,12 +90,18 @@
             reader.readAsDataURL(file);
             reader.onload = function(e) {
               document.getElementById(imageContainer).style.backgroundImage = "url('" + e.target.result + "')";
+              console.log(e.target.result);
+              $("#profile_movil")[0].style.backgroundImage = "url('" + e.target.result + "')";
             }
           };
         };
       }
       $("#photo_profile").change(function() {
         setImageFromInputFile(this, "profile_picture");
+      });
+
+      $("#profile_movil").on('click', function(e){
+        $("#photo_profile").click();
       });
     });
   </script>

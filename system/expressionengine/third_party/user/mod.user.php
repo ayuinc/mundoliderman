@@ -11666,7 +11666,8 @@ class User extends Module_builder_user
 		/**	Assign the name of the image
 		/**	----------------------------------------*/
 
-		$new_filename = $type.'_'.$member_id . strtolower($extension);
+		$now = new DateTime('now');
+		$new_filename = $type.'_'.$member_id. '_' . $now->getTimestamp() . strtolower($extension);
 
 		/**	----------------------------------------
 		/**	Do they currently have an avatar or photo?

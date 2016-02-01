@@ -68,10 +68,11 @@ $(function() {
                 url: "{site_url}wall/new_comment/" + response.comment_id
             })
             .done(function(comment) {
-                $("div[data-comment-container-post-id=" + response.post_id +"]").append(comment);
+                var divComment = $("div[data-comment-container-post-id=" + response.post_id +"]");
+                divComment.append(comment);
                 $("span[data-comment-post-id=" + response.post_id +"]").text(response.total);
                 formatLinks();
-                if (notInWall && member_group !== CHATEADORA) {
+                if (notInWall && member_group !== CHATEADORA && divComment.length > 0) {
                   newComments++;
                   $('a.scroll').unbind('click');
                   $("#new_post_count").text(newComments);
