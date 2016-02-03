@@ -1,0 +1,91 @@
+{embed="includes/head" titulo="Mundo Liderman - Indicadores Demográficos"}
+  <div class="site-wrapper"> <!-- Body -->
+      {embed="includes/nav-main" acceso_directo="Ir al muro" link="{site_url}"}
+      <main class="site-content pb-42 mb-0">
+        {embed=includes/menu-movil miembro="{member_id}"}
+        {embed=includes/banner-alerta}
+        <div class="box-gray bg-gray-darker w-100 hidden-lg hidden-md"></div>
+        <div class="container-md clearfix">
+          <section id="menu-vertical" class="col-md-4 pr-42 pl-0 hidden-xs hidden-sm">
+            {embed="includes/nav-secciones" in="in" miembro="{segment_3}" miembro_actual="{member_id}" grupo="{member_group}"}
+          </section>
+          <section id="tareo-contenido" class="col-md-8 pb-42 ph-0-xs">
+            <div class="container pt-14 w-100 ph-0">
+              <div>
+                <h2 class="fz-28 border-bottom-gray pb-14 text-gray-darker">Indicadores Demográficos</h2>
+              </div>
+              <div class="indicadores mt-35">
+                <div class="col-md-6 col-sm-12 mb-14">
+                  <div class="bg-white p-14 border-radius" style="min-height: 100px;">
+                    <h4 class="text-gray m-0 fz-16 mb-14">Sexo</h4>
+                    {exp:indicators:sex}
+                    <div class="mt-7" style="height: 25px; width: {p_male}%; background: #505050;"></div>
+                    <p class="fz-11 text-gray">{total_male} ({p_male}%) - masculino</p>
+
+                    <div class="mt-7" style="height: 25px; width: {p_female}%; background: #505050;"></div>
+                    <p class="fz-11 text-gray">{total_female} ({p_female}%) - femenino</p>
+					{/exp:indicators:sex}
+                  </div>
+                </div>
+
+                <div class="col-md-6 col-sm-12 mb-14">
+                  <div class="bg-white p-14 border-radius" style="min-height: 100px;">
+                    <h4 class="text-gray m-0 fz-16 mb-14">Edad</h4>
+                    {exp:indicators:age}
+                    <div class="mt-7" style="height: 25px; width: {percentage}%; background: #505050;"></div>
+                    <p class="fz-11 text-gray">{total} ({percentage}%) - {min} y {max}</p>
+                    {/exp:indicators:age}
+                  </div>
+                </div>
+
+                <div class="col-md-6 col-sm-12 mb-14">
+                  <div class="bg-white p-14 border-radius" style="min-height: 100px;">
+                    <h4 class="text-gray m-0 fz-16 mb-14">Top 5 Ciudades</h4>
+                    {exp:indicators:top_ciudad}
+                    <div class="mt-7" style="height: 25px; width: {percentage}%; background: #505050;"></div>
+                    <p class="fz-11 text-gray">{total} ({percentage}%) - {if ciudad == ''}OTROS{if:else}{ciudad}{/if}</p>
+                    {/exp:indicators:top_ciudad}
+
+                    <div class="p-7">
+                      <span class="pull-right fz-12"><a class="text-primary thin" href="#">Toda la lista →</a></span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-6 col-sm-12 mb-14">
+                  <div class="bg-white p-14 border-radius" style="min-height: 100px;">
+                    <h4 class="text-gray m-0 fz-16 mb-14">Top 5 Zonas</h4>
+                    {exp:indicators:top_zona}
+                    <div class="mt-7" style="height: 25px; width: {percentage}%; background: #505050;"></div>
+                    <p class="fz-11 text-gray">{total} ({percentage}%) - {if zona == ''}OTROS{if:else}{zona}{/if}</p>
+                    {/exp:indicators:top_zona}
+
+                    <div class="p-7">
+                      <span class="pull-right fz-12"><a class="text-primary thin" href="#">Toda la lista →</a></span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-6 col-sm-12 mb-14">
+                  <div class="bg-white p-14 border-radius" style="min-height: 100px;">
+                    <h4 class="text-gray m-0 fz-16 mb-14">Top 5 Unidades</h4>
+                    {exp:indicators:top_unidad}
+                    <div class="mt-7" style="height: 25px; width: {percentage}%; background: #505050;"></div>
+                    <p class="fz-11 text-gray">{total} ({percentage}%) - {if unidad == ''}OTROS{if:else}{unidad}{/if}</p>
+                    {/exp:indicators:top_unidad}
+
+                    <div class="p-7">
+                      <span class="pull-right fz-12"><a class="text-primary thin" href="#">Toda la lista →</a></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+    {embed=includes/radio-urbe}
+    </div>
+  {embed=includes/footer}
+  <script src="{site_url}frontend/app/assets/js/collapse-control.js"></script>
+</html>

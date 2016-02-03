@@ -84,7 +84,7 @@ $(function() {
                     $(document.body).animate({'scrollTop':   $('#comment-' + response.comment_id).offset().top - 150}, 1000);
                     $("#alert-publication").fadeOut();
                     removeNotificationsHeader();
-                    newComments = [];
+                    newComments = 0;
                   });
                 }
             });
