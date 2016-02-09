@@ -16,7 +16,24 @@
               </div>
               <div class="indicadores mt-35">
                 <div class="col-md-6 col-sm-12 mb-14">
-                  <div class="bg-white p-14 border-radius" style="min-height: 100px;">
+                  <div class="bg-white p-14 border-radius">
+                    <h4 class="text-gray m-0 fz-16 mb-14">
+                      Tipos de usuario
+                      <span class="pull-right">
+                        <a href="{path='indicadores/export/{member_id}/1'}">
+                          <img src="{site_url}/frontend/app/assets/img/Icon_download.png" alt="descargar" title="Descargar">
+                        </a>
+                      </span>
+                    </h4>
+                    {exp:indicators:tipo_usuario}
+                    <div class="mt-7" style="height: 25px; width: {percentage}%; background: #505050;"></div>
+                    <p class="fz-11 text-gray">{total} ({percentage}%) - {grupo}</p>
+                    {/exp:indicators:tipo_usuario}
+                  </div>
+                </div>
+
+                <div class="col-md-6 col-sm-12 mb-14">
+                  <div class="bg-white p-14 border-radius">
                     <h4 class="text-gray m-0 fz-16 mb-14">Sexo</h4>
                     {exp:indicators:sex}
                     <div class="mt-7" style="height: 25px; width: {p_male}%; background: #505050;"></div>
@@ -24,13 +41,20 @@
 
                     <div class="mt-7" style="height: 25px; width: {p_female}%; background: #505050;"></div>
                     <p class="fz-11 text-gray">{total_female} ({p_female}%) - femenino</p>
-					{/exp:indicators:sex}
+                     {/exp:indicators:sex}
                   </div>
                 </div>
 
                 <div class="col-md-6 col-sm-12 mb-14">
-                  <div class="bg-white p-14 border-radius" style="min-height: 100px;">
-                    <h4 class="text-gray m-0 fz-16 mb-14">Edad</h4>
+                  <div class="bg-white p-14 border-radius">
+                    <h4 class="text-gray m-0 fz-16 mb-14">
+                      Edad
+                      <span class="pull-right">
+                        <a href="{path='indicadores/export/{member_id}/2'}">
+                          <img src="{site_url}/frontend/app/assets/img/Icon_download.png" alt="descargar" title="Descargar">
+                        </a>
+                      </span>
+                    </h4>
                     {exp:indicators:age}
                     <div class="mt-7" style="height: 25px; width: {percentage}%; background: #505050;"></div>
                     <p class="fz-11 text-gray">{total} ({percentage}%) - {min} y {max}</p>
@@ -39,43 +63,81 @@
                 </div>
 
                 <div class="col-md-6 col-sm-12 mb-14">
-                  <div class="bg-white p-14 border-radius" style="min-height: 100px;">
-                    <h4 class="text-gray m-0 fz-16 mb-14">Top 5 Ciudades</h4>
+                  <div class="bg-white p-14 border-radius">
+                    <h4 class="text-gray m-0 fz-16 mb-14">
+                      Perido Planilla
+                      <span class="pull-right">
+                        <a href="{path='indicadores/export/{member_id}/3'}">
+                          <img src="{site_url}/frontend/app/assets/img/Icon_download.png" alt="descargar" title="Descargar">
+                        </a>
+                      </span>
+                    </h4>
+                    {exp:indicators:periodo_planilla}
+                    <div class="mt-7" style="height: 25px; width: {percentage}%; background: #505050;"></div>
+                    <p class="fz-11 text-gray">{total} ({percentage}%) - {min} y {max}</p>
+                    {/exp:indicators:periodo_planilla}
+                  </div>
+                </div>
+
+                <div class="col-md-6 col-sm-12 mb-14">
+                  <div class="bg-white p-14 border-radius">
+                    <h4 class="text-gray m-0 fz-16 mb-14">
+                      Top 5 Ciudades
+                      <span class="pull-right">
+                        <a href="{path='indicadores/export/{member_id}/4'}">
+                          <img src="{site_url}/frontend/app/assets/img/Icon_download.png" alt="descargar" title="Descargar">
+                        </a>
+                      </span>
+                    </h4>
                     {exp:indicators:top_ciudad}
                     <div class="mt-7" style="height: 25px; width: {percentage}%; background: #505050;"></div>
                     <p class="fz-11 text-gray">{total} ({percentage}%) - {if ciudad == ''}OTROS{if:else}{ciudad}{/if}</p>
                     {/exp:indicators:top_ciudad}
 
                     <div class="p-7">
-                      <span class="pull-right fz-12"><a class="text-primary thin" href="#">Toda la lista →</a></span>
+                      <span class="pull-right fz-12"><a class="text-primary thin" href="{path='indicadores/demograficos_ciudad/{member_id}'}">Toda la lista →</a></span>
                     </div>
                   </div>
                 </div>
 
                 <div class="col-md-6 col-sm-12 mb-14">
-                  <div class="bg-white p-14 border-radius" style="min-height: 100px;">
-                    <h4 class="text-gray m-0 fz-16 mb-14">Top 5 Zonas</h4>
+                  <div class="bg-white p-14 border-radius">
+                    <h4 class="text-gray m-0 fz-16 mb-14">
+                      Top 5 Zonas
+                      <span class="pull-right">
+                        <a href="{path='indicadores/export/{member_id}/5'}">
+                          <img src="{site_url}/frontend/app/assets/img/Icon_download.png" alt="descargar" title="Descargar">
+                        </a>
+                      </span>
+                    </h4>
                     {exp:indicators:top_zona}
                     <div class="mt-7" style="height: 25px; width: {percentage}%; background: #505050;"></div>
                     <p class="fz-11 text-gray">{total} ({percentage}%) - {if zona == ''}OTROS{if:else}{zona}{/if}</p>
                     {/exp:indicators:top_zona}
 
                     <div class="p-7">
-                      <span class="pull-right fz-12"><a class="text-primary thin" href="#">Toda la lista →</a></span>
+                      <span class="pull-right fz-12"><a class="text-primary thin" href="{path='indicadores/demograficos_zona/{member_id}'}">Toda la lista →</a></span>
                     </div>
                   </div>
                 </div>
 
                 <div class="col-md-6 col-sm-12 mb-14">
-                  <div class="bg-white p-14 border-radius" style="min-height: 100px;">
-                    <h4 class="text-gray m-0 fz-16 mb-14">Top 5 Unidades</h4>
+                  <div class="bg-white p-14 border-radius">
+                    <h4 class="text-gray m-0 fz-16 mb-14">
+                      Top 5 Unidades
+                      <span class="pull-right">
+                        <a href="{path='indicadores/export/{member_id}/6'}">
+                          <img src="{site_url}/frontend/app/assets/img/Icon_download.png" alt="descargar" title="Descargar">
+                        </a>
+                      </span>
+                    </h4>
                     {exp:indicators:top_unidad}
                     <div class="mt-7" style="height: 25px; width: {percentage}%; background: #505050;"></div>
                     <p class="fz-11 text-gray">{total} ({percentage}%) - {if unidad == ''}OTROS{if:else}{unidad}{/if}</p>
                     {/exp:indicators:top_unidad}
 
                     <div class="p-7">
-                      <span class="pull-right fz-12"><a class="text-primary thin" href="#">Toda la lista →</a></span>
+                      <span class="pull-right fz-12"><a class="text-primary thin" href="{path='indicadores/demograficos_unidad/{member_id}'}">Toda la lista →</a></span>
                     </div>
                   </div>
                 </div>

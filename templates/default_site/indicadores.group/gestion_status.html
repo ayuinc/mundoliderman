@@ -1,0 +1,58 @@
+{embed="includes/head" titulo="Mundo Liderman - Indicadores Demográficos"}
+  <div class="site-wrapper"> <!-- Body -->
+      {embed="includes/nav-main" acceso_directo="Ir al muro" link="{site_url}"}
+      <main class="site-content pb-42 mb-0">
+        {embed=includes/menu-movil miembro="{member_id}"}
+        {embed=includes/banner-alerta}
+        <div class="box-gray bg-gray-darker w-100 hidden-lg hidden-md"></div>
+        <div class="container-md clearfix">
+          <section id="menu-vertical" class="col-md-4 pr-42 pl-0 hidden-xs hidden-sm">
+            {embed="includes/nav-secciones" in="in" miembro="{segment_3}" miembro_actual="{member_id}" grupo="{member_group}"}
+          </section>
+          <section id="tareo-contenido" class="col-md-8 pb-42 ph-0-xs">
+            <div class="container pt-14 w-100 ph-0">
+              <div>
+                <h2 class="fz-28 border-bottom-gray pb-14 text-gray-darker">Indicadores de Gestión</h2>
+              </div>
+              <div class="indicadores mt-35">
+                <div class="col-md-12 col-sm-12 mb-14">
+                  <div class="bg-white p-14 border-radius">
+                    <h4 class="m-0 fz-16 mb-14">
+                      "{exp:indicators:nombre_categoria categoryId="{segment_5}"}" por {segment_4}
+                      <span class="pull-right fz-12">
+                        <a href="{path='indicadores/export/{member_id}/8/{segment_4}/{segment_5}'}">
+                          <img src="{site_url}/frontend/app/assets/img/Icon_download.png" alt="descargar" title="Descargar">
+                        </a>
+                        <a class="text-primary thin ml-7" href="{path='indicadores/gestion/{member_id}'}">← Regresar</a>
+                      </span>
+                    </h4>
+                    <table class="w-100">
+                      <thead class="border-bottom-gray text-gray">
+                        <tr>
+                          <th class="fz-13 text-left">{if "{segment_4}" == "zona"}Zona{/if}{if "{segment_4}" == "unidad"}Unidad{/if}</th>
+                          <th class="fz-13 text-left"># Post</th>
+                          <th class="fz-13 text-left">Porcentaje</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {exp:indicators:post_por_categoria filterBy="{segment_4}" categoryId="{segment_5}"}
+                        <tr>
+                          <td class="fz-12 p-7">{if name == ''}OTROS{if:else}{name}{/if}</td>
+                          <td class="fz-12 p-7">{total}</td>
+                          <td class="fz-12 p-7">{percentage} %</td>
+                        </tr>
+                        {/exp:indicators:post_por_categoria}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+    {embed=includes/radio-urbe}
+    </div>
+  {embed=includes/footer}
+  <script src="{site_url}frontend/app/assets/js/collapse-control.js"></script>
+</html>

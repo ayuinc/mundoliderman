@@ -16,7 +16,7 @@
               </div>
               <div class="indicadores mt-35">
                 <div class="col-md-6 col-sm-12 mb-14">
-                  <div class="bg-white p-14 border-radius" style="min-height: 100px;">
+                  <div class="bg-white p-14 border-radius">
                     <h4 class="text-gray m-0 fz-16 mb-14">Indicadores Generales</h4>
                     {exp:indicators:indicadores_generales}
                     <p class="fz-14 text-gray">Lidermans <span class="pull-right">{total_users}</span></p>
@@ -30,7 +30,7 @@
                 </div>
 
                 <div class="col-md-6 col-sm-12 mb-14">
-                  <div class="bg-white p-14 border-radius" style="min-height: 100px;">
+                  <div class="bg-white p-14 border-radius">
                     <h4 class="text-gray m-0 fz-16 mb-14">Reclamos por Empresa</h4>
                     {exp:indicators:reclamos_por_empresa}
                     <div class="mt-7" style="height: 25px; width: {percentage}%; background: #505050;"></div>
@@ -38,13 +38,13 @@
                     {/exp:indicators:reclamos_por_empresa}
 
                     <div class="p-7">
-                      <span class="pull-right fz-12"><a class="text-primary thin" href="#">Toda la lista →</a></span>
+                      <span class="pull-right fz-12"><a class="text-primary thin" href="{path='indicadores/reclamos_empresa/{member_id}'}">Toda la lista →</a></span>
                     </div>
                   </div>
                 </div>
 
                 <div class="col-md-6 col-sm-12 mb-14">
-                  <div class="bg-white p-14 border-radius" style="min-height: 100px;">
+                  <div class="bg-white p-14 border-radius">
                     <h4 class="text-gray m-0 fz-16 mb-14">Reclamos por Zona</h4>
                     {exp:indicators:reclamos_por_zona}
                     <div class="mt-7" style="height: 25px; width: {percentage}%; background: #505050;"></div>
@@ -52,7 +52,7 @@
                     {/exp:indicators:reclamos_por_zona}
 
                     <div class="p-7">
-                      <span class="pull-right fz-12"><a class="text-primary thin" href="#">Toda la lista →</a></span>
+                      <span class="pull-right fz-12"><a class="text-primary thin" href="{path='indicadores/reclamos_zona/{member_id}'}">Toda la lista →</a></span>
                     </div>
                   </div>
                 </div>

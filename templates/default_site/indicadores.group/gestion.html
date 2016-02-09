@@ -16,17 +16,34 @@
               </div>
               <div class="indicadores mt-35">
                 <div class="col-md-6 col-sm-12 mb-14">
-                  <div class="bg-white p-14 border-radius" style="min-height: 100px;">
-                    <h4 class="text-gray m-0 fz-16 mb-14">Status</h4>
+                  <div class="bg-white p-14 border-radius">
+                    <h4 class="text-gray m-0 fz-16 mb-14">
+                      Status
+                      <span class="pull-right">
+                        <a href="{path='indicadores/export/{member_id}/7'}">
+                          <img src="{site_url}/frontend/app/assets/img/Icon_download.png" alt="descargar" title="Descargar">
+                        </a>
+                      </span>
+                    </h4>
                     {exp:indicators:status}
                     <div class="mt-7" style="height: 25px; width: {percentage}%; background: #505050;"></div>
-                    <p class="fz-11 text-gray">{total} ({percentage}%) - {categoria}</p>
+                    <p class="fz-11 text-gray mb-0">{total} ({percentage}%) - {categoria}</p>
+                    <p class="text-right">
+                      <span class="fz-13">
+                        <a class="text-primary thin ml-7" href="{path='indicadores/gestion_status/{member_id}/zona/{categoria_id}'}">
+                          Por zona
+                        </a>
+                        <a class="text-primary thin ml-7" href="{path='indicadores/gestion_status/{member_id}/unidad/{categoria_id}'}">
+                          Por unidad
+                        </a>
+                      </span>
+                    </p>
                     {/exp:indicators:status}
                   </div>
                 </div>
 
                 <div class="col-md-6 col-sm-12 mb-14">
-                  <div class="bg-white p-14 border-radius" style="min-height: 100px;">
+                  <div class="bg-white p-14 border-radius">
                     <h4 class="text-gray m-0 fz-16 mb-14">Premium</h4>
                     {exp:indicators:premium}
                     <div class="mt-7" style="height: 25px; width: {percentage}%; background: #505050;"></div>
@@ -36,7 +53,7 @@
                 </div>
 
                 <div class="col-md-6 col-sm-12 mb-14">
-                  <div class="bg-white p-14 border-radius" style="min-height: 100px;">
+                  <div class="bg-white p-14 border-radius">
                     <h4 class="text-gray m-0 fz-16 mb-14">Destacado</h4>
                     {exp:indicators:prominent}
                     <div class="mt-7" style="height: 25px; width: {percentage}%; background: #505050;"></div>
@@ -44,7 +61,6 @@
                     {/exp:indicators:prominent}
                   </div>
                 </div>
-                
               </div>
             </div>
           </section>
