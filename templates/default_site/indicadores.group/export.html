@@ -1,1 +1,9 @@
+{if logged_out}
+  {redirect="login"}
+{/if}
+
+{if "{exp:indicators:can_access}" == "" }
+  {redirect="wall"}
+{/if}
+
 {exp:indicators:export code="{segment_4}" filterBy="{segment_5}" categoryId="{segment_6}"}

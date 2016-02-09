@@ -25,6 +25,11 @@
             <option value="{path='servicios/boleta/{embed:miembro}'}" class="w-100">Boleta de Pago</option>
             {/if}
             <option value="{path='servicios/sgi/{embed:miembro}'}" class="w-100">SGI</option>
+            {if "{exp:indicators:can_access}" == "1" }
+            <option value="{path='indicadores/demograficos/{embed:miembro}'}" class="w-100">Demográficos</option>
+            <option value="{path='indicadores/gestion/{embed:miembro}'}" class="w-100">Gestión</option>
+            <option value="{path='indicadores/interaccion/{embed:miembro}'}" class="w-100">Interacción</option>
+            {/if}
           </select>
           <input type="text" id="search_bar" class="form-control input-sm fz-18 light ph-14" placeholder="Buscar personas, consultas o preguntas...">
         </form>

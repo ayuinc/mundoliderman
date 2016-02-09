@@ -1,3 +1,11 @@
+{if logged_out}
+  {redirect="login"}
+{/if}
+
+{if "{exp:indicators:can_access}" == "" }
+  {redirect="wall"}
+{/if}
+
 {embed="includes/head" titulo="Mundo Liderman - Indicadores Demográficos"}
   <div class="site-wrapper"> <!-- Body -->
       {embed="includes/nav-main" acceso_directo="Ir al muro" link="{site_url}"}
