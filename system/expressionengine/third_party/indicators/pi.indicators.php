@@ -232,7 +232,7 @@ Plugin for retreiving data from Mundo Liderman's Indicators
 
 	private function _max_periodo_planilla() {
 		$periodo = self::FIELD_PERIODO_PLANILLLA;
-		return $this->EE->db->query("SELECT MAX(CONVERT(md.$periodo, int)) AS total
+		return $this->EE->db->query("SELECT MAX(CONVERT(md.$periodo, UNSIGNED)) AS total
 									FROM exp_members m
 									INNER JOIN exp_member_data md ON md.member_id = m.member_id
 									WHERE NOT md.$periodo IS NULL")->row('total');
