@@ -9,7 +9,7 @@ class Wslogin_ext {
 
 	var $settings = array();
 
-	var $host = "http://190.187.13.164";
+	var $host;
 	var $custom_fields;
 
 	var $CI = '';
@@ -26,6 +26,7 @@ class Wslogin_ext {
 		$this->EE =& get_instance();
 		$this->EE->load->dbforge();
 		$this->CI->load->library("curl");
+		$this->host = $this->EE->config->item('webservice_url');
 	}
 	// END
 

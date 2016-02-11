@@ -3,6 +3,9 @@
 	return= "servicios/lidernet/{segment_3}"
 }
 	{freeform:all_form_fields}
+	  <input type="hidden" name="year" value="{embed:year}">
+	  <input type="hidden" name="month" value="{embed:month}">
+	  <input type="hidden" name="from" value="lidernet">
 	  <dt><label>{freeform:field_label}</label></dt>
 	  <dd>{freeform:field_output}</dd>
 	{/freeform:all_form_fields}

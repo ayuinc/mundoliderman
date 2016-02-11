@@ -19,11 +19,14 @@ class Webservice {
 	private $custom_fields;
 	private $salary_detail;
 
+	private $host;
+
 	public function __construct()
 	{
 		$this->EE =& get_instance();
 		$this->CI =& get_instance();
 		$this->EE->load->library('curl');
+		$this->host = $this->EE->config->item('webservice_url');
 	}
 
 	public static function usage()
@@ -53,7 +56,7 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 		$token = $query->row($token_field_name);
 		$periodo = trim($this->EE->TMPL->fetch_param('periodo'));
 		//return "Código Liderman : ". $codigoLiderman . ", Token : " . $token . ", Periodo : " . $periodo;
-		$url = "http://190.187.13.164/WSIntranet/BoletaPago.svc/TraerCabeceraBoletaPago/$codigoLiderman/$periodo/$token";
+		$url = $this->host . "/WSIntranet/BoletaPago.svc/TraerCabeceraBoletaPago/$codigoLiderman/$periodo/$token";
 		$data = $this->EE->curl->get($url);
 		if (count($data) > 0) {
 			return $this->EE->TMPL->parse_variables($this->EE->TMPL->tagdata, $data);
@@ -95,7 +98,7 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 			$mes = $currentMonth;
 		}
 		$meses_anticipacion = ($currentYear - $year) * 12 + ($currentMonth - $mes) + 1;
-		$url = "http://190.187.13.164/WSIntranet/Tareo.svc/ListarTareo/$codigoLiderman/$meses_anticipacion/$token";
+		$url = $this->host . "/WSIntranet/Tareo.svc/ListarTareo/$codigoLiderman/$meses_anticipacion/$token";
 		$data = $this->EE->curl->get($url);
 		$tareo_description = $this->EE->db->select('code, description, bg_color')->get('tareo')->result_array();
 		$new_data = array();
@@ -125,7 +128,7 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 				         ->get('exp_member_data');
 		$codigoLiderman = $query->row($codigo_liderman_field_name);
 		$token = $query->row($token_field_name);
-		$url = "http://190.187.13.164/WSIntranet/Tareo.svc/TraerSemaforoTareo/$codigoLiderman/" . self::MESES_ANT_TAREO . "/$token";
+		$url = $this->host . "/WSIntranet/Tareo.svc/TraerSemaforoTareo/$codigoLiderman/" . self::MESES_ANT_TAREO . "/$token";
 		$data = $this->EE->curl->get($url);
 		$semaforoStatus = $data === 0; // 0 es verde
 		$tagdata = array(['semaforo' => $semaforoStatus]);
@@ -142,7 +145,7 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 				         ->get('exp_member_data');
 		$dni = $query->row($dni_field_name);
 		$token = $query->row($token_field_name);
-		$url = "http://190.187.13.164/WSIntranet/LiderNet.svc/TraerSemaforoLiderNet/$dni/$token";
+		$url = $this->host . "/WSIntranet/LiderNet.svc/TraerSemaforoLiderNet/$dni/$token";
 		$data = $this->EE->curl->get($url);
 		$semaforoStatus = $data === 1; // 1 es verde
 		$tagdata = array(['semaforo' => $semaforoStatus]);
@@ -159,7 +162,7 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 				         ->get('exp_member_data');
 		$codigoLiderman = $query->row($codigo_liderman_field_name);
 		$token = $query->row($token_field_name);
-		$url = "http://190.187.13.164/WSIntranet/LiderCard.svc/TraerSemaforoLiderCard/$codigoLiderman/" . self::MESES_ANT_LIDERCARD . "/$token";
+		$url = $this->host . "/WSIntranet/LiderCard.svc/TraerSemaforoLiderCard/$codigoLiderman/" . self::MESES_ANT_LIDERCARD . "/$token";
 		$data = $this->EE->curl->get($url);
 		$semaforoStatus = $data === 1; // 1 es verde
 		$tagdata = array(['semaforo' => $semaforoStatus]);
@@ -178,7 +181,7 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 				         ->get('exp_member_data');
 		$codigoLiderman = $query->row($codigo_liderman_field_name);
 		$token = $query->row($token_field_name);
-		$url = "http://190.187.13.164/WSIntranet/Prestamo.svc/TraerSemaforoPrestamo/$codigoLiderman/" . self::MESES_ANT_PRESTAMO . "/$token";
+		$url = $this->host . "/WSIntranet/Prestamo.svc/TraerSemaforoPrestamo/$codigoLiderman/" . self::MESES_ANT_PRESTAMO . "/$token";
 		$data = $this->EE->curl->get($url);
 		$semaforoStatus = $data === 0; // 0 es verde
 		$tagdata = array(['semaforo' => $semaforoStatus]);
@@ -199,7 +202,7 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 		$month_start = strtotime('last day of -3 month', time());
 		$date_start = date('d-m-Y', $month_start);
 		$date_end = date('d-m-Y', $month_end);
-		$url = "http://190.187.13.164/WSIntranet/Capacitacion.svc/TraerSemaforoCapacitaciones/$dni/$date_start/$date_end/$token";
+		$url = $this->host . "/WSIntranet/Capacitacion.svc/TraerSemaforoCapacitaciones/$dni/$date_start/$date_end/$token";
 		$data = $this->EE->curl->get($url);
 		$semaforoStatus = $data >= 3;
 		$tagdata = array(['semaforo' => $semaforoStatus]);
@@ -216,7 +219,7 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 				         ->get('exp_member_data');
 		$codigoLiderman = $query->row($codigo_liderman_field_name);
 		$token = $query->row($token_field_name);
-		$url = "http://190.187.13.164/WSIntranet/LiderCard.svc/ListarBonificaciones/$codigoLiderman/" . self::MESES_ANT_LIDERCARD . "/$token";
+		$url = $this->host . "/WSIntranet/LiderCard.svc/ListarBonificaciones/$codigoLiderman/" . self::MESES_ANT_LIDERCARD . "/$token";
 		$data = $this->EE->curl->get($url);
 		if (count($data) > 0) {
 			return $this->EE->TMPL->parse_variables($this->EE->TMPL->tagdata, $data);
@@ -235,7 +238,7 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 				         ->get('exp_member_data');
 		$codigoLiderman = $query->row($codigo_liderman_field_name);
 		$token = $query->row($token_field_name);
-		$url = "http://190.187.13.164/WSIntranet/LiderCard.svc/ListarMeritosDemerito/$codigoLiderman/" . self::MESES_ANT_LIDERCARD . "/$token";
+		$url = $this->host . "/WSIntranet/LiderCard.svc/ListarMeritosDemerito/$codigoLiderman/" . self::MESES_ANT_LIDERCARD . "/$token";
 		$data = $this->EE->curl->get($url);
 		if (count($data) > 0) {
 			return $this->EE->TMPL->parse_variables($this->EE->TMPL->tagdata, $data);
@@ -254,7 +257,7 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 				         ->get('exp_member_data');
 		$codigoLiderman = $query->row($codigo_liderman_field_name);
 		$token = $query->row($token_field_name);
-		$url = "http://190.187.13.164/WSIntranet/Prestamo.svc/ListarPrestamos/$codigoLiderman/" . self::MESES_ANT_PRESTAMO . "/$token";
+		$url = $this->host . "/WSIntranet/Prestamo.svc/ListarPrestamos/$codigoLiderman/" . self::MESES_ANT_PRESTAMO . "/$token";
 		$data = $this->EE->curl->get($url);
 		if (count($data) > 0) {
 			return $this->EE->TMPL->parse_variables($this->EE->TMPL->tagdata, $data);
@@ -277,7 +280,7 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 		$month_start = strtotime('last day of -3 month', time());
 		$date_start = date('d-m-Y', $month_start);
 		$date_end = date('d-m-Y', $month_end);
-		$url = "http://190.187.13.164/WSIntranet/Capacitacion.svc/ListarCapacitaciones/$dni/$date_start/$date_end/$token";
+		$url = $this->host . "/WSIntranet/Capacitacion.svc/ListarCapacitaciones/$dni/$date_start/$date_end/$token";
 		$data = $this->EE->curl->get($url);
 		if (count($data) > 0) {
 			return $this->EE->TMPL->parse_variables($this->EE->TMPL->tagdata, $data);
@@ -343,7 +346,7 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 		$codigoLiderman = $query->row($codigo_liderman_field_name);
 		$token = $query->row($token_field_name);
 		$periodo = trim($this->EE->TMPL->fetch_param('periodo'));
-		$url = "http://190.187.13.164/WSIntranet/BoletaPago.svc/TraerDetalleBoletaPago/$codigoLiderman/$periodo/$token";
+		$url = $this->host . "/WSIntranet/BoletaPago.svc/TraerDetalleBoletaPago/$codigoLiderman/$periodo/$token";
 		$data = $this->EE->curl->get($url);
 		if (count($data) > 0) {
 			return $this->EE->TMPL->parse_variables($this->EE->TMPL->tagdata, $data);
