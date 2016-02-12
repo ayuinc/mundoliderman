@@ -224,6 +224,11 @@ class Wslogin_ext {
 				'code' => '001 32',
 				'description' => 'Tipo Persona - Mundo Liderman Recibo por honorarios',
 				'group_id' => '37'
+			),
+			array(
+				'code' => '001 00',
+				'description' => 'Tipo Persona - Mundo Liderman Guardianes de la Cultura Liderman',
+				'group_id' => '38'
 			)
 		);
 
