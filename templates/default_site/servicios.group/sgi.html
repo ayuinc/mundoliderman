@@ -24,7 +24,7 @@
             {embed=includes/semaforo-movil}
             <div><h2 class="fz-28 border-bottom-gray pb-14 text-gray-darker pt-21">SGI</h2></div>
             <div class="sgi mt-35">
-              <div class="datos bg-white p-42 border-radius p-21-xs">
+              <div class="datos bg-white p-35 border-radius p-21-xs">
                 <p class="fz-18 text-gray-darker">Seleccionar las siguientes opciones</p>
                 <ul class="serif fz-18 text-gray-darker">
                   <li><a href="http://www.liderman.com.pe/cultura/reglamentos/" target="_blank">Reglamento</a></li>
@@ -32,6 +32,28 @@
                   <li><a href="http://www.liderman.com.pe/sgi-documentacion/dgac/" target="_blank">DGAC</a></li>
                   <li><a href="http://www.liderman.com.pe/sgi-documentacion/dgac-selva/" target="_blank">DGAC Selva</a></li>
                 </ul>
+                <!--
+                {if segment_4 != 'category'}
+                  <p class="fz-18 text-gray-darker">Seleccionar las siguientes opciones</p>
+                  {exp:channel:categories channel="SGI" class="text-gray-darker"}
+                      <a href="{path='servicios/sgi/{segment_3}/category/{category_id}'}">{category_name}</a><br />
+                  {/exp:channel:categories}
+                {if:else}
+                  <p>
+                    <span class="pull-right fz-12">
+                      <a class="text-primary thin" href="{path='servicios/sgi/{member_id}'}">← Regresar</a>
+                    </span>
+                  </p>
+                  {exp:channel:entries orderby="entry_id"sort="asc" dynamic="no" channel="SGI" category="{segment_5}" }
+                    <p class="fz-13">
+                      <a href="{archivo}" class="img" target="_blank">
+                        <img src="{site_url}/frontend/app/assets/img/icono-pdf.png" alt="Ver pdf">
+                      </a>
+                      <a class="text-gray-darker" href="{archivo}" target="_blank">{title}</a>
+                    </p>
+                  {/exp:channel:entries}
+                {/if}
+                -->
               </div>
             </div>
           </div>

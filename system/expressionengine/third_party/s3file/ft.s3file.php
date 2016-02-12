@@ -87,7 +87,7 @@ class S3file_ft extends EE_Fieldtype {
         	return $this->EE->upload->data("file_name")["file_name"];
         }
 
-        return $data;
+        return $this->settings['field_data'];
 	}
 
 	public function pre_process($data)
