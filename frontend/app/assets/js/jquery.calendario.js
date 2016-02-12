@@ -130,11 +130,12 @@
 		},
 		_getBody : function() {
 
-			var d = new Date( this.year, this.month + 1, 0 ),
+			var d = new Date( eval(this.year), eval(this.month) + 1, 0 ),
 				// number of days in the month
 				monthLength = d.getDate(),
 				firstDay = new Date( this.year, this.month, 1 );
 
+			console.log(d);
 			// day of the week
 			this.startingDay = firstDay.getDay();
 
@@ -175,7 +176,6 @@
 					}
 					else {
 						today = false;
-						console.log("hola");
 					}
 
 					var cellClasses = today ? 'fc-today colour'+day+'' : 'colour'+(day-1)+'';

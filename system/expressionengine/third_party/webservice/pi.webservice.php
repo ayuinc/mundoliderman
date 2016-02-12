@@ -147,7 +147,7 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 		$token = $query->row($token_field_name);
 		$url = $this->host . "/WSIntranet/LiderNet.svc/TraerSemaforoLiderNet/$dni/$token";
 		$data = $this->EE->curl->get($url);
-		$semaforoStatus = $data === 1; // 1 es verde
+		$semaforoStatus = $data === 0; // 0 es verde
 		$tagdata = array(['semaforo' => $semaforoStatus]);
 		return $this->EE->TMPL->parse_variables($this->EE->TMPL->tagdata, $tagdata);
 	}
@@ -169,8 +169,6 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 		return $this->EE->TMPL->parse_variables($this->EE->TMPL->tagdata, $tagdata);
 	}
 
-	// http://190.187.13.164/WSIntranet/Prestamo.svc/TraerSemaforoPrestamo/CodigoLiderman/MesesAnticipacion/TokenSeguridad
-
 	public function semaforoprestamo()
 	{
 		$member_id = $this->EE->session->userdata('member_id');
@@ -183,7 +181,7 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 		$token = $query->row($token_field_name);
 		$url = $this->host . "/WSIntranet/Prestamo.svc/TraerSemaforoPrestamo/$codigoLiderman/" . self::MESES_ANT_PRESTAMO . "/$token";
 		$data = $this->EE->curl->get($url);
-		$semaforoStatus = $data === 0; // 0 es verde
+		$semaforoStatus = $data === 1; // 1 es verde
 		$tagdata = array(['semaforo' => $semaforoStatus]);
 		return $this->EE->TMPL->parse_variables($this->EE->TMPL->tagdata, $tagdata);
 	}
@@ -198,13 +196,13 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 				         ->get('exp_member_data');
 		$dni = $query->row($dni_field_name);
 		$token = $query->row($token_field_name);
-		$month_end = strtotime('first day of this month', time());
-		$month_start = strtotime('last day of -3 month', time());
+		$month_end = strtotime('now', time());
+		$month_start = strtotime('-3 month', time());
 		$date_start = date('d-m-Y', $month_start);
 		$date_end = date('d-m-Y', $month_end);
 		$url = $this->host . "/WSIntranet/Capacitacion.svc/TraerSemaforoCapacitaciones/$dni/$date_start/$date_end/$token";
 		$data = $this->EE->curl->get($url);
-		$semaforoStatus = $data >= 3;
+		$semaforoStatus = $data >= 3; // >= 3 verde
 		$tagdata = array(['semaforo' => $semaforoStatus]);
 		return $this->EE->TMPL->parse_variables($this->EE->TMPL->tagdata, $tagdata);
 	}
