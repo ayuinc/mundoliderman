@@ -49,7 +49,7 @@ $(function() {
             })
             .done(function(post) {
                 $("#new_post").prepend(post);
-                formatLinks();
+                formatLinks && formatLinks();
                 var count = $("#new_post").find(".post-1").length;
                 $("#new_post_count").text(count);
                 addNotificationsHeader(count);
@@ -71,7 +71,7 @@ $(function() {
                 var divComment = $("div[data-comment-container-post-id=" + response.post_id +"]");
                 divComment.append(comment);
                 $("span[data-comment-post-id=" + response.post_id +"]").text(response.total);
-                formatLinks();
+formatLinks &&                 formatLinks();
                 if (notInWall && member_group !== CHATEADORA && divComment.length > 0) {
                   newComments++;
                   $('a.scroll').unbind('click');

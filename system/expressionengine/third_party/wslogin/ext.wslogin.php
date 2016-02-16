@@ -284,7 +284,7 @@ class Wslogin_ext {
 		$url = $this->host . "/WSIntranet/Autenticacion.svc/AutenticacionUsuario/$username/$password";
 		$data = $this->CI->curl->get($url);
 		$token = $data["TokenSeguridad"];
-		$employee_category = $data["CategoriaEmpleado"];
+		$employee_category = $this->cleanCategoryCode($data["CategoriaEmpleado"]);
 		if ($token == null) {
 			// Retorna error
 			return ee()->output->show_user_error('submission', 'Usuario y/o contraseña incorrecta');
@@ -323,8 +323,7 @@ class Wslogin_ext {
 				    )
 				);
 
-				$profiles = ee()->db->where("description", $employee_category)
-					 	 	->get("profiles");
+				$profiles = ee()->db->query("SELECT group_id from exp_profiles WHERE '$employee_category' = (SELECT REPLACE(`code`, ' ', ''))");
 
 				ee()->db->update(
 					'members',
@@ -364,8 +363,7 @@ class Wslogin_ext {
 					'timezone'		=> ee()->config->item('default_site_timezone')
 				);
 
-				$profiles = ee()->db->where("description", $employee_category)
-					 	 	->get("profiles");
+				$profiles = ee()->db->query("SELECT group_id from exp_profiles WHERE '$employee_category' = (SELECT REPLACE(`code`, ' ', ''))");
 
 				// Set member group
 
@@ -439,6 +437,10 @@ class Wslogin_ext {
 	        $this->getMemberFieldId('zona')  => $data["Zona"],
 	        $this->getMemberFieldId('email-perfil') => $data["Correo"]
 	    );
+	}
+
+	private function cleanCategoryCode($code) {
+		return str_replace(" ", "", $code);
 	}
 
 }
