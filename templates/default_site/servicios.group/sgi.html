@@ -7,7 +7,7 @@
 {/if}
 
 {embed=includes/head titulo="Mundo Liderman - SGI"}
-  
+  <link rel="stylesheet" href="{site_url}frontend/app/assets/css/ui.easytree.min.css">
   <div class="site-wrapper"> <!-- Body -->
     {embed=includes/nav-main acceso_directo="Ir al muro" link="{site_url}"}
     <main class="site-content pb-42 mb-0">
@@ -24,9 +24,11 @@
               <div class="datos bg-white p-35 border-radius p-21-xs">
                 {if segment_4 != 'category'}
                   <p class="fz-18 text-gray-darker">Seleccionar las siguientes opciones</p>
-                  {exp:channel:categories channel="SGI" class="text-gray-darker"}
-                      <a href="{path='servicios/sgi/{segment_3}/category/{category_id}/{category_name}'}">{category_name}</a><br />
-                  {/exp:channel:categories}
+                  <div id="jstree">
+                    {exp:channel:categories channel="SGI" class="text-gray-darker"}
+                        <a href="{path='servicios/sgi/{segment_3}/category/{category_id}/{category_name}'}">{category_name}</a>
+                    {/exp:channel:categories}
+                  </div>
                 {if:else}
                   <p>
                     <span class="fz-16 text-gray-darker">{segment_6}</span>
@@ -57,4 +59,8 @@
   {embed=includes/footer}
   <script src="{site_url}frontend/app/assets/js/lidercard-control.js"></script>
   <script src="{site_url}frontend/app/assets/js/collapse-control.js"></script>
+  <script src="{site_url}frontend/app/assets/js/jquery.easytree.min.js"></script>
+  <script>
+    if ($("#jstree").length) $('#jstree').easytree();
+  </script>
 </html>
