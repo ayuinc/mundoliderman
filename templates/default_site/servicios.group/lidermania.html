@@ -9,7 +9,7 @@
 {/if}
 
   {embed=includes/head titulo="Mundo Liderman - Lidermanía"}
-  
+  <link rel="stylesheet" href="{site_url}frontend/app/assets/css/ui.easytree.min.css">
   <div class="site-wrapper"> <!-- Body -->
     {embed=includes/nav-main acceso_directo="Ir al muro" link="{site_url}"}
     <main class="site-content clearfix pb-42 mb-0">
@@ -22,7 +22,7 @@
           <div class="contenedor-menu-2 pt-35 ph-42">
             <h2 class="fz-20 text-gray-dark2 m-0 pt-14 pb-21">Lidermanía</h2>
             <div>
-              <h3 class="m-0 bg-gray-lighter pb-7 ph-14"><a class="fz-17 text-gray-dark2 text-hover-gray-dark">Ama el trato</a></h3>
+              <h3 class="m-0 bg-gray-lighter pb-7 ph-14"><a class="fz-17 text-gray-dark2 text-hover-gray-dark l-category">Ama el trato</a></h3>
               <ul class="pt-14 list-styled">
                 {exp:categories:child_list category_group="4" parent_id="16"}
                 <li><a href="" class="fz-15 text-gray-darker light text-not-underline link-menu" data-cat-id="{cat_id}" >{cat_name}</a></li>
@@ -30,7 +30,7 @@
               </ul>
             </div>
             <div class="pt-14">
-              <h3 class="m-0 bg-gray-lighter pb-7 ph-14"><a class="fz-17 text-gray-dark2 text-hover-gray-dark">Ama el crecimiento</a></h3>
+              <h3 class="m-0 bg-gray-lighter pb-7 ph-14"><a class="fz-17 text-gray-dark2 text-hover-gray-dark l-category">Ama el crecimiento</a></h3>
               <ul class="pt-14 list-styled">
                 {exp:categories:child_list category_group="4" parent_id="17"}
                 <li><a href="" class="fz-15 text-gray-darker light text-not-underline link-menu" data-cat-id="{cat_id}" >{cat_name}</a></li>
@@ -38,7 +38,7 @@
               </ul>
             </div>
             <div class="pt-14">
-              <h3 class="m-0 bg-gray-lighter pb-7 ph-14"><a href="" class="fz-17 text-gray-dark2 text-hover-gray-dark link-menu" data-cat-id="18">Ama el pago</a></h3>
+              <h3 class="m-0 bg-gray-lighter pb-7 ph-14"><a href="" class="fz-17 text-gray-dark2 text-hover-gray-dark link-menu l-category" data-cat-id="18">Ama el pago</a></h3>
             </div>
           </div>
         </section>
@@ -46,13 +46,29 @@
           <div class="container pt-42 w-100 ph-0 ph-7-xs">
             {embed=includes/perfil-servicios miembro="{segment_3}" miembro_actual="{member_id}"}
             {embed=includes/semaforo-movil}
-            <div><h2 class="fz-28 border-bottom-gray-darker pb-14 text-gray-darker pt-21">Lidermanía/ Ama el trato</h2></div>
+            <div><h2 class="fz-28 border-bottom-gray-darker pb-14 text-gray-darker pt-21">Lidermanía/ <span id="lidermania-seccion">Ama el trato</span></h2></div>
             <div class="lidermania pt-14-xs">
-              <select name="" id="" class="w-100 select-lista pl-14 fz-24 hidden-lg hidden-md">
-                <option value="" class="fz-24">Ama el trato</option>
-                <option value="" class="fz-24">Ama el cremiento</option>
-                <option value="" class="fz-24">Ama el pago</option>
-              </select>
+              <div id="jstree" class="w-100 fz-24 hidden-lg hidden-md">
+                <ul>
+                    <li>
+                      <a class="fz-17 text-gray-dark2 text-hover-gray-dark l-category">Ama el trato</a>
+                      <ul>
+                        {exp:categories:child_list category_group="4" parent_id="16"}
+                        <li><a href="javascript:loadCategory({cat_id}, 'Ama el trato')" class="fz-15 text-gray-darker light text-not-underline link-menu" data-cat-id="{cat_id}" >{cat_name}</a></li>
+                        {/exp:categories:child_list}
+                      </ul>
+                    </li>
+                    <li>
+                      <a class="fz-17 text-gray-dark2 text-hover-gray-dark l-category">Ama el crecimiento</a>
+                      <ul>
+                        {exp:categories:child_list category_group="4" parent_id="17"}
+                        <li><a href="javascript:loadCategory({cat_id}, 'Ama el crecimiento')" class="fz-15 text-gray-darker light text-not-underline link-menu" data-cat-id="{cat_id}" >{cat_name}</a></li>
+                        {/exp:categories:child_list}
+                      </ul>
+                    </li>
+                    <li><a href="javascript:loadCategory(18, 'Ama el pago')" class="fz-17 text-gray-dark2 text-hover-gray-dark link-menu l-category" data-cat-id="18">Ama el pago</a></li>
+                </ul>
+              </div>
               <div class="datos datos-lidermania bg-white pv-42 ph-42 ph-21-xs mt-28-xs pv-21-xs">
               </div>
             </div>
@@ -65,6 +81,10 @@
   {embed=includes/footer}
   <script src="{site_url}frontend/app/assets/js/collapse-control.js"></script>
   <script src="{site_url}frontend/app/assets/js/menu-2-control.js"></script>
+  <script src="{site_url}frontend/app/assets/js/jquery.easytree.min.js"></script>
+  <script>
+    if ($("#jstree").length) $('#jstree').easytree();
+  </script>
   <script>
     $.ajax({
       type: "GET",
@@ -77,15 +97,16 @@
     /*cuando le das click a los menus*/
     $(".link-menu").click(function(e){
       e.preventDefault();
+      var $self = $(this);
       var cat_id = $(this).attr("data-cat-id");
-      $.ajax({
-        type: "GET",
-        async: true,
-        url: "{path='ajax-text/texto-menu'}/" + cat_id,
-        success: function(a) {
-          $('.datos-lidermania').html(a);
-        }
-      });
+      var $linkCategory;
+      if ($self.hasClass('l-category')) {
+        $linkCategory = $self;
+      } else {
+        var $parent = $($self.parents().get(2));
+        $linkCategory = $parent.find('.l-category');
+      }
+      loadCategory(cat_id, $linkCategory.html());
     });
     /*cuando le das click a leer más*/
     $(document).on('click', '.more-lidermania', function(e) {
@@ -125,5 +146,17 @@
         }
       });
     });
+
+    function loadCategory(categoryId, title) {
+      $.ajax({
+        type: "GET",
+        async: true,
+        url: "{path='ajax-text/texto-menu'}/" + categoryId,
+        success: function(a) {
+          $('.datos-lidermania').html(a);
+          $('#lidermania-seccion').html(title);
+        }
+      });
+    }
   </script>
 </html>
