@@ -130,7 +130,7 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 		$token = $query->row($token_field_name);
 		$url = $this->host . "/WSIntranet/Tareo.svc/TraerSemaforoTareo/$codigoLiderman/" . self::MESES_ANT_TAREO . "/$token";
 		$data = $this->EE->curl->get($url);
-		$semaforoStatus = $data === 0; // 0 es verde
+		$semaforoStatus = $data === 1; // 1 es verde
 		$tagdata = array(['semaforo' => $semaforoStatus]);
 		return $this->EE->TMPL->parse_variables($this->EE->TMPL->tagdata, $tagdata);
 	}
@@ -147,7 +147,7 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 		$token = $query->row($token_field_name);
 		$url = $this->host . "/WSIntranet/LiderNet.svc/TraerSemaforoLiderNet/$dni/$token";
 		$data = $this->EE->curl->get($url);
-		$semaforoStatus = $data === 0; // 0 es verde
+		$semaforoStatus = $data === 1; // 1 es verde
 		$tagdata = array(['semaforo' => $semaforoStatus]);
 		return $this->EE->TMPL->parse_variables($this->EE->TMPL->tagdata, $tagdata);
 	}

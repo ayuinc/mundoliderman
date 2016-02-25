@@ -24,7 +24,9 @@
             {if '{exp:parameters:value code="BOLETAS"}' == 'y'}
             <option value="{path='servicios/boleta/{embed:miembro}'}" class="w-100">Boleta de Pago</option>
             {/if}
+            {if "{exp:indicators:can_access}" == "1" }
             <option value="{path='servicios/sgi/{embed:miembro}'}" class="w-100">SGI</option>
+            {/if}
             {if "{exp:indicators:can_access}" == "1" }
             <option value="{path='indicadores/demograficos/{embed:miembro}'}" class="w-100">Demográficos</option>
             <option value="{path='indicadores/gestion/{embed:miembro}'}" class="w-100">Gestión</option>
