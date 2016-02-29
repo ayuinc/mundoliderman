@@ -42,7 +42,7 @@
                     <h4 class="text-gray m-0 fz-16 mb-14">Reclamos por Empresa</h4>
                     {exp:indicators:reclamos_por_empresa}
                     <div class="mt-7" style="height: 25px; width: {percentage}%; background: #505050;"></div>
-                    <p class="fz-11 text-gray">{total} ({percentage}%) - {if empresa == ''}OTROS{if:else}{empresa}{/if}</p>
+                    <p class="fz-11 text-gray">{total} ({percentage}%) - {if empresa == ''}VACIO{if:else}{empresa}{/if}</p>
                     {/exp:indicators:reclamos_por_empresa}
 
                     <div class="p-7">
@@ -56,7 +56,7 @@
                     <h4 class="text-gray m-0 fz-16 mb-14">Reclamos por Zona</h4>
                     {exp:indicators:reclamos_por_zona}
                     <div class="mt-7" style="height: 25px; width: {percentage}%; background: #505050;"></div>
-                    <p class="fz-11 text-gray">{total} ({percentage}%) - {if zona == ''}OTROS{if:else}{zona}{/if}</p>
+                    <p class="fz-11 text-gray">{total} ({percentage}%) - {if zona == ''}VACIO{if:else}{zona}{/if}</p>
                     {/exp:indicators:reclamos_por_zona}
 
                     <div class="p-7">
