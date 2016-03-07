@@ -12,7 +12,7 @@
         {exp:user:logout return="login"}
           <p class="sans-serif fz-22 mb-14 text-gray-dark"><a href="{url}">Salir</a></p>
         {/exp:user:logout}
-        <form action="" class="pt-28">
+        <div class="form pt-28">
           <select name="" id="menu_movil" class="w-100 mb-14 ph-14">
             <option value="{current_url}" class="w-100">Seleccionar Servicio</option>
             <option value="{path='servicios/lidernet/{embed:miembro}'}" class="w-100">Cultura</option>
@@ -33,8 +33,12 @@
             <option value="{path='indicadores/interaccion/{embed:miembro}'}" class="w-100">Interacción</option>
             {/if}
           </select>
-          <input type="text" id="search_bar" class="form-control input-sm fz-18 light ph-14" placeholder="Buscar personas, consultas o preguntas...">
-        </form>
+          {exp:user:search
+            return="perfil/resultados"
+          }
+          <input type="text" id="search_bar" class="form-control input-sm fz-18 light ph-14" placeholder="Buscar personas..." name="keywords">
+          {/exp:user:search}
+        </div>
       </div>
 
       <script>
