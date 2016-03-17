@@ -36,15 +36,15 @@
                       <a class="text-primary thin" href="{path='servicios/sgi/{member_id}'}">← Regresar</a>
                     </span>
                   </p>
-                  {exp:channel:entries orderby="entry_id"sort="asc" dynamic="no" channel="SGI" category="{segment_5}" }
+                  {exp:channel:entries orderby="entry_id" sort="asc" dynamic="no" channel="SGI" category="{segment_5}" }
                     {if no_results}
                       <p>No hay contenido disponible</p>
                     {/if}
                     <p class="fz-13">
-                      <a href="{archivo}" class="img" target="_blank">
+                      <a href="{site_url}servicios/visualizar-sgi/{entry_id}" class="img" target="_blank">
                         <img src="{site_url}/frontend/app/assets/img/icono-pdf.png" width="16px" alt="Ver pdf">
                       </a>
-                      <a class="text-gray-darker" href="{archivo}" target="_blank">{title}</a>
+                      <a class="text-gray-darker" href="{site_url}servicios/visualizar-sgi/{entry_id}" target="_blank">{title}</a>
                     </p>
                   {/exp:channel:entries}
                 {/if}
