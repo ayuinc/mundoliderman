@@ -1,9 +1,5 @@
 {if logged_out}
   {redirect="login"}
-{if:else}
-  {if member_id != segment_3}
-    {redirect="wall"}
-  {/if}
 {/if}
 
 {exp:channel:entries orderby="entry_id" sort="asc" dynamic="no" channel="SGI" entry_id="{segment_3}"}

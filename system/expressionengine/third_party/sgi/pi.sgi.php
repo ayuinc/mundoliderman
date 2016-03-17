@@ -29,14 +29,16 @@ Plugin for view file SGI
 	public function view() {
 		$url = ee()->TMPL->fetch_param('url', '');
 		$ext = $this->_get_file_extension($url);
-		header("Title: Mundo Liderman SGI");
+		
+		$encodedUrl = urlencode($url);
+		$fixedEncodedUrl = str_replace(['%2F', '%3A'], ['/', ':'], $encodedUrl);
 		if ($ext === 'pdf') {
 			header("Content-type: application/pdf");
 		} else {
 			header("Content-type: application/octet-stream");
 		}
 
-		echo file_get_contents($url);
+		echo file_get_contents($fixedEncodedUrl);exit;
 	}
 
 	private function _get_file_extension($file) {
