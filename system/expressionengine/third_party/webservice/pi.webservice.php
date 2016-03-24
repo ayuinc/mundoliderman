@@ -120,14 +120,9 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 
 	public function semaforotareo()
 	{
-		$member_id = $this->EE->session->userdata('member_id');
-		$codigo_liderman_field_name = $this->getMemberFieldId("codigo-liderman");
-		$token_field_name = $this->getMemberFieldId("token");
-		$query = $this->EE->db->where('member_id', $member_id)
-						 ->select("$codigo_liderman_field_name, $token_field_name")
-				         ->get('exp_member_data');
-		$codigoLiderman = $query->row($codigo_liderman_field_name);
-		$token = $query->row($token_field_name);
+		$member_id = $this->EE->TMPL->fetch_param('member', $this->current_member_id());
+		$codigoLiderman = $this->get_member_codigo($member_id);
+		$token = $this->current_member_token();
 		$url = $this->host . "/WSIntranet/Tareo.svc/TraerSemaforoTareo/$codigoLiderman/" . self::MESES_ANT_TAREO . "/$token";
 		$data = $this->EE->curl->get($url);
 		$semaforoStatus = $data === 1; // 1 es verde
@@ -137,14 +132,9 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 
 	public function semaforolidernet()
 	{
-		$member_id = $this->EE->session->userdata('member_id');
-		$dni_field_name = $this->getMemberFieldId("dni");
-		$token_field_name = $this->getMemberFieldId("token");
-		$query = $this->EE->db->where('member_id', $member_id)
-						 ->select("$dni_field_name, $token_field_name")
-				         ->get('exp_member_data');
-		$dni = $query->row($dni_field_name);
-		$token = $query->row($token_field_name);
+		$member_id = $this->EE->TMPL->fetch_param('member', $this->current_member_id());
+		$dni = $this->get_member_dni($member_id);
+		$token = $this->current_member_token();
 		$url = $this->host . "/WSIntranet/LiderNet.svc/TraerSemaforoLiderNet/$dni/$token";
 		$data = $this->EE->curl->get($url);
 		$semaforoStatus = $data === 1; // 1 es verde
@@ -154,14 +144,9 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 
 	public function semaforolidercard()
 	{
-		$member_id = $this->EE->session->userdata('member_id');
-		$codigo_liderman_field_name = $this->getMemberFieldId("codigo-liderman");
-		$token_field_name = $this->getMemberFieldId("token");
-		$query = $this->EE->db->where('member_id', $member_id)
-						 ->select("$codigo_liderman_field_name, $token_field_name")
-				         ->get('exp_member_data');
-		$codigoLiderman = $query->row($codigo_liderman_field_name);
-		$token = $query->row($token_field_name);
+		$member_id = $this->EE->TMPL->fetch_param('member', $this->current_member_id());
+		$codigoLiderman = $this->get_member_codigo($member_id);
+		$token = $this->current_member_token();
 		$url = $this->host . "/WSIntranet/LiderCard.svc/TraerSemaforoLiderCard/$codigoLiderman/" . self::MESES_ANT_LIDERCARD . "/$token";
 		$data = $this->EE->curl->get($url);
 		$semaforoStatus = $data === 1; // 1 es verde
@@ -171,14 +156,9 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 
 	public function semaforoprestamo()
 	{
-		$member_id = $this->EE->session->userdata('member_id');
-		$codigo_liderman_field_name = $this->getMemberFieldId("codigo-liderman");
-		$token_field_name = $this->getMemberFieldId("token");
-		$query = $this->EE->db->where('member_id', $member_id)
-						 ->select("$codigo_liderman_field_name, $token_field_name")
-				         ->get('exp_member_data');
-		$codigoLiderman = $query->row($codigo_liderman_field_name);
-		$token = $query->row($token_field_name);
+		$member_id = $this->EE->TMPL->fetch_param('member', $this->current_member_id());
+		$codigoLiderman = $this->get_member_codigo($member_id);
+		$token = $this->current_member_token();
 		$url = $this->host . "/WSIntranet/Prestamo.svc/TraerSemaforoPrestamo/$codigoLiderman/" . self::MESES_ANT_PRESTAMO . "/$token";
 		$data = $this->EE->curl->get($url);
 		$semaforoStatus = $data === 1; // 1 es verde
@@ -188,14 +168,9 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 
 	public function semaforocapacitaciones()
 	{
-		$member_id = $this->EE->session->userdata('member_id');
-		$dni_field_name = $this->getMemberFieldId("dni");
-		$token_field_name = $this->getMemberFieldId("token");
-		$query = $this->EE->db->where('member_id', $member_id)
-						 ->select("$dni_field_name, $token_field_name")
-				         ->get('exp_member_data');
-		$dni = $query->row($dni_field_name);
-		$token = $query->row($token_field_name);
+		$member_id = $this->EE->TMPL->fetch_param('member', $this->current_member_id());
+		$dni = $this->get_member_dni($member_id);
+		$token = $this->current_member_token();
 		$month_end = strtotime('now', time());
 		$month_start = strtotime('-3 month', time());
 		$date_start = date('d-m-Y', $month_start);
@@ -351,6 +326,38 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 		} else {
 			return $this->EE->TMPL->no_results();
 		}
+	}
+
+	private function get_member_dni ($member_id) {
+		$dni_field_name = $this->getMemberFieldId("dni");
+		$query = $this->EE->db->where('member_id', $member_id)
+						 ->select("$dni_field_name")
+				         ->get('exp_member_data');
+		$dni = $query->row($dni_field_name);
+		return $dni;
+	}
+
+	private function get_member_codigo ($member_id) {
+		$codigo_liderman_field_name = $this->getMemberFieldId("codigo-liderman");
+		$query = $this->EE->db->where('member_id', $member_id)
+						 ->select("$codigo_liderman_field_name, $token_field_name")
+				         ->get('exp_member_data');
+		$codigoLiderman = $query->row($codigo_liderman_field_name);
+		return $codigoLiderman;
+	}
+
+	private function current_member_id () {
+		return $this->EE->session->userdata('member_id');
+	}
+
+	private function current_member_token () {
+		$token_field_name = $this->getMemberFieldId("token");
+		$member_id = $this->current_member_id();
+		$query = $this->EE->db->where('member_id', $member_id)
+						 ->select("$token_field_name")
+				         ->get('exp_member_data');
+		$token = $query->row($token_field_name);
+		return $token;
 	}
 
 }

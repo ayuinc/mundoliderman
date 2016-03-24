@@ -24,7 +24,7 @@
           <div class="container pt-42 w-100 ph-0">
             {embed=includes/perfil-servicios miembro="{segment_3}" miembro_actual="{member_id}"}
             <div><h2 class="fz-28 border-bottom-gray-darker pb-14 text-gray-darker pt-21">Cultura</h2></div>
-            {exp:webservice:semaforolidernet}
+            {exp:webservice:semaforolidernet member="{segment_3}"}
               <div class="semaforo clearfix {if semaforo}bg-info{if:else}bg-primary{/if} border-radius mt-28 ph-42 text-white hidden-xs hidden-sm">
                   <div id="check_semaforo" class="col-md-1 text-center pl-0">
                   <img src="{site_url}frontend/app/assets/img/Check.png" alt="">

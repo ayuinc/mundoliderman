@@ -39,13 +39,13 @@
         <div class="col-md-4 col-xs-11 col-xs-offset-1 col-md-offset-0 pl-0 pr-0 pl-21-xs text-left">
           <ul class="pl-0 thin fz-13 mb-0-xs">
             <li>
-              {exp:webservice:semaforolidernet}
+              {exp:webservice:semaforolidernet member="{embed:miembro}"}
               <div class="circulo-semaforo brp-100 display-ib mr-7 {if semaforo}bg-info{if:else}bg-primary{/if}"></div>
               {/exp:webservice:semaforolidernet}
               <a href="{path='servicios/lidernet}/{member_id}" class="text-gray-dark semaforo">Lidernet (Cultura)</a>
             </li>
             <li>
-              {exp:webservice:semaforoprestamo}
+              {exp:webservice:semaforoprestamo member="{embed:miembro}"}
               <div class="circulo-semaforo brp-100 display-ib mr-7 {if semaforo}bg-info{if:else}bg-primary{/if}"></div>
               {/exp:webservice:semaforoprestamo}
               <a href="{path='servicios/prestamos}/{member_id}" class="text-gray-dark semaforo">Préstamos (Orden económico)</a>
@@ -55,13 +55,13 @@
         <div class="col-md-4 col-xs-11 col-xs-offset-1 col-md-offset-0 pl-0 pl-21-xs text-left">
           <ul class="pl-0 thin fz-13 mb-0-xs">
             <li>
-              {exp:webservice:semaforotareo}
+              {exp:webservice:semaforotareo member="{embed:miembro}"}
               <div class="circulo-semaforo brp-100 display-ib mr-7 {if semaforo}bg-info{if:else}bg-primary{/if}"></div>
               {/exp:webservice:semaforotareo}
               <a href="{path='servicios/tareo}/{member_id}" class="text-gray-dark semaforo">Tareo (Conducta)</a>
             </li>
             <li>
-              {exp:webservice:semaforolidercard}
+              {exp:webservice:semaforolidercard member="{embed:miembro}"}
               <div class="circulo-semaforo brp-100 display-ib mr-7 {if semaforo}bg-info{if:else}bg-primary{/if}"></div>
               {/exp:webservice:semaforolidercard}
               <a href="{path='servicios/lidercard}/{member_id}" class="text-gray-dark semaforo">Lidercard (Valor agregado)</a>
@@ -71,7 +71,7 @@
         <div class="col-md-4 col-xs-11 col-xs-offset-1 col-md-offset-0 pl-0 pl-21-xs text-left">
           <ul class="pl-0 thin fz-13 mb-0-xs">
             <li>
-              {exp:webservice:semaforocapacitaciones}
+              {exp:webservice:semaforocapacitaciones member="{embed:miembro}"}
               <div class="circulo-semaforo brp-100 display-ib mr-7 {if semaforo}bg-info{if:else}bg-primary{/if}"></div>
               {/exp:webservice:semaforocapacitaciones}
               <a href="{path='servicios/capacitacion}/{member_id}" class="text-gray-dark semaforo absolute">Capacitaciones (Autocapacitaciones)</a>
