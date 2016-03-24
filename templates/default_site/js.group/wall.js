@@ -131,14 +131,6 @@ $(document).on('click', '.mobile_comment', function(e) {
   }
 });
 
-$(document).on('click', '.comment', function(e){
-  e.preventDefault();
-  var $scroll_down = $(this).parents().eq(3).find(".scroll-down");
-  var $area_respuesta = $(this).parents().eq(3).find(".area-respuesta");
-  $scroll_down.toggleClass("hidden");
-  $area_respuesta.removeClass("hidden");
-});
-
 $(document).on('change', '#inputFile', function() {
   if ($(this).val()) {
     $(".container-photos").addClass("pt-7 pb-21 pl-21");

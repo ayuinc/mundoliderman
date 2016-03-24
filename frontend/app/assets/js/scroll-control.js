@@ -37,32 +37,34 @@ $(document).ready(function(){
 		$(".video").removeClass("hidden");
 	});
 
-	/* Mostrar comentarios*/
-	$(".scroll-down").removeClass("hidden");
-	$(".area-respuesta").removeClass("hidden");
 });
-/*
-function expandComments(element) {
-	$(element).parents(".post").find(".area-respuesta").addClass("hidden");
-	$(element).parents(".post").find(".scroll-down").toggleClass("hidden");
-	$(element).parents(".post").find(".area-respuesta").toggleClass("hidden");	
-}
 
-$(".btn-comentar").click(function(event){
-	event.preventDefault();
-	var target = $(event.target);
-	$(target).parents(".post").find(".area-respuesta").addClass("hidden");
-	$(target).parents(".post").find(".scroll-down").toggleClass("hidden");
-	$(target).parents(".post").find(".area-respuesta").toggleClass("hidden");
-});*/
 
 $(document).on('click', '.btn-comentar', function(event){
 	event.preventDefault();
 	var target = $(event.target);
-	$(target).parents(".post").find(".area-respuesta").removeClass("hidden");
-	var $scroll_down = $(target).parents(".post").find(".scroll-down");
-	if ($scroll_down.hasClass('hidden')) {
-		$scroll_down.removeClass("hidden");
+	var $postClicked = $(target).parents(".post").eq(0);
+	var $areaComentarios = $postClicked.find(".comentar");
+
+	if ($areaComentarios.hasClass('hidden')) {
+		$areaComentarios.removeClass("hidden");
 	}
-	$scroll_down.find(".write-comment").focus();
+
+	if ($postClicked.attr("data-solved") !== "y") {
+		var $areaRespuesta = $areaComentarios.find(".area-respuesta");
+		$areaRespuesta.removeClass("hidden");
+		$areaRespuesta.find(".write-comment").focus();
+	}
+
+});
+
+$(document).on('click', '.comment', function(e){
+  e.preventDefault();
+  var $postClicked = $(this).parents(".post").eq(0);
+  var $areaComentarios = $postClicked.find(".comentar");
+  if ($postClicked.attr("data-solved") !== "y") {
+    var $areaRespuesta = $postClicked.find(".area-respuesta");
+    $areaRespuesta.removeClass("hidden");
+  }
+  $areaComentarios.toggleClass("hidden");
 });

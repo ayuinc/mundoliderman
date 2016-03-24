@@ -2,16 +2,10 @@ function solve(post) {
 	var form = $(post).parent();
 	var url = form.attr("action");
 	var data = form.serialize();
-
 	$.post(url, data, function(result) {
 		var solved_data = JSON.parse(result);
-		if (solved_data.solved == 'y') {
-			$(".btn-aviso1[data-solve-post-id=" + solved_data.post_id + "]").removeClass("hidden");
-			$(".btn-aviso2[data-solve-post-id=" + solved_data.post_id + "]").addClass("hidden");
-		} else {
-			$(".btn-aviso1[data-solve-post-id=" + solved_data.post_id + "]").addClass("hidden");
-			$(".btn-aviso2[data-solve-post-id=" + solved_data.post_id + "]").removeClass("hidden");			
-		}
+		updateSolvedStatus(solved_data.post_id, solved_data.solved);
+		send(result);
 	});
 	return false;
 }

@@ -47,3 +47,23 @@ function urlify(text) {
   var urls = findUrls(text);
   return replaceLinks(text, urls);
 }
+
+function updateSolvedStatus(postId, solved) {
+	var $post = $("#post-" + postId);
+	var $btnAviso1 = $post.find(".btn-aviso1");
+	var $btnAviso2 = $post.find(".btn-aviso2");
+	var $areaComentar = $post.find(".area-respuesta");
+
+	if (solved == 'y') {
+		$btnAviso1.removeClass("hidden");
+		$btnAviso2.addClass("hidden");
+		$areaComentar.addClass("hidden");
+	} else {
+		$btnAviso1.addClass("hidden");
+		$btnAviso2.removeClass("hidden");
+		$areaComentar.removeClass("hidden");
+	}
+
+	$post.attr("data-solved", solved);
+
+}
