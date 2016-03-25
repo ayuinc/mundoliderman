@@ -3389,4 +3389,15 @@ input[type="submit"] {
   height: 280px !important;
 }
 
+.conteiner-answer {
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.highlighter {
+  border: 2px #4d90fe solid;
+}
+
 /*# sourceMappingURL=style.css.map */

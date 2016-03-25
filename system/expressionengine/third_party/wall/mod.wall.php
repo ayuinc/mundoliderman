@@ -440,6 +440,8 @@ class Wall {
       $response["post_id"] = $post_id;
       $response["comment_id"] = $comment_post_id;
       $response["total"] = $this->total_comment($post_id);
+      $response["member_group"] = $this->EE->session->userdata("group_id");
+      $response["comment_member"] = $this->current_member_screenname();
 
 
     } catch (Exception $e) {
@@ -679,5 +681,18 @@ class Wall {
     }
 
     return $query->row('solved') == "y";
+  }
+
+  private function current_member_group() {
+    return $member_id = $this->EE->session->userdata("group_id");
+  }
+
+  private function current_member_screenname() {
+    $member_id = $this->EE->session->userdata("member_id");
+    $query = $this->EE->db->select("m.screen_name as username")
+                   ->from("members m")
+                   ->where("m.member_id", $member_id)
+                   ->get();
+    return $query->row('username');
   }
 }
