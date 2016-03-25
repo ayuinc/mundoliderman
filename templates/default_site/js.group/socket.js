@@ -14,7 +14,6 @@ function removeNotificationsHeader() {
 }
 
 function viewComment(commentId) {
-  console.log(commentId);
   var $comment = $("#post #comment-" + commentId);
   if ($comment.length > 0) {
     $("html, body").animate({scrollTop: $comment.offset().top -150}, 1000);

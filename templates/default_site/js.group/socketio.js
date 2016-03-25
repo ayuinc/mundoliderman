@@ -2,6 +2,8 @@ var CHATEADORA = 6;
 var newComments = 0;
 var member_group = {member_group};
 
+var timeNotification = 60 * 1000 * 5;
+
 var pageTitle = document.title;
 function addNotificationsHeader(num) {
   document.title = "(" + num + ") " + pageTitle;
@@ -9,6 +11,16 @@ function addNotificationsHeader(num) {
 
 function removeNotificationsHeader() {
   document.title = pageTitle;
+}
+
+function viewComment(commentId) {
+  var $comment = $("#post #comment-" + commentId);
+  if ($comment.length > 0) {
+    $("html, body").animate({scrollTop: $comment.offset().top -150}, 1000);
+    $comment.addClass("highlighter").delay(3000).queue(function(){
+      $(this).removeClass("highlighter").dequeue();
+    });
+  }
 }
 
 function log( text ) {
@@ -66,6 +78,11 @@ socket.on('comment', function (data) {
         removeNotificationsHeader();
         newComments = 0;
       });
+    }
+
+    // Si el usuario que hizo el comentario no es un chateadora y el usuario en sesion es una chateadora
+    if (response.member_group !== CHATEADORA && member_group === CHATEADORA && $("#post #comment-" + response.comment_id).length > 0) {
+      alertify.log("<span style='cursor: pointer' onclick='viewComment(" + response.comment_id + ")'>" + response.comment_member + " comento una publicación</span>", "success", timeNotification);
     }
 	});
 });
