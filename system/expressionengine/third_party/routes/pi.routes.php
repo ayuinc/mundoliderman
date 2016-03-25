@@ -37,6 +37,11 @@ Plugin for retreiving data from Mundo Liderman's Socket
 		return $this->EE->config->item('socket_url');
 	}
 
+	public function new_socket_url()
+	{
+		return $this->EE->config->item('new_socket_url');
+	}
+
 	public function S3_PATH(){
 		return $this->EE->config->item('s3_path');
 	}

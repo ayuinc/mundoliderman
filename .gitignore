@@ -42,3 +42,8 @@ images/status/
 # Composer
 vendor
 composer.lock
+
+# Socket
+socketio/node_modules
+socketio/dist
+socketio/*.log
