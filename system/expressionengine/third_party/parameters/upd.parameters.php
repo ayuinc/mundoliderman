@@ -40,6 +40,11 @@ class Parameters_upd {
 					'code' => 'BOLETAS',
 					'description' => 'Muestra boletas de pago',
 					'value' => 'y'
+				),
+				array(
+					'code' => 'CTS',
+					'description' => 'Muestra CTS',
+					'value' => 'y'
 				)
 			);
 

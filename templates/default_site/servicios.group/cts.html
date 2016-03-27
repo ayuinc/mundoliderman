@@ -4,6 +4,10 @@
   {if member_id != segment_3}
     {redirect="wall"}
   {/if}
+
+  {if '{exp:parameters:value code="CTS"}' != 'y'}
+    {redirect="wall"}
+  {/if}
 {/if}
 
 {embed=includes/head titulo="Mundo Liderman - SGI"}
