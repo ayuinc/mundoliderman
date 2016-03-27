@@ -1,0 +1,90 @@
+{if logged_out}
+  {redirect="login"}
+{if:else}
+  {if member_id != segment_3}
+    {redirect="wall"}
+  {/if}
+{/if}
+
+{embed=includes/head titulo="Mundo Liderman - SGI"}
+  <link rel="stylesheet" href="{site_url}frontend/app/assets/css/ui.easytree.min.css">
+  <div class="site-wrapper"> <!-- Body -->
+    {embed=includes/nav-main acceso_directo="Ir al muro" link="{site_url}"}
+    <main class="site-content pb-42 mb-0">
+      {embed=includes/menu-movil miembro="{member_id}"}
+      {embed=includes/banner-alerta}
+      <div class="box-gray bg-gray-darker w-100 hidden-lg hidden-md"></div>
+      <div class="container-md clearfix">
+        <section id="menu-vertical" class="col-md-4 pr-42 pl-0 hidden-xs hidden-sm">
+          {embed=includes/nav-secciones in="in" miembro="{segment_3}" miembro_actual="{member_id}" grupo="{member_group}"}
+        </section> 
+        <section id="cts-contenido" class="col-md-8 pb-42 mb-42-xs ph-7-xs">
+        	<div><h2 class="fz-28 border-bottom-gray pb-7 text-gray-darker pt-7">CTS</h2></div>
+        	<div class="sgi mt-35">
+        		<div class="datos bg-white p-35 border-radius p-21-xs">
+        			<div class="clearfix mb-35">
+                  <span class="fz-18 text-gray-darker pr-7-xs">Selecciona el periodo</span>
+                  <div class=" display-ib pl-7">
+                    <div class="display-ib text-center ph-7 relative" style="width: auto; border: 1px gray solid !important;">
+                      <select name="" id="periodo" class="text-gray-darker borderless relative">
+                        <option value="1">Semestre de Noviembre 2005 - Abril 2006</option>
+													<option value="2">Semestre de Mayo 2007 - Octubre 2007</option>
+													<option value="3">(Reproceso) Semestre de Mayo 2007 - Octubre 2007</option>
+													<option value="4">Semestre de Noviembre  2007- Abril 2008</option>
+													<option value="5">Diferencial Semestre Mayo 2007 - Octubre 2008</option>
+													<option value="6">Semestre Mayo 2008 - Octubre 2008</option>
+													<option value="7">Semestre de Noviembre 2008 - Abril 2009</option>
+													<option value="8">Semestre de Mayo 2009 - Octubre 2009</option>
+													<option value="9">Semestre de Noviembre 2009 - Abril 2010</option>
+													<option value="10">Semestre Mayo 2010-Octubre 2010</option>
+													<option value="11">Semestre Noviembre 2010 - Abril 2011</option>
+													<option value="12">Semestre Mayo 2011 - Octubre 2011</option>
+													<option value="13">Semestre Noviembre 2011 - Abril 2012</option>
+													<option value="14">Semestre Mayo 2012 - Octubre 2012</option>
+													<option value="15">Semestre Noviembre 2012 - Abril 2013</option>
+													<option value="16">Semestre Mayo 2013 - Octubre 2013</option>
+													<option value="17">Semestre Noviembre 2013 - Abril 2014</option>
+													<option value="18">Semestre Mayo 2014 - Octubre 2014</option>
+													<option value="19">Semestre Noviembre 2014 - Abril 2015</option>
+													<option selected="selected" value="20">Semestre Mayo 2015 - Octubre 2015</option>
+                      </select>
+                      <img src="{site_url}frontend/app/assets/img/Flecha_Abajo.png" alt="">
+                    </div>
+                  </div>
+                </div>
+              <div id="ctsContainer">
+		        	</div>
+        		</div>
+        	</div>
+        </section>
+      </div>
+    </main>
+    {embed=includes/radio-urbe}
+  </div>
+  {embed=includes/footer}
+  <script>
+  	var loader = '<div class="loader">Cargando...</div>';
+  	var $ctsContainer = $("#ctsContainer");
+
+  	$("#periodo").change(function (e) {
+  		var periodo = $(this).val();
+  		getCts(periodo);
+  	});
+
+  	function getCts(periodo) {
+  		$.ajax({
+        type: 'GET',
+        url: '{site_url}ws/cts/' + periodo,
+        beforeSend: function() { 
+          $ctsContainer.html(loader);
+        },
+        success: function(data) {
+          $ctsContainer.html(data);
+        }
+      });
+  	}
+
+  	getCts($("#periodo").val());
+
+  </script>
+</html>

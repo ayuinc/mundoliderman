@@ -1,0 +1,175 @@
+{exp:webservice:cts periodo="{segment_3}"}
+<p class="text-center">CONSTANCIA DE DEPOSITO CTS</p>
+	{if no_results}
+		<p>No se encontraron resultados para el periodo seleccionado</p>
+	{/if}
+<p class="fz-11 text-justify">{Empleador} domiciliado en {Direccion} con RUC {Ruc} representado por el PRESIDENTE DE DIRECTORIO Sr. CALVO PEREZ BADIOLA, JAVIER FERNANDO, otorga al Sr. {NombreCompleto} la constancia de deposito de su Compensacion por Tiempo de Servicio realizado el {FechaPago format="%d/%m/%Y"} en el {Banco} en la cuenta C.T.S. {NumeroCuentaCTS} en moneda local</p>
+<p class="fz-13 bold mt-28">1. Datos Básico</p>
+<div class="fz-12">
+	<div class="row ph-21">
+		<div class="col-md-6 col-xs-6">
+			Periodo a Liquidar
+		</div>
+		<div class="col-md-6 col-xs-6 text-right">
+			{FechaInicio format="%d/%m/%Y"} al {FechaFin format="%d/%m/%Y"}
+		</div>
+	</div>
+	<div class="row ph-21">
+		<div class="col-md-6 col-xs-6">
+			Fecha de Ingreso del Trabajador
+		</div>
+		<div class="col-md-6 col-xs-6 text-right">
+			{FechaContrato format="%d/%m/%Y"}
+		</div>
+	</div>
+	<div class="row ph-21">
+		<div class="col-md-6 col-xs-6">
+			Tiempo de Servicio dentro del Periodo
+		</div>
+		<div class="col-md-6 col-xs-6 text-right">
+			{TiempoACancelar}
+		</div>
+	</div>
+	<div class="row ph-21">
+		<div class="col-md-6 col-xs-6">
+			Tiempo de Servicio No Computable
+		</div>
+		<div class="col-md-6 col-xs-6 text-right">
+			{TiempoFaltas}
+		</div>
+	</div>
+	<div class="row ph-21">
+		<div class="col-md-6 col-xs-6">
+			Tiempo de Servicio Computable
+		</div>
+		<div class="col-md-6 col-xs-6 text-right">
+			{TiempoComputable}
+		</div>
+	</div>
+</div>
+{/exp:webservice:cts}
+{exp:webservice:cts_detalle periodo="{segment_3}"}
+	{if first_element == "1" && !no_results}
+	<p class="fz-13 bold mt-28">2. Determinación de la Remuneración Computable</p>
+		<div class="fz-12">
+			<div class="row ph-21">
+				<div class="col-md-9 col-xs-9 bold fz-14">
+					Concepto
+				</div>
+				<div class="col-md-3 col-xs-3 text-right bold fz-14">
+					Monto Mensual
+				</div>
+			</div>
+	{/if}
+			<div class="row ph-21">
+				<div class="col-md-9 col-xs-9">
+			{Descripcion}
+		</div>
+		<div class="col-md-3 col-xs-3 text-right">
+			{DetalleMontoLocal}
+		</div>
+			</div>
+{/exp:webservice:cts_detalle}
+{exp:webservice:cts periodo="{segment_3}"}
+
+			<hr class="mv-7 mh-21" />
+			<div class="row ph-21">
+				<div class="col-md-9 col-xs-9 text-right bold">
+			REM. COMPUTABLE
+		</div>
+		<div class="col-md-3 col-xs-3 text-right">
+			{IndemnizacionAnual}
+		</div>
+			</div>
+{/exp:webservice:cts}
+{exp:webservice:cts periodo="{segment_3}"}
+	{if  !no_results}
+		<p class="fz-13 bold mt-28">3. Calculo de la CTS del Periodo (en soles)</p>
+	{/if}
+		<div class="row ph-21">
+			<div class="col-md-8 col-xs-12 ">
+				CTS por los Meses &nbsp;&nbsp;&nbsp; {IndemnizacionAnual}&nbsp;/&nbsp;12 &nbsp;&nbsp;*&nbsp;&nbsp;{Meses} Meses
+			</div>
+			<div class="col-md-1 col-xs-9 text-right">
+				=
+			</div>
+			<div class="col-md-3 col-xs-3 text-right">
+				{Tiempovalorizado}
+			</div>
+		</div>
+		<div class="row ph-21">
+			<div class="col-md-8 col-xs-12">
+				CTS por los Dias &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {IndemnizacionAnual}&nbsp;/&nbsp;360 &nbsp;&nbsp;*&nbsp;&nbsp;{Dias} Dias
+			</div>
+			<div class="col-md-1 col-xs-9 text-right">
+				=
+			</div>
+			<div class="col-md-3 col-xs-3 text-right">
+				0
+			</div>
+		</div>
+		<div class="row ph-21 mt-28">
+			<div class="col-md-8 col-xs-8 ">
+				Tipo de Cambio &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {TipoCambio}
+			</div>
+		</div>
+		<div class="row ph-21">
+			<div class="col-md-8 col-xs-12">
+				Monto a Depositar &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; S/. /&nbsp;{TipoCambio}
+			</div>
+			<div class="col-md-1 col-xs-9 text-right">
+				=
+			</div>
+			<div class="col-md-3 col-xs-3 text-right">
+				{Tiempovalorizado}
+			</div>
+		</div>
+		<hr class="mb-7 mh-21 mt-28" />
+		<div class="row ph-21">
+			<div class="col-md-9 col-xs-12 ">
+				TOTAL DEPOSITO
+			</div>
+			<div class="col-md-1 col-xs-9 text-right">
+				S/.
+			</div>
+			<div class="col-md-2 col-xs-3 text-right">
+				{Tiempovalorizado}
+			</div>
+		</div>
+		<div class="row ph-21">
+			<div class="col-md-4 col-xs-12">
+				FECHA DEPOSITO
+			</div>
+			<div class="col-md-2 col-xs-12 text-right">
+				{FechaPago format="%d/%m/%Y"}
+			</div>
+		</div>
+{/exp:webservice:cts}
+{exp:webservice:cts_horas_extras periodo="{segment_3}"}
+	{if first_element == "1" && !no_results}
+		<p class="fz-13 bold mt-28">4. Horas Extra del Ultimo Semestre</p>
+	{/if}
+		<div class="row ph-21">
+			<div class="col-md-8 col-xs-8">
+				{Mes}
+			</div>
+			<div class="col-md-4 col-xs-4 text-right">
+				{Monto}
+			</div>
+		</div>
+		{if last_element == "1"}
+		<hr class="mv-7 mh-21" />
+		<div class="row ph-21">
+			<div class="col-md-6 col-xs-12">
+    			Promedio de Horas Extras
+    		</div>
+    		<div class="col-md-6 col-xs-12 text-right">
+    			S/. {total} / {count} &nbsp;&nbsp;= &nbsp;{promedio}
+    		</div>
+		</div>
+		{/if}
+
+		{if last_element == "1" && !no_results}
+		</div>
+		{/if}
+{/exp:webservice:cts_horas_extras}

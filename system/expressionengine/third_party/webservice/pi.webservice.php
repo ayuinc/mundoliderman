@@ -360,4 +360,124 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 		return $token;
 	}
 
+	public function cts() {
+		$periodo = $this->EE->TMPL->fetch_param("periodo", "1");
+		$member_id = $this->current_member_id();
+		$codigoLiderman = $this->get_member_codigo($member_id);
+		$token = $this->current_member_token();
+		$url = $this->host . "/WSIntranet/RemuneracionesComputables.svc/RemuneracionesComputables/$codigoLiderman/$periodo/$token";
+		$data = $this->EE->curl->get($url);
+		if (count($data) > 0) {
+			$data = $data[0];
+			$this->format_cts_header($data);
+			return $this->EE->TMPL->parse_variables($this->EE->TMPL->tagdata, array($data));
+		}
+		return $this->EE->TMPL->no_results();
+	}
+
+	public function cts_detalle() {
+		$periodo = $this->EE->TMPL->fetch_param("periodo", "1");
+		$member_id = $this->current_member_id();
+		$codigoLiderman = $this->get_member_codigo($member_id);
+		$token = $this->current_member_token();
+		$url = $this->host . "/WSIntranet/RemuneracionesComputables.svc/RemuneracionesComputables/$codigoLiderman/$periodo/$token";
+		$data = $this->EE->curl->get($url);
+		$this->format_cts_detalle($data);
+		if (count($data) > 0) {
+			$data[0]["first_element"] = "1";
+			$data[count($data)-1]["last_element"] = "1";
+			return $this->EE->TMPL->parse_variables($this->EE->TMPL->tagdata, $data);
+		}
+		return $this->EE->TMPL->no_results();
+	}
+
+	public function cts_horas_extras() {
+		$periodo = $this->EE->TMPL->fetch_param("periodo", "1");
+		$member_id = $this->current_member_id();
+		$codigoLiderman = $this->get_member_codigo($member_id);
+		$token = $this->current_member_token();
+		$urlHorasExtras = $this->host . "/WSIntranet/RemuneracionesComputables.svc/HorasExtras/$codigoLiderman/$periodo/$token";
+		$urlCts = $this->host . "/WSIntranet/RemuneracionesComputables.svc/RemuneracionesComputables/$codigoLiderman/$periodo/$token";
+		$data = $this->EE->curl->get($urlHorasExtras);
+		$dataCts = $this->EE->curl->get($urlCts);
+		if (count($data) > 0 && count($dataCts) > 0) {
+			$data[0]["first_element"] = "1";
+			$data[count($data)-1]["last_element"] = "1";
+			$data = $this->format_cts_horas_extras($data);
+			return $this->EE->TMPL->parse_variables($this->EE->TMPL->tagdata, $data);
+		}
+		return $this->EE->TMPL->no_results();
+	}
+
+
+	private function format_cts_header(&$data) {
+		$data["Meses"] = substr($data["TiempoACancelar"], 2, 2);
+		$data["Dias"] = substr($data["TiempoACancelar"], 4, 2);
+		$data["FechaContrato"] = $data["FechaInicioContrato"];
+		$data["TiempoACancelar"] = $this->format_tiempo($data["TiempoACancelar"]);
+		$data["TiempoComputable"] = $this->format_tiempo($data["TiempoComputable"]);
+		$data["TiempoFaltas"] = $this->format_tiempo($data["TiempoFaltas"]);
+		$number = str_replace(",", ".", $data['IndemnizacionAnual']);
+		$data["IndemnizacionAnual"] = number_format(floatval($number), 2);
+		$number = str_replace(",", ".", $data['Tiempovalorizado']);
+		$data["Tiempovalorizado"] = number_format(floatval($number), 2);
+		$number = str_replace(",", ".", $data['TipoCambio']);
+		$data["TipoCambio"] = number_format(floatval($number), 2);
+	}
+
+	private function format_cts_detalle(&$data) {
+		for ($i=0; $i < count($data); $i++) { 
+			$number = str_replace(",", ".", $data[$i]['DetalleMontoLocal']);
+			$data[$i]['DetalleMontoLocal'] = number_format(floatval($number), 2);
+		}
+	}
+
+	private function format_tiempo($tiempo) {
+		if (strlen($tiempo) == 6) {
+			return substr($tiempo, 0, 2) . " Años " . substr($tiempo, 2, 2) . " Meses " . substr($tiempo, 4, 2) . " Dias";
+		}
+
+		return $tiempo;
+	}
+
+	private function format_cts_horas_extras($data) {
+		$months = array('01' => 'Enero', '02' => 'Febrero', '03' => 'Marzo', 
+						'04' => 'Abril', '05' => 'Mayo', '06' => 'Junio',
+						'07' => 'Julio', '08' => 'Agosto', '09' => 'Setiembre',
+						'10' => 'Octubre', '11' => 'Noviembre', '12' => 'Diciembre');
+
+		$array = $data;
+		$numElements = count($array);
+		$dateBase = null;
+		$suma  = 0;
+		$numYear = "";
+		$numMonth = "";
+		if ($numElements > 0) {
+			$periodo = $array[0]["Periodo"];
+			$numYear = substr($periodo, 0, 4);
+			$numMonth = substr($periodo, 4, 2);
+		}
+
+		for ($i=0; $i < $numElements; $i++) { 
+			$dateBase = date_create("$numYear-$numMonth-01");
+			$interval = date_interval_create_from_date_string(($numElements - $i - 1) . " months");
+			$fecha = date_sub($dateBase, $interval);
+			$array[$i]["Mes"] = $months[date_format($fecha, "m")] . " " . date_format($fecha, "Y");
+			$array[$i]["count"] = $i + 1;
+			$array[$i]["last_element"] = "0";
+			$number = str_replace(",", ".", $array[$i]["Monto" . ($i + 1 )]);
+			$monto = floatval($number);
+			$array[$i]["Monto"] = number_format($monto, 2);
+			$suma = $suma + $monto;
+		}
+
+		if ($numElements > 0) {
+			$array[$numElements - 1]["last_element"] = "1";
+			$array[$numElements - 1]["total"] = number_format($suma, 2);
+			$array[$numElements - 1]["promedio"] = number_format($suma/$numElements, 2);
+		}
+
+		return $array;
+	}
+	
 }

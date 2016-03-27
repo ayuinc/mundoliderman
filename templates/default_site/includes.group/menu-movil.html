@@ -24,6 +24,7 @@
             {if '{exp:parameters:value code="BOLETAS"}' == 'y'}
             <option value="{path='servicios/boleta/{embed:miembro}'}" class="w-100">Boleta de Pago</option>
             {/if}
+            <option value="{path='servicios/cts/{embed:miembro}'}" class="w-100">CTS</option>
             {if "{exp:indicators:can_access}" == "1" }
             <option value="{path='servicios/sgi/{embed:miembro}'}" class="w-100">SGI</option>
             {/if}
