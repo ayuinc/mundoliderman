@@ -1,0 +1,12 @@
+[Service]
+ExecStart=/opt/socketio/run.sh
+Restart=always
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=socketio
+User=root
+Group=root
+Environment=NODE_ENV=production
+
+[Install]
+WantedBy=multi-user.target
