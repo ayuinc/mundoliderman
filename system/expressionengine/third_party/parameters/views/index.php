@@ -37,6 +37,24 @@
         </td>
       </tr>
       <?=form_close()?>
+      <?=form_open($action_url, '', $form_hidden)?>
+      <?php $parameter = $parameters['UTILIDADES']; ?>
+      <tr>
+        <td>
+          <input name="id" type="hidden" value="<?php echo $parameter['id'] ?>">
+          <span><?php echo $parameter['description'] ?></span>
+        </td>
+        <td>
+          <select name="value" id="utilidades-val">
+            <option value="y">Activar</option>
+            <option value="n">Desactivar</option>
+          </select>
+        </td>
+        <td>
+          <input type="submit" value=" Aplicar ">
+        </td>
+      </tr>
+      <?=form_close()?>
     </table>
     </div>    
 <?php else: ?>
@@ -44,3 +62,4 @@
 <?php endif; ?>
 <script>$("#boletas-val").val("<?php echo $parameters['BOLETAS']['value']?>")</script>
 <script>$("#cts-val").val("<?php echo $parameters['CTS']['value']?>")</script>
+<script>$("#utilidades-val").val("<?php echo $parameters['UTILIDADES']['value']?>")</script>

@@ -27,6 +27,9 @@
             {if '{exp:parameters:value code="CTS"}' == 'y'}
             <option value="{path='servicios/cts/{embed:miembro}'}" class="w-100">CTS</option>
             {/if}
+            {if '{exp:parameters:value code="UTILIDADES"}' == 'y'}
+            <option value="{path='servicios/utilidades/{embed:miembro}'}" class="w-100">Utilidades</option>
+            {/if}
             {if "{exp:indicators:can_access}" == "1" }
             <option value="{path='servicios/sgi/{embed:miembro}'}" class="w-100">SGI</option>
             {/if}

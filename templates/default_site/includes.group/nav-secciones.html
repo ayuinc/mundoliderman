@@ -29,6 +29,9 @@
                                               {if '{exp:parameters:value code="CTS"}' == 'y'}
                                               "<li><a href=\"{path='servicios/cts/{embed:miembro}'}\" class=\"text-gray-dark2\">CTS</a></li>" +
                                               {/if}
+                                              {if '{exp:parameters:value code="UTILIDADES"}' == 'y'}
+                                              "<li><a href=\"{path='servicios/utilidades/{embed:miembro}'}\" class=\"text-gray-dark2\">Utilidades</a></li>" +
+                                              {/if}
                                               "<li class=\"pv-21 btn-especial\">" +
                                                 "<h3 class=\"m-0 pv-14\"><a class=\"fz-20 text-gray-dark2 text-hover-gray\">Semáforo</a></h3>" +
                                               "</li>" +

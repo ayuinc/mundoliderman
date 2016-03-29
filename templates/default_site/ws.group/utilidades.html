@@ -1,0 +1,125 @@
+{exp:webservice:utilidades periodo="{segment_3}"}
+	{if no_results}
+		<p>No se encontraron resultados para el periodo seleccionado</p>
+	{/if}
+	<p class="text-center">CONSTANCIA LIQUIDACION DE LA PARTICIPACION DE UTILIDADES AÑO {Periodo}</p>
+	<p class="fz-11 text-justify">J&V Resguardo S.A.C. No de R.U.C. 20100901481 con domicilio legal en Av.Guillermo Prescott 308 - San Isidro , en su calidad de empleador y en cumplimiento de lo dispuesto por el D.Leg. No 892 y el D.S. No. 009-98-TR, deja constancia de la determinación, distribución y pago de la participación de utilidades del trabajador {NombreCompleto} correspondiente al ejercicio del año {Periodo}</p>
+	
+	<p class="fz-14 bold mt-28">CALCULO DEL MONTO DE PARTICIPACION DE UTILIDADES</p>
+	<p class="fz-13 bold mt-28">1. Utilidad por distribuir</p>
+	<div class="fz-12">
+		<div class="row ph-21">
+			<div class="col-md-8 col-xs-12 bold">
+				1.1. Renta Anual de la empresa antes de impuestos
+			</div>
+			<div class="col-md-4 col-xs-12 text-right">
+				{MontoAntesImpuesto}
+			</div>
+		</div>
+		<div class="row ph-21">
+			<div class="col-md-8 col-xs-12 bold">
+				1.2. Porcentaje a distribuir
+			</div>
+			<div class="col-md-4 col-xs-12 text-right">
+				{PorcentajeRepartir}
+			</div>
+		</div>
+		<div class="row ph-21">
+			<div class="col-md-8 col-xs-12 bold">
+				1.3. Monto a distribuir
+			</div>
+			<div class="col-md-4 col-xs-12 text-right">
+				{MontoaRepartir}
+			</div>
+		</div>
+	</div>
+	<p class="fz-13 bold mt-28">2. Cálculo de la participación</p>
+	<div class="fz-12">
+		<div class="row ph-21">
+			<div class="col-md-8 col-xs-12 bold">
+					2.1. Según los días laborados 
+			</div>
+		</div>
+		<div class="row pl-35 pr-21">
+			<div class="col-md-9 col-xs-12 bold">
+				- Número total de días laborados por todos los trabajadores
+			</div>
+			<div class="col-md-3 col-xs-12 text-right">
+				{DiasAnual}
+			</div>
+		</div>
+		<div class="row pl-35 pr-21">
+			<div class="col-md-9 col-xs-12 bold">
+				- Número de días laborados por el trabajador
+			</div>
+			<div class="col-md-3 col-xs-12 text-right">
+				{DiasOrdinarios}
+			</div>
+		</div>
+		<div class="row pl-35 pr-21">
+			<div class="col-md-9 col-xs-12 bold">
+				- Participación del trabajador según los días laborados
+			</div>
+			<div class="col-md-3 col-xs-12 text-right">
+				{UtilidadDias}
+			</div>
+		</div>
+		<div class="row ph-21">
+			<div class="col-md-8 col-xs-12 bold">
+				2.2. Según las remuneraciones percibidas 
+			</div>
+		</div>
+		<div class="row pl-35 pr-21">
+			<div class="col-md-9 col-xs-12 bold">
+				- Remuneración computable percibida por todos los trabajadores
+			</div>
+			<div class="col-md-3 col-xs-12 text-right">
+				{SueldoAnual}
+			</div>
+		</div>
+		<div class="row pl-35 pr-21">
+			<div class="col-md-9 col-xs-12 bold">
+				- Remuneración computable percibida por el trabajador durante el ejercicio
+			</div>
+			<div class="col-md-3 col-xs-12 text-right">
+				{Sueldo}
+			</div>
+		</div>
+		<div class="row pl-35 pr-21">
+			<div class="col-md-9 col-xs-12 bold">
+				- Participación del trabajador según remuneraciones percibidas
+			</div>
+			<div class="col-md-3 col-xs-12 text-right">
+				{UtilidadSueldo}
+			</div>
+		</div>
+	</div>
+	<p class="fz-13 bold mt-28">3. Monto de la participación a percibir por el trabajador</p>
+	<div class="fz-12">
+		<div class="row ph-21">
+			<div class="col-md-9 col-xs-12 bold">
+				- Participación del trabajador según los días laborados
+			</div>
+			<div class="col-md-3 col-xs-12 text-right">
+				{UtilidadDias}
+			</div>
+		</div>
+		<div class="row ph-21">
+			<div class="col-md-9 col-xs-12 bold">
+				- Participación del trabajador según remuneraciones percibidas
+			</div>
+			<div class="col-md-3 col-xs-12 text-right">
+				{UtilidadSueldo}
+			</div>
+		</div>
+		<div class="row ph-21">
+			<div class="col-md-9 col-xs-12 bold">
+				- Participación del trabajador en las utilidades
+			</div>
+			<div class="col-md-3 col-xs-12 text-right">
+				{TotalUtilidad}
+			</div>
+		</div>
+	</div>
+
+{/exp:webservice:utilidades}

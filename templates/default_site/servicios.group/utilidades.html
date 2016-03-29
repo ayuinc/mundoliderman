@@ -1,0 +1,84 @@
+{if logged_out}
+  {redirect="login"}
+{if:else}
+  {if member_id != segment_3}
+    {redirect="wall"}
+  {/if}
+
+  {if '{exp:parameters:value code="UTILIDADES"}' != 'y'}
+    {redirect="wall"}
+  {/if}
+{/if}
+
+{embed=includes/head titulo="Mundo Liderman - Utilidades"}
+  <link rel="stylesheet" href="{site_url}frontend/app/assets/css/ui.easytree.min.css">
+  <div class="site-wrapper"> <!-- Body -->
+    {embed=includes/nav-main acceso_directo="Ir al muro" link="{site_url}"}
+    <main class="site-content pb-42 mb-0">
+      {embed=includes/menu-movil miembro="{member_id}"}
+      {embed=includes/banner-alerta}
+      <div class="box-gray bg-gray-darker w-100 hidden-lg hidden-md"></div>
+      <div class="container-md clearfix">
+        <section id="menu-vertical" class="col-md-4 pr-42 pl-0 hidden-xs hidden-sm">
+          {embed=includes/nav-secciones in="in" miembro="{segment_3}" miembro_actual="{member_id}" grupo="{member_group}"}
+        </section> 
+        <section id="utilidades-contenido" class="col-md-8 pb-42 mb-42-xs ph-7-xs">
+        	<div><h2 class="fz-28 border-bottom-gray pb-7 text-gray-darker pt-7">Utilidades</h2></div>
+        	<div class="utilidades mt-35">
+        		<div class="datos bg-white p-35 border-radius p-21-xs">
+        			<div class="clearfix mb-35">
+                  <span class="fz-18 text-gray-darker pr-7-xs">Selecciona el Año: </span>
+                  <div class=" display-ib pl-7">
+                    <div class="display-ib text-center ph-7 relative" style="width: auto; border: 1px gray solid !important;">
+                      <select name="" id="periodo" class="text-gray-darker borderless relative">
+                          <option value="2007">2007</option>
+                          <option value="2008">2008</option>
+                          <option value="2009">2009</option>
+                          <option value="2010">2010</option>
+                          <option value="2011">2011</option>
+                          <option value="2012">2012</option>
+                          <option value="2013">2013</option>
+                          <option value="2014">2014</option>
+                          <option value="2015">2015</option>
+													<option selected="selected" value="2016">2016</option>
+                      </select>
+                      <img src="{site_url}frontend/app/assets/img/Flecha_Abajo.png" alt="">
+                    </div>
+                  </div>
+                </div>
+              <div id="utilidadesContainer">
+		        	</div>
+        		</div>
+        	</div>
+        </section>
+      </div>
+    </main>
+    {embed=includes/radio-urbe}
+  </div>
+  {embed=includes/footer}
+  <script>
+  	var loader = '<div class="loader">Cargando...</div>';
+  	var $utilidadesContainer = $("#utilidadesContainer");
+
+  	$("#periodo").change(function (e) {
+  		var periodo = $(this).val();
+  		getUtilidades(periodo);
+  	});
+
+  	function getUtilidades(periodo) {
+  		$.ajax({
+        type: 'GET',
+        url: '{site_url}ws/utilidades/' + periodo,
+        beforeSend: function() { 
+          $utilidadesContainer.html(loader);
+        },
+        success: function(data) {
+          $utilidadesContainer.html(data);
+        }
+      });
+  	}
+
+  	getUtilidades($("#periodo").val());
+
+  </script>
+</html>

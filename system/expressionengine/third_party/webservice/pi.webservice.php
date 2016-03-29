@@ -479,5 +479,40 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 
 		return $array;
 	}
+
+	public function utilidades() {
+		$periodo = $this->EE->TMPL->fetch_param('periodo', date("Y"));
+		$member_id = $this->current_member_id();
+		$codigo = $this->get_member_codigo($member_id);
+		$token = $this->current_member_token();
+		$url = $this->host . "/WSIntranet/QuintaCategoria.svc/TraerQuintaCategoria/$codigo/$periodo/$token";
+		$data = $this->EE->curl->get($url);
+		if (count($data) > 0) {
+			$this->format_utilidades($data);
+			 return $this->EE->TMPL->parse_variables($this->EE->TMPL->tagdata, $data);
+		}
+
+		return $this->EE->TMPL->no_results();
+
+	}
+
+	private function format_utilidades(&$data) {
+		$data[0]['MontoAntesImpuesto'] = $this->number_format($data[0]['MontoAntesImpuesto'], 2);
+		$data[0]['PorcentajeRepartir'] = $this->number_format($data[0]['PorcentajeRepartir'], 2);
+		$data[0]['MontoaRepartir'] = $this->number_format($data[0]['MontoaRepartir'], 2);
+		$data[0]['DiasAnual'] = $this->number_format($data[0]['DiasAnual'], 0);
+		$data[0]['DiasOrdinarios'] = $this->number_format($data[0]['DiasOrdinarios'], 0);
+		$data[0]['UtilidadDias'] = $this->number_format($data[0]['UtilidadDias'], 2);
+		$data[0]['SueldoAnual'] = $this->number_format($data[0]['SueldoAnual'], 2);
+		$data[0]['Sueldo'] = $this->number_format($data[0]['Sueldo'], 2);
+		$data[0]['UtilidadSueldo'] = $this->number_format($data[0]['UtilidadSueldo'], 2);
+		$data[0]['TotalUtilidad'] = $this->number_format($data[0]['TotalUtilidad'], 2);
+	}
+
+	private function number_format($numberText, $precision = 2) {
+		$number = str_replace(",", ".", $numberText);
+		$number = floatval($number);
+		return number_format($number, $precision);
+	}
 	
 }
