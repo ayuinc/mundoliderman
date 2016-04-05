@@ -1,11 +1,16 @@
 import http from 'http'
 import express from 'express'
 import socketio from 'socket.io'
+import redis from 'socket.io-redis'
 
 const app = express()
 const server = http.createServer(app)
 const io = socketio(server)
 const port = process.env.PORT || 9300
+const redisIP = process.env.REDIS_IP || 'localhost'
+const redisPort = process.env.REDIS_PORT || 6379
+
+io.adapter(redis({ host: redisIP, port: redisPort }))
 
 io.on('connection', (socket) => {
 	console.log(`Connected ${socket.id}`)
