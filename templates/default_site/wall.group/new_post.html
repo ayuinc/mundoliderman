@@ -78,7 +78,7 @@
           </div>
           {/if}
           <div class="col-xs-1 pt-7 text-right eraser relative pl-0" style="float:right">
-            {if segment_4 == 6}
+            {if '{exp:util:can_delete_post_comments}' == '1'}
               {exp:wall:delete_post_form form_id="" form_class="pull-right"}
                 <img src="{site_url}frontend/app/assets/img/Tachito_Inac.png" alt="" class="inactivo">
                 <div class="pr-14 activo desaparecer absolute bg-white hidden-xs hidden-sm">
@@ -154,7 +154,11 @@
               <span class="fz-14 text-success pr-7">{comment_screen_name}</span>
               <img src="{site_url}frontend/app/assets/img/forward.png" alt="" class="display-ib">
               <span class="text-gray fz-10 light pl-7">{comment_date:relative past="%s atrás"}</span>
+              {if '{exp:util:can_delete_post_comments}' == '1'}
+              {exp:wall:delete_comment_form form_id="" form_class="" post_id="{comment_post_id}" comment_id="{comment_id}"}
               <span class="delete-comment hidden-xs col-md-offset-3 fz-35 light opacity">&times;</span>
+              {/exp:wall:delete_comment_form}
+              {/if}
               <p class="fz-14 pt-7 mb-0 pb-7 parrafo">{comment}</p>
             </div>
 

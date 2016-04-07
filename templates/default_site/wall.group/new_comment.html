@@ -21,7 +21,7 @@
     </span>
     <img src="{site_url}frontend/app/assets/img/forward.png" alt="" class="display-ib">
     <span class="text-gray fz-10 light pl-7">{comment_date:relative past="%s atrás"}</span>
-    {if member_group == 6}
+    {if '{exp:util:can_delete_post_comments}' == '1'}
     {exp:wall:delete_comment_form form_id="" form_class="" post_id="{comment_post_id}" comment_id="{comment_id}"}
     <span class="delete-comment hidden-xs col-md-offset-3 fz-35 light opacity">&times;</span>
     {/exp:wall:delete_comment_form}
