@@ -46,14 +46,9 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 
 	public function boleta()
 	{
-		$member_id = trim($this->EE->TMPL->fetch_param('miembro'));
-		$codigo_liderman_field_name = $this->getMemberFieldId("codigo-liderman");
-		$token_field_name = $this->getMemberFieldId("token");
-		$query = $this->EE->db->where('member_id', $member_id)
-						 ->select("$codigo_liderman_field_name, $token_field_name")
-				         ->get('exp_member_data');
-		$codigoLiderman = $query->row($codigo_liderman_field_name);
-		$token = $query->row($token_field_name);
+		$member_id = trim($this->EE->TMPL->fetch_param('miembro', $this->current_member_id()));
+		$codigoLiderman = $this->get_member_codigo($member_id);
+		$token = $this->current_member_token();
 		$periodo = trim($this->EE->TMPL->fetch_param('periodo'));
 		//return "Código Liderman : ". $codigoLiderman . ", Token : " . $token . ", Periodo : " . $periodo;
 		$url = $this->host . "/WSIntranet/BoletaPago.svc/TraerCabeceraBoletaPago/$codigoLiderman/$periodo/$token";
@@ -82,14 +77,9 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 
 	public function tareo()
 	{
-		$member_id = trim(ee()->TMPL->fetch_param('miembro'));
-		$codigo_liderman_field_name = $this->getMemberFieldId("codigo-liderman");
-		$token_field_name = $this->getMemberFieldId("token");
-		$query = $this->EE->db->where('member_id', $member_id)
-						 ->select("$codigo_liderman_field_name, $token_field_name")
-				         ->get('exp_member_data');
-		$codigoLiderman = $query->row($codigo_liderman_field_name);
-		$token = $query->row($token_field_name);
+		$member_id = trim(ee()->TMPL->fetch_param('miembro', $this->current_member_id()));
+		$codigoLiderman = $this->get_member_codigo($member_id);
+		$token = $this->current_member_token();
 		$mes = trim(ee()->TMPL->fetch_param('mes'));
 		$year = intval(ee()->TMPL->fetch_param('year'));
 		$currentYear = date('Y');
@@ -310,14 +300,9 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 
 	private function detalle_boleta() 
 	{
-		$member_id = trim($this->EE->TMPL->fetch_param('miembro'));
-		$codigo_liderman_field_name = $this->getMemberFieldId("codigo-liderman");
-		$token_field_name = $this->getMemberFieldId("token");
-		$query = $this->EE->db->where('member_id', $member_id)
-						 ->select("$codigo_liderman_field_name, $token_field_name")
-				         ->get('exp_member_data');
-		$codigoLiderman = $query->row($codigo_liderman_field_name);
-		$token = $query->row($token_field_name);
+		$member_id = trim($this->EE->TMPL->fetch_param('miembro', $this->current_member_id()));
+		$codigoLiderman = $this->get_member_codigo($member_id);
+		$token = $this->current_member_token();
 		$periodo = trim($this->EE->TMPL->fetch_param('periodo'));
 		$url = $this->host . "/WSIntranet/BoletaPago.svc/TraerDetalleBoletaPago/$codigoLiderman/$periodo/$token";
 		$data = $this->EE->curl->get($url);
