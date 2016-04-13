@@ -287,6 +287,47 @@ Plugin for retreiving data from Mundo Liderman's Indicators
 		return $this->_top_generic('zona', self::FIELD_ZONA);
 	}
 
+	public function top_region() {
+		$withLimit = $this->EE->TMPL->fetch_param('withLimit', TRUE);
+		$data = $this->_array_region($data);
+
+		if ($withLimit) {
+			$data = array_slice($data, 0, self::TOP_LIMIT);
+		}
+
+		$tagdata = $this->EE->TMPL->tagdata;
+		return $this->EE->TMPL->parse_variables($tagdata, $data);
+	}
+
+	private function _array_region() {
+		$data = $this->_array_top_generic(false, 'zona', self::FIELD_ZONA);
+		$groupData = $this->_array_group_zona($data);
+		return $groupData;
+	}
+
+	private function _get_group_zona($zona) {
+		$name = "";
+		if ($zona == "") {
+			$name =  "VACIO";
+		}
+		elseif (preg_match("*REGION*", $zona) == 1) {
+			$name = $zona;
+		}
+		else {
+			$name = "LIMA";
+		}
+		return $name;
+	}
+
+	private function _index_of_group_zona($data, $zona) {
+		for ($i=0; $i < count($data); $i++) { 
+			if ($data[$i]['zona'] == $zona) {
+				return $i;
+			}
+		}
+		return -1;
+	}
+
 	public function top_ciudad() {
 		return $this->_top_generic('ciudad', self::FIELD_CIUDAD);
 	}
@@ -324,6 +365,42 @@ Plugin for retreiving data from Mundo Liderman's Indicators
 		return $data;
 	}
 
+	public function top_detalle() {
+		$tipo = $this->EE->TMPL->fetch_param('tipo', "zona");
+		$nombre = $this->EE->TMPL->fetch_param('nombre', 'LIMA');
+		$data = $this->_array_top_detalle($tipo, $nombre);
+		$tagdata = $this->EE->TMPL->tagdata;
+		return $this->EE->TMPL->parse_variables($tagdata, $data);
+	}
+
+	private function _array_top_detalle($tipo, $nombre) {
+		$field = $tipo == 'zona' ? self::FIELD_ZONA : self::FIELD_UNIDAD;
+		$field_zona = self::FIELD_ZONA;
+		$this->EE->db
+					 ->select("md.$field as name, count(*) as total")
+					 ->from("members m")
+					 ->join("member_data md", "m.member_id = md.member_id")
+					 ->group_by("name")
+					 ->order_by('total', 'desc');
+
+		if ($tipo == "zona") { // es Lima
+			$this->EE->db->where("md.$field_zona <> '' AND NOT md.$field_zona LIKE '%region%'");
+		} else {
+			$this->EE->db->where("md.$field_zona = '$nombre'");
+		}
+
+		$query = $this->EE->db->get();
+
+		$data = $query->result_array();
+		for ($i=0; $i < $query->num_rows(); $i++) { 
+			$result =& $data[$i];
+			$subtotal = $result['total'];
+			$result['percentage'] = round(($subtotal/$this->total_users)*100, 2);
+			$result['name'] = strtoupper($result['name']);
+		}
+		return $data;
+	}
+
 	public function status() {
 		$data = $this->_array_status();
 		$tagdata = $this->EE->TMPL->tagdata;
@@ -333,8 +410,10 @@ Plugin for retreiving data from Mundo Liderman's Indicators
 	private function _array_status() {
 		$query = $this->EE->db
 					->select("sc.category_id as categoria_id, sc.category_name as categoria, count(*) as total")
-					->from("wall_status w")
-					->join("friends_status_category sc", "sc.category_id = w.category_id")
+					->from("members m")
+					->join("member_data md", "md.member_id = m.member_id")
+					->join("wall_status ws", "ws.member_id = m.member_id")
+					->join("friends_status_category sc", "sc.category_id = ws.category_id")
 					->where(array(
 						'sc.category_id >' => 0
 					))
@@ -497,12 +576,88 @@ Plugin for retreiving data from Mundo Liderman's Indicators
 						->count_all_results();
 	}
 
+	private function total_posts_categoria_detalle($tipo, $nombre, $categoryId) {
+		$field = "";
+		$field_zona = self::FIELD_ZONA;
+
+		if ($tipo === 'zona') {
+			$field = self::FIELD_ZONA;
+		} else if ($tipo === 'unidad') {
+			$field = self::FIELD_UNIDAD;
+		}
+
+		$this->EE->db
+					->select("count(*) as total")
+					->from("members m")
+					->join("member_data md", "md.member_id = m.member_id")
+					->join("wall_status ws", "ws.member_id = m.member_id")
+					->join("friends_status_category fsc", "fsc.category_id = ws.category_id")
+					->order_by("total", "desc");
+
+		if ($tipo === 'zona') {
+			$this->EE->db->where("fsc.category_id = $categoryId AND md.$field_zona <> '' AND NOT md.$field_zona LIKE '%region%'");
+		} else {
+			$this->EE->db->where("fsc.category_id = $categoryId AND md.$field_zona = '$nombre'");
+		}
+
+		return $this->EE->db->get()->row('total');
+	}
+
 	public function post_por_categoria() {
 		$category_id = $this->EE->TMPL->fetch_param('categoryId', 0);
 		$filter_by = $this->EE->TMPL->fetch_param('filterBy', 'zona');
 		$data = $this->_array_post_por_categoria($category_id, $filter_by);
 		$tagdata = $this->EE->TMPL->tagdata;
 		return $this->EE->TMPL->parse_variables($tagdata, $data);
+	}
+
+	public function post_categoria_detalle() {
+		$tipo = $this->EE->TMPL->fetch_param('tipo', 'zona');
+		$nombre = $this->EE->TMPL->fetch_param('nombre', 'LIMA');
+		$categoryId = $this->EE->TMPL->fetch_param('categoryId', 1);
+
+		$data = $this->_array_post_categoria_detalle($tipo, $nombre, $categoryId);
+
+		$tagdata = $this->EE->TMPL->tagdata;
+		return $this->EE->TMPL->parse_variables($tagdata, $data);
+	}
+
+	private function _array_post_categoria_detalle($tipo, $nombre, $categoryId) {
+		$field = "";
+		$field_zona = self::FIELD_ZONA;
+
+		if ($tipo === 'zona') {
+			$field = self::FIELD_ZONA;
+		} else if ($tipo === 'unidad') {
+			$field = self::FIELD_UNIDAD;
+		}
+		$total_categoria = $this->total_posts_categoria_detalle($tipo, $nombre, $categoryId);
+
+		$this->EE->db
+					->select("md.$field as name, count(*) as total")
+					->from("members m")
+					->join("member_data md", "md.member_id = m.member_id")
+					->join("wall_status ws", "ws.member_id = m.member_id")
+					->join("friends_status_category fsc", "fsc.category_id = ws.category_id")
+					->group_by("md.$field")
+					->order_by("total", "desc");
+
+		if ($tipo === 'zona') {
+			$this->EE->db->where("fsc.category_id = $categoryId AND md.$field_zona <> '' AND NOT md.$field_zona LIKE '%region%'");
+		} else {
+			$this->EE->db->where("fsc.category_id = $categoryId AND md.$field_zona = '$nombre'");
+		}
+
+		$query = $this->EE->db->get();
+		$data = $query->result_array();
+		$length = count($data);
+		for ($i=0; $i < $length; $i++) { 
+			$result =& $data[$i];
+			$row_total = $result['total'];
+			$result['percentage'] = round(($row_total/$total_categoria)*100, 2);
+		}
+
+		return $data;
 	}
 
 	private function _array_post_por_categoria($category_id, $filter_by) {
@@ -517,7 +672,7 @@ Plugin for retreiving data from Mundo Liderman's Indicators
 		$total_categoria = $this->total_posts_categoria($category_id);
 
 		$this->EE->db
-					->select("md.$field as name, count(*) as total")
+					->select("md.$field as zona, count(*) as total")
 					->from("members m")
 					->join("member_data md", "md.member_id = m.member_id")
 					->join("wall_status ws", "ws.member_id = m.member_id")
@@ -533,13 +688,37 @@ Plugin for retreiving data from Mundo Liderman's Indicators
 
 		$query = $this->EE->db->get();
 		$data = $query->result_array();
-		for ($i=0; $i < $query->num_rows(); $i++) { 
+		$length = count($data);
+		for ($i=0; $i < $length; $i++) { 
 			$result =& $data[$i];
 			$row_total = $result['total'];
 			$result['percentage'] = round(($row_total/$total_categoria)*100, 2);
 		}
 
+		$data = $this->_array_group_zona($data);
+
 		return $data;
+	}
+
+	private function _array_group_zona(&$data) {
+		$groupData = array();
+
+		foreach ($data as $item) {
+			$name = $this->_get_group_zona($item['zona']);
+			$indexGroup = $this->_index_of_group_zona($groupData, $name);
+			if ($indexGroup < 0) {
+				$groupData[] = array(
+						'zona' => $name,
+						'total' => intval($item['total']),
+						'percentage' => $item['percentage']
+					);
+			} else {
+				$groupData[$indexGroup]['total'] += intval($item['total']);
+				$groupData[$indexGroup]['percentage'] += $item['percentage'];
+			}
+		}
+
+		return $groupData;
 	}
 
 	public function export() {
@@ -570,7 +749,7 @@ Plugin for retreiving data from Mundo Liderman's Indicators
 				break;
 			case 5: // # Usuarios x Zona
 				$headers = array('zona', 'cantidad', 'porcentaje');
-				$data = $this->_array_top_generic(FALSE, 'zona', self::FIELD_ZONA);
+				$data =  $this->_array_top_generic(FALSE, 'zona', self::FIELD_ZONA);
 				$filename = "usuarios_x_zona";
 				break;
 			case 6: // # Usuarios x Unidad
@@ -583,12 +762,17 @@ Plugin for retreiving data from Mundo Liderman's Indicators
 				$data = $this->_array_status();
 				$filename = "posts_x_categoria";
 				break;
-			case 8: // # Post de categoria x (zona|unidad)
-				$category_id = $this->EE->TMPL->fetch_param('categoryId', 0);
-				$filter_by = $this->EE->TMPL->fetch_param('filterBy', 'zona');
-				$headers = array($filter_by, 'posts', 'porcentaje');
-				$data = $this->_array_post_por_categoria($category_id, $filter_by);
-				$filename = "posts_categoria_x_" . $filter_by;
+			// case 8: // # Post de categoria x (zona|unidad)
+			// 	$category_id = $this->EE->TMPL->fetch_param('categoryId', 0);
+			// 	$filter_by = $this->EE->TMPL->fetch_param('filterBy', 'zona');
+			// 	$headers = array($filter_by, 'posts', 'porcentaje');
+			// 	$data = $this->_array_post_por_categoria($category_id, $filter_by);
+			// 	$filename = "posts_categoria_x_" . $filter_by;
+			// 	break;
+			case 9: // # Usuarios x Region
+				$headers = array('region', 'cantidad', 'porcentaje');
+				$data =  $this->_array_region();
+				$filename = "usuarios_x_region";
 				break;
 		}
 		$now = new Datetime('now');

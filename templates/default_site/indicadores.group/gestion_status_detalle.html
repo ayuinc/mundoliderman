@@ -28,7 +28,7 @@
                     <h4 class="m-0 fz-16 mb-14">
                       "{exp:indicators:nombre_categoria categoryId="{segment_5}"}" por {segment_4}
                       <span class="pull-right fz-12">
-                        <a class="text-primary thin ml-7" href="{path='indicadores/gestion/{member_id}'}">← Regresar</a>
+                        <a class="text-primary thin ml-7" href="javascript: history.back();">← Regresar</a>
                       </span>
                     </h4>
                     <table class="w-100">
@@ -40,23 +40,23 @@
                         </tr>
                       </thead>
                       <tbody>
-                        {exp:indicators:post_por_categoria filterBy="{segment_4}" categoryId="{segment_5}"}
+                        {exp:indicators:post_categoria_detalle tipo="{segment_3}" nombre="{segment_4}" categoryId="{segment_5}"}
                         <tr>
                           <td class="fz-12 p-7">
-                            {if zona == 'VACIO'
+                            {if name == 'VACIO'
                               }
-                              {zona}
+                              {name}
                             {if:else}
-                              {if zona == 'LIMA'}
-                                <a href="{path='indicadores/gestion_status_detalle/zona/{zona}/{segment_5}/{member_id}'}">{zona}</a>
+                              {if name == 'LIMA'}
+                                <a href="{path='indicadores/gestion_status_detalle/zona/{name}/{segment_5}/{member_id}'}">{name}</a>
                               {if:else}
-                                <a href="{path='indicadores/gestion_status_detalle/unidad/{zona}/{segment_5}/{member_id}'}">{zona}</a>
+                                <a href="{path='indicadores/gestion_status_detalle/unidad/{name}/{segment_5}/{member_id}'}">{name}</a>
                               {/if}
                             {/if}</td>
                           <td class="fz-12 p-7">{total}</td>
                           <td class="fz-12 p-7">{percentage} %</td>
                         </tr>
-                        {/exp:indicators:post_por_categoria}
+                        {/exp:indicators:post_categoria_detalle}
                       </tbody>
                     </table>
                   </div>
