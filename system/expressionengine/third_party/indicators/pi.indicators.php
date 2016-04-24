@@ -495,8 +495,25 @@ Plugin for retreiving data from Mundo Liderman's Indicators
 			'total_comments' => $this->total_comments,
 			'post_por_liderman' => round($this->total_posts/$this->total_users, 2),
 			'comments_por_liderman' => round($this->total_comments/$this->total_users, 2),
-			'comments_por_post' => round($this->total_comments/$this->total_posts, 2)
+			'comments_por_post' => round($this->total_comments/$this->total_posts, 2),
+			'porcentaje_post_resueltos' => round($this->total_posts_resueltos()/$this->total_posts_por_resolver() * 100, 2)
 		);
+	}
+
+	private function total_posts_por_resolver () {
+		return $this->EE->db
+							->from("wall_status w")
+							->join("friends_status_category sc", "sc.category_id = w.category_id")
+							->where("sc.category_id in (3, 4, 5, 6, 7)")
+							->count_all_results();
+	}
+
+	private function total_posts_resueltos () {
+		return $this->EE->db
+							->from("wall_status w")
+							->join("friends_status_category sc", "sc.category_id = w.category_id")
+							->where("sc.category_id in (3, 4, 5, 6, 7) AND w.solved = 'y'")
+							->count_all_results();
 	}
 
 	public function reclamos_por_empresa() {
