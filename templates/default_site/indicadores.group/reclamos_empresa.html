@@ -7,6 +7,9 @@
 {/if}
 
 {embed="includes/head" titulo="Mundo Liderman - Indicadores Demográficos"}
+<link rel="stylesheet" href="{site_url}frontend/app/assets/css/jquery-ui.min.css">
+<link rel="stylesheet" href="{site_url}frontend/app/assets/css/jquery-ui.structure.min.css">
+<link rel="stylesheet" href="{site_url}frontend/app/assets/css/jquery-ui.theme.min.css">
   <div class="site-wrapper"> <!-- Body -->
       {embed="includes/nav-main" acceso_directo="Ir al muro" link="{site_url}"}
       <main class="site-content pb-42 mb-0">
@@ -29,24 +32,39 @@
                       Reclamos por Empresa
                       <span class="pull-right fz-12"><a class="text-primary thin" href="{path='indicadores/interaccion/{member_id}'}">← Regresar</a></span>
                     </h4>
-                    <table class="w-100">
-                      <thead class="border-bottom-gray text-gray">
-                        <tr>
-                          <th class="fz-13 text-left">Empresa</th>
-                          <th class="fz-13 text-left"># Reclamos</th>
-                          <th class="fz-13 text-left">Porcentaje</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {exp:indicators:reclamos_por_empresa withLimit="0"}
-                        <tr>
-                          <td class="fz-12 p-7">{if empresa == ''}VACIO{if:else}{empresa}{/if}</td>
-                          <td class="fz-12 p-7">{total}</td>
-                          <td class="fz-12 p-7">{percentage} %</td>
-                        </tr>
-                        {/exp:indicators:reclamos_por_empresa}
-                      </tbody>
-                    </table>
+                    <div class="mt-21 text-center fz-12">
+                      <div class="display-ib ph-7">
+                        <label for="dt-desde">Desde: </label>
+                        <input id="dt-desde" type="text" class="datepicker" placeholder="Desde">
+                      </div>
+                      <div class="display-ib ph-7">
+                        <label for="dt-hasta">Hasta: </label>
+                        <input id="dt-hasta" type="text" class="datepicker" placeholder="Hasta">
+                      </div>
+                    </div>
+                    <div class="text-center mt-7 container-filtrar">
+                        <button class="btn fz-12 btn-filtrar">Filtrar</button>
+                    </div>
+                    <div id="table-container" class="mt-28">
+                      <table class="w-100">
+                        <thead class="border-bottom-gray text-gray">
+                          <tr>
+                            <th class="fz-13 text-left">Empresa</th>
+                            <th class="fz-13 text-left"># Reclamos</th>
+                            <th class="fz-13 text-left">Porcentaje</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {exp:indicators:reclamos_por_empresa withLimit="0" desde="{segment_4}" desde="{segment_5}"}
+                          <tr>
+                            <td class="fz-12 p-7">{if empresa == ''}VACIO{if:else}{empresa}{/if}</td>
+                            <td class="fz-12 p-7">{total}</td>
+                            <td class="fz-12 p-7">{percentage} %</td>
+                          </tr>
+                          {/exp:indicators:reclamos_por_empresa}
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -57,5 +75,54 @@
     {embed=includes/radio-urbe}
     </div>
   {embed=includes/footer}
+  <script src="{site_url}frontend/app/assets/js/jquery-ui-calendar.min.js"></script>
   <script src="{site_url}frontend/app/assets/js/collapse-control.js"></script>
+  <script>
+    $(function(){
+
+      $(".datepicker").datepicker({
+        monthNames: [ "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agoto", "Setiembre", "Octubre", "Noviembre", "Diciembre" ],
+        monthNamesShort: [ "Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dec" ],
+        dateFormat: "dd-mm-yy",
+        maxDate: new Date()
+      });
+
+      var $desde = $("#dt-desde");
+      var $hasta = $("#dt-hasta");
+
+      $(".btn-filtrar").on("click", function () {
+        cleanError();
+        var dateDesde = $desde.datepicker("getDate");
+        var dateHasta = $hasta.datepicker("getDate");
+        if (dateDesde && dateHasta && dateDesde <= dateHasta) {
+          loadData(dateDesde.getTime()/1000, dateHasta.getTime()/1000);
+        } else {
+          showError("Rango de fechas no válidas");
+        }
+      });
+
+      function showError(msg) {
+        cleanError();
+        var $error = $('<p class="fz-11 p-7 error-msg text-primary"></p>');
+        $error.html("* " + msg);
+        $error.appendTo(".container-filtrar");
+      }
+
+      function cleanError() {
+        $(".error-msg").remove();
+      }
+
+      function loadData(desde, hasta) {
+        var url = "{site_url}ajax-text/reclamos_empresa/" + desde + "/" + hasta;
+        console.log(url);
+        $("#table-container").html('<div class="loader">Cargando...</div>').load(url);
+      }
+
+      if ($desde.val() && $hasta.val()) {
+        var dateDesde = $desde.datepicker("getDate");
+        var dateHasta = $hasta.datepicker("getDate");
+        loadData(dateDesde.getTime()/1000, dateHasta.getTime()/1000);
+      }
+    });
+  </script>
 </html>

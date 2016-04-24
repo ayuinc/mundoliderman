@@ -1,0 +1,35 @@
+<table class="w-100 table-results">
+  <thead class="border-bottom-gray text-gray">
+    <tr>
+      <th class="fz-13 text-left">{if "{segment_3}" == "zona"}Zona{/if}{if "{segment_3}" == "unidad"}Unidad{/if}</th>
+      <th class="fz-13 text-left"># Post</th>
+      <th class="fz-13 text-left">Porcentaje</th>
+    </tr>
+  </thead>
+  <tbody>
+    {exp:indicators:post_por_categoria filterBy="{segment_3}" categoryId="{segment_4}" desde="{segment_5}" hasta="{segment_6}"}
+      <tr>
+        <td class="fz-12 p-7">
+          {if zona == 'VACIO'
+            }
+            {zona}
+          {if:else}
+            {if zona == 'LIMA'}
+              <a href="{path='indicadores/gestion_status_detalle/zona/{zona}/{segment_4}/{member_id}/{segment_5}/{segment_6}'}">{zona}</a>
+            {if:else}
+              <a href="{path='indicadores/gestion_status_detalle/unidad/{zona}/{segment_4}/{member_id}/{segment_5}/{segment_6}'}">{zona}</a>
+            {/if}
+          {/if}</td>
+        <td class="fz-12 p-7">{total}</td>
+        <td class="fz-12 p-7">{percentage} %</td>
+      </tr>
+
+      {if no_results}
+        <script type="text/javascript">
+        $(".table-results").parent().append('<p class="text-center">No hay resultados</p>');
+        $(".table-results").remove();
+        </script>
+      {/if}
+    {/exp:indicators:post_por_categoria}
+  </tbody>
+</table>

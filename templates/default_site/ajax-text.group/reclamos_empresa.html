@@ -1,0 +1,24 @@
+<table class="w-100 table-results">
+  <thead class="border-bottom-gray text-gray">
+    <tr>
+      <th class="fz-13 text-left">Empresa</th>
+      <th class="fz-13 text-left"># Reclamos</th>
+      <th class="fz-13 text-left">Porcentaje</th>
+    </tr>
+  </thead>
+  <tbody>
+    {exp:indicators:reclamos_por_empresa withLimit="0" desde="{segment_3}" hasta="{segment_4}"}
+    <tr>
+      <td class="fz-12 p-7">{if empresa == ''}VACIO{if:else}{empresa}{/if}</td>
+      <td class="fz-12 p-7">{total}</td>
+      <td class="fz-12 p-7">{percentage} %</td>
+    </tr>
+    {if no_results}
+        <script type="text/javascript">
+        $(".table-results").parent().append('<p class="text-center">No hay resultados</p>');
+        $(".table-results").remove();
+        </script>
+      {/if}
+    {/exp:indicators:reclamos_por_empresa}
+  </tbody>
+</table>

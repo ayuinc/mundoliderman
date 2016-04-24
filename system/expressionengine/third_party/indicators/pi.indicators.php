@@ -509,12 +509,26 @@ Plugin for retreiving data from Mundo Liderman's Indicators
 
 	private function _reclamos_generic($name, $field) {
 		$withLimit = $this->EE->TMPL->fetch_param('withLimit', TRUE);
-		$data = $this->_array_reclamos_generic($withLimit, $name, $field);
+		$desde = $this->EE->TMPL->fetch_param('desde', FALSE);
+		$hasta = $this->EE->TMPL->fetch_param('hasta', FALSE);
+
+		if ($desde == '' || $hasta == '') {
+			$desde = FALSE;
+			$hasta = FALSE;
+		}
+
+		$data = $this->_array_reclamos_generic($withLimit, $name, $field, $desde, $hasta);
 		$tagdata = $this->EE->TMPL->tagdata;
-		return $this->EE->TMPL->parse_variables($tagdata, $data);
+
+		if (count($data) > 0) {
+			return $this->EE->TMPL->parse_variables($tagdata, $data);
+		} else {
+			return $this->EE->TMPL->no_results();
+		}
+		
 	}
 
-	private function _array_reclamos_generic($with_limit, $name, $field) {
+	private function _array_reclamos_generic($with_limit, $name, $field, $desde = FALSE, $hasta = FALSE) {
 		$total_reclamos = $this->get_total_reclamos();
 		$this->EE->db
 					->select("md.$field as $name, count(*) as total")
@@ -522,15 +536,21 @@ Plugin for retreiving data from Mundo Liderman's Indicators
 					->join("member_data md", "md.member_id = m.member_id")
 					->join("wall_status ws", "ws.member_id = m.member_id")
 					->join("friends_status_category fsc", "fsc.category_id = ws.category_id")
-					->where(array(
-						'fsc.category_name' => self::RECLAMO
-					))
 					->group_by("$name")
 					->order_by("total", "desc");		
+
+		$whereSql = "fsc.category_name = '" . self::RECLAMO . "'";
+
+		if ($desde !== FALSE && $hasta !== FALSE) {
+			$hasta += 24*60*60;
+			$whereSql .= " AND ws.status_date >= $desde AND ws.status_date <= $hasta";
+		}
 
 		if ($with_limit) {
 			$this->EE->db->limit(self::TOP_LIMIT);
 		}
+
+		$this->EE->db->where($whereSql);
 
 		$query = $this->EE->db->get();
 		$data = $query->result_array();
@@ -606,23 +626,44 @@ Plugin for retreiving data from Mundo Liderman's Indicators
 	public function post_por_categoria() {
 		$category_id = $this->EE->TMPL->fetch_param('categoryId', 0);
 		$filter_by = $this->EE->TMPL->fetch_param('filterBy', 'zona');
-		$data = $this->_array_post_por_categoria($category_id, $filter_by);
+		$desde = $this->EE->TMPL->fetch_param('desde', FALSE);
+		$hasta = $this->EE->TMPL->fetch_param('hasta', FALSE);
+		$data = $this->_array_post_por_categoria($category_id, $filter_by, $desde, $hasta);
 		$tagdata = $this->EE->TMPL->tagdata;
-		return $this->EE->TMPL->parse_variables($tagdata, $data);
+
+		if (count($data) > 0) {
+			return $this->EE->TMPL->parse_variables($tagdata, $data);
+		} else {
+			return $this->EE->TMPL->no_results()
+			;
+		}
+		
 	}
 
 	public function post_categoria_detalle() {
 		$tipo = $this->EE->TMPL->fetch_param('tipo', 'zona');
 		$nombre = $this->EE->TMPL->fetch_param('nombre', 'LIMA');
 		$categoryId = $this->EE->TMPL->fetch_param('categoryId', 1);
+		$desde = $this->EE->TMPL->fetch_param('desde', FALSE);
+		$hasta = $this->EE->TMPL->fetch_param('hasta', FALSE);
 
-		$data = $this->_array_post_categoria_detalle($tipo, $nombre, $categoryId);
+		if ($desde == '' || $hasta == '') {
+			$desde = FALSE;
+			$hasta = FALSE;
+		}
+
+		$data = $this->_array_post_categoria_detalle($tipo, $nombre, $categoryId, $desde, $hasta);
 
 		$tagdata = $this->EE->TMPL->tagdata;
-		return $this->EE->TMPL->parse_variables($tagdata, $data);
+
+		if (count($data) > 0) { 
+			return $this->EE->TMPL->parse_variables($tagdata, $data);
+		} else {
+			return $this->EE->TMPL->no_results();
+		}
 	}
 
-	private function _array_post_categoria_detalle($tipo, $nombre, $categoryId) {
+	private function _array_post_categoria_detalle($tipo, $nombre, $categoryId, $desde, $hasta) {
 		$field = "";
 		$field_zona = self::FIELD_ZONA;
 
@@ -642,10 +683,18 @@ Plugin for retreiving data from Mundo Liderman's Indicators
 					->group_by("md.$field")
 					->order_by("total", "desc");
 
+		$whereSql = "";
 		if ($tipo === 'zona') {
-			$this->EE->db->where("fsc.category_id = $categoryId AND md.$field_zona <> '' AND NOT md.$field_zona LIKE '%region%'");
+			$whereSql = "fsc.category_id = $categoryId AND md.$field_zona <> '' AND NOT md.$field_zona LIKE '%region%'";
 		} else {
-			$this->EE->db->where("fsc.category_id = $categoryId AND md.$field_zona = '$nombre'");
+			$whereSql = "fsc.category_id = $categoryId AND md.$field_zona = '$nombre'";
+		}
+
+		if ($desde !== FALSE && $hasta !== FALSE) {
+			$hasta += 24*60*60;
+			$this->EE->db->where("$whereSql AND ws.status_date >= $desde AND ws.status_date <= $hasta");
+		} else {
+			$this->EE->db->where("$whereSql");
 		}
 
 		$query = $this->EE->db->get();
@@ -660,7 +709,7 @@ Plugin for retreiving data from Mundo Liderman's Indicators
 		return $data;
 	}
 
-	private function _array_post_por_categoria($category_id, $filter_by) {
+	private function _array_post_por_categoria($category_id, $filter_by, $desde, $hasta) {
 		$field = "";
 
 		if ($filter_by === 'zona') {
@@ -684,6 +733,12 @@ Plugin for retreiving data from Mundo Liderman's Indicators
 			$this->EE->db->where(array(
 						'fsc.category_id' => $category_id
 					));
+		}
+
+		if ($desde !== FALSE && $hasta !== FALSE) {
+			$hasta += 24*60*60;
+
+			$this->EE->db->where("ws.status_date >= $desde AND ws.status_date <= $hasta");
 		}
 
 		$query = $this->EE->db->get();
