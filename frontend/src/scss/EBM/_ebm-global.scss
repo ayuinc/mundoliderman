@@ -985,6 +985,7 @@ footer > div {
 
 /*TAREO*/
 #menu-vertical {
+	margin-top: 42px;
 	h3 , h2{
 		font-size: 24px;
 		font-size: rem(24px);
@@ -994,9 +995,8 @@ footer > div {
 	}
 	.contenedor-menu {
 		position: relative;
-  	border: 1px solid #e7e7e7;
-  	border-bottom-right-radius: 10px;
-  	overflow: hidden;
+	  	border: 1px solid #e7e7e7;
+	  	overflow: hidden;
 	}
 	.list-slide {
 		overflow: hidden;
@@ -1499,7 +1499,17 @@ input[type="submit"] {
 
 /*ERROR*/
 
-
+.contenedor-menu [class*="panel-group"] {
+	border-bottom: 1px solid white;
+}
+.flickity-page-dots {
+	bottom: -10px !important;
+	right: 28px;
+  width: auto !important;
+  .dot {
+  	margin: 0 3px !important;
+  }
+}
 
 @media #{$sm-down} {
 	/*LOGIN*/

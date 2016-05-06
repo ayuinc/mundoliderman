@@ -2235,6 +2235,9 @@ footer > div .lista p {
 }
 
 /*TAREO*/
+#menu-vertical {
+  margin-top: 42px;
+}
 #menu-vertical h3, #menu-vertical h2 {
   font-size: 24px;
   font-size: 1.5rem;
@@ -2245,7 +2248,6 @@ footer > div .lista p {
 #menu-vertical .contenedor-menu {
   position: relative;
   border: 1px solid #e7e7e7;
-  border-bottom-right-radius: 10px;
   overflow: hidden;
 }
 #menu-vertical .list-slide {
@@ -2803,6 +2805,19 @@ input[type="submit"] {
 }
 
 /*ERROR*/
+.contenedor-menu [class*="panel-group"] {
+  border-bottom: 1px solid white;
+}
+
+.flickity-page-dots {
+  bottom: -10px !important;
+  right: 28px;
+  width: auto !important;
+}
+.flickity-page-dots .dot {
+  margin: 0 3px !important;
+}
+
 @media only screen and (max-width: 768px) {
   /*LOGIN*/
   .container-login .submit img {
@@ -3387,13 +3402,6 @@ input[type="submit"] {
 }
 #mediaspace_wrapper {
   height: 280px !important;
-}
-
-.conteiner-answer {
-  -webkit-transition: all 0.5s ease;
-  -moz-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
-  transition: all 0.5s ease;
 }
 
 .highlighter {

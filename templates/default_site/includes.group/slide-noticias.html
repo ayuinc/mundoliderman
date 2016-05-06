@@ -1,0 +1,19 @@
+<div id="slide-noticias" class="bg-gray-lighter btn-block pv-28 mt-42">
+	<div class="gallery gallery-main js-flickity" data-flickity-options='{"prevNextButtons": false, "autoPlay": true, "wrapAround": true}'>
+	  {exp:channel:entries channel="noticias" limit="3" dynamic="off"}
+	  	<div class="gallery-cell clearfix ph-28 btn-block">
+				{noticias_imagen}
+				<div class="col-md-5 bg-img-block" style="background-image: url({image:url:small}); height:150px;"></div>
+				{/noticias_imagen}
+				<div class="col-md-7 noticia ph-0">
+				  <div class="nota ph-21 pr-14">
+				    <span class="text-uppercase text-primary fz-10">NOTICIA</span>
+				    <h5 class="text-uppercase mt-0 fz-11 text-gray-dark2">{title}</h5>
+				    <p class="fz-12 text-gray-darker">{noticias_descripcion}</p>
+				    <p class="read text-primary book fz-10 mb-0"><a href="{permalink="noticias/post"}">Leer más &#8594</a></p>
+				  </div>
+				</div>
+			</div>
+		{/exp:channel:entries}
+	</div>
+</div>
