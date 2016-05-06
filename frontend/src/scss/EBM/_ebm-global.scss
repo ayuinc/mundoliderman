@@ -995,8 +995,7 @@ footer > div {
 	}
 	.contenedor-menu {
 		position: relative;
-	  	border: 1px solid #e7e7e7;
-	  	overflow: hidden;
+	  overflow: hidden;
 	}
 	.list-slide {
 		overflow: hidden;
@@ -1502,7 +1501,7 @@ input[type="submit"] {
 .contenedor-menu [class*="panel-group"] {
 	border-bottom: 1px solid white;
 }
-.flickity-page-dots {
+#slide-noticias .flickity-page-dots {
 	bottom: -10px !important;
 	right: 28px;
   width: auto !important;
@@ -1628,6 +1627,7 @@ input[type="submit"] {
 			@include transform(translateX(-100%));
 	  	@include transition(transform .5s ease);
 	  	margin-top: 65px;
+	  	overflow-y: auto;
 	  	input, select {
 	  		height: 45px;
 	  	}

@@ -2247,7 +2247,6 @@ footer > div .lista p {
 }
 #menu-vertical .contenedor-menu {
   position: relative;
-  border: 1px solid #e7e7e7;
   overflow: hidden;
 }
 #menu-vertical .list-slide {
@@ -2809,12 +2808,12 @@ input[type="submit"] {
   border-bottom: 1px solid white;
 }
 
-.flickity-page-dots {
+#slide-noticias .flickity-page-dots {
   bottom: -10px !important;
   right: 28px;
   width: auto !important;
 }
-.flickity-page-dots .dot {
+#slide-noticias .flickity-page-dots .dot {
   margin: 0 3px !important;
 }
 
@@ -2942,6 +2941,7 @@ input[type="submit"] {
     -moz-transition: -moz-transform 0.5s ease;
     transition: transform 0.5s ease;
     margin-top: 65px;
+    overflow-y: auto;
   }
   main .overlay-menu input, main .overlay-menu select {
     height: 45px;

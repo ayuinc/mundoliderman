@@ -1,9 +1,5 @@
           <div class="contenedor-menu bg-white">
-            <div class="panel-group bg-info ph-28">
-              <a role="button">
-                <h2 class="active-slide fz-22 text-white text-uppercase text-not-underline m-0 pv-14">Boleta de pagos</h2>
-              </a>
-            </div>
+            <div id="link_boleta" class="panel-group bg-info ph-28"></div>
             <div class="panel-group2" id="accordion2" role="tablist" aria-multiselectable="true">
               <div class="panel panel-default">
                 <div class="panel-heading bg-danger ph-28" role="tab" id="heading2">
@@ -16,57 +12,7 @@
                 <div id="collapse2" class="panel-collapse collapse ph-28" role="tabpanel" aria-labelledby="heading2">
                   <div class="panel-body">
                     <div class="">
-                      <ul id="service_menu" class="p-0 pv-ch-7 light">
-                        <script type="text/javascript">
-                          var lista = document.getElementById("service_menu");
-                          var miembro = "{embed:miembro}";
-                          var miembro_actual = "{embed:miembro_actual}";
-                          var grupo = "{embed:grupo}";
-                          if (miembro == miembro_actual) {
-                            lista.innerHTML = 
-                                              "<li><a href=\"{path='servicios/lidermania/{embed:miembro}'}\" class=\"text-gray-dark2\">Lidermanía</a></li>"+
-                                              {if "{exp:indicators:can_access}" == "1" } 
-                                              "<li><a href=\"{path='servicios/sgi/{embed:miembro}'}\" class=\"text-gray-dark2\">SGI</a></li>" +
-                                              {/if}
-                                              {if '{exp:parameters:value code="BOLETAS"}' == 'y'}
-                                              "<li><a href=\"{path='servicios/boleta/{embed:miembro}'}\" class=\"text-gray-dark2\">Boletas de Pago</a></li>" +
-                                              {/if}
-                                              {if '{exp:parameters:value code="CTS"}' == 'y'}
-                                              "<li><a href=\"{path='servicios/cts/{embed:miembro}'}\" class=\"text-gray-dark2\">CTS</a></li>" +
-                                              {/if}
-                                              {if '{exp:parameters:value code="UTILIDADES"}' == 'y'}
-                                              "<li><a href=\"{path='servicios/utilidades/{embed:miembro}'}\" class=\"text-gray-dark2\">Utilidades</a></li>" +
-                                              {/if}
-                                              "<li class=\"pv-21 btn-especial\">" +
-                                                "<h3 class=\"m-0 pv-14\"><a class=\"fz-20 text-gray-dark2 text-hover-gray\">Semáforo</a></h3>" +
-                                              "</li>" +
-                                              "<li><a href=\"{path='servicios/lidernet/{embed:miembro}'}\" class=\"text-gray-dark2\">Lidernet<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Cultura</p></a></li>" +
-                                              "<li><a href=\"{path='servicios/tareo/{embed:miembro}'}\" class=\"text-gray-dark2\">Tareo<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Conducta</p></a></li>" +
-                                              "<li><a href=\"{path='servicios/capacitacion/{embed:miembro}'}\" class=\"text-gray-dark2\">Capacitaciones<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Autocapacitaciones</p></a></li>" +
-                                              "<li><a href=\"{path='servicios/prestamos/{embed:miembro}'}\" class=\"text-gray-dark2\">Préstamos<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Orden económico</p></a></li>" +
-                                              "<li><a href=\"{path='servicios/lidercard/{embed:miembro}'}\" class=\"text-gray-dark2\">Lidercard<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Valor agregado</p></a></li>" +
-                                              "<!--<li class=\"pv-21 btn-especial\">" +
-                                                "<h3 class=\"m-0\"><a class=\"fz-20 text-gray-dark2 text-hover-gray\">Para zonales</a></h3>" +
-                                                "<span>Reportes</span>" +
-                                              "</li>-->";
-                          } else if(grupo == 6){
-                            lista.innerHTML = "<li><a href=\"{path='servicios/lidernet/{embed:miembro}'}\" class=\"text-gray-dark2\">Lidernet</a></li>" +
-                                              "<li><a href=\"{path='servicios/lidermania/{embed:miembro}'}\" class=\"text-gray-dark2\">Lidermanía</a></li>"+
-                                              "<li><a href=\"{path='servicios/tareo/{embed:miembro}'}\" class=\"text-gray-dark2\">Tareo</a></li>" 
-                                              {if '{exp:parameters:value code="BOLETAS"}' == 'y'}
-                                                + 
-                                              "<li><a href=\"{path='servicios/boleta/{embed:miembro}'}\" class=\"text-gray-dark2\">Boletas de Pago</a></li>"
-                                              {/if};
-                          };
-
-                          {if "{exp:indicators:can_access}" == "1" }
-                            lista.innerHTML += "<h3 class=\"m-0 pv-14\"><a class=\"fz-20 text-gray-dark2 text-hover-gray\">Indicadores</a></h3>" +
-                            "<li><a href=\"{path='indicadores/demograficos/{embed:miembro}'}\" class=\"text-gray-dark2\">Demográficos</a></li>" +
-                            "<li><a href=\"{path='indicadores/gestion/{embed:miembro}'}\" class=\"text-gray-dark2\">Gestión</a></li>" +
-                            "<li><a href=\"{path='indicadores/interaccion/{embed:miembro}'}\" class=\"text-gray-dark2\">Interacción</a></li>";
-                          {/if}
-
-                        </script>
+                      <ul id="lidermania_menu" class="p-0 pv-ch-7 light fz-17"> 
                       </ul>
                     </div>
                   </div>
@@ -84,8 +30,8 @@
                 </div>
                 <div id="collapse3" class="panel-collapse collapse ph-28" role="tabpanel" aria-labelledby="heading3">
                   <div class="panel-body">
-                    <ul>
-                    </ul>
+                    <ul id="indicadores_menu" class="p-0 pv-ch-7 light fz-17"> 
+                      </ul>
                   </div>
                 </div>
               </div>
@@ -101,8 +47,7 @@
                 </div>
                 <div id="collapse4" class="panel-collapse collapse ph-28" role="tabpanel" aria-labelledby="heading4">
                   <div class="panel-body">
-                    <ul>
-                      
+                    <ul id="semaforo_menu" class="p-0 pv-ch-7 light fz-17"> 
                     </ul>
                   </div>
                 </div>
@@ -119,11 +64,68 @@
                 </div>
                 <div id="collapse5" class="panel-collapse collapse {embed:in} ph-28" role="tabpanel" aria-labelledby="heading5">
                   <div class="panel-body">
-                    <ul>
-                     
+                    <ul id="sgi_menu" class="p-0 pv-ch-7 light fz-17"> 
                     </ul>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          <script type="text/javascript">
+            var lista = document.getElementById("lidermania_menu");
+            var lista2 = document.getElementById("indicadores_menu");
+            var lista3 = document.getElementById("semaforo_menu");
+            var lista4 = document.getElementById("sgi_menu");
+            var boleta = document.getElementById("link_boleta");
+            var miembro = "{embed:miembro}";
+            var miembro_actual = "{embed:miembro_actual}";
+            var grupo = "{embed:grupo}";
+            if (miembro == miembro_actual) {
+              lista.innerHTML = 
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/lidermania/{embed:miembro}'}\" class=\"text-gray-dark2\">Lidermanía</a></li>"+
+                {if "{exp:indicators:can_access}" == "1" } 
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/sgi/{embed:miembro}'}\" class=\"text-gray-dark2\">SGI</a></li>" +
+                {/if}
+                {if '{exp:parameters:value code="CTS"}' == 'y'}
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/cts/{embed:miembro}'}\" class=\"text-gray-dark2\">CTS</a></li>" +
+                {/if}
+                {if '{exp:parameters:value code="UTILIDADES"}' == 'y'}
+                "<li><a href=\"{path='servicios/utilidades/{embed:miembro}'}\" class=\"text-gray-dark2\">Utilidades</a></li>";
+                {/if};
+
+              lista3.innerHTML =
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/lidernet/{embed:miembro}'}\" class=\"text-gray-dark2\">Lidernet<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Cultura</p></a></li>" +
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/tareo/{embed:miembro}'}\" class=\"text-gray-dark2\">Tareo<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Conducta</p></a></li>" +
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/capacitacion/{embed:miembro}'}\" class=\"text-gray-dark2\">Capacitaciones<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Autocapacitaciones</p></a></li>" +
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/prestamos/{embed:miembro}'}\" class=\"text-gray-dark2\">Préstamos<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Orden económico</p></a></li>" +
+                "<li><a href=\"{path='servicios/lidercard/{embed:miembro}'}\" class=\"text-gray-dark2\">Lidercard<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Valor agregado</p></a></li>";
+              lista4.innerHTML =
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"\" class=\"text-gray-dark2\">Reglamentos</a></li>"+
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"\" class=\"text-gray-dark2\">Gestión de procesos</a></li>"+
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"\" class=\"text-gray-dark2\">Gestión de Dirección</a></li>"+
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"\" class=\"text-gray-dark2\">Gestión de integrada</a></li>"+
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"\" class=\"text-gray-dark2\">Gestión de Financiera</a></li>"+
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"\" class=\"text-gray-dark2\">Gestión de Comercial</a></li>"+
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"\" class=\"text-gray-dark2\">Reglamentos</a></li>"+
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"\" class=\"text-gray-dark2\">Planeamiento del Servicio</a></li>"+
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"\" class=\"text-gray-dark2\">Centro de Control</a></li>"+
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"\" class=\"text-gray-dark2\">Vigilancia Privada</a></li>"+
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"\" class=\"text-gray-dark2\">Seguridad Personal</a></li>";
+            boleta.innerHTML =    
+                "<a href=\"{path='servicios/boleta/{embed:miembro}'}\"><h2 class=\"active-slide fz-22 text-white text-uppercase text-not-underline m-0 pv-14\">Boletas de pago</h2></a>";
+            } else if(grupo == 6){
+                lista.innerHTML = "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/lidernet/{embed:miembro}'}\" class=\"text-gray-dark2\">Lidernet</a></li>" +
+                                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/lidermania/{embed:miembro}'}\" class=\"text-gray-dark2\">Lidermanía</a></li>"+
+                                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/tareo/{embed:miembro}'}\" class=\"text-gray-dark2\">Tareo</a></li>" 
+                                {if '{exp:parameters:value code="BOLETAS"}' == 'y'}
+                                  + 
+                                "<li><a href=\"{path='servicios/boleta/{embed:miembro}'}\" class=\"text-gray-dark2\">Boletas de Pago</a></li>"
+                                {/if};
+            }
+            {if "{exp:indicators:can_access}" == "1" }
+              lista2.innerHTML += 
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='indicadores/demograficos/{embed:miembro}'}\" class=\"text-gray-dark2\">Demográficos</a></li>" +
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='indicadores/gestion/{embed:miembro}'}\" class=\"text-gray-dark2\">Gestión</a></li>" +
+                "<li><a href=\"{path='indicadores/interaccion/{embed:miembro}'}\" class=\"text-gray-dark2\">Interacción</a></li>";
+            {/if}
+          </script>

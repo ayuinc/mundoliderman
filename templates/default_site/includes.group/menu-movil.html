@@ -1,4 +1,4 @@
-      <div class="overlay-menu ebm-overlay w-100 minhp-100 fixed bg-white hidden-lg hidden-md ph-35">
+      <div class="overlay-menu ebm-overlay w-100 fixed bg-white hidden-lg hidden-md ph-35">
         <div class="clearfix pt-42 pb-28">
           <div style="background-image: url({exp:member:custom_profile_data}{if photo_filename == null}{site_url}frontend/app/assets/img/Herman_Profile_Pic.png{if:else}{photo_url}{/if}{/exp:member:custom_profile_data})" class="perfil-menu bg-img-block-center brp-100 float-left"></div>
           <div class="float-left pt-21 pl-21">
@@ -12,7 +12,7 @@
         {exp:user:logout return="login"}
           <p class="sans-serif fz-22 mb-14 text-gray-dark"><a href="{url}">Salir</a></p>
         {/exp:user:logout}
-        <div class="form pt-28">
+        <!-- <div class="form pt-28">
           <select name="" id="menu_movil" class="w-100 mb-14 ph-14">
             <option value="{current_url}" class="w-100">Seleccionar Servicio</option>
             <option value="{path='servicios/lidernet/{embed:miembro}'}" class="w-100">Cultura</option>
@@ -39,12 +39,15 @@
             <option value="{path='indicadores/interaccion/{embed:miembro}'}" class="w-100">Interacción</option>
             {/if}
           </select>
-          {exp:user:search
-            return="perfil/resultados"
-          }
-          <input type="text" id="search_bar" class="form-control input-sm fz-18 light ph-14" placeholder="Buscar personas..." name="keywords">
-          {/exp:user:search}
-        </div>
+        </div> -->
+        <section id="menu-vertical" class="pl-0 hidden-md hidden-lg">
+          {embed=includes/nav-secciones miembro="{if segment_2 == 'index'} {segment_3} {if:else} {segment_2} {/if}" miembro_actual="{member_id}" grupo="{member_group}"}
+        </section>
+        {exp:user:search
+          return="perfil/resultados"
+        }
+          <input type="text" id="search_bar" class="form-control input-sm fz-18 light ph-14 mv-35" placeholder="Buscar personas..." name="keywords">
+        {/exp:user:search}
       </div>
 
       <script>
