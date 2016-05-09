@@ -1,0 +1,131 @@
+          <div class="contenedor-menu bg-white">
+            <div id="link_boleta_movil" class="panel-group bg-info ph-28"></div>
+            <div class="panel-group2-movil" id="accordion2" role="tablist" aria-multiselectable="true">
+              <div class="panel panel-default">
+                <div class="panel-heading bg-danger ph-28" role="tab" id="heading2">
+                  <h4 class="panel-title m-0">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion2" href="#collapse2_movil" aria-expanded="true" aria-controls="collapse2_movil">
+                      <h2 class="active-slide fz-22 text-white text-uppercase text-not-underline m-0 pv-14">Lidermanía <img src="{site_url}frontend/app/assets/img/flecha-para-abajo.png" alt="" class="pt-7 pull-right"></h2>
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapse2_movil" class="panel-collapse collapse ph-28" role="tabpanel" aria-labelledby="heading2">
+                  <div class="panel-body">
+                    <div class="">
+                      <ul id="lidermania_menu_movil" class="p-0 pv-ch-7 light fz-17"> 
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="panel-group3-movil" id="accordion3_movil" role="tablist" aria-multiselectable="true">
+              <div class="panel panel-default">
+                <div class="panel-heading bg-danger ph-28" role="tab" id="heading3">
+                  <h4 class="panel-title m-0">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion3_movil" href="#collapse3_movil" aria-expanded="true" aria-controls="collapse3_movil">
+                      <h2 class="active-slide fz-22 text-white text-uppercase text-not-underline m-0 pv-14">Indicadores <img src="{site_url}frontend/app/assets/img/flecha-para-abajo.png" alt="" class="pt-7 pull-right"></h2>
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapse3_movil" class="panel-collapse collapse ph-28" role="tabpanel" aria-labelledby="heading3">
+                  <div class="panel-body">
+                    <ul id="indicadores_menu_movil" class="p-0 pv-ch-7 light fz-17"> 
+                      </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="panel-group4" id="accordion4_movil" role="tablist" aria-multiselectable="true">
+              <div class="panel panel-default">
+                <div class="panel-heading bg-danger ph-28" role="tab" id="heading4">
+                  <h4 class="panel-title m-0">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion4" href="#collapse4_movil" aria-expanded="true" aria-controls="collapse4_movil">
+                      <h2 class="active-slide fz-22 text-white text-uppercase text-not-underline m-0 pv-14">Tu semáforo <img src="{site_url}frontend/app/assets/img/flecha-para-abajo.png" alt="" class="pt-7 pull-right"></h2>
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapse4_movil" class="panel-collapse collapse ph-28" role="tabpanel" aria-labelledby="heading4">
+                  <div class="panel-body">
+                    <ul id="semaforo_menu_movil" class="p-0 pv-ch-7 light fz-17"> 
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="panel-group5-movil" id="accordion5" role="tablist" aria-multiselectable="true">
+              <div class="panel panel-default">
+                <div class="panel-heading bg-danger ph-28" role="tab" id="heading5_movil">
+                  <h4 class="panel-title m-0">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion5_movil" href="#collapse5_movil" aria-expanded="true" aria-controls="collapse5_movil">
+                      <h2 class="active-slide fz-22 text-white text-uppercase text-not-underline m-0 pv-14">sgi <img src="{site_url}frontend/app/assets/img/flecha-para-abajo.png" alt="" class="pt-7 pull-right"></h2>
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapse5_movil" class="panel-collapse collapse {embed:in} ph-28" role="tabpanel" aria-labelledby="heading5">
+                  <div class="panel-body">
+                    <ul id="sgi_menu_movil" class="p-0 pv-ch-7 light fz-17"> 
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <script type="text/javascript">
+            var lista = document.getElementById("lidermania_menu_movil");
+            var lista2 = document.getElementById("indicadores_menu_movil");
+            var lista3 = document.getElementById("semaforo_menu_movil");
+            var lista4 = document.getElementById("sgi_menu_movil");
+            var boleta = document.getElementById("link_boleta_movil");
+            var miembro = "{embed:miembro}";
+            var miembro_actual = "{embed:miembro_actual}";
+            var grupo = "{embed:grupo}";
+            if (miembro == miembro_actual) {
+              lista.innerHTML = 
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/lidermania/{embed:miembro}'}\" class=\"text-gray-dark2\">Lidermanía</a></li>"+
+                {if "{exp:indicators:can_access}" == "1" } 
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/sgi/{embed:miembro}'}\" class=\"text-gray-dark2\">SGI</a></li>" +
+                {/if}
+                {if '{exp:parameters:value code="CTS"}' == 'y'}
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/cts/{embed:miembro}'}\" class=\"text-gray-dark2\">CTS</a></li>" +
+                {/if}
+                {if '{exp:parameters:value code="UTILIDADES"}' == 'y'}
+                "<li><a href=\"{path='servicios/utilidades/{embed:miembro}'}\" class=\"text-gray-dark2\">Utilidades</a></li>";
+                {/if};
+
+              lista3.innerHTML =
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/lidernet/{embed:miembro}'}\" class=\"text-gray-dark2\">Lidernet<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Cultura</p></a></li>" +
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/tareo/{embed:miembro}'}\" class=\"text-gray-dark2\">Tareo<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Conducta</p></a></li>" +
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/capacitacion/{embed:miembro}'}\" class=\"text-gray-dark2\">Capacitaciones<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Autocapacitaciones</p></a></li>" +
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/prestamos/{embed:miembro}'}\" class=\"text-gray-dark2\">Préstamos<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Orden económico</p></a></li>" +
+                "<li><a href=\"{path='servicios/lidercard/{embed:miembro}'}\" class=\"text-gray-dark2\">Lidercard<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Valor agregado</p></a></li>";
+              lista4.innerHTML =
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"\" class=\"text-gray-dark2\">Reglamentos</a></li>"+
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"\" class=\"text-gray-dark2\">Gestión de procesos</a></li>"+
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"\" class=\"text-gray-dark2\">Gestión de Dirección</a></li>"+
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"\" class=\"text-gray-dark2\">Gestión de integrada</a></li>"+
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"\" class=\"text-gray-dark2\">Gestión de Financiera</a></li>"+
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"\" class=\"text-gray-dark2\">Gestión de Comercial</a></li>"+
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"\" class=\"text-gray-dark2\">Reglamentos</a></li>"+
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"\" class=\"text-gray-dark2\">Planeamiento del Servicio</a></li>"+
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"\" class=\"text-gray-dark2\">Centro de Control</a></li>"+
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"\" class=\"text-gray-dark2\">Vigilancia Privada</a></li>"+
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"\" class=\"text-gray-dark2\">Seguridad Personal</a></li>";
+            boleta.innerHTML =    
+                "<a href=\"{path='servicios/boleta/{embed:miembro}'}\"><h2 class=\"active-slide fz-22 text-white text-uppercase text-not-underline m-0 pv-14\">Boletas de pago</h2></a>";
+            } else if(grupo == 6){
+                lista.innerHTML = "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/lidernet/{embed:miembro}'}\" class=\"text-gray-dark2\">Lidernet</a></li>" +
+                                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/lidermania/{embed:miembro}'}\" class=\"text-gray-dark2\">Lidermanía</a></li>"+
+                                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/tareo/{embed:miembro}'}\" class=\"text-gray-dark2\">Tareo</a></li>" 
+                                {if '{exp:parameters:value code="BOLETAS"}' == 'y'}
+                                  + 
+                                "<li><a href=\"{path='servicios/boleta/{embed:miembro}'}\" class=\"text-gray-dark2\">Boletas de Pago</a></li>"
+                                {/if};
+            }
+            {if "{exp:indicators:can_access}" == "1" }
+              lista2.innerHTML += 
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='indicadores/demograficos/{embed:miembro}'}\" class=\"text-gray-dark2\">Demográficos</a></li>" +
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='indicadores/gestion/{embed:miembro}'}\" class=\"text-gray-dark2\">Gestión</a></li>" +
+                "<li><a href=\"{path='indicadores/interaccion/{embed:miembro}'}\" class=\"text-gray-dark2\">Interacción</a></li>";
+            {/if}
+          </script>
