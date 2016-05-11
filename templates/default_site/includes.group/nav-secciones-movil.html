@@ -100,9 +100,9 @@
                 "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/prestamos/{embed:miembro}'}\" class=\"text-gray-dark2\">Préstamos<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Orden económico</p></a></li>" +
                 "<li><a href=\"{path='servicios/lidercard/{embed:miembro}'}\" class=\"text-gray-dark2\">Lidercard<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Valor agregado</p></a></li>";
               lista4.innerHTML =
-                "<li class=\"border-bottom-gray-lighter\"><a href=\"\" class=\"text-gray-dark2\">Reglamentos</a></li>"+
-                "<li class=\"border-bottom-gray-lighter\"><a href=\"\" class=\"text-gray-dark2\">Gestión de procesos</a></li>"+
-                "<li class=\"border-bottom-gray-lighter\"><a href=\"\" class=\"text-gray-dark2\">Gestión de Dirección</a></li>"+
+                {exp:channel:categories channel="SGI" style="linear"}
+                  "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/sgi/{segment_3}/category/{category_id}/{category_name}'}\" class=\"text-gray-dark2\">{category_name}</a></li>"+
+                {/exp:channel:categories}
                 "<li class=\"border-bottom-gray-lighter\"><a href=\"\" class=\"text-gray-dark2\">Gestión de integrada</a></li>"+
                 "<li class=\"border-bottom-gray-lighter\"><a href=\"\" class=\"text-gray-dark2\">Gestión de Financiera</a></li>"+
                 "<li class=\"border-bottom-gray-lighter\"><a href=\"\" class=\"text-gray-dark2\">Gestión de Comercial</a></li>"+
