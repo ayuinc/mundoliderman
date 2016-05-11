@@ -345,6 +345,9 @@ body {
   	color: #f94211!important;
   }
 }
+.rotate-180 {
+	@include transform (rotate(180deg));
+}
 
 .site-wrapper,
 .site-content {
@@ -1509,7 +1512,20 @@ input[type="submit"] {
   	margin: 0 3px !important;
   }
 }
-
+#jstree {
+	.ui-easytree {
+		padding: 0px !important;
+		li {
+			.easytree-expander, .easytree-icon {
+				display: none;
+			}
+			.easytree-title {
+				margin: 0px !important;
+				padding: 0px !important;
+			}
+		}
+	}
+}
 @media #{$sm-down} {
 	/*LOGIN*/
 	.container-login {
