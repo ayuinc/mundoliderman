@@ -103,15 +103,9 @@
                   {exp:channel:categories channel="SGI" style="linear"}
                   "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/sgi/{segment_3}/category/{category_id}/{category_name}'}\" class=\"text-gray-dark2\">{category_name}</a></li>"+
                   {/exp:channel:categories}
-                "<li class=\"border-bottom-gray-lighter\"><a href=\"\" class=\"text-gray-dark2\">Gestión de integrada</a></li>"+
-                "<li class=\"border-bottom-gray-lighter\"><a href=\"\" class=\"text-gray-dark2\">Gestión de Financiera</a></li>"+
-                "<li class=\"border-bottom-gray-lighter\"><a href=\"\" class=\"text-gray-dark2\">Gestión de Comercial</a></li>"+
-                "<li class=\"border-bottom-gray-lighter\"><a href=\"\" class=\"text-gray-dark2\">Planeamiento del Servicio</a></li>"+
-                "<li class=\"border-bottom-gray-lighter\"><a href=\"\" class=\"text-gray-dark2\">Centro de Control</a></li>"+
-                "<li class=\"border-bottom-gray-lighter\"><a href=\"\" class=\"text-gray-dark2\">Vigilancia Privada</a></li>"+
-                "<li class=\"border-bottom-gray-lighter\"><a href=\"\" class=\"text-gray-dark2\">Seguridad Personal</a></li>";
+                "<li></li>";
             boleta.innerHTML =    
-                "<a href=\"{path='servicios/boleta/{embed:miembro}'}\" target=\"_blank\"><h2 class=\"active-slide fz-22 text-white text-uppercase text-not-underline m-0 pv-14\">Boletas de pago</h2></a>";
+                "<h2 class=\"active-slide fz-22 text-white text-uppercase text-not-underline m-0 pv-14\"><a href=\"{path='servicios/boleta/{embed:miembro}'}\" target=\"_blank\">Boletas de pago</a></h2>";
             } else if(grupo == 6){
                 lista.innerHTML = "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/lidernet/{embed:miembro}'}\" class=\"text-gray-dark2\">Lidernet</a></li>" +
                                 "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/lidermania/{embed:miembro}'}\" class=\"text-gray-dark2\">Lidermanía</a></li>"+
