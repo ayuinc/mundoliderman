@@ -2,7 +2,7 @@
 
 class Exporter {
 
-	public static function to_csv($headers, $data, $filename) {
+	public static function to_csv($headers, &$data, $filename) {
 		header("Content-Disposition: attachment; filename=\"$filename.csv\"");
 		header("Content-Type: text/csv; charset=utf-8");
 
@@ -14,6 +14,7 @@ class Exporter {
 			fputcsv($file, $row);
 		}
 
+		unset($data);
 		fclose($file);
 		die();
 	}

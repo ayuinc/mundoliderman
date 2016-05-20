@@ -793,6 +793,25 @@ Plugin for retreiving data from Mundo Liderman's Indicators
 		return $groupData;
 	}
 
+	
+	private function _array_all_lidermans() {
+		$query = $this->EE->db
+					->select(
+						$this->getSelectMembersData("md") . ", " .
+						"COUNT( DISTINCT ws.id) as total_publicaciones, " .
+						"COUNT( DISTINCT wc.id) as total_comentarios"
+					)
+					->from('members m')
+					->join("member_data md", "md.member_id = m.member_id")
+					->join("wall_status ws", "ws.member_id = m.member_id", "left")
+					->join("wall_comment wc", "wc.comment_member_id = m.member_id", "left")
+					->group_by('m.member_id')
+					->get();
+			
+		return $query->result_array();	
+	}
+	
+
 	public function export() {
 		$code = $this->EE->TMPL->fetch_param('code', 1);
 		$headers = array();
@@ -846,10 +865,70 @@ Plugin for retreiving data from Mundo Liderman's Indicators
 				$data =  $this->_array_region();
 				$filename = "usuarios_x_region";
 				break;
+			case 10: // Exportar todos los liderman
+				$headers = $this->getArrayMemberFields();
+				$headers[] = "total_posts";
+				$headers[] = "total_comments";
+				$data = $this->_array_all_lidermans();
+				$filename = "lidermans";
+				break;
 		}
 		$now = new Datetime('now');
 		$filename .= "_" . $now->getTimestamp();
 		Exporter::to_csv($headers, $data, $filename);
+	}
+
+	private function getCustomMemberFields()
+	{
+		$member_fields = ee()->db->where('m_field_reg', 'y')
+						 ->get("member_fields");
+		return $member_fields->result_array();
+	}
+
+	private function getMemberFieldId($custom_fields, $field_name)
+	{
+		$field_id = 0;
+		foreach ($custom_fields as $key => $value) {
+			if ($field_name == $value["m_field_name"]) {
+				$field_id = $value["m_field_id"];
+				break;
+			}
+		}
+		return 'm_field_id_' . $field_id;
+	}
+
+	private function getArrayMemberFields() {
+		return array(
+	        'codigo-liderman',
+	        'dni',
+	        'nombres',
+	        'apellidos',
+	        'cargo',
+	        'tipo-usuario',
+	        'empresa-empleadora',
+	        'correo-destinatario',
+	        'email-perfil',
+	        'edad',
+	        'lider-zonal',
+	        'periodo-planilla',
+	        'sexo',
+	        'zona',
+	        'unidad'
+	    );
+	}
+
+	private function getSelectMembersData($prefix)
+	{
+		$fields = $this->getArrayMemberFields();
+		$customFields = $this->getCustomMemberFields();
+
+	    $fieldsWithAs = array();
+
+	    foreach ($fields as $field) {
+	    	$fieldsWithAs[] = $prefix . "." . $this->getMemberFieldId($customFields, $field) . " as '" . $field . "'";
+	    }
+
+	    return implode(", ", $fieldsWithAs);
 	}
 
 }
