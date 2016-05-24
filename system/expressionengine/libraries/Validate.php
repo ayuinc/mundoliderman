@@ -228,7 +228,8 @@ class EE_Validate {
 			/**  Is screen name taken?
 			/** -------------------------------------*/
 
-			if (strtolower($this->cur_screen_name) != strtolower($this->screen_name))
+			// Allow screen name duplicate
+			/*if (strtolower($this->cur_screen_name) != strtolower($this->screen_name))
 			{
 				$query = ee()->db->query("SELECT COUNT(*) AS count FROM exp_members WHERE screen_name = '".ee()->db->escape_str($this->screen_name)."'");
 
@@ -236,7 +237,7 @@ class EE_Validate {
 				{
 					$this->errors[] = ee()->lang->line('screen_name_taken');
 				}
-			}
+			}*/
 		}
 	}
 
