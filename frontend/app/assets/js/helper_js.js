@@ -39,6 +39,7 @@ function replaceLinks( text, urls ) {
 function formatLinks() {
   $(".pending-format").each(function(index, element){
        element.innerHTML = urlify(element.innerHTML);
+       element.innerHTML = addBr(element.innerHTML);
        $(element).removeClass("pending-format");
   });
 }
@@ -46,6 +47,10 @@ function formatLinks() {
 function urlify(text) {
   var urls = findUrls(text);
   return replaceLinks(text, urls);
+}
+
+function addBr(text) {
+	return "<p class=\"mb-0\">" + text.split('\n').join('</p><p class=\"mb-0\">') + "</p>";
 }
 
 function updateSolvedStatus(postId, solved) {

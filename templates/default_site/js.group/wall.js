@@ -65,6 +65,13 @@ $(document).on('click', '.like-container', function(e){
 });
 
 $(document).on('keypress', '.write-comment', function(e){
+  if(e.which == 10 && e.ctrlKey) {
+    var $this = $(this);
+    var data = $this.val() + '\n';
+    $this.val(data);
+    return;
+  }
+
   if(e.which == 13) {
     e.preventDefault();
     var $comment_area = $(this);
