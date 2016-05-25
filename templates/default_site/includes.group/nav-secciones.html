@@ -65,32 +65,6 @@
                 <div id="collapse5" class="panel-collapse collapse {embed:in} ph-28" role="tabpanel" aria-labelledby="heading5">
                   <div class="panel-body">
                     <ul id="sgi_menu" class="p-0  light fz-17">
-                      {!--<!-- {exp:channel:categories channel="SGI" style="linear" parent_only="yes"}
-                        {if '{category_description}' != ''}
-                        <li>
-                          <div class="panel-group{category_id}-movil" id="accordion{category_id}" role="tablist" aria-multiselectable="true" category-data="{category_id}" data-parent="{parent_id}">
-                            <div class="panel panel-default">
-                              <div class="panel-heading" role="tab" id="heading{category_id}_movil">
-                                <h4 class="panel-title m-0">
-                                  <a role="button" data-toggle="collapse" data-parent="#accordion{category_id}_movil" href="#collapse{category_id}_movil" aria-expanded="true" aria-controls="collapse{category_id}_movil">
-                                    <h2 class="active-slide fz-16 light text-gray-dark2 text-not-underline m-0 pv-14">{category_name} <img src="{site_url}frontend/app/assets/img/Flecha_Abajo.png" class="pt-7 pull-right"></h2>
-                                  </a>
-                                </h4>
-                              </div>
-                              <div id="collapse{category_id}_movil" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading6">
-                                <div class="panel-body">
-                                  <ul id="include_items" class=" p-0 pv-ch-7 light fz-17">
-                                  {embed="includes/subcategoria" categorydata="{category_id}"}
-                                  </ul>
-                                </div>
-                              </div>    
-                            </div>
-                          </div>
-                        </li>
-                        {if:else}
-                        <li class="border-bottom-gray-lighter pv-7"><a href="{path='servicios/sgi/{segment_3}/category/{category_id}/{category_url_title}'}" data="{parent_id}" class="text-gray-dark2">{category_name}</a></li>
-                        {/if}
-                      {/exp:channel:categories} -->--}
                     </ul>
                   </div>
                 </div>
@@ -131,14 +105,14 @@
                   "<li>"+
                     "<div class=\"panel-group{category_id}-movil\" id=\"accordion{category_id}\" role=\"tablist\" aria-multiselectable=\"true\" category-data=\"{category_id}\" data-parent=\"{parent_id}\">"+
                       "<div class=\"panel panel-default\">"+
-                        "<div class=\"panel-heading\" role=\"tab\" id=\"heading{category_id}_movil\">"+
+                        "<div class=\"panel-heading\" role=\"tab\" id=\"heading{category_id}\">"+
                           "<h4 class=\"panel-title m-0\">"+
-                            "<a role=\"button\" data-toggle=\"collapse\" data-parent=\"#accordion{category_id}_movil\" href=\"#collapse{category_id}_movil\" aria-expanded=\"true\" aria-controls=\"collapse{category_id}_movil\">"+
+                            "<a role=\"button\" data-toggle=\"collapse\" data-parent=\"#accordion{category_id}\" href=\"#collapse{category_id}\" aria-expanded=\"true\" aria-controls=\"collapse{category_id}\">"+
                               "<h2 class=\"active-slide fz-16 light text-gray-dark2 text-not-underline m-0 pv-14\">{category_name} <img src=\"{site_url}frontend/app/assets/img/Flecha_Abajo.png\" class=\"pt-7 pull-right\"></h2>"+
                             "</a>"+
                           "</h4>"+
                         "</div>"+
-                        "<div id=\"collapse{category_id}_movil\" class=\"panel-collapse collapse\" role=\"tabpanel\" aria-labelledby=\"heading6\">"+
+                        "<div id=\"collapse{category_id}\" class=\"panel-collapse collapse\" role=\"tabpanel\" aria-labelledby=\"heading6\">"+
                           "<div class=\"panel-body\">"+
                             "<ul id=\"include_items\" class=\"p-0 pv-ch-7 light fz-17\">"+
                             {embed='includes/subcategoria' categorydata='{category_id}'}
@@ -149,7 +123,7 @@
                     "</div>"+
                   "</li>"+
                   {if:else}
-                  "<li class=\"border-bottom-gray-lighter pv-7\"><a href=\"{path='servicios/sgi/{segment_3}/category/{category_id}/{category_url_title}'}\" data=\"{parent_id}\" class=\"text-gray-dark2\">{category_name}</a></li>"+
+                  "<li class=\"border-bottom-gray-lighter pv-7\"><a href=\"{path='servicios/sgi/{embed:miembro}/category/{embed:miembro}/{category_name}'}\" data=\"{parent_id}\" class=\"text-gray-dark2\">{category_name}</a></li>"+
                   {/if}
                 {/exp:channel:categories}
                 "<li></li>";

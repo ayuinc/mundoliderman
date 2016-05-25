@@ -21,14 +21,14 @@
             </div>
             <div class="panel-group3-movil" id="accordion3_movil" role="tablist" aria-multiselectable="true">
               <div class="panel panel-default">
-                <div class="panel-heading bg-danger ph-28" role="tab" id="heading3">
+                <div class="panel-heading bg-danger ph-28" role="tab" id="heading3_movil">
                   <h4 class="panel-title m-0">
-                    <a role="button" data-toggle="collapse" data-parent="#accordion3_movil" href="{if "{category_description}" != ""}#collapse3_movil{else:if}{path='servicios/sgi/{segment_3}/category/{category_id}/{category_name}'}{/if}" aria-expanded="true" aria-controls="collapse3_movil">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion3_movil" href="#collapse3_movil" aria-expanded="true" aria-controls="collapse3_movil">
                       <h2 class="active-slide fz-22 text-white text-uppercase text-not-underline m-0 pv-14">Indicadores <img src="{site_url}frontend/app/assets/img/flecha-para-abajo.png" alt="" class="pt-7 pull-right"></h2>
                     </a>
                   </h4>
                 </div>
-                <div id="collapse3_movil" class="panel-collapse collapse ph-28" role="tabpanel" aria-labelledby="heading3">
+                <div id="collapse3_movil" class="panel-collapse collapse ph-28" role="tabpanel" aria-labelledby="heading3_movil">
                   <div class="panel-body">
                     <ul id="indicadores_menu_movil" class="p-0 pv-ch-7 light fz-17"> 
                       </ul>
@@ -36,11 +36,11 @@
                 </div>
               </div>
             </div>
-            <div class="panel-group4" id="accordion4_movil" role="tablist" aria-multiselectable="true">
+            <div class="panel-group4-movil" id="accordion4_movil" role="tablist" aria-multiselectable="true">
               <div class="panel panel-default">
                 <div class="panel-heading bg-danger ph-28" role="tab" id="heading4">
                   <h4 class="panel-title m-0">
-                    <a role="button" data-toggle="collapse" data-parent="#accordion4" href="#collapse4_movil" aria-expanded="true" aria-controls="collapse4_movil">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion4_movil" href="#collapse4_movil" aria-expanded="true" aria-controls="collapse4_movil">
                       <h2 class="active-slide fz-22 text-white text-uppercase text-not-underline m-0 pv-14">Tu semáforo <img src="{site_url}frontend/app/assets/img/flecha-para-abajo.png" alt="" class="pt-7 pull-right"></h2>
                     </a>
                   </h4>
@@ -53,7 +53,7 @@
                 </div>
               </div>
             </div>
-            <div class="panel-group5-movil" id="accordion5" role="tablist" aria-multiselectable="true">
+            <div class="panel-group5-movil" id="accordion5_movil" role="tablist" aria-multiselectable="true">
               <div class="panel panel-default">
                 <div class="panel-heading bg-danger ph-28" role="tab" id="heading5_movil">
                   <h4 class="panel-title m-0">
@@ -64,7 +64,7 @@
                 </div>
                 <div id="collapse5_movil" class="panel-collapse collapse {embed:in} ph-28" role="tabpanel" aria-labelledby="heading5">
                   <div class="panel-body">
-                    <ul id="sgi_menu_movil" class="p-0 pv-ch-7 light fz-17"> 
+                    <ul id="sgi_menu_movil" class="p-0 light fz-17"> 
                     </ul>
                   </div>
                 </div>
@@ -100,8 +100,31 @@
                 "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/prestamos/{embed:miembro}'}\" class=\"text-gray-dark2\">Préstamos<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Orden económico</p></a></li>" +
                 "<li><a href=\"{path='servicios/lidercard/{embed:miembro}'}\" class=\"text-gray-dark2\">Lidercard<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Valor agregado</p></a></li>";
               lista4.innerHTML =
-                {exp:channel:categories channel="SGI" style="linear"}
-                  "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/sgi/{segment_3}/category/{category_id}/{category_name}'}\" class=\"text-gray-dark2\">{category_name}</a></li>"+
+                {exp:channel:categories channel="SGI" style="linear" parent_only="yes"}
+                  {if "{category_description}" != ""}
+                  "<li>"+
+                    "<div class=\"panel-group{category_id}-movil\" id=\"accordion{category_id}\" role=\"tablist\" aria-multiselectable=\"true\" category-data=\"{category_id}\" data-parent=\"{parent_id}\">"+
+                      "<div class=\"panel panel-default\">"+
+                        "<div class=\"panel-heading\" role=\"tab\" id=\"heading{category_id}_movil\">"+
+                          "<h4 class=\"panel-title m-0\">"+
+                            "<a role=\"button\" data-toggle=\"collapse\" data-parent=\"#accordion{category_id}_movil\" href=\"#collapse{category_id}_movil\" aria-expanded=\"true\" aria-controls=\"collapse{category_id}_movil\">"+
+                              "<h2 class=\"active-slide fz-16 light text-gray-dark2 text-not-underline m-0 pv-14\">{category_name} <img src=\"{site_url}frontend/app/assets/img/Flecha_Abajo.png\" class=\"pt-7 pull-right\"></h2>"+
+                            "</a>"+
+                          "</h4>"+
+                        "</div>"+
+                        "<div id=\"collapse{category_id}_movil\" class=\"panel-collapse collapse\" role=\"tabpanel\" aria-labelledby=\"heading6\">"+
+                          "<div class=\"panel-body\">"+
+                            "<ul id=\"include_items\" class=\"p-0 pv-ch-7 light fz-17\">"+
+                            {embed='includes/subcategoria' categorydata='{category_id}'}
+                            "</ul>"+
+                          "</div>"+
+                        "</div>"+    
+                      "</div>"+
+                    "</div>"+
+                  "</li>"+
+                  {if:else}
+                  "<li class=\"border-bottom-gray-lighter pv-7\"><a href=\"{path='servicios/sgi/{embed:miembro}/category/{embed:miembro}/{category_name}'}\" data=\"{parent_id}\" class=\"text-gray-dark2\">{category_name}</a></li>"+
+                  {/if}
                 {/exp:channel:categories}
                 "<li></li>";
             boleta.innerHTML =    
