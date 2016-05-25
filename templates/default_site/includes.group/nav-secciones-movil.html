@@ -23,7 +23,7 @@
               <div class="panel panel-default">
                 <div class="panel-heading bg-danger ph-28" role="tab" id="heading3">
                   <h4 class="panel-title m-0">
-                    <a role="button" data-toggle="collapse" data-parent="#accordion3_movil" href="#collapse3_movil" aria-expanded="true" aria-controls="collapse3_movil">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion3_movil" href="{if "{category_description}" != ""}#collapse3_movil{else:if}{path='servicios/sgi/{segment_3}/category/{category_id}/{category_name}'}{/if}" aria-expanded="true" aria-controls="collapse3_movil">
                       <h2 class="active-slide fz-22 text-white text-uppercase text-not-underline m-0 pv-14">Indicadores <img src="{site_url}frontend/app/assets/img/flecha-para-abajo.png" alt="" class="pt-7 pull-right"></h2>
                     </a>
                   </h4>
