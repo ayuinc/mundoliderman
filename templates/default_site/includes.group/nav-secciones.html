@@ -1,5 +1,5 @@
           <div class="contenedor-menu bg-white">
-            <div id="link_boleta" class="panel-group bg-info ph-28"></div>
+            <div id="link_boleta" class="panel-group bg-info ph-28 relative"></div>
             <div class="panel-group2" id="accordion2" role="tablist" aria-multiselectable="true">
               <div class="panel panel-default">
                 <div class="panel-heading bg-danger ph-28" role="tab" id="heading2">
@@ -128,7 +128,7 @@
                 {/exp:channel:categories}
                 "<li></li>";
             boleta.innerHTML =    
-                "<h2 class=\"active-slide fz-22 text-white text-uppercase text-not-underline m-0 pv-14\"><a href=\"{path='servicios/boleta/{embed:miembro}'}\" target=\"_blank\">Boletas de pago</a></h2>";
+                "<div class=\"fz-22 text-white text-uppercase text-not-underline m-0 pv-14\"><a href=\"{path='servicios/boleta/{embed:miembro}'}\">Boletas de pago</a></div>";
             } else if(grupo == 6){
                 lista.innerHTML = "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/lidernet/{embed:miembro}'}\" class=\"text-gray-dark2\">Lidernet</a></li>" +
                                 "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/lidermania/{embed:miembro}'}\" class=\"text-gray-dark2\">Lidermanía</a></li>"+
