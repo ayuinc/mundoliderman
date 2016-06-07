@@ -794,21 +794,21 @@ Plugin for retreiving data from Mundo Liderman's Indicators
 	}
 
 	
-	private function _array_all_lidermans() {
+	private function _query_all_lidermans() {
 		$query = $this->EE->db
 					->select(
-						$this->getSelectMembersData("md") . ", " .
-						"COUNT( DISTINCT ws.id) as total_publicaciones, " .
-						"COUNT( DISTINCT wc.id) as total_comentarios"
+						$this->getSelectMembersData("md") //. ", " .
+						//"COUNT( DISTINCT ws.id) as total_publicaciones, " .
+						//"COUNT( DISTINCT wc.id) as total_comentarios"
 					)
 					->from('members m')
 					->join("member_data md", "md.member_id = m.member_id")
-					->join("wall_status ws", "ws.member_id = m.member_id", "left")
-					->join("wall_comment wc", "wc.comment_member_id = m.member_id", "left")
-					->group_by('m.member_id')
+					//->join("wall_status ws", "ws.member_id = m.member_id", "left")
+					//->join("wall_comment wc", "wc.comment_member_id = m.member_id", "left")
+					//->group_by('m.member_id')
 					->get();
 			
-		return $query->result_array();	
+		return $query;	
 	}
 	
 
@@ -817,6 +817,7 @@ Plugin for retreiving data from Mundo Liderman's Indicators
 		$headers = array();
 		$data = array();
 		$filename = "";
+		$byQuery = false;
 		switch ($code) {
 			case 1: // # Usuarios x Tipo de usuario
 				$headers = array('tipo usuario', 'cantidad', 'porcentaje');
@@ -867,15 +868,21 @@ Plugin for retreiving data from Mundo Liderman's Indicators
 				break;
 			case 10: // Exportar todos los liderman
 				$headers = $this->getArrayMemberFields();
-				$headers[] = "total_posts";
-				$headers[] = "total_comments";
-				$data = $this->_array_all_lidermans();
+/*				$headers[] = "total_posts";
+				$headers[] = "total_comments";*/
+				$query = $this->_query_all_lidermans();
 				$filename = "lidermans";
+				$byQuery = TRUE;
 				break;
 		}
 		$now = new Datetime('now');
 		$filename .= "_" . $now->getTimestamp();
-		Exporter::to_csv($headers, $data, $filename);
+		if (!$byQuery) {
+			Exporter::to_csv($headers, $data, $filename);
+		} else {
+			Exporter::to_csv_by_query($headers, $query, $filename);
+		}
+		
 	}
 
 	private function getCustomMemberFields()

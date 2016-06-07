@@ -1493,6 +1493,14 @@ body .active-like {
   color: #f94211 !important;
 }
 
+.rotate-180 {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
 .site-wrapper,
 .site-content {
   position: relative;
@@ -2235,6 +2243,9 @@ footer > div .lista p {
 }
 
 /*TAREO*/
+#menu-vertical {
+  margin-top: 42px;
+}
 #menu-vertical h3, #menu-vertical h2 {
   font-size: 24px;
   font-size: 1.5rem;
@@ -2244,8 +2255,6 @@ footer > div .lista p {
 }
 #menu-vertical .contenedor-menu {
   position: relative;
-  border: 1px solid #e7e7e7;
-  border-bottom-right-radius: 10px;
   overflow: hidden;
 }
 #menu-vertical .list-slide {
@@ -2803,6 +2812,30 @@ input[type="submit"] {
 }
 
 /*ERROR*/
+.contenedor-menu [class*="panel-group"] {
+  border-bottom: 1px solid white;
+}
+
+#slide-noticias .flickity-page-dots {
+  bottom: -10px !important;
+  right: 28px;
+  width: auto !important;
+}
+#slide-noticias .flickity-page-dots .dot {
+  margin: 0 3px !important;
+}
+
+#jstree .ui-easytree {
+  padding: 0px !important;
+}
+#jstree .ui-easytree li .easytree-expander, #jstree .ui-easytree li .easytree-icon {
+  display: none;
+}
+#jstree .ui-easytree li .easytree-title {
+  margin: 0px !important;
+  padding: 0px !important;
+}
+
 @media only screen and (max-width: 768px) {
   /*LOGIN*/
   .container-login .submit img {
@@ -2927,6 +2960,7 @@ input[type="submit"] {
     -moz-transition: -moz-transform 0.5s ease;
     transition: transform 0.5s ease;
     margin-top: 65px;
+    overflow-y: auto;
   }
   main .overlay-menu input, main .overlay-menu select {
     height: 45px;
@@ -3387,13 +3421,6 @@ input[type="submit"] {
 }
 #mediaspace_wrapper {
   height: 280px !important;
-}
-
-.conteiner-answer {
-  -webkit-transition: all 0.5s ease;
-  -moz-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
-  transition: all 0.5s ease;
 }
 
 .highlighter {

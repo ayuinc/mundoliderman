@@ -2460,23 +2460,23 @@ select[multiple].input-lg {
 
 .btn-danger {
   color: #fff;
-  background-color: #d84928;
-  border-color: #c34123;
+  background-color: #b32c22;
+  border-color: #9e271e;
 }
 .btn-danger:hover, .btn-danger:focus, .btn-danger.focus, .btn-danger:active, .btn-danger.active, .open > .btn-danger.dropdown-toggle {
   color: #fff;
-  background-color: #ae3a1f;
-  border-color: #8f301a;
+  background-color: #88211a;
+  border-color: #6a1a14;
 }
 .btn-danger:active, .btn-danger.active, .open > .btn-danger.dropdown-toggle {
   background-image: none;
 }
 .btn-danger.disabled, .btn-danger.disabled:hover, .btn-danger.disabled:focus, .btn-danger.disabled.focus, .btn-danger.disabled:active, .btn-danger.disabled.active, .btn-danger[disabled], .btn-danger[disabled]:hover, .btn-danger[disabled]:focus, .btn-danger[disabled].focus, .btn-danger[disabled]:active, .btn-danger[disabled].active, fieldset[disabled] .btn-danger, fieldset[disabled] .btn-danger:hover, fieldset[disabled] .btn-danger:focus, fieldset[disabled] .btn-danger.focus, fieldset[disabled] .btn-danger:active, fieldset[disabled] .btn-danger.active {
-  background-color: #d84928;
-  border-color: #c34123;
+  background-color: #b32c22;
+  border-color: #9e271e;
 }
 .btn-danger .badge {
-  color: #d84928;
+  color: #b32c22;
   background-color: #fff;
 }
 
@@ -6123,17 +6123,17 @@ a.text-warning:not(.btn):hover {
 }
 
 .text-danger {
-  color: #d84928;
+  color: #b32c22;
 }
 .text-danger a:not(.btn) {
-  color: #d84928;
+  color: #b32c22;
 }
 .text-danger a:not(.btn):hover {
-  color: #7e2a17;
+  color: #591611;
 }
 
 a.text-danger:not(.btn):hover {
-  color: #7e2a17;
+  color: #591611;
 }
 
 .text-gray-darker {
@@ -6427,11 +6427,11 @@ a.text-linkedin:not(.btn):hover {
 }
 
 .bg-danger {
-  background-color: #d84928;
+  background-color: #b32c22;
 }
 
 .bg-danger-shade {
-  background-color: #7e2a17;
+  background-color: #591611;
 }
 
 .bg-gray-darker {
@@ -15205,15 +15205,15 @@ a.bg-hover-warning:not(.btn):hover,
 }
 
 .bg-hover-danger a:not(.btn):hover {
-  background-color: #a5371e;
+  background-color: #801f18;
 }
 .bg-hover-danger:hover {
-  background-color: #a5371e;
+  background-color: #801f18;
 }
 
 a.bg-hover-danger:not(.btn):hover,
 .btn.bg-hover-danger:hover {
-  background-color: #a5371e;
+  background-color: #801f18;
 }
 
 .bg-hover-gray-darker a:not(.btn):hover {
@@ -15454,7 +15454,7 @@ a.bg-hover-linkedin:not(.btn):hover,
 }
 
 .bg-danger-op {
-  background-color: rgba(216, 73, 40, 0.7);
+  background-color: rgba(179, 44, 34, 0.7);
 }
 
 .bg-gray-darker-op {
@@ -15579,14 +15579,14 @@ a.text-hover-warning:not(.btn):hover {
 }
 
 .text-hover-danger a:not(.btn):hover {
-  color: #a5371e;
+  color: #801f18;
 }
 .text-hover-danger:hover {
-  color: #a5371e;
+  color: #801f18;
 }
 
 a.text-hover-danger:not(.btn):hover {
-  color: #a5371e;
+  color: #801f18;
 }
 
 .text-hover-gray-darker a:not(.btn):hover {
@@ -16190,16 +16190,16 @@ button.btn.btn-danger,
 input[type="submit"].btn.btn-danger,
 .btn.btn-danger {
   color: white;
-  border-color: #d84928;
-  background-color: #d84928;
+  border-color: #b32c22;
+  background-color: #b32c22;
 }
 a.btn.btn-danger:hover,
 button.btn.btn-danger:hover,
 input[type="submit"].btn.btn-danger:hover,
 .btn.btn-danger:hover {
-  background-color: #8b2f19;
+  background-color: #661913;
   color: #f7f7f7;
-  border-color: #cc4425;
+  border-color: #a62920;
 }
 
 a.btn.btn-primary.btn-outline,
@@ -16275,17 +16275,17 @@ button.btn.btn-danger.btn-outline,
 input[type="submit"].btn.btn-danger.btn-outline,
 .btn.btn-danger.btn-outline {
   background: none;
-  border: 1px solid #d84928;
+  border: 1px solid #b32c22;
   border-radius: 4px;
-  color: #d84928;
+  color: #b32c22;
 }
 a.btn.btn-danger.btn-outline:hover,
 button.btn.btn-danger.btn-outline:hover,
 input[type="submit"].btn.btn-danger.btn-outline:hover,
 .btn.btn-danger.btn-outline:hover {
   background: none;
-  border: 1px solid #8b2f19;
-  color: #8b2f19;
+  border: 1px solid #661913;
+  color: #661913;
 }
 a.btn.btn-gray-darker.btn-outline,
 button.btn.btn-gray-darker.btn-outline,

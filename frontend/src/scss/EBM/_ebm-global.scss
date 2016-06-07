@@ -345,6 +345,9 @@ body {
   	color: #f94211!important;
   }
 }
+.rotate-180 {
+	@include transform (rotate(180deg));
+}
 
 .site-wrapper,
 .site-content {
@@ -985,6 +988,7 @@ footer > div {
 
 /*TAREO*/
 #menu-vertical {
+	margin-top: 42px;
 	h3 , h2{
 		font-size: 24px;
 		font-size: rem(24px);
@@ -994,9 +998,7 @@ footer > div {
 	}
 	.contenedor-menu {
 		position: relative;
-  	border: 1px solid #e7e7e7;
-  	border-bottom-right-radius: 10px;
-  	overflow: hidden;
+	  overflow: hidden;
 	}
 	.list-slide {
 		overflow: hidden;
@@ -1499,8 +1501,31 @@ input[type="submit"] {
 
 /*ERROR*/
 
-
-
+.contenedor-menu [class*="panel-group"] {
+	border-bottom: 1px solid white;
+}
+#slide-noticias .flickity-page-dots {
+	bottom: -10px !important;
+	right: 28px;
+  width: auto !important;
+  .dot {
+  	margin: 0 3px !important;
+  }
+}
+#jstree {
+	.ui-easytree {
+		padding: 0px !important;
+		li {
+			.easytree-expander, .easytree-icon {
+				display: none;
+			}
+			.easytree-title {
+				margin: 0px !important;
+				padding: 0px !important;
+			}
+		}
+	}
+}
 @media #{$sm-down} {
 	/*LOGIN*/
 	.container-login {
@@ -1618,6 +1643,7 @@ input[type="submit"] {
 			@include transform(translateX(-100%));
 	  	@include transition(transform .5s ease);
 	  	margin-top: 65px;
+	  	overflow-y: auto;
 	  	input, select {
 	  		height: 45px;
 	  	}

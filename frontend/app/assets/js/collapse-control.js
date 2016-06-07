@@ -3,4 +3,7 @@ $(document).ready(function(){
 		event.preventDefault();
 		$('.texto-semaforo').toggleClass('hidden');
 	});
+	$(".active-slide").click(function(){
+		$(this).find("img").toggleClass("rotate-180");
+	});
 });

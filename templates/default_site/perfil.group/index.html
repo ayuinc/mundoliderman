@@ -3,7 +3,7 @@
 {/if}
 
 {embed=includes/head titulo="Mundo Liderman - Perfil"}
-  
+<link rel="stylesheet" href="{site_url}frontend/src/components/flickity/css/flickity.css" media="screen">
   <div class="site-wrapper"> <!-- Body -->
     {embed="includes/nav-main" acceso_directo="Ir al muro" link="{site_url}"}
     <main class="site-content clearfix pb-42 mb-0">
@@ -15,7 +15,8 @@
           {embed=includes/nav-secciones in="in" miembro="{if segment_2 == 'index'} {segment_3} {if:else} {segment_2} {/if}" miembro_actual="{member_id}" grupo="{member_group}"}
         </section>
         <section id="tareo-contenido" class="col-md-8 pb-42 ph-0-xs">
-          <div class="container pt-42 w-100 ph-0">
+          {embed=includes/slide-noticias}
+          <div class="container pt-21 w-100 ph-0">
             {embed=includes/perfil-servicios miembro="{segment_2}" miembro_actual="{member_id}"}
             {if member_group == 6}
               <div class="bg-gray-lighter ph-21 pv-7 relative" style="top: -10px">
@@ -44,4 +45,5 @@
   <script src="{site_url}frontend/app/assets/js/publish.js?v=1"></script>
   <script src="{site_url}js/status-loader?v=1"></script>
   <script src="{site_url}js/wall?v=1"></script>
+  <script src="{site_url}frontend/app/assets/js/flickity.pkgd.min.js"></script>
 </html>
