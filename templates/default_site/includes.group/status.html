@@ -41,7 +41,7 @@
                     {/if}
                     <p class="fz-10 m-0 text-gray">{post_status_date:relative past="%s atrás"}</p>
                 </div>
-                <div class="col-xs-8 hidden-lg hidden-md pl-35 pr-0-xs"><!--movil-->
+                <div class="col-xs-8 hidden-lg hidden-md pl-35 pl-14-sm pr-0-xs"><!--movil-->
                     <span class="categoria text-uppercase fz-11 text-primary le-1-3">{post_category_name}</span>
                     <h5 class="text-gray-darker m-0 fz-22 lh-1-3">
                     {if member_group == 6}
@@ -97,7 +97,7 @@
                 {/exp:member:custom_profile_data}
             </div>
         </div>
-        <div class="col-md-10 col-md-offset-2 col-xs-12 pl-0 ph-0-xs">
+        <div class="col-md-10 col-md-offset-2 col-xs-12 col-sm-10 col-sm-offset-2 pl-0 ph-0-xs">
             <p class="parrafo pt-14 ph-7 text-gray-darker pending-format">{post_content}</p>
             {if post_image_path}
             <div class="img-publicacion w-100 ph-7 pt-14 text-center"><img src="{exp:routes:S3_PATH}{post_image_path}" alt="" class="w-100"></div>

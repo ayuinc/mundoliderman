@@ -1513,6 +1513,11 @@ main {
 /*
 	Media queries
 */
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+  .hero-image-registro .container-sm {
+    width: 80% !important;
+  }
+}
 @media only screen and (max-width: 992px) {
   .container-md {
     width: 90% !important;
@@ -1788,6 +1793,91 @@ header .perfil {
   background-size: cover;
   background-position: center;
   border-radius: 100%;
+}
+
+/*MEN├Ü MOVIL*/
+.btn-menu {
+  border: 1px solid;
+}
+
+.switch {
+  width: 25px;
+  height: 17px;
+  position: absolute;
+  right: 7px;
+  margin: -15px 0px 0px -15px;
+  cursor: pointer;
+  top: 66%;
+}
+
+.switch.on:after {
+  -webkit-transform: rotate(-45deg) translate(5px, -5px);
+  -moz-transform: rotate(-45deg) translate(5px, -5px);
+  -ms-transform: rotate(-45deg) translate(5px, -5px);
+  -o-transform: rotate(-45deg) translate(5px, -5px);
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+.switch.on:before {
+  -webkit-transform: rotate(45deg) translate(5px, 5px);
+  -moz-transform: rotate(45deg) translate(5px, 5px);
+  -ms-transform: rotate(45deg) translate(5px, 5px);
+  -o-transform: rotate(45deg) translate(5px, 5px);
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.switch .menu-toggle {
+  width: 100%;
+  margin: 4px auto;
+}
+
+.switch .menu-toggle,
+.switch:before, .switch:after {
+  height: 3px;
+  background: black;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+  backface-visibility: hidden;
+}
+
+.switch.on .menu-toggle {
+  opacity: 0;
+}
+
+.switch:before, .switch:after {
+  content: "";
+  display: block;
+}
+
+.overlay-menu {
+  z-index: 200;
+  -webkit-transform: translateX(-100%);
+  -moz-transform: translateX(-100%);
+  -ms-transform: translateX(-100%);
+  -o-transform: translateX(-100%);
+  transform: translateX(-100%);
+  -webkit-transition: -webkit-transform 0.5s ease;
+  -moz-transition: -moz-transform 0.5s ease;
+  transition: transform 0.5s ease;
+  margin-top: 65px;
+  overflow-y: auto;
+}
+.overlay-menu input, .overlay-menu select {
+  height: 45px;
+}
+
+.open-menu {
+  -webkit-transform: translateX(0) !important;
+  -moz-transform: translateX(0) !important;
+  -ms-transform: translateX(0) !important;
+  -o-transform: translateX(0) !important;
+  transform: translateX(0) !important;
+}
+
+.perfil-menu {
+  width: 70px;
+  height: 70px;
 }
 
 .alerta {
@@ -2899,87 +2989,13 @@ input[type="submit"] {
 
   header {
     height: 67px !important;
-    /*MEN├Ü MOVIL*/
   }
   header .logo .liderboy {
     margin-top: -15px;
   }
-  header .btn-menu {
-    border: 1px solid;
-  }
-  header .switch {
-    width: 25px;
-    height: 17px;
-    position: absolute;
-    right: 7px;
-    margin: -15px 0px 0px -15px;
-    cursor: pointer;
-    top: 66%;
-  }
-  header .switch.on:after {
-    -webkit-transform: rotate(-45deg) translate(5px, -5px);
-    -moz-transform: rotate(-45deg) translate(5px, -5px);
-    -ms-transform: rotate(-45deg) translate(5px, -5px);
-    -o-transform: rotate(-45deg) translate(5px, -5px);
-    transform: rotate(-45deg) translate(5px, -5px);
-  }
-  header .switch.on:before {
-    -webkit-transform: rotate(45deg) translate(5px, 5px);
-    -moz-transform: rotate(45deg) translate(5px, 5px);
-    -ms-transform: rotate(45deg) translate(5px, 5px);
-    -o-transform: rotate(45deg) translate(5px, 5px);
-    transform: rotate(45deg) translate(5px, 5px);
-  }
-  header .switch .menu-toggle {
-    width: 100%;
-    margin: 4px auto;
-  }
-  header .switch .menu-toggle,
-  header .switch:before, header .switch:after {
-    height: 3px;
-    background: black;
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    transition: all 0.3s;
-    backface-visibility: hidden;
-  }
-  header .switch.on .menu-toggle {
-    opacity: 0;
-  }
-  header .switch:before, header .switch:after {
-    content: "";
-    display: block;
-  }
 
   main {
     background-color: #E8E8E8 !important;
-  }
-  main .overlay-menu {
-    z-index: 200;
-    -webkit-transform: translateX(-100%);
-    -moz-transform: translateX(-100%);
-    -ms-transform: translateX(-100%);
-    -o-transform: translateX(-100%);
-    transform: translateX(-100%);
-    -webkit-transition: -webkit-transform 0.5s ease;
-    -moz-transition: -moz-transform 0.5s ease;
-    transition: transform 0.5s ease;
-    margin-top: 65px;
-    overflow-y: auto;
-  }
-  main .overlay-menu input, main .overlay-menu select {
-    height: 45px;
-  }
-  main .open-menu {
-    -webkit-transform: translateX(0) !important;
-    -moz-transform: translateX(0) !important;
-    -ms-transform: translateX(0) !important;
-    -o-transform: translateX(0) !important;
-    transform: translateX(0) !important;
-  }
-  main .perfil-menu {
-    width: 70px;
-    height: 70px;
   }
 
   #box-right {

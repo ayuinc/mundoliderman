@@ -364,7 +364,13 @@ $xl-desktop: 1500px;
 $xxl-desktop: 1980px;
 @media #{$xs-only} {}
 @media #{$sm-only} {}
-@media #{$md-only} {}
+@media #{$md-only} {
+	.hero-image-registro {
+		.container-sm {
+			width: 80% !important;
+		}
+	}
+}
 @media #{$lg-only} {}
 @media #{$md-down} {
 	.container-md {
@@ -601,6 +607,60 @@ header {
 		background-position: center;
 		border-radius: 100%;
 	}
+}
+/*MENÚ MOVIL*/
+.btn-menu {
+	border: 1px solid;
+}
+.switch {
+	width: 25px;
+	height: 17px;
+	position: absolute;
+	right: 7px;
+	margin: -15px 0px 0px -15px;
+ 	cursor: pointer;
+ 	top: 66%;
+}
+.switch.on:after {
+  @include transform(rotate(-45deg) translate(5px, -5px));
+}
+.switch.on:before {
+  @include transform(rotate(45deg) translate(5px, 5px));
+}
+.switch .menu-toggle {
+	width: 100%;
+	margin: 4px auto;
+}
+.switch .menu-toggle,
+.switch:before, .switch:after {
+	height: 3px;
+	background: black;
+	@include transition (all 0.3s);
+	backface-visibility: hidden;
+}
+.switch.on .menu-toggle {
+  opacity: 0;
+}
+.switch:before, .switch:after {
+	content: "";
+	display: block;
+}
+.overlay-menu {
+	z-index: 200;
+	@include transform(translateX(-100%));
+	@include transition(transform .5s ease);
+	margin-top: 65px;
+	overflow-y: auto;
+	input, select {
+		height: 45px;
+	}
+}
+.open-menu {
+	@include transform(translateX(0)!important);
+}
+.perfil-menu {
+	width: 70px;
+	height: 70px;
 }
 .alerta {
 	@include transition(all .2s ease-in-out); 
@@ -1602,63 +1662,9 @@ input[type="submit"] {
 				margin-top: -15px;
 			}
 		}
-		/*MENÚ MOVIL*/
-		.btn-menu {
-			border: 1px solid;
-		}
-		.switch {
-	  	width: 25px;
-	  	height: 17px;
-	  	position: absolute;
-	  	right: 7px;
-	  	margin: -15px 0px 0px -15px;
-		 	cursor: pointer;
-		 	top: 66%;
-		}
-		.switch.on:after {
-		  @include transform(rotate(-45deg) translate(5px, -5px));
-		}
-		.switch.on:before {
-		  @include transform(rotate(45deg) translate(5px, 5px));
-		}
-		.switch .menu-toggle {
-	  	width: 100%;
-	  	margin: 4px auto;
-		}
-		.switch .menu-toggle,
-		.switch:before, .switch:after {
-			height: 3px;
-	  	background: black;
-	  	@include transition (all 0.3s);
-	  	backface-visibility: hidden;
-		}
-		.switch.on .menu-toggle {
-		  opacity: 0;
-		}
-		.switch:before, .switch:after {
-	  	content: "";
-	  	display: block;
-		}
 	}
 	main {
 		background-color: #E8E8E8!important;
-		.overlay-menu {
-			z-index: 200;
-			@include transform(translateX(-100%));
-	  	@include transition(transform .5s ease);
-	  	margin-top: 65px;
-	  	overflow-y: auto;
-	  	input, select {
-	  		height: 45px;
-	  	}
-		}
-		.open-menu {
-			@include transform(translateX(0)!important);
-		}
-		.perfil-menu {
-			width: 70px;
-  		height: 70px;
-		}
 	}
 	#box-right {
 		padding-right: 0;
