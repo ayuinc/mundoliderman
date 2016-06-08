@@ -2223,11 +2223,11 @@ footer > div {
   -webkit-transition: all 0.2s ease-in-out;
   -moz-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
-  -webkit-transform: translateY(476px);
-  -moz-transform: translateY(476px);
-  -ms-transform: translateY(476px);
-  -o-transform: translateY(476px);
-  transform: translateY(476px);
+  -webkit-transform: translateY(70vh);
+  -moz-transform: translateY(70vh);
+  -ms-transform: translateY(70vh);
+  -o-transform: translateY(70vh);
+  transform: translateY(70vh);
 }
 footer > div #up {
   height: 45px;
@@ -2283,7 +2283,8 @@ footer > div iframe.video table object#mediaspace {
   height: 285px;
 }
 footer > div .container {
-  height: 475px;
+  height: 70vh;
+  overflow: auto;
   display: -webkit-box;
   display: -moz-box;
   display: box;
@@ -2310,6 +2311,9 @@ footer > div .container {
   -o-justify-content: center;
   justify-content: center;
   -ms-flex-pack: center;
+}
+footer > div .container::-webkit-scrollbar {
+  display: none;
 }
 footer > div .antena {
   width: 40px;

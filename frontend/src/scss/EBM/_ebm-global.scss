@@ -971,7 +971,7 @@ footer > div {
 	background-color: black;   
   bottom: 0;
   @include transition(all .2s ease-in-out);
-  @include transform(translateY(476px));
+  @include transform(translateY(70vh));
   #up {
 		height: 45px;
 	  width: auto;
@@ -1023,8 +1023,12 @@ footer > div {
 	}
 	
 	.container {
-		height: 475px;
+		height: 70vh;
+		overflow: auto;
 		@include flex-column-center;
+		&::-webkit-scrollbar {
+			display: none;
+		}
 	}
 	.antena {
 		width: 40px;
