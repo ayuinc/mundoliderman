@@ -1513,6 +1513,11 @@ main {
 /*
 	Media queries
 */
+@media only screen and (max-width: 992px) {
+  .container-md {
+    width: 90% !important;
+  }
+}
 /*EFECTO DE CARGA WALL*/
 .loading-status:before,
 .loading-status:after,
@@ -3407,7 +3412,7 @@ input[type="submit"] {
   }
 
   .active-up {
-    position: absolute !important;
+    position: fixed !important;
     -webkit-transform: translateY(0%);
     -moz-transform: translateY(0%);
     -ms-transform: translateY(0%);

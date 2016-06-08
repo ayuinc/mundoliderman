@@ -24,7 +24,7 @@
 		    <p class="col-xs-5 fz-15 text-gray-darker pr-0 pl-21">{if HorasExtras100 == null} 0.00 {if:else} {HorasExtras100} {/if}</p>
 		</li>
 	</ul>
-	<ul class="col-md-7 clearfix pt-21 mb-0 pr-0 pl-0-xs">
+	<ul class="col-md-7 clearfix pt-21 mb-0 pr-0 pl-0-xs pl-0-sm">
 		<li class="row border-bottom-gray-lighter">
 		    <span class="col-md-6 col-xs-7 fz-17 text-gray light">Fecha de Ingreso</span>
 		    <p class="col-md-6 col-xs-5 fz-15 text-gray-darker pr-0">{if FechaIngreso == null} - {if:else} {FechaIngreso format="%d-%m-%Y"} {/if}</p>
@@ -48,7 +48,7 @@
 	{/exp:webservice:boleta}
 	</ul>
 </div>
-<ul class="haberes clearfix p-0 pt-21 mb-0 hidden-xs hidden-sm">
+<ul class="haberes clearfix p-0 pt-21 mb-0">
     <li class="clearfix fz-17"><h4 class="text-gray-darker">Haberes</h4></li>
 {exp:webservice:detalle_boleta_haberes periodo="{segment_3}" miembro="{segment_4}"}
 	{if Haberes != null}
@@ -66,7 +66,7 @@
     </li>
 </ul>
 
-<ul class="decuentos clearfix p-0 pt-21 mb-0 hidden-xs hidden-sm">
+<ul class="decuentos clearfix p-0 pt-21 mb-0">
 	<li class="fz-17 text-gray-darker"><h4>Descuentos</h4></li>
 {exp:webservice:detalle_boleta_descuentos periodo="{segment_3}" miembro="{segment_4}"}
 	{if Descuentos != null}
@@ -84,7 +84,7 @@
 	</li>
 </ul>
 
-<ul class="aportaciones clearfix p-0 pt-21 pb-7 mb-0 hidden-xs hidden-sm">
+<ul class="aportaciones clearfix p-0 pt-21 pb-7 mb-0">
 	<li class="fz-17 text-gray-darker"><h4>Aportaciones</h4></li>
 {exp:webservice:detalle_boleta_aportaciones periodo="{segment_3}" miembro="{segment_4}"}
 	{if Aportaciones != null}
@@ -102,7 +102,7 @@
 	</li>
 </ul>
 </div>
-<div class="total clearfix hidden-xs hidden-sm ph-21 mt-42">
+<div class="total clearfix ph-21 mt-42">
   <h4 class="text-gray-darker light col-md-9 fz-20 mv-0 pv-14">Neto a Pagar</h4>
   <h4 class="text-gray-darker light col-md-3 fz-20 mv-0 pv-14"><span id="neto"></span></h4>
 </div>

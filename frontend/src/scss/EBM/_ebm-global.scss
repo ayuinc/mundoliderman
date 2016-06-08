@@ -366,7 +366,11 @@ $xxl-desktop: 1980px;
 @media #{$sm-only} {}
 @media #{$md-only} {}
 @media #{$lg-only} {}
-@media #{$md-down} {}
+@media #{$md-down} {
+	.container-md {
+		width: 90% !important;
+	}
+}
 @media #{$lg-down} {}
 @media #{$sm-up} {}
 @media #{$md-up} {}
@@ -2082,7 +2086,7 @@ input[type="submit"] {
 
 	} 
 	.active-up {
-		position: absolute!important;
+		position: fixed !important;
 		@include transform(translateY(0%));
 	}
 	iframe.audio, iframe.video {
