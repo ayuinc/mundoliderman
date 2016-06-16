@@ -1,5 +1,21 @@
           <div class="contenedor-menu bg-white">
-            <div id="link_boleta_movil" class="panel-group bg-info ph-28"></div>
+            <div class="panel-group-movil relative" id="accordion1" role="tablist" aria-multiselectable="true">
+              <div class="panel panel-default">
+                <div class="panel-heading bg-info ph-28" role="tab" id="heading1">
+                  <h4 class="panel-title m-0">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapse1_movil" aria-expanded="true" aria-controls="collapse1_movil" class="text-not-underline">
+                      <h2 class="active-slide fz-22 text-white text-uppercase text-not-underline m-0 pv-14">Boletas de pago <img src="{site_url}frontend/app/assets/img/flecha-para-abajo.png" alt="" class="pt-7 pull-right"></h2>
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapse1_movil" class="panel-collapse collapse ph-28" role="tabpanel" aria-labelledby="heading1">
+                  <div class="panel-body">
+                    <ul id="link_boleta_movil" class="p-0 pv-ch-7 light fz-17"> 
+                    </ul>
+                  </div> 
+                </div>
+              </div>
+            </div>
             <div class="panel-group2-movil" id="accordion2" role="tablist" aria-multiselectable="true">
               <div class="panel panel-default">
                 <div class="panel-heading bg-danger ph-28" role="tab" id="heading2">
@@ -12,7 +28,7 @@
                 <div id="collapse2_movil" class="panel-collapse collapse ph-28" role="tabpanel" aria-labelledby="heading2">
                   <div class="panel-body">
                     <div class="">
-                      <ul id="lidermania_menu_movil" class="p-0 pv-ch-7 light fz-17"> 
+                      <ul id="lidermania_menu_movil" class="p-0 light fz-17 pt-7"> 
                       </ul>
                     </div>
                   </div>
@@ -82,17 +98,72 @@
             var grupo = "{embed:grupo}";
             if (miembro == miembro_actual) {
               lista.innerHTML = 
-                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/lidermania/{embed:miembro}'}\" class=\"text-gray-dark2\">Lidermanía</a></li>"+
-                {if "{exp:indicators:can_access}" == "1" } 
-                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/sgi/{embed:miembro}'}\" class=\"text-gray-dark2\">SGI</a></li>" +
-                {/if}
-                {if '{exp:parameters:value code="CTS"}' == 'y'}
-                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/cts/{embed:miembro}'}\" class=\"text-gray-dark2\">CTS</a></li>" +
-                {/if}
-                {if '{exp:parameters:value code="UTILIDADES"}' == 'y'}
-                "<li><a href=\"{path='servicios/utilidades/{embed:miembro}'}\" class=\"text-gray-dark2\">Utilidades</a></li>";
-                {/if};
-
+                "<li>"+
+                  "<div class=\"panel-group10-movil\" id=\"accordion10\" role=\"tablist\" aria-multiselectable=\"true\" category-data=\"10\" data-parent=\"{parent_id}\">"+
+                    "<div class=\"panel panel-default\">"+
+                      "<div class=\"panel-heading\" role=\"tab\" id=\"heading10\">"+
+                        "<h4 class=\"panel-title m-0\">"+
+                          "<a role=\"button\" data-toggle=\"collapse\" data-parent=\"#accordion10\" href=\"#collapse10\" aria-expanded=\"true\" aria-controls=\"collapse10\" class=\"text-not-underline\">"+
+                            "<h2 class=\"active-slide fz-17 light text-gray-dark2 text-not-underline m-0 pv-7 border-bottom-gray-lighter\">Ama el trato <img src=\"{site_url}frontend/app/assets/img/Flecha_Abajo.png\" class=\"pt-7 pull-right\"></h2>"+
+                          "</a>"+
+                        "</h4>"+
+                      "</div>"+
+                      "<div id=\"collapse10\" class=\"panel-collapse collapse\" role=\"tabpanel\" aria-labelledby=\"heading6\">"+
+                        "<div class=\"panel-body\">"+
+                          "<ul id=\"include_items\" class=\"p-0 pv-ch-7 light fz-17\">"+
+                            {exp:categories:child_list category_group="4" parent_id="16"}
+                            "<li class=\"\"><a href=\"\" class=\"text-gray-light\" data-cat-id=\"{cat_id}\">{cat_name}</a></li>" +
+                            {/exp:categories:child_list}
+                          "</ul>"+
+                        "</div>"+
+                      "</div>"+    
+                    "</div>"+
+                  "</div>"+
+                "</li>"+
+                "<li>"+
+                  "<div class=\"panel-group11-movil\" id=\"accordion11\" role=\"tablist\" aria-multiselectable=\"true\" category-data=\"11\" data-parent=\"{parent_id}\">"+
+                    "<div class=\"panel panel-default\">"+
+                      "<div class=\"panel-heading\" role=\"tab\" id=\"heading11\">"+
+                        "<h4 class=\"panel-title m-0\">"+
+                          "<a role=\"button\" data-toggle=\"collapse\" data-parent=\"#accordion11\" href=\"#collapse11\" aria-expanded=\"true\" aria-controls=\"collapse11\" class=\"text-not-underline\">"+
+                            "<h2 class=\"active-slide fz-17 light text-gray-dark2 text-not-underline m-0 pv-7 border-bottom-gray-lighter\">Ama el crecimiento <img src=\"{site_url}frontend/app/assets/img/Flecha_Abajo.png\" class=\"pt-7 pull-right\"></h2>"+
+                          "</a>"+
+                        "</h4>"+
+                      "</div>"+
+                      "<div id=\"collapse11\" class=\"panel-collapse collapse\" role=\"tabpanel\" aria-labelledby=\"heading6\">"+
+                        "<div class=\"panel-body\">"+
+                          "<ul id=\"include_items\" class=\"p-0 pv-ch-7 light fz-17\">"+
+                            {exp:categories:child_list category_group="4" parent_id="17"}
+                            "<li class=\"\"><a href=\"\" class=\"text-gray-light\" data-cat-id=\"{cat_id}\">{cat_name}</a></li>" +
+                            {/exp:categories:child_list}
+                          "</ul>"+
+                        "</div>"+
+                      "</div>"+    
+                    "</div>"+
+                  "</div>"+
+                "</li>"+
+                "<li>"+
+                  "<div class=\"panel-group12-movil\" id=\"accordion12\" role=\"tablist\" aria-multiselectable=\"true\" category-data=\"12\" data-parent=\"{parent_id}\">"+
+                    "<div class=\"panel panel-default\">"+
+                      "<div class=\"panel-heading\" role=\"tab\" id=\"heading12\">"+
+                        "<h4 class=\"panel-title m-0\">"+
+                          "<a role=\"button\" data-toggle=\"collapse\" data-parent=\"#accordion12\" href=\"#collapse12\" aria-expanded=\"true\" aria-controls=\"collapse12\" class=\"text-not-underline\">"+
+                            "<h2 class=\"active-slide fz-17 light text-gray-dark2 text-not-underline m-0 pv-7\">Ama el pago <img src=\"{site_url}frontend/app/assets/img/Flecha_Abajo.png\" class=\"pt-7 pull-right\"></h2>"+
+                          "</a>"+
+                        "</h4>"+
+                      "</div>"+
+                      "<div id=\"collapse12\" class=\"panel-collapse collapse\" role=\"tabpanel\" aria-labelledby=\"heading6\">"+
+                        "<div class=\"panel-body\">"+
+                          "<ul id=\"include_items\" class=\"p-0 pv-ch-7 light fz-17\">"+
+                            // {exp:categories:child_list category_group="4" parent_id="17"}
+                            // "<li class=\"\"><a href=\"\" class=\"text-gray\" data-cat-id=\"{cat_id}\">{cat_name}</a></li>" +
+                            // {/exp:categories:child_list}
+                          "</ul>"+
+                        "</div>"+
+                      "</div>"+    
+                    "</div>"+
+                  "</div>"+
+                "</li>";
               lista3.innerHTML =
                 "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/lidernet/{embed:miembro}'}\" class=\"text-gray-dark2\">Lidernet<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Cultura</p></a></li>" +
                 "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/tareo/{embed:miembro}'}\" class=\"text-gray-dark2\">Tareo<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Conducta</p></a></li>" +
@@ -128,7 +199,15 @@
                 {/exp:channel:categories}
                 "<li></li>";
             boleta.innerHTML =    
-                "<div class=\"fz-22 text-white text-uppercase text-not-underline m-0 pv-14\"><a href=\"{path='servicios/boleta/{embed:miembro}'}\">Boletas de pago</a></div>";
+                {if '{exp:parameters:value code="BOLETAS"}' == 'y'}
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/boleta/{embed:miembro}'}\" class=\"text-gray-dark2\">Boletas</a></li>" +
+                {/if}    
+                {if '{exp:parameters:value code="CTS"}' == 'y'}
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/cts/{embed:miembro}'}\" class=\"text-gray-dark2\">CTS</a></li>" +
+                {/if}
+                {if '{exp:parameters:value code="UTILIDADES"}' == 'y'}
+                "<li><a href=\"{path='servicios/utilidades/{embed:miembro}'}\" class=\"text-gray-dark2\">Utilidades</a></li>" +
+                {/if}"";
             } else if(grupo == 6){
                 lista.innerHTML = "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/lidernet/{embed:miembro}'}\" class=\"text-gray-dark2\">Lidernet</a></li>" +
                                 "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/lidermania/{embed:miembro}'}\" class=\"text-gray-dark2\">Lidermanía</a></li>"+
