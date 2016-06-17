@@ -10,8 +10,30 @@
                 </div>
                 <div id="collapse1" class="panel-collapse collapse ph-28" role="tabpanel" aria-labelledby="heading1">
                   <div class="panel-body">
-                    <ul id="link_boleta" class="p-0 pv-ch-7 light fz-17"> 
-                      </ul>
+                    <ul id="link_boleta" class="p-0 pv-ch-7 light fz-17">
+                      <li>
+                        <div class="panel-group10-movil" id="accordion10-movil" role="tablist" aria-multiselectable="true" category-data="10-movil" data-parent="{parent_id}">
+                          <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="heading10-movil">
+                              <h4 class="panel-title m-0">
+                                <a role="button" data-toggle="collapse" data-parent="#accordion10-movil" href="#collapse10-movil" aria-expanded="true" aria-controls="collapse10-movil" class="text-not-underline">
+                                  <h2 class="active-slide fz-17 light text-gray-dark2 text-not-underline m-0 pv-14 border-bottom-gray-lighter">Ama el trato <img src="{site_url}frontend/app/assets/img/Flecha_Abajo.png" class="pt-7 pull-right"></h2>
+                                </a>
+                              </h4>
+                            </div>
+                            <div id="collapse10-movil" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading6">
+                              <div class="panel-body">
+                                <ul id="include_items" class="p-0 pv-ch-7 light fz-17">
+                                  {exp:categories:child_list category_group="4" parent_id="16"}
+                                  <li class=""><a href="" class="text-gray-light" data-cat-id="{cat_id}">{cat_name}</a></li>
+                                  {/exp:categories:child_list}
+                                </ul>
+                              </div>
+                            </div>    
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
                   </div> 
                 </div>
               </div>
@@ -116,7 +138,7 @@
                         "<div class=\"panel-body\">"+
                           "<ul id=\"include_items\" class=\"p-0 pv-ch-7 light fz-17\">"+
                             {exp:categories:child_list category_group="4" parent_id="16"}
-                            "<li class=\"\"><a href=\"\" class=\"text-gray-light\" data-cat-id=\"{cat_id}\">{cat_name}</a></li>" +
+                            "<li class=\"\"><a href=\"\" class=\"text-gray-light link-menu\" data-cat-id=\"{cat_id}\">{cat_name}</a></li>" +
                             {/exp:categories:child_list}
                           "</ul>"+
                         "</div>"+
@@ -138,7 +160,7 @@
                         "<div class=\"panel-body\">"+
                           "<ul id=\"include_items\" class=\"p-0 pv-ch-7 light fz-17\">"+
                             {exp:categories:child_list category_group="4" parent_id="17"}
-                            "<li class=\"\"><a href=\"\" class=\"text-gray-light\" data-cat-id=\"{cat_id}\">{cat_name}</a></li>" +
+                            "<li class=\"\"><a href=\"\" class=\"text-gray-light link-menu\" data-cat-id=\"{cat_id}\">{cat_name}</a></li>" +
                             {/exp:categories:child_list}
                           "</ul>"+
                         "</div>"+
@@ -160,7 +182,7 @@
                         "<div class=\"panel-body\">"+
                           "<ul id=\"include_items\" class=\"p-0 pv-ch-7 light fz-17\">"+
                             // {exp:categories:child_list category_group="4" parent_id="17"}
-                            // "<li class=\"\"><a href=\"\" class=\"text-gray\" data-cat-id=\"{cat_id}\">{cat_name}</a></li>" +
+                            // "<li class=\"\"><a href=\"\" class=\"text-gray link-menu\" data-cat-id=\"{cat_id}\">{cat_name}</a></li>" +
                             // {/exp:categories:child_list}
                           "</ul>"+
                         "</div>"+
