@@ -10,7 +10,7 @@
                 </div>
                 <div id="collapse1" class="panel-collapse collapse ph-28" role="tabpanel" aria-labelledby="heading1">
                   <div class="panel-body">
-                    <ul id="link_boleta" class="p-0 pv-ch-7 light fz-17">
+                    <ul class="p-0 pv-ch-7 light fz-17 link_boleta">
                     </ul>
                   </div> 
                 </div>
@@ -29,7 +29,7 @@
                 <div id="collapse2" class="panel-collapse collapse ph-28" role="tabpanel" aria-labelledby="heading2">
                   <div class="panel-body">
                     <div class="">
-                      <ul id="lidermania_menu" class="p-0 light fz-17 pt-7"> 
+                      <ul class="p-0 light fz-17 pt-7 lidermania_menu"> 
                       </ul>
                     </div>
                   </div>
@@ -37,7 +37,7 @@
               </div>
             </div>
             {if:else}
-            <div id="lidermania_link" class="bg-danger ph-28 panel-group">  
+            <div class="bg-danger ph-28 panel-group lidermania_link">  
             </div>
             {/if}
             {if "{exp:indicators:can_access}" == "1" }
@@ -52,7 +52,7 @@
                 </div>
                 <div id="collapse3" class="panel-collapse collapse ph-28" role="tabpanel" aria-labelledby="heading3">
                   <div class="panel-body">
-                    <ul id="indicadores_menu" class="p-0 pv-ch-7 light fz-17"> 
+                    <ul class="p-0 pv-ch-7 light fz-17 indicadores_menu"> 
                       </ul>
                   </div>
                 </div>
@@ -70,7 +70,7 @@
                 </div>
                 <div id="collapse4" class="panel-collapse collapse ph-28" role="tabpanel" aria-labelledby="heading4">
                   <div class="panel-body">
-                    <ul id="semaforo_menu" class="p-0 pv-ch-7 light fz-17"> 
+                    <ul class="p-0 pv-ch-7 light fz-17 semaforo_menu"> 
                     </ul>
                   </div>
                 </div>
@@ -88,7 +88,7 @@
                 </div>
                 <div id="collapse5" class="panel-collapse collapse ph-28" role="tabpanel" aria-labelledby="heading5">
                   <div class="panel-body">
-                    <ul id="sgi_menu" class="p-0  light fz-17">
+                    <ul class="p-0  light fz-17 sgi_menu">
                     </ul>
                   </div>
                 </div>
@@ -98,20 +98,20 @@
           </div>
           <script type="text/javascript">
             {if "{segment_2}" == "lidermania"}
-            var lista = document.getElementById("lidermania_menu");
+            var lista = $(".lidermania_menu");
             {if:else}
-            var linkLidermania = document.getElementById("lidermania_link");
+            var linkLidermania = $(".lidermania_link");
             {/if}
-            var lista2 = document.getElementById("indicadores_menu");
-            var lista3 = document.getElementById("semaforo_menu");
-            var lista4 = document.getElementById("sgi_menu");
-            var boleta = document.getElementById("link_boleta");
+            var lista2 = $(".indicadores_menu");
+            var lista3 = $(".semaforo_menu");
+            var lista4 = $(".sgi_menu");
+            var boleta = $(".link_boleta");
             var miembro = "{embed:miembro}";
             var miembro_actual = "{embed:miembro_actual}";
             var grupo = "{embed:grupo}";
             if (miembro == miembro_actual) {
               {if "{segment_2}" == "lidermania"}
-              lista.innerHTML =
+              lista.html(
                 "<li>"+
                   "<div class=\"panel-group10\" id=\"accordion10\" role=\"tablist\" aria-multiselectable=\"true\" category-data=\"10\" data-parent=\"{parent_id}\">"+
                     "<div class=\"panel panel-default\">"+
@@ -158,19 +158,19 @@
                 "</li>"+
                 "<li>"+
                   "<h3 class=\"m-0\"><a href=\"\" class=\"fz-17 text-gray-dark2 light text-hover-gray-dark link-menu l-category\" data-cat-id=\"18\">Ama el pago</a></h3>"+
-                "</li>";
+                "</li>");
               {if:else}
-              linkLidermania.innerHTML=
-                "<div class=\"fz-22 text-white text-uppercase text-not-underline m-0 pv-14\"><a href=\"{path='servicios/lidermania/{embed:miembro}'}\">Lidermania</a></div>";
+              linkLidermania.html(
+                "<div class=\"fz-22 text-white text-uppercase text-not-underline m-0 pv-14\"><a href=\"{path='servicios/lidermania/{embed:miembro}'}\">Lidermania</a></div>");
               {/if}
-              lista3.innerHTML =
+              lista3.html(
                 "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/lidernet/{embed:miembro}'}\" class=\"text-gray-dark2\">Lidernet<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Cultura</p></a></li>" +
                 "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/tareo/{embed:miembro}'}\" class=\"text-gray-dark2\">Tareo<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Conducta</p></a></li>" +
                 "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/capacitacion/{embed:miembro}'}\" class=\"text-gray-dark2\">Capacitaciones<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Autocapacitaciones</p></a></li>" +
                 "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/prestamos/{embed:miembro}'}\" class=\"text-gray-dark2\">Préstamos<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Orden económico</p></a></li>" +
-                "<li><a href=\"{path='servicios/lidercard/{embed:miembro}'}\" class=\"text-gray-dark2\">Lidercard<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Valor agregado</p></a></li>";
+                "<li><a href=\"{path='servicios/lidercard/{embed:miembro}'}\" class=\"text-gray-dark2\">Lidercard<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Valor agregado</p></a></li>");
               {if "{exp:indicators:can_access}" == "1" }
-              lista4.innerHTML =
+              lista4.html(
                 {exp:channel:categories channel="SGI" style="linear" parent_only="yes"}
                   {if "{category_description}" != ""}
                   "<li>"+
@@ -197,9 +197,9 @@
                   "<li class=\"border-bottom-gray-lighter pv-7\"><a href=\"{path='servicios/sgi/{embed:miembro}/category/{category_id}/{category_name}'}\" data=\"{parent_id}\" class=\"text-gray-dark2\">{category_name}</a></li>"+
                   {/if}
                 {/exp:channel:categories}
-                "<li></li>";
+                "<li></li>");
               {/if}
-              boleta.innerHTML =
+              boleta.html(
                 {if '{exp:parameters:value code="BOLETAS"}' == 'y'}
                 "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/boleta/{embed:miembro}'}\" class=\"text-gray-dark2\">Boletas</a></li>" +
                 {/if}    
@@ -208,23 +208,23 @@
                 {/if}
                 {if '{exp:parameters:value code="UTILIDADES"}' == 'y'}
                 "<li><a href=\"{path='servicios/utilidades/{embed:miembro}'}\" class=\"text-gray-dark2\">Utilidades</a></li>" +
-                {/if}"";
+                {/if}"");
             } else if(grupo == 6){
               {if "{segment_2}" == "lidermania"}
-                lista.innerHTML = "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/lidernet/{embed:miembro}'}\" class=\"text-gray-dark2\">Lidernet</a></li>" +
+                lista.html("<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/lidernet/{embed:miembro}'}\" class=\"text-gray-dark2\">Lidernet</a></li>" +
                                 "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/lidermania/{embed:miembro}'}\" class=\"text-gray-dark2\">Lidermanía</a></li>"+
                                 "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/tareo/{embed:miembro}'}\" class=\"text-gray-dark2\">Tareo</a></li>" 
                                 {if '{exp:parameters:value code="BOLETAS"}' == 'y'}
                                   + 
                                 "<li><a href=\"{path='servicios/boleta/{embed:miembro}'}\" class=\"text-gray-dark2\">Boletas de Pago</a></li>"
-                                {/if};
+                                {/if});
               {/if}
             }
             {if "{exp:indicators:can_access}" == "1" }
-              lista2.innerHTML += 
-                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='indicadores/demograficos/{embed:miembro}'}\" class=\"text-gray-dark2\">Demográficos</a></li>" +
-                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='indicadores/gestion/{embed:miembro}'}\" class=\"text-gray-dark2\">Gestión</a></li>" +
-                "<li><a href=\"{path='indicadores/interaccion/{embed:miembro}'}\" class=\"text-gray-dark2\">Interacción</a></li>" +
-                "<li><a href=\"{path='indicadores/export/{member_id}/10}\" class=\"text-gray-dark2\">Exportar lidermans</a></li>";
+              lista2.append(
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='indicadores/demograficos/{member_id}'}\" class=\"text-gray-dark2\">Demográficos</a></li>" +
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='indicadores/gestion/{member_id}'}\" class=\"text-gray-dark2\">Gestión</a></li>" +
+                "<li><a href=\"{path='indicadores/interaccion/{member_id}'}\" class=\"text-gray-dark2\">Interacción</a></li>" +
+                "<li><a href=\"{path='indicadores/export/{member_id}/10}\" class=\"text-gray-dark2\">Exportar lidermans</a></li>");
             {/if}
           </script>

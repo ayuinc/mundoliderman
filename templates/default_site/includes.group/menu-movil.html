@@ -12,42 +12,16 @@
         {exp:user:logout return="login"}
           <p class="sans-serif fz-22 mb-14 text-gray-dark"><a href="{url}">Salir</a></p>
         {/exp:user:logout}
-        <!-- <div class="form pt-28">
-          <select name="" id="menu_movil" class="w-100 mb-14 ph-14">
-            <option value="{current_url}" class="w-100">Seleccionar Servicio</option>
-            <option value="{path='servicios/lidernet/{embed:miembro}'}" class="w-100">Cultura</option>
-            <option value="{path='servicios/lidermania/{embed:miembro}'}" class="w-100">Lidermanía</option>
-            <option value="{path='servicios/prestamos/{embed:miembro}'}" class="w-100">Orden económico</option>
-            <option value="{path='servicios/tareo/{embed:miembro}'}" class="w-100">Tareo</option>
-            <option value="{path='servicios/lidercard/{embed:miembro}'}" class="w-100">Valor Agregado</option>
-            <option value="{path='servicios/capacitacion/{embed:miembro}'}" class="w-100">Autocapacitaciones</option>
-            {if '{exp:parameters:value code="BOLETAS"}' == 'y'}
-            <option value="{path='servicios/boleta/{embed:miembro}'}" class="w-100">Boleta de Pago</option>
-            {/if}
-            {if '{exp:parameters:value code="CTS"}' == 'y'}
-            <option value="{path='servicios/cts/{embed:miembro}'}" class="w-100">CTS</option>
-            {/if}
-            {if '{exp:parameters:value code="UTILIDADES"}' == 'y'}
-            <option value="{path='servicios/utilidades/{embed:miembro}'}" class="w-100">Utilidades</option>
-            {/if}
-            {if "{exp:indicators:can_access}" == "1" }
-            <option value="{path='servicios/sgi/{embed:miembro}'}" class="w-100">SGI</option>
-            {/if}
-            {if "{exp:indicators:can_access}" == "1" }
-            <option value="{path='indicadores/demograficos/{embed:miembro}'}" class="w-100">Demográficos</option>
-            <option value="{path='indicadores/gestion/{embed:miembro}'}" class="w-100">Gestión</option>
-            <option value="{path='indicadores/interaccion/{embed:miembro}'}" class="w-100">Interacción</option>
-            {/if}
-          </select>
-        </div> -->
         <section id="menu-vertical" class="pl-0 hidden-md hidden-lg">
-          {embed=includes/nav-secciones-movil miembro="{if segment_2 == 'index'} {segment_3} {if:else} {segment_2} {/if}" miembro_actual="{member_id}" grupo="{member_group}"}
+          {embed=includes/nav-secciones-movil miembro="{if segment_1 == 'wall' || segment_1 == ''} {member_id} {if:else} {segment_3} {/if}" miembro_actual="{member_id}" grupo="{member_group}"}
         </section>
         {exp:user:search
           return="perfil/resultados"
         }
           <input type="text" id="search_bar" class="form-control input-sm fz-18 light ph-14 mv-35" placeholder="Buscar personas..." name="keywords">
         {/exp:user:search}
+
+        <h1>{segment_1}</h1>
       </div>
 
       <script>

@@ -1,35 +1,35 @@
           <div class="contenedor-menu bg-white">
-            <div class="panel-group-movil relative" id="accordion1" role="tablist" aria-multiselectable="true">
+            <div class="panel-group relative" id="accordionmovil1" role="tablist" aria-multiselectable="true">
               <div class="panel panel-default">
                 <div class="panel-heading bg-info ph-28" role="tab" id="heading1">
                   <h4 class="panel-title m-0">
-                    <a role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapse1_movil" aria-expanded="true" aria-controls="collapse1_movil" class="text-not-underline">
+                    <a role="button" data-toggle="collapse" data-parent="#accordionmovil1" href="#collapsemovil1" aria-expanded="true" aria-controls="collapsemovil1" class="text-not-underline">
                       <h2 class="active-slide fz-22 text-white text-uppercase text-not-underline m-0 pv-14">Boletas de pago <img src="{site_url}frontend/app/assets/img/flecha-para-abajo.png" alt="" class="pt-7 pull-right"></h2>
                     </a>
                   </h4>
                 </div>
-                <div id="collapse1_movil" class="panel-collapse collapse ph-28" role="tabpanel" aria-labelledby="heading1">
+                <div id="collapsemovil1" class="panel-collapse collapse ph-28" role="tabpanel" aria-labelledby="heading1">
                   <div class="panel-body">
-                    <ul id="link_boleta_movil" class="p-0 pv-ch-7 light fz-17"> 
+                    <ul class="p-0 pv-ch-7 light fz-17 link_boleta">
                     </ul>
                   </div> 
                 </div>
               </div>
             </div>
             {if "{segment_2}" == "lidermania"}
-            <div class="panel-group2-movil" id="accordion2" role="tablist" aria-multiselectable="true">
+            <div class="panel-group2" id="accordionmovil2" role="tablist" aria-multiselectable="true" data-segment="{segment_2}">
               <div class="panel panel-default">
                 <div class="panel-heading bg-danger ph-28" role="tab" id="heading2">
                   <h4 class="panel-title m-0">
-                    <a role="button" data-toggle="collapse" data-parent="#accordion2" href="#collapse2_movil" aria-expanded="true" aria-controls="collapse2_movil">
+                    <a role="button" data-toggle="collapse" data-parent="#accordionmovil2" href="#collapsemovil2" aria-expanded="true" aria-controls="collapsemovil2">
                       <h2 class="active-slide fz-22 text-white text-uppercase text-not-underline m-0 pv-14">Lidermanía <img src="{site_url}frontend/app/assets/img/flecha-para-abajo.png" alt="" class="pt-7 pull-right"></h2>
                     </a>
                   </h4>
                 </div>
-                <div id="collapse2_movil" class="panel-collapse collapse ph-28" role="tabpanel" aria-labelledby="heading2">
+                <div id="collapsemovil2" class="panel-collapse collapse ph-28" role="tabpanel" aria-labelledby="heading2">
                   <div class="panel-body">
                     <div class="">
-                      <ul id="lidermania_menu_movil" class="p-0 light fz-17 pt-7"> 
+                      <ul class="p-0 light fz-17 pt-7 lidermania_menu"> 
                       </ul>
                     </div>
                   </div>
@@ -37,58 +37,58 @@
               </div>
             </div>
             {if:else}
-            <div id="lidermania_link_movil" class="bg-danger ph-28 panel-group">  
+            <div class="bg-danger ph-28 panel-group lidermania_link">  
             </div>
             {/if}
             {if "{exp:indicators:can_access}" == "1" }
-            <div class="panel-group3-movil" id="accordion3_movil" role="tablist" aria-multiselectable="true">
+            <div class="panel-group3" id="accordionmovil3" role="tablist" aria-multiselectable="true">
               <div class="panel panel-default">
-                <div class="panel-heading bg-danger ph-28" role="tab" id="heading3_movil">
+                <div class="panel-heading bg-danger ph-28" role="tab" id="heading3">
                   <h4 class="panel-title m-0">
-                    <a role="button" data-toggle="collapse" data-parent="#accordion3_movil" href="#collapse3_movil" aria-expanded="true" aria-controls="collapse3_movil">
+                    <a role="button" data-toggle="collapse" data-parent="#accordionmovil3" href="#collapsemovil3" aria-expanded="true" aria-controls="collapsemovil3">
                       <h2 class="active-slide fz-22 text-white text-uppercase text-not-underline m-0 pv-14">Indicadores <img src="{site_url}frontend/app/assets/img/flecha-para-abajo.png" alt="" class="pt-7 pull-right"></h2>
                     </a>
                   </h4>
                 </div>
-                <div id="collapse3_movil" class="panel-collapse collapse ph-28" role="tabpanel" aria-labelledby="heading3_movil">
+                <div id="collapsemovil3" class="panel-collapse collapse ph-28" role="tabpanel" aria-labelledby="heading3">
                   <div class="panel-body">
-                    <ul id="indicadores_menu_movil" class="p-0 pv-ch-7 light fz-17"> 
+                    <ul class="p-0 pv-ch-7 light fz-17 indicadores_menu"> 
                       </ul>
                   </div>
                 </div>
               </div>
             </div>
             {/if}
-            <div class="panel-group4-movil" id="accordion4_movil" role="tablist" aria-multiselectable="true">
+            <div class="panel-group4" id="accordionmovil4" role="tablist" aria-multiselectable="true">
               <div class="panel panel-default">
-                <div class="panel-heading bg-danger ph-28" role="tab" id="heading4_movil">
+                <div class="panel-heading bg-danger ph-28" role="tab" id="heading4">
                   <h4 class="panel-title m-0">
-                    <a role="button" data-toggle="collapse" data-parent="#accordion4_movil" href="#collapse4_movil" aria-expanded="true" aria-controls="collapse4_movil">
+                    <a role="button" data-toggle="collapse" data-parent="#accordionmovil2" href="#collapsemovil4" aria-expanded="true" aria-controls="collapsemovilTwo">
                       <h2 class="active-slide fz-22 text-white text-uppercase text-not-underline m-0 pv-14">Tu semáforo <img src="{site_url}frontend/app/assets/img/flecha-para-abajo.png" alt="" class="pt-7 pull-right"></h2>
                     </a>
                   </h4>
                 </div>
-                <div id="collapse4_movil" class="panel-collapse collapse ph-28" role="tabpanel" aria-labelledby="heading4_movil">
+                <div id="collapsemovil4" class="panel-collapse collapse ph-28" role="tabpanel" aria-labelledby="heading4">
                   <div class="panel-body">
-                    <ul id="semaforo_menu_movil" class="p-0 pv-ch-7 light fz-17"> 
+                    <ul class="p-0 pv-ch-7 light fz-17 semaforo_menu"> 
                     </ul>
                   </div>
                 </div>
               </div>
             </div>
             {if "{exp:indicators:can_access}" == "1" }
-            <div class="panel-group5-movil" id="accordion5_movil" role="tablist" aria-multiselectable="true">
+            <div class="panel-group5" id="accordionmovil5" role="tablist" aria-multiselectable="true">
               <div class="panel panel-default">
-                <div class="panel-heading bg-danger ph-28" role="tab" id="heading5_movil">
+                <div class="panel-heading bg-danger ph-28" role="tab" id="heading5">
                   <h4 class="panel-title m-0">
-                    <a role="button" data-toggle="collapse" data-parent="#accordion5_movil" href="#collapse5_movil" aria-expanded="true" aria-controls="collapse5_movil">
+                    <a role="button" data-toggle="collapse" data-parent="#accordionmovil5" href="#collapsemovil5" aria-expanded="true" aria-controls="collapsemovil5">
                       <h2 class="active-slide fz-22 text-white text-uppercase text-not-underline m-0 pv-14">sgi <img src="{site_url}frontend/app/assets/img/flecha-para-abajo.png" alt="" class="pt-7 pull-right"></h2>
                     </a>
                   </h4>
                 </div>
-                <div id="collapse5_movil" class="panel-collapse collapse {embed:in} ph-28" role="tabpanel" aria-labelledby="heading5_movil">
+                <div id="collapsemovil5" class="panel-collapse collapse ph-28" role="tabpanel" aria-labelledby="heading5">
                   <div class="panel-body">
-                    <ul id="sgi_menu_movil" class="p-0 light fz-17"> 
+                    <ul class="p-0  light fz-17 sgi_menu">
                     </ul>
                   </div>
                 </div>
@@ -98,31 +98,31 @@
           </div>
           <script type="text/javascript">
             {if "{segment_2}" == "lidermania"}
-            var lista = document.getElementById("lidermania_menu_movil");
+            var lista = $(".lidermania_menu");
             {if:else}
-            var linkLidermania = document.getElementById("lidermania_link_movil");
+            var linkLidermania = $(".lidermania_link");
             {/if}
-            var lista2 = document.getElementById("indicadores_menu_movil");
-            var lista3 = document.getElementById("semaforo_menu_movil");
-            var lista4 = document.getElementById("sgi_menu_movil");
-            var boleta = document.getElementById("link_boleta_movil");
+            var lista2 = $(".indicadores_menu");
+            var lista3 = $(".semaforo_menu");
+            var lista4 = $(".sgi_menu");
+            var boleta = $(".link_boleta");
             var miembro = "{embed:miembro}";
             var miembro_actual = "{embed:miembro_actual}";
             var grupo = "{embed:grupo}";
             if (miembro == miembro_actual) {
               {if "{segment_2}" == "lidermania"}
-              lista.innerHTML = 
+              lista.html(
                 "<li>"+
-                  "<div class=\"panel-group10-movil\" id=\"accordion10-movil\" role=\"tablist\" aria-multiselectable=\"true\" category-data=\"10-movil\" data-parent=\"{parent_id}\">"+
+                  "<div class=\"panel-group10\" id=\"accordionmovil10\" role=\"tablist\" aria-multiselectable=\"true\" category-data=\"10\" data-parent=\"{parent_id}\">"+
                     "<div class=\"panel panel-default\">"+
-                      "<div class=\"panel-heading\" role=\"tab\" id=\"heading10-movil\">"+
+                      "<div class=\"panel-heading\" role=\"tab\" id=\"heading10\">"+
                         "<h4 class=\"panel-title m-0\">"+
-                          "<a role=\"button\" data-toggle=\"collapse\" data-parent=\"#accordion10-movil\" href=\"#collapse10-movil\" aria-expanded=\"true\" aria-controls=\"collapse10-movil\" class=\"text-not-underline\">"+
+                          "<a role=\"button\" data-toggle=\"collapsemovil\" data-parent=\"#accordionmovil10\" href=\"#collapsemovil10\" aria-expanded=\"true\" aria-controls=\"collapsemovil10\" class=\"text-not-underline\">"+
                             "<h2 class=\"active-slide fz-17 light text-gray-dark2 text-not-underline m-0 pv-7 border-bottom-gray-lighter\">Ama el trato <img src=\"{site_url}frontend/app/assets/img/Flecha_Abajo.png\" class=\"pt-7 pull-right\"></h2>"+
                           "</a>"+
                         "</h4>"+
                       "</div>"+
-                      "<div id=\"collapse10-movil\" class=\"panel-collapse collapse\" role=\"tabpanel\" aria-labelledby=\"heading6\">"+
+                      "<div id=\"collapsemovil10\" class=\"panel-collapse collapse\" role=\"tabpanel\" aria-labelledby=\"heading6\">"+
                         "<div class=\"panel-body\">"+
                           "<ul id=\"include_items\" class=\"p-0 pv-ch-7 light fz-17\">"+
                             {exp:categories:child_list category_group="4" parent_id="16"}
@@ -135,16 +135,16 @@
                   "</div>"+
                 "</li>"+
                 "<li>"+
-                  "<div class=\"panel-group11-movil\" id=\"accordion11-movil\" role=\"tablist\" aria-multiselectable=\"true\" category-data=\"11-movil\" data-parent=\"{parent_id}\">"+
+                  "<div class=\"panel-group11\" id=\"accordionmovil11\" role=\"tablist\" aria-multiselectable=\"true\" category-data=\"11\" data-parent=\"{parent_id}\">"+
                     "<div class=\"panel panel-default\">"+
-                      "<div class=\"panel-heading\" role=\"tab\" id=\"heading11-movil\">"+
+                      "<div class=\"panel-heading\" role=\"tab\" id=\"heading11\">"+
                         "<h4 class=\"panel-title m-0\">"+
-                          "<a role=\"button\" data-toggle=\"collapse\" data-parent=\"#accordion11-movil\" href=\"#collapse11-movil\" aria-expanded=\"true\" aria-controls=\"collapse11-movil\" class=\"text-not-underline\">"+
+                          "<a role=\"button\" data-toggle=\"collapsemovil\" data-parent=\"#accordionmovil11\" href=\"#collapsemovil11\" aria-expanded=\"true\" aria-controls=\"collapsemovil11\" class=\"text-not-underline\">"+
                             "<h2 class=\"active-slide fz-17 light text-gray-dark2 text-not-underline m-0 pv-7 border-bottom-gray-lighter\">Ama el crecimiento <img src=\"{site_url}frontend/app/assets/img/Flecha_Abajo.png\" class=\"pt-7 pull-right\"></h2>"+
                           "</a>"+
                         "</h4>"+
                       "</div>"+
-                      "<div id=\"collapse11-movil\" class=\"panel-collapse collapse\" role=\"tabpanel\" aria-labelledby=\"heading6\">"+
+                      "<div id=\"collapsemovil11\" class=\"panel-collapse collapse\" role=\"tabpanel\" aria-labelledby=\"heading6\">"+
                         "<div class=\"panel-body\">"+
                           "<ul id=\"include_items\" class=\"p-0 pv-ch-7 light fz-17\">"+
                             {exp:categories:child_list category_group="4" parent_id="17"}
@@ -158,31 +158,32 @@
                 "</li>"+
                 "<li>"+
                   "<h3 class=\"m-0\"><a href=\"\" class=\"fz-17 text-gray-dark2 light text-hover-gray-dark link-menu l-category\" data-cat-id=\"18\">Ama el pago</a></h3>"+
-                "</li>";
+                "</li>");
               {if:else}
-              linkLidermania.innerHTML=
-                "<div class=\"fz-22 text-white text-uppercase text-not-underline m-0 pv-14\"><a href=\"{path='servicios/lidermania/{embed:miembro}'}\">Lidermania</a></div>";
+              linkLidermania.html(
+                "<div class=\"fz-22 text-white text-uppercase text-not-underline m-0 pv-14\"><a href=\"{path='servicios/lidermania/{embed:miembro}'}\">Lidermania</a></div>");
               {/if}
-              lista3.innerHTML =
+              lista3.html(
                 "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/lidernet/{embed:miembro}'}\" class=\"text-gray-dark2\">Lidernet<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Cultura</p></a></li>" +
                 "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/tareo/{embed:miembro}'}\" class=\"text-gray-dark2\">Tareo<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Conducta</p></a></li>" +
                 "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/capacitacion/{embed:miembro}'}\" class=\"text-gray-dark2\">Capacitaciones<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Autocapacitaciones</p></a></li>" +
                 "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/prestamos/{embed:miembro}'}\" class=\"text-gray-dark2\">Préstamos<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Orden económico</p></a></li>" +
-                "<li><a href=\"{path='servicios/lidercard/{embed:miembro}'}\" class=\"text-gray-dark2\">Lidercard<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Valor agregado</p></a></li>";
-              lista4.innerHTML =
+                "<li><a href=\"{path='servicios/lidercard/{embed:miembro}'}\" class=\"text-gray-dark2\">Lidercard<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Valor agregado</p></a></li>");
+              {if "{exp:indicators:can_access}" == "1" }
+              lista4.html(
                 {exp:channel:categories channel="SGI" style="linear" parent_only="yes"}
                   {if "{category_description}" != ""}
                   "<li>"+
-                    "<div class=\"panel-group{category_id}-movil\" id=\"accordion{category_id}\" role=\"tablist\" aria-multiselectable=\"true\" category-data=\"{category_id}\" data-parent=\"{parent_id}\">"+
+                    "<div class=\"panel-group{category_id}-movil\" id=\"accordionmovil{category_id}\" role=\"tablist\" aria-multiselectable=\"true\" category-data=\"{category_id}\" data-parent=\"{parent_id}\">"+
                       "<div class=\"panel panel-default\">"+
-                        "<div class=\"panel-heading\" role=\"tab\" id=\"heading{category_id}_movil\">"+
+                        "<div class=\"panel-heading\" role=\"tab\" id=\"heading{category_id}\">"+
                           "<h4 class=\"panel-title m-0\">"+
-                            "<a role=\"button\" data-toggle=\"collapse\" data-parent=\"#accordion{category_id}_movil\" href=\"#collapse{category_id}_movil\" aria-expanded=\"true\" aria-controls=\"collapse{category_id}_movil\">"+
+                            "<a role=\"button\" data-toggle=\"collapsemovil\" data-parent=\"#accordionmovil{category_id}\" href=\"#collapsemovil{category_id}\" aria-expanded=\"true\" aria-controls=\"collapsemovil{category_id}\">"+
                               "<h2 class=\"active-slide fz-16 light text-gray-dark2 text-not-underline m-0 pv-14\">{category_name} <img src=\"{site_url}frontend/app/assets/img/Flecha_Abajo.png\" class=\"pt-7 pull-right\"></h2>"+
                             "</a>"+
                           "</h4>"+
                         "</div>"+
-                        "<div id=\"collapse{category_id}_movil\" class=\"panel-collapse collapse\" role=\"tabpanel\" aria-labelledby=\"heading6\">"+
+                        "<div id=\"collapsemovil{category_id}\" class=\"panel-collapse collapse\" role=\"tabpanel\" aria-labelledby=\"heading6\">"+
                           "<div class=\"panel-body\">"+
                             "<ul id=\"include_items\" class=\"p-0 pv-ch-7 light fz-17\">"+
                             {embed='includes/subcategoria' categorydata='{category_id}'}
@@ -193,11 +194,12 @@
                     "</div>"+
                   "</li>"+
                   {if:else}
-                  "<li class=\"border-bottom-gray-lighter pv-7\"><a href=\"{path='servicios/sgi/{embed:miembro}/category/{embed:miembro}/{category_name}'}\" data=\"{parent_id}\" class=\"text-gray-dark2\">{category_name}</a></li>"+
+                  "<li class=\"border-bottom-gray-lighter pv-7\"><a href=\"{path='servicios/sgi/{embed:miembro}/category/{category_id}/{category_name}'}\" data=\"{parent_id}\" class=\"text-gray-dark2\">{category_name}</a></li>"+
                   {/if}
                 {/exp:channel:categories}
-                "<li></li>";
-              boleta.innerHTML =    
+                "<li></li>");
+              {/if}
+              boleta.html(
                 {if '{exp:parameters:value code="BOLETAS"}' == 'y'}
                 "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/boleta/{embed:miembro}'}\" class=\"text-gray-dark2\">Boletas</a></li>" +
                 {/if}    
@@ -206,22 +208,23 @@
                 {/if}
                 {if '{exp:parameters:value code="UTILIDADES"}' == 'y'}
                 "<li><a href=\"{path='servicios/utilidades/{embed:miembro}'}\" class=\"text-gray-dark2\">Utilidades</a></li>" +
-                {/if}"";
+                {/if}"");
             } else if(grupo == 6){
               {if "{segment_2}" == "lidermania"}
-                lista.innerHTML = "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/lidernet/{embed:miembro}'}\" class=\"text-gray-dark2\">Lidernet</a></li>" +
+                lista.html("<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/lidernet/{embed:miembro}'}\" class=\"text-gray-dark2\">Lidernet</a></li>" +
                                 "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/lidermania/{embed:miembro}'}\" class=\"text-gray-dark2\">Lidermanía</a></li>"+
                                 "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/tareo/{embed:miembro}'}\" class=\"text-gray-dark2\">Tareo</a></li>" 
                                 {if '{exp:parameters:value code="BOLETAS"}' == 'y'}
                                   + 
                                 "<li><a href=\"{path='servicios/boleta/{embed:miembro}'}\" class=\"text-gray-dark2\">Boletas de Pago</a></li>"
-                                {/if};
+                                {/if});
               {/if}
             }
             {if "{exp:indicators:can_access}" == "1" }
-              lista2.innerHTML += 
-                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='indicadores/demograficos/{embed:miembro}'}\" class=\"text-gray-dark2\">Demográficos</a></li>" +
-                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='indicadores/gestion/{embed:miembro}'}\" class=\"text-gray-dark2\">Gestión</a></li>" +
-                "<li><a href=\"{path='indicadores/interaccion/{embed:miembro}'}\" class=\"text-gray-dark2\">Interacción</a></li>";
+              lista2.append(
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='indicadores/demograficos/{member_id}'}\" class=\"text-gray-dark2\">Demográficos</a></li>" +
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='indicadores/gestion/{member_id}'}\" class=\"text-gray-dark2\">Gestión</a></li>" +
+                "<li><a href=\"{path='indicadores/interaccion/{member_id}'}\" class=\"text-gray-dark2\">Interacción</a></li>" +
+                "<li><a href=\"{path='indicadores/export/{member_id}/10}\" class=\"text-gray-dark2\">Exportar lidermans</a></li>");
             {/if}
           </script>
