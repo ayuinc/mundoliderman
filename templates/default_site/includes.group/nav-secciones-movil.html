@@ -10,7 +10,7 @@
                 </div>
                 <div id="collapsemovil1" class="panel-collapse collapse ph-28" role="tabpanel" aria-labelledby="heading1">
                   <div class="panel-body">
-                    <ul class="p-0 pv-ch-7 light fz-17 link_boleta">
+                    <ul class="p-0 pv-ch-7 light fz-17 link_boleta_movil">
                     </ul>
                   </div> 
                 </div>
@@ -29,7 +29,7 @@
                 <div id="collapsemovil2" class="panel-collapse collapse ph-28" role="tabpanel" aria-labelledby="heading2">
                   <div class="panel-body">
                     <div class="">
-                      <ul class="p-0 light fz-17 pt-7 lidermania_menu"> 
+                      <ul class="p-0 light fz-17 pt-7 lidermania_menu_movil"> 
                       </ul>
                     </div>
                   </div>
@@ -37,7 +37,7 @@
               </div>
             </div>
             {if:else}
-            <div class="bg-danger ph-28 panel-group lidermania_link">  
+            <div class="bg-danger ph-28 panel-group lidermania_link_movil">  
             </div>
             {/if}
             {if "{exp:indicators:can_access}" == "1" }
@@ -52,7 +52,7 @@
                 </div>
                 <div id="collapsemovil3" class="panel-collapse collapse ph-28" role="tabpanel" aria-labelledby="heading3">
                   <div class="panel-body">
-                    <ul class="p-0 pv-ch-7 light fz-17 indicadores_menu"> 
+                    <ul class="p-0 pv-ch-7 light fz-17 indicadores_menu_movil"> 
                       </ul>
                   </div>
                 </div>
@@ -70,7 +70,7 @@
                 </div>
                 <div id="collapsemovil4" class="panel-collapse collapse ph-28" role="tabpanel" aria-labelledby="heading4">
                   <div class="panel-body">
-                    <ul class="p-0 pv-ch-7 light fz-17 semaforo_menu"> 
+                    <ul class="p-0 pv-ch-7 light fz-17 semaforo_menu_movil"> 
                     </ul>
                   </div>
                 </div>
@@ -88,7 +88,7 @@
                 </div>
                 <div id="collapsemovil5" class="panel-collapse collapse ph-28" role="tabpanel" aria-labelledby="heading5">
                   <div class="panel-body">
-                    <ul class="p-0  light fz-17 sgi_menu">
+                    <ul class="p-0  light fz-17 sgi_menu_movil">
                     </ul>
                   </div>
                 </div>
@@ -98,31 +98,32 @@
           </div>
           <script type="text/javascript">
             {if "{segment_2}" == "lidermania"}
-            var lista = $(".lidermania_menu");
+            var lista = $(".lidermania_menu_movil");
             {if:else}
-            var linkLidermania = $(".lidermania_link");
+            var linkLidermania = $(".lidermania_link_movil");
             {/if}
-            var lista2 = $(".indicadores_menu");
-            var lista3 = $(".semaforo_menu");
-            var lista4 = $(".sgi_menu");
-            var boleta = $(".link_boleta");
+            var lista2 = $(".indicadores_menu_movil");
+            var lista3 = $(".semaforo_menu_movil");
+            var lista4 = $(".sgi_menu_movil");
+            var boleta = $(".link_boleta_movil");
             var miembro = "{embed:miembro}";
             var miembro_actual = "{embed:miembro_actual}";
             var grupo = "{embed:grupo}";
             if (miembro == miembro_actual) {
               {if "{segment_2}" == "lidermania"}
+              console.log("nav-loaded! movil");
               lista.html(
                 "<li>"+
                   "<div class=\"panel-group10\" id=\"accordionmovil10\" role=\"tablist\" aria-multiselectable=\"true\" category-data=\"10\" data-parent=\"{parent_id}\">"+
                     "<div class=\"panel panel-default\">"+
-                      "<div class=\"panel-heading\" role=\"tab\" id=\"heading10\">"+
+                      "<div class=\"panel-heading\" role=\"tab\" id=\"headingmovil10\">"+
                         "<h4 class=\"panel-title m-0\">"+
-                          "<a role=\"button\" data-toggle=\"collapsemovil\" data-parent=\"#accordionmovil10\" href=\"#collapsemovil10\" aria-expanded=\"true\" aria-controls=\"collapsemovil10\" class=\"text-not-underline\">"+
+                          "<a role=\"button\" data-toggle=\"collapse\" data-parent=\"#accordionmovil10\" href=\"#collapsemovil10\" aria-expanded=\"true\" aria-controls=\"collapsemovil10\" class=\"text-not-underline\">"+
                             "<h2 class=\"active-slide fz-17 light text-gray-dark2 text-not-underline m-0 pv-7 border-bottom-gray-lighter\">Ama el trato <img src=\"{site_url}frontend/app/assets/img/Flecha_Abajo.png\" class=\"pt-7 pull-right\"></h2>"+
                           "</a>"+
                         "</h4>"+
                       "</div>"+
-                      "<div id=\"collapsemovil10\" class=\"panel-collapse collapse\" role=\"tabpanel\" aria-labelledby=\"heading6\">"+
+                      "<div id=\"collapsemovil10\" class=\"panel-collapse collapse\" role=\"tabpanel\" aria-labelledby=\"heading10\">"+
                         "<div class=\"panel-body\">"+
                           "<ul id=\"include_items\" class=\"p-0 pv-ch-7 light fz-17\">"+
                             {exp:categories:child_list category_group="4" parent_id="16"}
@@ -137,14 +138,14 @@
                 "<li>"+
                   "<div class=\"panel-group11\" id=\"accordionmovil11\" role=\"tablist\" aria-multiselectable=\"true\" category-data=\"11\" data-parent=\"{parent_id}\">"+
                     "<div class=\"panel panel-default\">"+
-                      "<div class=\"panel-heading\" role=\"tab\" id=\"heading11\">"+
+                      "<div class=\"panel-heading\" role=\"tab\" id=\"headingmovil11\">"+
                         "<h4 class=\"panel-title m-0\">"+
-                          "<a role=\"button\" data-toggle=\"collapsemovil\" data-parent=\"#accordionmovil11\" href=\"#collapsemovil11\" aria-expanded=\"true\" aria-controls=\"collapsemovil11\" class=\"text-not-underline\">"+
+                          "<a role=\"button\" data-toggle=\"collapse\" data-parent=\"#accordionmovil11\" href=\"#collapsemovil11\" aria-expanded=\"true\" aria-controls=\"collapsemovil11\" class=\"text-not-underline\">"+
                             "<h2 class=\"active-slide fz-17 light text-gray-dark2 text-not-underline m-0 pv-7 border-bottom-gray-lighter\">Ama el crecimiento <img src=\"{site_url}frontend/app/assets/img/Flecha_Abajo.png\" class=\"pt-7 pull-right\"></h2>"+
                           "</a>"+
                         "</h4>"+
                       "</div>"+
-                      "<div id=\"collapsemovil11\" class=\"panel-collapse collapse\" role=\"tabpanel\" aria-labelledby=\"heading6\">"+
+                      "<div id=\"collapsemovil11\" class=\"panel-collapse collapse\" role=\"tabpanel\" aria-labelledby=\"headingmovil11\">"+
                         "<div class=\"panel-body\">"+
                           "<ul id=\"include_items\" class=\"p-0 pv-ch-7 light fz-17\">"+
                             {exp:categories:child_list category_group="4" parent_id="17"}
@@ -178,7 +179,7 @@
                       "<div class=\"panel panel-default\">"+
                         "<div class=\"panel-heading\" role=\"tab\" id=\"heading{category_id}\">"+
                           "<h4 class=\"panel-title m-0\">"+
-                            "<a role=\"button\" data-toggle=\"collapsemovil\" data-parent=\"#accordionmovil{category_id}\" href=\"#collapsemovil{category_id}\" aria-expanded=\"true\" aria-controls=\"collapsemovil{category_id}\">"+
+                            "<a role=\"button\" data-toggle=\"collapse\" data-parent=\"#accordionmovil{category_id}\" href=\"#collapsemovil{category_id}\" aria-expanded=\"true\" aria-controls=\"collapsemovil{category_id}\">"+
                               "<h2 class=\"active-slide fz-16 light text-gray-dark2 text-not-underline m-0 pv-14\">{category_name} <img src=\"{site_url}frontend/app/assets/img/Flecha_Abajo.png\" class=\"pt-7 pull-right\"></h2>"+
                             "</a>"+
                           "</h4>"+
