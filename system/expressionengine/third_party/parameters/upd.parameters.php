@@ -38,13 +38,23 @@ class Parameters_upd {
 			$data = array(
 				array(
 					'code' => 'BOLETAS',
-					'description' => 'Muestra boletas de pago',
+					'description' => 'Muestra Boletas de Pago',
 					'value' => 'y'
 				),
 				array(
 					'code' => 'CTS',
 					'description' => 'Muestra CTS',
 					'value' => 'y'
+				),
+				array(
+					'code' => 'ACCESSSGI',
+					'description' => 'Acceso a SGI',
+					'value' => ''
+				),
+				array(
+					'code' => 'ACCESSIND',
+					'description' => 'Acceso a indicadores',
+					'value' => ''
 				)
 			);
 

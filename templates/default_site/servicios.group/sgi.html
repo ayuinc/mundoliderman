@@ -1,7 +1,7 @@
 {if logged_out}
   {redirect="login"}
 {if:else}
-  {if "{exp:indicators:can_access}" != "1" }
+  {if "{exp:parameters:can_access_sgi}" != "1" }
     {redirect="wall"}
   {/if}
 {/if}

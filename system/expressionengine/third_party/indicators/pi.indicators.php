@@ -54,11 +54,6 @@ Plugin for retreiving data from Mundo Liderman's Indicators
 		return $buffer;
 	}
 
-	public function can_access() {
-		$group_id = $group_id = $this->EE->session->userdata('group_id');
-		$groups = explode('|', $this->EE->config->item('indicators_access'));
-		return in_array($group_id, $groups);
-	}
 
 	public function get_total_users() {
 		return $this->EE->db

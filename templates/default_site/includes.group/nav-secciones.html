@@ -40,7 +40,7 @@
             <div class="bg-danger ph-28 panel-group lidermania_link">  
             </div>
             {/if}
-            {if "{exp:indicators:can_access}" == "1" }
+            {if "{exp:parameters:can_access_indicators}" == "1" }
             <div class="panel-group3" id="accordion3" role="tablist" aria-multiselectable="true">
               <div class="panel panel-default">
                 <div class="panel-heading bg-danger ph-28" role="tab" id="heading3">
@@ -76,7 +76,7 @@
                 </div>
               </div>
             </div>
-            {if "{exp:indicators:can_access}" == "1" }
+            {if "{exp:parameters:can_access_sgi}" == "1" }
             <div class="panel-group5" id="accordion5" role="tablist" aria-multiselectable="true">
               <div class="panel panel-default">
                 <div class="panel-heading bg-danger ph-28" role="tab" id="heading5">
@@ -168,7 +168,7 @@
                 "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/capacitacion/{member_id}'}\" class=\"text-gray-dark2\">Capacitaciones<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Autocapacitaciones</p></a></li>" +
                 "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/prestamos/{member_id}'}\" class=\"text-gray-dark2\">Préstamos<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Orden económico</p></a></li>" +
                 "<li><a href=\"{path='servicios/lidercard/{member_id}'}\" class=\"text-gray-dark2\">Lidercard<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Valor agregado</p></a></li>");
-              {if "{exp:indicators:can_access}" == "1" }
+              {if "{exp:parameters:can_access_sgi}" == "1" }
               lista4.html(
                 {exp:channel:categories channel="SGI" style="linear" parent_only="yes"}
                   {if "{category_description}" != ""}
@@ -209,7 +209,7 @@
                 "<li><a href=\"{path='servicios/utilidades/{member_id}'}\" class=\"text-gray-dark2\">Utilidades</a></li>" +
                 {/if}"");
 
-            {if "{exp:indicators:can_access}" == "1" }
+            {if "{exp:parameters:can_access_indicators}" == "1" }
               lista2.append(
                 "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='indicadores/demograficos/{member_id}'}\" class=\"text-gray-dark2\">Demográficos</a></li>" +
                 "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='indicadores/gestion/{member_id}'}\" class=\"text-gray-dark2\">Gestión</a></li>" +

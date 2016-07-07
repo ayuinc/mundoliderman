@@ -40,7 +40,7 @@
             <div class="bg-danger ph-28 panel-group lidermania_link_movil">  
             </div>
             {/if}
-            {if "{exp:indicators:can_access}" == "1" }
+            {if "{exp:parameters:can_access_indicators}" == "1" }
             <div class="panel-group3" id="accordionmovil3" role="tablist" aria-multiselectable="true">
               <div class="panel panel-default">
                 <div class="panel-heading bg-danger ph-28" role="tab" id="heading3">
@@ -76,7 +76,7 @@
                 </div>
               </div>
             </div>
-            {if "{exp:indicators:can_access}" == "1" }
+            {if "{exp:parameters:can_access_sgi}" == "1" }
             <div class="panel-group5" id="accordionmovil5" role="tablist" aria-multiselectable="true">
               <div class="panel panel-default">
                 <div class="panel-heading bg-danger ph-28" role="tab" id="heading5">
@@ -182,7 +182,7 @@
                 "<li><a href=\"{path='servicios/utilidades/{member_id}'}\" class=\"text-gray-dark2\">Utilidades</a></li>" +
                 {/if}"");
 
-            {if "{exp:indicators:can_access}" == "1" }
+            {if "{exp:parameters:can_access_sgi}" == "1" }
               lista4.html(
                 {exp:channel:categories channel="SGI" style="linear" parent_only="yes"}
                   {if "{category_description}" != ""}
@@ -212,7 +212,7 @@
                 {/exp:channel:categories}
                 "<li></li>");
             {/if}
-            {if "{exp:indicators:can_access}" == "1" }
+            {if "{exp:parameters:can_access_indicators}" == "1" }
               lista2.append(
                 "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='indicadores/demograficos/{member_id}'}\" class=\"text-gray-dark2\">Demográficos</a></li>" +
                 "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='indicadores/gestion/{member_id}'}\" class=\"text-gray-dark2\">Gestión</a></li>" +
