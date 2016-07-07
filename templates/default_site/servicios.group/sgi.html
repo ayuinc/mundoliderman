@@ -1,7 +1,7 @@
 {if logged_out}
   {redirect="login"}
 {if:else}
-  {if member_id != segment_3}
+  {if "{exp:indicators:can_access}" != "1" }
     {redirect="wall"}
   {/if}
 {/if}

@@ -88,7 +88,7 @@
   var member_search = "{embed:miembro}";
   var current_member = "{embed:miembro_actual}";
   var edit_profile = document.getElementById("edit_profile");
-  if (member_search != current_member) {
+  if (member_search != current_member && "{member_group}" != "6") {
     if (edit_profile != null) {
       edit_profile.classList.add("hidden");
     }

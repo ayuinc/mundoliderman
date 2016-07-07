@@ -22,11 +22,11 @@
                 <div class="panel-heading bg-danger ph-28" role="tab" id="heading2">
                   <h4 class="panel-title m-0">
                     <a role="button" data-toggle="collapse" data-parent="#accordion2" href="#collapse2" aria-expanded="true" aria-controls="collapse2">
-                      <h2 class="active-slide fz-22 text-white text-uppercase text-not-underline m-0 pv-14">Lidermanía <img src="{site_url}frontend/app/assets/img/flecha-para-abajo.png" alt="" class="pt-7 pull-right"></h2>
+                      <h2 class="active-slide fz-22 text-white text-uppercase text-not-underline m-0 pv-14">Lidermanía <img src="{site_url}frontend/app/assets/img/flecha-para-abajo.png" alt="" class="pt-7 pull-right {if segment_2 == 'lidermania'}rotate-180{/if}"></h2>
                     </a>
                   </h4>
                 </div>
-                <div id="collapse2" class="panel-collapse collapse ph-28" role="tabpanel" aria-labelledby="heading2">
+                <div id="collapse2" class="panel-collapse {if segment_2 == 'lidermania'}in{if:else}collapse{/if}  ph-28" role="tabpanel" aria-labelledby="heading2">
                   <div class="panel-body">
                     <div class="">
                       <ul class="p-0 light fz-17 pt-7 lidermania_menu"> 
@@ -106,10 +106,9 @@
             var lista3 = $(".semaforo_menu");
             var lista4 = $(".sgi_menu");
             var boleta = $(".link_boleta");
-            var miembro = "{embed:miembro}";
+            var miembro = isNaN("{embed:miembro}") ? "{member_id}" : "{embed:miembro}";
             var miembro_actual = "{embed:miembro_actual}";
             var grupo = "{embed:grupo}";
-            if (miembro == miembro_actual) {
               {if "{segment_2}" == "lidermania"}
               lista.html(
                 "<li>"+
@@ -161,14 +160,14 @@
                 "</li>");
               {if:else}
               linkLidermania.html(
-                "<div class=\"fz-22 text-white text-uppercase text-not-underline m-0 pv-14\"><a href=\"{path='servicios/lidermania/{embed:miembro}'}\">Lidermania</a></div>");
+                "<div class=\"fz-22 text-white text-uppercase text-not-underline m-0 pv-14\"><a href=\"{path='servicios/lidermania/{member_id}'}\">Lidermania</a></div>");
               {/if}
               lista3.html(
-                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/lidernet/{embed:miembro}'}\" class=\"text-gray-dark2\">Lidernet<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Cultura</p></a></li>" +
-                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/tareo/{embed:miembro}'}\" class=\"text-gray-dark2\">Tareo<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Conducta</p></a></li>" +
-                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/capacitacion/{embed:miembro}'}\" class=\"text-gray-dark2\">Capacitaciones<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Autocapacitaciones</p></a></li>" +
-                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/prestamos/{embed:miembro}'}\" class=\"text-gray-dark2\">Préstamos<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Orden económico</p></a></li>" +
-                "<li><a href=\"{path='servicios/lidercard/{embed:miembro}'}\" class=\"text-gray-dark2\">Lidercard<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Valor agregado</p></a></li>");
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/lidernet/{member_id}'}\" class=\"text-gray-dark2\">Lidernet<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Cultura</p></a></li>" +
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/tareo/{member_id}'}\" class=\"text-gray-dark2\">Tareo<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Conducta</p></a></li>" +
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/capacitacion/{member_id}'}\" class=\"text-gray-dark2\">Capacitaciones<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Autocapacitaciones</p></a></li>" +
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/prestamos/{member_id}'}\" class=\"text-gray-dark2\">Préstamos<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Orden económico</p></a></li>" +
+                "<li><a href=\"{path='servicios/lidercard/{member_id}'}\" class=\"text-gray-dark2\">Lidercard<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Valor agregado</p></a></li>");
               {if "{exp:indicators:can_access}" == "1" }
               lista4.html(
                 {exp:channel:categories channel="SGI" style="linear" parent_only="yes"}
@@ -201,25 +200,15 @@
               {/if}
               boleta.html(
                 {if '{exp:parameters:value code="BOLETAS"}' == 'y'}
-                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/boleta/{embed:miembro}'}\" class=\"text-gray-dark2\">Boletas</a></li>" +
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/boleta/{member_id}'}\" class=\"text-gray-dark2\">Boletas</a></li>" +
                 {/if}    
                 {if '{exp:parameters:value code="CTS"}' == 'y'}
-                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/cts/{embed:miembro}'}\" class=\"text-gray-dark2\">CTS</a></li>" +
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/cts/{member_id}'}\" class=\"text-gray-dark2\">CTS</a></li>" +
                 {/if}
                 {if '{exp:parameters:value code="UTILIDADES"}' == 'y'}
-                "<li><a href=\"{path='servicios/utilidades/{embed:miembro}'}\" class=\"text-gray-dark2\">Utilidades</a></li>" +
+                "<li><a href=\"{path='servicios/utilidades/{member_id}'}\" class=\"text-gray-dark2\">Utilidades</a></li>" +
                 {/if}"");
-            } else if(grupo == 6){
-              {if "{segment_2}" == "lidermania"}
-                lista.html("<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/lidernet/{embed:miembro}'}\" class=\"text-gray-dark2\">Lidernet</a></li>" +
-                                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/lidermania/{embed:miembro}'}\" class=\"text-gray-dark2\">Lidermanía</a></li>"+
-                                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/tareo/{embed:miembro}'}\" class=\"text-gray-dark2\">Tareo</a></li>" 
-                                {if '{exp:parameters:value code="BOLETAS"}' == 'y'}
-                                  + 
-                                "<li><a href=\"{path='servicios/boleta/{embed:miembro}'}\" class=\"text-gray-dark2\">Boletas de Pago</a></li>"
-                                {/if});
-              {/if}
-            }
+
             {if "{exp:indicators:can_access}" == "1" }
               lista2.append(
                 "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='indicadores/demograficos/{member_id}'}\" class=\"text-gray-dark2\">Demográficos</a></li>" +

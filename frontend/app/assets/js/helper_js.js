@@ -72,3 +72,10 @@ function updateSolvedStatus(postId, solved) {
 	$post.attr("data-solved", solved);
 
 }
+
+function closeMenu() {
+	$(".switch").removeClass('on');
+	$(".overlay-menu").removeClass("open-menu");
+  $(".btn-menu p").eq(0).removeClass("hidden");
+  $(".btn-menu p").eq(1).addClass("hidden");
+}

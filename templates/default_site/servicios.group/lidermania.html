@@ -24,7 +24,7 @@
           <div class="container pt-42 w-100 ph-0 ph-7-xs">
             {embed=includes/perfil-servicios miembro="{segment_3}" miembro_actual="{member_id}"}
             {embed=includes/semaforo-movil}
-            <div><h2 class="fz-28 border-bottom-gray-darker pb-14 text-gray-darker pt-21">Lidermanía/ <span id="lidermania-seccion">Ama el trato</span></h2></div>
+            <div><h2 class="fz-28 border-bottom-gray-darker pb-14 text-gray-darker pt-21 lidermania-header">Lidermanía/ <span id="lidermania-seccion">Ama el trato</span></h2></div>
             <div class="lidermania pt-14-xs">
               <div class="datos datos-lidermania bg-white pv-42 ph-42 ph-21-xs mt-28-xs pv-21-xs">
               </div>
@@ -112,6 +112,8 @@
         success: function(a) {
           $('.datos-lidermania').html(a);
           $('#lidermania-seccion').html(title);
+          closeMenu();
+          $("html, body").animate({scrollTop: $('.lidermania-header').offset().top -150}, 500);
         }
       });
     }
