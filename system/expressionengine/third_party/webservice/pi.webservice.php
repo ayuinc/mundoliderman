@@ -44,6 +44,17 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 		return $buffer;
 	}
 
+	public function log_boleta()
+	{
+		$member_id = trim($this->EE->TMPL->fetch_param('miembro', $this->current_member_id()));
+		$codigoLiderman = $this->get_member_codigo($member_id);
+		$token = $this->current_member_token();
+		$periodo = trim($this->EE->TMPL->fetch_param('periodo'));
+		$url = $this->host . "/WSIntranet/BoletaPago.svc/InsertarBoletaPagoLog/$codigoLiderman/$periodo/$token";
+		$data = $this->EE->curl->get($url);
+		return $data;
+	}
+
 	public function boleta()
 	{
 		$member_id = trim($this->EE->TMPL->fetch_param('miembro', $this->current_member_id()));
