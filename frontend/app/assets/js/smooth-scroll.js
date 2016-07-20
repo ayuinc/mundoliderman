@@ -5,9 +5,12 @@ $(document).on('click', 'a.smooth', function(e) {
     $('.btn-close.ver').addClass('hidden');
     $('.btn-close.cerrar').removeClass('hidden');
     $('.detalle').removeClass('hidden');
-    $('html, body').stop().animate({
-        scrollTop: $(anchor).position().top
-    }, 1000);
+    try {
+      $('html, body').stop().animate({
+            scrollTop: $(anchor).position().top
+          }, 1000);
+    } catch(e) {}
+    
 });
 
 if ($("#alert-publication").length > 0) {

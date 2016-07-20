@@ -109,6 +109,36 @@
             var miembro = isNaN("{embed:miembro}") ? "{member_id}" : "{embed:miembro}";
             var miembro_actual = "{embed:miembro_actual}";
             var grupo = "{embed:grupo}";
+            var CHATEADORA = 6; 
+
+            // Si el usuario es una chatedora o es su propio perfil
+            if (grupo == CHATEADORA || miembro == miembro_actual) {
+              boleta.html(
+              {if '{exp:parameters:value code="BOLETAS"}' == 'y'}
+              "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/boleta/{embed:miembro}'}\" class=\"text-gray-dark2\">Boletas</a></li>" +
+              {/if}    
+              {if '{exp:parameters:value code="CTS"}' == 'y'}
+              "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/cts/{embed:miembro}'}\" class=\"text-gray-dark2\">CTS</a></li>" +
+              {/if}
+              {if '{exp:parameters:value code="UTILIDADES"}' == 'y'}
+              "<li><a href=\"{path='servicios/utilidades/{embed:miembro}'}\" class=\"text-gray-dark2\">Utilidades</a></li>" +
+              {/if}"");
+
+              lista3.html(
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/lidernet/{embed:miembro}'}\" class=\"text-gray-dark2\">Lidernet<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Cultura</p></a></li>" +
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/tareo/{embed:miembro}'}\" class=\"text-gray-dark2\">Tareo<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Conducta</p></a></li>" +
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/capacitacion/{embed:miembro}'}\" class=\"text-gray-dark2\">Capacitaciones<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Autocapacitaciones</p></a></li>" +
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/prestamos/{embed:miembro}'}\" class=\"text-gray-dark2\">Préstamos<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Orden económico</p></a></li>" +
+                "<li><a href=\"{path='servicios/lidercard/{embed:miembro}'}\" class=\"text-gray-dark2\">Lidercard<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Valor agregado</p></a></li>");
+            } else {
+              lista3.html(
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/lidernet/{embed:miembro_actual}'}\" class=\"text-gray-dark2\">Lidernet<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Cultura</p></a></li>" +
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/tareo/{embed:miembro_actual}'}\" class=\"text-gray-dark2\">Tareo<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Conducta</p></a></li>" +
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/capacitacion/{embed:miembro_actual}'}\" class=\"text-gray-dark2\">Capacitaciones<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Autocapacitaciones</p></a></li>" +
+                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/prestamos/{embed:miembro_actual}'}\" class=\"text-gray-dark2\">Préstamos<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Orden económico</p></a></li>" +
+                "<li><a href=\"{path='servicios/lidercard/{embed:miembro_actual}'}\" class=\"text-gray-dark2\">Lidercard<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Valor agregado</p></a></li>");
+            }
+
               {if "{segment_2}" == "lidermania"}
               lista.html(
                 "<li>"+
@@ -162,12 +192,7 @@
               linkLidermania.html(
                 "<div class=\"fz-22 text-white text-uppercase text-not-underline m-0 pv-14\"><a href=\"{path='servicios/lidermania/{member_id}'}\">Lidermania</a></div>");
               {/if}
-              lista3.html(
-                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/lidernet/{member_id}'}\" class=\"text-gray-dark2\">Lidernet<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Cultura</p></a></li>" +
-                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/tareo/{member_id}'}\" class=\"text-gray-dark2\">Tareo<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Conducta</p></a></li>" +
-                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/capacitacion/{member_id}'}\" class=\"text-gray-dark2\">Capacitaciones<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Autocapacitaciones</p></a></li>" +
-                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/prestamos/{member_id}'}\" class=\"text-gray-dark2\">Préstamos<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Orden económico</p></a></li>" +
-                "<li><a href=\"{path='servicios/lidercard/{member_id}'}\" class=\"text-gray-dark2\">Lidercard<p class=\"text-uppercase fz-12 mb-0 sans-serif\">Valor agregado</p></a></li>");
+
               {if "{exp:parameters:can_access_sgi}" == "1" }
               lista4.html(
                 {exp:channel:categories channel="SGI" style="linear" parent_only="yes"}
@@ -198,16 +223,6 @@
                 {/exp:channel:categories}
                 "<li></li>");
               {/if}
-              boleta.html(
-                {if '{exp:parameters:value code="BOLETAS"}' == 'y'}
-                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/boleta/{member_id}'}\" class=\"text-gray-dark2\">Boletas</a></li>" +
-                {/if}    
-                {if '{exp:parameters:value code="CTS"}' == 'y'}
-                "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/cts/{member_id}'}\" class=\"text-gray-dark2\">CTS</a></li>" +
-                {/if}
-                {if '{exp:parameters:value code="UTILIDADES"}' == 'y'}
-                "<li><a href=\"{path='servicios/utilidades/{member_id}'}\" class=\"text-gray-dark2\">Utilidades</a></li>" +
-                {/if}"");
 
             {if "{exp:parameters:can_access_indicators}" == "1" }
               lista2.append(
