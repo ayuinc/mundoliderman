@@ -103,6 +103,7 @@
       if (month.toString().length == 1) { month = "0" + month};
 
       var periodo = year + month;
+      var periodoLog = year + month + month;
       $.ajax({
         type: 'GET',
         url: '{site_url}ws/boleta/' + periodo + '/{segment_3}',
@@ -117,7 +118,7 @@
           calcTotal("monto-descuentos", "total-descuentos");
           calcTotal("monto-aportaciones", "total-aportaciones");
           document.getElementById("neto").innerText = (parseFloat(document.getElementById("total-haberes").innerText) - parseFloat(document.getElementById("total-descuentos").innerText)).toFixed(2);
-          $.get('{site_url}ws/log_boleta/' + periodo, function (result) {
+          $.get('{site_url}ws/log_boleta/' + periodoLog, function (result) {
             console.log(result);
           });
         }
