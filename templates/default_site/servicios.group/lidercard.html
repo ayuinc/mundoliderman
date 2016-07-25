@@ -1,10 +1,8 @@
 {if logged_out}
   {redirect="login"}
 {if:else}
-  {if member_group != 6}
-    {if member_id != segment_3}
-      {redirect="wall"}
-    {/if}
+  {if member_id != segment_3 && '{exp:parameters:chateadora_can_view member_id="{segment_3}"}' != "1"}
+    {redirect="wall"}
   {/if}
 {/if}
 
@@ -62,7 +60,7 @@
 
     $.ajax({
       type: 'GET',
-      url: '{site_url}ws/bonificaciones/' + month,
+      url: '{site_url}ws/bonificaciones/' + month + "/{segment_3}",
       success: function(data) {
         $("#bonificaciones").html(data);
       }
@@ -70,7 +68,7 @@
     
     $.ajax({
       type: 'GET',
-      url: '{site_url}ws/meritos-demeritos/' + month,
+      url: '{site_url}ws/meritos-demeritos/' + month + "/{segment_3}",
       success: function(data) {
         $("#meritos-demeritos").html(data);
       }

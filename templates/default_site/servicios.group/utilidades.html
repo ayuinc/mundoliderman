@@ -1,7 +1,7 @@
 {if logged_out}
   {redirect="login"}
 {if:else}
-  {if member_id != segment_3}
+  {if member_id != segment_3 && '{exp:parameters:chateadora_can_view member_id="{segment_3}"}' != "1"}
     {redirect="wall"}
   {/if}
 
@@ -60,6 +60,7 @@
   <script>
   	var loader = '<div class="loader">Cargando...</div>';
   	var $utilidadesContainer = $("#utilidadesContainer");
+    var memberId = '{segment_3}';
 
   	$("#periodo").change(function (e) {
   		var periodo = $(this).val();
@@ -69,7 +70,7 @@
   	function getUtilidades(periodo) {
   		$.ajax({
         type: 'GET',
-        url: '{site_url}ws/utilidades/' + periodo,
+        url: '{site_url}ws/utilidades/' + periodo + "/" + memberId,
         beforeSend: function() { 
           $utilidadesContainer.html(loader);
         },

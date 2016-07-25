@@ -55,6 +55,11 @@ class Parameters_upd {
 					'code' => 'ACCESSIND',
 					'description' => 'Acceso a indicadores',
 					'value' => ''
+				), 
+				array(
+					'code' => 'ACCESSCHAT',
+					'description' => 'Las chateadoras solo pueden acceder al perfil de los siguientes tipos de usuarios',
+					'value' => ''
 				)
 			);
 

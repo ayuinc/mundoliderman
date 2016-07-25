@@ -87,8 +87,9 @@
 <script type="text/javascript">
   var member_search = "{embed:miembro}";
   var current_member = "{embed:miembro_actual}";
+  var chatedoraPuedeVer = '{exp:parameters:chateadora_can_view member_id="{embed:miembro}"}';
   var edit_profile = document.getElementById("edit_profile");
-  if (member_search != current_member && "{member_group}" != "6") {
+  if (member_search != current_member && !chatedoraPuedeVer) {
     if (edit_profile != null) {
       edit_profile.classList.add("hidden");
     }

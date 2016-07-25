@@ -2,8 +2,10 @@
 
 class Parameters {
 
+    const CHATEADORA = "6";
     const ACCESSSGI = "ACCESSSGI";
     const ACCESSIND = "ACCESSIND";
+    const ACCESSCHAT = "ACCESSCHAT";
 
     function value()
     {
@@ -39,6 +41,33 @@ class Parameters {
         $group_id = $group_id = ee()->session->userdata('group_id');
         $groups = explode(',', $access);
         return in_array($group_id, $groups);
+    }
+
+    function chateadora_can_view() {
+        $memberId = ee()->TMPL->fetch_param("member_id");
+        $groupId = $this->get_member_group($memberId);
+
+        $access = $this->_value(self::ACCESSCHAT);
+        $groups = explode(',', $access);
+        return $this->usuario_actual_es_chateadora() && in_array($groupId, $groups);
+    }
+
+    function usuario_actual_es_chateadora() {
+        return ee()->session->userdata('group_id') == self::CHATEADORA;
+    }
+
+    function get_member_group($memberId) {
+        ee()->db->select("group_id")
+                    ->from("members")
+                    ->where(array("member_id" => $memberId))
+                    ->limit(1);
+
+        $result = ee()->db->get()->row();
+        if ($result != null) {
+            return $result->group_id;
+        }
+
+        return null;
     }
 
 }

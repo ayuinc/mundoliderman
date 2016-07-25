@@ -1,4 +1,4 @@
-{exp:webservice:cts periodo="{segment_3}"}
+{exp:webservice:cts periodo="{segment_3}" member_id="{segment_4}"}
 <p class="text-center">CONSTANCIA DE DEPOSITO CTS</p>
 	{if no_results}
 		<p>No se encontraron resultados para el periodo seleccionado</p>
@@ -48,7 +48,7 @@
 	</div>
 </div>
 {/exp:webservice:cts}
-{exp:webservice:cts_detalle periodo="{segment_3}"}
+{exp:webservice:cts_detalle periodo="{segment_3}" member_id="{segment_4}"}
 	{if first_element == "1" && !no_results}
 	<p class="fz-13 bold mt-28">2. Determinación de la Remuneración Computable</p>
 		<div class="fz-12">
@@ -70,7 +70,7 @@
 		</div>
 			</div>
 {/exp:webservice:cts_detalle}
-{exp:webservice:cts periodo="{segment_3}"}
+{exp:webservice:cts periodo="{segment_3}" member_id="{segment_4}"}
 
 			<hr class="mv-7 mh-21" />
 			<div class="row ph-21">
@@ -82,7 +82,7 @@
 		</div>
 			</div>
 {/exp:webservice:cts}
-{exp:webservice:cts periodo="{segment_3}"}
+{exp:webservice:cts periodo="{segment_3}" member_id="{segment_4}"}
 	{if  !no_results}
 		<p class="fz-13 bold mt-28">3. Calculo de la CTS del Periodo (en soles)</p>
 	{/if}
@@ -145,7 +145,7 @@
 			</div>
 		</div>
 {/exp:webservice:cts}
-{exp:webservice:cts_horas_extras periodo="{segment_3}"}
+{exp:webservice:cts_horas_extras periodo="{segment_3}" member_id="{segment_4}"}
 	{if first_element == "1" && !no_results}
 		<p class="fz-13 bold mt-28">4. Horas Extra del Ultimo Semestre</p>
 	{/if}

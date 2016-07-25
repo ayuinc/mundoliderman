@@ -122,6 +122,34 @@
       <input type="submit" value=" Aplicar ">
       <?=form_close()?>
     </div>
+  </div>
+  <br>
+  <br>
+  <div>
+    <?=form_open($action_url_access, '', $form_hidden)?>
+    <?php $parameter = $parameters['ACCESSCHAT']; ?>
+    <input name="id" type="hidden" value="<?php echo $parameter['id'] ?>">
+    <span><?php echo $parameter['description'] ?></span><br>
+    <table>
+    <tr>
+    <?php $count = 1; ?>
+    <?php foreach ($member_groups as $member_group) { ?>
+        <td>
+          <label>
+          <input id="member-group-chat<?= $member_group['group_id']?>" type="checkbox" name="value[]" value="<?= $member_group['group_id']?>"/>
+          <?= formatLabel($member_group['group_title']) ?>
+          </label>
+        </td>
+        <?php if($count % 4 == 0) 
+          echo "</tr>\n<tr>";
+              $count += 1; 
+        ?>
+    <?php } ?>
+    </tr>
+    </table>
+    <input type="submit" value=" Aplicar ">
+    <?=form_close()?>
+    </div>
   </div>    
 <?php else: ?>
   <?=lang('no_matching_files')?>
@@ -141,5 +169,12 @@
   var arrValue = strValue.split(",");
   arrValue.forEach(function (elem, idx) {
     $('#member-group-ind' + elem).attr("checked", true);
+  });
+</script>
+<script>
+  var strValue = "<?php echo $parameters['ACCESSCHAT']['value']?>";
+  var arrValue = strValue.split(",");
+  arrValue.forEach(function (elem, idx) {
+    $('#member-group-chat' + elem).attr("checked", true);
   });
 </script>

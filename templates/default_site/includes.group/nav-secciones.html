@@ -110,9 +110,10 @@
             var miembro_actual = "{embed:miembro_actual}";
             var grupo = "{embed:grupo}";
             var CHATEADORA = 6; 
+            var chatedoraPuedeVer = '{exp:parameters:chateadora_can_view member_id="{embed:miembro}"}';
 
             // Si el usuario es una chatedora o es su propio perfil
-            if (grupo == CHATEADORA || miembro == miembro_actual) {
+            if (chatedoraPuedeVer || miembro == miembro_actual) {
               boleta.html(
               {if '{exp:parameters:value code="BOLETAS"}' == 'y'}
               "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='servicios/boleta/{embed:miembro}'}\" class=\"text-gray-dark2\">Boletas</a></li>" +

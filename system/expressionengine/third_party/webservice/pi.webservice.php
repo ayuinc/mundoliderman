@@ -185,14 +185,9 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 
 	public function bonificaciones()
 	{
-		$member_id = $this->EE->session->userdata('member_id');
-		$codigo_liderman_field_name = $this->getMemberFieldId("codigo-liderman");
-		$token_field_name = $this->getMemberFieldId("token");
-		$query = $this->EE->db->where('member_id', $member_id)
-						 ->select("$codigo_liderman_field_name, $token_field_name")
-				         ->get('exp_member_data');
-		$codigoLiderman = $query->row($codigo_liderman_field_name);
-		$token = $query->row($token_field_name);
+		$member_id = $this->EE->TMPL->fetch_param('miembro', $this->current_member_id());
+		$codigoLiderman = $this->get_member_codigo($member_id);
+		$token = $this->current_member_token();
 		$url = $this->host . "/WSIntranet/LiderCard.svc/ListarBonificaciones/$codigoLiderman/" . self::MESES_ANT_LIDERCARD . "/$token";
 		$data = $this->EE->curl->get($url);
 		if (count($data) > 0) {
@@ -204,14 +199,9 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 
 	public function meritosdemeritos()
 	{
-		$member_id = $this->EE->session->userdata('member_id');
-		$codigo_liderman_field_name = $this->getMemberFieldId("codigo-liderman");
-		$token_field_name = $this->getMemberFieldId("token");
-		$query = $this->EE->db->where('member_id', $member_id)
-						 ->select("$codigo_liderman_field_name, $token_field_name")
-				         ->get('exp_member_data');
-		$codigoLiderman = $query->row($codigo_liderman_field_name);
-		$token = $query->row($token_field_name);
+		$member_id = $this->EE->TMPL->fetch_param('miembro', $this->current_member_id());
+		$codigoLiderman = $this->get_member_codigo($member_id);
+		$token = $this->current_member_token();
 		$url = $this->host . "/WSIntranet/LiderCard.svc/ListarMeritosDemerito/$codigoLiderman/" . self::MESES_ANT_LIDERCARD . "/$token";
 		$data = $this->EE->curl->get($url);
 		if (count($data) > 0) {
@@ -223,14 +213,9 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 
 	public function prestamos()
 	{
-		$member_id = $this->EE->session->userdata('member_id');
-		$codigo_liderman_field_name = $this->getMemberFieldId("codigo-liderman");
-		$token_field_name = $this->getMemberFieldId("token");
-		$query = $this->EE->db->where('member_id', $member_id)
-						 ->select("$codigo_liderman_field_name, $token_field_name")
-				         ->get('exp_member_data');
-		$codigoLiderman = $query->row($codigo_liderman_field_name);
-		$token = $query->row($token_field_name);
+		$member_id = trim(ee()->TMPL->fetch_param('miembro', $this->current_member_id()));
+		$codigoLiderman = $this->get_member_codigo($member_id);
+		$token = $this->current_member_token();
 		$url = $this->host . "/WSIntranet/Prestamo.svc/ListarPrestamos/$codigoLiderman/" . self::MESES_ANT_PRESTAMO . "/$token";
 		$data = $this->EE->curl->get($url);
 		if (count($data) > 0) {
@@ -242,14 +227,9 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 
 	public function capacitaciones()
 	{
-		$member_id = $this->EE->session->userdata('member_id');
-		$dni_field_name = $this->getMemberFieldId("dni");
-		$token_field_name = $this->getMemberFieldId("token");
-		$query = $this->EE->db->where('member_id', $member_id)
-						 ->select("$dni_field_name, $token_field_name")
-				         ->get('exp_member_data');
-		$dni = $query->row($dni_field_name);
-		$token = $query->row($token_field_name);
+		$member_id = trim(ee()->TMPL->fetch_param('miembro', $this->current_member_id()));
+		$dni = $this->get_member_dni($member_id);
+		$token = $this->current_member_token();
 		$month_end = strtotime('first day of this month', time());
 		$month_start = strtotime('last day of -3 month', time());
 		$date_start = date('d-m-Y', $month_start);
@@ -358,7 +338,7 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 
 	public function cts() {
 		$periodo = $this->EE->TMPL->fetch_param("periodo", "1");
-		$member_id = $this->current_member_id();
+		$member_id = $this->EE->TMPL->fetch_param("member_id", $this->current_member_id());
 		$codigoLiderman = $this->get_member_codigo($member_id);
 		$token = $this->current_member_token();
 		$url = $this->host . "/WSIntranet/RemuneracionesComputables.svc/RemuneracionesComputables/$codigoLiderman/$periodo/$token";
@@ -373,7 +353,7 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 
 	public function cts_detalle() {
 		$periodo = $this->EE->TMPL->fetch_param("periodo", "1");
-		$member_id = $this->current_member_id();
+		$member_id = $this->EE->TMPL->fetch_param("member_id", $this->current_member_id());
 		$codigoLiderman = $this->get_member_codigo($member_id);
 		$token = $this->current_member_token();
 		$url = $this->host . "/WSIntranet/RemuneracionesComputables.svc/RemuneracionesComputables/$codigoLiderman/$periodo/$token";
@@ -389,7 +369,7 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 
 	public function cts_horas_extras() {
 		$periodo = $this->EE->TMPL->fetch_param("periodo", "1");
-		$member_id = $this->current_member_id();
+		$member_id = $this->EE->TMPL->fetch_param("member_id", $this->current_member_id());
 		$codigoLiderman = $this->get_member_codigo($member_id);
 		$token = $this->current_member_token();
 		$urlHorasExtras = $this->host . "/WSIntranet/RemuneracionesComputables.svc/HorasExtras/$codigoLiderman/$periodo/$token";
@@ -478,7 +458,7 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 
 	public function utilidades() {
 		$periodo = $this->EE->TMPL->fetch_param('periodo', date("Y"));
-		$member_id = $this->current_member_id();
+		$member_id = $this->EE->TMPL->fetch_param("member_id", $this->current_member_id());
 		$codigo = $this->get_member_codigo($member_id);
 		$token = $this->current_member_token();
 		$url = $this->host . "/WSIntranet/QuintaCategoria.svc/TraerQuintaCategoria/$codigo/$periodo/$token";
