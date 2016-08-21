@@ -47,3 +47,4 @@ composer.lock
 socketio/node_modules
 socketio/dist
 socketio/*.log
+jobs/*.log
