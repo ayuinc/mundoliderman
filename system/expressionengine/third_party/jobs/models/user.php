@@ -13,6 +13,7 @@ class User {
   var $codigo_liderman;
   var $periodo_planilla;
   var $sexo;
+  var $unidad;
 
   static $custom_fields;
 
@@ -56,6 +57,7 @@ class User {
       $this->periodo_planilla = strval($periodoNum);
 
       $this->sexo = $user["Sexo"];
+      $this->unidad = $user["Unidad"];
     } catch (Exception $e) {
       ee()->logger->developer('Jobs: Error: ' . $e->getMessage());
     }
@@ -84,7 +86,8 @@ class User {
       self::getMemberFieldId('periodo-planilla') => $this->periodo_planilla,
       self::getMemberFieldId('edad') => $this->edad,
       self::getMemberFieldId('zona') => $this->zona,
-      self::getMemberFieldId('sexo') => $this->sexo
+      self::getMemberFieldId('sexo') => $this->sexo,
+      self::getMemberFieldId('unidad') => $this->unidad
     );
   }
 
