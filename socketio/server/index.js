@@ -7,7 +7,7 @@ const app = express()
 const server = http.createServer(app)
 const io = socketio(server)
 const port = process.env.PORT || 9300
-const redisIP = process.env.REDIS_IP || 'localhost'
+const redisIP = process.env.REDIS_IP || '10.0.0.6'
 const redisPort = process.env.REDIS_PORT || 6379
 
 io.adapter(redis({ host: redisIP, port: redisPort }))

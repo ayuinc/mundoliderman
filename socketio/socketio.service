@@ -7,6 +7,9 @@ SyslogIdentifier=socketio
 User=root
 Group=root
 Environment=NODE_ENV=production
+Environment=PORT=9300
+Environment=REDIS_IP=10.0.0.6
+Environment=REDIS_PORT=6379
 
 [Install]
 WantedBy=multi-user.target
