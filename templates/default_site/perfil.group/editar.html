@@ -1,5 +1,7 @@
 {if logged_out}
   {redirect="login"}
+{if:else}
+  {exp:redirect:redirect_user_lidermania}
 {/if}
 
 {embed="includes/head" titulo="Mundo Liderman - Editar Perfil"}

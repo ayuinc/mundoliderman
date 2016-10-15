@@ -13,7 +13,7 @@
           </div>
         </a>
       </div>
-      <div class="col-md-4 pr-0 hidden-xs hidden-sm">
+      <div class="col-md-4 pr-0 hidden-xs hidden-sm" {if '{exp:util:is_user_lidermania}' == '1'}style="opacity: 0 !important;"{/if}>
         {exp:user:search
           return="perfil/resultados"
           form:class="tool-bar-search-form mt-7 br-5"
@@ -26,7 +26,7 @@
         {/exp:user:search}
       </div>
       <div class="col-md-5 text-center pr-0 pl-28 hidden-xs hidden-sm">
-        <div class="float-left pr-14 col-md-5 ph-0"><p class="mt-14 mb-0 border-right-gray-light pr-21 text-right"><a href="{embed:link}" class="text-gray book fz-14">{embed:acceso_directo}</a></p></div>
+        <div class="float-left pr-14 col-md-5 ph-0" {if '{exp:util:is_user_lidermania}' == '1'}style="opacity: 0 !important;"{/if} ><p class="mt-14 mb-0 border-right-gray-light pr-21 text-right"><a href="{embed:link}" class="text-gray book fz-14">{embed:acceso_directo}</a></p></div>
         <div class="display-ib text-right ph-0 col-md-7">
           <div class="clearfix pl-21">
             <p class="text-gray-dark m-0 mt-14 light float-left pr-0 fz-13">Hola, <span id="name" class="fz-12">{screen_name}</span></p>
@@ -38,7 +38,9 @@
             </button>
             <ul class="dropdown-menu mt-0 b-none fz-14" aria-labelledby="dropdownMenu1">
               <li class="triangulo"></li>
+              {if '{exp:util:is_user_lidermania}' != '1'}
               <li><a href="{path='perfil/{member_id}'}" class="lh-1">Mi Perfil</a></li>
+              {/if}
               {exp:user:logout return="login"}
                 <li><a href="{url}" class="lh-1">Salir</a></li>
               {/exp:user:logout}

@@ -1,6 +1,7 @@
 {if logged_out}
   {redirect="login"}
 {if:else}
+  {exp:redirect:redirect_user_lidermania}
   {if member_id != segment_3}
     {redirect="wall"}
   {/if}

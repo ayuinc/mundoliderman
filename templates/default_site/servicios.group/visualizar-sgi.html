@@ -1,5 +1,7 @@
 {if logged_out}
   {redirect="login"}
+{if:else}
+  {exp:redirect:redirect_user_lidermania}
 {/if}
 
 {exp:channel:entries orderby="entry_id" sort="asc" dynamic="no" channel="SGI" entry_id="{segment_3}"}

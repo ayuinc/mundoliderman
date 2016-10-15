@@ -1,6 +1,7 @@
 {if logged_out}
   {redirect="login"}
 {if:else}
+  {exp:redirect:redirect_user_lidermania}
   {if "{exp:parameters:can_access_sgi}" != "1" }
     {redirect="wall"}
   {/if}

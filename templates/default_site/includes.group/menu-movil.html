@@ -6,8 +6,10 @@
             <p class="sans-serif fz-22">{screen_name}</p>
           </div>
         </div>
+        {if '{exp:util:is_user_lidermania}' != '1'}
         <p class="sans-serif fz-22 mb-14 text-gray-dark"><a href="{path='wall/{member_id}'}">Ir al muro</a></p>
         <p class="sans-serif fz-22 mb-14 text-gray-dark"><a href="{path='perfil/index/{member_id}'}">Mi Perfil</a></p>
+        {/if}
         <!--<p class="sans-serif fz-22 mb-14 text-gray-dark"><a href="{path='servicios/estadisticas'}">Ver estadísticas</a></p>-->
         {exp:user:logout return="login"}
           <p class="sans-serif fz-22 mb-14 text-gray-dark"><a href="{url}">Salir</a></p>
@@ -15,12 +17,13 @@
         <section id="menu-vertical" class="pl-0 hidden-md hidden-lg">
           {embed=includes/nav-secciones-movil miembro="{if segment_1 == 'wall' || segment_1 == ''} {member_id} {if:else} {if segment_1 == 'perfil'} {segment_2} {if:else} {segment_3} {/if} {/if}" miembro_actual="{member_id}" grupo="{member_group}"}
         </section>
-        {exp:user:search
-          return="perfil/resultados"
-        }
-          <input type="text" id="search_bar" class="form-control input-sm fz-18 light ph-14 mv-35" placeholder="Buscar personas..." name="keywords">
-        {/exp:user:search}
-
+        {if '{exp:util:is_user_lidermania}' != '1'}
+          {exp:user:search
+            return="perfil/resultados"
+          }
+            <input type="text" id="search_bar" class="form-control input-sm fz-18 light ph-14 mv-35" placeholder="Buscar personas..." name="keywords">
+          {/exp:user:search}
+        {/if}
       </div>
 
       <script>

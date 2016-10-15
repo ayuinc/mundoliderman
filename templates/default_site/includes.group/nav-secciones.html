@@ -1,4 +1,5 @@
           <div class="contenedor-menu bg-white">
+            {if '{exp:util:is_user_lidermania}' != '1'}
             <div class="panel-group relative" id="accordion1" role="tablist" aria-multiselectable="true">
               <div class="panel panel-default">
                 <div class="panel-heading bg-info ph-28" role="tab" id="heading1">
@@ -16,6 +17,7 @@
                 </div>
               </div>
             </div>
+            {/if}
             {if "{segment_2}" == "lidermania"}
             <div class="panel-group2" id="accordion2" role="tablist" aria-multiselectable="true" data-segment="{segment_2}">
               <div class="panel panel-default">
@@ -40,25 +42,28 @@
             <div class="bg-danger ph-28 panel-group lidermania_link">  
             </div>
             {/if}
-            {if "{exp:parameters:can_access_indicators}" == "1" }
-            <div class="panel-group3" id="accordion3" role="tablist" aria-multiselectable="true">
-              <div class="panel panel-default">
-                <div class="panel-heading bg-danger ph-28" role="tab" id="heading3">
-                  <h4 class="panel-title m-0">
-                    <a role="button" data-toggle="collapse" data-parent="#accordion3" href="#collapse3" aria-expanded="true" aria-controls="collapse3">
-                      <h2 class="active-slide fz-22 text-white text-uppercase text-not-underline m-0 pv-14">Indicadores <img src="{site_url}frontend/app/assets/img/flecha-para-abajo.png" alt="" class="pt-7 pull-right"></h2>
-                    </a>
-                  </h4>
-                </div>
-                <div id="collapse3" class="panel-collapse collapse ph-28" role="tabpanel" aria-labelledby="heading3">
-                  <div class="panel-body">
-                    <ul class="p-0 pv-ch-7 light fz-17 indicadores_menu"> 
-                      </ul>
+            {if '{exp:util:is_user_lidermania}' != '1'}
+              {if "{exp:parameters:can_access_indicators}" == "1" }
+              <div class="panel-group3" id="accordion3" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default">
+                  <div class="panel-heading bg-danger ph-28" role="tab" id="heading3">
+                    <h4 class="panel-title m-0">
+                      <a role="button" data-toggle="collapse" data-parent="#accordion3" href="#collapse3" aria-expanded="true" aria-controls="collapse3">
+                        <h2 class="active-slide fz-22 text-white text-uppercase text-not-underline m-0 pv-14">Indicadores <img src="{site_url}frontend/app/assets/img/flecha-para-abajo.png" alt="" class="pt-7 pull-right"></h2>
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="collapse3" class="panel-collapse collapse ph-28" role="tabpanel" aria-labelledby="heading3">
+                    <div class="panel-body">
+                      <ul class="p-0 pv-ch-7 light fz-17 indicadores_menu"> 
+                        </ul>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+              {/if}
             {/if}
+            {if '{exp:util:is_user_lidermania}' != '1'}
             <div class="panel-group4" id="accordion4" role="tablist" aria-multiselectable="true">
               <div class="panel panel-default">
                 <div class="panel-heading bg-danger ph-28" role="tab" id="heading4">
@@ -76,24 +81,27 @@
                 </div>
               </div>
             </div>
-            {if "{exp:parameters:can_access_sgi}" == "1" }
-            <div class="panel-group5" id="accordion5" role="tablist" aria-multiselectable="true">
-              <div class="panel panel-default">
-                <div class="panel-heading bg-danger ph-28" role="tab" id="heading5">
-                  <h4 class="panel-title m-0">
-                    <a role="button" data-toggle="collapse" data-parent="#accordion5" href="#collapse5" aria-expanded="true" aria-controls="collapse5">
-                      <h2 class="active-slide fz-22 text-white text-uppercase text-not-underline m-0 pv-14">sgi <img src="{site_url}frontend/app/assets/img/flecha-para-abajo.png" alt="" class="pt-7 pull-right"></h2>
-                    </a>
-                  </h4>
-                </div>
-                <div id="collapse5" class="panel-collapse collapse ph-28" role="tabpanel" aria-labelledby="heading5">
-                  <div class="panel-body">
-                    <ul class="p-0  light fz-17 sgi_menu">
-                    </ul>
+            {/if}
+            {if '{exp:util:is_user_lidermania}' != '1'}
+              {if "{exp:parameters:can_access_sgi}" == "1" }
+              <div class="panel-group5" id="accordion5" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default">
+                  <div class="panel-heading bg-danger ph-28" role="tab" id="heading5">
+                    <h4 class="panel-title m-0">
+                      <a role="button" data-toggle="collapse" data-parent="#accordion5" href="#collapse5" aria-expanded="true" aria-controls="collapse5">
+                        <h2 class="active-slide fz-22 text-white text-uppercase text-not-underline m-0 pv-14">sgi <img src="{site_url}frontend/app/assets/img/flecha-para-abajo.png" alt="" class="pt-7 pull-right"></h2>
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="collapse5" class="panel-collapse collapse ph-28" role="tabpanel" aria-labelledby="heading5">
+                    <div class="panel-body">
+                      <ul class="p-0  light fz-17 sgi_menu">
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+              {/if}
             {/if}
           </div>
           <script type="text/javascript">

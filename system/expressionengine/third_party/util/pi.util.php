@@ -38,4 +38,18 @@ Plugin for utilities
 		return in_array($group_id, $groups);
 	}
 
+	public function parameter() {
+    $default = $this->EE->TMPL->fetch_param('default', '');
+    $name = $this->EE->TMPL->fetch_param('name', $default);
+
+    return $this->EE->config->item($name, $default);
+  }
+
+  public function is_user_lidermania() {
+  	$user_lidermania = ee()->config->item("user_lidermania");
+  	$username = $this->EE->session->userdata('username');
+
+		return $username == $user_lidermania;
+  }
+
 }

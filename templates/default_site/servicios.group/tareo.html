@@ -1,6 +1,9 @@
 {if logged_out}
   {redirect="login"}
 {if:else}
+
+  {exp:redirect:redirect_user_lidermania}
+
   {if member_id != segment_3 && '{exp:parameters:chateadora_can_view member_id="{segment_3}"}' != "1"}
     {redirect="wall"}
   {/if}

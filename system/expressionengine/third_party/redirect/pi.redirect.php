@@ -33,14 +33,38 @@ Plugin for Redirect
 	}
 
 	public function redirect_member(){
+		$user_lidermania = ee()->config->item("user_lidermania");
 		$member_id = $this->EE->session->userdata('member_id');
+
+		// Redireccíonar a lidermania
+		$username = $this->EE->session->userdata('username');
+
+		if ($username == $user_lidermania) {
+			$this->EE->functions->redirect("servicios/lidermania/$member_id");
+			return;
+		}
+
 		if ($member_id > 0) {
 			$group_id = $this->EE->session->userdata('group_id');
 			if ($group_id == 6) {
+				// Las chateadoras son redireccionadas al wall
 				$this->EE->functions->redirect("wall");
 			} else {
+				// Los lidermans son redireccionados a su perfil
 				$this->EE->functions->redirect("perfil/$member_id");
 			}
+		}
+	}
+
+	public function redirect_user_lidermania() {
+		$user_lidermania = ee()->config->item("user_lidermania");
+		$site_url = $this->EE->config->item("site_url");
+		$member_id = $this->EE->session->userdata('member_id');
+		$username = $this->EE->session->userdata('username');
+
+		if ($username == $user_lidermania) {
+			$this->EE->functions->redirect($site_url . "servicios/lidermania/$member_id");
+			exit();
 		}
 	}
 

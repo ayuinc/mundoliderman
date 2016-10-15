@@ -1,7 +1,9 @@
 
   <section id="new_post" class="pokerface hidden"></section>
   <script src="{exp:routes:new_socket_url}/socket.io/socket.io.js"></script>
+  {if '{exp:util:is_user_lidermania}' != '1'}
   <script src="{site_url}js/socketio"></script>
+  {/if}
   <script src="{site_url}frontend/app/assets/js/helper_js.js?v=2"></script>
   <script src="{site_url}frontend/app/assets/js/alertify.min.js"></script>
   <script src="{site_url}frontend/app/assets/js/b3/dropdown.js"></script>
