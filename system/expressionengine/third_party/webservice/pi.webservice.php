@@ -12,7 +12,7 @@ $plugin_info = array(
 class Webservice {
 
 	const MESES_ANT_TAREO = 3;
-	const MESES_ANT_LIDERCARD = 24;
+	const MESES_ANT_LIDERCARD = 6;
 	const MESES_ANT_PRESTAMO = 24;
 
 	public $return_data;
