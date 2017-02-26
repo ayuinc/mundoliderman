@@ -51,8 +51,8 @@ class Capacitaciones_upd {
       'capacitacion_id' => array('type' => 'int', 'unsigned' => TRUE, 'null' => FALSE),
       'nombre' => array('type' => 'varchar', 'constraint' => '250', 'null' => FALSE),
       'descripcion' => array('type' => 'text', 'null' => TRUE),
-      'file_path' => array('type' => 'varchar', 'constraint' => '250', 'null' => FALSE),
-      'video_id' => array('type' => 'varchar', 'constraint' => '250', 'null' => FALSE),
+      'file_path' => array('type' => 'varchar', 'constraint' => '250', 'null' => TRUE),
+      'video_id' => array('type' => 'varchar', 'constraint' => '250', 'null' => TRUE),
       'orden' => array('type' => 'int', 'unsigned' => TRUE, 'null' => FALSE, 'default' => '0')
     );
     ee()->dbforge->add_field($fields);

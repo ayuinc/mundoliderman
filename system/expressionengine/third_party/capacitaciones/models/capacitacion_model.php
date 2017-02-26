@@ -42,5 +42,35 @@ class Capacitacion_model extends CI_Model {
     }
   }
 
+  function update() {
+    $id = ee()->input->post('id', TRUE);
+    $this->load($id);
+
+    $this->nombre = ee()->input->post('nombre');
+    $this->descripcion = ee()->input->post('descripcion');
+    $this->fecha_inicio = ee()->input->post('fecha_inicio');
+    $this->fecha_fin_vigencia = ee()->input->post('fecha_fin_vigencia');
+    $this->fecha_fin_plazo = ee()->input->post('fecha_fin_plazo');
+
+    ee()->db->where("id", $this->id);
+    ee()->db->update($this->table, $this);
+  }
+
+  function _format_date($originalDate) {
+    return date("Y/m/d", strtotime($originalDate));
+  }
+
+
+  function getFInicioFormated() {
+    return $this->_format_date($this->fecha_inicio);
+  }
+
+  function getFFinVigenciaFormated() {
+    return $this->_format_date($this->fecha_fin_vigencia);
+  }
+
+  function getFFinPlazoFormated() {
+    return $this->_format_date($this->fecha_fin_plazo);
+  }
 
 }
