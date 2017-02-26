@@ -26,5 +26,21 @@ class Capacitacion_model extends CI_Model {
     ee()->db->insert($this->table, $this);
   }
 
+  function load($id) {
+    $query = ee()->db->where('id', $id)
+                      ->get($this->table);
+
+    if ($query->num_rows > 0) {
+      $data = array_shift($query->result_array());
+
+      $this->id = $data['id'];
+      $this->nombre = $data['nombre'];
+      $this->descripcion = $data['descripcion'];
+      $this->fecha_inicio = $data['fecha_inicio'];
+      $this->fecha_fin_vigencia = $data['fecha_fin_vigencia'];
+      $this->fecha_fin_plazo = $data['fecha_fin_plazo'];
+    }
+  }
+
 
 }

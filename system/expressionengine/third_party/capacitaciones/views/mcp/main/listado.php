@@ -1,5 +1,5 @@
 <div class="cmcp">
-  <?php echo $this->view('mcp/_menu'); ?>
+  <?php echo $this->view('mcp/main/_menu'); ?>
   <div class="cbody p-21">
     <?php echo $table_capacitaciones['table_html']; ?>
     <?php echo $table_capacitaciones['pagination_html']; ?>

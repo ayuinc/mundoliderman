@@ -30,6 +30,7 @@ class Capacitaciones_upd {
 
     ee()->db->insert('modules', $mod_data);
 
+    // Creando Tabla Capacitaciones
     $fields = array(
       'id' => array('type' => 'int', 'unsigned' => TRUE, 'auto_increment' => TRUE),
       'nombre' => array('type' => 'varchar', 'constraint' => '250', 'null' => FALSE),
@@ -38,10 +39,25 @@ class Capacitaciones_upd {
       'fecha_fin_vigencia' => array('type' => 'date', 'null' => FALSE),
       'fecha_fin_plazo' => array('type' => 'date', 'null' => FALSE)
     );
-
     ee()->dbforge->add_field($fields);
     ee()->dbforge->add_key('id', TRUE);
     ee()->dbforge->create_table('capacitaciones');
+    unset($fields);
+
+
+    // Creando Tabla Contenidos
+    $fields = array(
+      'id' => array('type' => 'int', 'unsigned' => TRUE, 'auto_increment' => TRUE),
+      'capacitacion_id' => array('type' => 'int', 'unsigned' => TRUE, 'null' => FALSE),
+      'nombre' => array('type' => 'varchar', 'constraint' => '250', 'null' => FALSE),
+      'descripcion' => array('type' => 'text', 'null' => TRUE),
+      'file_path' => array('type' => 'varchar', 'constraint' => '250', 'null' => FALSE),
+      'video_id' => array('type' => 'varchar', 'constraint' => '250', 'null' => FALSE),
+      'orden' => array('type' => 'int', 'unsigned' => TRUE, 'null' => FALSE, 'default' => '0')
+    );
+    ee()->dbforge->add_field($fields);
+    ee()->dbforge->add_key('id', TRUE);
+    ee()->dbforge->create_table('contenidos');
     unset($fields);
 
     return TRUE;
@@ -72,7 +88,10 @@ class Capacitaciones_upd {
     ee()->db->where("module_name", $this->module_name);
     ee()->db->delete("modules");
 
+    // Borrando Tabla Contenidos
+    ee()->dbforge->drop_table('contenidos');
 
+    // Borrando Tabla Capacitaciones
     ee()->dbforge->drop_table('capacitaciones');
 
     return TRUE;

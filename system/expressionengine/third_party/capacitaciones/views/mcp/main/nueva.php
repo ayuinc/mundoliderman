@@ -1,5 +1,5 @@
 <div class="cmcp">
-  <?php echo $this->view('mcp/_menu'); ?>
+  <?php echo $this->view('mcp/main/_menu'); ?>
   <div class="cbody p-21">
     <?=form_open($action_url, "id='form-nueva-capacitacion'")?>
       <div class="cform-group">

@@ -35,13 +35,14 @@ class Capacitaciones_mcp {
   }
 
   public function index() {
-    return $this->nueva();
+    return $this->listado();
   }
 
   public function nueva() {
+    ee()->view->cp_page_title =  lang('c:nueva');
     $this->vData['section'] = 'nueva';
     $this->vData['action_url'] = $this->base . '&method=guardar';
-    return ee()->load->view('mcp/nueva', $this->vData, TRUE);
+    return ee()->load->view('mcp/main/nueva', $this->vData, TRUE);
   }
 
   public function guardar() {
@@ -55,6 +56,51 @@ class Capacitaciones_mcp {
     }
   }
 
+  public function listado() {
+    ee()->view->cp_page_title =  lang('c:listado');
+    ee()->load->library('table');
+
+    $this->vData['section'] = 'listado';
+
+    $this->vData['table_capacitaciones'] = ee()->table->datasource('_datasource_capacitaciones');
+
+    return ee()->load->view('mcp/main/listado', $this->vData, TRUE);
+  }
+
+  public function nuevo_contenido() {
+    $capacitacion_id =  ee()->input->get_post('capacitacion_id', TRUE);
+    ee()->capacitacion_model->load($capacitacion_id);
+
+    ee()->view->cp_page_title =  ee()->capacitacion_model->nombre;
+
+    $this->vData['section'] = 'nuevo_contenido';
+    $this->vData['action_url'] = $this->base . '&method=guardar_contenido&capacitacion_id=' . $capacitacion_id;
+    $this->vData['capacitacion_id'] = $capacitacion_id;
+    return ee()->load->view('mcp/capacitacion/nuevo_contenido', $this->vData, TRUE);
+  }
+
+  public function guardar_contenido() {
+    $capacitacion_id =  ee()->input->get_post('capacitacion_id', TRUE);
+    if ($this->_is_form_contenido_valid() == FALSE) {
+      return $this->nuevo_contenido();
+    } else {
+      ee()->session->set_flashdata('message_success', lang('c:contenido_registrado'));
+      ee()->functions->redirect($this->base . '&method=contenidos&capacitacion_id=' . $capacitacion_id);
+    }
+  }
+
+  public function contenidos() {
+    $capacitacion_id =  ee()->input->get_post('capacitacion_id', TRUE);
+    ee()->capacitacion_model->load($capacitacion_id);
+    ee()->view->cp_page_title =  ee()->capacitacion_model->nombre;
+
+    $this->vData['section'] = 'contenidos';
+    $this->vData['capacitacion_id'] = $capacitacion_id;
+    return ee()->load->view('mcp/capacitacion/contenidos', $this->vData, TRUE);
+  }
+
+
+  // Validación para registrar capacitación
   private function _is_form_capacitacion_valid() {
     ee()->load->library('form_validation');
     ee()->form_validation->set_rules('nombre', 'Nombre', 'required');
@@ -67,24 +113,25 @@ class Capacitaciones_mcp {
     return ee()->form_validation->run();
   }
 
+  // Validación para registrar contenido
+  private function _is_form_contenido_valid() {
+    ee()->load->library('form_validation');
+    ee()->form_validation->set_rules('nombre', 'Nombre', 'required');
+    ee()->form_validation->set_message('required', lang('c:field_required'));
+
+    return ee()->form_validation->run();
+  }
+
   function date_valid($date) {
-    $day = (int) substr($date, 0, 2);
-    $month = (int) substr($date, 3, 2);
-    $year = (int) substr($date, 6, 4);
+    $day = (int) substr($date, 8, 2);
+    $month = (int) substr($date, 5, 2);
+    $year = (int) substr($date, 0, 4);
     return checkdate($month, $day, $year);
   }
 
-  public function listado() {
-     ee()->load->library('table');
 
-    $this->vData['section'] = 'listado';
-
-    $this->vData['table_capacitaciones'] = ee()->table->datasource('_datasource');
-
-    return ee()->load->view('mcp/listado', $this->vData, TRUE);
-  }
-
-  function _datasource($state) {
+  // Table datasource de capacitaciones
+  function _datasource_capacitaciones($state) {
 
     $offset = $state['offset'];
 
@@ -113,13 +160,15 @@ class Capacitaciones_mcp {
   }
 
   function _format_row($row) {
-    $row['nombre'] = '<a href="#">' . $row['nombre'] . '</a>';
+    $row['nombre'] = '<a href="' . $this->base . '&method=nuevo_contenido&capacitacion_id=' . $row['id']. '">' 
+                        . $row['nombre'] . '</a>';
     $row['acciones'] = '<a href="#">Editar</a> | <a href="#">Borrar</a>';
     return $row;
   }
 
 
   public function mcp_globals() {
+    ee()->cp->set_breadcrumb($this->base, lang('capacitaciones_module_name'));
     ee()->capacitaciones_helper->mcp_js_css('css', 'jquery-ui.min.css', 'jquery-ui', 'main');
     ee()->capacitaciones_helper->mcp_js_css('js', 'jquery-ui.min.js', 'jquery-ui', 'main');
     ee()->capacitaciones_helper->mcp_js_css('css', 'capacitaciones_mcp.css', 'capacitaciones_mcp', 'main');

@@ -12,7 +12,11 @@
 }
 
 .cform-group {
-  margin-bottom: 5px;
+  margin-bottom: 14px;
+}
+
+.cform-group-sm {
+  width: 200px;
 }
 
 .cdate-group {
