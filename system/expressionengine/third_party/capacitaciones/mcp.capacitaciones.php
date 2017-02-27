@@ -31,6 +31,8 @@ class Capacitaciones_mcp {
 
     $this->mcp_globals();
 
+    $this->getCustomMemberFields();
+
     ee()->view->cp_page_title =  lang('capacitaciones_module_name');
   }
 
@@ -75,7 +77,6 @@ class Capacitaciones_mcp {
 
     $this->vData['capacitacion'] =  ee()->capacitacion_model;
     $this->vData['action_url'] = $this->base . '&method=actualizar_capacitacion';
-
     return ee()->load->view('mcp/main/editar', $this->vData, TRUE);
   }
 
@@ -188,18 +189,67 @@ class Capacitaciones_mcp {
 
     ee()->session->set_flashdata('message_success', lang('c:contenido_eliminado'));
     ee()->functions->redirect($this->base . '&method=contenidos&capacitacion_id=' . $capacitacion_id);
+  }
 
+  public function inscripciones() {
+    ee()->load->library('table');
+    $capacitacion_id = ee()->input->get('capacitacion_id', TRUE);
+    ee()->capacitacion_model->load($capacitacion_id);
+    $capacitacion =  ee()->capacitacion_model;
+
+    ee()->cp->set_breadcrumb($this->base . '&method=contenidos&capacitacion_id=' . $capacitacion->id, $capacitacion->nombre);
+
+    $this->load_member_fields();
+
+    ee()->view->cp_page_title =  lang('c:inscripciones');
+
+    $this->vData['section'] = 'inscripciones';
+    $this->vData['table_inscripciones'] = ee()->table->datasource('_datasource_inscripciones');
+
+    return ee()->load->view('mcp/capacitacion/inscripciones', $this->vData, TRUE);
+  }
+
+  public function ajax_find_unidad() {
+    $term = ee()->input->get_post('term', TRUE);
+
+    $this->load_member_fields();
+
+    $data = ee()->db->distinct()->select("$this->field_unidad as name")
+                      ->from("member_data")
+                      ->like("$this->field_unidad", $term)
+                      ->get()->result_array();
+
+    header('Content-Type: application/json');                  
+    echo json_encode($data);exit;
+  }
+
+  public function ajax_find_zona() {
+    $term = ee()->input->get_post('term', TRUE);
+    $unidad = ee()->input->get_post('unidad', TRUE);
+
+    $this->load_member_fields();
+
+    $data = ee()->db->distinct()->select("$this->field_zona as name")
+                      ->from("member_data")
+                      ->where("$this->field_unidad", $unidad)
+                      ->like("$this->field_zona", $term)
+                      ->get()->result_array();
+
+    header('Content-Type: application/json');                  
+    echo json_encode($data);exit;
   }
 
   // Validación para registrar capacitación
   private function _is_form_capacitacion_valid() {
     ee()->load->library('form_validation');
+    ee()->form_validation->set_rules('codigo', 'Código', 'required');
     ee()->form_validation->set_rules('nombre', 'Nombre', 'required');
     ee()->form_validation->set_rules('fecha_inicio', 'Fecha de inicio', 'required|callback_date_valid');
     ee()->form_validation->set_rules('fecha_fin_vigencia', 'Fecha de fin de vigencia', 'required|callback_date_valid');
-    ee()->form_validation->set_rules('fecha_fin_plazo', 'Fecha de fin de plazo', 'required|callback_date_valid');
+    ee()->form_validation->set_rules('dias_plazo', 'Días de plazo', 'required|is_natural_no_zero');
     ee()->form_validation->set_message('required', lang('c:field_required'));
     ee()->form_validation->set_message('date_valid', lang('c:entry_date_valid'));
+    ee()->form_validation->set_message('is_natural_no_zero', lang('c:natural_no_zero_error'));
 
     return ee()->form_validation->run();
   }
@@ -233,34 +283,38 @@ class Capacitaciones_mcp {
 
   // Table datasource de capacitaciones
   function _datasource_capacitaciones($state) {
-
+    $per_page = 20;
     $offset = $state['offset'];
 
     ee()->table->set_columns(array(
-        'id'  => array('header' => '#'),
+        'codigo' => array('header' => 'Cod.'),
         'nombre'  => array('header' => 'Nombre'),
+        'tipo_asignacion' => array('header' => 'Tipo asignación'),
+        'tipo_unidad' => array('header' => 'Tipo unidad'),
         'fecha_inicio' => array('header' => 'Fecha Inicio'),
         'fecha_fin_vigencia'  => array('header' => 'Fecha Fin Vigencia'),
-        'fecha_fin_plazo'  => array('header' => 'Fecha Fin Plazo'),
+        'dias_plazo'  => array('header' => 'Días de plazo'),
         'acciones' => array('header' => 'Acciones'),
     ));
 
-    $rows = ee()->db->select('id, nombre, fecha_inicio, fecha_fin_vigencia, fecha_fin_plazo')
+    $rows = ee()->db->select('id, codigo, nombre, tipo_asignacion, tipo_unidad, fecha_inicio, fecha_fin_vigencia, dias_plazo')
                 ->from('capacitaciones')
                 ->get()->result_array();
 
     $rows = array_map(array($this, "_format_row_capacitacion"), $rows);
 
     return array(
-      'rows' => array_slice($rows, $offset, 20),
+      'rows' => array_slice($rows, $offset, $per_page),
       'pagination' => array(
-        'per_page'   => 20,
+        'per_page'   => $per_page,
         'total_rows' => count($rows),
       ),
     );
   }
 
   function _format_row_capacitacion($row) {
+    $row['tipo_asignacion'] = ee()->capacitaciones_helper->get_tipo_asignacion_str($row['tipo_asignacion']);
+    $row['tipo_unidad'] = ee()->capacitaciones_helper->get_tipo_unidad_str($row['tipo_unidad']);
     $row['nombre'] = '<a href="' . $this->base . '&method=contenidos&capacitacion_id=' . $row['id']. '">' 
                         . $row['nombre'] . '</a>';
 
@@ -312,6 +366,111 @@ class Capacitaciones_mcp {
   }
   // Fin Table datasource de contenidos
 
+  // Table datasource de contenidos
+  public function _datasource_inscripciones($state) {
+    $per_page = 20;
+    $offset = $state['offset'];
+    $codigo = ee()->input->post('codigo', TRUE);
+    $dni = ee()->input->post('dni', TRUE);
+    $nombre = ee()->input->post('nombre', TRUE);
+    $apellidos = ee()->input->post('apellidos', TRUE);
+    $unidad = ee()->input->post('unidad', TRUE);
+    $zona = ee()->input->post('zona', TRUE);
+
+    ee()->table->set_columns(array(
+      'codigo'  => array('header' => 'Cod.'),
+      'dni'  => array('header' => 'DNI'),
+      'nombre'  => array('header' => 'Nombre'),
+      'apellidos'  => array('header' => 'Apellidos'),
+      'unidad'  => array('header' => 'Unidad'),
+      'zona' => array('header' => 'Zona'),
+      'check' => array('header' => '<input type="checkbox" name="select_all" value="true" class="toggle_all">', 'sort' => FALSE)
+    ));
+
+
+    $query = ee()->db->select(
+                      "m.member_id as member_id, " . 
+                      "md.$this->field_codigo as codigo, " .
+                      "md.$this->field_dni as dni, " .
+                      "md.$this->field_nombre as nombre, " . 
+                      "md.$this->field_apellidos as apellidos, " . 
+                      "md.$this->field_unidad as unidad, " . 
+                      "md.$this->field_zona as zona")
+                    ->from("members m")
+                    ->join("member_data md", "md.member_id = m.member_id");
+
+    if ($unidad !== FALSE) {
+       $query = $query->where("md.$this->field_unidad", $unidad);
+    }
+
+    if ($zona !== FALSE) {
+       $query = $query->where("md.$this->field_zona", $zona);
+    }
+
+    if ($codigo !== FALSE) {
+      $query = $query->like("md.$this->field_codigo", $codigo);
+    }
+
+    if ($dni !== FALSE) {
+      $query = $query->like("md.$this->field_dni", $dni);
+    }
+
+    if ($nombre !== FALSE) {
+      $query = $query->like("md.$this->field_nombre", $nombre);
+    }
+
+    if ($apellidos !== FALSE) {
+      $query = $query->like("md.$this->field_apellidos", $apellidos);
+    }
+
+    $query = $query->limit($per_page, $offset);
+    $rows = $query->get()->result_array();
+    $rows = array_map(array($this, "_format_row_inscripciones"), $rows);
+
+    $query = ee()->db->from("members m")
+                    ->join("member_data md", "md.member_id = m.member_id");
+
+    if ($unidad !== FALSE) {
+       $query = $query->where("md.$this->field_unidad", $unidad);
+    }
+
+    if ($zona !== FALSE) {
+       $query = $query->where("md.$this->field_zona", $zona);
+    }
+
+    if ($codigo !== FALSE) {
+      $query = $query->like("md.$this->field_codigo", $codigo);
+    }
+
+    if ($dni !== FALSE) {
+      $query = $query->like("md.$this->field_dni", $dni);
+    }
+
+    if ($nombre !== FALSE) {
+      $query = $query->like("md.$this->field_nombre", $nombre);
+    }
+
+    if ($apellidos !== FALSE) {
+      $query = $query->like("md.$this->field_apellidos", $apellidos);
+    }
+
+    $count = $query->count_all_results();
+
+
+    return array(
+      'rows' => $rows,
+      'pagination' => array(
+        'per_page'   => $per_page,
+        'total_rows' => $count
+      ),
+    );
+  }
+
+  function _format_row_inscripciones($row) {
+    $row['check'] = '<input class="toggle" type="checkbox" name="toggle[]" value="' . $row['member_id'] . '">';
+    return $row;
+  }
+  // Fin Table datasource de contenidos
 
   public function mcp_globals() {
     ee()->cp->set_breadcrumb($this->base, lang('capacitaciones_module_name'));
@@ -319,6 +478,33 @@ class Capacitaciones_mcp {
     ee()->capacitaciones_helper->mcp_js_css('js', 'jquery-ui.min.js', 'jquery-ui', 'main');
     ee()->capacitaciones_helper->mcp_js_css('css', 'capacitaciones_mcp.css', 'capacitaciones_mcp', 'main');
     ee()->capacitaciones_helper->mcp_js_css('js', 'capacitaciones_mcp.js', 'capacitaciones_mcp', 'main');
+  }
+
+  private function load_member_fields() {
+    $this->field_nombre = $this->getMemberFieldId('nombres');
+    $this->field_apellidos = $this->getMemberFieldId('apellidos');
+    $this->field_unidad = $this->getMemberFieldId('unidad');
+    $this->field_zona = $this->getMemberFieldId('zona');
+    $this->field_codigo = $this->getMemberFieldId('codigo-liderman');
+    $this->field_dni = $this->getMemberFieldId('dni');
+    $this->field_tipo_usuario = $this->getMemberFieldId('tipo-usuario');
+  }
+
+  private function getCustomMemberFields() {
+    $member_fields = ee()->db->where('m_field_reg', 'y')
+             ->get("member_fields");
+    $this->custom_fields = $member_fields->result_array();
+  }
+
+  private function getMemberFieldId($field_name) {
+    $field_id = 0;
+    foreach ($this->custom_fields as $key => $value) {
+      if ($field_name == $value["m_field_name"]) {
+        $field_id = $value["m_field_id"];
+        break;
+      }
+    }
+    return 'm_field_id_' . $field_id;
   }
   
 } // END CLASS

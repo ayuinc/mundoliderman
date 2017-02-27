@@ -11,6 +11,7 @@ $lang = array(
 'c:actualizar' => 'Actualizar',
 'c:eliminar' => 'Eliminar',
 'c:confirmar_eliminacion' => 'Confirmar Eliminación',
+'c:inscripciones' => 'Inscripciones',
 'c:field_required' => "El campo es requerido",
 'c:entry_date_valid' => 'Debe ingresar una fecha válida',
 'c:capacitacion_registrada' => 'Capacitación registrada',
@@ -22,5 +23,6 @@ $lang = array(
 'c:contenido_actualizado' => 'Contenido Actualizado',
 'c:contenido_eliminado' => 'Contenido Eliminado',
 'c:empty_or_natural' => 'Debe ingresar un número natural o dejarlo vacío',
-'c:no_update_file_message' => 'Para no actualizarlo no seleccionar archivo'
+'c:no_update_file_message' => 'Para no actualizarlo no seleccionar archivo',
+'c:natural_no_zero_error' => "Debe ingresar un número mayor a cero"
 );

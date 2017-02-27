@@ -6,6 +6,9 @@
       <li class="content_tab<?=(($section == 'nuevo_contenido')) ? ' current': ''?>">
           <a href="<?=$base_url?>&method=nuevo_contenido&capacitacion_id=<?=$capacitacion_id?>"><?=lang('c:nuevo_contenido')?></a>
       </li>
+      <li class="content_tab<?=(($section == 'inscripciones')) ? ' current': ''?>">
+          <a href="<?=$base_url?>&method=inscripciones&capacitacion_id=<?=$capacitacion_id?>"><?=lang('c:inscripciones')?></a>
+      </li>
   </ul>
 </div>
 

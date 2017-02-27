@@ -9,6 +9,13 @@
 class Capacitaciones_helper {
   private $package = 'capacitaciones';
 
+  const TIPO_UNIDAD = "1";
+  const UNIDAD = "2";
+
+  const UNIDAD_MINERA = "0";
+  const UNIDAD_RETAIL = "1";
+  const UNIDAD_PETROLERA = "2";
+
   // ******************************************************************************** //
   function define_theme_url() {
     if (defined('URL_THIRD_THEMES') === TRUE)
@@ -70,6 +77,28 @@ class Capacitaciones_helper {
         ee()->session->cache['javascript'][$package][$name] = TRUE;
       }
     }
+  }
+
+  function get_tipo_asignacion_str($tipo_asignacion) {
+    if ($tipo_asignacion == self::TIPO_UNIDAD) {
+      return "Por Tipo de unidad";
+    } else if ($tipo_asignacion == self::UNIDAD) {
+      return "Por unidad";
+    }
+
+    return "";
+  }
+
+  function get_tipo_unidad_str($tipo_unidad) {
+    if ($tipo_unidad == self::UNIDAD_MINERA) {
+      return "Unidad Minera";
+    } else if ($tipo_unidad == self::UNIDAD_RETAIL) {
+      return "Unidad Retail";
+    } else if ($tipo_unidad == self::UNIDAD_PETROLERA) {
+      return "Unidad Petrolera";
+    }
+
+    return "";
   }
 
 } // END CLASS

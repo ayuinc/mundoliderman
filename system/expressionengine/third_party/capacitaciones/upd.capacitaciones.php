@@ -34,10 +34,13 @@ class Capacitaciones_upd {
     $fields = array(
       'id' => array('type' => 'int', 'unsigned' => TRUE, 'auto_increment' => TRUE),
       'nombre' => array('type' => 'varchar', 'constraint' => '250', 'null' => FALSE),
+      'codigo' => array('type' => 'varchar', 'constraint' => '250', 'null' => FALSE),
       'descripcion' => array('type' => 'text', 'null' => FALSE),
       'fecha_inicio' => array('type' => 'date', 'null' => FALSE),
       'fecha_fin_vigencia' => array('type' => 'date', 'null' => FALSE),
-      'fecha_fin_plazo' => array('type' => 'date', 'null' => FALSE)
+      'dias_plazo' => array('type' => 'int', 'null' => FALSE),
+      'tipo_asignacion' => array('type' => 'int', 'null' => FALSE),
+      'tipo_unidad' => array('type' => 'int', 'null' => TRUE)
     );
     ee()->dbforge->add_field($fields);
     ee()->dbforge->add_key('id', TRUE);
