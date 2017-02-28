@@ -63,6 +63,18 @@ class Capacitaciones_upd {
     ee()->dbforge->create_table('contenidos');
     unset($fields);
 
+    // Crenado Tabla Inscripciones
+    $fields = array(
+      'id' => array('type' => 'int', 'unsigned' => TRUE, 'auto_increment' => TRUE),
+      'capacitacion_id' => array('type' => 'int', 'unsigned' => TRUE, 'null' => FALSE),
+      'member_id' => array('type' => 'int', 'unsigned' => TRUE, 'null' => FALSE),
+      'fecha_inscripcion' => array('type' => 'date', 'null' => FALSE)
+    );
+    ee()->dbforge->add_field($fields);
+    ee()->dbforge->add_key('id', TRUE);
+    ee()->dbforge->create_table('inscripciones');
+    unset($fields);
+
     return TRUE;
   }
 
@@ -96,6 +108,9 @@ class Capacitaciones_upd {
 
     // Borrando Tabla Capacitaciones
     ee()->dbforge->drop_table('capacitaciones');
+
+    // Borrando Tabla Inscripciones
+    ee()->dbforge->drop_table('inscripciones');
 
     return TRUE;
   }

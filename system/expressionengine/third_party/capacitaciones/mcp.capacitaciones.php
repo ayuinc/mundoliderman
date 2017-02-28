@@ -204,9 +204,28 @@ class Capacitaciones_mcp {
     ee()->view->cp_page_title =  lang('c:inscripciones');
 
     $this->vData['section'] = 'inscripciones';
+    $this->vData['action_url'] = $this->base . '&method=registrar_inscripciones&capacitacion_id=' . $capacitacion_id;
     $this->vData['table_inscripciones'] = ee()->table->datasource('_datasource_inscripciones');
 
     return ee()->load->view('mcp/capacitacion/inscripciones', $this->vData, TRUE);
+  }
+
+  public function registrar_inscripciones() {
+    $capacitacion_id = ee()->input->get('capacitacion_id');
+
+    // Usuarios visualizados en el formulario
+    $member_form_ids = ee()->input->post('users');
+
+    // Usuarios seleccionados en el formulario
+    $member_check_ids = ee()->input->post('toggle');
+
+    // Borrar inscripción de usuarios que no se seleccionaron
+    $this->_delete_members_no_enrol($capacitacion_id, $member_form_ids, $member_check_ids);
+    // Inscribir usuario seleccionados que no se encuentran en la tabla incriciones
+    $this->add_members_no_enrol($capacitacion_id, $member_check_ids, $member_form_ids);
+
+    ee()->session->set_flashdata('message_success', lang('c:inscripciones_actualizadas'));
+    ee()->functions->redirect($this->base . '&method=inscripciones&capacitacion_id=' . $capacitacion_id);
   }
 
   public function ajax_find_unidad() {
@@ -237,6 +256,46 @@ class Capacitaciones_mcp {
 
     header('Content-Type: application/json');                  
     echo json_encode($data);exit;
+  }
+
+  // Obtener ids de usuarios inscritos a una capacitación visualizados en el formulario
+  private function _get_exists_member_ids($capacitacion_id, $member_form_ids) {
+    $rows = ee()->db->select('member_id')
+                        ->from('inscripciones')
+                        ->where('capacitacion_id', $capacitacion_id)
+                        ->where_in('member_id', $member_form_ids)
+                        ->get()->result_array();
+
+    $exists_members_ids = array();
+    $len = count($rows);
+    foreach ($rows as $row) {
+      $exists_members_ids[] = $row['member_id'];
+    }
+
+    return $exists_members_ids;
+  }
+
+  // Borrar inscripción de usuarios que no se seleccionaron 
+  private function _delete_members_no_enrol($capacitacion_id, $member_form_ids, $member_check_ids) {
+    ee()->db->where('capacitacion_id', $capacitacion_id)
+            ->where_in('member_id', $member_form_ids)
+            ->where_not_in('member_id', $member_check_ids)
+            ->delete('inscripciones');
+  }
+
+  private function add_members_no_enrol($capacitacion_id, $member_check_ids, $member_form_ids) {
+    // Usuarios ya inscritos en el formulario
+    $member_exists_ids = $this->_get_exists_member_ids($capacitacion_id, $member_form_ids);
+
+    foreach ($member_check_ids as $member_check_id) {
+      if (!in_array($member_check_id, $member_exists_ids)) {
+        ee()->db->insert('inscripciones', array(
+          'capacitacion_id' => $capacitacion_id,
+          'member_id' => $member_check_id,
+          'fecha_inscripcion' => date("Y-m-d", time())
+        ));
+      }
+    }
   }
 
   // Validación para registrar capacitación
@@ -395,9 +454,11 @@ class Capacitaciones_mcp {
                       "md.$this->field_nombre as nombre, " . 
                       "md.$this->field_apellidos as apellidos, " . 
                       "md.$this->field_unidad as unidad, " . 
-                      "md.$this->field_zona as zona")
+                      "md.$this->field_zona as zona, " . 
+                      "ins.id as checked")
                     ->from("members m")
-                    ->join("member_data md", "md.member_id = m.member_id");
+                    ->join("member_data md", "md.member_id = m.member_id")
+                    ->join("inscripciones ins", "m.member_id = ins.member_id", "left");
 
     if ($unidad !== FALSE) {
        $query = $query->where("md.$this->field_unidad", $unidad);
@@ -428,7 +489,8 @@ class Capacitaciones_mcp {
     $rows = array_map(array($this, "_format_row_inscripciones"), $rows);
 
     $query = ee()->db->from("members m")
-                    ->join("member_data md", "md.member_id = m.member_id");
+                    ->join("member_data md", "md.member_id = m.member_id")
+                    ->join("inscripciones ins", "m.member_id = ins.member_id", "left");
 
     if ($unidad !== FALSE) {
        $query = $query->where("md.$this->field_unidad", $unidad);
@@ -467,7 +529,9 @@ class Capacitaciones_mcp {
   }
 
   function _format_row_inscripciones($row) {
-    $row['check'] = '<input class="toggle" type="checkbox" name="toggle[]" value="' . $row['member_id'] . '">';
+    $checked = is_null($row['checked']) ? '' : 'checked';
+    $row['check'] = '<input class="toggle" type="checkbox" name="toggle[]" value="' . $row['member_id'] . '" data-is="' . $checked . '" ' . $checked . ' >' .
+      '<input type="hidden" name="users[]" value="' . $row['member_id'] .'">';
     return $row;
   }
   // Fin Table datasource de contenidos

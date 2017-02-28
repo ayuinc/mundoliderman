@@ -22,6 +22,7 @@ $lang = array(
 'c:contenido_registrado' => 'Contenido Registrado',
 'c:contenido_actualizado' => 'Contenido Actualizado',
 'c:contenido_eliminado' => 'Contenido Eliminado',
+'c:inscripciones_actualizadas' => 'Inscripciones actualizadas',
 'c:empty_or_natural' => 'Debe ingresar un número natural o dejarlo vacío',
 'c:no_update_file_message' => 'Para no actualizarlo no seleccionar archivo',
 'c:natural_no_zero_error' => "Debe ingresar un número mayor a cero"

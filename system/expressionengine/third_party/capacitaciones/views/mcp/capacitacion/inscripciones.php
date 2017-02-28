@@ -29,14 +29,14 @@
         </fieldset>
       </div>
     </form>
-    <form action="">
+    <?=form_open($action_url)?>
       <?php echo $table_inscripciones['pagination_html']; ?>
       <?php echo $table_inscripciones['table_html']; ?>
       <?php echo $table_inscripciones['pagination_html']; ?>
       <div class="text-right">
-        <?=form_submit(array('name' => 'submit', 'value' => lang('c:guardar'), 'class' => 'submit'));?>
+        <?=form_submit(array('name' => 'submit', 'value' => lang('c:actualizar'), 'class' => 'submit'));?>
       </div>
-    </form>
+    <?=form_close()?>
   </div>
 </div>
 <input id="unidad_url" type="hidden" value="<?= $base_url . '&method=ajax_find_unidad' ?>">

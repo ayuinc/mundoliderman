@@ -62,6 +62,14 @@ $(function () {
     }
   });
 
+  $(document).on('change', ':checkbox', function (e) {
+    e.preventDefault();
+    $this = $(e.target);
+    if ($this.data('is') == 'checked') {
+      $this.prop('checked', true);
+    }
+  });
+
   function renderItem( ul, item ) {
     return $( "<li>" )
       .append( "<div>" + item.name +  "</div>" )
