@@ -1,4 +1,8 @@
 /* Helpers */
+button {
+  cursor: pointer;
+}
+
 .p-21 {
   padding: 21px;
 }
@@ -21,6 +25,14 @@
 
 .cdate-group {
   width: 200px;
+}
+
+.tbl-opciones {
+  min-width: 700px;
+}
+
+.tbl-opciones td {
+  text-align: center;
 }
 
 .ui-autocomplete {

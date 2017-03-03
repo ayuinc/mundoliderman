@@ -70,6 +70,47 @@ $(function () {
     }
   });
 
+  // Test 
+  $('.add-opcion').on('click', function (e) {
+    e.preventDefault();
+    var length = $('.tbody-opciones tr').length;
+    if (length <= 5) {
+      var template = '<tr>' +
+                      '<td><input type="text"></td>' +
+                      '<td><a href="#"" class="delete-opcion">Eliminar</a></td>' +
+                      '<td><input class="radio-respuesta" name="respuesta" type="radio" value="' + length + '"></td>' +
+                    '</tr>';
+      $('.tbody-opciones').append(template);
+    } else {
+      showMessage("Solo se puede agregar hasta 6 opciones", 'error');
+    }
+  });
+
+  $(document).on('click', '.delete-opcion', function (e) {
+    e.preventDefault();
+    var length = $('.tbody-opciones tr').length;
+    if (length > 2) {
+      var $tr = $(this).parents('tr');
+      $tr.remove();
+      reasignarValoresARadioRespuesta();
+    } else {
+      showMessage('Deben haber como mínimo 2 opciones', 'error');
+    }
+  });
+
+  function reasignarValoresARadioRespuesta(){
+    $('.radio-respuesta').each(function (idx, elem) {
+      $(elem).prop('value', idx);
+    });
+  }
+
+  function showMessage(msg, type) {
+    $.ee_notice(msg, {open: true, type: 'error'});
+    setTimeout(function () {
+      $.ee_notice.destroy();
+    }, 3000);
+  }
+
   function renderItem( ul, item ) {
     return $( "<li>" )
       .append( "<div>" + item.name +  "</div>" )

@@ -138,7 +138,7 @@ class Capacitaciones_mcp {
     $capacitacion = ee()->capacitacion_model;
 
 
-    ee()->cp->set_breadcrumb($this->base . '&method=contenidos&capacitacion_id' . $capacitacion->id, $capacitacion->nombre);
+    ee()->cp->set_breadcrumb($this->base . '&method=contenidos&capacitacion_id=' . $capacitacion->id, $capacitacion->nombre);
     ee()->view->cp_page_title =  lang('c:editar_contenido');
 
 
@@ -204,6 +204,7 @@ class Capacitaciones_mcp {
     ee()->view->cp_page_title =  lang('c:inscripciones');
 
     $this->vData['section'] = 'inscripciones';
+    $this->vData['capacitacion_id'] = $capacitacion->id;
     $this->vData['action_url'] = $this->base . '&method=registrar_inscripciones&capacitacion_id=' . $capacitacion_id;
     $this->vData['table_inscripciones'] = ee()->table->datasource('_datasource_inscripciones');
 
@@ -226,6 +227,35 @@ class Capacitaciones_mcp {
 
     ee()->session->set_flashdata('message_success', lang('c:inscripciones_actualizadas'));
     ee()->functions->redirect($this->base . '&method=inscripciones&capacitacion_id=' . $capacitacion_id);
+  }
+
+  public function test() {
+    $capacitacion_id = ee()->input->get('capacitacion_id');
+    ee()->capacitacion_model->load($capacitacion_id);
+    $capacitacion = ee()->capacitacion_model;
+
+    ee()->cp->set_breadcrumb($this->base . '&method=contenidos&capacitacion_id=' . $capacitacion->id, $capacitacion->nombre);
+    ee()->view->cp_page_title =  lang('c:test');
+
+    $this->vData['section'] = 'test';
+    $this->vData['capacitacion_id'] = $capacitacion->id;
+    $this->vData['add_url'] = $this->base . '&method=nueva_pregunta&capacitacion_id=' . $capacitacion->id;
+
+     return ee()->load->view('mcp/capacitacion/test', $this->vData, TRUE);
+  }
+
+  public function nueva_pregunta() {
+    $capacitacion_id = ee()->input->get('capacitacion_id');
+    ee()->capacitacion_model->load($capacitacion_id);
+    $capacitacion = ee()->capacitacion_model;
+
+    ee()->cp->set_breadcrumb($this->base . '&method=contenidos&capacitacion_id=' . $capacitacion->id, $capacitacion->nombre);
+    ee()->view->cp_page_title =  lang('c:nueva_pregunta');
+
+    $this->vData['capacitacion_id'] = $capacitacion->id;
+    $this->vData['action_url'] = $this->base . '&method=guardar_pregunta&capacitacion_id' . $capacitacion->id;
+
+    return ee()->load->view('mcp/capacitacion/nueva_pregunta', $this->vData, TRUE);
   }
 
   public function ajax_find_unidad() {

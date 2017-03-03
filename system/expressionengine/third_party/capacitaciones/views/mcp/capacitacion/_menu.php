@@ -9,6 +9,9 @@
       <li class="content_tab<?=(($section == 'inscripciones')) ? ' current': ''?>">
           <a href="<?=$base_url?>&method=inscripciones&capacitacion_id=<?=$capacitacion_id?>"><?=lang('c:inscripciones')?></a>
       </li>
+      <li class="content_tab<?=(($section == 'test')) ? ' current': ''?>">
+          <a href="<?=$base_url?>&method=test&capacitacion_id=<?=$capacitacion_id?>"><?=lang('c:test')?></a>
+      </li>
   </ul>
 </div>
 
