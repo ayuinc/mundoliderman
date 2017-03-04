@@ -90,6 +90,47 @@ class Capacitaciones_mcp {
     }
   }
 
+  public function confirmar_eliminar_capacitacion() {
+    $capacitacion_id = ee()->input->get('capacitacion_id');
+    ee()->capacitacion_model->load($capacitacion_id);
+    $capacitacion = ee()->capacitacion_model;
+
+    $this->vData['capacitacion'] = $capacitacion;
+    $this->vData['action_url'] = $this->base . '&method=eliminar_capacitacion&capacitacion_id=' . $capacitacion_id;
+
+    return ee()->load->view('mcp/capacitacion/confirmar_eliminar_capacitacion', $this->vData, TRUE);
+  }
+
+  public function eliminar_capacitacion() {
+    $capacitacion_id = ee()->input->get('capacitacion_id');
+
+    ee()->db->where('capacitacion_id', $capacitacion_id)
+            ->delete('contenidos');
+
+    $preguntas = ee()->db->select('id')
+                    ->from('preguntas')
+                    ->where('capacitacion_id', $capacitacion_id)
+                    ->get()->result();
+
+    foreach ($preguntas as $pregunta) {
+      ee()->db->where('pregunta_id', $pregunta->id)
+                ->delete('pregunta_opciones');
+    }
+
+    ee()->db->where('capacitacion_id', $capacitacion_id)
+            ->delete('inscripciones');
+
+    ee()->db->where('capacitacion_id', $capacitacion_id)
+            ->delete('preguntas');
+
+
+    ee()->db->where('id', $capacitacion_id)
+            ->delete('capacitaciones');
+
+    ee()->session->set_flashdata('message_success', lang('c:capacitacion_eliminada'));
+    ee()->functions->redirect($this->base . '&method=listado');
+  }
+
   public function nuevo_contenido() {
     $capacitacion_id =  ee()->input->get_post('capacitacion_id', TRUE);
     ee()->capacitacion_model->load($capacitacion_id);
@@ -230,6 +271,7 @@ class Capacitaciones_mcp {
   }
 
   public function test() {
+    ee()->load->library('table');
     $capacitacion_id = ee()->input->get('capacitacion_id');
     ee()->capacitacion_model->load($capacitacion_id);
     $capacitacion = ee()->capacitacion_model;
@@ -240,6 +282,7 @@ class Capacitaciones_mcp {
     $this->vData['section'] = 'test';
     $this->vData['capacitacion_id'] = $capacitacion->id;
     $this->vData['add_url'] = $this->base . '&method=nueva_pregunta&capacitacion_id=' . $capacitacion->id;
+    $this->vData['table_preguntas'] = ee()->table->datasource('_datasource_preguntas');
 
      return ee()->load->view('mcp/capacitacion/test', $this->vData, TRUE);
   }
@@ -253,9 +296,75 @@ class Capacitaciones_mcp {
     ee()->view->cp_page_title =  lang('c:nueva_pregunta');
 
     $this->vData['capacitacion_id'] = $capacitacion->id;
-    $this->vData['action_url'] = $this->base . '&method=guardar_pregunta&capacitacion_id' . $capacitacion->id;
+    $this->vData['action_url'] = $this->base . '&method=guardar_pregunta&capacitacion_id=' . $capacitacion->id;
 
     return ee()->load->view('mcp/capacitacion/nueva_pregunta', $this->vData, TRUE);
+  }
+
+  public function guardar_pregunta() {
+    $capacitacion_id = ee()->input->get('capacitacion_id');
+    ee()->capacitacion_model->load($capacitacion_id);
+    ee()->load->model('pregunta_model');
+    ee()->pregunta_model->save($capacitacion_id);
+    ee()->session->set_flashdata('message_success', lang('c:pregunta_guardada'));
+    ee()->functions->redirect($this->base . '&method=test&capacitacion_id=' . $capacitacion_id);
+  }
+
+  public function editar_pregunta() {
+    $id = ee()->input->get('id');
+    ee()->load->model('pregunta_model');
+    ee()->pregunta_model->load($id);
+    ee()->capacitacion_model->load(ee()->pregunta_model->capacitacion_id);
+    $capacitacion = ee()->capacitacion_model;
+
+    ee()->cp->set_breadcrumb($this->base . '&method=contenidos&capacitacion_id=' . $capacitacion->id, $capacitacion->nombre);
+    ee()->cp->set_breadcrumb($this->base . '&method=test&capacitacion_id=' . $capacitacion->id, lang('c:test'));
+    ee()->view->cp_page_title =  lang('c:editar_pregunta');
+
+    $this->vData['pregunta'] = ee()->pregunta_model;
+    $this->vData['action_url'] = $this->base . '&method=actualizar_pregunta&capacitacion_id=' . $capacitacion->id;
+
+    return ee()->load->view('mcp/capacitacion/editar_pregunta', $this->vData, TRUE);
+  }
+
+  public function actualizar_pregunta() {
+    $capacitacion_id = ee()->input->get('capacitacion_id');
+    ee()->load->model('pregunta_model');
+    ee()->pregunta_model->update();
+    ee()->session->set_flashdata('message_success', lang('c:pregunta_actualizada'));
+    ee()->functions->redirect($this->base . '&method=test&capacitacion_id=' . $capacitacion_id);
+  }
+
+  public function confirmar_eliminar_pregunta() {
+    $pregunta_id = ee()->input->get('id');
+    ee()->load->model('pregunta_model');
+    ee()->pregunta_model->load($pregunta_id);
+    $capacitacion_id = ee()->input->get('capacitacion_id');
+    ee()->capacitacion_model->load($capacitacion_id);
+    $capacitacion = ee()->capacitacion_model;
+
+    ee()->cp->set_breadcrumb($this->base . '&method=contenidos&capacitacion_id=' . $capacitacion->id, $capacitacion->nombre);
+    ee()->cp->set_breadcrumb($this->base . '&method=test&capacitacion_id=' . $capacitacion->id, lang('c:test'));
+    ee()->view->cp_page_title =  lang('c:confirmar_eliminacion');
+
+    $this->vData['pregunta'] = ee()->pregunta_model;
+    $this->vData['action_url'] = $this->base . '&method=eliminar_pregunta&id=' . $pregunta_id . '&capacitacion_id=' . $capacitacion_id;
+
+    return ee()->load->view('mcp/capacitacion/confirmar_eliminar_pregunta', $this->vData, TRUE);
+  }
+
+  public function eliminar_pregunta() {
+    $pregunta_id = ee()->input->get('id');
+    $capacitacion_id = ee()->input->get('capacitacion_id');
+
+    ee()->db->where('pregunta_id', $pregunta_id)
+              ->delete('pregunta_opciones');
+
+    ee()->db->where('id', $pregunta_id)
+            ->delete('preguntas');
+
+    ee()->session->set_flashdata('message_success', lang('c:pregunta_eliminada'));
+    ee()->functions->redirect($this->base . '&method=test&capacitacion_id=' . $capacitacion_id);
   }
 
   public function ajax_find_unidad() {
@@ -408,7 +517,8 @@ class Capacitaciones_mcp {
                         . $row['nombre'] . '</a>';
 
     $edit_url = $this->base . '&method=editar_capacitacion&capacitacion_id=' . $row['id'];
-    $row['acciones'] = '<a href="' . $edit_url . '">Editar</a> | <a href="#">Borrar</a>';
+    $delete_url = $this->base . '&method=confirmar_eliminar_capacitacion&capacitacion_id=' . $row['id'];
+    $row['acciones'] = '<a href="' . $edit_url . '">Editar</a> | <a href="' . $delete_url . '">Borrar</a>';
     return $row;
   }
   // Fin Table datasouce de capacitaciones
@@ -457,6 +567,7 @@ class Capacitaciones_mcp {
 
   // Table datasource de contenidos
   public function _datasource_inscripciones($state) {
+    $capacitacion_id = ee()->input->get('capacitacion_id');
     $per_page = 20;
     $offset = $state['offset'];
     $codigo = ee()->input->post('codigo', TRUE);
@@ -488,7 +599,7 @@ class Capacitaciones_mcp {
                       "ins.id as checked")
                     ->from("members m")
                     ->join("member_data md", "md.member_id = m.member_id")
-                    ->join("inscripciones ins", "m.member_id = ins.member_id", "left");
+                    ->join("inscripciones ins", "m.member_id = ins.member_id and ins.capacitacion_id = $capacitacion_id", "left");
 
     if ($unidad !== FALSE) {
        $query = $query->where("md.$this->field_unidad", $unidad);
@@ -520,7 +631,7 @@ class Capacitaciones_mcp {
 
     $query = ee()->db->from("members m")
                     ->join("member_data md", "md.member_id = m.member_id")
-                    ->join("inscripciones ins", "m.member_id = ins.member_id", "left");
+                    ->join("inscripciones ins", "m.member_id = ins.member_id and ins.capacitacion_id = $capacitacion_id", "left");
 
     if ($unidad !== FALSE) {
        $query = $query->where("md.$this->field_unidad", $unidad);
@@ -565,6 +676,43 @@ class Capacitaciones_mcp {
     return $row;
   }
   // Fin Table datasource de contenidos
+
+  // Table datasource de Preguntas
+  function _datasource_preguntas($state) {
+    $capacitacion_id =  ee()->input->get_post('capacitacion_id', TRUE);
+    $per_page = 20;
+    $offset = $state['offset'];
+
+    ee()->table->set_columns(array(
+        'id' => array('header' => '#'),
+        'nombre'  => array('header' => 'Nombre'),
+        'acciones' => array('header' => 'Acciones')
+    ));
+
+    $rows = ee()->db->select('id, nombre, capacitacion_id')
+                ->from('preguntas')
+                ->where('capacitacion_id', $capacitacion_id)
+                ->get()->result_array();
+
+    $rows = array_map(array($this, "_format_row_pregunta"), $rows);
+
+    return array(
+      'rows' => array_slice($rows, $offset, $per_page),
+      'pagination' => array(
+        'per_page'   => $per_page,
+        'total_rows' => count($rows),
+      ),
+    );
+  }
+
+  function _format_row_pregunta($row) {
+    $edit_url = $this->base . '&method=editar_pregunta&id=' . $row['id'];
+    $delete_url = $this->base . '&method=confirmar_eliminar_pregunta&id=' . $row['id'] . '&capacitacion_id=' . $row['capacitacion_id'];
+    $row['acciones'] = '<a href="' . $edit_url . '">Editar</a> | <a href="' . $delete_url . '">Borrar</a>';
+    return $row;
+  }
+  // Fin Table datasource de Preguntas
+
 
   public function mcp_globals() {
     ee()->cp->set_breadcrumb($this->base, lang('capacitaciones_module_name'));

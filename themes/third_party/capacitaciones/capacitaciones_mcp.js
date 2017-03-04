@@ -76,7 +76,10 @@ $(function () {
     var length = $('.tbody-opciones tr').length;
     if (length <= 5) {
       var template = '<tr>' +
-                      '<td><input type="text"></td>' +
+                      '<td>' + 
+                      '<input class="copcion" type="text" name="opciones[]">' +
+                      '<input type="hidden" name="ids[]" value="">' +
+                      '</td>' +
                       '<td><a href="#"" class="delete-opcion">Eliminar</a></td>' +
                       '<td><input class="radio-respuesta" name="respuesta" type="radio" value="' + length + '"></td>' +
                     '</tr>';
@@ -98,6 +101,48 @@ $(function () {
     }
   });
 
+  // Formulario de pregunta
+  $('#form_pregunta').on('submit', function (e) {
+    $('.error').remove();
+
+    var has_error = false;
+
+    if (!$('#cnombre').val()) {
+      addError('#cnombre', 'Campo requerido');
+      has_error = true;
+    }
+
+    $('.copcion').each(function (idx, elem) {
+      if (!$(elem).val()) { 
+        has_error = true;
+        addError(elem, "Campo requerido");
+      }
+    });
+
+    var empty = true;
+    $('.radio-respuesta').each(function (idx, elem) {
+      if ($(elem).is(':checked')) {
+        empty = false;
+      }
+    });
+
+    if (has_error) {
+      e.preventDefault();
+      return;
+    }
+
+    if (empty) {
+      e.preventDefault();
+      showMessage('Debe seleccionar una opción de respuesta.', 'error');
+    }
+
+
+  });
+
+  function addError(input, msg) {
+    $(input).parent().append('<p class="error">* ' + msg + '</p>');
+  }
+
   function reasignarValoresARadioRespuesta(){
     $('.radio-respuesta').each(function (idx, elem) {
       $(elem).prop('value', idx);
@@ -108,7 +153,7 @@ $(function () {
     $.ee_notice(msg, {open: true, type: 'error'});
     setTimeout(function () {
       $.ee_notice.destroy();
-    }, 3000);
+    }, 4000);
   }
 
   function renderItem( ul, item ) {

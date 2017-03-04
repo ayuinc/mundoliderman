@@ -75,6 +75,29 @@ class Capacitaciones_upd {
     ee()->dbforge->create_table('inscripciones');
     unset($fields);
 
+    // Crenado Tabla Pregunta
+    $fields = array(
+      'id' => array('type' => 'int', 'unsigned' => TRUE, 'auto_increment' => TRUE),
+      'capacitacion_id' => array('type' => 'int', 'unsigned' => TRUE, 'null' => FALSE),
+      'nombre' => array('type' => 'varchar', 'constraint' => '250', 'null' => FALSE)
+    );
+    ee()->dbforge->add_field($fields);
+    ee()->dbforge->add_key('id', TRUE);
+    ee()->dbforge->create_table('preguntas');
+    unset($fields);
+
+    // Crenado Tabla pregunta_opciones
+    $fields = array(
+      'id' => array('type' => 'int', 'unsigned' => TRUE, 'auto_increment' => TRUE),
+      'pregunta_id' => array('type' => 'int', 'unsigned' => TRUE, 'null' => FALSE),
+      'nombre' => array('type' => 'varchar', 'constraint' => '250', 'null' => FALSE),
+      'es_respuesta' => array('type' => 'tinyint', 'constraint' => '1','unsigned' => TRUE, 'null' => FALSE, 'default' => '0')
+    );
+    ee()->dbforge->add_field($fields);
+    ee()->dbforge->add_key('id', TRUE);
+    ee()->dbforge->create_table('pregunta_opciones');
+    unset($fields);
+
     return TRUE;
   }
 
@@ -102,6 +125,12 @@ class Capacitaciones_upd {
 
     ee()->db->where("module_name", $this->module_name);
     ee()->db->delete("modules");
+
+    // Borrando Tabla Pregunta
+    ee()->dbforge->drop_table('preguntas');
+
+    // Borrando Tabla Pregunta Opciones
+    ee()->dbforge->drop_table('pregunta_opciones');
 
     // Borrando Tabla Contenidos
     ee()->dbforge->drop_table('contenidos');

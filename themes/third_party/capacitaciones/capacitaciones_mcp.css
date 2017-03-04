@@ -9,6 +9,7 @@ button {
 
 .error {
   color: red;
+  text-align: left !important;
 }
 
 .text-right {
