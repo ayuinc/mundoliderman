@@ -40,7 +40,8 @@ class Capacitaciones_upd {
       'fecha_fin_vigencia' => array('type' => 'date', 'null' => FALSE),
       'dias_plazo' => array('type' => 'int', 'null' => FALSE),
       'tipo_asignacion' => array('type' => 'int', 'null' => FALSE),
-      'tipo_unidad' => array('type' => 'int', 'null' => TRUE)
+      'tipo_unidad' => array('type' => 'int', 'null' => TRUE),
+      'presencial' => array('type' => 'tinyint', 'constraint' => '1','unsigned' => TRUE, 'null' => FALSE, 'default' => '0')
     );
     ee()->dbforge->add_field($fields);
     ee()->dbforge->add_key('id', TRUE);
@@ -73,6 +74,18 @@ class Capacitaciones_upd {
     ee()->dbforge->add_field($fields);
     ee()->dbforge->add_key('id', TRUE);
     ee()->dbforge->create_table('inscripciones');
+    unset($fields);
+
+    // Crenado Tabla Asistencias
+    $fields = array(
+      'id' => array('type' => 'int', 'unsigned' => TRUE, 'auto_increment' => TRUE),
+      'capacitacion_id' => array('type' => 'int', 'unsigned' => TRUE, 'null' => FALSE),
+      'member_id' => array('type' => 'int', 'unsigned' => TRUE, 'null' => FALSE),
+      'fecha_asistencia' => array('type' => 'date', 'null' => FALSE)
+    );
+    ee()->dbforge->add_field($fields);
+    ee()->dbforge->add_key('id', TRUE);
+    ee()->dbforge->create_table('asistencias');
     unset($fields);
 
     // Crenado Tabla Pregunta
@@ -132,14 +145,19 @@ class Capacitaciones_upd {
     // Borrando Tabla Pregunta Opciones
     ee()->dbforge->drop_table('pregunta_opciones');
 
+    // Borrando Tabla Asistencias
+    ee()->dbforge->drop_table('asistencias');
+
+    // Borrando Tabla Inscripciones
+    ee()->dbforge->drop_table('inscripciones');
+
     // Borrando Tabla Contenidos
     ee()->dbforge->drop_table('contenidos');
 
     // Borrando Tabla Capacitaciones
     ee()->dbforge->drop_table('capacitaciones');
 
-    // Borrando Tabla Inscripciones
-    ee()->dbforge->drop_table('inscripciones');
+    
 
     return TRUE;
   }

@@ -140,6 +140,7 @@ class Capacitaciones_mcp {
     $this->vData['section'] = 'nuevo_contenido';
     $this->vData['action_url'] = $this->base . '&method=guardar_contenido&capacitacion_id=' . $capacitacion_id;
     $this->vData['capacitacion_id'] = $capacitacion_id;
+    $this->vData['capacitacion'] = ee()->capacitacion_model;
     return ee()->load->view('mcp/capacitacion/nuevo_contenido', $this->vData, TRUE);
   }
 
@@ -163,6 +164,7 @@ class Capacitaciones_mcp {
 
     $this->vData['section'] = 'contenidos';
     $this->vData['capacitacion_id'] = $capacitacion_id;
+    $this->vData['capacitacion'] = ee()->capacitacion_model;
 
     $this->vData['table_contenidos'] = ee()->table->datasource('_datasource_contenidos');
 
@@ -246,6 +248,7 @@ class Capacitaciones_mcp {
 
     $this->vData['section'] = 'inscripciones';
     $this->vData['capacitacion_id'] = $capacitacion->id;
+    $this->vData['capacitacion'] = ee()->capacitacion_model;
     $this->vData['action_url'] = $this->base . '&method=registrar_inscripciones&capacitacion_id=' . $capacitacion_id;
     $this->vData['table_inscripciones'] = ee()->table->datasource('_datasource_inscripciones');
 
@@ -262,12 +265,51 @@ class Capacitaciones_mcp {
     $member_check_ids = ee()->input->post('toggle');
 
     // Borrar inscripción de usuarios que no se seleccionaron
-    $this->_delete_members_no_enrol($capacitacion_id, $member_form_ids, $member_check_ids);
+    $this->_delete_members_no_enrol_inscripciones($capacitacion_id, $member_form_ids, $member_check_ids);
     // Inscribir usuario seleccionados que no se encuentran en la tabla incriciones
-    $this->add_members_no_enrol($capacitacion_id, $member_check_ids, $member_form_ids);
+    $this->add_members_no_enrol_inscripciones($capacitacion_id, $member_check_ids, $member_form_ids);
 
     ee()->session->set_flashdata('message_success', lang('c:inscripciones_actualizadas'));
     ee()->functions->redirect($this->base . '&method=inscripciones&capacitacion_id=' . $capacitacion_id);
+  }
+
+  public function asistencias() {
+    ee()->load->library('table');
+    $capacitacion_id = ee()->input->get('capacitacion_id', TRUE);
+    ee()->capacitacion_model->load($capacitacion_id);
+    $capacitacion =  ee()->capacitacion_model;
+
+    ee()->cp->set_breadcrumb($this->base . '&method=contenidos&capacitacion_id=' . $capacitacion->id, $capacitacion->nombre);
+
+    $this->load_member_fields();
+
+    ee()->view->cp_page_title =  lang('c:asistencias');
+
+    $this->vData['section'] = 'asistencias';
+    $this->vData['capacitacion_id'] = $capacitacion->id;
+    $this->vData['capacitacion'] = ee()->capacitacion_model;
+    $this->vData['action_url'] = $this->base . '&method=registrar_asistencias&capacitacion_id=' . $capacitacion_id;
+    $this->vData['table_asistencias'] = ee()->table->datasource('_datasource_asistencias');
+
+    return ee()->load->view('mcp/capacitacion/asistencias', $this->vData, TRUE);
+  }
+
+   public function registrar_asistencias() {
+    $capacitacion_id = ee()->input->get('capacitacion_id');
+
+    // Usuarios visualizados en el formulario
+    $member_form_ids = ee()->input->post('users');
+
+    // Usuarios seleccionados en el formulario
+    $member_check_ids = ee()->input->post('toggle');
+
+    // Borrar Asistencias de usuarios que no se seleccionaron
+    $this->_delete_members_no_enrol_asistencias($capacitacion_id, $member_form_ids, $member_check_ids);
+    // Marcar asistencia de usuarios seleccionados que no se encuentran en la tabla asistencias
+    $this->add_members_no_enrol_asistencias($capacitacion_id, $member_check_ids, $member_form_ids);
+
+    ee()->session->set_flashdata('message_success', lang('c:asistencias_actualizadas'));
+    ee()->functions->redirect($this->base . '&method=asistencias&capacitacion_id=' . $capacitacion_id);
   }
 
   public function test() {
@@ -281,6 +323,7 @@ class Capacitaciones_mcp {
 
     $this->vData['section'] = 'test';
     $this->vData['capacitacion_id'] = $capacitacion->id;
+    $this->vData['capacitacion'] = ee()->capacitacion_model;
     $this->vData['add_url'] = $this->base . '&method=nueva_pregunta&capacitacion_id=' . $capacitacion->id;
     $this->vData['table_preguntas'] = ee()->table->datasource('_datasource_preguntas');
 
@@ -296,6 +339,7 @@ class Capacitaciones_mcp {
     ee()->view->cp_page_title =  lang('c:nueva_pregunta');
 
     $this->vData['capacitacion_id'] = $capacitacion->id;
+    $this->vData['capacitacion'] = ee()->capacitacion_model;
     $this->vData['action_url'] = $this->base . '&method=guardar_pregunta&capacitacion_id=' . $capacitacion->id;
 
     return ee()->load->view('mcp/capacitacion/nueva_pregunta', $this->vData, TRUE);
@@ -398,7 +442,7 @@ class Capacitaciones_mcp {
   }
 
   // Obtener ids de usuarios inscritos a una capacitación visualizados en el formulario
-  private function _get_exists_member_ids($capacitacion_id, $member_form_ids) {
+  private function _get_exists_member_ids_inscripciones($capacitacion_id, $member_form_ids) {
     $rows = ee()->db->select('member_id')
                         ->from('inscripciones')
                         ->where('capacitacion_id', $capacitacion_id)
@@ -415,16 +459,16 @@ class Capacitaciones_mcp {
   }
 
   // Borrar inscripción de usuarios que no se seleccionaron 
-  private function _delete_members_no_enrol($capacitacion_id, $member_form_ids, $member_check_ids) {
+  private function _delete_members_no_enrol_inscripciones($capacitacion_id, $member_form_ids, $member_check_ids) {
     ee()->db->where('capacitacion_id', $capacitacion_id)
             ->where_in('member_id', $member_form_ids)
             ->where_not_in('member_id', $member_check_ids)
             ->delete('inscripciones');
   }
 
-  private function add_members_no_enrol($capacitacion_id, $member_check_ids, $member_form_ids) {
+  private function add_members_no_enrol_inscripciones($capacitacion_id, $member_check_ids, $member_form_ids) {
     // Usuarios ya inscritos en el formulario
-    $member_exists_ids = $this->_get_exists_member_ids($capacitacion_id, $member_form_ids);
+    $member_exists_ids = $this->_get_exists_member_ids_inscripciones($capacitacion_id, $member_form_ids);
 
     foreach ($member_check_ids as $member_check_id) {
       if (!in_array($member_check_id, $member_exists_ids)) {
@@ -432,6 +476,46 @@ class Capacitaciones_mcp {
           'capacitacion_id' => $capacitacion_id,
           'member_id' => $member_check_id,
           'fecha_inscripcion' => date("Y-m-d", time())
+        ));
+      }
+    }
+  }
+
+  // Obtener ids de usuarios asistentes a una capacitación visualizados en el formulario
+  private function _get_exists_member_ids_asistencias($capacitacion_id, $member_form_ids) {
+    $rows = ee()->db->select('member_id')
+                        ->from('asistencias')
+                        ->where('capacitacion_id', $capacitacion_id)
+                        ->where_in('member_id', $member_form_ids)
+                        ->get()->result_array();
+
+    $exists_members_ids = array();
+    $len = count($rows);
+    foreach ($rows as $row) {
+      $exists_members_ids[] = $row['member_id'];
+    }
+
+    return $exists_members_ids;
+  }
+
+  // Borrar asistencia de usuarios que no se seleccionaron 
+  private function _delete_members_no_enrol_asistencias($capacitacion_id, $member_form_ids, $member_check_ids) {
+    ee()->db->where('capacitacion_id', $capacitacion_id)
+            ->where_in('member_id', $member_form_ids)
+            ->where_not_in('member_id', $member_check_ids)
+            ->delete('asistencias');
+  }
+
+  private function add_members_no_enrol_asistencias($capacitacion_id, $member_check_ids, $member_form_ids) {
+    // Usuarios ya inscritos en el formulario
+    $member_exists_ids = $this->_get_exists_member_ids_asistencias($capacitacion_id, $member_form_ids);
+
+    foreach ($member_check_ids as $member_check_id) {
+      if (!in_array($member_check_id, $member_exists_ids)) {
+        ee()->db->insert('asistencias', array(
+          'capacitacion_id' => $capacitacion_id,
+          'member_id' => $member_check_id,
+          'fecha_asistencia' => ee()->input->post('fecha_asistencia')
         ));
       }
     }
@@ -565,7 +649,7 @@ class Capacitaciones_mcp {
   }
   // Fin Table datasource de contenidos
 
-  // Table datasource de contenidos
+  // Table datasource de incripciones
   public function _datasource_inscripciones($state) {
     $capacitacion_id = ee()->input->get('capacitacion_id');
     $per_page = 20;
@@ -675,7 +759,120 @@ class Capacitaciones_mcp {
       '<input type="hidden" name="users[]" value="' . $row['member_id'] .'">';
     return $row;
   }
-  // Fin Table datasource de contenidos
+  // Fin Table datasource de inscripciones
+
+  // Table datasource de incripciones
+  public function _datasource_asistencias($state) {
+    $capacitacion_id = ee()->input->get('capacitacion_id');
+    $per_page = 20;
+    $offset = $state['offset'];
+    $codigo = ee()->input->post('codigo', TRUE);
+    $dni = ee()->input->post('dni', TRUE);
+    $nombre = ee()->input->post('nombre', TRUE);
+    $apellidos = ee()->input->post('apellidos', TRUE);
+    $unidad = ee()->input->post('unidad', TRUE);
+    $zona = ee()->input->post('zona', TRUE);
+
+    ee()->table->set_columns(array(
+      'codigo'  => array('header' => 'Cod.'),
+      'dni'  => array('header' => 'DNI'),
+      'nombre'  => array('header' => 'Nombre'),
+      'apellidos'  => array('header' => 'Apellidos'),
+      'unidad'  => array('header' => 'Unidad'),
+      'zona' => array('header' => 'Zona'),
+      'check' => array('header' => '<input type="checkbox" name="select_all" value="true" class="toggle_all">', 'sort' => FALSE)
+    ));
+
+
+    $query = ee()->db->select(
+                      "m.member_id as member_id, " . 
+                      "md.$this->field_codigo as codigo, " .
+                      "md.$this->field_dni as dni, " .
+                      "md.$this->field_nombre as nombre, " . 
+                      "md.$this->field_apellidos as apellidos, " . 
+                      "md.$this->field_unidad as unidad, " . 
+                      "md.$this->field_zona as zona, " . 
+                      "asis.id as checked")
+                    ->from("members m")
+                    ->join("member_data md", "md.member_id = m.member_id")
+                    ->join("asistencias asis", "m.member_id = asis.member_id and asis.capacitacion_id = $capacitacion_id", "left");
+
+    if ($unidad !== FALSE) {
+       $query = $query->where("md.$this->field_unidad", $unidad);
+    }
+
+    if ($zona !== FALSE) {
+       $query = $query->where("md.$this->field_zona", $zona);
+    }
+
+    if ($codigo !== FALSE) {
+      $query = $query->like("md.$this->field_codigo", $codigo);
+    }
+
+    if ($dni !== FALSE) {
+      $query = $query->like("md.$this->field_dni", $dni);
+    }
+
+    if ($nombre !== FALSE) {
+      $query = $query->like("md.$this->field_nombre", $nombre);
+    }
+
+    if ($apellidos !== FALSE) {
+      $query = $query->like("md.$this->field_apellidos", $apellidos);
+    }
+
+    $query = $query->limit($per_page, $offset);
+    $rows = $query->get()->result_array();
+    $rows = array_map(array($this, "_format_row_inscripciones"), $rows);
+
+    $query = ee()->db->from("members m")
+                    ->join("member_data md", "md.member_id = m.member_id")
+                    ->join("inscripciones asis", "m.member_id = asis.member_id and asis.capacitacion_id = $capacitacion_id", "left");
+
+    if ($unidad !== FALSE) {
+       $query = $query->where("md.$this->field_unidad", $unidad);
+    }
+
+    if ($zona !== FALSE) {
+       $query = $query->where("md.$this->field_zona", $zona);
+    }
+
+    if ($codigo !== FALSE) {
+      $query = $query->like("md.$this->field_codigo", $codigo);
+    }
+
+    if ($dni !== FALSE) {
+      $query = $query->like("md.$this->field_dni", $dni);
+    }
+
+    if ($nombre !== FALSE) {
+      $query = $query->like("md.$this->field_nombre", $nombre);
+    }
+
+    if ($apellidos !== FALSE) {
+      $query = $query->like("md.$this->field_apellidos", $apellidos);
+    }
+
+    $count = $query->count_all_results();
+
+
+    return array(
+      'rows' => $rows,
+      'pagination' => array(
+        'per_page'   => $per_page,
+        'total_rows' => $count
+      ),
+    );
+  }
+
+  function _format_row_asistencias($row) {
+    $checked = is_null($row['checked']) ? '' : 'checked';
+    $row['check'] = '<input class="toggle" type="checkbox" name="toggle[]" value="' . $row['member_id'] . '" data-is="' . $checked . '" ' . $checked . ' >' .
+      '<input type="hidden" name="users[]" value="' . $row['member_id'] .'">';
+    return $row;
+  }
+  // Fin Table datasource de asistencias
+
 
   // Table datasource de Preguntas
   function _datasource_preguntas($state) {
@@ -717,6 +914,7 @@ class Capacitaciones_mcp {
   public function mcp_globals() {
     ee()->cp->set_breadcrumb($this->base, lang('capacitaciones_module_name'));
     ee()->capacitaciones_helper->mcp_js_css('css', 'jquery-ui.min.css', 'jquery-ui', 'main');
+    ee()->capacitaciones_helper->mcp_js_css('js', 'moment.min.js', 'moment', 'main');
     ee()->capacitaciones_helper->mcp_js_css('js', 'jquery-ui.min.js', 'jquery-ui', 'main');
     ee()->capacitaciones_helper->mcp_js_css('css', 'capacitaciones_mcp.css', 'capacitaciones_mcp', 'main');
     ee()->capacitaciones_helper->mcp_js_css('js', 'capacitaciones_mcp.js', 'capacitaciones_mcp', 'main');

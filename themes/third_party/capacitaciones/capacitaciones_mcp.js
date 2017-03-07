@@ -5,8 +5,10 @@ $(function () {
 
   if ($('#ctipo_asignacion').val() == "1") {
     $('#combo-tipo-unidad').show();
+    $('#check-presencial').hide();
   } else if ($('#ctipo_asignacion').val() == "2") {
     $('#combo-tipo-unidad').hide();
+    $('#check-presencial').show();
   }
 
   if (window.location.href.indexOf("inscripciones") >= 0) {
@@ -57,8 +59,10 @@ $(function () {
     e.preventDefault();
     if ($(this).val() == "1") {
       $('#combo-tipo-unidad').show();
+      $('#check-presencial').hide();
     } else if ($(this).val() == "2") {
       $('#combo-tipo-unidad').hide();
+      $('#check-presencial').show();
     }
   });
 
@@ -134,6 +138,33 @@ $(function () {
     if (empty) {
       e.preventDefault();
       showMessage('Debe seleccionar una opción de respuesta.', 'error');
+    }
+
+
+  });
+
+  // Formulario de asistencias
+  $('#form-asistencias').on('submit', function (e) {
+    if (!$('#cfechaasistencia').val()) {
+      showMessage('Debe ingresar la fecha de asistencia', 'error');
+      e.preventDefault();
+      return;
+    }
+
+    if (!moment($('#cfechaasistencia').val(), 'YYYY-MM-DD').isValid()) {
+      showMessage('Debe ingresar una fecha válida', 'error');
+      e.preventDefault();
+      return;
+    }
+
+    var fechaAsistencia = moment($('#cfechaasistencia').val(), 'YYYY-MM-DD');
+    var fechaInicio = moment($('#fecha_inicio').val(), 'YYYY-MM-DD');
+    var fechaFin = moment($('#fecha_fin').val(), 'YYYY-MM-DD');
+
+    if (!fechaAsistencia.isBetween(fechaInicio, fechaFin, null , '[]')) {
+      showMessage('La fecha de asistencia debe estar entre la fecha de inicio y fin de vigencia', 'error');
+      e.preventDefault();
+      return;
     }
 
 

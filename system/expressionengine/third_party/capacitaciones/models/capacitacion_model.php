@@ -21,6 +21,7 @@ class Capacitacion_model extends CI_Model {
   var $dias_plazo;
   var $tipo_asignacion;
   var $tipo_unidad;
+  var $presencial;
 
   function __construct() {
       parent::__construct();
@@ -40,6 +41,13 @@ class Capacitacion_model extends CI_Model {
     } else {
       $this->tipo_unidad = NULL;
     }
+
+    if (ee()->input->post('presencial') == FALSE) {
+      $this->presencial = 0;
+    } else {
+      $this->presencial = ee()->input->post('presencial');
+    }
+
 
     ee()->db->insert($this->table, $this);
   }
@@ -61,6 +69,7 @@ class Capacitacion_model extends CI_Model {
       $this->dias_plazo = $data['dias_plazo'];
       $this->tipo_asignacion = $data['tipo_asignacion'];
       $this->tipo_unidad = $data['tipo_unidad'];
+      $this->presencial = $data['presencial'];
     }
   }
 
@@ -80,6 +89,12 @@ class Capacitacion_model extends CI_Model {
       $this->tipo_unidad = ee()->input->post('tipo_unidad');
     } else {
       $this->tipo_unidad = NULL;
+    }
+
+    if (ee()->input->post('presencial') == FALSE) {
+      $this->presencial = 0;
+    } else {
+      $this->presencial = ee()->input->post('presencial');
     }
 
     ee()->db->where("id", $this->id);

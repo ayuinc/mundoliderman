@@ -1,5 +1,10 @@
 <div id="umenu">
     <ul class="tab_menu" id="tab_menu_tabs">
+      <?php if($capacitacion->presencial == '1') { ?>
+      <li class="content_tab<?=(($section == 'asistencias')) ? ' current': ''?>">
+          <a href="<?=$base_url?>&method=asistencias&capacitacion_id=<?=$capacitacion_id?>"><?=lang('c:asistencias')?></a>
+      </li>
+      <?php } else { ?>
       <li class="content_tab<?=(($section == 'contenidos')) ? ' current': ''?>">
           <a href="<?=$base_url?>&method=contenidos&capacitacion_id=<?=$capacitacion_id?>"><?=lang('c:contenidos')?></a>
       </li>
@@ -12,6 +17,7 @@
       <li class="content_tab<?=(($section == 'test')) ? ' current': ''?>">
           <a href="<?=$base_url?>&method=test&capacitacion_id=<?=$capacitacion_id?>"><?=lang('c:test')?></a>
       </li>
+      <?php } ?>
   </ul>
 </div>
 

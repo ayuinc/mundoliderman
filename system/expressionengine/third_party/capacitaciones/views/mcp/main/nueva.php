@@ -48,6 +48,9 @@
         </select>
         <?php echo form_error('tipo_unidad', '<p class="error"> *', '</p>'); ?>
       </div>
+      <div id="check-presencial" class="cform-group">
+        <label ><input type="checkbox" name="presencial" value="1"> Es presencial</label>
+      </div>
       <div class="text-right">
         <?=form_submit(array('name' => 'submit', 'value' => lang('c:guardar'), 'class' => 'submit'));?>
       </div>

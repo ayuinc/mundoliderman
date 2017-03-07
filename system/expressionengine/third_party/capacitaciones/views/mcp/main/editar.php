@@ -34,8 +34,8 @@
       <div class="cform-group ">
         <label for="ctipo_asignacion">Tipo de asignación</label> <br>
         <select name="tipo_asignacion" id="ctipo_asignacion">
-          <option value="1" <?= (set_value('tipo_asignacion', $capacitacion->tipo_asignacion) == '0') ? 'selected' : ''  ?> >Por tipo de unidad</option>
-          <option value="2" <?= (set_value('tipo_asignacion', $capacitacion->tipo_asignacion) == '0') ? 'selected' : ''  ?> >Por unidad</option>
+          <option value="1" <?= (set_value('tipo_asignacion', $capacitacion->tipo_asignacion) == '1') ? 'selected' : ''  ?> >Por tipo de unidad</option>
+          <option value="2" <?= (set_value('tipo_asignacion', $capacitacion->tipo_asignacion) == '2') ? 'selected' : ''  ?> >Por unidad</option>
         </select>
         <?php echo form_error('tipo_asignacion', '<p class="error"> *', '</p>'); ?>
       </div>
@@ -47,6 +47,9 @@
           <option value="2" <?= (set_value('tipo_unidad', $capacitacion->tipo_unidad) == '2') ? 'selected' : ''  ?> > Unidad Petrolera </option>
         </select>
         <?php echo form_error('tipo_unidad', '<p class="error"> *', '</p>'); ?>
+      </div>
+      <div id="check-presencial" class="cform-group">
+        <label ><input type="checkbox" name="presencial" value="1" <?= $capacitacion->presencial == '1' ? 'checked' : '' ?> > Es presencial</label>
       </div>
       <div class="text-right">
         <?=form_submit(array('name' => 'submit', 'value' => lang('c:actualizar'), 'class' => 'submit'));?>
