@@ -841,6 +841,7 @@ class Capacitaciones_mcp {
 
     $query = $query->limit($per_page, $offset);
     $rows = $query->get()->result_array();
+
     $rows = array_map(array($this, "_format_row_inscripciones"), $rows);
 
     $query = ee()->db->from("members m")
@@ -883,9 +884,10 @@ class Capacitaciones_mcp {
     );
   }
 
+
   function _format_row_inscripciones($row) {
     $checked = is_null($row['checked']) ? '' : 'checked';
-    $row['check'] = '<input class="toggle" type="checkbox" name="toggle[]" value="' . $row['member_id'] . '" data-is="' . $checked . '" ' . $checked . ' >' .
+    $row['check'] = '<input class="toggle inscripcion-check" type="checkbox" name="toggle[]" value="' . $row['member_id'] . '" data-is="' . $checked . '" ' . $checked . ' >' .
       '<input type="hidden" name="users[]" value="' . $row['member_id'] .'">';
     return $row;
   }

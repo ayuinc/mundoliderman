@@ -1,7 +1,7 @@
 <div class="cmcp">
   <?php echo $this->view('mcp/capacitacion/_menu'); ?>
   <div class="cbody p-21">
-    <?=form_open_multipart($action_url)?>
+    <?=form_open_multipart($action_url, array('id' => 'form-contenido'))?>
       <div class="cform-group">
         <label for="cnombre">Nombre</label>
         <input id="cnombre" type="text" name="nombre" value="<?php echo set_value('nombre'); ?>">

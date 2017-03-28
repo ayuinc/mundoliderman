@@ -1,6 +1,6 @@
 <div class="cmcp">
   <div class="cbody p-21">
-    <?=form_open_multipart($action_url)?>
+    <?=form_open_multipart($action_url, array('id' => 'form-contenido'))?>
       <?= form_hidden('id', $contenido->id) ?>
       <div class="cform-group">
         <label for="cnombre">Nombre</label>

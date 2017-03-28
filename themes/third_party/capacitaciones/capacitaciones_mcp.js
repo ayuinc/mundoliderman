@@ -66,13 +66,17 @@ $(function () {
     }
   });
 
-  $(document).on('change', ':checkbox', function (e) {
-    e.preventDefault();
-    $this = $(e.target);
-    if ($this.data('is') == 'checked') {
-      $this.prop('checked', true);
+  // Actualizar check en tabla de inscripciones
+  $('table').bind('tableupdate', function() {
+    console.log("here");
+    $('.inscripcion-check:checkbox').each(function(idx, elem) {
+      var $elem = $(elem);
+      if ($elem.data('is') == 'checked') {
+      $elem.prop('checked', true);
+      $elem.data('is', '');
     }
-  });
+    });
+});
 
   // Test 
   $('.add-opcion').on('click', function (e) {
@@ -170,6 +174,17 @@ $(function () {
 
   });
 
+  // Formulario de contenido
+  $('#form-contenido').on('submit', function (e) {
+    var pattern = /^.+\.(pptx?|pdf)$/;
+    var filename = $('#carchivo').val();
+    if (filename && !pattern.test(filename)) {
+        e.preventDefault();
+        showMessage("Solo puede subir archivos PPT o PDF", 'error');
+    }
+    
+  });
+
   function addError(input, msg) {
     $(input).parent().append('<p class="error">* ' + msg + '</p>');
   }
@@ -181,7 +196,7 @@ $(function () {
   }
 
   function showMessage(msg, type) {
-    $.ee_notice(msg, {open: true, type: 'error'});
+    $.ee_notice(msg, {open: true, type: type});
     setTimeout(function () {
       $.ee_notice.destroy();
     }, 4000);
