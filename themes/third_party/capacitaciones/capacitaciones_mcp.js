@@ -11,7 +11,9 @@ $(function () {
     $('#check-presencial').show();
   }
 
-  if (window.location.href.indexOf("inscripciones") >= 0) {
+  if (window.location.href.indexOf("inscripciones") >= 0 || 
+      window.location.href.indexOf("asistencias") >= 0) {
+    console.log("here");
     $('table').table('add_filter', $('#form-filtrar'));
 
     $('#unidad').autocomplete({
@@ -53,6 +55,26 @@ $(function () {
       }
     })
     .autocomplete('instance')._renderItem = renderItem;
+
+    $('#cliente').autocomplete({
+      source: function (request, response) {
+        $.ajax({
+          url: $("#cliente_url").val(),
+          dataType: 'json',
+          data: request,
+          success: function (data) {
+            response(data);
+          }
+        })
+      },
+      minLength: 0,
+      select: function( event, ui ) {
+        $( "#cliente" ).val( ui.item.name );
+        $( "#cliente" ).trigger('change');
+        return false;
+      }
+    })
+    .autocomplete('instance')._renderItem = renderItem;
   }
 
   $('#ctipo_asignacion').on('change', function (e) {
@@ -67,14 +89,22 @@ $(function () {
   });
 
   // Actualizar check en tabla de inscripciones
+  $('.inscripcion-check:checkbox').each(function(idx, elem) {
+    var $elem = $(elem);
+    if ($elem.data('is') == 'checked') {
+      $elem.parents('tr').addClass('inscrito');
+    }
+  });
+
   $('table').bind('tableupdate', function() {
     console.log("here");
     $('.inscripcion-check:checkbox').each(function(idx, elem) {
       var $elem = $(elem);
       if ($elem.data('is') == 'checked') {
-      $elem.prop('checked', true);
-      $elem.data('is', '');
-    }
+        $elem.prop('checked', true);
+        $elem.parents('tr').addClass('inscrito');
+        $elem.data('is', '');
+      }
     });
 });
 

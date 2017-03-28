@@ -1,4 +1,9 @@
 /* Helpers */
+
+.inscrito {
+  color: blue;
+}
+
 button {
   cursor: pointer;
 }

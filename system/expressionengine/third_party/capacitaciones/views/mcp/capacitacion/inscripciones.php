@@ -24,7 +24,12 @@
             <input type="text" id="unidad" name="unidad" style="width: 200px;">
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <label for="zona">Zona</label>
+            &nbsp;
             <input type="text" id="zona" name="zona"  style="width: 200px;">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <label for="cliente">Cliente</label>
+            &nbsp;
+            <input type="text" id="cliente" name="cliente"  style="width: 200px;">
           </p>
         </fieldset>
       </div>
@@ -41,3 +46,4 @@
 </div>
 <input id="unidad_url" type="hidden" value="<?= $base_url . '&method=ajax_find_unidad' ?>">
 <input id="zona_url" type="hidden" value="<?= $base_url . '&method=ajax_find_zona' ?>">
+<input id="cliente_url" type="hidden" value="<?= $base_url . '&method=ajax_find_cliente' ?>">

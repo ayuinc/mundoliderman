@@ -379,7 +379,7 @@ class Capacitaciones_mcp {
     return ee()->load->view('mcp/capacitacion/asistencias', $this->vData, TRUE);
   }
 
-   public function registrar_asistencias() {
+  public function registrar_asistencias() {
     $capacitacion_id = ee()->input->get('capacitacion_id');
 
     // Usuarios visualizados en el formulario
@@ -520,6 +520,20 @@ class Capacitaciones_mcp {
                       ->from("member_data")
                       ->where("$this->field_unidad", $unidad)
                       ->like("$this->field_zona", $term)
+                      ->get()->result_array();
+
+    header('Content-Type: application/json');                  
+    echo json_encode($data);exit;
+  }
+
+  public function ajax_find_cliente() {
+    $term = ee()->input->get_post('term', TRUE);
+
+    $this->load_member_fields();
+
+    $data = ee()->db->distinct()->select("$this->field_cliente as name")
+                      ->from("member_data")
+                      ->like("$this->field_cliente", $term)
                       ->get()->result_array();
 
     header('Content-Type: application/json');                  
@@ -790,6 +804,7 @@ class Capacitaciones_mcp {
     $apellidos = ee()->input->post('apellidos', TRUE);
     $unidad = ee()->input->post('unidad', TRUE);
     $zona = ee()->input->post('zona', TRUE);
+    $cliente = ee()->input->post('cliente', TRUE);
 
     ee()->table->set_columns(array(
       'codigo'  => array('header' => 'Cod.'),
@@ -798,6 +813,7 @@ class Capacitaciones_mcp {
       'apellidos'  => array('header' => 'Apellidos'),
       'unidad'  => array('header' => 'Unidad'),
       'zona' => array('header' => 'Zona'),
+      'cliente' => array('header' => 'Cliente'),
       'check' => array('header' => '<input type="checkbox" name="select_all" value="true" class="toggle_all">', 'sort' => FALSE)
     ));
 
@@ -810,6 +826,7 @@ class Capacitaciones_mcp {
                       "md.$this->field_apellidos as apellidos, " . 
                       "md.$this->field_unidad as unidad, " . 
                       "md.$this->field_zona as zona, " . 
+                      "md.$this->field_cliente as cliente, " . 
                       "ins.id as checked")
                     ->from("members m")
                     ->join("member_data md", "md.member_id = m.member_id")
@@ -821,6 +838,10 @@ class Capacitaciones_mcp {
 
     if ($zona !== FALSE) {
        $query = $query->where("md.$this->field_zona", $zona);
+    }
+
+    if ($cliente !== FALSE) {
+      $query = $query->where("md.$this->field_cliente", $cliente);
     }
 
     if ($codigo !== FALSE) {
@@ -854,6 +875,10 @@ class Capacitaciones_mcp {
 
     if ($zona !== FALSE) {
        $query = $query->where("md.$this->field_zona", $zona);
+    }
+
+    if ($cliente !== FALSE) {
+      $query = $query->where("md.$this->field_cliente", $cliente);
     }
 
     if ($codigo !== FALSE) {
@@ -904,6 +929,7 @@ class Capacitaciones_mcp {
     $apellidos = ee()->input->post('apellidos', TRUE);
     $unidad = ee()->input->post('unidad', TRUE);
     $zona = ee()->input->post('zona', TRUE);
+    $cliente = ee()->input->post('cliente', TRUE);
 
     ee()->table->set_columns(array(
       'codigo'  => array('header' => 'Cod.'),
@@ -912,6 +938,7 @@ class Capacitaciones_mcp {
       'apellidos'  => array('header' => 'Apellidos'),
       'unidad'  => array('header' => 'Unidad'),
       'zona' => array('header' => 'Zona'),
+      'cliente' => array('header' => 'Cliente'),
       'check' => array('header' => '<input type="checkbox" name="select_all" value="true" class="toggle_all">', 'sort' => FALSE)
     ));
 
@@ -924,6 +951,7 @@ class Capacitaciones_mcp {
                       "md.$this->field_apellidos as apellidos, " . 
                       "md.$this->field_unidad as unidad, " . 
                       "md.$this->field_zona as zona, " . 
+                      "md.$this->field_cliente as cliente, " . 
                       "asis.id as checked")
                     ->from("members m")
                     ->join("member_data md", "md.member_id = m.member_id")
@@ -935,6 +963,10 @@ class Capacitaciones_mcp {
 
     if ($zona !== FALSE) {
        $query = $query->where("md.$this->field_zona", $zona);
+    }
+
+    if ($cliente !== FALSE) {
+      $query = $query->where("md.$this->field_cliente", $cliente);
     }
 
     if ($codigo !== FALSE) {
@@ -967,6 +999,10 @@ class Capacitaciones_mcp {
 
     if ($zona !== FALSE) {
        $query = $query->where("md.$this->field_zona", $zona);
+    }
+
+    if ($cliente !== FALSE) {
+      $query = $query->where("md.$this->field_cliente", $cliente);
     }
 
     if ($codigo !== FALSE) {
@@ -1060,6 +1096,7 @@ class Capacitaciones_mcp {
     $this->field_codigo = $this->getMemberFieldId('codigo-liderman');
     $this->field_dni = $this->getMemberFieldId('dni');
     $this->field_tipo_usuario = $this->getMemberFieldId('tipo-usuario');
+    $this->field_cliente = $this->getMemberFieldId('empresa-empleadora');
   }
 
   private function getCustomMemberFields() {
