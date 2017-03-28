@@ -1585,7 +1585,7 @@ main {
     box-shadow: 0 2.5em 0 0 #f94211;
   }
 }
-/*ANIMACI├ôN BOLETA*/
+/*ANIMACIÓN BOLETA*/
 .loader,
 .loader:before,
 .loader:after {
@@ -1771,7 +1771,7 @@ main {
   top: 67%;
 }
 
-/*MEN├Ü*/
+/*MENÚ*/
 header {
   height: 80px;
 }
@@ -1795,7 +1795,7 @@ header .perfil {
   border-radius: 100%;
 }
 
-/*MEN├Ü MOVIL*/
+/*MENÚ MOVIL*/
 .btn-menu {
   border: 1px solid;
 }
@@ -2496,7 +2496,7 @@ footer > div .lista p {
   left: 50px;
 }
 
-/*PR├ëSTAMOS*/
+/*PRÉSTAMOS*/
 .prestamos h3 {
   font-size: 26px;
   font-size: 1.625rem;
@@ -2554,7 +2554,7 @@ footer > div .lista p {
   text-align: right !important;
 }
 
-/*ACEPTAR O RECHAZAR PR├ëSTAMO*/
+/*ACEPTAR O RECHAZAR PRÉSTAMO*/
 .resultados-prestamos h3 {
   font-size: 22px !important;
 }
@@ -2766,7 +2766,7 @@ footer > div .lista p {
   display: inline-block;
 }
 
-/*LISTA-PUBLICACI├ôN*/
+/*LISTA-PUBLICACIÓN*/
 .lista .img-lista {
   height: 445px;
   position: relative;
@@ -2806,7 +2806,7 @@ footer > div .lista p {
   border: 0px;
 }
 
-/*PUBLICACI├ôN*/
+/*PUBLICACIÓN*/
 .publicacion {
   position: relative;
 }
@@ -2829,7 +2829,7 @@ footer > div .lista p {
   left: 5%;
 }
 
-/*LIDERMAN├ìA*/
+/*LIDERMANÍA*/
 .lidermania ul {
   list-style: inherit;
 }
@@ -2883,7 +2883,7 @@ input[type="submit"] {
   padding: 5px 20px;
 }
 
-/*CUADRO ESTAD├ìSTICO*/
+/*CUADRO ESTADÍSTICO*/
 #cuadro-estadistico {
   margin: 0 auto;
 }
@@ -3128,7 +3128,7 @@ input[type="submit"] {
     text-align: center !important;
   }
 
-  /*Sem├íforo perfil*/
+  /*Semáforo perfil*/
   .resumen-semaforo .col-md-4 .circulo-semaforo {
     width: 8px !important;
     height: 8px !important;
@@ -3153,7 +3153,7 @@ input[type="submit"] {
     left: 50%;
   }
 
-  /*PR├ëSTAMOS*/
+  /*PRÉSTAMOS*/
   .prestamos h3 {
     font-size: 24px !important;
     font-size: 1.5rem !important;
@@ -3246,7 +3246,7 @@ input[type="submit"] {
     margin-left: 0;
   }
 
-  /*PUBLICACI├ôN*/
+  /*PUBLICACIÓN*/
   .publicacion .texto p {
     font-size: 18px;
   }
@@ -3291,7 +3291,7 @@ input[type="submit"] {
     background-color: #D8D8D8;
   }
 
-  /*LIDERMAN├ìA*/
+  /*LIDERMANÍA*/
   .datos-lidermania h3 {
     font-size: 26px !important;
   }
@@ -3299,7 +3299,7 @@ input[type="submit"] {
     font-size: 18px !important;
   }
 
-  /*LIDERMAN├ìA POST*/
+  /*LIDERMANÍA POST*/
   .datos-lidermania h4 {
     font-size: 22px !important;
     font-size: 1.375rem !important;
@@ -3365,7 +3365,7 @@ input[type="submit"] {
     font-size: 12px;
   }
 
-  /*Rechazar pr├®stamo*/
+  /*Rechazar préstamo*/
   .rechazar img:last-child,
   .aceptar img:last-child {
     display: inline-block !important;
@@ -3450,6 +3450,23 @@ input[type="submit"] {
 
 .highlighter {
   border: 2px #4d90fe solid;
+}
+
+/* Capacitaciones */
+.capacitaciones {
+  background-color: white;
+  border-radius: 5px;
+}
+.capacitaciones ul {
+  padding: 0;
+}
+.capacitaciones ul .capacitacion {
+  position: relative;
+  padding: 14px;
+}
+.capacitaciones ul .capacitacion .tipo {
+  position: absolute;
+  right: 14px;
 }
 
 /*# sourceMappingURL=style.css.map */

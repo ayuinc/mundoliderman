@@ -2,6 +2,15 @@
   <div class="cbody p-21">
     <?=form_open($action_url, "id='form-editar-capacitacion'")?>
       <?= form_hidden('id', $capacitacion->id) ?>
+      <div class="cform-group">
+        <label for="ccurso">Curso</label> <br>
+        <select name="curso_id" id="ccurso">
+          <?php foreach ($cursos as $curso) { ?>
+            <option value="<?= $curso->id  ?>" <?= (set_value('curso_id', $capacitacion->curso_id) == $curso->id) ? 'selected' : ''  ?> ><?= $curso->nombre ?></option>
+          <?php } ?>
+        </select>
+        <?php echo form_error('curso', '<p class="error"> *', '</p>'); ?>
+      </div>
       <div class="cform-group cform-group-sm">
         <label for="ccodigo">Código</label>
         <input id="ccodigo" type="text" name="codigo" value="<?php echo set_value('codigo', $capacitacion->codigo); ?>">
@@ -30,6 +39,16 @@
         <label for="cdias_plazo">Días de plazo</label>
         <input id="cdias_plazo" type="text" name="dias_plazo" value="<?php echo set_value('dias_plazo', $capacitacion->dias_plazo); ?>">
         <?php echo form_error('dias_plazo', '<p class="error"> *', '</p>'); ?>
+      </div>
+      <div class="cform-group cdate-group">
+        <label for="cporcentaje_aprobacion">Porcentaje de aprobación</label>
+        <input id="cporcentaje_aprobacion" type="number" min="1" max="100" step="1" name="porcentaje_aprobacion" value="<?php echo set_value('porcentaje_aprobacion', $capacitacion->porcentaje_aprobacion); ?>">
+        <?php echo form_error('porcentaje_aprobacion', '<p class="error"> *', '</p>'); ?>
+      </div>
+      <div class="cform-group cdate-group">
+        <label for="cnumero_horas">Número de horas</label>
+        <input id="cnumero_horas" type="number" min="1" step="1" name="numero_horas" value="<?php echo set_value('numero_horas', $capacitacion->numero_horas); ?>">
+        <?php echo form_error('numero_horas', '<p class="error"> *', '</p>'); ?>
       </div>
       <div class="cform-group ">
         <label for="ctipo_asignacion">Tipo de asignación</label> <br>

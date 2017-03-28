@@ -40,10 +40,93 @@ class Capacitaciones_mcp {
     return $this->listado();
   }
 
+  public function cursos() {
+    ee()->view->cp_page_title =  lang('c:cursos');
+    ee()->load->library('table');
+
+    $this->vData['section'] = 'cursos';
+
+    $this->vData['table_cursos'] = ee()->table->datasource('_datasource_cursos');
+
+    return ee()->load->view('mcp/main/cursos', $this->vData, TRUE);
+  }
+
+  public function nuevo_curso() {
+    ee()->view->cp_page_title =  lang('c:nuevo_curso');
+    $this->vData['section'] = 'nuevo_curso';
+    $this->vData['action_url'] = $this->base . '&method=guardar_curso';
+    return ee()->load->view('mcp/main/nuevo_curso', $this->vData, TRUE);
+  }
+
+  public function guardar_curso() {
+    ee()->load->model('curso_model');
+    if ($this->_is_form_curso_valid() == FALSE) {
+      return $this->nuevo_curso();
+    } else {
+      ee()->curso_model->save();
+      ee()->session->set_flashdata('message_success', lang('c:curso_registrado'));
+      ee()->functions->redirect($this->base . '&method=cursos');
+    }
+  }
+
+  public function editar_curso() {
+    ee()->load->model('curso_model');
+    $curso_id =  ee()->input->get_post('curso_id', TRUE);
+    ee()->curso_model->load($curso_id);
+
+    ee()->view->cp_page_title =  lang('c:editar');
+
+    $this->vData['curso'] =  ee()->curso_model;
+    $this->vData['action_url'] = $this->base . '&method=actualizar_curso';
+    return ee()->load->view('mcp/main/editar_curso', $this->vData, TRUE);
+  }
+
+  public function actualizar_curso() {
+    ee()->load->model('curso_model');
+    if ($this->_is_form_curso_valid() == FALSE) {
+      return $this->editar_curso();
+    } else { 
+      ee()->curso_model->update();
+      ee()->session->set_flashdata('message_success', lang('c:curso_actualizado'));
+      ee()->functions->redirect($this->base . '&method=cursos');
+    }
+  }
+
+  public function confirmar_eliminar_curso() {
+    ee()->load->model('curso_model');
+    $curso_id = ee()->input->get('curso_id');
+    ee()->curso_model->load($curso_id);
+    $curso = ee()->curso_model;
+
+    $this->vData['curso'] = $curso;
+    $this->vData['action_url'] = $this->base . '&method=eliminar_curso&curso_id=' . $curso_id;
+
+    return ee()->load->view('mcp/main/confirmar_eliminar_curso', $this->vData, TRUE);
+  }
+
+  public function eliminar_curso() {
+    $curso_id = ee()->input->get('curso_id');
+
+    ee()->db->where('curso_id', $curso_id)
+            ->delete('capacitaciones');
+
+    ee()->db->where('id', $curso_id)
+            ->delete('cursos');
+
+    ee()->session->set_flashdata('message_success', lang('c:curso_eliminado'));
+    ee()->functions->redirect($this->base . '&method=cursos');
+  }
+
+
   public function nueva() {
+    ee()->load->model('curso_model');
     ee()->view->cp_page_title =  lang('c:nueva');
     $this->vData['section'] = 'nueva';
     $this->vData['action_url'] = $this->base . '&method=guardar';
+
+
+    $this->vData['cursos'] = ee()->curso_model->getAll();
+
     return ee()->load->view('mcp/main/nueva', $this->vData, TRUE);
   }
 
@@ -70,11 +153,13 @@ class Capacitaciones_mcp {
   }
 
   public function editar_capacitacion() {
+    ee()->load->model('curso_model');
     $capacitacion_id =  ee()->input->get_post('capacitacion_id', TRUE);
     ee()->capacitacion_model->load($capacitacion_id);
 
     ee()->view->cp_page_title =  lang('c:editar');
 
+    $this->vData['cursos'] = ee()->curso_model->getAll();
     $this->vData['capacitacion'] =  ee()->capacitacion_model;
     $this->vData['action_url'] = $this->base . '&method=actualizar_capacitacion';
     return ee()->load->view('mcp/main/editar', $this->vData, TRUE);
@@ -521,6 +606,14 @@ class Capacitaciones_mcp {
     }
   }
 
+  // Validación para registrar curso
+  private function _is_form_curso_valid() {
+    ee()->load->library('form_validation');
+    ee()->form_validation->set_rules('codigo', 'Código', 'required');
+    ee()->form_validation->set_rules('nombre', 'Nombre', 'required');
+    return ee()->form_validation->run();
+  }
+
   // Validación para registrar capacitación
   private function _is_form_capacitacion_valid() {
     ee()->load->library('form_validation');
@@ -529,6 +622,9 @@ class Capacitaciones_mcp {
     ee()->form_validation->set_rules('fecha_inicio', 'Fecha de inicio', 'required|callback_date_valid');
     ee()->form_validation->set_rules('fecha_fin_vigencia', 'Fecha de fin de vigencia', 'required|callback_date_valid');
     ee()->form_validation->set_rules('dias_plazo', 'Días de plazo', 'required|is_natural_no_zero');
+    ee()->form_validation->set_rules('porcentaje_aprobacion', 'Porcentaje de aprobación', 'required');
+    ee()->form_validation->set_rules('curso_id', 'Curso', 'required');
+    ee()->form_validation->set_rules('numero_horas', 'Número de horas', 'required');
     ee()->form_validation->set_message('required', lang('c:field_required'));
     ee()->form_validation->set_message('date_valid', lang('c:entry_date_valid'));
     ee()->form_validation->set_message('is_natural_no_zero', lang('c:natural_no_zero_error'));
@@ -606,6 +702,40 @@ class Capacitaciones_mcp {
     return $row;
   }
   // Fin Table datasouce de capacitaciones
+
+  // Table datasource de cursos
+  function _datasource_cursos($state) {
+    $per_page = 20;
+    $offset = $state['offset'];
+
+    ee()->table->set_columns(array(
+        'codigo' => array('header' => 'Cod.'),
+        'nombre'  => array('header' => 'Nombre'),
+        'acciones' => array('header' => 'Acciones'),
+    ));
+
+    $rows = ee()->db->select('id, codigo, nombre')
+                ->from('cursos')
+                ->get()->result_array();
+
+    $rows = array_map(array($this, "_format_row_curso"), $rows);
+
+    return array(
+      'rows' => array_slice($rows, $offset, $per_page),
+      'pagination' => array(
+        'per_page'   => $per_page,
+        'total_rows' => count($rows),
+      ),
+    );
+  }
+
+  function _format_row_curso($row) {
+    $edit_url = $this->base . '&method=editar_curso&curso_id=' . $row['id'];
+    $delete_url = $this->base . '&method=confirmar_eliminar_curso&curso_id=' . $row['id'];
+    $row['acciones'] = '<a href="' . $edit_url . '">Editar</a> | <a href="' . $delete_url . '">Borrar</a>';
+    return $row;
+  }
+  // Fin Table datasouce de cursos
 
 
   // Table datasource de contenidos

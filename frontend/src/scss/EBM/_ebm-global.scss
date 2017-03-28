@@ -2112,3 +2112,25 @@ input[type="submit"] {
 .highlighter {
   border: 2px #4d90fe solid;
 }
+
+
+/* Capacitaciones */
+.capacitaciones {
+	background-color: white;
+	border-radius: 5px;
+	
+	ul {
+		padding: 0;
+
+		.capacitacion {
+			position: relative;
+			padding: 14px;
+
+			.tipo {
+				position: absolute;
+				right: 14px;
+			}
+		}
+	}
+
+}

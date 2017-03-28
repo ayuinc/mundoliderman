@@ -42,6 +42,11 @@
             <div class="bg-danger ph-28 panel-group lidermania_link">  
             </div>
             {/if}
+
+            <div class="bg-danger ph-28 panel-group capacitaciones_link">
+              <div class="fz-22 text-white text-uppercase text-not-underline m-0 pv-14"><a href="{path='servicios/capacitaciones/{member_id}'}">Capacitaciones</a></div>
+            </div>
+
             {if '{exp:util:is_user_lidermania}' != '1'}
               {if "{exp:parameters:can_access_indicators}" == "1" }
               <div class="panel-group3" id="accordion3" role="tablist" aria-multiselectable="true">

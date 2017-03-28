@@ -30,6 +30,17 @@ class Capacitaciones_upd {
 
     ee()->db->insert('modules', $mod_data);
 
+    // Creando Tabla Cursos
+    $fields = array(
+      'id' => array('type' => 'int', 'unsigned' => TRUE, 'auto_increment' => TRUE),
+      'nombre' => array('type' => 'varchar', 'constraint' => '250', 'null' => FALSE),
+      'codigo' => array('type' => 'varchar', 'constraint' => '250', 'null' => FALSE)
+    );
+    ee()->dbforge->add_field($fields);
+    ee()->dbforge->add_key('id', TRUE);
+    ee()->dbforge->create_table('cursos');
+    unset($fields);
+
     // Creando Tabla Capacitaciones
     $fields = array(
       'id' => array('type' => 'int', 'unsigned' => TRUE, 'auto_increment' => TRUE),
@@ -39,9 +50,12 @@ class Capacitaciones_upd {
       'fecha_inicio' => array('type' => 'date', 'null' => FALSE),
       'fecha_fin_vigencia' => array('type' => 'date', 'null' => FALSE),
       'dias_plazo' => array('type' => 'int', 'null' => FALSE),
+      'porcentaje_aprobacion' => array('type' => 'decimal', 'constraint' => '10,2', 'null' => FALSE),
+      'numero_horas' => array('type' => 'decimal', 'constraint' => '10,2', 'null' => FALSE),
       'tipo_asignacion' => array('type' => 'int', 'null' => FALSE),
       'tipo_unidad' => array('type' => 'int', 'null' => TRUE),
-      'presencial' => array('type' => 'tinyint', 'constraint' => '1','unsigned' => TRUE, 'null' => FALSE, 'default' => '0')
+      'presencial' => array('type' => 'tinyint', 'constraint' => '1','unsigned' => TRUE, 'null' => FALSE, 'default' => '0'),
+      'curso_id' => array('type' => 'int', 'unsigned' => TRUE, 'null' => FALSE),
     );
     ee()->dbforge->add_field($fields);
     ee()->dbforge->add_key('id', TRUE);
@@ -156,6 +170,9 @@ class Capacitaciones_upd {
 
     // Borrando Tabla Capacitaciones
     ee()->dbforge->drop_table('capacitaciones');
+
+    // Borrando Tabla Cursos
+    ee()->dbforge->drop_table('cursos');
 
     
 

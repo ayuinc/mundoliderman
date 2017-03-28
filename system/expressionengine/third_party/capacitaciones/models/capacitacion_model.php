@@ -19,9 +19,12 @@ class Capacitacion_model extends CI_Model {
   var $fecha_inicio;
   var $fecha_fin_vigencia;
   var $dias_plazo;
+  var $porcentaje_aprobacion;
+  var $numero_horas;
   var $tipo_asignacion;
   var $tipo_unidad;
   var $presencial;
+  var $curso_id;
 
   function __construct() {
       parent::__construct();
@@ -35,6 +38,9 @@ class Capacitacion_model extends CI_Model {
     $this->fecha_fin_vigencia = ee()->input->post('fecha_fin_vigencia');
     $this->dias_plazo = ee()->input->post('dias_plazo');
     $this->tipo_asignacion = ee()->input->post('tipo_asignacion');
+    $this->curso_id = ee()->input->post('curso_id');
+    $this->porcentaje_aprobacion = ee()->input->post('porcentaje_aprobacion');
+    $this->numero_horas = ee()->input->post('numero_horas');
 
     if ($this->tipo_asignacion == self::TIPO_UNIDAD ) {
       $this->tipo_unidad = ee()->input->post('tipo_unidad');
@@ -70,6 +76,9 @@ class Capacitacion_model extends CI_Model {
       $this->tipo_asignacion = $data['tipo_asignacion'];
       $this->tipo_unidad = $data['tipo_unidad'];
       $this->presencial = $data['presencial'];
+      $this->curso_id = $data['curso_id'];
+      $this->porcentaje_aprobacion = $data['porcentaje_aprobacion'];
+      $this->numero_horas = $data['numero_horas'];
     }
   }
 
@@ -84,6 +93,10 @@ class Capacitacion_model extends CI_Model {
     $this->fecha_fin_vigencia = ee()->input->post('fecha_fin_vigencia');
     $this->dias_plazo = ee()->input->post('dias_plazo');
     $this->tipo_asignacion = ee()->input->post('tipo_asignacion');
+    $this->curso_id = ee()->input->post('curso_id');
+    $this->porcentaje_aprobacion = ee()->input->post('porcentaje_aprobacion');
+    $this->numero_horas = ee()->input->post('numero_horas');
+
 
     if ($this->tipo_asignacion == self::TIPO_UNIDAD ) {
       $this->tipo_unidad = ee()->input->post('tipo_unidad');

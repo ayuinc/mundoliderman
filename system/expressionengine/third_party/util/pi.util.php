@@ -52,4 +52,9 @@ Plugin for utilities
 		return $username == $user_lidermania;
   }
 
+  public function format_date() {
+    $originalDate = $this->EE->TMPL->fetch_param('date', '');
+    return date("d/m/Y", strtotime($originalDate));
+  }
+
 }

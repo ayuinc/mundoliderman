@@ -4,7 +4,12 @@ $lang = array(
 
 'capacitaciones_module_name'     => 'Capacitaciones',
 'capacitaciones_module_description'  => 'Módulo para gestionar capacitaciones de los lidermans',
-'c:nueva' => 'Nueva capacitación',
+'c:cursos' => 'Cursos',
+'c:nuevo_curso' => 'Nuevo Curso',
+'c:curso_registrado' => 'Curso Registrado',
+'c:curso_actualizado' => 'Curso Actualizado',
+'c:modulos' => 'Módulos',
+'c:nueva' => 'Nuevo Módulo',
 'c:listado' => 'Listado',
 'c:guardar' => 'Guardar',
 'c:editar' => 'Editar',
