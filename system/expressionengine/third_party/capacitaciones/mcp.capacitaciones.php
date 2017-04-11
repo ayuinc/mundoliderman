@@ -340,6 +340,26 @@ class Capacitaciones_mcp {
     return ee()->load->view('mcp/capacitacion/inscripciones', $this->vData, TRUE);
   }
 
+  public function ver_inscritos() {
+    ee()->load->library('table');
+    $capacitacion_id = ee()->input->get('capacitacion_id', TRUE);
+    ee()->capacitacion_model->load($capacitacion_id);
+    $capacitacion =  ee()->capacitacion_model;
+
+    ee()->cp->set_breadcrumb($this->base . '&method=contenidos&capacitacion_id=' . $capacitacion->id, $capacitacion->nombre);
+
+    $this->load_member_fields();
+
+    ee()->view->cp_page_title =  lang('c:ver_inscritos');
+
+    $this->vData['section'] = 'ver_inscritos';
+    $this->vData['capacitacion_id'] = $capacitacion->id;
+    $this->vData['capacitacion'] = ee()->capacitacion_model;
+    $this->vData['table_inscritos'] = ee()->table->datasource('_datasource_inscritos');
+
+    return ee()->load->view('mcp/capacitacion/ver_inscritos', $this->vData, TRUE);
+  }
+
   public function registrar_inscripciones() {
     $capacitacion_id = ee()->input->get('capacitacion_id');
 
@@ -681,6 +701,7 @@ class Capacitaciones_mcp {
     ee()->table->set_columns(array(
         'codigo' => array('header' => 'Cod.'),
         'nombre'  => array('header' => 'Nombre'),
+        'curso_nombre'  => array('header' => 'Curso'),
         'tipo_asignacion' => array('header' => 'Tipo asignación'),
         'tipo_unidad' => array('header' => 'Tipo unidad'),
         'fecha_inicio' => array('header' => 'Fecha Inicio'),
@@ -689,8 +710,16 @@ class Capacitaciones_mcp {
         'acciones' => array('header' => 'Acciones'),
     ));
 
-    $rows = ee()->db->select('id, codigo, nombre, tipo_asignacion, tipo_unidad, fecha_inicio, fecha_fin_vigencia, dias_plazo')
-                ->from('capacitaciones')
+    $rows = ee()->db->select(
+              "c.id as id, cur.nombre as curso_nombre, c.codigo as codigo, " . 
+              "c.nombre as nombre, " . 
+              "c.tipo_asignacion as tipo_asignacion, " . 
+              "c.tipo_unidad as tipo_unidad, " . 
+              "c.fecha_inicio as fecha_inicio, " . 
+              "c.fecha_fin_vigencia as fecha_fin_vigencia, " . 
+              "c.dias_plazo as dias_plazo")
+                ->from("capacitaciones c")
+                ->join("cursos cur", "cur.id = c.curso_id")
                 ->get()->result_array();
 
     $rows = array_map(array($this, "_format_row_capacitacion"), $rows);
@@ -918,7 +947,121 @@ class Capacitaciones_mcp {
   }
   // Fin Table datasource de inscripciones
 
-  // Table datasource de incripciones
+  // Table datasource de inscritos
+  public function _datasource_inscritos($state) {
+    $capacitacion_id = ee()->input->get('capacitacion_id');
+    $per_page = 20;
+    $offset = $state['offset'];
+    $codigo = ee()->input->post('codigo', TRUE);
+    $dni = ee()->input->post('dni', TRUE);
+    $nombre = ee()->input->post('nombre', TRUE);
+    $apellidos = ee()->input->post('apellidos', TRUE);
+    $unidad = ee()->input->post('unidad', TRUE);
+    $zona = ee()->input->post('zona', TRUE);
+    $cliente = ee()->input->post('cliente', TRUE);
+
+    ee()->table->set_columns(array(
+      'codigo'  => array('header' => 'Cod.'),
+      'dni'  => array('header' => 'DNI'),
+      'nombre'  => array('header' => 'Nombre'),
+      'apellidos'  => array('header' => 'Apellidos'),
+      'unidad'  => array('header' => 'Unidad'),
+      'zona' => array('header' => 'Zona'),
+      'cliente' => array('header' => 'Cliente')
+    ));
+
+
+    $query = ee()->db->select(
+                      "m.member_id as member_id, " . 
+                      "md.$this->field_codigo as codigo, " .
+                      "md.$this->field_dni as dni, " .
+                      "md.$this->field_nombre as nombre, " . 
+                      "md.$this->field_apellidos as apellidos, " . 
+                      "md.$this->field_unidad as unidad, " . 
+                      "md.$this->field_cliente as cliente, " . 
+                      "md.$this->field_zona as zona")
+                    ->from("members m")
+                    ->join("member_data md", "md.member_id = m.member_id")
+                    ->join("inscripciones ins", "m.member_id = ins.member_id and ins.capacitacion_id = $capacitacion_id", "left")
+                    ->where("ins.id IS NOT NULL");
+
+    if ($unidad !== FALSE) {
+       $query = $query->where("md.$this->field_unidad", $unidad);
+    }
+
+    if ($zona !== FALSE) {
+       $query = $query->where("md.$this->field_zona", $zona);
+    }
+
+    if ($cliente !== FALSE) {
+      $query = $query->where("md.$this->field_cliente", $cliente);
+    }
+
+    if ($codigo !== FALSE) {
+      $query = $query->like("md.$this->field_codigo", $codigo);
+    }
+
+    if ($dni !== FALSE) {
+      $query = $query->like("md.$this->field_dni", $dni);
+    }
+
+    if ($nombre !== FALSE) {
+      $query = $query->like("md.$this->field_nombre", $nombre);
+    }
+
+    if ($apellidos !== FALSE) {
+      $query = $query->like("md.$this->field_apellidos", $apellidos);
+    }
+
+    $query = $query->limit($per_page, $offset);
+    $rows = $query->get()->result_array();
+
+    $query = ee()->db->from("members m")
+                    ->join("member_data md", "md.member_id = m.member_id")
+                    ->join("inscripciones ins", "m.member_id = ins.member_id and ins.capacitacion_id = $capacitacion_id", "left")
+                    ->where("ins.id IS NOT NULL");
+
+    if ($unidad !== FALSE) {
+       $query = $query->where("md.$this->field_unidad", $unidad);
+    }
+
+    if ($zona !== FALSE) {
+       $query = $query->where("md.$this->field_zona", $zona);
+    }
+
+    if ($cliente !== FALSE) {
+      $query = $query->where("md.$this->field_cliente", $cliente);
+    }
+
+    if ($codigo !== FALSE) {
+      $query = $query->like("md.$this->field_codigo", $codigo);
+    }
+
+    if ($dni !== FALSE) {
+      $query = $query->like("md.$this->field_dni", $dni);
+    }
+
+    if ($nombre !== FALSE) {
+      $query = $query->like("md.$this->field_nombre", $nombre);
+    }
+
+    if ($apellidos !== FALSE) {
+      $query = $query->like("md.$this->field_apellidos", $apellidos);
+    }
+
+    $count = $query->count_all_results();
+
+    return array(
+      'rows' => $rows,
+      'pagination' => array(
+        'per_page'   => $per_page,
+        'total_rows' => $count
+      ),
+    );
+  }
+  // Fin Table datasource de inscritos
+
+  // Table datasource de asistencias
   public function _datasource_asistencias($state) {
     $capacitacion_id = ee()->input->get('capacitacion_id');
     $per_page = 20;

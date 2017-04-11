@@ -16,7 +16,8 @@
         <input id="carchivo" type="file" name="archivo">
       </div>
       <div class="cform-group">
-        <label for="cvideo">Youtube Video ID</label>
+        <label for="cvideo">Youtube Video ID</label> <br>
+        <span>En <b>https://youtu.be/Lp7XO96nkMY</b> o <b>https://www.youtube.com/watch?v=Lp7XO96nkMY</b> el Youtube Video Id es <b>Lp7XO96nkMY</b></span> <br>
         <input id="cvideo" type="text" name="video_id" value="<?php echo set_value('video_id'); ?>">
       </div>
       <div class="cform-group cform-group-sm">

@@ -17,6 +17,7 @@ $lang = array(
 'c:eliminar' => 'Eliminar',
 'c:confirmar_eliminacion' => 'Confirmar Eliminación',
 'c:inscripciones' => 'Inscripciones',
+'c:ver_inscritos' => 'Ver Inscritos',
 'c:asistencias' => 'Asistencias',
 'c:field_required' => "El campo es requerido",
 'c:entry_date_valid' => 'Debe ingresar una fecha válida',

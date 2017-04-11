@@ -12,7 +12,8 @@ $(function () {
   }
 
   if (window.location.href.indexOf("inscripciones") >= 0 || 
-      window.location.href.indexOf("asistencias") >= 0) {
+      window.location.href.indexOf("asistencias") >= 0 ||
+      window.location.href.indexOf("ver_inscritos") >= 0) {
     console.log("here");
     $('table').table('add_filter', $('#form-filtrar'));
 
