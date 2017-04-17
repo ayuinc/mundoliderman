@@ -18,7 +18,7 @@
       <div class="box-gray bg-gray-darker w-100 hidden-lg hidden-md"></div>
       <div class="container-md clearfix">
         <section id="menu-vertical" class="contenido-container col-md-4 pr-42 pl-0 hidden-xs hidden-sm p-14">
-          {exp:capacitaciones:load_contenidos capacitacion="{segment_3}"}
+          {exp:capacitaciones:load_contenidos capacitacion="{segment_4}"}
           <div class="contenido">
             {if "{nombre}" != ""}
               <h3>{nombre}</h3>
@@ -41,18 +41,18 @@
             {/if}
             <div class="controls mt-21">
               {if "{prev_page}" != ""}
-              <a class="btn-page prev" href="{site_url}ajax-text/contenido/{segment_3}/{prev_page}">Anterior</a>
+              <a class="btn-page prev" href="{site_url}ajax-text/contenido/{segment_4}/{prev_page}">Anterior</a>
               {/if}
               
               {if "{next_page}" != ""}
-              <a class="btn-page next" href="{site_url}ajax-text/contenido/{segment_3}/{next_page}">Siguiente</a>
+              <a class="btn-page next" href="{site_url}ajax-text/contenido/{segment_4}/{next_page}">Siguiente</a>
               {/if}
             </div>
           </div>
           {/exp:capacitaciones:load_contenidos}
         </section>
         <section id="capacitaciones-contenido" class="col-md-8 pb-42 ph-7-xs">
-          {exp:capacitaciones:load_capacitacion_by_id id="{segment_3}"}
+          {exp:capacitaciones:load_capacitacion_by_id id="{segment_4}"}
           <div class="container pt-42 w-100 ph-0">
             <div><h2 class="fz-28 border-bottom-gray pb-14 text-gray-darker pt-21">{nombre}</h2></div>
             <p>{descripcion}</p>
@@ -69,9 +69,9 @@
             </div>
             <div class="test-form-container" style="display: none;">
               {exp:capacitaciones:test_form form_class="form-test"}
-                <input type="hidden" name="capacitacion" value="{segment_3}">
+                <input type="hidden" name="capacitacion" value="{segment_4}">
                 <ol>
-                  {exp:capacitaciones:load_test_questions capacitacion="{segment_3}"}
+                  {exp:capacitaciones:load_test_questions capacitacion="{segment_4}"}
                   <li> {pregunta_nombre}
                       <ul>
                       {exp:capacitaciones:load_answers_items pregunta="{pregunta_id}"}
