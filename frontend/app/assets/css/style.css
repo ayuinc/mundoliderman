@@ -3452,6 +3452,10 @@ input[type="submit"] {
   border: 2px #4d90fe solid;
 }
 
+.bb-1px {
+  border-bottom: 1px solid white;
+}
+
 /* Capacitaciones */
 .capacitaciones {
   background-color: white;
@@ -3463,10 +3467,74 @@ input[type="submit"] {
 .capacitaciones ul .capacitacion {
   position: relative;
   padding: 14px;
+  border: 1px solid #4e4e4e;
+  margin-bottom: 7px;
+  min-height: 70px;
+}
+.capacitaciones ul .capacitacion .title-box {
+  padding-right: 60px;
 }
 .capacitaciones ul .capacitacion .tipo {
   position: absolute;
   right: 14px;
+}
+.capacitaciones ul .capacitacion .porcentaje {
+  position: absolute;
+  right: 15px;
+  top: 40px;
+}
+
+.contenido .video {
+  position: relative;
+}
+.contenido .video .play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #f94211;
+  font-size: 45px;
+}
+.contenido .controls {
+  position: relative;
+}
+.contenido .controls .prev {
+  position: absolute;
+  left: 0;
+}
+.contenido .controls .next {
+  position: absolute;
+  right: 0;
+}
+
+.capacitacionModal .close {
+  position: absolute;
+  right: 24px;
+  font-size: 24px;
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+.test-form-container li, .test-form-container label {
+  color: #4e4e4e;
+}
+.test-form-container label {
+  cursor: pointer;
+  font-weight: normal;
+}
+
+.result-container {
+  padding: 10px;
+  color: white;
+  text-align: right;
+  border-radius: 5px;
+  display: inline-block;
+}
+.result-container.aprobado {
+  background: #51ba6e;
+}
+.result-container.desaprobado {
+  background: #f94211;
 }
 
 /*# sourceMappingURL=style.css.map */

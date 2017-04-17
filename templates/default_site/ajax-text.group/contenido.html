@@ -1,0 +1,32 @@
+{exp:capacitaciones:load_contenidos capacitacion="{segment_3}" page="{segment_4}"}
+  <div class="contenido">
+    {if "{nombre}" != ""}
+      <h3>{nombre}</h3>
+    {/if}
+    {if "{descripcion}" != ""}
+      <p>{descripcion}</p>
+    {/if}
+    {if "{video_id}" != ""}
+    <div class="video p-7">
+      <img class="img-responsive" src="https://img.youtube.com/vi/{video_id}/hqdefault.jpg" alt="Video Cover">
+      <a class="play-btn" data-video-id="{video_id}" data-nombre="{nombre}" href="#"><i class="glyphicon glyphicon-play"></i></a>
+    </div>
+    {/if}
+    {if "{file_path}" != ""}
+    <div class="archivo text-center">
+      <div class="p-21">
+        <a class="file-btn" href='{exp:util:parameter name="s3_path"}{file_path}' data-filepath='{exp:util:parameter name="s3_path"}{file_path}' data-nombre="{nombre}">Ver Archivo</a>
+      </div>
+    </div>
+    {/if}
+    <div class="controls mt-21">
+      {if "{prev_page}" != ""}
+      <a class="btn-page prev" href="{site_url}ajax-text/contenido/{segment_3}/{prev_page}">Anterior</a>
+      {/if}
+      
+      {if "{next_page}" != ""}
+      <a class="btn-page next" href="{site_url}ajax-text/contenido/{segment_3}/{next_page}">Siguiente</a>
+      {/if}
+    </div>
+  </div>
+{/exp:capacitaciones:load_contenidos}

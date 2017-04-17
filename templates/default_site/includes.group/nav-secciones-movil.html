@@ -1,8 +1,8 @@
           <div class="contenedor-menu bg-white">
             {if '{exp:util:is_user_lidermania}' != '1'}
-            <div class="panel-group relative" id="accordionmovil1" role="tablist" aria-multiselectable="true">
-              <div class="panel panel-default">
-                <div class="panel-heading bg-info ph-28" role="tab" id="heading1">
+            <div class="bb-1px relative" id="accordionmovil1" role="tablist" aria-multiselectable="true">
+              <div class="">
+                <div class=" bg-info ph-28" role="tab" id="heading1">
                   <h4 class="panel-title m-0">
                     <a role="button" data-toggle="collapse" data-parent="#accordionmovil1" href="#collapsemovil1" aria-expanded="true" aria-controls="collapsemovil1" class="text-not-underline">
                       <h2 class="active-slide fz-22 text-white text-uppercase text-not-underline m-0 pv-14">Boletas de pago <img src="{site_url}frontend/app/assets/img/flecha-para-abajo.png" alt="" class="pt-7 pull-right"></h2>
@@ -19,9 +19,9 @@
             </div>
             {/if}
             {if "{segment_2}" == "lidermania"}
-            <div class="panel-group2" id="accordionmovil2" role="tablist" aria-multiselectable="true" data-segment="{segment_2}">
-              <div class="panel panel-default">
-                <div class="panel-heading bg-danger ph-28" role="tab" id="heading2">
+            <div class="bb-1px 2" id="accordionmovil2" role="tablist" aria-multiselectable="true" data-segment="{segment_2}">
+              <div class="">
+                <div class=" bg-danger ph-28" role="tab" id="heading2">
                   <h4 class="panel-title m-0">
                     <a role="button" data-toggle="collapse" data-parent="#accordionmovil2" href="#collapsemovil2" aria-expanded="true" aria-controls="collapsemovil2">
                       <h2 class="active-slide fz-22 text-white text-uppercase text-not-underline m-0 pv-14">Lidermanía <img src="{site_url}frontend/app/assets/img/flecha-para-abajo.png" alt="" class="pt-7 pull-right {if segment_2 == 'lidermania'}rotate-180{/if}"></h2>
@@ -39,19 +39,19 @@
               </div>
             </div>
             {if:else}
-            <div class="bg-danger ph-28 panel-group lidermania_link_movil">  
+            <div class="bb-1px bg-danger ph-28  lidermania_link_movil">  
             </div>
             {/if}
             
-            <div class="bg-danger ph-28 panel-group capacitaciones_link">
+            <div class="bb-1px bg-danger ph-28  capacitaciones_link">
               <div class="fz-22 text-white text-uppercase text-not-underline m-0 pv-14"><a href="{path='servicios/capacitaciones/{member_id}'}">Capacitaciones</a></div>
             </div>
 
             {if '{exp:util:is_user_lidermania}' != '1'}
               {if "{exp:parameters:can_access_indicators}" == "1" }
-              <div class="panel-group3" id="accordionmovil3" role="tablist" aria-multiselectable="true">
-                <div class="panel panel-default">
-                  <div class="panel-heading bg-danger ph-28" role="tab" id="heading3">
+              <div class="bb-1px 3" id="accordionmovil3" role="tablist" aria-multiselectable="true">
+                <div class="">
+                  <div class=" bg-danger ph-28" role="tab" id="heading3">
                     <h4 class="panel-title m-0">
                       <a role="button" data-toggle="collapse" data-parent="#accordionmovil3" href="#collapsemovil3" aria-expanded="true" aria-controls="collapsemovil3">
                         <h2 class="active-slide fz-22 text-white text-uppercase text-not-underline m-0 pv-14">Indicadores <img src="{site_url}frontend/app/assets/img/flecha-para-abajo.png" alt="" class="pt-7 pull-right"></h2>
@@ -69,9 +69,9 @@
               {/if}
             {/if}
             {if '{exp:util:is_user_lidermania}' != '1'}
-            <div class="panel-group4" id="accordionmovil4" role="tablist" aria-multiselectable="true">
-              <div class="panel panel-default">
-                <div class="panel-heading bg-danger ph-28" role="tab" id="heading4">
+            <div class="bb-1px 4" id="accordionmovil4" role="tablist" aria-multiselectable="true">
+              <div class="">
+                <div class=" bg-danger ph-28" role="tab" id="heading4">
                   <h4 class="panel-title m-0">
                     <a role="button" data-toggle="collapse" data-parent="#accordionmovil2" href="#collapsemovil4" aria-expanded="true" aria-controls="collapsemovilTwo">
                       <h2 class="active-slide fz-22 text-white text-uppercase text-not-underline m-0 pv-14">Tu semáforo <img src="{site_url}frontend/app/assets/img/flecha-para-abajo.png" alt="" class="pt-7 pull-right"></h2>
@@ -89,9 +89,9 @@
             {/if}
             {if '{exp:util:is_user_lidermania}' != '1'}
               {if "{exp:parameters:can_access_sgi}" == "1" }
-              <div class="panel-group5" id="accordionmovil5" role="tablist" aria-multiselectable="true">
-                <div class="panel panel-default">
-                  <div class="panel-heading bg-danger ph-28" role="tab" id="heading5">
+              <div class="bb-1px 5" id="accordionmovil5" role="tablist" aria-multiselectable="true">
+                <div class="">
+                  <div class=" bg-danger ph-28" role="tab" id="heading5">
                     <h4 class="panel-title m-0">
                       <a role="button" data-toggle="collapse" data-parent="#accordionmovil5" href="#collapsemovil5" aria-expanded="true" aria-controls="collapsemovil5">
                         <h2 class="active-slide fz-22 text-white text-uppercase text-not-underline m-0 pv-14">sgi <img src="{site_url}frontend/app/assets/img/flecha-para-abajo.png" alt="" class="pt-7 pull-right"></h2>
@@ -157,9 +157,9 @@
              {if "{segment_2}" == "lidermania"}
               lista.html(
                 "<li>"+
-                  "<div class=\"panel-group10\" id=\"accordionmovil10\" role=\"tablist\" aria-multiselectable=\"true\" category-data=\"10\" data-parent=\"{parent_id}\">"+
-                    "<div class=\"panel panel-default\">"+
-                      "<div class=\"panel-heading\" role=\"tab\" id=\"headingmovil10\">"+
+                  "<div class=\"10\" id=\"accordionmovil10\" role=\"tablist\" aria-multiselectable=\"true\" category-data=\"10\" data-parent=\"{parent_id}\">"+
+                    "<div class=\"\">"+
+                      "<div class=\"\" role=\"tab\" id=\"headingmovil10\">"+
                         "<h4 class=\"panel-title m-0\">"+
                           "<a role=\"button\" data-toggle=\"collapse\" data-parent=\"#accordionmovil10\" href=\"#collapsemovil10\" aria-expanded=\"true\" aria-controls=\"collapsemovil10\" class=\"text-not-underline\">"+
                             "<h2 class=\"active-slide fz-17 light text-gray-dark2 text-not-underline m-0 pv-7 border-bottom-gray-lighter\">Ama el trato <img src=\"{site_url}frontend/app/assets/img/Flecha_Abajo.png\" class=\"pt-7 pull-right\"></h2>"+
@@ -179,9 +179,9 @@
                   "</div>"+
                 "</li>"+
                 "<li>"+
-                  "<div class=\"panel-group11\" id=\"accordionmovil11\" role=\"tablist\" aria-multiselectable=\"true\" category-data=\"11\" data-parent=\"{parent_id}\">"+
-                    "<div class=\"panel panel-default\">"+
-                      "<div class=\"panel-heading\" role=\"tab\" id=\"headingmovil11\">"+
+                  "<div class=\"11\" id=\"accordionmovil11\" role=\"tablist\" aria-multiselectable=\"true\" category-data=\"11\" data-parent=\"{parent_id}\">"+
+                    "<div class=\"\">"+
+                      "<div class=\"\" role=\"tab\" id=\"headingmovil11\">"+
                         "<h4 class=\"panel-title m-0\">"+
                           "<a role=\"button\" data-toggle=\"collapse\" data-parent=\"#accordionmovil11\" href=\"#collapsemovil11\" aria-expanded=\"true\" aria-controls=\"collapsemovil11\" class=\"text-not-underline\">"+
                             "<h2 class=\"active-slide fz-17 light text-gray-dark2 text-not-underline m-0 pv-7 border-bottom-gray-lighter\">Ama el crecimiento <img src=\"{site_url}frontend/app/assets/img/Flecha_Abajo.png\" class=\"pt-7 pull-right\"></h2>"+
@@ -213,9 +213,9 @@
                 {exp:channel:categories channel="SGI" style="linear" parent_only="yes"}
                   {if "{category_description}" != ""}
                   "<li>"+
-                    "<div class=\"panel-group{category_id}-movil\" id=\"accordionmovil{category_id}\" role=\"tablist\" aria-multiselectable=\"true\" category-data=\"{category_id}\" data-parent=\"{parent_id}\">"+
-                      "<div class=\"panel panel-default\">"+
-                        "<div class=\"panel-heading\" role=\"tab\" id=\"heading{category_id}\">"+
+                    "<div class=\"{category_id}-movil\" id=\"accordionmovil{category_id}\" role=\"tablist\" aria-multiselectable=\"true\" category-data=\"{category_id}\" data-parent=\"{parent_id}\">"+
+                      "<div class=\"\">"+
+                        "<div class=\"\" role=\"tab\" id=\"heading{category_id}\">"+
                           "<h4 class=\"panel-title m-0\">"+
                             "<a role=\"button\" data-toggle=\"collapse\" data-parent=\"#accordionmovil{category_id}\" href=\"#collapsemovil{category_id}\" aria-expanded=\"true\" aria-controls=\"collapsemovil{category_id}\">"+
                               "<h2 class=\"active-slide fz-16 light text-gray-dark2 text-not-underline m-0 pv-14\">{category_name} <img src=\"{site_url}frontend/app/assets/img/Flecha_Abajo.png\" class=\"pt-7 pull-right\"></h2>"+

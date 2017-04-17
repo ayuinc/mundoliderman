@@ -1,0 +1,207 @@
+{if logged_out}
+  {redirect="login"}
+{if:else}
+
+  {exp:redirect:redirect_user_lidermania}
+
+  {if member_id != segment_3 && '{exp:parameters:chateadora_can_view member_id="{segment_3}"}' != "1"}
+    {redirect="wall"}
+  {/if}
+{/if}
+
+{embed="includes/head" titulo="Mundo Liderman - Capacitaciones"}
+  <div class="site-wrapper"> <!-- Body -->
+    {embed=includes/nav-main acceso_directo="Ir al muro" link="{site_url}wall"}
+    <main class="site-content pb-42 mb-0">
+      {embed=includes/menu-movil miembro="{member_id}"}
+      {embed=includes/banner-alerta}
+      <div class="box-gray bg-gray-darker w-100 hidden-lg hidden-md"></div>
+      <div class="container-md clearfix">
+        <section id="menu-vertical" class="contenido-container col-md-4 pr-42 pl-0 hidden-xs hidden-sm p-14">
+          {exp:capacitaciones:load_contenidos capacitacion="{segment_3}"}
+          <div class="contenido">
+            {if "{nombre}" != ""}
+              <h3>{nombre}</h3>
+            {/if}
+            {if "{descripcion}" != ""}
+              <p>{descripcion}</p>
+            {/if}
+            {if "{video_id}" != ""}
+            <div class="video p-7">
+              <img class="img-responsive" src="https://img.youtube.com/vi/{video_id}/hqdefault.jpg" alt="Video Cover">
+              <a class="play-btn" data-video-id="{video_id}" data-nombre="{nombre}" href="#"><i class="glyphicon glyphicon-play"></i></a>
+            </div>
+            {/if}
+            {if "{file_path}" != ""}
+            <div class="archivo text-center">
+              <div class="p-21">
+                <a class="file-btn" href='{exp:util:parameter name="s3_path"}{file_path}' data-filepath='{exp:util:parameter name="s3_path"}{file_path}' data-nombre="{nombre}">Ver Archivo</a>
+              </div>
+            </div>
+            {/if}
+            <div class="controls mt-21">
+              {if "{prev_page}" != ""}
+              <a class="btn-page prev" href="{site_url}ajax-text/contenido/{segment_3}/{prev_page}">Anterior</a>
+              {/if}
+              
+              {if "{next_page}" != ""}
+              <a class="btn-page next" href="{site_url}ajax-text/contenido/{segment_3}/{next_page}">Siguiente</a>
+              {/if}
+            </div>
+          </div>
+          {/exp:capacitaciones:load_contenidos}
+        </section>
+        <section id="capacitaciones-contenido" class="col-md-8 pb-42 ph-7-xs">
+          {exp:capacitaciones:load_capacitacion_by_id id="{segment_3}"}
+          <div class="container pt-42 w-100 ph-0">
+            <div><h2 class="fz-28 border-bottom-gray pb-14 text-gray-darker pt-21">{nombre}</h2></div>
+            <p>{descripcion}</p>
+          </div>
+          {/exp:capacitaciones:load_capacitacion_by_id}
+
+          <div class="result-container" style="display: none;">
+            
+          </div>
+
+          <div class="test-container">
+            <div class="text-center mv-21">
+              <button  class="btn-test btn btn-primary">Hacer Test</button>
+            </div>
+            <div class="test-form-container" style="display: none;">
+              {exp:capacitaciones:test_form form_class="form-test"}
+                <input type="hidden" name="capacitacion" value="{segment_3}">
+                <ol>
+                  {exp:capacitaciones:load_test_questions capacitacion="{segment_3}"}
+                  <li> {pregunta_nombre}
+                      <ul>
+                      {exp:capacitaciones:load_answers_items pregunta="{pregunta_id}"}
+                        <li><label><input class="opcion-input" type="radio" name="answers[{pregunta_id}][]" value="{opcion_id}"> {opcion_nombre}</label></li>
+                      {/exp:capacitaciones:load_answers_items}
+                      </ul>
+                  </li>
+                  {/exp:capacitaciones:load_test_questions}
+                </ol>
+                <div class="text-center">
+                  <input id="submit-form-test" class="btn btn-primary" type="submit" value="Enviar">
+                </div>
+              {/exp:capacitaciones:test_form}
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+    {embed=includes/radio-urbe}
+  </div>
+  <div class="modal fade capacitacionModal" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header relative">
+          <a href="#" class="close" data-dismiss="modal" aria-label="Close" >&times;</a>
+          <h4 class="modal-title" id="videoModalLabel">Modal title</h4>
+        </div>
+        <div class="modal-body">
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+   <div class="modal fade capacitacionModal" id="fileModal" tabindex="-1" role="dialog" aria-labelledby="fileModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header relative">
+          <a href="#" class="close" data-dismiss="modal" aria-label="Close" >&times;</a>
+          <h4 class="modal-title" id="fileModalLabel">Modal title</h4>
+        </div>
+        <div class="modal-body">
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  {embed=includes/footer}
+  <script src="{site_url}frontend/app/assets/js/b3/modal.js"></script>
+  <script src="{site_url}frontend/app/assets/js/collapse-control.js"></script>
+  <script>
+    $('#videoModal').on('hidden.bs.modal', function (e) {
+      $('#videoModal').find('.modal-body').html("");
+    });
+
+    $('#fileModal').on('hidden.bs.modal', function (e) {
+      $('#fileModal').find('.modal-body').html("");
+    });
+
+    $(document).on('click', '.play-btn', function (e) {
+      e.preventDefault();
+      var nombre = $(this).data("nombre");
+      var videoID = $(this).data("video-id");
+      $('#videoModal').find('#videoModalLabel').html(nombre);
+      $('#videoModal').find('.modal-body').html("<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/" + videoID  + "?autoplay=1\" frameborder=\"0\" allowfullscreen></iframe>");
+      $('#videoModal').modal("show");
+    });
+
+    $(document).on('click', '.file-btn', function (e) {
+      e.preventDefault();
+      var nombre = $(this).data("nombre");
+      var filepath = $(this).data("filepath");
+      $('#fileModal').find('#fileModalLabel').html(nombre);
+      $('#fileModal').find('.modal-body').html("<iframe src=\"http://docs.google.com/gview?url=" + filepath + "&embedded=true\" style=\"width:100%; height:500px;\" frameborder=\"0\"></iframe>");
+      $('#fileModal').modal("show");
+    });
+
+    $(document).on('click', '.btn-page',function(e) {
+      e.preventDefault();
+      console.log(this.href);
+      $('.contenido-container').load(this.href);
+    });
+
+    $('.btn-test').on('click', function(e) {
+      e.preventDefault();
+      $(this).hide();
+      $('.test-form-container').fadeIn();
+    });
+
+    $('.form-test').on('submit', function(e) {
+      e.preventDefault();
+      $("#submit-form-test").attr("disabled", true);
+      var form = $(this);
+      var url = form.attr("action");
+      var formData = new FormData(form[0]);
+      $.ajax({
+        url: url,
+        type: 'POST',
+        data: formData,
+        success: function(data) {
+          $("#submit-form-test").removeAttr("disabled");
+          var response = JSON.parse(data);
+          var estadoLabel = response.estado == "aprobado" ? "Aprobado" : "Desaprobado";
+          
+          var $resultContainer = $(".result-container");
+          $resultContainer.removeClass("aprobado");
+          $resultContainer.removeClass("desaprobado");
+          $resultContainer.addClass(response.estado);
+          $resultContainer.html(estadoLabel + " " + response.puntaje + "%");
+          $resultContainer.show();
+
+          if (response.estado == "desaprobado") {
+            $('.btn-test').show();
+            $('.test-form-container').hide();
+            $('.opcion-input').each(function (idx, elem) {
+              $elem = $(elem);
+              $elem.prop("checked", false);
+            });
+          } else {
+            $("#submit-form-test").prop("disabled", true);
+          }
+        },
+        error: function(err) {
+          $("#submit-form-test").removeAttr("disabled");
+        },
+        cache: false,
+        contentType: false,
+        processData: false
+      });
+    });
+  </script>
+</html>
+

@@ -125,6 +125,16 @@ class Capacitaciones_upd {
     ee()->dbforge->create_table('pregunta_opciones');
     unset($fields);
 
+    $data = array(
+      array(
+        "class" => $this->module_name,
+        "method" => "test_post",
+        "csrf_exempt" => "1"
+      )
+    );
+
+    ee()->db->insert_batch("actions", $data);
+
     return TRUE;
   }
 
@@ -149,6 +159,12 @@ class Capacitaciones_upd {
   */
   public function uninstall() {
     ee()->load->dbforge();
+
+    ee()->db->where("class", $this->module_name);
+    ee()->db->delete("actions");
+
+    ee()->db->where("class", $this->module_name."_mcp");
+    ee()->db->delete("actions");
 
     ee()->db->where("module_name", $this->module_name);
     ee()->db->delete("modules");
