@@ -43,9 +43,11 @@
             </div>
             {/if}
             
-            <div class="bb-1px bg-danger ph-28  capacitaciones_link">
-              <div class="fz-22 text-white text-uppercase text-not-underline m-0 pv-14"><a href="{path='servicios/capacitaciones/{member_id}'}">Capacitaciones</a></div>
-            </div>
+            {if "{exp:capacitaciones:tiene_capacitaciones}" == "1"}
+              <div class="bb-1px bg-danger ph-28  capacitaciones_link">
+                <div class="fz-22 text-white text-uppercase text-not-underline m-0 pv-14"><a href="{path='servicios/capacitaciones/{member_id}'}">Capacitaciones</a></div>
+              </div>
+            {/if}
 
             {if '{exp:util:is_user_lidermania}' != '1'}
               {if "{exp:parameters:can_access_indicators}" == "1" }

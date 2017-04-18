@@ -125,6 +125,21 @@ class Capacitaciones_upd {
     ee()->dbforge->create_table('pregunta_opciones');
     unset($fields);
 
+    // Creando Tabla test_resultados
+    $fields = array(
+      'id' => array('type' => 'int', 'unsigned' => TRUE, 'auto_increment' => TRUE),
+      'capacitacion_id' => array('type' => 'int', 'unsigned' => TRUE, 'null' => FALSE),
+      'member_id' => array('type' => 'int', 'unsigned' => TRUE, 'null' => FALSE),
+      'puntaje' => array('type' => 'decimal', 'constraint' => '10,2', 'null' => FALSE),
+      'porcentaje_aprobacion' => array('type' => 'decimal', 'constraint' => '10,2', 'null' => FALSE),
+      'fecha' => array('type' => 'datetime', 'null' => FALSE),
+      'estado' => array('type' => 'char', 'constraint' => '1', 'null' => FALSE)
+    );
+    ee()->dbforge->add_field($fields);
+    ee()->dbforge->add_key('id', TRUE);
+    ee()->dbforge->create_table('test_resultados');
+    unset($fields);
+
     $data = array(
       array(
         "class" => $this->module_name,

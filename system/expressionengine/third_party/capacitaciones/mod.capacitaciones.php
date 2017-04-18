@@ -222,7 +222,7 @@ class Capacitaciones {
                       ->where("o.pregunta_id", $pregunta_id)
                       ->get();
 
-     if ($query->num_rows() == 0) {
+    if ($query->num_rows() == 0) {
       return ee()->TMPL->no_results;
     } else {
       $data = $query->result_array();
@@ -233,6 +233,7 @@ class Capacitaciones {
 
   public function test_post() {
     $capacitacion_id = ee()->input->post("capacitacion", TRUE);
+    $member_id = $this->_get_member_id();
     $answers = ee()->input->post("answers", TRUE);
 
     if ($answers == FALSE) {
@@ -262,6 +263,19 @@ class Capacitaciones {
       }
     }
 
+    ee()->db->where('capacitacion_id', $capacitacion_id)
+            ->where('member_id', $member_id)
+            ->delete('test_resultados');
+
+    ee()->db->insert('test_resultados', array(
+        'capacitacion_id' => $capacitacion_id,
+        'member_id' => $member_id,
+        'puntaje' => $puntaje,
+        'porcentaje_aprobacion' => $porcentajeAprobacion,
+        'fecha' => date('Y-m-d H:i:s'),
+        'estado' => $puntaje >= $porcentajeAprobacion ? "a" : "d"
+      ));
+
     $response = array(
       "puntaje" => $puntaje,
       "estado" => $puntaje >= $porcentajeAprobacion ? "aprobado" : "desaprobado"
@@ -269,6 +283,184 @@ class Capacitaciones {
     
     echo json_encode($response);
   }
+
+  public function test_result() {
+    $capacitacion_id = ee()->TMPL->fetch_param('capacitacion', FALSE);
+    $member_id = $this->_get_member_id();
+
+    if ($capacitacion_id === FALSE || $member_id == FALSE) {
+      return ee()->TMPL->no_results;
+    }
+
+    $query = ee()->db->select("r.id as resultado_id,
+                               r.puntaje as resultado_puntaje,
+                               r.porcentaje_aprobacion as resultado_porcentaje_aprobacion,
+                               r.fecha as resultado_fecha,
+                               r.estado as resultado_estado")
+                      ->from('test_resultados r')
+                      ->where('capacitacion_id', $capacitacion_id)
+                      ->where('member_id', $member_id)
+                      ->get();
+
+    if ($query->num_rows() == 0) {
+      return ee()->TMPL->no_results;
+    } else {
+      $data = $query->result_array();
+      $tagdata = ee()->TMPL->tagdata;
+      return ee()->TMPL->parse_variables($tagdata, $data);
+    }
+
+  }
+
+  public function estado_capacitacion() {
+     $capacitacion_id = ee()->TMPL->fetch_param('capacitacion', FALSE);
+     $member_id = $this->_get_member_id();
+
+     $capacitacion = ee()->db->select("cap.id as id,
+                               cap.codigo as codigo,
+                               cap.nombre as nombre,
+                               cap.descripcion as descripcion,
+                               cap.fecha_inicio as fecha_inicio,
+                               cap.fecha_fin_vigencia as fecha_fin_vigencia,
+                               cap.dias_plazo as dias_plazo,
+                               cap.presencial as presencial,
+                               ins.fecha_inscripcion as fecha_inscripcion")
+                      ->from("capacitaciones cap")
+                      ->join("inscripciones ins", "ins.capacitacion_id=cap.id", "left")
+                      ->join("asistencias asi", "asi.capacitacion_id=cap.id", "left")
+                      ->where("cap.id", $capacitacion_id)
+                      ->where("ins.member_id", $member_id)  
+                      ->or_where("asi.member_id", $member_id)
+                      ->get()->result()[0];
+
+    $query = ee()->db->select("r.id as resultado_id,
+                               r.puntaje as resultado_puntaje,
+                               r.porcentaje_aprobacion as resultado_porcentaje_aprobacion,
+                               r.fecha as resultado_fecha,
+                               r.estado as resultado_estado")
+                      ->from('test_resultados r')
+                      ->where('capacitacion_id', $capacitacion_id)
+                      ->where('member_id', $member_id)
+                      ->get();
+
+    $capacitacion_resultado = NULL;
+    if ($query->num_rows() > 0) {
+      $capacitacion_resultado = $query->result()[0];
+    }
+
+    if ($capacitacion->presencial == 1) {
+      return "aprobado";
+    }
+
+    $dateLimite = DateTime::createFromFormat('Y-m-d', $capacitacion->fecha_inscripcion)
+                      ->add(date_interval_create_from_date_string("$capacitacion->dias_plazo days"));
+    $dateLimite->setTime(0, 0);
+    $dateNow = new DateTime();
+
+    $dentroDelPlazo = $dateLimite < $dateNow;
+
+    if ($dentroDelPlazo) {
+      return "encurso";
+    } else {
+      return "finalizada";
+    }
+  }
+
+  public function resultado_capacitacion() {
+    $capacitacion_id = ee()->TMPL->fetch_param('capacitacion', FALSE);
+    $member_id = $this->_get_member_id();
+
+    $query = ee()->db->select("r.id as resultado_id,
+                               r.puntaje as resultado_puntaje,
+                               r.porcentaje_aprobacion as resultado_porcentaje_aprobacion,
+                               r.fecha as resultado_fecha,
+                               r.estado as resultado_estado")
+                      ->from('test_resultados r')
+                      ->where('capacitacion_id', $capacitacion_id)
+                      ->where('member_id', $member_id)
+                      ->get();
+
+
+    if ($query->num_rows() == 0) {
+      return "";
+    } else {
+      $resultado = $query->result_array()[0];
+      return $resultado['resultado_estado'] == 'a' ? "aprobado" : "desaprobado";
+    }
+  }
+
+  public function tiene_capacitaciones_pendientes() {
+    $month = ee()->TMPL->fetch_param('month', FALSE);
+    $year = ee()->TMPL->fetch_param('year', FALSE);
+
+    $member_id = $this->_get_member_id();
+
+    if ($member_id == FALSE || $month == FALSE || $year == FALSE) {
+      return "0";
+    }
+
+    $capacitaciones = ee()->db->select("cap.id as id,
+                               cap.codigo as codigo,
+                               cap.nombre as nombre,
+                               cap.descripcion as descripcion,
+                               cap.fecha_inicio as fecha_inicio,
+                               cap.fecha_fin_vigencia as fecha_fin_vigencia,
+                               cap.dias_plazo as dias_plazo,
+                               cap.presencial as presencial,
+                               ins.fecha_inscripcion as fecha_inscripcion")
+                      ->from("capacitaciones cap")
+                      ->join("inscripciones ins", "ins.capacitacion_id=cap.id", "left")
+                      ->join("asistencias asi", "asi.capacitacion_id=cap.id", "left")
+                      ->where("MONTH(cap.fecha_inicio) = $month", NULL, FALSE)
+                      ->where("YEAR(cap.fecha_inicio) = $year", NULL, FALSE)
+                      ->where("ins.member_id", $member_id)
+                      ->or_where("asi.member_id", $member_id)
+                      ->get()->result();
+
+    $tienePendientes = "0";
+    $dateNow = new DateTime();
+    foreach ($capacitaciones as $cap) {
+      $dateLimite = DateTime::createFromFormat('Y-m-d', $cap->fecha_inscripcion)
+                      ->add(date_interval_create_from_date_string("$cap->dias_plazo days"));
+      $dateLimite->setTime(0, 0);
+
+      $dentroDelPlazo = $dateLimite < $dateNow;
+
+      if ($dentroDelPlazo) {
+        $tienePendientes = "1";
+        break;
+      }
+    }
+
+    return $tienePendientes;
+  }
+
+  public function tiene_capacitaciones() {
+    $member_id = $this->_get_member_id();
+
+    $query = ee()->db->select("cap.id as id,
+                               cap.codigo as codigo,
+                               cap.nombre as nombre,
+                               cap.descripcion as descripcion,
+                               cap.fecha_inicio as fecha_inicio,
+                               cap.fecha_fin_vigencia as fecha_fin_vigencia,
+                               cap.dias_plazo as dias_plazo,
+                               cap.presencial as presencial,
+                               ins.fecha_inscripcion as fecha_inscripcion")
+                      ->from("capacitaciones cap")
+                      ->join("inscripciones ins", "ins.capacitacion_id=cap.id", "left")
+                      ->join("asistencias asi", "asi.capacitacion_id=cap.id", "left")
+                      ->where("ins.member_id", $member_id)
+                      ->or_where("asi.member_id", $member_id)
+                      ->get();
+
+    if ($query->num_rows() == 0) {
+      return "0";
+    } else {
+      return "1";
+    }
+  }
+
 
   private function _get_member_id() {
     return ee()->session->userdata("member_id");
