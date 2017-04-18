@@ -2128,12 +2128,28 @@ input[type="submit"] {
 		.capacitacion {
 			position: relative;
 			padding: 14px;
-			border: 1px solid #4e4e4e;
+			border-radius: 5px;
 			margin-bottom: 7px;
 			min-height: 70px;
+			color: #FEFEFE;
+
+			&.encurso {
+				background: #EBDD5F;
+			}
+
+			&.finalizada {
+				background: #f94211;
+			}
+
+			&.finalizada.aprobado,  &.encurso.aprobado {
+				background: #51ba6e;
+			}
 
 			.title-box  {
 				padding-right: 60px;
+				a {
+					color: #FEFEFE;
+				}
 			}
 
 			.tipo {
