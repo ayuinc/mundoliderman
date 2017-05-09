@@ -18,6 +18,8 @@
       <div class="box-gray bg-gray-darker w-100 hidden-lg hidden-md"></div>
       <div class="container-md clearfix">
         <section id="menu-vertical" class="contenido-container col-md-4 pr-42 pl-0 hidden-xs hidden-sm p-14">
+          {embed=includes/nav-secciones in="in" miembro="{segment_3}" miembro_actual="{member_id}" grupo="{member_group}"}
+          <!--
           {exp:capacitaciones:load_contenidos capacitacion="{segment_4}"}
           <div class="contenido">
             {if "{nombre}" != ""}
@@ -50,38 +52,41 @@
             </div>
           </div>
           {/exp:capacitaciones:load_contenidos}
+          -->
         </section>
         <section id="capacitaciones-contenido" class="col-md-8 pb-42 ph-7-xs">
           {exp:capacitaciones:load_capacitacion_by_id id="{segment_4}"}
-          <div class="container pt-42 w-100 ph-0">
-            <div><h2 class="fz-28 border-bottom-gray pb-14 text-gray-darker pt-21">{nombre}</h2></div>
-            <p>{descripcion}</p>
+          <div class="container pt-14 w-100 ph-0">
+            <div><h2 class="fz-28 border-bottom-gray pb-14 text-gray-darker pt-7">{nombre}</h2></div>
+            <p class="text-justify">{descripcion}</p>
           </div>
           {/exp:capacitaciones:load_capacitacion_by_id}
 
-          <section  class="contenido-container col-xs-12 pr-42 pl-0 hidden-md hidden-lg p-14">
+          <section  class="contenido-container col-xs-12 p-0-xs p-14-md">
             {exp:capacitaciones:load_contenidos capacitacion="{segment_4}"}
             <div class="contenido">
               {if "{nombre}" != ""}
-                <h3>{nombre}</h3>
+                <h3 class="mt-7">{nombre}</h3>
               {/if}
               {if "{descripcion}" != ""}
-                <p>{descripcion}</p>
+                <p class="text-justify">{descripcion}</p>
               {/if}
               {if "{video_id}" != ""}
-              <div class="video p-7">
-                <img class="img-responsive" src="https://img.youtube.com/vi/{video_id}/hqdefault.jpg" alt="Video Cover">
-                <a class="play-btn" data-video-id="{video_id}" data-nombre="{nombre}" href="#"><i class="glyphicon glyphicon-play"></i></a>
+              <div class="video hidden-xs hidden-sm">
+                <iframe src="https://www.youtube.com/embed/{video_id}" width="560" height="315" frameborder="0" allowfullscreen></iframe>
+              </div>
+              <div class="video visible-xs visible-sm">
+                <iframe src="https://www.youtube.com/embed/{video_id}" width="310" height="195" frameborder="0" allowfullscreen></iframe>
               </div>
               {/if}
               {if "{file_path}" != ""}
-              <div class="archivo text-center">
-                <div class="p-21">
-                  <a class="file-btn" href='{exp:util:parameter name="s3_path"}{file_path}' data-filepath='{exp:util:parameter name="s3_path"}{file_path}' data-nombre="{nombre}">Ver Archivo</a>
+              <div class="archivo text-center mt-14">
+                <div>
+                  <a class="btn-capacitacion file-btn" href='{exp:util:parameter name="s3_path"}{file_path}' data-filepath='{exp:util:parameter name="s3_path"}{file_path}' data-nombre="{nombre}">Ver Archivo</a>
                 </div>
               </div>
               {/if}
-              <div class="controls mt-21">
+              <div class="controls" style="{if "{prev_page}" != "" || "{next_page}" != "" } min-height: 35px; {/if}">
                 {if "{prev_page}" != ""}
                 <a class="btn-page prev" href="{site_url}ajax-text/contenido/{segment_4}/{prev_page}">Anterior</a>
                 {/if}
@@ -94,7 +99,7 @@
             {/exp:capacitaciones:load_contenidos}
           </section>
 
-          
+          <br/>
           {if "{exp:capacitaciones:estado_capacitacion capacitacion='{segment_4}'}" == "finalizada"}
             {exp:capacitaciones:test_result capacitacion="{segment_4}"}
               {if no_results}
@@ -116,8 +121,8 @@
           {if:else}
             {exp:capacitaciones:test_result capacitacion="{segment_4}"}
               {if no_results}
-                <p>Aún no realizado el Test</p>
-                <div class="result-container" style="display: none;">
+                <div class="result-container c-pendiente">
+                  Pendiente
                 </div>
                 <div class="test-container">
                   <div class="text-center mv-21">
@@ -185,15 +190,18 @@
     </main>
     {embed=includes/radio-urbe}
   </div>
-  <div class="modal fade capacitacionModal" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel">
+  <div class="modal fade capacitacionModal" id="resultadoModal" tabindex="-1" role="dialog" aria-labelledby="resultadoModalLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header relative">
           <a href="#" class="close" data-dismiss="modal" aria-label="Close" >&times;</a>
-          <h4 class="modal-title" id="videoModalLabel">Modal title</h4>
+          <h4 class="modal-title" id="resultadoModalLabel">Resultados del test</h4>
         </div>
-        <div class="modal-body">
-          
+        <div class="modal-body text-center">
+          <h5 class="mt-0">Gracias por realizar el test</h5>
+          <p>Este es tu resultado: </p>
+           <div class="result-container" style="display: none;" >
+            </div>
         </div>
       </div>
     </div>
@@ -216,21 +224,9 @@
   <script src="{site_url}frontend/app/assets/js/b3/modal.js"></script>
   <script src="{site_url}frontend/app/assets/js/collapse-control.js"></script>
   <script>
-    $('#videoModal').on('hidden.bs.modal', function (e) {
-      $('#videoModal').find('.modal-body').html("");
-    });
 
     $('#fileModal').on('hidden.bs.modal', function (e) {
       $('#fileModal').find('.modal-body').html("");
-    });
-
-    $(document).on('click', '.play-btn', function (e) {
-      e.preventDefault();
-      var nombre = $(this).data("nombre");
-      var videoID = $(this).data("video-id");
-      $('#videoModal').find('#videoModalLabel').html(nombre);
-      $('#videoModal').find('.modal-body').html("<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/" + videoID  + "?autoplay=1\" frameborder=\"0\" allowfullscreen></iframe>");
-      $('#videoModal').modal("show");
     });
 
     $(document).on('click', '.file-btn', function (e) {
@@ -276,6 +272,7 @@
           $resultContainer.html(estadoLabel + " " + response.puntaje + "%");
           $resultContainer.show();
 
+          $('#resultadoModal').modal('show');
           if (response.estado == "desaprobado") {
             $('.btn-test').show();
             $('.test-form-container').hide();

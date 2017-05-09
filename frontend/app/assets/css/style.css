@@ -3497,6 +3497,16 @@ input[type="submit"] {
   top: 40px;
 }
 
+.c-pendiente {
+  background: #EBDD5F;
+}
+
+.btn-capacitacion {
+  border: 1px solid #f94211;
+  border-radius: 5px;
+  padding: 7px;
+}
+
 .contenido .video {
   position: relative;
 }
