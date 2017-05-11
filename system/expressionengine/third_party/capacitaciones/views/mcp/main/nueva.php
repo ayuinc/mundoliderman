@@ -41,9 +41,14 @@
         <?php echo form_error('dias_plazo', '<p class="error"> *', '</p>'); ?>
       </div>
       <div class="cform-group cdate-group">
-        <label for="cporcentaje_aprobacion">Porcentaje de aprobación</label>
+        <label for="cporcentaje_aprobacion">Porcentaje de aprobación en Test</label>
         <input id="cporcentaje_aprobacion" type="number" min="1" max="100" step="1" name="porcentaje_aprobacion" value="<?php echo set_value('porcentaje_aprobacion'); ?>">
         <?php echo form_error('porcentaje_aprobacion', '<p class="error"> *', '</p>'); ?>
+      </div>
+      <div class="cform-group cdate-group">
+        <label for="ccant_preguntas">Cant. Preguntas en Test</label>
+        <input id="ccant_preguntas" type="number" min="4" step="1" name="cant_preguntas" value="<?php echo set_value('cant_preguntas'); ?>">
+        <?php echo form_error('cant_preguntas', '<p class="error"> *', '</p>'); ?>
       </div>
       <div class="cform-group cdate-group">
         <label for="cnumero_horas">Número de horas</label>

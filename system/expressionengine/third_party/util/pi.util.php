@@ -90,4 +90,10 @@ Plugin for utilities
     }
   }
 
+  public function round() {
+    $number = ee()->TMPL->fetch_param('number', '100');
+    return round(doubleval($number));
+
+  }
+
 }

@@ -56,6 +56,7 @@ class Capacitaciones_upd {
       'tipo_unidad' => array('type' => 'int', 'null' => TRUE),
       'presencial' => array('type' => 'tinyint', 'constraint' => '1','unsigned' => TRUE, 'null' => FALSE, 'default' => '0'),
       'curso_id' => array('type' => 'int', 'unsigned' => TRUE, 'null' => FALSE),
+      'cant_preguntas' => array('type' => 'int', 'null' => FALSE)
     );
     ee()->dbforge->add_field($fields);
     ee()->dbforge->add_key('id', TRUE);

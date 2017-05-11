@@ -3461,6 +3461,21 @@ input[type="submit"] {
   background-color: white;
   border-radius: 5px;
 }
+.capacitaciones .panel-title a {
+  text-decoration: none;
+}
+.capacitaciones .panel-title a .arrow-up {
+  display: none;
+}
+.capacitaciones .panel-title a .arrow-down {
+  display: inline;
+}
+.capacitaciones .panel-title a.open .arrow-up {
+  display: inline;
+}
+.capacitaciones .panel-title a.open .arrow-down {
+  display: none;
+}
 .capacitaciones ul {
   padding: 0;
 }
@@ -3471,9 +3486,16 @@ input[type="submit"] {
   margin-bottom: 7px;
   min-height: 70px;
   color: #FEFEFE;
+  background: #EBDD5F;
 }
 .capacitaciones ul .capacitacion.encurso {
   background: #EBDD5F;
+}
+.capacitaciones ul .capacitacion.encurso.aprobado, .capacitaciones ul .capacitacion.encurso.aprobado {
+  background: #51ba6e;
+}
+.capacitaciones ul .capacitacion.encurso.desaprobado, .capacitaciones ul .capacitacion.encurso.desaprobado {
+  background: #f94211;
 }
 .capacitaciones ul .capacitacion.finalizada {
   background: #f94211;
@@ -3545,6 +3567,21 @@ input[type="submit"] {
   cursor: pointer;
   font-weight: normal;
 }
+.test-form-container .respuesta .icon {
+  display: none;
+}
+.test-form-container .respuesta .icon-ok {
+  color: #51ba6e;
+}
+.test-form-container .respuesta .icon-wrong {
+  color: #f94211;
+}
+.test-form-container .respuesta.correcta .icon-ok {
+  display: inline;
+}
+.test-form-container .respuesta.incorrecta .icon-wrong {
+  display: inline;
+}
 
 .result-container {
   padding: 10px;
@@ -3558,6 +3595,27 @@ input[type="submit"] {
 }
 .result-container.desaprobado {
   background: #f94211;
+}
+
+.leyenda li {
+  display: inline-block;
+  margin-right: 14px;
+}
+.leyenda li div {
+  width: 16px;
+  height: 16px;
+  background: red;
+  border-radius: 50%;
+  display: inline-block;
+}
+.leyenda li div.aprobado {
+  background: #51ba6e;
+}
+.leyenda li div.desaprobado {
+  background: #f94211;
+}
+.leyenda li div.pendiente {
+  background: #EBDD5F;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -17,42 +17,8 @@
       {embed=includes/banner-alerta}
       <div class="box-gray bg-gray-darker w-100 hidden-lg hidden-md"></div>
       <div class="container-md clearfix">
-        <section id="menu-vertical" class="contenido-container col-md-4 pr-42 pl-0 hidden-xs hidden-sm p-14">
+        <section id="menu-vertical" class="col-md-4 pr-42 pl-0 hidden-xs hidden-sm p-14">
           {embed=includes/nav-secciones in="in" miembro="{segment_3}" miembro_actual="{member_id}" grupo="{member_group}"}
-          <!--
-          {exp:capacitaciones:load_contenidos capacitacion="{segment_4}"}
-          <div class="contenido">
-            {if "{nombre}" != ""}
-              <h3>{nombre}</h3>
-            {/if}
-            {if "{descripcion}" != ""}
-              <p>{descripcion}</p>
-            {/if}
-            {if "{video_id}" != ""}
-            <div class="video p-7">
-              <img class="img-responsive" src="https://img.youtube.com/vi/{video_id}/hqdefault.jpg" alt="Video Cover">
-              <a class="play-btn" data-video-id="{video_id}" data-nombre="{nombre}" href="#"><i class="glyphicon glyphicon-play"></i></a>
-            </div>
-            {/if}
-            {if "{file_path}" != ""}
-            <div class="archivo text-center">
-              <div class="p-21">
-                <a class="file-btn" href='{exp:util:parameter name="s3_path"}{file_path}' data-filepath='{exp:util:parameter name="s3_path"}{file_path}' data-nombre="{nombre}">Ver Archivo</a>
-              </div>
-            </div>
-            {/if}
-            <div class="controls mt-21">
-              {if "{prev_page}" != ""}
-              <a class="btn-page prev" href="{site_url}ajax-text/contenido/{segment_4}/{prev_page}">Anterior</a>
-              {/if}
-              
-              {if "{next_page}" != ""}
-              <a class="btn-page next" href="{site_url}ajax-text/contenido/{segment_4}/{next_page}">Siguiente</a>
-              {/if}
-            </div>
-          </div>
-          {/exp:capacitaciones:load_contenidos}
-          -->
         </section>
         <section id="capacitaciones-contenido" class="col-md-8 pb-42 ph-7-xs">
           {exp:capacitaciones:load_capacitacion_by_id id="{segment_4}"}
@@ -100,91 +66,54 @@
           </section>
 
           <br/>
-          {if "{exp:capacitaciones:estado_capacitacion capacitacion='{segment_4}'}" == "finalizada"}
-            {exp:capacitaciones:test_result capacitacion="{segment_4}"}
-              {if no_results}
-                <div class="result-container desaprobado">
-                  Ha finalizado la capacitación sin rendir el Test
+          {exp:capacitaciones:test_result capacitacion="{segment_4}"}
+            {if no_results}
+              <div class="result-container c-pendiente">
+                Pendiente
+              </Pendientediv>
+              <div class="test-container">
+                <div class="text-center mv-21">
+                  <button  class="btn-test btn btn-primary">Hacer Test</button>
                 </div>
-              {/if}
-
-              {if resultado_estado == 'a'}
-                <div class="result-container aprobado" >
-                  Aprobado {resultado_puntaje} %
+                <div class="test-form-container" style="display: none;">
+                  {exp:capacitaciones:test_form form_class="form-test"}
+                    <input type="hidden" name="capacitacion" value="{segment_4}">
+                    <ol>
+                      {exp:capacitaciones:load_test_questions capacitacion="{segment_4}"}
+                      <li> {pregunta_nombre}
+                          <ul>
+                          {exp:capacitaciones:load_answers_items pregunta="{pregunta_id}"}
+                            <li><label><input class="opcion-input" type="radio" name="answers[{pregunta_id}][]" value="{opcion_id}"> {opcion_nombre}</label></li>
+                          {/exp:capacitaciones:load_answers_items}
+                          </ul>
+                      </li>
+                      {/exp:capacitaciones:load_test_questions}
+                    </ol>
+                    <div class="text-center">
+                      <input id="submit-form-test" class="btn btn-primary" type="submit" value="Enviar">
+                    </div>
+                  {/exp:capacitaciones:test_form}
                 </div>
-              {if:else}
-                <div class="result-container desaprobado">
-                  Desaprobado {resultado_puntaje} %
-                </div>
-              {/if}
-            {/exp:capacitaciones:test_result}
-          {if:else}
-            {exp:capacitaciones:test_result capacitacion="{segment_4}"}
-              {if no_results}
-                <div class="result-container c-pendiente">
-                  Pendiente
-                </div>
-                <div class="test-container">
-                  <div class="text-center mv-21">
-                    <button  class="btn-test btn btn-primary">Hacer Test</button>
-                  </div>
-                  <div class="test-form-container" style="display: none;">
-                    {exp:capacitaciones:test_form form_class="form-test"}
-                      <input type="hidden" name="capacitacion" value="{segment_4}">
-                      <ol>
-                        {exp:capacitaciones:load_test_questions capacitacion="{segment_4}"}
-                        <li> {pregunta_nombre}
-                            <ul>
-                            {exp:capacitaciones:load_answers_items pregunta="{pregunta_id}"}
-                              <li><label><input class="opcion-input" type="radio" name="answers[{pregunta_id}][]" value="{opcion_id}"> {opcion_nombre}</label></li>
-                            {/exp:capacitaciones:load_answers_items}
-                            </ul>
-                        </li>
-                        {/exp:capacitaciones:load_test_questions}
-                      </ol>
-                      <div class="text-center">
-                        <input id="submit-form-test" class="btn btn-primary" type="submit" value="Enviar">
-                      </div>
-                    {/exp:capacitaciones:test_form}
-                  </div>
-                </div>
-              {/if}
-              
-              {if resultado_estado == 'a'}
-              <div class="result-container aprobado" >
-                Aprobado {resultado_puntaje} %
               </div>
-              {if:else}
-                <div class="result-container desaprobado">
-                  Desaprobado {resultado_puntaje}%
-                </div>
-                <div class="test-container">
-                  <div class="text-center mv-21">
-                    <button  class="btn-test btn btn-primary">Hacer Test</button>
-                  </div>
-                  <div class="test-form-container" style="display: none;">
-                    {exp:capacitaciones:test_form form_class="form-test"}
-                      <input type="hidden" name="capacitacion" value="{segment_4}">
-                      <ol>
-                        {exp:capacitaciones:load_test_questions capacitacion="{segment_4}"}
-                        <li> {pregunta_nombre}
-                            <ul>
-                            {exp:capacitaciones:load_answers_items pregunta="{pregunta_id}"}
-                              <li><label><input class="opcion-input" type="radio" name="answers[{pregunta_id}][]" value="{opcion_id}"> {opcion_nombre}</label></li>
-                            {/exp:capacitaciones:load_answers_items}
-                            </ul>
-                        </li>
-                        {/exp:capacitaciones:load_test_questions}
-                      </ol>
-                      <div class="text-center">
-                        <input id="submit-form-test" class="btn btn-primary" type="submit" value="Enviar">
-                      </div>
-                    {/exp:capacitaciones:test_form}
-                  </div>
-                </div>
-              {/if}
-            {/exp:capacitaciones:test_result}
-          {/if}
+            {/if}
+            
+            {if resultado_estado == 'a'}
+            <div class="result-container aprobado" >
+              Aprobado {exp:util:round number="{resultado_puntaje}"} %
+            </div>
+            {if:else}
+              <div class="result-container desaprobado">
+                Desaprobado {exp:util:round number="{resultado_puntaje}"} %
+              </div>
+            {/if}
+            <div class="test-container">
+              <div class="text-center mv-21">
+                <button  class="btn-test btn btn-primary">Hacer Test</button>
+              </div>
+              <div class="test-form-container" style="display: none;">
+              </div>
+            </div>
+          {/exp:capacitaciones:test_result}
         </section>
       </div>
     </main>
@@ -240,18 +169,23 @@
 
     $(document).on('click', '.btn-page',function(e) {
       e.preventDefault();
-      console.log(this.href);
       $('.contenido-container').load(this.href);
     });
 
     $('.btn-test').on('click', function(e) {
       e.preventDefault();
       $(this).hide();
-      $('.test-form-container').fadeIn();
+      $('.test-form-container').load("{site_url}ajax-text/test-form/{member_id}/{segment_4}").fadeIn();
     });
 
-    $('.form-test').on('submit', function(e) {
+    $(document).on('submit', '.form-test', function(e) {
       e.preventDefault();
+
+      if (!isTestFormValid()) {
+        alert("Debe responder todas las preguntas");
+        return;
+      }
+
       $("#submit-form-test").attr("disabled", true);
       var form = $(this);
       var url = form.attr("action");
@@ -269,7 +203,7 @@
           $resultContainer.removeClass("aprobado");
           $resultContainer.removeClass("desaprobado");
           $resultContainer.addClass(response.estado);
-          $resultContainer.html(estadoLabel + " " + response.puntaje + "%");
+          $resultContainer.html(estadoLabel + " " + response.puntaje + " %");
           $resultContainer.show();
 
           $('#resultadoModal').modal('show');
@@ -280,8 +214,11 @@
               $elem = $(elem);
               $elem.prop("checked", false);
             });
-          } else {
+          } else { // Aprobado
+            showSolucionario(response.solucionario);
+            $('.btn-test').show();
             $("#submit-form-test").prop("disabled", true);
+
           }
         },
         error: function(err) {
@@ -292,6 +229,26 @@
         processData: false
       });
     });
+
+    function isTestFormValid() {
+      var isValid = true;
+      $(".pregunta").each(function (idx, elem) {
+        var $pregunta = $(elem);
+        isValid = isValid && $pregunta.find('.opcion-input').is(':checked');
+      });
+
+      return isValid;
+    }
+
+    function showSolucionario(solucionario) {
+      $('.form-test').find('.respuesta').addClass("incorrecta");
+      for (var i = 0; i < solucionario.length; i++) {
+        var item = solucionario[i];
+        var $opcionCorrecta = $("#pregunta-" + item.id).find("#opcion-" + item.respuesta);
+        $opcionCorrecta.removeClass("incorrecta");
+        $opcionCorrecta.addClass("correcta");
+      }
+    }
   </script>
 </html>
 

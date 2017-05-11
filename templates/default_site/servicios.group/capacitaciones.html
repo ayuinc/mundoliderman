@@ -34,14 +34,23 @@
               </div>
             {/exp:webservice:semaforocapacitaciones}
             <div><h2 class="fz-26 pb-7 text-gray-darker pt-21">Módulos</h2></div>
+            <div class="leyenda list-unstyled">
+              <li><div class="aprobado"></div> Aprobado</li>
+              <li><div class="desaprobado"></div> Desaprobado y fuera de tiempo </li>
+              <li><div class="pendiente"></div> Pendiente</li>
+            </div>
             <div class="capacitaciones mt-35">
               <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                 {exp:capacitaciones:load_months}
                 <div class="panel panel-default">
                   <div class="panel-heading" role="tab" id="heading-{date_month}-{date_year}">
                     <h4 class="panel-title">
-                      <a role="button" data-toggle="collapse" href="#collapse-{date_month}-{date_year}"  aria-controls="collapse-{date_month}-{date_year}">
+                      <a class="btn-collapse {if '{exp:capacitaciones:tiene_capacitaciones_pendientes month="{date_month}" year="{date_year}" }' == "1"} open {/if}" role="button" data-toggle="collapse" href="#collapse-{date_month}-{date_year}"  aria-controls="collapse-{date_month}-{date_year}">
                         {exp:util:get_month_name month="{date_month}"} {date_year}
+
+                        &nbsp;
+                        <i class="arrow-up glyphicon glyphicon-menu-up"></i>
+                        <i class="arrow-down glyphicon glyphicon-menu-down"></i>
                       </a>
                     </h4>
                   </div>
@@ -52,7 +61,7 @@
                         <li class='capacitacion {exp:capacitaciones:estado_capacitacion capacitacion="{id}"} {exp:capacitaciones:resultado_capacitacion capacitacion="{id}"}'>
                           <span class="tipo">{if "{presencial}"=="0"}Virtual{if:else}Presencial{/if}</span>
                           {exp:capacitaciones:test_result capacitacion="{id}"}
-                          <span class="porcentaje {if resultado_estado == 'a'} aprobado {if:else} desaprobado {/if}">{resultado_puntaje} %</span>
+                          <span class="porcentaje {if resultado_estado == 'a'} aprobado {if:else} desaprobado {/if}">{exp:util:round number="{resultado_puntaje}"} %</span>
                           {/exp:capacitaciones:test_result}
                           <div class="title-box">
                             {if "{presencial}"=="0"} <a href="{site_url}servicios/curso/{member_id}/{id}"> {/if}
@@ -76,4 +85,11 @@
   </div>
   {embed=includes/footer}
   <script src="{site_url}frontend/app/assets/js/collapse-control.js"></script>
+  <script>
+    $(function() {
+      $(".btn-collapse").on('click', function (e) {
+        $(this).toggleClass('open');
+      });
+    });
+  </script>
 </html>

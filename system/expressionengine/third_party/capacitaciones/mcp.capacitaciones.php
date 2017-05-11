@@ -659,9 +659,11 @@ class Capacitaciones_mcp {
     ee()->form_validation->set_rules('porcentaje_aprobacion', 'Porcentaje de aprobación', 'required');
     ee()->form_validation->set_rules('curso_id', 'Curso', 'required');
     ee()->form_validation->set_rules('numero_horas', 'Número de horas', 'required');
+    ee()->form_validation->set_rules('cant_preguntas', 'Cant. Preguntas', 'callback_cant_preguntas_valid');
     ee()->form_validation->set_message('required', lang('c:field_required'));
     ee()->form_validation->set_message('date_valid', lang('c:entry_date_valid'));
     ee()->form_validation->set_message('is_natural_no_zero', lang('c:natural_no_zero_error'));
+    ee()->form_validation->set_message('cant_preguntas_valid', "El campo debe ser mayor o igual a 4");
 
     return ee()->form_validation->run();
   }
@@ -690,6 +692,14 @@ class Capacitaciones_mcp {
     }
 
     return ee()->form_validation->is_natural($number);
+  }
+
+  function cant_preguntas_valid($number) {
+    if ($number == "") {
+      return FALSE;
+    }
+
+    return intval($number) >= 4;
   }
 
 

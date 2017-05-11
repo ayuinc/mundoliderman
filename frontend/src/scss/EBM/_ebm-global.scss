@@ -2121,6 +2121,29 @@ input[type="submit"] {
 .capacitaciones {
 	background-color: white;
 	border-radius: 5px;
+
+	.panel-title {
+		a {
+			text-decoration: none;
+			.arrow-up {
+				display: none;
+			}
+
+			.arrow-down {
+				display: inline;
+			}
+
+			&.open {
+				.arrow-up {
+					display: inline;
+				}
+
+				.arrow-down {
+					display: none;
+				}
+			}
+		}
+	}
 	
 	ul {
 		padding: 0;
@@ -2132,9 +2155,18 @@ input[type="submit"] {
 			margin-bottom: 7px;
 			min-height: 70px;
 			color: #FEFEFE;
+			background: #EBDD5F;
 
 			&.encurso {
 				background: #EBDD5F;
+			}
+
+			&.encurso.aprobado,  &.encurso.aprobado {
+				background: #51ba6e;
+			}
+
+			&.encurso.desaprobado,  &.encurso.desaprobado {
+				background: #f94211;
 			}
 
 			&.finalizada {
@@ -2223,6 +2255,32 @@ input[type="submit"] {
 		cursor: pointer;
 		font-weight: normal;
 	}
+
+	.respuesta {
+		.icon {
+			display: none;
+		}
+
+		.icon-ok {
+			color: #51ba6e;
+		}
+
+		.icon-wrong {
+			color: #f94211;
+		}
+
+		&.correcta {
+			.icon-ok {
+				display: inline;
+			}
+		}
+
+		&.incorrecta {
+			.icon-wrong {
+				display: inline;
+			}
+		}
+	}
 }
 
 .result-container {
@@ -2238,5 +2296,32 @@ input[type="submit"] {
 
 	&.desaprobado {
 		background: #f94211;
+	}
+}
+
+.leyenda {
+	li {
+		display: inline-block;
+		margin-right: 14px;
+
+		div {
+			width: 16px;
+			height: 16px;
+			background: red;
+			border-radius: 50%;
+			display: inline-block;
+
+			&.aprobado {
+				background: #51ba6e;
+			}
+
+			&.desaprobado {
+				background: #f94211;
+			}
+
+			&.pendiente {
+				background: #EBDD5F;
+			}
+		}
 	}
 }

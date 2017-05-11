@@ -56,8 +56,7 @@ class Capacitaciones {
                       ->join("asistencias asi", "asi.capacitacion_id=cap.id", "left")
                       ->where("MONTH(cap.fecha_inicio) = $month", NULL, FALSE)
                       ->where("YEAR(cap.fecha_inicio) = $year", NULL, FALSE)
-                      ->where("ins.member_id", $member_id)
-                      ->or_where("asi.member_id", $member_id)
+                      ->where("(ins.member_id = $member_id or asi.member_id=$member_id)", NULL, FALSE)
                       ->get();
 
     if ($query->num_rows() == 0) {
@@ -89,8 +88,7 @@ class Capacitaciones {
                       ->join("inscripciones ins", "ins.capacitacion_id=cap.id", "left")
                       ->join("asistencias asi", "asi.capacitacion_id=cap.id", "left")
                       ->where("cap.id", $id)
-                      ->where("ins.member_id", $member_id)  
-                      ->or_where("asi.member_id", $member_id)
+                      ->where("(ins.member_id = $member_id or asi.member_id=$member_id)", NULL, FALSE)
                       ->get();
 
     if ($query->num_rows() == 0) {
@@ -184,7 +182,9 @@ class Capacitaciones {
   }
 
   public function load_test_questions() {
+    ee()->load->model('capacitacion_model');
     $capacitacion_id = ee()->TMPL->fetch_param('capacitacion', FALSE);
+    ee()->capacitacion_model->load($capacitacion_id);
     $member_id = $this->_get_member_id();
 
     if ($capacitacion_id === FALSE || $member_id == FALSE) {
@@ -202,8 +202,9 @@ class Capacitaciones {
       return ee()->TMPL->no_results;
     } else {
       $data = $query->result_array();
+      $questions = $this->_get_random_questions($data, ee()->capacitacion_model->cant_preguntas);
       $tagdata = ee()->TMPL->tagdata;
-      return ee()->TMPL->parse_variables($tagdata, $data);
+      return ee()->TMPL->parse_variables($tagdata, $questions);
     }
   }
 
@@ -254,32 +255,62 @@ class Capacitaciones {
                      ->get()->result_array();
 
     $puntaje = 0;
-    $countPreguntas = count($preguntas);
+    $countPreguntas = count($answers);
     $puntajePregunta = 100.0/$countPreguntas;
 
+    $solucionario = array();
+
     foreach ($preguntas as $pregunta) {
-      if (isset($answers[$pregunta["pregunta_id"]]) && $answers[$pregunta["pregunta_id"]][0] == $pregunta["opcion_correcta"]) {
-        $puntaje += $puntajePregunta;
+      if (isset($answers[$pregunta["pregunta_id"]])) {
+        $solucionario[] = array(
+          'id' => $pregunta["pregunta_id"],
+          'respuesta' => $pregunta["opcion_correcta"]
+        );
+
+        if ($answers[$pregunta["pregunta_id"]][0] == $pregunta["opcion_correcta"]) {
+          $puntaje += $puntajePregunta;
+        }
       }
     }
 
-    ee()->db->where('capacitacion_id', $capacitacion_id)
-            ->where('member_id', $member_id)
-            ->delete('test_resultados');
+    $query = ee()->db->select('id')
+                  ->from('test_resultados')
+                  ->where('capacitacion_id', $capacitacion_id)
+                  ->where('member_id', $member_id)
+                  ->get();
 
-    ee()->db->insert('test_resultados', array(
-        'capacitacion_id' => $capacitacion_id,
-        'member_id' => $member_id,
-        'puntaje' => $puntaje,
-        'porcentaje_aprobacion' => $porcentajeAprobacion,
-        'fecha' => date('Y-m-d H:i:s'),
-        'estado' => $puntaje >= $porcentajeAprobacion ? "a" : "d"
-      ));
+    $id = NULL;
+
+    if ($query->num_rows() > 0) {
+      $id = $query->result()[0]->id;
+    }
+
+    $testResultado =  array(
+      'capacitacion_id' => $capacitacion_id,
+      'member_id' => $member_id,
+      'puntaje' => $puntaje,
+      'porcentaje_aprobacion' => $porcentajeAprobacion,
+      'fecha' => date('Y-m-d H:i:s'),
+      'estado' => $puntaje >= $porcentajeAprobacion ? "a" : "d"
+    );
+
+    if ($id == NULL) { // Insert
+      ee()->db->insert('test_resultados', $testResultado); 
+    } else { // Update
+      ee()->db->where('id', $id);
+      ee()->db->update('test_resultados', $testResultado);
+    }
+
+    $resultadoTest = $puntaje >= $porcentajeAprobacion ? "aprobado" : "desaprobado";
 
     $response = array(
       "puntaje" => $puntaje,
-      "estado" => $puntaje >= $porcentajeAprobacion ? "aprobado" : "desaprobado"
+      "estado" => $resultadoTest
     );
+
+    if ($resultadoTest == "aprobado") {
+      $response['solucionario'] = $solucionario;
+    }
     
     echo json_encode($response);
   }
@@ -313,10 +344,9 @@ class Capacitaciones {
   }
 
   public function estado_capacitacion() {
-     $capacitacion_id = ee()->TMPL->fetch_param('capacitacion', FALSE);
-     $member_id = $this->_get_member_id();
-
-     $capacitacion = ee()->db->select("cap.id as id,
+    $capacitacion_id = ee()->TMPL->fetch_param('capacitacion', FALSE);
+    $member_id = $this->_get_member_id();
+    $capacitacion = ee()->db->select("cap.id as id,
                                cap.codigo as codigo,
                                cap.nombre as nombre,
                                cap.descripcion as descripcion,
@@ -329,8 +359,7 @@ class Capacitaciones {
                       ->join("inscripciones ins", "ins.capacitacion_id=cap.id", "left")
                       ->join("asistencias asi", "asi.capacitacion_id=cap.id", "left")
                       ->where("cap.id", $capacitacion_id)
-                      ->where("ins.member_id", $member_id)  
-                      ->or_where("asi.member_id", $member_id)
+                      ->where("(ins.member_id = $member_id or asi.member_id=$member_id)", NULL, FALSE)
                       ->get()->result()[0];
 
     $query = ee()->db->select("r.id as resultado_id,
@@ -349,7 +378,7 @@ class Capacitaciones {
     }
 
     if ($capacitacion->presencial == 1) {
-      return "aprobado";
+      return "finalizada aprobado";
     }
 
     $dateLimite = DateTime::createFromFormat('Y-m-d', $capacitacion->fecha_inscripcion)
@@ -357,7 +386,7 @@ class Capacitaciones {
     $dateLimite->setTime(0, 0);
     $dateNow = new DateTime();
 
-    $dentroDelPlazo = $dateLimite < $dateNow;
+    $dentroDelPlazo = $dateNow <= $dateLimite;
 
     if ($dentroDelPlazo) {
       return "encurso";
@@ -370,6 +399,10 @@ class Capacitaciones {
     $capacitacion_id = ee()->TMPL->fetch_param('capacitacion', FALSE);
     $member_id = $this->_get_member_id();
 
+    return $this->_resultado_capacitacion($member_id, $capacitacion_id);
+  }
+
+  private function _resultado_capacitacion($member_id, $capacitacion_id) {
     $query = ee()->db->select("r.id as resultado_id,
                                r.puntaje as resultado_puntaje,
                                r.porcentaje_aprobacion as resultado_porcentaje_aprobacion,
@@ -420,13 +453,13 @@ class Capacitaciones {
     $tienePendientes = "0";
     $dateNow = new DateTime();
     foreach ($capacitaciones as $cap) {
-      $dateLimite = DateTime::createFromFormat('Y-m-d', $cap->fecha_inscripcion)
-                      ->add(date_interval_create_from_date_string("$cap->dias_plazo days"));
-      $dateLimite->setTime(0, 0);
 
-      $dentroDelPlazo = $dateLimite < $dateNow;
+      if ($cap->presencial == 1) {
+        continue;
+      }
 
-      if ($dentroDelPlazo) {
+      $resultadoCapacitacion = $this->_resultado_capacitacion($member_id, $cap->id);
+      if ($resultadoCapacitacion != "aprobado") {
         $tienePendientes = "1";
         break;
       }
@@ -450,8 +483,7 @@ class Capacitaciones {
                       ->from("capacitaciones cap")
                       ->join("inscripciones ins", "ins.capacitacion_id=cap.id", "left")
                       ->join("asistencias asi", "asi.capacitacion_id=cap.id", "left")
-                      ->where("ins.member_id", $member_id)
-                      ->or_where("asi.member_id", $member_id)
+                      ->where("(ins.member_id = $member_id or asi.member_id=$member_id)", NULL, FALSE)
                       ->get();
 
     if ($query->num_rows() == 0) {
@@ -461,6 +493,15 @@ class Capacitaciones {
     }
   }
 
+  private function _get_random_questions($questions, $number) {
+    $randomQuestions = array();
+    $randomIndices = array_rand($questions, $number);
+    foreach ($randomIndices as $indice) {
+      $randomQuestions[] = $questions[$indice];
+    }
+    shuffle($randomQuestions);
+    return $randomQuestions;
+  }
 
   private function _get_member_id() {
     return ee()->session->userdata("member_id");

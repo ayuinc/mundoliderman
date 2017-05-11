@@ -1,0 +1,24 @@
+{exp:capacitaciones:test_form form_class="form-test"}
+  <input type="hidden" name="capacitacion" value="{segment_4}">
+  <ol>
+    {exp:capacitaciones:load_test_questions capacitacion="{segment_4}"}
+    <li id="pregunta-{pregunta_id}" class="pregunta"> {pregunta_nombre}
+        <ul>
+        {exp:capacitaciones:load_answers_items pregunta="{pregunta_id}"}
+          <li>
+            <label id="opcion-{opcion_id}" class="respuesta">
+              <i class="icon icon-ok glyphicon glyphicon-ok"></i>
+              <i class="icon icon-wrong glyphicon glyphicon-remove"></i>
+              &nbsp;
+              <input class="opcion-input" type="radio" name="answers[{pregunta_id}][]" value="{opcion_id}"> {opcion_nombre}
+            </label>
+          </li>
+        {/exp:capacitaciones:load_answers_items}
+        </ul>
+    </li>
+    {/exp:capacitaciones:load_test_questions}
+  </ol>
+  <div class="text-center">
+    <input id="submit-form-test" class="btn btn-primary" type="submit" value="Enviar">
+  </div>
+{/exp:capacitaciones:test_form}

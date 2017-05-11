@@ -25,6 +25,7 @@ class Capacitacion_model extends CI_Model {
   var $tipo_unidad;
   var $presencial;
   var $curso_id;
+  var $cant_preguntas;
 
   function __construct() {
       parent::__construct();
@@ -41,6 +42,7 @@ class Capacitacion_model extends CI_Model {
     $this->curso_id = ee()->input->post('curso_id');
     $this->porcentaje_aprobacion = ee()->input->post('porcentaje_aprobacion');
     $this->numero_horas = ee()->input->post('numero_horas');
+    $this->cant_preguntas = ee()->input->post('cant_preguntas');
 
     if ($this->tipo_asignacion == self::TIPO_UNIDAD ) {
       $this->tipo_unidad = ee()->input->post('tipo_unidad');
@@ -79,6 +81,7 @@ class Capacitacion_model extends CI_Model {
       $this->curso_id = $data['curso_id'];
       $this->porcentaje_aprobacion = $data['porcentaje_aprobacion'];
       $this->numero_horas = $data['numero_horas'];
+      $this->cant_preguntas = intval($data['cant_preguntas']);
     }
   }
 
@@ -96,6 +99,7 @@ class Capacitacion_model extends CI_Model {
     $this->curso_id = ee()->input->post('curso_id');
     $this->porcentaje_aprobacion = ee()->input->post('porcentaje_aprobacion');
     $this->numero_horas = ee()->input->post('numero_horas');
+    $this->cant_preguntas = ee()->input->post('cant_preguntas');
 
 
     if ($this->tipo_asignacion == self::TIPO_UNIDAD ) {
