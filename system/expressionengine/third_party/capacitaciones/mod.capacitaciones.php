@@ -381,18 +381,7 @@ class Capacitaciones {
       return "finalizada aprobado";
     }
 
-    $dateLimite = DateTime::createFromFormat('Y-m-d', $capacitacion->fecha_inscripcion)
-                      ->add(date_interval_create_from_date_string("$capacitacion->dias_plazo days"));
-    $dateLimite->setTime(0, 0);
-    $dateNow = new DateTime();
-
-    $dentroDelPlazo = $dateNow <= $dateLimite;
-
-    if ($dentroDelPlazo) {
-      return "encurso";
-    } else {
-      return "finalizada";
-    }
+    return $this->_get_estado_capacitacion($capacitacion);
   }
 
   public function resultado_capacitacion() {
@@ -490,6 +479,65 @@ class Capacitaciones {
       return "0";
     } else {
       return "1";
+    }
+  }
+
+  public function semaforo_capacitaciones() {
+    $member_id = ee()->TMPL->fetch_param('member', $this->_get_member_id());
+
+    $query = ee()->db->select("cap.id as id,
+                               cap.codigo as codigo,
+                               cap.nombre as nombre,
+                               cap.descripcion as descripcion,
+                               cap.fecha_inicio as fecha_inicio,
+                               cap.fecha_fin_vigencia as fecha_fin_vigencia,
+                               cap.dias_plazo as dias_plazo,
+                               cap.presencial as presencial,
+                               ins.fecha_inscripcion as fecha_inscripcion")
+                      ->from("capacitaciones cap")
+                      ->join("inscripciones ins", "ins.capacitacion_id=cap.id", "left")
+                      ->join("asistencias asi", "asi.capacitacion_id=cap.id", "left")
+                      ->where("(ins.member_id = $member_id or asi.member_id=$member_id)", NULL, FALSE)
+                      ->get();
+
+    $semaforo = true;                  
+    if ($query->num_rows() != 0) {
+      $capacitaciones = $query->result();
+
+      foreach ($capacitaciones as $cap) {
+        if ($cap->presencial == 1) {
+          continue;
+        }
+
+        $estado = $this->_get_estado_capacitacion($cap);
+        $resultado = $this->_resultado_capacitacion($member_id, $cap->id);
+
+        // Si la capacitación finalizo y desaprobo el test o no lo rindio
+        if ($estado == "finalizada" && ($resultado == "" || $resultado == "desaprobado")) {
+          $semaforo = false;
+          break;
+        }
+
+      }
+    }
+
+    $tagdata = array(['semaforo' => $semaforo]);
+    return ee()->TMPL->parse_variables(ee()->TMPL->tagdata, $tagdata);
+  }
+
+
+  private function _get_estado_capacitacion($capacitacion) {
+    $dateLimite = DateTime::createFromFormat('Y-m-d', $capacitacion->fecha_inscripcion)
+                      ->add(date_interval_create_from_date_string("$capacitacion->dias_plazo days"));
+    $dateLimite->setTime(0, 0);
+    $dateNow = new DateTime();
+
+    $dentroDelPlazo = $dateNow <= $dateLimite;
+
+    if ($dentroDelPlazo) {
+      return "encurso";
+    } else {
+      return "finalizada";
     }
   }
 

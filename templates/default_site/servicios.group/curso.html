@@ -23,7 +23,8 @@
         <section id="capacitaciones-contenido" class="col-md-8 pb-42 ph-7-xs">
           {exp:capacitaciones:load_capacitacion_by_id id="{segment_4}"}
           <div class="container pt-14 w-100 ph-0">
-            <div><h2 class="fz-28 border-bottom-gray pb-14 text-gray-darker pt-7">{nombre}</h2></div>
+            <a href="{site_url}servicios/proyectos/{member_id}" class="pointer">< Regresar</a>
+            <div><h2 class="fz-28 border-bottom-gray pb-14 text-gray-darker pt-7 mt-0">{nombre}</h2></div>
             <p class="text-justify">{descripcion}</p>
           </div>
           {/exp:capacitaciones:load_capacitacion_by_id}
@@ -54,11 +55,11 @@
               {/if}
               <div class="controls" style="{if "{prev_page}" != "" || "{next_page}" != "" } min-height: 35px; {/if}">
                 {if "{prev_page}" != ""}
-                <a class="btn-page prev" href="{site_url}ajax-text/contenido/{segment_4}/{prev_page}">Anterior</a>
+                <a class="btn-page prev" href="{site_url}ajax-text/contenido/{segment_4}/{prev_page}">&lt; Anterior</a>
                 {/if}
                 
                 {if "{next_page}" != ""}
-                <a class="btn-page next" href="{site_url}ajax-text/contenido/{segment_4}/{next_page}">Siguiente</a>
+                <a class="btn-page next" href="{site_url}ajax-text/contenido/{segment_4}/{next_page}">Siguiente &gt;</a>
                 {/if}
               </div>
             </div>
@@ -66,54 +67,64 @@
           </section>
 
           <br/>
-          {exp:capacitaciones:test_result capacitacion="{segment_4}"}
-            {if no_results}
-              <div class="result-container c-pendiente">
-                Pendiente
-              </Pendientediv>
-              <div class="test-container">
-                <div class="text-center mv-21">
-                  <button  class="btn-test btn btn-primary">Hacer Test</button>
-                </div>
-                <div class="test-form-container" style="display: none;">
-                  {exp:capacitaciones:test_form form_class="form-test"}
-                    <input type="hidden" name="capacitacion" value="{segment_4}">
-                    <ol>
-                      {exp:capacitaciones:load_test_questions capacitacion="{segment_4}"}
-                      <li> {pregunta_nombre}
-                          <ul>
-                          {exp:capacitaciones:load_answers_items pregunta="{pregunta_id}"}
-                            <li><label><input class="opcion-input" type="radio" name="answers[{pregunta_id}][]" value="{opcion_id}"> {opcion_nombre}</label></li>
-                          {/exp:capacitaciones:load_answers_items}
-                          </ul>
-                      </li>
-                      {/exp:capacitaciones:load_test_questions}
-                    </ol>
-                    <div class="text-center">
-                      <input id="submit-form-test" class="btn btn-primary" type="submit" value="Enviar">
+          {exp:capacitaciones:load_capacitacion_by_id id="{segment_4}"}
+            {if "{presencial}"=="0"}
+              {exp:capacitaciones:test_result capacitacion="{segment_4}"}
+                {if no_results}
+                  <div class="result-container c-pendiente">
+                    Pendiente
+                  </div>
+                  <div class="test-container">
+                    <div class="text-center mv-21">
+                      <button  class="btn-test btn btn-primary">Hacer Test</button>
                     </div>
-                  {/exp:capacitaciones:test_form}
+                    <div class="test-form-container" style="display: none;">
+                      {exp:capacitaciones:test_form form_class="form-test"}
+                        <input type="hidden" name="capacitacion" value="{segment_4}">
+                        <ol>
+                          {exp:capacitaciones:load_test_questions capacitacion="{segment_4}"}
+                          <li> {pregunta_nombre}
+                              <ul>
+                              {exp:capacitaciones:load_answers_items pregunta="{pregunta_id}"}
+                                <li><label><input class="opcion-input" type="radio" name="answers[{pregunta_id}][]" value="{opcion_id}"> {opcion_nombre}</label></li>
+                              {/exp:capacitaciones:load_answers_items}
+                              </ul>
+                          </li>
+                          {/exp:capacitaciones:load_test_questions}
+                        </ol>
+                        <div class="text-center">
+                          <input id="submit-form-test" class="btn btn-primary" type="submit" value="Enviar">
+                        </div>
+                      {/exp:capacitaciones:test_form}
+                    </div>
+                  </div>
+                {/if}
+                
+                {if resultado_estado == 'a'}
+                <div class="result-container aprobado" >
+                  Aprobado {exp:util:round number="{resultado_puntaje}"} %
                 </div>
-              </div>
-            {/if}
-            
-            {if resultado_estado == 'a'}
-            <div class="result-container aprobado" >
-              Aprobado {exp:util:round number="{resultado_puntaje}"} %
-            </div>
+                {if:else}
+                  <div class="result-container desaprobado">
+                    Desaprobado {exp:util:round number="{resultado_puntaje}"} %
+                  </div>
+                {/if}
+                <div class="test-container">
+                  <div class="text-center mv-21">
+                    <button  class="btn-test btn btn-primary">Hacer Test</button>
+                  </div>
+                  <div class="test-form-container" style="display: none;">
+                  </div>
+                </div>
+              {/exp:capacitaciones:test_result}
             {if:else}
-              <div class="result-container desaprobado">
-                Desaprobado {exp:util:round number="{resultado_puntaje}"} %
+              <div class="result-container aprobado">
+                Aprobado
               </div>
+              <br>
             {/if}
-            <div class="test-container">
-              <div class="text-center mv-21">
-                <button  class="btn-test btn btn-primary">Hacer Test</button>
-              </div>
-              <div class="test-form-container" style="display: none;">
-              </div>
-            </div>
-          {/exp:capacitaciones:test_result}
+          {/exp:capacitaciones:load_capacitacion_by_id}
+          <a href="{site_url}servicios/proyectos/{member_id}" class="pointer">< Regresar</a>
         </section>
       </div>
     </main>

@@ -22,6 +22,11 @@
         <?php echo form_error('nombre', '<p class="error"> *', '</p>'); ?>
       </div>
       <div class="cform-group">
+        <label for="ccapcitador">Capacitador</label>
+        <input id="ccapcitador" type="text" name="capacitador" value="<?php echo set_value('capacitador', $capacitacion->capacitador); ?>">
+        <?php echo form_error('capacitador', '<p class="error"> *', '</p>'); ?>
+      </div>
+      <div class="cform-group">
         <label for="cdescripcion">Descripción</label>
         <textarea id="cdescripcion" name="descripcion" rows="4"><?php echo set_value('description', $capacitacion->descripcion); ?></textarea>
       </div>
