@@ -969,6 +969,8 @@ class Capacitaciones_mcp {
     $unidad = ee()->input->post('unidad', TRUE);
     $zona = ee()->input->post('zona', TRUE);
     $cliente = ee()->input->post('cliente', TRUE);
+    $vigencia = ee()->input->post('vigencia', TRUE);
+    $test = ee()->input->post('test', TRUE);
 
     ee()->table->set_columns(array(
       'codigo'  => array('header' => 'Cod.'),
@@ -977,7 +979,10 @@ class Capacitaciones_mcp {
       'apellidos'  => array('header' => 'Apellidos'),
       'unidad'  => array('header' => 'Unidad'),
       'zona' => array('header' => 'Zona'),
-      'cliente' => array('header' => 'Cliente')
+      'cliente' => array('header' => 'Cliente'),
+      'vigencia' => array('header' => 'Vigencia'),
+      'test' => array('header' => 'Test'),
+      'calificacion' => array('header' => 'Calificación')
     ));
 
 
@@ -989,10 +994,18 @@ class Capacitaciones_mcp {
                       "md.$this->field_apellidos as apellidos, " . 
                       "md.$this->field_unidad as unidad, " . 
                       "md.$this->field_cliente as cliente, " . 
-                      "md.$this->field_zona as zona")
+                      "md.$this->field_zona as zona, " .
+                      "cap.fecha_inicio as fecha_inicio,
+                       cap.fecha_fin_vigencia as fecha_fin_vigencia,
+                       cap.dias_plazo as dias_plazo,
+                       cap.id as capacitacion_id,
+                       ins.fecha_inscripcion as fecha_inscripcion,
+                       r.estado as resultado_estado")
                     ->from("members m")
                     ->join("member_data md", "md.member_id = m.member_id")
                     ->join("inscripciones ins", "m.member_id = ins.member_id and ins.capacitacion_id = $capacitacion_id", "left")
+                    ->join("capacitaciones cap", "cap.id = ins.capacitacion_id")
+                    ->join("test_resultados r", "r.capacitacion_id = ins.capacitacion_id", "left")
                     ->where("ins.id IS NOT NULL");
 
     if ($unidad !== FALSE) {
@@ -1021,14 +1034,37 @@ class Capacitaciones_mcp {
 
     if ($apellidos !== FALSE) {
       $query = $query->like("md.$this->field_apellidos", $apellidos);
+    }
+
+    if ($vigencia !== FALSE && $vigencia != '0') {
+      if ($vigencia == '1') {
+        $sql = "(CURDATE() <= DATE_ADD(ins.fecha_inscripcion, INTERVAL cap.dias_plazo DAY))";
+      } else if ($vigencia == '2') {
+        $sql = "NOT (CURDATE() <= DATE_ADD(ins.fecha_inscripcion, INTERVAL cap.dias_plazo DAY))";
+      }
+
+      $query = $query->where($sql, NULL, FALSE);
+    }
+
+    if ($test !== FALSE && $test != '0') {
+      if ($test == '1') {
+        $query = $query->where("r.estado = 'a'", NULL, FALSE);
+      } else if ($test == '2') {
+        $query = $query->where("r.estado = 'd'", NULL, FALSE);
+      } else if ($test == '3') {
+        $query = $query->where("r.estado IS NULL", NULL, FALSE);
+      }
     }
 
     $query = $query->limit($per_page, $offset);
     $rows = $query->get()->result_array();
+    $rows = array_map(array($this, "_format_row_inscritos"), $rows);
 
     $query = ee()->db->from("members m")
                     ->join("member_data md", "md.member_id = m.member_id")
                     ->join("inscripciones ins", "m.member_id = ins.member_id and ins.capacitacion_id = $capacitacion_id", "left")
+                    ->join("capacitaciones cap", "cap.id = ins.capacitacion_id")
+                    ->join("test_resultados r", "r.capacitacion_id = ins.capacitacion_id", "left")
                     ->where("ins.id IS NOT NULL");
 
     if ($unidad !== FALSE) {
@@ -1057,6 +1093,26 @@ class Capacitaciones_mcp {
 
     if ($apellidos !== FALSE) {
       $query = $query->like("md.$this->field_apellidos", $apellidos);
+    }
+
+    if ($vigencia !== FALSE && $vigencia != '0') {
+      if ($vigencia == '1') {
+        $sql = "(CURDATE() <= DATE_ADD(ins.fecha_inscripcion, INTERVAL cap.dias_plazo DAY))";
+      } else if ($vigencia == '2') {
+        $sql = "NOT (CURDATE() <= DATE_ADD(ins.fecha_inscripcion, INTERVAL cap.dias_plazo DAY))";
+      }
+
+      $query = $query->where($sql, NULL, FALSE);
+    }
+
+    if ($test !== FALSE && $test != '0') {
+      if ($test == '1') {
+        $query = $query->where("r.estado = 'a'", NULL, FALSE);
+      } else if ($test == '2') {
+        $query = $query->where("r.estado = 'd'", NULL, FALSE);
+      } else if ($test == '3') {
+        $query = $query->where("r.estado IS NULL", NULL, FALSE);
+      }
     }
 
     $count = $query->count_all_results();
@@ -1068,6 +1124,40 @@ class Capacitaciones_mcp {
         'total_rows' => $count
       ),
     );
+  }
+
+  function _format_row_inscritos($row) {
+    $row['vigencia'] = $this->_get_vigencia_capacitacion($row);
+    $this->_load_estado_test($row);
+
+    return $row;
+  }
+
+  private  function _get_vigencia_capacitacion($row) {
+    $dateLimite = DateTime::createFromFormat('Y-m-d', $row['fecha_inscripcion'])
+                      ->add(date_interval_create_from_date_string($row['dias_plazo'] . " days"));
+    $dateLimite->setTime(0, 0);
+    $dateNow = new DateTime();
+
+    $dentroDelPlazo = $dateNow <= $dateLimite;
+
+    if ($dentroDelPlazo) {
+      return "En curso";
+    } else {
+      return "Finalizado";
+    }
+  }
+
+  private function _load_estado_test(&$row) {
+    if ($row['resultado_estado'] == NULL) {
+      $row['test'] = "Pendiente";
+      $row['resultado_estado'] = '';
+      $row['calificacion'] = '';
+    } else {
+      $resultado = $query->result_array()[0];
+      $row['test'] =  $resultado['resultado_estado'] == 'a' ? "Aprobado" : "Desaprobado";
+      $row['calificacion'] = round(doubleval($resultado['resultado_puntaje']));
+    }
   }
   // Fin Table datasource de inscritos
 

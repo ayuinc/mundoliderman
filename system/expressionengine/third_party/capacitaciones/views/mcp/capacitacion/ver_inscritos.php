@@ -31,6 +31,24 @@
             &nbsp;
             <input type="text" id="cliente" name="cliente"  style="width: 200px;">
           </p>
+          <p>
+            <label for="cliente">Vigencia</label>
+            &nbsp;
+            <select name="vigencia">
+              <option value="0">Todos</option>
+              <option value="1">En curso</option>
+              <option value="2">Finalizado</option>
+            </select>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <label for="cliente">Test</label>
+            &nbsp;
+            <select name="test">
+              <option value="0">Todos</option>
+              <option value="1">Aprobado</option>
+              <option value="2">Desaprobado</option>
+              <option value="3">Pendiente</option>
+            </select>
+          </p>
         </fieldset>
       </div>
     </form>
