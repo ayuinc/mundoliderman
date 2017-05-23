@@ -1,5 +1,10 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
+if ( ! class_exists('Exporter'))
+{
+  require_once APPPATH . 'third_party/indicators/exporter.php';
+}
+
 /**
  * Capacitaciones Control Panel Class
  *
@@ -356,6 +361,7 @@ class Capacitaciones_mcp {
     $this->vData['capacitacion_id'] = $capacitacion->id;
     $this->vData['capacitacion'] = ee()->capacitacion_model;
     $this->vData['table_inscritos'] = ee()->table->datasource('_datasource_inscritos');
+    $this->vData['exportar_url'] = $this->base . "&method=exportar_inscritos&capacitacion_id=" . $capacitacion_id;
 
     return ee()->load->view('mcp/capacitacion/ver_inscritos', $this->vData, TRUE);
   }
@@ -962,15 +968,8 @@ class Capacitaciones_mcp {
     $capacitacion_id = ee()->input->get('capacitacion_id');
     $per_page = 20;
     $offset = $state['offset'];
-    $codigo = ee()->input->post('codigo', TRUE);
-    $dni = ee()->input->post('dni', TRUE);
-    $nombre = ee()->input->post('nombre', TRUE);
-    $apellidos = ee()->input->post('apellidos', TRUE);
-    $unidad = ee()->input->post('unidad', TRUE);
-    $zona = ee()->input->post('zona', TRUE);
-    $cliente = ee()->input->post('cliente', TRUE);
-    $vigencia = ee()->input->post('vigencia', TRUE);
-    $test = ee()->input->post('test', TRUE);
+
+    $filters = $this->_get_ver_inscritors_filters();
 
     ee()->table->set_columns(array(
       'codigo'  => array('header' => 'Cod.'),
@@ -986,136 +985,14 @@ class Capacitaciones_mcp {
     ));
 
 
-    $query = ee()->db->select(
-                      "m.member_id as member_id, " . 
-                      "md.$this->field_codigo as codigo, " .
-                      "md.$this->field_dni as dni, " .
-                      "md.$this->field_nombre as nombre, " . 
-                      "md.$this->field_apellidos as apellidos, " . 
-                      "md.$this->field_unidad as unidad, " . 
-                      "md.$this->field_cliente as cliente, " . 
-                      "md.$this->field_zona as zona, " .
-                      "cap.fecha_inicio as fecha_inicio,
-                       cap.fecha_fin_vigencia as fecha_fin_vigencia,
-                       cap.dias_plazo as dias_plazo,
-                       cap.id as capacitacion_id,
-                       ins.fecha_inscripcion as fecha_inscripcion,
-                       r.estado as resultado_estado")
-                    ->from("members m")
-                    ->join("member_data md", "md.member_id = m.member_id")
-                    ->join("inscripciones ins", "m.member_id = ins.member_id and ins.capacitacion_id = $capacitacion_id", "left")
-                    ->join("capacitaciones cap", "cap.id = ins.capacitacion_id")
-                    ->join("test_resultados r", "r.capacitacion_id = ins.capacitacion_id", "left")
-                    ->where("ins.id IS NOT NULL");
+    $query = $this->_build_query_ver_inscritos($capacitacion_id, $filters);
 
-    if ($unidad !== FALSE) {
-       $query = $query->where("md.$this->field_unidad", $unidad);
-    }
-
-    if ($zona !== FALSE) {
-       $query = $query->where("md.$this->field_zona", $zona);
-    }
-
-    if ($cliente !== FALSE) {
-      $query = $query->where("md.$this->field_cliente", $cliente);
-    }
-
-    if ($codigo !== FALSE) {
-      $query = $query->like("md.$this->field_codigo", $codigo);
-    }
-
-    if ($dni !== FALSE) {
-      $query = $query->like("md.$this->field_dni", $dni);
-    }
-
-    if ($nombre !== FALSE) {
-      $query = $query->like("md.$this->field_nombre", $nombre);
-    }
-
-    if ($apellidos !== FALSE) {
-      $query = $query->like("md.$this->field_apellidos", $apellidos);
-    }
-
-    if ($vigencia !== FALSE && $vigencia != '0') {
-      if ($vigencia == '1') {
-        $sql = "(CURDATE() <= DATE_ADD(ins.fecha_inscripcion, INTERVAL cap.dias_plazo DAY))";
-      } else if ($vigencia == '2') {
-        $sql = "NOT (CURDATE() <= DATE_ADD(ins.fecha_inscripcion, INTERVAL cap.dias_plazo DAY))";
-      }
-
-      $query = $query->where($sql, NULL, FALSE);
-    }
-
-    if ($test !== FALSE && $test != '0') {
-      if ($test == '1') {
-        $query = $query->where("r.estado = 'a'", NULL, FALSE);
-      } else if ($test == '2') {
-        $query = $query->where("r.estado = 'd'", NULL, FALSE);
-      } else if ($test == '3') {
-        $query = $query->where("r.estado IS NULL", NULL, FALSE);
-      }
-    }
+    $tempDb = clone ee()->db;
+    $count = $tempDb->count_all_results();
 
     $query = $query->limit($per_page, $offset);
     $rows = $query->get()->result_array();
-    $rows = array_map(array($this, "_format_row_inscritos"), $rows);
-
-    $query = ee()->db->from("members m")
-                    ->join("member_data md", "md.member_id = m.member_id")
-                    ->join("inscripciones ins", "m.member_id = ins.member_id and ins.capacitacion_id = $capacitacion_id", "left")
-                    ->join("capacitaciones cap", "cap.id = ins.capacitacion_id")
-                    ->join("test_resultados r", "r.capacitacion_id = ins.capacitacion_id", "left")
-                    ->where("ins.id IS NOT NULL");
-
-    if ($unidad !== FALSE) {
-       $query = $query->where("md.$this->field_unidad", $unidad);
-    }
-
-    if ($zona !== FALSE) {
-       $query = $query->where("md.$this->field_zona", $zona);
-    }
-
-    if ($cliente !== FALSE) {
-      $query = $query->where("md.$this->field_cliente", $cliente);
-    }
-
-    if ($codigo !== FALSE) {
-      $query = $query->like("md.$this->field_codigo", $codigo);
-    }
-
-    if ($dni !== FALSE) {
-      $query = $query->like("md.$this->field_dni", $dni);
-    }
-
-    if ($nombre !== FALSE) {
-      $query = $query->like("md.$this->field_nombre", $nombre);
-    }
-
-    if ($apellidos !== FALSE) {
-      $query = $query->like("md.$this->field_apellidos", $apellidos);
-    }
-
-    if ($vigencia !== FALSE && $vigencia != '0') {
-      if ($vigencia == '1') {
-        $sql = "(CURDATE() <= DATE_ADD(ins.fecha_inscripcion, INTERVAL cap.dias_plazo DAY))";
-      } else if ($vigencia == '2') {
-        $sql = "NOT (CURDATE() <= DATE_ADD(ins.fecha_inscripcion, INTERVAL cap.dias_plazo DAY))";
-      }
-
-      $query = $query->where($sql, NULL, FALSE);
-    }
-
-    if ($test !== FALSE && $test != '0') {
-      if ($test == '1') {
-        $query = $query->where("r.estado = 'a'", NULL, FALSE);
-      } else if ($test == '2') {
-        $query = $query->where("r.estado = 'd'", NULL, FALSE);
-      } else if ($test == '3') {
-        $query = $query->where("r.estado IS NULL", NULL, FALSE);
-      }
-    }
-
-    $count = $query->count_all_results();
+    $rows = array_map(array($this, "_format_row_inscritos"), $rows);    
 
     return array(
       'rows' => $rows,
@@ -1129,6 +1006,21 @@ class Capacitaciones_mcp {
   function _format_row_inscritos($row) {
     $row['vigencia'] = $this->_get_vigencia_capacitacion($row);
     $this->_load_estado_test($row);
+
+    return $row;
+  }
+
+  function _format_row_inscritos_export($row) {
+    $row['vigencia'] = $this->_get_vigencia_capacitacion($row);
+    $this->_load_estado_test($row);
+
+    unset($row['member_id']);
+    unset($row['fecha_inicio']);
+    unset($row['fecha_fin_vigencia']);
+    unset($row['dias_plazo']);
+    unset($row['capacitacion_id']);
+    unset($row['fecha_inscripcion']);
+    unset($row['resultado_estado']);
 
     return $row;
   }
@@ -1158,6 +1050,115 @@ class Capacitaciones_mcp {
       $row['test'] =  $resultado['resultado_estado'] == 'a' ? "Aprobado" : "Desaprobado";
       $row['calificacion'] = round(doubleval($resultado['resultado_puntaje']));
     }
+  }
+
+  private function _build_query_ver_inscritos($capacitacion_id, $filters) {
+    $query = ee()->db->select(
+                      "m.member_id as member_id, " . 
+                      "md.$this->field_codigo as codigo, " .
+                      "md.$this->field_dni as dni, " .
+                      "md.$this->field_nombre as nombre, " . 
+                      "md.$this->field_apellidos as apellidos, " . 
+                      "md.$this->field_unidad as unidad, " . 
+                      "md.$this->field_cliente as cliente, " . 
+                      "md.$this->field_zona as zona, " .
+                      "cap.fecha_inicio as fecha_inicio,
+                       cap.fecha_fin_vigencia as fecha_fin_vigencia,
+                       cap.dias_plazo as dias_plazo,
+                       cap.id as capacitacion_id,
+                       ins.fecha_inscripcion as fecha_inscripcion,
+                       r.estado as resultado_estado")
+                    ->from("members m")
+                    ->join("member_data md", "md.member_id = m.member_id")
+                    ->join("inscripciones ins", "m.member_id = ins.member_id and ins.capacitacion_id = $capacitacion_id", "left")
+                    ->join("capacitaciones cap", "cap.id = ins.capacitacion_id")
+                    ->join("test_resultados r", "r.capacitacion_id = ins.capacitacion_id", "left")
+                    ->where("ins.id IS NOT NULL");
+
+    $this->_add_filters_to_ver_inscritos_query($filters, $query);
+    return $query;
+  }
+
+  private function _add_filters_to_ver_inscritos_query($filters, &$query) {
+    if ($filters['unidad'] !== FALSE && $filters['unidad'] != '') {
+       $query = $query->where("md.$this->field_unidad", $filters['unidad']);
+    }
+
+    if ($filters['zona'] !== FALSE && $filters['zona'] != '') {
+       $query = $query->where("md.$this->field_zona", $filters['zona']);
+    }
+
+    if ($filters['cliente'] !== FALSE && $filters['cliente'] != '') {
+      $query = $query->where("md.$this->field_cliente", $filters['cliente']);
+    }
+
+    if ($filters['codigo'] !== FALSE && $filters['codigo'] != '') {
+      $query = $query->like("md.$this->field_codigo", $filters['codigo']);
+    }
+
+    if ($filters['dni'] !== FALSE && $filters['dni'] != '') {
+      $query = $query->like("md.$this->field_dni", $filters['dni']);
+    }
+
+    if ($filters['nombre'] !== FALSE && $filters['nombre'] != '') {
+      $query = $query->like("md.$this->field_nombre", $filters['nombre']);
+    }
+
+    if ($filters['apellidos'] !== FALSE && $filters['apellidos'] != '') {
+      $query = $query->like("md.$this->field_apellidos", $filters['apellidos']);
+    }
+
+    if ($filters['vigencia'] !== FALSE && $filters['vigencia'] != '0') {
+      if ($filters['vigencia'] == '1') {
+        $sql = "(CURDATE() <= DATE_ADD(ins.fecha_inscripcion, INTERVAL cap.dias_plazo DAY))";
+      } else if ($filters['vigencia'] == '2') {
+        $sql = "NOT (CURDATE() <= DATE_ADD(ins.fecha_inscripcion, INTERVAL cap.dias_plazo DAY))";
+      }
+
+      $query = $query->where($sql, NULL, FALSE);
+    }
+
+    if ($filters['test'] !== FALSE && $filters['test'] != '0') {
+      if ($filters['test'] == '1') {
+        $query = $query->where("r.estado = 'a'", NULL, FALSE);
+      } else if ($filters['test'] == '2') {
+        $query = $query->where("r.estado = 'd'", NULL, FALSE);
+      } else if ($filters['test'] == '3') {
+        $query = $query->where("r.estado IS NULL", NULL, FALSE);
+      }
+    }
+  }
+
+  private function _get_ver_inscritors_filters() {
+    return array(
+      'codigo' => ee()->input->get_post('codigo', TRUE),
+      'dni' => ee()->input->get_post('dni', TRUE),
+      'nombre' => ee()->input->get_post('nombre', TRUE),
+      'apellidos' => ee()->input->get_post('apellidos', TRUE),
+      'unidad' => ee()->input->get_post('unidad', TRUE),
+      'zona' => ee()->input->get_post('zona', TRUE),
+      'cliente' => ee()->input->get_post('cliente', TRUE),
+      'vigencia' => ee()->input->get_post('vigencia', TRUE),
+      'test' => ee()->input->get_post('test', TRUE)
+    );
+  }
+
+  public function exportar_inscritos() {
+    $this->load_member_fields();
+    $capacitacion_id = ee()->input->get('capacitacion_id');
+    ee()->capacitacion_model->load($capacitacion_id);
+    $filters = $this->_get_ver_inscritors_filters();
+    $query = $this->_build_query_ver_inscritos($capacitacion_id, $filters);
+
+    $headers = array(
+      'COD', 'DNI', 'NOMBRE', 'APELLIDOS', 'UNIDAD', 'ZONA', 'CLIENTE', 'VIGENCIA', 'TEST', 'CALIFICACION'
+    );
+
+    $data = $query->get()->result_array();
+    $data =array_map(array($this, "_format_row_inscritos_export"), $data);
+    $now = new Datetime('now');
+    $filename = ee()->capacitacion_model->codigo . "_inscritos_" . $now->getTimestamp();
+    Exporter::to_csv($headers, $data, $filename);
   }
   // Fin Table datasource de inscritos
 

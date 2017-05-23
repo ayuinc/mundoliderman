@@ -52,6 +52,9 @@
         </fieldset>
       </div>
     </form>
+    <p class="text-right">
+      <button id="btn-exportar-inscritos" class="submit" data-export-url="<?= $exportar_url ?>">Descargar Reporte</button>
+    </p>
     <?php echo $table_inscritos['pagination_html']; ?>
     <?php echo $table_inscritos['table_html']; ?>
     <?php echo $table_inscritos['pagination_html']; ?>

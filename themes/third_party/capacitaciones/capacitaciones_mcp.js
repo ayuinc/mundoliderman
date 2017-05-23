@@ -14,7 +14,6 @@ $(function () {
   if (window.location.href.indexOf("inscripciones") >= 0 || 
       window.location.href.indexOf("asistencias") >= 0 ||
       window.location.href.indexOf("ver_inscritos") >= 0) {
-    console.log("here");
     $('table').table('add_filter', $('#form-filtrar'));
 
     $('#unidad').autocomplete({
@@ -98,7 +97,6 @@ $(function () {
   });
 
   $('table').bind('tableupdate', function() {
-    console.log("here");
     $('.inscripcion-check:checkbox').each(function(idx, elem) {
       var $elem = $(elem);
       if ($elem.data('is') == 'checked') {
@@ -107,7 +105,7 @@ $(function () {
         $elem.data('is', '');
       }
     });
-});
+  });
 
   // Test 
   $('.add-opcion').on('click', function (e) {
@@ -214,6 +212,13 @@ $(function () {
         showMessage("Solo puede subir archivos PPT o PDF", 'error');
     }
     
+  });
+
+  $('#btn-exportar-inscritos').on('click', function(e) {
+    e.preventDefault();
+    var filters = $('#form-filtrar').serialize();
+    var exportUrl = $(this).data("export-url");
+    window.open(exportUrl + "&" + filters);
   });
 
   function addError(input, msg) {
