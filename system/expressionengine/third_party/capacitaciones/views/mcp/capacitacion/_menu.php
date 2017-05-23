@@ -4,6 +4,9 @@
       <li class="content_tab<?=(($section == 'asistencias')) ? ' current': ''?>">
           <a href="<?=$base_url?>&method=asistencias&capacitacion_id=<?=$capacitacion_id?>"><?=lang('c:asistencias')?></a>
       </li>
+      <li class="content_tab<?=(($section == 'ver_asistentes')) ? ' current': ''?>">
+          <a href="<?=$base_url?>&method=ver_asistentes&capacitacion_id=<?=$capacitacion_id?>">Ver Asistentes</a>
+      </li>
       <li class="content_tab<?=(($section == 'contenidos')) ? ' current': ''?>">
           <a href="<?=$base_url?>&method=contenidos&capacitacion_id=<?=$capacitacion_id?>"><?=lang('c:contenidos')?></a>
       </li>

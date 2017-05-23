@@ -366,6 +366,28 @@ class Capacitaciones_mcp {
     return ee()->load->view('mcp/capacitacion/ver_inscritos', $this->vData, TRUE);
   }
 
+  public function ver_asistentes() {
+    ee()->load->library('table');
+    $capacitacion_id = ee()->input->get('capacitacion_id', TRUE);
+    ee()->capacitacion_model->load($capacitacion_id);
+    $capacitacion =  ee()->capacitacion_model;
+
+    ee()->cp->set_breadcrumb($this->base . '&method=contenidos&capacitacion_id=' . $capacitacion->id, $capacitacion->nombre);
+
+    $this->load_member_fields();
+
+    ee()->view->cp_page_title =  "Ver asistentes";
+
+    $this->vData['section'] = 'ver_asistentes';
+    $this->vData['capacitacion_id'] = $capacitacion->id;
+    $this->vData['capacitacion'] = ee()->capacitacion_model;
+    $this->vData['action_url'] = $this->base . '&method=ver_asistentes&capacitacion_id=' . $capacitacion_id;
+    $this->vData['table_asistencias'] = ee()->table->datasource('_datasource_ver_asistentes');
+    $this->vData['exportar_url'] = $this->base . "&method=exportar_asistentes&capacitacion_id=" . $capacitacion_id;
+
+    return ee()->load->view('mcp/capacitacion/ver_asistentes', $this->vData, TRUE);
+  }
+
   public function registrar_inscripciones() {
     $capacitacion_id = ee()->input->get('capacitacion_id');
 
@@ -1160,6 +1182,30 @@ class Capacitaciones_mcp {
     $filename = ee()->capacitacion_model->codigo . "_inscritos_" . $now->getTimestamp();
     Exporter::to_csv($headers, $data, $filename);
   }
+
+  public function exportar_asistentes() {
+    $this->load_member_fields();
+    $capacitacion_id = ee()->input->get('capacitacion_id');
+    ee()->capacitacion_model->load($capacitacion_id);
+    $filters = $this->_get_asistencias_filters();
+    $query = $this->_build_query_ver_asistentes($capacitacion_id, $filters);
+
+    $headers = array(
+      'COD', 'DNI', 'NOMBRE', 'APELLIDOS', 'UNIDAD', 'ZONA', 'CLIENTE'
+    );
+
+    $data = $query->get()->result_array();
+    $data =array_map(array($this, "_format_row_asistentes_export"), $data);
+    $now = new Datetime('now');
+    $filename = ee()->capacitacion_model->codigo . "_asistentes_" . $now->getTimestamp();
+    Exporter::to_csv($headers, $data, $filename);
+  }
+
+  function _format_row_asistentes_export($row) {
+    unset($row['member_id']);
+    unset($row['checked']);
+    return $row;
+  }
   // Fin Table datasource de inscritos
 
   // Table datasource de asistencias
@@ -1167,13 +1213,8 @@ class Capacitaciones_mcp {
     $capacitacion_id = ee()->input->get('capacitacion_id');
     $per_page = 20;
     $offset = $state['offset'];
-    $codigo = ee()->input->post('codigo', TRUE);
-    $dni = ee()->input->post('dni', TRUE);
-    $nombre = ee()->input->post('nombre', TRUE);
-    $apellidos = ee()->input->post('apellidos', TRUE);
-    $unidad = ee()->input->post('unidad', TRUE);
-    $zona = ee()->input->post('zona', TRUE);
-    $cliente = ee()->input->post('cliente', TRUE);
+
+    $filters = $this->_get_asistencias_filters();
 
     ee()->table->set_columns(array(
       'codigo'  => array('header' => 'Cod.'),
@@ -1187,6 +1228,27 @@ class Capacitaciones_mcp {
     ));
 
 
+    $query = $this->_build_query_asistencias($capacitacion_id, $filters);
+
+    $tempDb = clone ee()->db;
+    $count = $tempDb->count_all_results();
+
+    $query = $query->limit($per_page, $offset);
+    $rows = $query->get()->result_array();
+    $rows = array_map(array($this, "_format_row_inscripciones"), $rows);
+  
+
+
+    return array(
+      'rows' => $rows,
+      'pagination' => array(
+        'per_page'   => $per_page,
+        'total_rows' => $count
+      ),
+    );
+  }
+
+  private function _build_query_asistencias($capacitacion_id, $filters) {
     $query = ee()->db->select(
                       "m.member_id as member_id, " . 
                       "md.$this->field_codigo as codigo, " .
@@ -1201,71 +1263,87 @@ class Capacitaciones_mcp {
                     ->join("member_data md", "md.member_id = m.member_id")
                     ->join("asistencias asis", "m.member_id = asis.member_id and asis.capacitacion_id = $capacitacion_id", "left");
 
-    if ($unidad !== FALSE) {
-       $query = $query->where("md.$this->field_unidad", $unidad);
+    $this->_add_filters_to_asistencias_query($filters, $query);
+    return $query;
+  }
+
+  private function _add_filters_to_asistencias_query($filters, &$query) {
+    if ($filters['unidad'] !== FALSE && $filters['unidad'] != '') {
+       $query = $query->where("md.$this->field_unidad", $filters['unidad']);
     }
 
-    if ($zona !== FALSE) {
-       $query = $query->where("md.$this->field_zona", $zona);
+    if ($filters['zona'] !== FALSE && $filters['zona'] != '') {
+       $query = $query->where("md.$this->field_zona", $filters['zona']);
     }
 
-    if ($cliente !== FALSE) {
-      $query = $query->where("md.$this->field_cliente", $cliente);
+    if ($filters['cliente'] !== FALSE && $filters['cliente'] != '') {
+      $query = $query->where("md.$this->field_cliente", $filters['cliente']);
     }
 
-    if ($codigo !== FALSE) {
-      $query = $query->like("md.$this->field_codigo", $codigo);
+    if ($filters['codigo'] !== FALSE && $filters['codigo'] != '') {
+      $query = $query->like("md.$this->field_codigo", $filters['codigo']);
     }
 
-    if ($dni !== FALSE) {
-      $query = $query->like("md.$this->field_dni", $dni);
+    if ($filters['dni'] !== FALSE && $filters['dni'] != '') {
+      $query = $query->like("md.$this->field_dni", $filters['dni']);
     }
 
-    if ($nombre !== FALSE) {
-      $query = $query->like("md.$this->field_nombre", $nombre);
+    if ($filters['nombre'] !== FALSE && $filters['nombre'] != '') {
+      $query = $query->like("md.$this->field_nombre", $filters['nombre']);
     }
 
-    if ($apellidos !== FALSE) {
-      $query = $query->like("md.$this->field_apellidos", $apellidos);
+    if ($filters['apellidos'] !== FALSE && $filters['apellidos'] != '') {
+      $query = $query->like("md.$this->field_apellidos", $filters['apellidos']);
     }
+  }
+
+  private function _get_asistencias_filters() {
+    return array(
+      'codigo' => ee()->input->get_post('codigo', TRUE),
+      'dni' => ee()->input->get_post('dni', TRUE),
+      'nombre' => ee()->input->get_post('nombre', TRUE),
+      'apellidos' => ee()->input->get_post('apellidos', TRUE),
+      'unidad' => ee()->input->get_post('unidad', TRUE),
+      'zona' => ee()->input->get_post('zona', TRUE),
+      'cliente' => ee()->input->get_post('cliente', TRUE)
+    );
+  }
+
+  function _format_row_asistencias($row) {
+    $checked = is_null($row['checked']) ? '' : 'checked';
+    $row['check'] = '<input class="toggle" type="checkbox" name="toggle[]" value="' . $row['member_id'] . '" data-is="' . $checked . '" ' . $checked . ' >' .
+      '<input type="hidden" name="users[]" value="' . $row['member_id'] .'">';
+    return $row;
+  }
+  // Fin Table datasource de asistencias
+
+  // Table datasource de asistencias
+  public function _datasource_ver_asistentes($state) {
+    $capacitacion_id = ee()->input->get('capacitacion_id');
+    $per_page = 20;
+    $offset = $state['offset'];
+
+    $filters = $this->_get_asistencias_filters();
+
+    ee()->table->set_columns(array(
+      'codigo'  => array('header' => 'Cod.'),
+      'dni'  => array('header' => 'DNI'),
+      'nombre'  => array('header' => 'Nombre'),
+      'apellidos'  => array('header' => 'Apellidos'),
+      'unidad'  => array('header' => 'Unidad'),
+      'zona' => array('header' => 'Zona'),
+      'cliente' => array('header' => 'Cliente')
+    ));
+
+
+    $query = $this->_build_query_ver_asistentes($capacitacion_id, $filters);
+
+    $tempDb = clone ee()->db;
+    $count = $tempDb->count_all_results();
 
     $query = $query->limit($per_page, $offset);
     $rows = $query->get()->result_array();
-    $rows = array_map(array($this, "_format_row_inscripciones"), $rows);
-
-    $query = ee()->db->from("members m")
-                    ->join("member_data md", "md.member_id = m.member_id")
-                    ->join("inscripciones asis", "m.member_id = asis.member_id and asis.capacitacion_id = $capacitacion_id", "left");
-
-    if ($unidad !== FALSE) {
-       $query = $query->where("md.$this->field_unidad", $unidad);
-    }
-
-    if ($zona !== FALSE) {
-       $query = $query->where("md.$this->field_zona", $zona);
-    }
-
-    if ($cliente !== FALSE) {
-      $query = $query->where("md.$this->field_cliente", $cliente);
-    }
-
-    if ($codigo !== FALSE) {
-      $query = $query->like("md.$this->field_codigo", $codigo);
-    }
-
-    if ($dni !== FALSE) {
-      $query = $query->like("md.$this->field_dni", $dni);
-    }
-
-    if ($nombre !== FALSE) {
-      $query = $query->like("md.$this->field_nombre", $nombre);
-    }
-
-    if ($apellidos !== FALSE) {
-      $query = $query->like("md.$this->field_apellidos", $apellidos);
-    }
-
-    $count = $query->count_all_results();
+  
 
 
     return array(
@@ -1277,13 +1355,25 @@ class Capacitaciones_mcp {
     );
   }
 
-  function _format_row_asistencias($row) {
-    $checked = is_null($row['checked']) ? '' : 'checked';
-    $row['check'] = '<input class="toggle" type="checkbox" name="toggle[]" value="' . $row['member_id'] . '" data-is="' . $checked . '" ' . $checked . ' >' .
-      '<input type="hidden" name="users[]" value="' . $row['member_id'] .'">';
-    return $row;
+  private function _build_query_ver_asistentes($capacitacion_id, $filters) {
+    $query = ee()->db->select(
+                      "m.member_id as member_id, " . 
+                      "md.$this->field_codigo as codigo, " .
+                      "md.$this->field_dni as dni, " .
+                      "md.$this->field_nombre as nombre, " . 
+                      "md.$this->field_apellidos as apellidos, " . 
+                      "md.$this->field_unidad as unidad, " . 
+                      "md.$this->field_zona as zona, " . 
+                      "md.$this->field_cliente as cliente, " . 
+                      "asis.id as checked")
+                    ->from("members m")
+                    ->join("member_data md", "md.member_id = m.member_id")
+                    ->join("asistencias asis", "m.member_id = asis.member_id and asis.capacitacion_id = $capacitacion_id");
+
+    $this->_add_filters_to_asistencias_query($filters, $query);
+    return $query;
   }
-  // Fin Table datasource de asistencias
+  // Fin Table datasource de ver_asistentes
 
 
   // Table datasource de Preguntas
