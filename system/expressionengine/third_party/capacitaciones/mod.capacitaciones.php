@@ -1,6 +1,16 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
+if ( ! class_exists('Exporter'))
+{
+  require_once APPPATH . 'third_party/indicators/exporter.php';
+}
+
 class Capacitaciones {
+
+  var $field_unidad = "m_field_id_6";
+  var $field_nombre = "m_field_id_12";
+  var $field_apellidos = "m_field_id_13";
+  var $field_dni = "m_field_id_16";
 
   public function load_months() {
     $data = [];
@@ -525,10 +535,151 @@ class Capacitaciones {
     return ee()->TMPL->parse_variables(ee()->TMPL->tagdata, $tagdata);
   }
 
+  public function capacitaciones_supervisor() {
+    $unidad = $this->_get_unidad_of_current_member();
+    ee()->db->distinct();
+    $query = ee()->db->select("cap.id as capacitacion_id,
+                               cap.nombre as capacitacion_nombre")
+                      ->from("capacitaciones cap")
+                      ->join("inscripciones ins", "ins.capacitacion_id=cap.id", "left")
+                      ->join("asistencias asi", "asi.capacitacion_id=cap.id", "left")
+                      ->join("member_data md", "md.member_id = ins.member_id or md.member_id = asi.member_id")
+                      ->where("md.$this->field_unidad", $unidad)
+                      ->get();
+
+    if ($query->num_rows() == 0) {
+      return ee()->TMPL->no_results;
+    } else {
+      $data = $query->result_array();
+      $tagdata = ee()->TMPL->tagdata;
+      return ee()->TMPL->parse_variables($tagdata, $data);
+    }
+  }
+
+  public function lidermans_capacitaciones_supervisor() {
+
+    $capacitacion = ee()->TMPL->fetch_param('capacitacion', "0");
+    $unidad = $this->_get_unidad_of_current_member();
+
+    $query = ee()->db->select("cap.nombre as capacitacion_nombre,
+                              md.$this->field_apellidos as member_apellidos,
+                              md.$this->field_nombre as member_nombre,
+                              md.$this->field_dni as member_dni,
+                              md.member_id as member_id,
+                              cap.id as capacitacion_id,
+                              ins.fecha_inscripcion as fecha_inscripcion,
+                              cap.dias_plazo as dias_plazo,
+                              cap.presencial as presencial")
+                      ->from("capacitaciones cap")
+                      ->join("inscripciones ins", "ins.capacitacion_id=cap.id", "left")
+                      ->join("asistencias asi", "asi.capacitacion_id=cap.id", "left")
+                      ->join("member_data md", "md.member_id = ins.member_id or md.member_id = asi.member_id")
+                      ->where("md.$this->field_unidad", $unidad);
+
+    if ($capacitacion != "0") {
+      $query->where("cap.id", $capacitacion);
+    }
+
+    $query->group_by(array("md.member_id", "cap.id"));
+    $query = $query->get();
+
+    if ($query->num_rows() == 0) {
+      return ee()->TMPL->no_results;
+    } else {
+      $data = $query->result_array();
+
+      foreach ($data as &$row) {
+        $resumen = "verde";
+
+        if ($row['presencial'] != "1") {
+          $resultado =  $this->_resultado_capacitacion($row['member_id'], $row['capacitacion_id']);
+          $estado = $this->get_estado_capacitacion($row['fecha_inscripcion'], $row['dias_plazo']);
+
+          if ($estado == "finalizada" && ($resultado == "" || $resultado == "desaprobado")) {
+            $resumen = "rojo";
+          } elseif ($estado == "encurso" && $resultado == "") {
+            $resumen = "amarillo";
+          }
+        }
+
+        $row['resumen'] = $resumen;
+      }
+
+      $tagdata = ee()->TMPL->tagdata;
+      return ee()->TMPL->parse_variables($tagdata, $data);
+    }
+  }
+
+  public function exportar_lidermans_supervisor() {
+    $capacitacion = ee()->TMPL->fetch_param('capacitacion', "0");
+    
+    $unidad = $this->_get_unidad_of_current_member();
+
+    $query = ee()->db->select("md.$this->field_dni as member_dni,
+                              md.$this->field_apellidos as member_apellidos,
+                              md.$this->field_nombre as member_nombre,
+                              cap.nombre as capacitacion_nombre,
+                              md.member_id as member_id,
+                              cap.id as capacitacion_id,
+                              ins.fecha_inscripcion as fecha_inscripcion,
+                              cap.dias_plazo as dias_plazo,
+                              cap.presencial as presencial")
+                      ->from("capacitaciones cap")
+                      ->join("inscripciones ins", "ins.capacitacion_id=cap.id", "left")
+                      ->join("asistencias asi", "asi.capacitacion_id=cap.id", "left")
+                      ->join("member_data md", "md.member_id = ins.member_id or md.member_id = asi.member_id")
+                      ->where("md.$this->field_unidad", $unidad);
+
+    if ($capacitacion != "0") {
+      $query->where("cap.id", $capacitacion);
+    }
+
+    $query->group_by(array("md.member_id", "cap.id"));
+    $query = $query->get();
+    $rows = $query->result_array();
+
+    foreach ($rows as &$row) {
+      $resumen = "verde";
+
+      if ($row['presencial'] != "1") {
+        $resultado =  $this->_resultado_capacitacion($row['member_id'], $row['capacitacion_id']);
+        $estado = $this->get_estado_capacitacion($row['fecha_inscripcion'], $row['dias_plazo']);
+
+        if ($estado == "finalizada" && ($resultado == "" || $resultado == "desaprobado")) {
+          $resumen = "rojo";
+        } elseif ($estado == "encurso" && $resultado == "") {
+          $resumen = "amarillo";
+        }
+      }
+
+      $row['resumen'] = $resumen;
+      $row['member_nombre'] = $row['member_apellidos'] . ", " . $row['member_nombre'];
+
+      unset($row['member_apellidos']);
+      unset($row['member_id']);
+      unset($row['capacitacion_id']);
+      unset($row['fecha_inscripcion']);
+      unset($row['dias_plazo']);
+      unset($row['presencial']);
+    }
+
+    $headers = array(
+      'DNI', "Apellidos y nombre", "Capacitación", "Estado"
+    );
+
+    $now = new Datetime('now');
+    $filename = "lidermans-capacitaciones-unidad-$unidad-" . $now->getTimestamp();
+    Exporter::to_csv($headers, $rows, $filename);
+  }
+
 
   private function _get_estado_capacitacion($capacitacion) {
-    $dateLimite = DateTime::createFromFormat('Y-m-d', $capacitacion->fecha_inscripcion)
-                      ->add(date_interval_create_from_date_string("$capacitacion->dias_plazo days"));
+    return $this->get_estado_capacitacion($capacitacion->fecha_inscripcion, $capacitacion->dias_plazo);
+  }
+
+  private function get_estado_capacitacion($fecha_inscripcion, $dias_plazo) {
+    $dateLimite = DateTime::createFromFormat('Y-m-d', $fecha_inscripcion)
+                      ->add(date_interval_create_from_date_string("$dias_plazo days"));
     $dateLimite->setTime(0, 0);
     $dateNow = new DateTime();
 
@@ -553,6 +704,15 @@ class Capacitaciones {
 
   private function _get_member_id() {
     return ee()->session->userdata("member_id");
+  }
+
+  private function _get_unidad_of_current_member() {
+    $member_id = $this->_get_member_id();
+
+    return ee()->db->select("md.$this->field_unidad as unidad")
+                    ->from("member_data md")
+                    ->where("member_id", $member_id)
+                    ->get()->result()[0]->unidad;
   }
   
 }

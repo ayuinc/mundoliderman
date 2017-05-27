@@ -7,7 +7,7 @@ class Exporter {
 		header("Content-Type: text/csv; charset=utf-8");
 
 		$file = fopen("php://output", 'w');
-
+		fprintf($file, chr(0xEF).chr(0xBB).chr(0xBF));
 		fputcsv($file, $headers);
 
 		foreach ($data as $row) {
@@ -24,7 +24,7 @@ class Exporter {
 		header("Content-Type: text/csv; charset=utf-8");
 
 		$file = fopen("php://output", 'w');
-
+		fprintf($file, chr(0xEF).chr(0xBB).chr(0xBF));
 		fputcsv($file, $headers);
 
 		$num_rows = $query->num_rows();

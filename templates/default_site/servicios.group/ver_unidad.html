@@ -1,0 +1,93 @@
+{if logged_out}
+  {redirect="login"}
+{if:else}
+
+  {exp:redirect:redirect_user_lidermania}
+
+  {if member_id != segment_3 && '{exp:parameters:chateadora_can_view member_id="{segment_3}"}' != "1"}
+    {redirect="wall"}
+  {/if}
+{/if}
+
+{embed="includes/head" titulo="Mundo Liderman - Ver Unidad"}
+  <div class="site-wrapper"> <!-- Body -->
+    {embed=includes/nav-main acceso_directo="Ir al muro" link="{site_url}wall"}
+    <main class="site-content pb-42 mb-0">
+      {embed=includes/menu-movil miembro="{member_id}"}
+      {embed=includes/banner-alerta}
+      <div class="box-gray bg-gray-darker w-100 hidden-lg hidden-md"></div>
+      <div class="container-md clearfix">
+        <section id="menu-vertical" class="col-md-4 pr-42 pl-0 hidden-xs hidden-sm p-14">
+          {embed=includes/nav-secciones in="in" miembro="{segment_3}" miembro_actual="{member_id}" grupo="{member_group}"}
+        </section>
+        <section id="ver_unidad" class="col-md-8 pb-42 ph-7-xs">
+          <div class="container pt-14 w-100 ph-0">
+              <h2 class="fz-28 border-bottom-gray pb-14 text-gray-darker pt-7 mt-0">Ver unidad</h2>
+
+              <div class="form-filter">
+                <span class="fz-18 text-gray-darker pr-7-xs">Capacitación </span>
+                  <div class=" display-ib pl-7">
+                    <div class="display-ib text-center ph-7 relative" style="width: auto; border: 1px gray solid !important;">
+                      <select id="capacitacion-select" name="capacitacion" class="text-gray-darker borderless relative">
+                          <option value="0">Todas</option>
+                          {exp:capacitaciones:capacitaciones_supervisor}
+                          <option value="{capacitacion_id}">{capacitacion_nombre}</option>
+                          {/exp:capacitaciones:capacitaciones_supervisor}
+                      </select>
+                      <img src="{site_url}frontend/app/assets/img/Flecha_Abajo.png" alt="">
+                    </div>
+                  </div>
+                  <div class="leyenda list-unstyled mt-21">
+                    <li><div class="aprobado"></div> Aprobado</li>
+                    <li><div class="desaprobado"></div> Desaprobado y fuera de tiempo </li>
+                    <li><div class="pendiente"></div> Pendiente</li>
+                  </div>
+                  <div class="text-right">
+                    <button class="btn btn-primary btn-exportar">Exportar</button>
+                  </div>
+                  <div class="mt-21">
+                    <table class="table table-bordered table-hover" style="background: white;">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>DNI</th>
+                          <th>Apellidos y nombres</th>
+                          <th>Capacitación</th>
+                          <th>Estado</th>
+                        </tr>
+                      </thead>
+                      <tbody class="table-capacitaciones">
+                        {exp:capacitaciones:lidermans_capacitaciones_supervisor}
+                          <tr>
+                            <td>{count}</td>
+                            <td>{member_dni}</td>
+                            <td>{member_apellidos}, {member_nombre}</td>
+                            <td>{capacitacion_nombre}</td>
+                            <td class="text-center">
+                              <span class="{resumen} display-ib" style="width: 20px; height: 20px; border-radius: 50%;"></span></td>
+                          </tr>
+                        {/exp:capacitaciones:lidermans_capacitaciones_supervisor}
+                      </tbody>
+                    </table>
+                  </div>
+              </div>
+          </div>
+		</section>
+  {embed=includes/footer}
+  <script src="{site_url}frontend/app/assets/js/b3/modal.js"></script>
+  <script src="{site_url}frontend/app/assets/js/collapse-control.js"></script>
+  <script>
+    $('#capacitacion-select').on('change', function(e) {
+      e.preventDefault();
+      var value = $(this).val();
+      $('.table-capacitaciones').load('{site_url}ajax-text/capacitaciones_supervisor/{member_id}/' + value);
+    });
+
+    $('.btn-exportar').on('click', function(e) {
+      e.preventDefault();
+      var capacitacion = $('#capacitacion-select').val();
+      window.open('{site_url}servicios/exportar_lidermans_supervisor/{member_id}/' + capacitacion);
+    });
+  </script>
+</html>
+

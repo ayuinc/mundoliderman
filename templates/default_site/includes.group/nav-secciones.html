@@ -110,6 +110,26 @@
               </div>
               {/if}
             {/if}
+
+            {if '{exp:util:is_user_supervisor}' == '1'}
+            <div class="bb-1px 6" id="accordion6" role="tablist" aria-multiselectable="true">
+                <div class="">
+                  <div class=" bg-danger ph-28" role="tab" id="heading6">
+                    <h4 class="panel-title m-0">
+                      <a role="button" data-toggle="collapse" data-parent="#accordion6" href="#collapse6" aria-expanded="true" aria-controls="collapse6">
+                        <h2 class="active-slide fz-22 text-white text-uppercase text-not-underline m-0 pv-14">Supervisor <img src="{site_url}frontend/app/assets/img/flecha-para-abajo.png" alt="" class="pt-7 pull-right"></h2>
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="collapse6" class="panel-collapse collapse ph-28" role="tabpanel" aria-labelledby="heading6">
+                    <div class="panel-body">
+                      <ul class="p-0  light fz-17 supervisor_menu">
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {/if}
           </div>
           <script type="text/javascript">
             {if "{segment_2}" == "lidermania"}
@@ -120,6 +140,7 @@
             var lista2 = $(".indicadores_menu");
             var lista3 = $(".semaforo_menu");
             var lista4 = $(".sgi_menu");
+            var listaSupervisor = $(".supervisor_menu");
             var boleta = $(".link_boleta");
             var miembro = isNaN("{embed:miembro}") ? "{member_id}" : "{embed:miembro}";
             var miembro_actual = "{embed:miembro_actual}";
@@ -246,5 +267,9 @@
                 "<li class=\"border-bottom-gray-lighter\"><a href=\"{path='indicadores/gestion/{member_id}'}\" class=\"text-gray-dark2\">Gestión</a></li>" +
                 "<li><a href=\"{path='indicadores/interaccion/{member_id}'}\" class=\"text-gray-dark2\">Interacción</a></li>" +
                 "<li><a href=\"{path='indicadores/export/{member_id}/10}\" class=\"text-gray-dark2\">Exportar lidermans</a></li>");
+            {/if}
+
+            {if '{exp:util:is_user_supervisor}' == '1'}
+              listaSupervisor.append("<li><a href=\"{path='servicios/ver_unidad/{member_id}'}\" class=\"text-gray-dark2\">Ver unidad</a></li>");
             {/if}
           </script>

@@ -52,6 +52,11 @@ Plugin for utilities
 		return $username == $user_lidermania;
   }
 
+  public function is_user_supervisor() {
+    $group_id = $this->EE->session->userdata('group_id');
+    return $group_id == "36";
+  }
+
   public function format_date() {
     $originalDate = $this->EE->TMPL->fetch_param('date', '');
     return date("d/m/Y", strtotime($originalDate));
