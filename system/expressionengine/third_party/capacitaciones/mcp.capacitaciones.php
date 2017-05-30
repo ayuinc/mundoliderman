@@ -1071,7 +1071,7 @@ class Capacitaciones_mcp {
       $row['resultado_estado'] = '';
       $row['calificacion'] = '';
     } else {
-      $resultado = $query->result_array()[0];
+      $resultado = $resultado['resultado_estado'];
       $row['test'] =  $resultado['resultado_estado'] == 'a' ? "Aprobado" : "Desaprobado";
       $row['calificacion'] = round(doubleval($resultado['resultado_puntaje']));
     }
