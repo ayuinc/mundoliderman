@@ -1099,7 +1099,7 @@ class Capacitaciones_mcp {
                     ->join("member_data md", "md.member_id = m.member_id")
                     ->join("inscripciones ins", "m.member_id = ins.member_id and ins.capacitacion_id = $capacitacion_id", "left")
                     ->join("capacitaciones cap", "cap.id = ins.capacitacion_id")
-                    ->join("test_resultados r", "r.capacitacion_id = ins.capacitacion_id", "left")
+                    ->join("test_resultados r", "r.member_id = ins.member_id", "left")
                     ->where("ins.id IS NOT NULL");
 
     $this->_add_filters_to_ver_inscritos_query($filters, $query);
