@@ -1046,6 +1046,7 @@ class Capacitaciones_mcp {
     unset($row['capacitacion_id']);
     unset($row['fecha_inscripcion']);
     unset($row['resultado_estado']);
+    unset($row['resultado_puntaje']);
 
     return $row;
   }
@@ -1071,7 +1072,8 @@ class Capacitaciones_mcp {
       $row['resultado_estado'] = '';
       $row['calificacion'] = '';
     } else {
-      $row['test'] =  $row['resultado_estado'] == 'a' ? "Aprobado" : "Desaprobado";
+      $resultado = $row['resultado_estado'];
+      $row['test'] =  $resultado == 'a' ? "Aprobado" : "Desaprobado";
       $row['calificacion'] = round(doubleval($row['resultado_puntaje']));
     }
   }
@@ -1092,7 +1094,7 @@ class Capacitaciones_mcp {
                        cap.id as capacitacion_id,
                        ins.fecha_inscripcion as fecha_inscripcion,
                        r.estado as resultado_estado,
-                       r.puntaje as puntaje")
+                       r.puntaje as resultado_puntaje")
                     ->from("members m")
                     ->join("member_data md", "md.member_id = m.member_id")
                     ->join("inscripciones ins", "m.member_id = ins.member_id and ins.capacitacion_id = $capacitacion_id", "left")
