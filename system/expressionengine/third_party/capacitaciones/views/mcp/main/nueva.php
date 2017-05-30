@@ -71,9 +71,9 @@
       <div id="combo-tipo-unidad" class="cform-group">
         <label for="ctipo_unidad">Tipo de unidad</label> <br>
         <select name="tipo_unidad" id="ctipo_unidad">
-          <option value="0" <?= (set_value('tipo_unidad') == '0') ? 'selected' : ''  ?> >Unidad Minera</option>
-          <option value="1" <?= (set_value('tipo_unidad') == '1') ? 'selected' : ''  ?> >Unidad Retail</option>
-          <option value="2" <?= (set_value('tipo_unidad') == '2') ? 'selected' : ''  ?> > Unidad Petrolera </option>
+          <?php foreach ($tiposUnidad as $tu) { ?>
+            <option value="<?= $tu->cod ?>" <?= (set_value('tipo_unidad') == $tu->cod) ? 'selected' : ''  ?> ><?= $tu->nombre ?></option>
+          <?php } ?> 
         </select>
         <?php echo form_error('tipo_unidad', '<p class="error"> *', '</p>'); ?>
       </div>

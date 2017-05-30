@@ -130,6 +130,7 @@ class Capacitaciones_mcp {
     $this->vData['action_url'] = $this->base . '&method=guardar';
 
 
+    $this->vData['tiposUnidad'] = $this->getTiposUnidad();
     $this->vData['cursos'] = ee()->curso_model->getAll();
 
     return ee()->load->view('mcp/main/nueva', $this->vData, TRUE);
@@ -164,6 +165,7 @@ class Capacitaciones_mcp {
 
     ee()->view->cp_page_title =  lang('c:editar');
 
+    $this->vData['tiposUnidad'] = $this->getTiposUnidad();
     $this->vData['cursos'] = ee()->curso_model->getAll();
     $this->vData['capacitacion'] =  ee()->capacitacion_model;
     $this->vData['action_url'] = $this->base . '&method=actualizar_capacitacion';
@@ -760,6 +762,7 @@ class Capacitaciones_mcp {
                 ->join("cursos cur", "cur.id = c.curso_id")
                 ->get()->result_array();
 
+    $this->mapTiposUnidad();
     $rows = array_map(array($this, "_format_row_capacitacion"), $rows);
 
     return array(
@@ -773,7 +776,7 @@ class Capacitaciones_mcp {
 
   function _format_row_capacitacion($row) {
     $row['tipo_asignacion'] = ee()->capacitaciones_helper->get_tipo_asignacion_str($row['tipo_asignacion']);
-    $row['tipo_unidad'] = ee()->capacitaciones_helper->get_tipo_unidad_str($row['tipo_unidad']);
+    $row['tipo_unidad'] = $this->tiposMap[$row['tipo_unidad']];
     $row['nombre'] = '<a href="' . $this->base . '&method=contenidos&capacitacion_id=' . $row['id']. '">' 
                         . $row['nombre'] . '</a>';
 
@@ -1448,6 +1451,24 @@ class Capacitaciones_mcp {
       }
     }
     return 'm_field_id_' . $field_id;
+  }
+
+  private function getTiposUnidad() {
+    ee()->db->distinct();
+    return ee()->db->select("md.tipo_unidad_cod as cod,
+                      md.tipo_unidad_nombre as nombre")
+            ->from("member_data md")
+            ->where('md.tipo_unidad_cod <> "" ', NULL, FALSE)
+            ->get()->result();
+  }
+
+  private function mapTiposUnidad() {
+    $tiposMap = array();
+    $tipos = $this->getTiposUnidad();
+    foreach ($tipos as $tipo) {
+      $tiposMap[$tipo->cod] = $tipo->nombre;
+    }
+    $this->tiposMap = $tiposMap;
   }
   
 } // END CLASS

@@ -114,6 +114,52 @@ Plugin para registrar ejecutar schedule jobs en Mundo Liderman
 
   }
 
+
+  public function inscribir_lidermans_a_capacitaciones() {
+    // Ejecución sin limite de tiempo
+    ini_set('max_execution_time', 0);
+    $this->EE->logger->developer('Jobs: Inicio de proceso Inscripción Lidermans');
+    if (!$this->check_access()) {
+      $this->EE->logger->developer('Jobs: Intentado acceder via GET');
+      exit('Error: Intentado acceder via GET');
+    }
+
+    $secret = $this->EE->TMPL->fetch_param('secret', '');
+
+    if ($secret != $this->secret ) {
+      $this->EE->logger->developer('Jobs: Intentado acceder sin el secret key correcto');
+      exit('Error: Intentado acceder sin el secret key correcto');
+    }
+
+    $dateNow = date("Y-m-d", time());
+    $capacitaciones = $this->get_capacitaciones_vigentes();
+    $nuevasInscripciones = 0;
+
+    foreach ($capacitaciones as $cap) {
+        $liderman_ids = $this->get_lidermans_ids_por_tipo_unidad($cap->tipo_unidad);
+
+        // Borrar inscripciones de lidermans que no pertenecen al tipo de unidad
+        ee()->db->where('capacitacion_id', $cap->id)
+            ->where_not_in('member_id', $liderman_ids)
+            ->delete('inscripciones');
+
+        foreach ($liderman_ids as $member_id) {
+          if (!$this->esta_inscrito($member_id, $cap->id)) {
+            $this->EE->db->insert('inscripciones', array(
+                          'capacitacion_id' => $cap->id,
+                          'member_id' => $member_id,
+                          'fecha_inscripcion' => $dateNow
+                        ));
+            $nuevasInscripciones = $nuevasInscripciones + 1;
+          }
+        }
+
+    }
+
+    $this->EE->logger->developer('Jobs: Total nuevas Inscripciones:' . $nuevasInscripciones);
+    $this->EE->logger->developer('Jobs: Fin de proceso Inscripción Lidermans');
+  }
+
   private function datos_lidermans($token) {
     $url = $this->host . "/WSIntranet/LiderNet.svc/ListarDetallePorUnidad/-1/-1/$token";
     return $this->CI->curl->get($url);
@@ -127,6 +173,46 @@ Plugin para registrar ejecutar schedule jobs en Mundo Liderman
     $url = $this->host . "/WSIntranet/Autenticacion.svc/AutenticacionUsuario/$username/$password";
     $data = $this->CI->curl->get($url);
     return $data["TokenSeguridad"];
+  }
+
+  private function get_capacitaciones_vigentes() {
+    return $this->EE->db->select("cap.id as id,
+                               cap.codigo as codigo,
+                               cap.nombre as nombre,
+                               cap.descripcion as descripcion,
+                               cap.fecha_inicio as fecha_inicio,
+                               cap.fecha_fin_vigencia as fecha_fin_vigencia,
+                               cap.dias_plazo as dias_plazo,
+                               cap.presencial as presencial,
+                               cap.tipo_unidad as tipo_unidad")
+                      ->from("capacitaciones cap")
+                      ->where("cap.tipo_asignacion", "1")
+                      ->where("CURDATE() <= cap.fecha_fin_vigencia")
+                      ->get()
+                      ->result();
+  }
+
+  private function get_lidermans_ids_por_tipo_unidad($tipo_unidad) {
+    $rows = $this->EE->db->select("m.member_id as id")
+                        ->from("members m")
+                        ->join("member_data md", "md.member_id=m.member_id")
+                        ->where("md.tipo_unidad_cod", $tipo_unidad)
+                        ->get()->result_array();
+
+    $ids = array();
+    foreach ($rows as $row) {
+      $ids[] = $row['id'];
+    }
+
+    return $ids;
+  }
+
+  private function esta_inscrito($member_id, $capacitacion_id) {
+    return $this->EE->db->select("ins.member_id as member_id")
+                        ->from("inscripciones ins")
+                        ->where("ins.member_id", $member_id)
+                        ->where("ins.capacitacion_id", $capacitacion_id)
+                        ->get()->num_rows() > 0;
   }
 
 }

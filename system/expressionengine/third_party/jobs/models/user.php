@@ -14,6 +14,8 @@ class User {
   var $periodo_planilla;
   var $sexo;
   var $unidad;
+  var $tipo_unidad_cod;
+  var $tipo_unidad_nombre;
 
   static $custom_fields;
 
@@ -45,6 +47,8 @@ class User {
       $this->edad = $user["Edad"];
       $this->dni = trim($user["Documento"]);
       $this->empresa_empleadora = trim($user["Cliente"]);
+      $this->tipo_unidad_cod = $user["TipoCliente"];
+      $this->tipo_unidad_nombre = $user["TipoClienteDescripcion"];
 
       $this->codigo_liderman = $user["Liderman"];
 
@@ -87,7 +91,9 @@ class User {
       self::getMemberFieldId('edad') => $this->edad,
       self::getMemberFieldId('zona') => $this->zona,
       self::getMemberFieldId('sexo') => $this->sexo,
-      self::getMemberFieldId('unidad') => $this->unidad
+      self::getMemberFieldId('unidad') => $this->unidad,
+      'tipo_unidad_cod' => $this->tipo_unidad_cod,
+      'tipo_unidad_nombre' => $this->tipo_unidad_nombre
     );
   }
 
