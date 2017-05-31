@@ -43,7 +43,8 @@
                     <li><div class="pendiente"></div> Pendiente</li>
                   </div>
                   <div class="text-right">
-                    <button class="btn btn-primary btn-exportar">Exportar</button>
+                  <button class="btn btn-primary btn-reporte-control">Descargar Reporte de Control</button>
+                    <button class="btn btn-primary btn-exportar">Exportar a Excel</button>
                   </div>
                   <div class="mt-21">
                     <table class="table table-bordered table-hover" style="background: white;">
@@ -77,9 +78,18 @@
   <script src="{site_url}frontend/app/assets/js/b3/modal.js"></script>
   <script src="{site_url}frontend/app/assets/js/collapse-control.js"></script>
   <script>
+
+    $('.btn-reporte-control').attr('disabled', true);
+
     $('#capacitacion-select').on('change', function(e) {
       e.preventDefault();
       var value = $(this).val();
+
+      if (value == "0") {
+        $('.btn-reporte-control').attr('disabled', true);
+      } else {
+        $('.btn-reporte-control').attr('disabled', false);
+      }
       $('.table-capacitaciones').load('{site_url}ajax-text/capacitaciones_supervisor/{member_id}/' + value);
     });
 
@@ -87,6 +97,12 @@
       e.preventDefault();
       var capacitacion = $('#capacitacion-select').val();
       window.open('{site_url}servicios/exportar_lidermans_supervisor/{member_id}/' + capacitacion);
+    });
+
+    $('.btn-reporte-control').on('click', function(e) {
+      e.preventDefault();
+      var capacitacion = $('#capacitacion-select').val();
+      window.open('{site_url}servicios/exportar_reporte_asistencia/{member_id}/' + capacitacion);
     });
   </script>
 </html>

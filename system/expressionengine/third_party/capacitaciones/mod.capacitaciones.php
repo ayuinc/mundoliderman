@@ -5,12 +5,16 @@ if ( ! class_exists('Exporter'))
   require_once APPPATH . 'third_party/indicators/exporter.php';
 }
 
+require_once FCPATH . 'mpdf/mpdf.php';
+
 class Capacitaciones {
 
   var $field_unidad = "m_field_id_6";
   var $field_nombre = "m_field_id_12";
   var $field_apellidos = "m_field_id_13";
   var $field_dni = "m_field_id_16";
+
+  const REPORT_PATH = APPPATH . 'third_party/capacitaciones/reports/';
 
   public function load_months() {
     $data = [];
@@ -670,6 +674,104 @@ class Capacitaciones {
     $now = new Datetime('now');
     $filename = "lidermans-capacitaciones-unidad-$unidad-" . $now->getTimestamp();
     Exporter::to_csv($headers, $rows, $filename);
+  }
+
+  public function exportar_reporte_asistencia() {
+    $unidad = $this->_get_unidad_of_current_member();
+    $capacitacion = ee()->TMPL->fetch_param('capacitacion', "0");
+
+    if ($capacitacion == "0") {
+      return;
+    }
+
+    $html = file_get_contents(self::REPORT_PATH . "reporte_asistencia_template.html");
+
+    $capRow = ee()->db->select("cap.id as capacitacion_id,
+                                cap.codigo as capacitacion_codigo,
+                                      cap.nombre as capacitacion_nombre,
+                                      cap.numero_horas as capacitacion_horas,
+                                      cap.capacitador as capacitacion_capacitador,
+                                      cap.fecha_inicio as capacitacion_fecha_inicio")
+                            ->from("capacitaciones cap")
+                            ->where("cap.id", $capacitacion)
+                            ->get()->result_array()[0];
+
+    $html = str_replace('{%capacitacion_nombre%}', $capRow['capacitacion_nombre'], $html);
+    $html = str_replace('{%capacitacion_duracion%}', $capRow['capacitacion_horas'] . " hora(s)", $html);
+    $html = str_replace('{%capacitacion_capacitador%}', $capRow['capacitacion_capacitador'], $html);
+    $html = str_replace('{%capacitacion_fecha_inicio%}', date("d/m/Y", strtotime($capRow['capacitacion_fecha_inicio'])), $html);
+    $html = str_replace('{%capacitacion_unidad%}', $unidad, $html);
+
+    $query = ee()->db->select("md.$this->field_dni as member_dni,
+                              md.$this->field_apellidos as member_apellidos,
+                              md.$this->field_nombre as member_nombre,
+                              cap.nombre as capacitacion_nombre,
+                              md.member_id as member_id,
+                              cap.id as capacitacion_id,
+                              ins.fecha_inscripcion as fecha_inscripcion,
+                              cap.dias_plazo as dias_plazo,
+                              cap.presencial as presencial")
+                      ->from("capacitaciones cap")
+                      ->join("inscripciones ins", "ins.capacitacion_id=cap.id", "left")
+                      ->join("asistencias asi", "asi.capacitacion_id=cap.id", "left")
+                      ->join("member_data md", "md.member_id = ins.member_id or md.member_id = asi.member_id")
+                      ->where("md.$this->field_unidad", $unidad)
+                      ->where("cap.id", $capacitacion);
+
+    $query->group_by(array("md.member_id", "cap.id"));
+    $query->order_by("md.$this->field_apellidos", "md.$this->field_nombre");
+    $query = $query->get();
+    $rows = $query->result_array();
+
+    $tableMembers = '<tr align="center">
+        <td style="font-weight: bold; font-size: 14px;">NRO.</td>
+        <td style="font-weight: bold; font-size: 14px;">APELLIDOS Y NOMBRES</td>
+        <td style="font-weight: bold; font-size: 14px;">AREA/UNIDAD</td>
+        <td style="font-weight: bold; font-size: 14px;">DNI</td>
+        <td style="font-weight: bold; font-size: 14px;">FIRMA &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+      </tr>';
+      $idx = 1;
+
+    foreach ($rows as &$row) {
+      $resumen = "verde";
+
+      if ($row['presencial'] != "1") {
+        $resultado =  $this->_resultado_capacitacion($row['member_id'], $row['capacitacion_id']);
+        $estado = $this->get_estado_capacitacion($row['fecha_inscripcion'], $row['dias_plazo']);
+
+        if ($estado == "finalizada" && ($resultado == "" || $resultado == "desaprobado")) {
+          $resumen = "rojo";
+        } elseif ($estado == "encurso" && $resultado == "") {
+          $resumen = "amarillo";
+        }
+      }
+
+      $row['resumen'] = $resumen;
+      $row['member_nombre'] = $row['member_apellidos'] . ", " . $row['member_nombre'];
+
+      if ($resumen == "verde") {
+        $tableMembers .= '<tr align="center">
+        <td style="font-size: 14px; text-align: center;">' . $idx . '</td>
+        <td style="font-size: 14px;">' . $row['member_nombre'] . '</td>
+        <td style="font-size: 14px;">' . $unidad . '</td>
+        <td style="font-size: 14px;">' . $row['member_dni'] . '</td>
+        <td style="font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+      </tr>';
+        $idx = $idx + 1;
+      }
+    }
+
+    $html = str_replace('{%table_members%}', $tableMembers, $html);
+
+    $codCap = $capRow['capacitacion_codigo'];
+    header("Content-Disposition: attachment; filename=\"reporte-de-control-$unidad-$codCap.pdf\"");
+    header("Content-Type: application/pdf; charset=utf-8");
+    $mpdf=new mPDF();
+    $mpdf->showImageErrors = true;
+    $mpdf->WriteHTML($html);
+    $content = $mpdf->Output('', 'S');
+    echo $content;
+    exit;
   }
 
 
