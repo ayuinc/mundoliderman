@@ -14,7 +14,7 @@ class Capacitaciones {
   var $field_apellidos = "m_field_id_13";
   var $field_dni = "m_field_id_16";
 
-  const REPORT_PATH = APPPATH . 'third_party/capacitaciones/reports/';
+  var $reports_path = APPPATH . 'third_party/capacitaciones/reports/';
 
   public function load_months() {
     $data = [];
@@ -684,7 +684,7 @@ class Capacitaciones {
       return;
     }
 
-    $html = file_get_contents(self::REPORT_PATH . "reporte_asistencia_template.html");
+    $html = file_get_contents($this->reports_path . "reporte_asistencia_template.html");
 
     $capRow = ee()->db->select("cap.id as capacitacion_id,
                                 cap.codigo as capacitacion_codigo,
