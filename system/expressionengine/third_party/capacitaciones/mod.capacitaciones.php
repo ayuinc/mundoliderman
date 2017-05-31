@@ -7,14 +7,14 @@ if ( ! class_exists('Exporter'))
 
 require_once FCPATH . 'mpdf/mpdf.php';
 
+define("REPORT_PATH", APPPATH . 'third_party/capacitaciones/reports/');
+
 class Capacitaciones {
 
   var $field_unidad = "m_field_id_6";
   var $field_nombre = "m_field_id_12";
   var $field_apellidos = "m_field_id_13";
   var $field_dni = "m_field_id_16";
-
-  var $reports_path = APPPATH . 'third_party/capacitaciones/reports/';
 
   public function load_months() {
     $data = [];
@@ -684,7 +684,7 @@ class Capacitaciones {
       return;
     }
 
-    $html = file_get_contents($this->reports_path . "reporte_asistencia_template.html");
+    $html = file_get_contents(REPORT_PATH . "reporte_asistencia_template.html");
 
     $capRow = ee()->db->select("cap.id as capacitacion_id,
                                 cap.codigo as capacitacion_codigo,
