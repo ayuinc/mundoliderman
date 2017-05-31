@@ -54,7 +54,7 @@ Plugin for utilities
 
   public function is_user_supervisor() {
     $group_id = $this->EE->session->userdata('group_id');
-    return true;
+    return $group_id == "36";
   }
 
   public function format_date() {
