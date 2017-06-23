@@ -68,7 +68,32 @@ Plugin para registrar ejecutar schedule jobs en Mundo Liderman
       exit("Error: No se logro obtener el token de seguridad");
     }
 
-    $data = $this->datos_lidermans($token);
+    //$data = $this->datos_lidermans($token);
+    $data = '{
+  "Mensaje":"",
+  "Resultado":[{
+    "Cliente":"TOYOTA DEL PERU S.A                                              ",
+    "CodigoPostal":"01 ",
+    "CorreoElectronico":"KIYA_1980@HOTMAIL.COM#01207228##001 01",
+    "Departamento":"CALLAO",
+    "Documento":"001207228           ",
+    "Edad":"37",
+    "Estado":"A",
+    "EstadoCivil":"C",
+    "FechaCese":"",
+    "FechaIngreso":"2015\/04\/27 0:00:00",
+    "FechaNacimiento":"1980\/09\/26 0:00:00",
+    "GrupoEmpresarial":"    ",
+    "Liderman":"99420",
+    "NombreCompleto":"MIRANDA MACHUCA, NAYIBE AZUCENA                                  ",
+    "Provincia":"CALLAO              ",
+    "Sexo":"F",
+    "TipoCliente":"",
+    "TipoClienteDescripcion":"",
+    "TipoDocumento":"X",
+    "Unidad":"División de Vehiculos"
+  }]
+}';
 
     if ($data == null) {
       $this->EE->logger->developer('Jobs: No se recibio data');
@@ -85,10 +110,11 @@ Plugin para registrar ejecutar schedule jobs en Mundo Liderman
 
       if ($user->username != null) {
         $member_id = $user->get_member_id();
-        if ($member_id == null) {
-          ee()->db->query(ee()->db->insert_string('exp_members', $user->get_new_user_array()));
+        //if ($member_id == null) {
+        if (true) {
+          /*ee()->db->query(ee()->db->insert_string('exp_members', $user->get_new_user_array()));
           $member_id = ee()->db->insert_id();
-
+          */
           $data = $user->get_member_data_array();
           $data["member_id"] = $member_id;
           ee()->db->query(ee()->db->insert_string('exp_member_data', $data));
