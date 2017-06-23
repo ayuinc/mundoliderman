@@ -69,9 +69,7 @@ Plugin para registrar ejecutar schedule jobs en Mundo Liderman
     }
 
     //$data = $this->datos_lidermans($token);
-    $data = '{
-  "Mensaje":"",
-  "Resultado":[{
+    $data = '[{
     "Cliente":"TOYOTA DEL PERU S.A                                              ",
     "CodigoPostal":"01 ",
     "CorreoElectronico":"KIYA_1980@HOTMAIL.COM#01207228##001 01",
@@ -92,8 +90,7 @@ Plugin para registrar ejecutar schedule jobs en Mundo Liderman
     "TipoClienteDescripcion":"",
     "TipoDocumento":"X",
     "Unidad":"División de Vehiculos"
-  }]
-}';
+  }]';
 
     if ($data == null) {
       $this->EE->logger->developer('Jobs: No se recibio data');
