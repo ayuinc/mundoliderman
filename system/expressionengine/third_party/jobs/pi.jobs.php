@@ -68,32 +68,8 @@ Plugin para registrar ejecutar schedule jobs en Mundo Liderman
       exit("Error: No se logro obtener el token de seguridad");
     }
 
-    //$data = $this->datos_lidermans($token);
-    $data = '[{
-    "Cliente":"TOYOTA DEL PERU S.A                                              ",
-    "CodigoPostal":"01 ",
-    "CorreoElectronico":"KIYA_1980@HOTMAIL.COM#01207228##001 01",
-    "Departamento":"CALLAO",
-    "Documento":"001207228           ",
-    "Edad":"37",
-    "Estado":"A",
-    "EstadoCivil":"C",
-    "FechaCese":"",
-    "FechaIngreso":"2015\/04\/27 0:00:00",
-    "FechaNacimiento":"1980\/09\/26 0:00:00",
-    "GrupoEmpresarial":"    ",
-    "Liderman":"99420",
-    "NombreCompleto":"MIRANDA MACHUCA, NAYIBE AZUCENA                                  ",
-    "Provincia":"CALLAO              ",
-    "Sexo":"F",
-    "TipoCliente":"",
-    "TipoClienteDescripcion":"",
-    "TipoDocumento":"X",
-    "Unidad":"División de Vehiculos"
-  }]';
-
-  $data = json_decode($data, true);
-
+    $data = $this->datos_lidermans($token);
+    
     if ($data == null) {
       $this->EE->logger->developer('Jobs: No se recibio data');
     }
