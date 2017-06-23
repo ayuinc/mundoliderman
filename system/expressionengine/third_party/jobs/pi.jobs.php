@@ -92,6 +92,8 @@ Plugin para registrar ejecutar schedule jobs en Mundo Liderman
     "Unidad":"División de Vehiculos"
   }]';
 
+  $data = json_decode($data, true);
+
     if ($data == null) {
       $this->EE->logger->developer('Jobs: No se recibio data');
     }
