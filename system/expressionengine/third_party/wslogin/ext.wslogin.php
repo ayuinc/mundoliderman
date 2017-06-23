@@ -303,8 +303,7 @@ class Wslogin_ext {
 			$query = ee()->db->where("username", $username)
 					 ->get("members");
 
-			var_dump($query->row_array());
-			die();
+			
 
 			$this->getCustomMemberFields();
 
@@ -325,6 +324,10 @@ class Wslogin_ext {
 						)
 					);
 				}
+
+				var_dump($this->setArrayData($data, $token));
+				die();
+
 				ee()->db->update(
 				    'member_data',
 				    $this->setArrayData($data, $token),
