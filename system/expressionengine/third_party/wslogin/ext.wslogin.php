@@ -331,7 +331,7 @@ class Wslogin_ext {
 				ee()->db->update(
 					'member_data',
 					array(
-						'm_field_id_22' => "test"
+						'm_field_id_22' => $token
 					),
 					array(
 						'member_id' => "4280"
