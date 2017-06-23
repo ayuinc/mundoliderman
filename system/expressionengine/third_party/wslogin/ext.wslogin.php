@@ -303,6 +303,9 @@ class Wslogin_ext {
 			$query = ee()->db->where("username", $username)
 					 ->get("members");
 
+			var_dump($query);
+			die();
+
 			$this->getCustomMemberFields();
 
 			if ($query->num_rows() > 0) {
