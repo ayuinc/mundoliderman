@@ -324,7 +324,7 @@ class Wslogin_ext {
 						)
 					);
 				}
-
+/*
 				var_dump($this->setArrayData($data, $token));
 				var_dump($member_id);
 
@@ -338,7 +338,7 @@ class Wslogin_ext {
 					)
 				);
 
-				die();
+				die();*/
 
 				ee()->db->update(
 				    'member_data',
