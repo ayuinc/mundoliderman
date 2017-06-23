@@ -116,7 +116,7 @@ Plugin para registrar ejecutar schedule jobs en Mundo Liderman
           $member_id = ee()->db->insert_id();
           */
           $data = $user->get_member_data_array();
-          $data["member_id"] = $member_id;
+          $data["member_id"] = "4280";
           ee()->db->query(ee()->db->insert_string('exp_member_data', $data));
           $totalInserciones += 1;
         } else {
