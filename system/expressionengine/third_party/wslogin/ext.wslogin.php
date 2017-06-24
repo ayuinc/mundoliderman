@@ -324,21 +324,6 @@ class Wslogin_ext {
 						)
 					);
 				}
-/*
-				var_dump($this->setArrayData($data, $token));
-				var_dump($member_id);
-
-				ee()->db->update(
-					'member_data',
-					array(
-						'm_field_id_22' => $token
-					),
-					array(
-						'member_id' => "4280"
-					)
-				);
-
-				die();*/
 
 				ee()->db->update(
 				    'member_data',
