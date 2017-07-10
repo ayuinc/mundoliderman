@@ -435,7 +435,7 @@ class Wslogin_ext {
 	        $this->getMemberFieldId('empresa-empleadora')  => $data["Cliente"],
 	        $this->getMemberFieldId('codigo-liderman')  => $data["CodigoLiderman"],
 	        $this->getMemberFieldId('correo-destinatario')  => $data["CorreoDestinatario"],
-	        $this->getMemberFieldId('dni')  => $data["DNI"],
+	        $this->getMemberFieldId('dni')  => trim($data["DNI"]),
 	        $this->getMemberFieldId('edad')  => $data["Edad"],
 	        $this->getMemberFieldId('lider-zonal')  => $data["LiderZonal"],
 	        $this->getMemberFieldId('nombres')  => $data["Nombres"],
