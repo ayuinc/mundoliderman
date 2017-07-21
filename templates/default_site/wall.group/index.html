@@ -22,6 +22,12 @@
   {embed="includes/radio-urbe"}
 </div>
 {embed="includes/footer"}
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+  {if '{exp:util:is_user_lidermania}' != '1'}
+  <script src="{site_url}js/socketio"></script>
+  {/if}
+
 <script src="{site_url}frontend/app/assets/js/aviso-control.js?v=1"></script>
 <script src="{site_url}frontend/app/assets/js/textarea-control.js?v=1"></script>
 <script src="{site_url}frontend/app/assets/js/publish.js?v=1"></script>
