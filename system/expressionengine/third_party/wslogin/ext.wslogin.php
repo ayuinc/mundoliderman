@@ -303,6 +303,8 @@ class Wslogin_ext {
 			$query = ee()->db->where("username", $username)
 					 ->get("members");
 
+			
+
 			$this->getCustomMemberFields();
 
 			if ($query->num_rows() > 0) {
@@ -322,6 +324,7 @@ class Wslogin_ext {
 						)
 					);
 				}
+
 				ee()->db->update(
 				    'member_data',
 				    $this->setArrayData($data, $token),
@@ -432,7 +435,7 @@ class Wslogin_ext {
 	        $this->getMemberFieldId('empresa-empleadora')  => $data["Cliente"],
 	        $this->getMemberFieldId('codigo-liderman')  => $data["CodigoLiderman"],
 	        $this->getMemberFieldId('correo-destinatario')  => $data["CorreoDestinatario"],
-	        $this->getMemberFieldId('dni')  => $data["DNI"],
+	        $this->getMemberFieldId('dni')  => trim($data["DNI"]),
 	        $this->getMemberFieldId('edad')  => $data["Edad"],
 	        $this->getMemberFieldId('lider-zonal')  => $data["LiderZonal"],
 	        $this->getMemberFieldId('nombres')  => $data["Nombres"],

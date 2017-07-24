@@ -1,27 +1,5 @@
-
   <section id="new_post" class="pokerface hidden"></section>
-  <script src="{exp:routes:new_socket_url}/socket.io/socket.io.js"></script>
-  {if '{exp:util:is_user_lidermania}' != '1'}
-  <script src="{site_url}js/socketio"></script>
-  {/if}
-  <script src="{site_url}frontend/app/assets/js/helper_js.js?v=2"></script>
-  <script src="{site_url}frontend/app/assets/js/alertify.min.js"></script>
-  <script src="{site_url}frontend/app/assets/js/b3/dropdown.js"></script>
-  <script src="{site_url}frontend/app/assets/js/b3/collapse.js"></script>
-  <script src="{site_url}frontend/app/assets/js/scroll-control.js?v=1"></script>
-  <script src="{site_url}frontend/app/assets/js/menu-movil-control.js"></script>
-  <script src="{site_url}frontend/app/assets/js/loader-control.js"></script>
-  <script src="{site_url}frontend/app/assets/js/fancywebsocket.js"></script>
-  <script src="{site_url}frontend/app/assets/js/smooth-scroll.js?v=1"></script>
-  <!-- <script src="{site_url}js/socket?v=2"></script> -->
-  <script>
-  	$("#check_semaforo").css("top", "25px");
-  </script>
-  <script>
-  $("#close-banner span").on("click", function(){
-    $(".alerta").addClass("hidden");
-  });
-  </script>
+  
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
               (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -48,4 +26,27 @@
   if(typeof(_vis_opt_settings_loaded) == "boolean" && typeof(_vis_opt_top_initialize) == "function") {
           _vis_opt_top_initialize(); vwo_$(document).ready(function() { _vis_opt_bottom_initialize(); });
   }
+  </script>
+
+  <script src="{site_url}frontend/app/assets/js/helper_js.js?v=2"></script>
+  <script src="{site_url}frontend/app/assets/js/alertify.min.js"></script>
+  <script src="{site_url}frontend/app/assets/js/b3/dropdown.js"></script>
+  <script src="{site_url}frontend/app/assets/js/b3/collapse.js"></script>
+
+  <script src="https://cdn.ravenjs.com/3.17.0/raven.min.js" crossorigin="anonymous"></script>
+  <script>Raven.config('https://684a5d32ad304f41b1f0936299ac6926@sentry.io/194143').install();</script>
+
+  <script src="{site_url}frontend/app/assets/js/scroll-control.js?v=1"></script>
+  <script src="{site_url}frontend/app/assets/js/menu-movil-control.js"></script>
+  <script src="{site_url}frontend/app/assets/js/loader-control.js"></script>
+  <script src="{site_url}frontend/app/assets/js/fancywebsocket.js"></script>
+  <script src="{site_url}frontend/app/assets/js/smooth-scroll.js?v=1"></script>
+  <!-- <script src="{site_url}js/socket?v=2"></script> -->
+  <script>
+  	$("#check_semaforo").css("top", "25px");
+  </script>
+  <script>
+  $("#close-banner span").on("click", function(){
+    $(".alerta").addClass("hidden");
+  });
   </script>

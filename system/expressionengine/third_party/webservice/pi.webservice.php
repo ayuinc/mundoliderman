@@ -170,13 +170,13 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 	public function semaforocapacitaciones()
 	{
 		$member_id = $this->EE->TMPL->fetch_param('member', $this->current_member_id());
-		$dni = $this->get_member_dni($member_id);
+		$username = $this->get_member_username($member_id);
 		$token = $this->current_member_token();
 		$month_end = strtotime('now', time());
 		$month_start = strtotime('-3 month', time());
 		$date_start = date('d-m-Y', $month_start);
 		$date_end = date('d-m-Y', $month_end);
-		$url = $this->host . "/WSIntranet/Capacitacion.svc/TraerSemaforoCapacitaciones/$dni/$date_start/$date_end/$token";
+		$url = $this->host . "/WSIntranet/Capacitacion.svc/TraerSemaforoCapacitaciones/$username/$date_start/$date_end/$token";
 		$data = $this->EE->curl->get($url);
 		$semaforoStatus = $data >= 3; // >= 3 verde
 		$tagdata = array(['semaforo' => $semaforoStatus]);
@@ -320,6 +320,13 @@ Plugin for retreiving data from Mundo Liderman's Web Service
 				         ->get('exp_member_data');
 		$codigoLiderman = $query->row($codigo_liderman_field_name);
 		return $codigoLiderman;
+	}
+
+	private function get_member_username($member_id) {
+		$query = $this->EE->db->where('member_id', $member_id)
+						 ->select("username")
+				         ->get('exp_members');
+		return $query->row('username');
 	}
 
 	private function current_member_id () {
