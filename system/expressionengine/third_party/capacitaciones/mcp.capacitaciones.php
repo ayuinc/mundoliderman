@@ -776,7 +776,11 @@ class Capacitaciones_mcp {
 
   function _format_row_capacitacion($row) {
     $row['tipo_asignacion'] = ee()->capacitaciones_helper->get_tipo_asignacion_str($row['tipo_asignacion']);
-    $row['tipo_unidad'] = $this->tiposMap[$row['tipo_unidad']];
+    if (isset($this->tiposMap[$row['tipo_unidad']])) {
+      $row['tipo_unidad'] = $this->tiposMap[$row['tipo_unidad']];
+    } else {
+      $row['tipo_unidad'] = '';
+    }
     $row['nombre'] = '<a href="' . $this->base . '&method=contenidos&capacitacion_id=' . $row['id']. '">' 
                         . $row['nombre'] . '</a>';
 
